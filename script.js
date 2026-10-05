@@ -294,7 +294,7 @@ function toggleSound() {
 
 
 // ==========================================
-// 5. MODAL, STATS & VAULT CONTROLS
+// 5. MODAL, STATS & HIGH-SPEED VAULT CONTROLS
 // ==========================================
 
 function openModal(modalId) {
@@ -333,26 +333,42 @@ async function populateVault() {
     
     vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
     
-    let archiveId = 1;
+    const BATCH_SIZE = 5;
     const MAX_ARCHIVES = 100;
     const buttons = [];
+    let currentId = 1;
 
-    while (archiveId <= MAX_ARCHIVES) {
-        const paddedId = String(archiveId).padStart(2, '0');
-        const filename = `sandbox.${paddedId}.json`;
-        const data = await fetchFileWithFallbacks(filename);
-        
-        if (data) {
-            const btn = document.createElement('button');
-            btn.className = 'vault-item-btn';
-            btn.innerHTML = `<strong>Archive ${paddedId}</strong>`;
-            btn.onclick = () => {
-                triggerHaptic(15);
-                loadVaultSet(paddedId, data);
-            };
-            buttons.push(btn);
+    while (currentId <= MAX_ARCHIVES) {
+        const batchPromises = [];
+        for (let i = 0; i < BATCH_SIZE && (currentId + i) <= MAX_ARCHIVES; i++) {
+            const idNum = currentId + i;
+            const paddedId = String(idNum).padStart(2, '0');
+            const filename = `sandbox.${paddedId}.json`;
+            batchPromises.push(
+                fetchFileWithFallbacks(filename).then(data => ({ id: paddedId, idNum, data }))
+            );
         }
-        archiveId++;
+
+        const batchResults = await Promise.all(batchPromises);
+        let missingFound = false;
+
+        for (const res of batchResults) {
+            if (res.data) {
+                const btn = document.createElement('button');
+                btn.className = 'vault-item-btn';
+                btn.innerHTML = `<strong>Archive ${res.id}</strong>`;
+                btn.onclick = () => {
+                    triggerHaptic(15);
+                    loadVaultSet(res.id, res.data);
+                };
+                buttons.push(btn);
+            } else {
+                missingFound = true;
+            }
+        }
+
+        if (missingFound) break;
+        currentId += BATCH_SIZE;
     }
 
     vaultList.innerHTML = '';
@@ -401,9 +417,9 @@ function normalizeQuestions(data) {
 
 async function fetchFileWithFallbacks(filename) {
     const candidatePaths = [
+        `./archives/${filename}`,
         `./${filename}`,
         `./assets/data/floors/${filename}`,
-        `./archives/${filename}`,
         `./data/${filename}`,
         filename
     ];
