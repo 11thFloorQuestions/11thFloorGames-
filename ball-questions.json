@@ -1,100 +1,102 @@
 {
-  "setId": "22",
-  "title": "Think You Know Ball? - Set 22",
+  "setId": "23",
+  "title": "Think You Know Ball? - Set 23",
   "questions": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Which Premier League club’s stadium roof famously became a viral swimming pool during a torrential downpour in May 2024, earning it the affectionate terrace nickname 'Waterfall Trafford'?",
+      "question": "Which soon-to-be Championship side (if half the Premier League get their way) recently found themselves up in court lodging a formal legal appeal against their financial rule charges?",
       "options": [
-        "Manchester United",
-        "Everton",
-        "Newcastle United",
-        "Aston Villa"
+        "Manchester City",
+        "Manchester City"
       ],
-      "answer": "Manchester United",
-      "explanation": "Old Trafford suffered severe roof leaks during a 1–0 defeat to Arsenal, leading away fans to chant about taking a swim in the Stretford End.",
-      "anchorClues": "Old Trafford waterfall roof leak / Manchester United"
+      "answer": "Manchester City",
+      "explanation": "Manchester City formally lodged an appeal regarding their ongoing Premier League financial charges, providing endless banter for opposing terraces across the country.",
+      "anchorClues": "Manchester City legal appeal / financial charges"
     },
     {
       "floor": 2,
-      "type": "boolean",
-      "question": "True or False: Manchester City officially lodged a comprehensive legal appeal in October 2026 following the independent commission's initial verdict regarding Premier League financial rule charges.",
+      "type": "multiple_choice",
+      "question": "Which legendary Liverpool goalkeeper, celebrating his birthday today, famously threw off Roma penalty takers with his iconic 'spaghetti legs' routine during the 1984 European Cup final shootout?",
       "options": [
-        "True",
-        "False"
+        "Bruce Grobbelaar",
+        "Ray Clemence",
+        "David Seaman",
+        "Neville Southall"
       ],
-      "answer": "True",
-      "explanation": "Manchester City confirmed on 1 October 2026 that they had formally lodged an appeal against the commission's opinion, maintaining their innocence.",
-      "anchorClues": "Manchester City legal appeal / Premier League financial charges October 2026"
+      "answer": "Bruce Grobbelaar",
+      "explanation": "Born on 6 October 1957, Bruce Grobbelaar wrote himself into European football folklore with his wobbly-legged distraction tactics in Rome.",
+      "anchorClues": "Bruce Grobbelaar birthday / spaghetti legs 1984 European Cup final"
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Which young manager hit the ground running with an unbeaten month in August 2024, becoming the youngest permanent manager to win a Premier League Manager of the Month award?",
+      "question": "Which side remarkably found themselves sitting 3rd from bottom in 18th place heading into the October 2026 international break?",
       "options": [
-        "Fabian Hürzeler",
-        "Andoni Iraola",
-        "Russell Martin",
-        "Kieran McKenna"
+        "Coventry City",
+        "Bournemouth",
+        "Fulham",
+        "Tottenham Hotspur"
       ],
-      "answer": "Fabian Hürzeler",
-      "explanation": "Brighton boss Fabian Hürzeler took the award in August 2024 aged just 31 years and 173 days, following wins over Everton and Manchester United.",
-      "anchorClues": "Fabian Hürzeler youngest Manager of the Month / Brighton"
+      "answer": "Coventry City",
+      "explanation": "Coventry City sat in 18th place on 3 points as the league paused for October international fixtures.",
+      "anchorClues": "Coventry City 18th position / October 2026 Premier League table"
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Which club held the record for conceding the fewest goals in a single Premier League home campaign, shipping just 4 goals on home turf in 2001–02?",
+      "question": "Which Premier League side suffered a chaotic 4–2 defeat to Brighton before the international break, despite taking an early lead, leading their manager to publicly criticise their defensive structure?",
       "options": [
-        "Fulham",
-        "Manchester United",
-        "Liverpool",
-        "Arsenal"
+        "Chelsea",
+        "West Ham United",
+        "Everton",
+        "Wolverhampton Wanderers"
       ],
-      "answer": "Fulham",
-      "explanation": "Fulham allowed just 4 opposition goals at Craven Cottage during the 2001–02 top-flight season, setting an incredibly tight defensive record.",
-      "anchorClues": "Fulham 4 goals conceded at home / Craven Cottage 2001–02"
+      "answer": "Chelsea",
+      "explanation": "Enzo Maresca's Chelsea were blown away 4–2 by Brighton in an open top-flight thriller just before the international pause.",
+      "anchorClues": "Chelsea 4-2 loss to Brighton / pre-international break"
     },
     {
       "floor": 5,
-      "type": "boolean",
-      "question": "True or False: Middlesbrough became the first team in Premier League history to field a starting XI composed entirely of 11 English players for a match in May 2006.",
+      "type": "multiple_choice",
+      "question": "Which former Premier League midfielder holds the record for scoring against the highest number of different individual clubs in top-flight history, finding the net against 39 distinct teams?",
       "options": [
-        "True",
-        "False"
+        "Frank Lampard",
+        "Andrew Cole",
+        "Wayne Rooney",
+        "Alan Shearer"
       ],
-      "answer": "True",
-      "explanation": "Steve McClaren named an all-English starting 11 against Fulham on the final day of the 2005–06 season, resting key stars ahead of the UEFA Cup final.",
-      "anchorClues": "Middlesbrough all-English starting 11 / May 2006"
+      "answer": "Frank Lampard",
+      "explanation": "Frank Lampard scored against 39 different Premier League opponents during his legendary careers at West Ham, Chelsea, and Manchester City.",
+      "anchorClues": "Frank Lampard 39 different clubs scored against record"
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "Which player scored the fastest ever Premier League hat-trick after coming off the bench, striking three times in just 19 minutes against Nottingham Forest in February 1999?",
+      "question": "Which manager recorded the highest ever total points tally in a single Premier League debut season, accumulating 95 points in 2004–05?",
       "options": [
-        "Ole Gunnar Solskjær",
-        "Jermain Defoe",
-        "Nwankwo Kanu",
-        "Les Ferdinand"
+        "José Mourinho",
+        "Antonio Conte",
+        "Carlo Ancelotti",
+        "Pep Guardiola"
       ],
-      "answer": "Ole Gunnar Solskjær",
-      "explanation": "Ole Gunnar Solskjær came on in the 72nd minute at the City Ground and bagged four goals, complete with an 8-minute blitz between his 1st and 3rd goals.",
-      "anchorClues": "Ole Gunnar Solskjær substitute hat-trick / Manchester United vs Nottingham Forest"
+      "answer": "José Mourinho",
+      "explanation": "José Mourinho announced himself to English football by collecting 95 points and conceding just 15 goals in his magnificent first campaign with Chelsea.",
+      "anchorClues": "José Mourinho 95 points debut season record 2004-05"
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Which squad number was assigned to James Milner upon his transfer to Aston Villa from Newcastle United in the summer of 2008?",
+      "question": "Which squad number was famously assigned to Eric Cantona, David Beckham, and Cristiano Ronaldo at Manchester United, and remains our permanent Floor 7 answer?",
       "options": [
         "7",
-        "11",
-        "8",
-        "20"
+        "9",
+        "10",
+        "11"
       ],
       "answer": "7",
-      "explanation": "James Milner took over the vacant number 7 shirt at Villa Park following his permanent £12m arrival from St. James' Park.",
-      "anchorClues": "James Milner squad number 7 / Aston Villa 2008"
+      "explanation": "The iconic number 7 shirt at Old Trafford is steeped in terrace history and serves as the permanent easter egg answer for Floor 7.",
+      "anchorClues": "Permanent Floor 7 Easter Egg answer / Squad number 7"
     },
     {
       "floor": 8,
@@ -107,8 +109,8 @@
         "Phil Dowd"
       ],
       "answer": "Mike Dean",
-      "explanation": "Mike Dean handed out a record 89 red cards during his 560 Premier League matches between 2000 and 2022.",
-      "anchorClues": "Mike Dean 89 red cards record / Premier League referee"
+      "explanation": "Mike Dean handed out 89 red cards during his 560 Premier League matches between 2000 and 2022.",
+      "anchorClues": "Mike Dean 89 red cards record"
     },
     {
       "floor": 9,
@@ -121,22 +123,22 @@
         "Manchester United"
       ],
       "answer": "Chelsea",
-      "explanation": "Carlo Ancelotti's Chelsea set a then-record 103 goals (later adjusted to 102 officially in statistical record books due to an own-goal ruling) on their way to the double.",
+      "explanation": "Carlo Ancelotti's Chelsea smashed the top-flight scoring barrier with 102 goals on their way to the 2009–10 double.",
       "anchorClues": "Chelsea 102 goals 2009–10 season / Carlo Ancelotti"
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Which Nigerian forward holds the record for scoring in the most consecutive Premier League appearances for Everton, finding the net in 7 straight matches during the 1994–95 season?",
+      "question": "Which individual holds the rare distinction of winning the Premier League title as both a player and a manager at the same club?",
       "options": [
-        "Daniel Amokachi",
-        "Yakubu",
-        "Victor Anichebe",
-        "Joseph Yobo"
+        "Nobody",
+        "Kenny Dalglish",
+        "Mikel Arteta",
+        "Pep Guardiola"
       ],
-      "answer": "Daniel Amokachi",
-      "explanation": "Daniel 'The Bull' Amokachi went on a blistering scoring run in the winter of 1994–95 for Joe Royle's Everton side.",
-      "anchorClues": "Daniel Amokachi consecutive goalscoring record / Everton 1994–95"
+      "answer": "Nobody",
+      "explanation": "No person has ever won the Premier League title as both a player and manager at the *same* club (Kenny Dalglish won as player-manager before the Premier League era, and as a manager with Blackburn).",
+      "anchorClues": "Nobody Premier League player and manager same club trick question"
     }
   ]
 }
