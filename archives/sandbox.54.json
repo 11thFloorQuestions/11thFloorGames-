@@ -1,0 +1,54 @@
+{
+  "floors": [
+    {
+      "question": "Which luxury Italian brand famously caused an internet stir by selling a trash bag pouch made of calfskin for over 1,700 dollars?",
+      "options": ["Balenciaga", "Gucci", "Bottega Veneta", "Versace"],
+      "answer": "Balenciaga"
+    },
+    {
+      "question": "What is the name of the fictional law firm at the centre of the hit television legal drama Suits?",
+      "options": ["Pearson Hardman", "Sterling Cooper", "Waystar RoyCo", "Hamlin Hamlin & McGill"],
+      "answer": "Pearson Hardman"
+    },
+    {
+      "question": "Which traditional Japanese condiment gets its pungent heat from mustard-like allyl isothiocyanate rather than capsicum?",
+      "options": ["Wasabi", "Shichimi Togarashi", "Yuzu Kosho", "Ponzu"],
+      "answer": "Wasabi"
+    },
+    {
+      "question": "In one of the most bizarre moments in modern political history, Donald Trump's 2020 legal team accidentally booked a press conference next to a crematorium and a sex shop instead of a luxury hotel. What was the venue called?",
+      "options": ["Four Seasons Total Landscaping", "Ritz-Carlton Garden Supplies", "Mar-a-Lago Turf Services", "Trump International Lawn & Order"],
+      "answer": "Four Seasons Total Landscaping"
+    },
+    {
+      "question": "What term refers to the precise temperature control method of cooking food vacuum-sealed in a plastic pouch inside a water bath?",
+      "options": ["Sous-vide", "Confit", "Flambé", "Braising"],
+      "answer": "Sous-vide"
+    },
+    {
+      "question": "Which 1970s interior design trend featured sunken seating areas cut into living room floors to encourage intimate conversation?",
+      "options": ["Conversation Pit", "Brutalist Nook", "Open Concept", "Mezzanine Lounge"],
+      "answer": "Conversation Pit"
+    },
+    {
+      "question": "Which James Bond villain-type tech billionaire famously rebranded Twitter to the single letter X in 2023, liquidating decades of brand equity overnight?",
+      "options": ["Elon Musk", "Mark Zuckerberg", "Jeff Bezos", "Peter Thiel"],
+      "answer": "Elon Musk"
+    },
+    {
+      "question": "What culinary term refers to cutting vegetables into very small, uniform cubes measuring roughly two to three millimetres on each side?",
+      "options": ["Brunoise", "Julienne", "Chiffonade", "Macedoine"],
+      "answer": "Brunoise"
+    },
+    {
+      "question": "Which legendary American director helmed the 2023 biographical epic Oppenheimer, sweeping seven Academy Awards including Best Picture?",
+      "options": ["Christopher Nolan", "Denis Villeneuve", "Martin Scorsese", "Quentin Tarantino"],
+      "answer": "Christopher Nolan"
+    },
+    {
+      "question": "In 2021, which legendary French haute couture house was appointed to redesign the official ceremonial robes for the members of the prestigious Académie Française?",
+      "options": ["Chanel", "Dior", "Givenchy", "Saint Laurent"],
+      "answer": "Chanel"
+    }
+  ]
+}
