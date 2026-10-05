@@ -173,20 +173,21 @@ async function populateVault() {
     vaultList.innerHTML = "";
     let archiveId = 1;
 
-    while (true) {
+    // Scan through all available vault archives dynamically
+    while (archiveId <= 100) {
         const paddedId = String(archiveId).padStart(2, '0');
         const filename = `sandbox-wc.${paddedId}.json`;
         const data = await fetchFileWithFallbacks(filename);
 
-        if (!data) break;
-
-        const btn = document.createElement("button");
-        btn.className = "vault-item-btn";
-        btn.innerHTML = `<strong>Archive ${paddedId}</strong>`;
-        btn.onclick = () => {
-            loadVaultArchive(paddedId);
-        };
-        vaultList.appendChild(btn);
+        if (data) {
+            const btn = document.createElement("button");
+            btn.className = "vault-item-btn";
+            btn.innerHTML = `<strong>Archive ${paddedId}</strong>`;
+            btn.onclick = () => {
+                loadVaultArchive(paddedId);
+            };
+            vaultList.appendChild(btn);
+        }
         archiveId++;
     }
 }
@@ -293,8 +294,8 @@ function resetToStartScreen() {
 }
 
 function initDailyPuzzle() {
-    masterNineLetterWord = "CHARTERED";
-    const initialArr = ["R", "E", "C", "A", "T", "D", "H", "E", "R"];
+    masterNineLetterWord = "DIPLOMATS";
+    const initialArr = ["M", "O", "S", "T", "P", "I", "L", "A", "D"];
     initialDailyWheel = shuffleAndVerifyWheel(initialArr, masterNineLetterWord);
     wheelLetters = [...initialDailyWheel];
 }
