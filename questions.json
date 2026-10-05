@@ -1,54 +1,54 @@
 {
   "floors": [
     {
-      "question": "Which luxury Italian brand famously caused an internet stir by selling a trash bag pouch made of calfskin for over 1,700 dollars?",
-      "options": ["Balenciaga", "Gucci", "Bottega Veneta", "Versace"],
-      "answer": "Balenciaga"
+      "question": "Which ancient wonder of the world, located in modern-day Iraq, was supposedly built by King Nebuchadnezzar II for his homesick wife?",
+      "options": ["Hanging Gardens of Babylon", "Lighthouse of Alexandria", "Colossus of Rhodes", "Temple of Artemis"],
+      "answer": "Hanging Gardens of Babylon"
     },
     {
-      "question": "What is the name of the fictional law firm at the centre of the hit television legal drama Suits?",
-      "options": ["Pearson Hardman", "Sterling Cooper", "Waystar RoyCo", "Hamlin Hamlin & McGill"],
-      "answer": "Pearson Hardman"
+      "question": "Which legendary British comedy group produced the iconic 1975 satirical film The Holy Grail?",
+      "options": ["Monty Python", "The Goon Show", "Beyond the Fringe", "The League of Gentlemen"],
+      "answer": "Monty Python"
     },
     {
-      "question": "Which traditional Japanese condiment gets its pungent heat from mustard-like allyl isothiocyanate rather than capsicum?",
-      "options": ["Wasabi", "Shichimi Togarashi", "Yuzu Kosho", "Ponzu"],
-      "answer": "Wasabi"
+      "question": "Which sharp satirical HBO drama, created by British writer Jesse Armstrong, follows the dysfunctional owners of global media conglomerate Waystar RoyCo?",
+      "options": ["Succession", "The Newsroom", "Billions", "Veep"],
+      "answer": "Succession"
     },
     {
-      "question": "In one of the most bizarre moments in modern political history, Donald Trump's 2020 legal team accidentally booked a press conference next to a crematorium and a sex shop instead of a luxury hotel. What was the venue called?",
-      "options": ["Four Seasons Total Landscaping", "Ritz-Carlton Garden Supplies", "Mar-a-Lago Turf Services", "Trump International Lawn & Order"],
-      "answer": "Four Seasons Total Landscaping"
+      "question": "Which French chemist and microbiologist developed the process of heating liquids to kill harmful bacteria, a method that now bears his name?",
+      "options": ["Louis Pasteur", "Antoine Lavoisier", "Pierre Curie", "Robert Koch"],
+      "answer": "Louis Pasteur"
     },
     {
-      "question": "What term refers to the precise temperature control method of cooking food vacuum-sealed in a plastic pouch inside a water bath?",
-      "options": ["Sous-vide", "Confit", "Flambé", "Braising"],
-      "answer": "Sous-vide"
+      "question": "In avian anatomy, what is the term for the specialized muscular stomach organ used by birds to grind down tough food particles?",
+      "options": ["Gizzard", "Crop", "Proventriculus", "Cloaca"],
+      "answer": "Gizzard"
     },
     {
-      "question": "Which 1970s interior design trend featured sunken seating areas cut into living room floors to encourage intimate conversation?",
-      "options": ["Conversation Pit", "Brutalist Nook", "Open Concept", "Mezzanine Lounge"],
-      "answer": "Conversation Pit"
+      "question": "Which 19th-century British author wrote the celebrated gothic masterpiece Wuthering Heights under the pen name Ellis Bell?",
+      "options": ["Emily Brontë", "Charlotte Brontë", "Anne Brontë", "Mary Shelley"],
+      "answer": "Emily Brontë"
     },
     {
-      "question": "Which James Bond villain-type tech billionaire famously rebranded Twitter to the single letter X in 2023, liquidating decades of brand equity overnight?",
-      "options": ["Elon Musk", "Mark Zuckerberg", "Jeff Bezos", "Peter Thiel"],
-      "answer": "Elon Musk"
+      "question": "Which chemical element, represented by the symbol W on the periodic table, boasts the highest melting point of all metallic elements?",
+      "options": ["Tungsten", "Titanium", "Platinum", "Molybdenum"],
+      "answer": "Tungsten"
     },
     {
-      "question": "What culinary term refers to cutting vegetables into very small, uniform cubes measuring roughly two to three millimetres on each side?",
-      "options": ["Brunoise", "Julienne", "Chiffonade", "Macedoine"],
-      "answer": "Brunoise"
+      "question": "Which renowned Italian architect designed the iconic, red-tiled octagonal dome of Florence Cathedral (Santa Maria del Fiore)?",
+      "options": ["Filippo Brunelleschi", "Donato Bramante", "Michelangelo", "Andrea Palladio"],
+      "answer": "Filippo Brunelleschi"
     },
     {
-      "question": "Which legendary American director helmed the 2023 biographical epic Oppenheimer, sweeping seven Academy Awards including Best Picture?",
-      "options": ["Christopher Nolan", "Denis Villeneuve", "Martin Scorsese", "Quentin Tarantino"],
-      "answer": "Christopher Nolan"
+      "question": "What is the name of the narrow sea strait that separates the Crimean Peninsula from Russia's Taman Peninsula, connecting the Black Sea to the Sea of Azov?",
+      "options": ["Kerch Strait", "Bosphorus Strait", "Dardanelles", "Malacca Strait"],
+      "answer": "Kerch Strait"
     },
     {
-      "question": "In 2021, which legendary French haute couture house was appointed to redesign the official ceremonial robes for the members of the prestigious Académie Française?",
-      "options": ["Chanel", "Dior", "Givenchy", "Saint Laurent"],
-      "answer": "Chanel"
+      "question": "In classical music, which German composer wrote the monumental Goldberg Variations for harpsichord, published in 1741?",
+      "options": ["Johann Sebastian Bach", "George Frideric Handel", "Ludwig van Beethoven", "Franz Schubert"],
+      "answer": "Johann Sebastian Bach"
     }
   ]
 }
