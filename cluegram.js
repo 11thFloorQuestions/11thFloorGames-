@@ -167,7 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
         vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
         
         const fetchPromises = [];
-        for (let i = 1; i <= 51; i++) {
+        // Scan up to 100 available archives dynamically
+        for (let i = 1; i <= 100; i++) {
             const paddedId = String(i).padStart(2, '0');
             fetchPromises.push(fetchFileWithFallbacks(`cluegram-${paddedId}.json`).then(data => ({ id: paddedId, data })));
         }
