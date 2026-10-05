@@ -6,81 +6,81 @@ window.CLUEGRAM_DAILY_SET = [
   {
     floor: 1,
     length: 5,
-    domain: "Botany & Flora",
-    scrambled: "LEAPT",
-    target: "PETAL",
-    clue: "A delicate floral appendage designed to catch the eye of passing pollinators."
+    domain: "Antiquities & Discoveries",
+    scrambled: "OVERT",
+    target: "TROVE",
+    clue: "A curated collection of valuable items discovered in a single hidden location."
   },
   {
     floor: 2,
     length: 5,
-    domain: "Maritime Navigation",
-    scrambled: "ORANS",
-    target: "SONAR",
-    clue: "An acoustic navigation system relying on the propagation of sound pulses beneath the waves."
+    domain: "Mythology & Nature",
+    scrambled: "HYPNM",
+    target: "NYMPH",
+    clue: "A mythological spirit inhabiting nature, or the immature form of certain insects."
   },
   {
     floor: 3,
     length: 6,
-    domain: "Anatomy & Physiology",
-    scrambled: "SLIPEV",
-    target: "PELVIS",
-    clue: "The basin-shaped skeletal structure connecting the spine to the lower extremities."
+    domain: "Transport & Engineering",
+    scrambled: "ACAMRT",
+    target: "TARMAC",
+    clue: "A road-surfacing material of crushed stone sealed with tar, named after its Scottish inventor."
   },
   {
     floor: 4,
     length: 6,
-    domain: "Textiles & Weaving",
-    scrambled: "NIBBOB",
-    target: "BOBBIN",
-    clue: "A small spindle or cylinder used to hold thread in domestic sewing apparatus."
+    domain: "Tools & Mixology",
+    scrambled: "LIGTEM",
+    target: "GIMLET",
+    clue: "A small T-shaped hand tool used for boring holes, or a classic cocktail of gin and lime juice."
   },
   {
     floor: 5,
     length: 7,
-    domain: "Astronomy & Astrophysics",
-    scrambled: "SPICELE",
-    target: "ECLIPSE",
-    clue: "A transient astronomical alignment causing the obscuration of one celestial body by another."
+    domain: "Architecture & Joinery",
+    scrambled: "DELPNLAE",
+    target: "PANELLED",
+    clue: "Fitted or decorated with raised timber boards, characteristic of classic study interiors."
   },
   {
     floor: 6,
     length: 7,
-    domain: "Architecture & Design",
-    scrambled: "CLAYBON",
-    target: "BALCONY",
-    clue: "An elevated architectural platform projecting from a building, typically enclosed by a balustrade."
+    domain: "Ballistics & Standards",
+    scrambled: "RACBELI",
+    target: "CALIBRE",
+    clue: "The internal diameter of a gun barrel, or the level of ability and competence possessed by an individual."
   },
   {
     floor: 7,
     length: 8,
-    domain: "Meteorology & Climate",
-    scrambled: "CAVEROTS",
-    target: "OVERCAST",
-    clue: "A meteorological state characterised by heavy cloud cover obscuring the firmament."
+    domain: "Geopolitics & Power",
+    scrambled: "EEYGMHON",
+    target: "HEGEMONY",
+    clue: "Political or cultural dominance and leadership exercised by one nation over others within a region."
   },
   {
     floor: 8,
     length: 8,
-    domain: "Musical Instruments",
-    scrambled: "TRENICAL",
-    target: "CLARINET",
-    clue: "A cylindrical woodwind instrument featuring a single-reed mouthpiece and a flared bell."
+    domain: "Architecture & Commemoration",
+    scrambled: "PATECHON",
+    target: "CENOTAPH",
+    clue: "A monument erected to honour individuals whose remains are buried elsewhere or missing at sea."
   },
   {
     floor: 9,
     length: 9,
-    domain: "Geology & Mineralogy",
-    scrambled: "MELTONIES",
-    target: "LIMESTONE",
-    clue: "A prevalent sedimentary rock composed primarily of skeletal fragments and calcium carbonate."
+    domain: "Geology & History",
+    scrambled: "ACTALSYMC",
+    target: "CATACLYSM",
+    clue: "A violent social or political upheaval, or a devastating natural disaster that radically alters the landscape."
   },
   {
     floor: 10,
     length: 9,
-    domain: "Automotive Engineering",
-    scrambled: "REDLYNCIS",
-    target: "CYLINDERS",
-    clue: "The vital tubular chambers within a combustion engine where the pistons operate."
+    domain: "Classical Legend & Architecture",
+    scrambled: "BALYRHITN",
+    target: "LABYRINTH",
+    clue: "An intricate structure of interconnecting passages designed to confuse anyone attempting to navigate it."
   }
 ];
