@@ -58,33 +58,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function bindEvents() {
-        startClimbBtn.addEventListener('click', startGame);
+        if (startClimbBtn) startClimbBtn.addEventListener('click', startGame);
 
         if (statsBtn) {
             statsBtn.addEventListener('click', () => {
-                statsModal.classList.remove('hidden');
+                if (statsModal) statsModal.classList.remove('hidden');
                 populateVault();
             });
         }
 
         if (victoryStatsBtn) {
             victoryStatsBtn.addEventListener('click', () => {
-                statsModal.classList.remove('hidden');
+                if (statsModal) statsModal.classList.remove('hidden');
                 populateVault();
             });
         }
 
-        closeVaultBtn.addEventListener('click', () => {
-            statsModal.classList.add('hidden');
-            if (victoryScreen && victoryScreen.style.display !== 'none') {
-                resetToStartScreen();
-            }
-        });
+        if (closeVaultBtn) {
+            closeVaultBtn.addEventListener('click', () => {
+                if (statsModal) statsModal.classList.add('hidden');
+                if (victoryScreen && victoryScreen.style.display !== 'none') {
+                    resetToStartScreen();
+                }
+            });
+        }
 
-        soundBtn.addEventListener('click', () => {
-            soundEnabled = !soundEnabled;
-            soundBtn.textContent = `SOUND: ${soundEnabled ? 'ON' : 'OFF'}`;
-        });
+        if (soundBtn) {
+            soundBtn.addEventListener('click', () => {
+                soundEnabled = !soundEnabled;
+                soundBtn.textContent = `SOUND: ${soundEnabled ? 'ON' : 'OFF'}`;
+            });
+        }
     }
 
     // --- Active Match Timer ---
@@ -142,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
         
         const fetchPromises = [];
-        for (let i = 1; i <= 50; i++) {
+        for (let i = 1; i <= 100; i++) {
             const paddedId = String(i).padStart(2, '0');
             fetchPromises.push(fetchFileWithFallbacks(`sandbox-parity.${paddedId}.json`).then(data => ({ id: paddedId, data })));
         }
@@ -172,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data && data.floors) {
             activeDataSet = data;
             activeGameData = data.floors;
-            statsModal.classList.add('hidden');
+            if (statsModal) statsModal.classList.add('hidden');
             startGame();
         }
     }
@@ -183,11 +187,11 @@ document.addEventListener('DOMContentLoaded', () => {
             activeGameData = activeDataSet ? activeDataSet.floors : [];
         }
 
-        startScreen.style.display = 'none';
+        if (startScreen) startScreen.style.display = 'none';
         if (victoryScreen) victoryScreen.style.display = 'none';
-        gameplayHeader.style.display = 'flex';
-        hudContainer.style.display = 'flex';
-        gameWorkspace.style.display = 'flex';
+        if (gameplayHeader) gameplayHeader.style.display = 'flex';
+        if (hudContainer) hudContainer.style.display = 'flex';
+        if (gameWorkspace) gameWorkspace.style.display = 'flex';
         if (footerText) footerText.style.display = 'block';
 
         currentFloorIndex = 0;
@@ -219,12 +223,14 @@ document.addEventListener('DOMContentLoaded', () => {
         isProcessing = false;
         showMessage('');
 
-        floorNumberVal.innerHTML = getOrdinalFloorHTML(index + 1);
+        if (floorNumberVal) floorNumberVal.innerHTML = getOrdinalFloorHTML(index + 1);
 
-        if (index === 0) {
-            floorRuleText.textContent = `1 PAIR • TAP ANY TILE TO REVEAL`;
-        } else {
-            floorRuleText.textContent = `${floorData.pairs} Pair${floorData.pairs > 1 ? 's' : ''} • Clear Grid Before Time Expires!`;
+        if (floorRuleText) {
+            if (index === 0) {
+                floorRuleText.textContent = `1 PAIR • TAP ANY TILE TO REVEAL`;
+            } else {
+                floorRuleText.textContent = `${floorData.pairs} Pair${floorData.pairs > 1 ? 's' : ''} • Clear Grid Before Time Expires!`;
+            }
         }
 
         updateTowerStack(index + 1);
@@ -233,6 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function buildGrid(floorData, isFirstFloor) {
+        if (!parityGrid) return;
         parityGrid.innerHTML = '';
         const icons = floorData.icons.slice(0, floorData.pairs);
         const deck = [...icons, ...icons];
@@ -257,7 +264,6 @@ document.addEventListener('DOMContentLoaded', () => {
             parityGrid.style.gap = '4px';
         }
 
-        // Dynamically extract svgMap from activeDataSet (works seamlessly for daily set or loaded archive)
         const svgMap = (activeDataSet && activeDataSet.svgMap) 
             ? activeDataSet.svgMap 
             : (window.PARITY_DAILY_SET ? window.PARITY_DAILY_SET.svgMap : {});
@@ -295,6 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateTimerBar() {
+        if (!timerBarFill) return;
         const pct = Math.max(0, (timeRemaining / totalFloorTime) * 100);
         timerBarFill.style.width = `${pct}%`;
 
@@ -417,6 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showMessage(msg, isSuccess = false) {
+        if (!messageBox) return;
         messageBox.textContent = msg;
         messageBox.style.color = isSuccess ? 'var(--state-success)' : 'var(--state-error)';
     }
@@ -450,14 +458,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateStatsDisplay() {
         const stats = getStats();
-        document.getElementById('stat-played').textContent = stats.played;
-        document.getElementById('stat-wins').textContent = stats.wins;
+        const playedElem = document.getElementById('stat-played');
+        const winsElem = document.getElementById('stat-wins');
+        const winrateElem = document.getElementById('stat-winrate');
+        const streakElem = document.getElementById('stat-streak');
+        const bestfloorElem = document.getElementById('stat-bestfloor');
+
+        if (playedElem) playedElem.textContent = stats.played;
+        if (winsElem) winsElem.textContent = stats.wins;
 
         const winRate = stats.played > 0 ? Math.round((stats.wins / stats.played) * 100) : 0;
-        document.getElementById('stat-winrate').textContent = `${winRate}%`;
-        document.getElementById('stat-streak').textContent = `${stats.streak}`;
+        if (winrateElem) winrateElem.textContent = `${winRate}%`;
+        if (streakElem) streakElem.textContent = `${stats.streak}`;
 
         const bestOrd = ordinals[stats.bestFloor - 1] || `${stats.bestFloor}th`;
-        document.getElementById('stat-bestfloor').textContent = `${bestOrd} Floor`;
+        if (bestfloorElem) bestfloorElem.textContent = `${bestOrd} Floor`;
     }
 });
