@@ -5,19 +5,19 @@
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Which soon-to-be Championship side (if half the Premier League get their way) recently found themselves up in court lodging a formal legal appeal against their financial rule charges?",
+      "question": "Which soon to be Championship team (if half the league get their way) recently found themselves up in court?",
       "options": [
         "Manchester City",
         "Manchester City"
       ],
       "answer": "Manchester City",
-      "explanation": "Manchester City formally lodged an appeal regarding their ongoing Premier League financial charges, providing endless banter for opposing terraces across the country.",
-      "anchorClues": "Manchester City legal appeal / financial charges"
+      "explanation": "Manchester City lodged a formal appeal regarding their ongoing legal case with the Premier League.",
+      "anchorClues": "Manchester City legal appeal"
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which legendary Liverpool goalkeeper, celebrating his birthday today, famously threw off Roma penalty takers with his iconic 'spaghetti legs' routine during the 1984 European Cup final shootout?",
+      "question": "Which iconic goalkeeper has a birthday today?",
       "options": [
         "Bruce Grobbelaar",
         "Ray Clemence",
@@ -25,13 +25,13 @@
         "Neville Southall"
       ],
       "answer": "Bruce Grobbelaar",
-      "explanation": "Born on 6 October 1957, Bruce Grobbelaar wrote himself into European football folklore with his wobbly-legged distraction tactics in Rome.",
-      "anchorClues": "Bruce Grobbelaar birthday / spaghetti legs 1984 European Cup final"
+      "explanation": "Born 6 October 1957, Bruce Grobbelaar won six league titles and the European Cup with Liverpool.",
+      "anchorClues": "Bruce Grobbelaar birthday"
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Which side remarkably found themselves sitting 3rd from bottom in 18th place heading into the October 2026 international break?",
+      "question": "Which team is currently 3rd from bottom?",
       "options": [
         "Coventry City",
         "Bournemouth",
@@ -39,13 +39,13 @@
         "Tottenham Hotspur"
       ],
       "answer": "Coventry City",
-      "explanation": "Coventry City sat in 18th place on 3 points as the league paused for October international fixtures.",
-      "anchorClues": "Coventry City 18th position / October 2026 Premier League table"
+      "explanation": "Coventry City sit 18th in the table heading into the October 2026 international break.",
+      "anchorClues": "Coventry City 18th place"
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Which Premier League side suffered a chaotic 4–2 defeat to Brighton before the international break, despite taking an early lead, leading their manager to publicly criticise their defensive structure?",
+      "question": "Which Premier League side suffered a 4–2 defeat to Brighton before the international break?",
       "options": [
         "Chelsea",
         "West Ham United",
@@ -53,27 +53,27 @@
         "Wolverhampton Wanderers"
       ],
       "answer": "Chelsea",
-      "explanation": "Enzo Maresca's Chelsea were blown away 4–2 by Brighton in an open top-flight thriller just before the international pause.",
-      "anchorClues": "Chelsea 4-2 loss to Brighton / pre-international break"
+      "explanation": "Chelsea lost 4–2 to Brighton in matchweek 7.",
+      "anchorClues": "Chelsea 4-2 Brighton"
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Which former Premier League midfielder holds the record for scoring against the highest number of different individual clubs in top-flight history, finding the net against 39 distinct teams?",
+      "question": "Which player holds the record for receiving the most yellow cards in a single Premier League season, picking up 14 bookings?",
       "options": [
-        "Frank Lampard",
-        "Andrew Cole",
-        "Wayne Rooney",
-        "Alan Shearer"
+        "João Palhinha",
+        "Etienne Capoue",
+        "Lee Cattermole",
+        "José Holebas"
       ],
-      "answer": "Frank Lampard",
-      "explanation": "Frank Lampard scored against 39 different Premier League opponents during his legendary careers at West Ham, Chelsea, and Manchester City.",
-      "anchorClues": "Frank Lampard 39 different clubs scored against record"
+      "answer": "João Palhinha",
+      "explanation": "João Palhinha picked up 14 yellow cards for Fulham during the 2022–23 campaign.",
+      "anchorClues": "João Palhinha 14 yellow cards single season"
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "Which manager recorded the highest ever total points tally in a single Premier League debut season, accumulating 95 points in 2004–05?",
+      "question": "Which manager recorded 95 points in his Premier League debut season in 2004–05?",
       "options": [
         "José Mourinho",
         "Antonio Conte",
@@ -81,27 +81,27 @@
         "Pep Guardiola"
       ],
       "answer": "José Mourinho",
-      "explanation": "José Mourinho announced himself to English football by collecting 95 points and conceding just 15 goals in his magnificent first campaign with Chelsea.",
-      "anchorClues": "José Mourinho 95 points debut season record 2004-05"
+      "explanation": "José Mourinho accumulated 95 points in his first Chelsea season.",
+      "anchorClues": "José Mourinho 95 points 2004-05"
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Which squad number was famously assigned to Eric Cantona, David Beckham, and Cristiano Ronaldo at Manchester United, and remains our permanent Floor 7 answer?",
+      "question": "Which squad number was assigned to James Milner upon his transfer to Aston Villa from Newcastle United in 2008?",
       "options": [
         "7",
-        "9",
-        "10",
-        "11"
+        "8",
+        "11",
+        "20"
       ],
       "answer": "7",
-      "explanation": "The iconic number 7 shirt at Old Trafford is steeped in terrace history and serves as the permanent easter egg answer for Floor 7.",
-      "anchorClues": "Permanent Floor 7 Easter Egg answer / Squad number 7"
+      "explanation": "James Milner took the vacant number 7 shirt at Villa Park, maintaining our permanent Floor 7 answer.",
+      "anchorClues": "James Milner squad number 7 / Villa 2008"
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Which referee holds the all-time record for issuing the most red cards in Premier League history, sending off 89 players across his top-flight officiating career?",
+      "question": "Which referee holds the record for issuing the most red cards in Premier League history?",
       "options": [
         "Mike Dean",
         "Martin Atkinson",
@@ -109,36 +109,36 @@
         "Phil Dowd"
       ],
       "answer": "Mike Dean",
-      "explanation": "Mike Dean handed out 89 red cards during his 560 Premier League matches between 2000 and 2022.",
-      "anchorClues": "Mike Dean 89 red cards record"
+      "explanation": "Mike Dean issued 89 red cards during his Premier League officiating career.",
+      "anchorClues": "Mike Dean 89 red cards"
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "Which club scored 102 Premier League goals in the 2009–10 campaign, becoming the first side in top-flight history to breach the 100-goal mark in a single season?",
+      "question": "Which player holds the record for scoring the most penalties in a single Premier League season?",
       "options": [
-        "Chelsea",
-        "Manchester City",
-        "Arsenal",
-        "Manchester United"
+        "Bruno Fernandes",
+        "Jamie Vardy",
+        "Frank Lampard",
+        "Harry Kane"
       ],
-      "answer": "Chelsea",
-      "explanation": "Carlo Ancelotti's Chelsea smashed the top-flight scoring barrier with 102 goals on their way to the 2009–10 double.",
-      "anchorClues": "Chelsea 102 goals 2009–10 season / Carlo Ancelotti"
+      "answer": "Bruno Fernandes",
+      "explanation": "Bruno Fernandes scored 10 penalties in a single top-flight campaign.",
+      "anchorClues": "Bruno Fernandes penalty record"
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Which individual holds the rare distinction of winning the Premier League title as both a player and a manager at the same club?",
+      "question": "Which two players have scored Premier League penalties with both their right and left foot?",
       "options": [
-        "Nobody",
-        "Kenny Dalglish",
-        "Mikel Arteta",
-        "Pep Guardiola"
+        "Obafemi Martins & Bobby Zamora",
+        "Santi Cazorla & Pedro",
+        "Marek Hamsik & Son Heung-min",
+        "Morten Gamst Pedersen & Harry Kewell"
       ],
-      "answer": "Nobody",
-      "explanation": "No person has ever won the Premier League title as both a player and manager at the *same* club (Kenny Dalglish won as player-manager before the Premier League era, and as a manager with Blackburn).",
-      "anchorClues": "Nobody Premier League player and manager same club trick question"
+      "answer": "Obafemi Martins & Bobby Zamora",
+      "explanation": "Obafemi Martins and Bobby Zamora are the only players to convert top-flight penalties using both feet.",
+      "anchorClues": "Obafemi Martins Bobby Zamora two-footed penalty record"
     }
   ]
 }
