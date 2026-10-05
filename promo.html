@@ -4,6 +4,640 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>11th Floor Games - Promo Studio (Real-Time Fail Run)</title>
+
+    <!-- Embedded Vector Favicon matching the 11 from the brand logo -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%23000000'/%3E%3Cpath fill='%23ff1f2d' d='M115 380V182l58-37v235h-58zm155 0V182l58-37v235h-58z'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%23000000'/%3E%3Cpath fill='%23ff1f2d' d='M115 380V182l58-37v235h-58zm155 0V182l58-37v235h-58z'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #000000;
+            --surface: #0a0a0a;
+            --surface-border: #222222;
+            --surface-border-light: #333333;
+            --accent-red: #ff1f2d;
+            --accent-red-glow: rgba(255, 31, 45, 0.2);
+            --accent-green: #84CC16;
+            --text-primary: #ffffff;
+            --text-muted: #888888;
+
+            --genre-terrace: #84CC16;
+            --state-active: #facc15;
+            --state-success: #22c55e;
+            --state-error: #ef4444;
+            --state-error-glow: rgba(239, 68, 68, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            height: 100vh;
+            height: 100dvh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .promo-canvas {
+            width: 360px;
+            height: 640px;
+            background-color: var(--bg-deep);
+            border: 2px solid var(--surface-border);
+            border-radius: 12px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+            overflow: hidden;
+        }
+
+        .promo-hub-logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .promo-hub-logo-red {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.0rem;
+            font-weight: 400;
+            color: var(--accent-red);
+            line-height: 0.85;
+            letter-spacing: -1px;
+            text-shadow: 0 0 8px rgba(255, 31, 45, 0.2);
+            margin-bottom: 2px;
+            animation: logoColorCycle 8s ease-in-out infinite;
+        }
+
+        .promo-hub-logo-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 300;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            margin-bottom: 1px;
+        }
+
+        .promo-hub-logo-sub {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.45rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .promo-presents {
+            font-size: 0.42rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .promo-game-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.25rem;
+            letter-spacing: 0.8px;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            text-shadow: 0 0 6px rgba(132, 204, 22, 0.2);
+            margin-top: 1px;
+        }
+
+        .promo-body {
+            height: 65px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 20;
+            position: relative;
+            flex-shrink: 0;
+            margin: 2px 0;
+        }
+
+        .promo-text {
+            font-family: 'Impact', sans-serif;
+            font-size: 1.35rem;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+            line-height: 1.15;
+            color: #ffffff;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            position: absolute;
+            width: 100%;
+            padding: 0 6px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
+        }
+
+        .promo-text.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .promo-text .highlight {
+            color: var(--state-active);
+            text-shadow: 0 0 4px rgba(250, 204, 21, 0.3);
+        }
+
+        .promo-text .white-text {
+            color: #ffffff;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
+        }
+
+        .promo-text .pop {
+            display: inline-block;
+            color: var(--accent-red);
+            text-shadow: 0 0 8px var(--accent-red-glow), 1px 1px 4px rgba(0,0,0,0.9);
+            animation: stompImpact 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes stompImpact {
+            0% { transform: scale(2.4); opacity: 0; }
+            100% { transform: scale(1.15); opacity: 1; }
+        }
+
+        .promo-mock-device {
+            width: 220px;
+            height: 290px;
+            background-color: var(--surface);
+            border: 2px solid var(--surface-border);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+            z-index: 5;
+            flex-shrink: 0;
+        }
+
+        .promo-game-viewport {
+            width: 320px;
+            height: 425px;
+            transform: scale(0.675);
+            transform-origin: center center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px;
+            pointer-events: none;
+        }
+
+        .hud-sidebar-container { 
+            width: 100%; 
+            display: flex; 
+            align-items: stretch; 
+            gap: 8px; 
+            margin-bottom: 6px; 
+            flex-shrink: 0; 
+        }
+
+        .tower-stack { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 2px; 
+            width: 44px; 
+            background: var(--surface); 
+            border: 1px solid var(--surface-border); 
+            border-radius: 6px; 
+            padding: 5px; 
+            justify-content: space-between; 
+            flex-shrink: 0; 
+        }
+
+        .tower-floor { 
+            height: 6px; 
+            border: 1px solid var(--surface-border); 
+            background: #111111; 
+            transition: all 0.25s ease; 
+            border-radius: 1px; 
+        }
+
+        .tower-floor.active { 
+            border-color: var(--state-active); 
+            background: var(--state-active); 
+        }
+
+        .tower-floor.completed { 
+            border-color: var(--state-success); 
+            background: var(--state-success); 
+        }
+
+        .tower-floor.failed { 
+            border-color: var(--state-error); 
+            background: var(--state-error); 
+        }
+
+        .floor-info-box {
+            flex-grow: 1;
+            background-color: var(--surface);
+            border: 1px solid var(--surface-border);
+            border-radius: 6px;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .floor-left-group { display: flex; flex-direction: column; gap: 2px; }
+        .current-floor-display { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 800; }
+        .floor-rule-text { font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
+
+        .play-card {
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            border-radius: 6px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        .timer-track { width: 100%; height: 4px; background: #111111; border-radius: 2px; overflow: hidden; }
+        .timer-fill { height: 100%; background: var(--state-active); width: 100%; transition: width 0.05s linear; }
+
+        .question-box {
+            width: 100%;
+            background: #111111;
+            border: 1px solid var(--surface-border);
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .question-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.35;
+        }
+
+        .options-grid { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .btn-option { 
+            width: 100%; 
+            min-height: 42px; 
+            background: #111111; 
+            border: 1px solid rgba(250, 204, 21, 0.3); 
+            border-radius: 6px; 
+            color: #ffffff; 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 0.68rem; 
+            font-weight: 700; 
+            padding: 6px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            transition: all 0.2s ease;
+        }
+
+        .btn-option.selected-correct { 
+            border-color: var(--state-success); 
+            background: rgba(34, 197, 94, 0.2); 
+            color: #86EFAC; 
+        }
+
+        .btn-option.selected-wrong { 
+            border-color: var(--state-error); 
+            background: rgba(239, 68, 68, 0.2); 
+            color: #FCA5A5; 
+        }
+
+        .modal-card { 
+            background-color: var(--surface); 
+            border: 1px solid var(--state-error); 
+            padding: 16px; 
+            border-radius: 10px; 
+            width: 100%; 
+            text-align: center;
+        }
+
+        .promo-footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            z-index: 10;
+            flex-shrink: 0;
+            padding-bottom: 2px;
+        }
+
+        .promo-footer-text {
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        @keyframes logoColorCycle {
+            0%   { color: var(--accent-red); }
+            14%  { color: var(--color-terrace); }
+            28%  { color: var(--color-cluegram); }
+            42%  { color: var(--color-questions); }
+            56%  { color: var(--color-wordclimb); }
+            70%  { color: var(--color-clusters); }
+            84%  { color: var(--color-parity); }
+            100% { color: var(--accent-red); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="promo-canvas">
+        <div class="promo-hub-logo-box">
+            <h1 class="promo-hub-logo-red">11FL?</h1>
+            <p class="promo-hub-logo-title">Eleventh Floor</p>
+            <p class="promo-hub-logo-sub">GAMES LOBBY</p>
+            <div class="promo-presents">PRESENTS</div>
+            <div class="promo-game-title" id="brand-game-title">Think You Know Ball?</div>
+        </div>
+
+        <div class="promo-body">
+            <div id="text-slot" class="promo-text"></div>
+        </div>
+
+        <div class="promo-mock-device" id="mock-device">
+            <div class="promo-game-viewport">
+                
+                <div id="gameplay-container" style="width: 100%; display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
+                    <div class="hud-sidebar-container">
+                        <div class="tower-stack">
+                            <div class="tower-floor" data-floor="11"></div>
+                            <div class="tower-floor" data-floor="10"></div>
+                            <div class="tower-floor" data-floor="9"></div>
+                            <div class="tower-floor" data-floor="8"></div>
+                            <div class="tower-floor" data-floor="7"></div>
+                            <div class="tower-floor" data-floor="6"></div>
+                            <div class="tower-floor" data-floor="5"></div>
+                            <div class="tower-floor" data-floor="4"></div>
+                            <div class="tower-floor" data-floor="3"></div>
+                            <div class="tower-floor" data-floor="2"></div>
+                            <div class="tower-floor" data-floor="1"></div>
+                        </div>
+
+                        <div class="floor-info-box">
+                            <div class="floor-left-group">
+                                <div class="current-floor-display" id="card-floor-text"><span style="color: var(--genre-terrace); font-weight: 800;">1st</span> <span style="color: #ffffff;">Floor</span></div>
+                                <div class="floor-rule-text" id="floor-rule-text">No mistakes!</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="play-card">
+                        <div class="timer-track"><div id="timer-bar" class="timer-fill"></div></div>
+                        
+                        <div class="question-box">
+                            <div id="question-text" class="question-text">Loading question...</div>
+                        </div>
+
+                        <div class="options-grid">
+                            <button class="btn-option"></button>
+                            <button class="btn-option"></button>
+                            <button class="btn-option"></button>
+                            <button class="btn-option"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="fail-container" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+                    <div class="modal-card">
+                        <h2 style="font-size: 1.1rem; font-weight: 800; color: var(--state-error); margin-bottom: 6px;">ELEVATOR STOPPED</h2>
+                        <p style="font-size: 0.7rem; color: var(--text-muted); margin-bottom: 10px;">INCORRECT ANSWER</p>
+                        <p style="font-size: 0.85rem; font-weight: 700;">Stopped at <span style="color: var(--state-error);">4th Floor</span></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="promo-footer">
+            <span class="promo-footer-text">STARTS SATURDAY</span>
+        </div>
+    </div>
+
+    <script>
+        const gameConfig = {
+            title: "Think You Know Ball?",
+            accentColor: "#84CC16"
+        };
+
+        document.documentElement.style.setProperty('--accent-green', gameConfig.accentColor);
+        document.getElementById('brand-game-title').innerText = gameConfig.title;
+
+        const sequence = [
+            { 
+                text: "THINK YOU KNOW BALL?", 
+                duration: 900, 
+                delayedAppend: "<br><span class='pop'>YOU DON'T!</span>", 
+                appendDelay: 800, 
+                durationAfterAppend: 2000 
+            },
+            { text: "MADE BY <span class='highlight'>HUMANS!</span>", duration: 2200 },
+            { text: "THE 11AM <span class='highlight'>DAILY QUIZ!</span>", duration: 2200 },
+            { text: "NO SECOND CHANCES FOR A <span class='highlight'>DAILY STREAK!</span>", duration: 2400 },
+            { text: "FOLLOW TO <span class='highlight'>PLAY DAY ONE!</span>", duration: 2400 },
+            { text: "<span class='white-text'>STARTS</span> <span class='highlight'>SATURDAY!</span>", duration: 3200 }
+        ];
+
+        let currentIndex = 0;
+        const textSlot = document.getElementById('text-slot');
+
+        function runPromoScript() {
+            if (currentIndex >= sequence.length) {
+                currentIndex = 0;
+            }
+
+            const currentItem = sequence[currentIndex];
+            textSlot.innerHTML = currentItem.text;
+            textSlot.classList.add('active');
+
+            if (currentItem.delayedAppend) {
+                setTimeout(() => {
+                    textSlot.innerHTML = currentItem.text + currentItem.delayedAppend;
+                    setTimeout(() => {
+                        textSlot.classList.remove('active');
+                        setTimeout(() => {
+                            currentIndex++;
+                            runPromoScript();
+                        }, 300);
+                    }, currentItem.durationAfterAppend);
+                }, currentItem.appendDelay);
+            } else {
+                setTimeout(() => {
+                    textSlot.classList.remove('active');
+                    setTimeout(() => {
+                        currentIndex++;
+                        runPromoScript();
+                    }, 300);
+                }, currentItem.duration);
+            }
+        }
+
+        const sampleQuestions = [
+            { 
+                floor: 1, 
+                question: "How many of England's goal scorers last night were actually Premier League players?", 
+                options: ["2 Players", "4 Players", "All 7", "Just 1"], 
+                answer: "2 Players" 
+            },
+            { 
+                floor: 2, 
+                question: "Which Premier League club does England's current goalkeeper play for?", 
+                options: ["Everton", "Spurs", "Sunderland", "Aston Villa"], 
+                answer: "Everton" 
+            },
+            { 
+                floor: 3, 
+                question: "Which manager famously blamed a defeat on 'the grass being too tall and the ball too round'?", 
+                options: ["Jürgen Klopp", "Mikel Arteta", "Erik ten Hag", "Jose Mourinho"], 
+                answer: "Jürgen Klopp" 
+            },
+            { 
+                floor: 4, 
+                question: "Which team currently sits 5th in the Premier League table?", 
+                options: ["Liverpool", "Leeds", "Brentford", "Brighton"], 
+                answer: "Leeds",
+                wrongChoice: "Liverpool"
+            }
+        ];
+
+        const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
+        let qIndex = 0;
+        let timerInterval = null;
+
+        function updateFloorHUD(floorNum) {
+            const ord = ordinals[floorNum - 1] || `${floorNum}th`;
+            document.getElementById('card-floor-text').innerHTML = `<span style="color: var(--genre-terrace); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
+
+            document.querySelectorAll('.tower-floor').forEach(block => {
+                const f = parseInt(block.getAttribute('data-floor'), 10);
+                block.classList.toggle('active', f === floorNum);
+                block.classList.toggle('completed', f < floorNum);
+                block.classList.remove('failed');
+            });
+        }
+
+        function startTimerBar(durationMs) {
+            clearInterval(timerInterval);
+            const timerBar = document.getElementById('timer-bar');
+            if (!timerBar) return;
+
+            timerBar.style.width = '100%';
+            const startTime = Date.now();
+
+            timerInterval = setInterval(() => {
+                const elapsed = Date.now() - startTime;
+                const remaining = Math.max(0, durationMs - elapsed);
+                timerBar.style.width = `${(remaining / durationMs) * 100}%`;
+                if (remaining <= 0) clearInterval(timerInterval);
+            }, 50);
+        }
+
+        function playClimbStep() {
+            if (qIndex < sampleQuestions.length) {
+                const currentQ = sampleQuestions[qIndex];
+                updateFloorHUD(currentQ.floor);
+                document.getElementById('question-text').textContent = currentQ.question;
+
+                const timerMs = 5000;
+                const selectDelay = 3600; 
+                const transitionDelay = 1000;
+
+                startTimerBar(timerMs);
+
+                const buttons = document.querySelectorAll('.options-grid .btn-option');
+                buttons.forEach((btn, idx) => {
+                    btn.className = 'btn-option';
+                    btn.textContent = currentQ.options[idx] || '';
+                    btn.style.display = currentQ.options[idx] ? 'flex' : 'none';
+                });
+
+                setTimeout(() => {
+                    if (currentQ.floor < 4) {
+                        buttons.forEach(btn => {
+                            if (btn.textContent === currentQ.answer) {
+                                btn.classList.add('selected-correct');
+                            }
+                        });
+
+                        setTimeout(() => {
+                            qIndex++;
+                            playClimbStep();
+                        }, transitionDelay);
+                    } else {
+                        buttons.forEach(btn => {
+                            if (btn.textContent === currentQ.wrongChoice) {
+                                btn.classList.add('selected-wrong');
+                            }
+                        });
+
+                        const activeBlock = document.querySelector(`.tower-floor[data-floor="4"]`);
+                        if (activeBlock) activeBlock.classList.add('failed');
+
+                        setTimeout(() => {
+                            document.getElementById('gameplay-container').style.display = 'none';
+                            document.getElementById('fail-container').style.display = 'flex';
+
+                            setTimeout(() => {
+                                document.getElementById('fail-container').style.display = 'none';
+                                document.getElementById('gameplay-container').style.display = 'flex';
+                                qIndex = 0;
+                                playClimbStep();
+                            }, 3500);
+                        }, 900);
+                    }
+                }, selectDelay);
+            }
+        }
+
+        window.onload = () => {
+            runPromoScript();
+            playClimbStep();
+        };
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>11th Floor Games - Promo Studio (Real-Time Fail Run)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
