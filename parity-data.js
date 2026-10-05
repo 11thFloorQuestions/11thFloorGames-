@@ -1,32 +1,32 @@
 // ==========================================================================
 // 11th Floor Parity — Daily Dataset & Curated Vector Pairs
-// Theme: "Neon Cyber Icons" (10 Sequential Floors)
+// Theme: "Celestial Constellations" (10 Sequential Floors)
 // ==========================================================================
 
 window.PARITY_DAILY_SET = {
-    title: "Neon Cyber Icons",
+    title: "Celestial Constellations",
     floors: [
-        { floor: 1, pairs: 1, timeLimit: 12, icons: ["chip"] },
-        { floor: 2, pairs: 2, timeLimit: 16, icons: ["chip", "signal"] },
-        { floor: 3, pairs: 3, timeLimit: 22, icons: ["chip", "signal", "laser"] },
-        { floor: 4, pairs: 4, timeLimit: 28, icons: ["chip", "signal", "laser", "hypercube"] },
-        { floor: 5, pairs: 5, timeLimit: 34, icons: ["chip", "signal", "laser", "hypercube", "orbit"] },
-        { floor: 6, pairs: 6, timeLimit: 40, icons: ["chip", "signal", "laser", "hypercube", "orbit", "node"] },
-        { floor: 7, pairs: 7, timeLimit: 46, icons: ["chip", "signal", "laser", "hypercube", "orbit", "node", "nexus"] },
-        { floor: 8, pairs: 8, timeLimit: 52, icons: ["chip", "signal", "laser", "hypercube", "orbit", "node", "nexus", "pulse"] },
-        { floor: 9, pairs: 9, timeLimit: 58, icons: ["chip", "signal", "laser", "hypercube", "orbit", "node", "nexus", "pulse", "matrix"] },
-        { floor: 10, pairs: 10, timeLimit: 64, icons: ["chip", "signal", "laser", "hypercube", "orbit", "node", "nexus", "pulse", "matrix", "core"] }
+        { floor: 1, pairs: 1, timeLimit: 12, icons: ["sun"] },
+        { floor: 2, pairs: 2, timeLimit: 16, icons: ["sun", "crescent"] },
+        { floor: 3, pairs: 3, timeLimit: 22, icons: ["sun", "crescent", "nova"] },
+        { floor: 4, pairs: 4, timeLimit: 28, icons: ["sun", "crescent", "nova", "comet"] },
+        { floor: 5, pairs: 5, timeLimit: 34, icons: ["sun", "crescent", "nova", "comet", "saturn"] },
+        { floor: 6, pairs: 6, timeLimit: 40, icons: ["sun", "crescent", "nova", "comet", "saturn", "pulsar"] },
+        { floor: 7, pairs: 7, timeLimit: 46, icons: ["sun", "crescent", "nova", "comet", "saturn", "pulsar", "eclipse"] },
+        { floor: 8, pairs: 8, timeLimit: 52, icons: ["sun", "crescent", "nova", "comet", "saturn", "pulsar", "eclipse", "nebula"] },
+        { floor: 9, pairs: 9, timeLimit: 58, icons: ["sun", "crescent", "nova", "comet", "saturn", "pulsar", "eclipse", "nebula", "zenith"] },
+        { floor: 10, pairs: 10, timeLimit: 64, icons: ["sun", "crescent", "nova", "comet", "saturn", "pulsar", "eclipse", "nebula", "zenith", "cosmos"] }
     ],
     svgMap: {
-        chip: `<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="#0d1117" stroke="#00F0FF" stroke-width="1.5"/><rect x="8" y="8" width="8" height="8" rx="1" fill="#00F0FF"/><line x1="12" y1="1" x2="12" y2="3" stroke="#00F0FF" stroke-width="2"/><line x1="12" y1="21" x2="12" y2="23" stroke="#00F0FF" stroke-width="2"/><line x1="1" y1="12" x2="3" y2="12" stroke="#00F0FF" stroke-width="2"/><line x1="21" y1="12" x2="23" y2="12" stroke="#00F0FF" stroke-width="2"/></svg>`,
-        signal: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#0d1117" stroke="#FF007F" stroke-width="1.5"/><path d="M7 12 A 5 5 0 0 1 17 12" fill="none" stroke="#FF007F" stroke-width="2" stroke-linecap="round"/><path d="M9 14 A 3 3 0 0 1 15 14" fill="none" stroke="#FF007F" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16" r="1.5" fill="#FF007F"/></svg>`,
-        laser: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#0d1117" stroke="#39FF14" stroke-width="1.5"/><polygon points="12,4 15,11 21,12 15,13 12,20 9,13 3,12 9,11" fill="#39FF14"/></svg>`,
-        hypercube: `<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" fill="#0d1117" stroke="#7000FF" stroke-width="1.5"/><rect x="8" y="8" width="8" height="8" rx="1" fill="none" stroke="#39FF14" stroke-width="1.5"/><line x1="4" y1="4" x2="8" y2="8" stroke="#7000FF" stroke-width="1.5"/><line x1="20" y1="4" x2="16" y2="8" stroke="#7000FF" stroke-width="1.5"/><line x1="4" y1="20" x2="8" y2="16" stroke="#7000FF" stroke-width="1.5"/><line x1="20" y1="20" x2="16" y2="16" stroke="#7000FF" stroke-width="1.5"/></svg>`,
-        orbit: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#0d1117" stroke="#FF007F" stroke-width="1.5"/><ellipse cx="12" cy="12" rx="7" ry="3" fill="none" stroke="#00F0FF" stroke-width="1.5" transform="rotate(-30 12 12)"/><circle cx="12" cy="12" r="2.5" fill="#FF007F"/></svg>`,
-        node: `<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="9" fill="#0d1117" stroke="#39FF14" stroke-width="1.5"/><circle cx="7" cy="7" r="2" fill="#39FF14"/><circle cx="17" cy="7" r="2" fill="#39FF14"/><circle cx="12" cy="17" r="2" fill="#39FF14"/><line x1="7" y1="7" x2="17" y2="7" stroke="#39FF14" stroke-width="1.5"/><line x1="7" y1="7" x2="12" y2="17" stroke="#39FF14" stroke-width="1.5"/><line x1="17" y1="7" x2="12" y2="17" stroke="#39FF14" stroke-width="1.5"/></svg>`,
-        nexus: `<svg viewBox="0 0 24 24"><polygon points="12,2 22,7 22,17 12,22 2,17 2,7" fill="#0d1117" stroke="#00F0FF" stroke-width="1.5"/><polygon points="12,6 18,9.5 18,14.5 12,18 6,14.5 6,9.5" fill="#7000FF"/></svg>`,
-        pulse: `<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="#0d1117" stroke="#FF007F" stroke-width="1.5"/><path d="M4 12 L8 12 L10 6 L14 18 L16 12 L20 12" fill="none" stroke="#FF007F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-        matrix: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#0d1117" stroke="#7000FF" stroke-width="1.5"/><rect x="7" y="7" width="3" height="3" fill="#00F0FF"/><rect x="14" y="7" width="3" height="3" fill="#39FF14"/><rect x="7" y="14" width="3" height="3" fill="#FF007F"/><rect x="14" y="14" width="3" height="3" fill="#00F0FF"/></svg>`,
-        core: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#0d1117" stroke="#00F0FF" stroke-width="1.5"/><circle cx="12" cy="12" r="5" fill="#FF007F"/><circle cx="12" cy="12" r="2" fill="#39FF14"/></svg>`
+        sun: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="#FFD700"/><circle cx="12" cy="12" r="9" fill="none" stroke="#FFD700" stroke-width="1.5" stroke-dasharray="2 2"/><line x1="12" y1="1" x2="12" y2="4" stroke="#FFD700" stroke-width="2"/><line x1="12" y1="20" x2="12" y2="23" stroke="#FFD700" stroke-width="2"/><line x1="1" y1="12" x2="4" y2="12" stroke="#FFD700" stroke-width="2"/><line x1="20" y1="12" x2="23" y2="12" stroke="#FFD700" stroke-width="2"/></svg>`,
+        crescent: `<svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 1 1-9-9z" fill="#00F0FF" stroke="#0d1117" stroke-width="1"/></svg>`,
+        nova: `<svg viewBox="0 0 24 24"><polygon points="12,2 14.5,9.5 22,12 14.5,14.5 12,22 9.5,14.5 2,12 9.5,9.5" fill="#FF007F"/></svg>`,
+        comet: `<svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="3.5" fill="#39FF14"/><path d="M8.5 16.5L20 4M9 19L21 8M6 14.5L16 3" stroke="#39FF14" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+        saturn: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="#7000FF"/><ellipse cx="12" cy="12" rx="10" ry="3.5" fill="none" stroke="#00F0FF" stroke-width="1.5" transform="rotate(-25 12 12)"/></svg>`,
+        pulsar: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="#FF007F"/><circle cx="12" cy="12" r="6" fill="none" stroke="#FF007F" stroke-width="1.5"/><circle cx="12" cy="12" r="9" fill="none" stroke="#39FF14" stroke-width="1.5" stroke-dasharray="3 3"/></svg>`,
+        eclipse: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="#FFD700" stroke-width="2"/><circle cx="10" cy="12" r="7.5" fill="#0d1117"/></svg>`,
+        nebula: `<svg viewBox="0 0 24 24"><path d="M6 12c0-3 2-6 6-6s6 2 6 5-2 7-6 7-6-3-6-6z" fill="#7000FF" opacity="0.6"/><circle cx="9" cy="10" r="2" fill="#00F0FF"/><circle cx="15" cy="14" r="1.5" fill="#39FF14"/></svg>`,
+        zenith: `<svg viewBox="0 0 24 24"><polygon points="12,3 15,9 21,12 15,15 12,21 9,15 3,12 9,9" fill="#00F0FF"/><circle cx="12" cy="12" r="2" fill="#0d1117"/></svg>`,
+        cosmos: `<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="#0d1117" stroke="#7000FF" stroke-width="1.5"/><circle cx="8" cy="8" r="1.5" fill="#FFD700"/><circle cx="16" cy="7" r="1" fill="#00F0FF"/><circle cx="12" cy="14" r="2" fill="#FF007F"/><circle cx="7" cy="17" r="1" fill="#39FF14"/></svg>`
     }
 };
