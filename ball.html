@@ -1,4 +1,154 @@
 <!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11th Floor Games | Ball</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --genre-pitch: #10b981;
+            --genre-pitch-glow: rgba(16, 185, 129, 0.4);
+            --state-error: #ef4444;
+            --state-error-glow: rgba(239, 68, 68, 0.5);
+            --surface-card: #111827;
+            --surface-border: #1f2937;
+            --text-primary: #f9fafb;
+            --text-muted: #9ca3af;
+        }
+
+        body {
+            background-color: #030712;
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .quiz-card {
+            background-color: var(--surface-card);
+            border: 1px solid var(--surface-border);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            padding: 24px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+            box-sizing: border-box;
+        }
+
+        .timer-track {
+            width: 100%;
+            height: 8px;
+            background-color: var(--surface-border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .timer-bar {
+            height: 100%;
+            width: 100%;
+            background-color: var(--genre-pitch);
+            box-shadow: 0 0 10px var(--genre-pitch-glow);
+            transition: width 0.1s linear, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timer-bar.warning {
+            background-color: var(--state-error) !important;
+            box-shadow: 0 0 14px var(--state-error-glow) !important;
+        }
+
+        .question-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            color: var(--text-primary);
+            padding: 14px 18px;
+            border-radius: 8px;
+            font-size: 1rem;
+            text-align: left;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            background-color: #374151;
+            border-color: var(--genre-pitch);
+        }
+
+        .option-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .option-btn.correct {
+            background-color: #065f46;
+            border-color: #10b981;
+            color: #ffffff;
+        }
+
+        .option-btn.incorrect {
+            background-color: #991b1b;
+            border-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .controls {
+            margin-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .primary-btn {
+            background-color: var(--genre-pitch);
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .primary-btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <main class="quiz-card">
+        <div class="timer-track">
+            <div id="timer-bar" class="timer-bar"></div>
+        </div>
+        <div id="question-container">
+            <p id="question-text" class="question-text">Loading daily football challenge...</p>
+            <div id="options-grid" class="options-grid"></div>
+        </div>
+        <div class="controls">
+            <span id="score-display">Score: 0</span>
+            <button id="next-btn" class="primary-btn" style="display: none;">Next Question</button>
+        </div>
+    </main>
+    <script src="ball.js"></script>
+</body>
+</html><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
