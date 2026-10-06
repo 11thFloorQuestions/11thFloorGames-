@@ -37,18 +37,31 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        body {
+        html, body {
+            width: 100%;
+            height: 100%;
             background-color: var(--bg-deep);
             color: var(--text-primary);
             font-family: 'Montserrat', sans-serif;
-            min-height: 100vh;
-            min-height: 100dvh;
+            overflow-x: hidden;
+        }
+
+        body {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
             padding: 12px 10px;
-            overflow-x: hidden;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100%;
         }
 
         .top-bar {
@@ -58,6 +71,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 6px;
+            flex-shrink: 0;
         }
 
         .pill-btn {
@@ -104,84 +118,4 @@
             font-family: 'Anton', sans-serif;
             font-size: 3.2rem;
             font-weight: 400;
-            color: var(--genre-pitch);
-            line-height: 0.85;
-            letter-spacing: -1px;
-            text-shadow: 0 0 20px var(--genre-pitch-glow);
-            margin-bottom: 4px;
-        }
-
-        .game-logo-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 300;
-            color: #ffffff;
-            letter-spacing: 1.5px;
-            margin-bottom: 2px;
-        }
-
-        .game-logo-sub {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.6rem;
-            font-weight: 700;
-            color: var(--genre-pitch);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-
-        .landing-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 16px;
-            padding: 20px 16px;
-            width: 100%;
-            max-width: 600px;
-            background: var(--surface);
-            border: 1px solid var(--surface-border);
-            border-radius: 8px;
-            margin-top: 4px;
-        }
-
-        .landing-shaft-graphic {
-            display: flex;
-            flex-direction: column;
-            width: 52px;
-            height: 150px;
-            border: 1px solid var(--surface-border);
-            border-radius: 8px;
-            padding: 6px;
-            gap: 3px;
-            background-color: var(--surface);
-        }
-
-        .landing-shaft-box {
-            flex: 1;
-            background-color: #111111;
-            border: 1px solid var(--surface-border);
-            border-radius: 2px;
-        }
-
-        /* Moving Shaft Graphic Keyframe Animations (Green Theme) */
-        .landing-shaft-graphic .landing-shaft-box { animation: sweepMiddle 1.2s ease-in-out forwards; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(11) { animation: sweepBottomSettle 2.6s ease-in-out forwards; animation-delay: 0.05s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(10) { animation-delay: 0.15s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(9)  { animation-delay: 0.25s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(8)  { animation-delay: 0.35s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(7)  { animation-delay: 0.45s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(6)  { animation-delay: 0.55s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(5)  { animation-delay: 0.65s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(4)  { animation-delay: 0.75s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(3)  { animation-delay: 0.85s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(2)  { animation-delay: 0.95s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(1)  { animation: sweepTopGreen 1.6s ease-in-out forwards; animation-delay: 1.05s; }
-
-        @keyframes sweepMiddle {
-            0% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
-            30% { background-color: var(--genre-pitch); border-color: var(--genre-pitch); box-shadow: 0 0 10px var(--genre-pitch-glow); }
-            60%, 100% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
-        }
-
-        @keyframes sweepTopGreen {
-            0% { background-color: #0
+            color:
