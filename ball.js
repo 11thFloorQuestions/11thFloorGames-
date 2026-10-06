@@ -38,7 +38,7 @@ function shuffleArray(array) {
 function getOrdinalFloorHTML(floorNum) {
     const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
     const ord = ordinals[floorNum - 1] || `${floorNum}th`;
-    return `<span style="color: var(--genre-pitch, #22c55e); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
+    return `<span style="color: var(--genre-gold, #facc15); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
 }
 
 
@@ -343,7 +343,7 @@ async function populateVault() {
         for (let i = 0; i < BATCH_SIZE && (currentId + i) <= MAX_ARCHIVES; i++) {
             const idNum = currentId + i;
             const paddedId = String(idNum).padStart(2, '0');
-            const filename = `sandbox-ball.${paddedId}.json`;
+            const filename = `sandbox.${paddedId}.json`;
             batchPromises.push(
                 fetchFileWithFallbacks(filename).then(data => ({ id: paddedId, idNum, data }))
             );
@@ -442,252 +442,11 @@ async function startDailyClimb() {
     const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
     gameState.batchIndex = dayOfYear % floorMessageBatches.length;
 
-    let data = await fetchFileWithFallbacks('ball-questions.json');
-    if (!data) data = await fetchFileWithFallbacks('sandbox-ball.23.json');
+    let data = await fetchFileWithFallbacks('questions.json');
+    if (!data) data = await fetchFileWithFallbacks('sandbox.01.json');
 
     if (data) {
         gameState.questions = normalizeQuestions(data);
     } else {
         gameState.questions = generateFallbackQuestions();
     }
-    
-    launchGameUI();
-}
-
-function loadVaultSet(paddedId, data) {
-    if (data) {
-        const archiveNum = parseInt(paddedId, 10) || 1;
-        gameState.batchIndex = archiveNum % floorMessageBatches.length;
-        gameState.questions = normalizeQuestions(data);
-        closeModal('modal-vault');
-        launchGameUI();
-    }
-}
-
-function launchGameUI() {
-    const landing = document.getElementById('landing-screen');
-    const victory = document.getElementById('victory-screen');
-    const hud = document.getElementById('floor-hud-container');
-    const workspace = document.getElementById('game-workspace');
-    const header = document.getElementById('gameplay-header');
-    const footer = document.getElementById('footer-text');
-
-    if (landing) landing.style.display = 'none';
-    if (victory) victory.style.display = 'none';
-    if (hud) hud.style.display = 'flex';
-    if (workspace) workspace.style.display = 'flex';
-    if (header) header.style.display = 'flex';
-    if (footer) footer.style.display = 'block';
-
-    startSessionTimer();
-    startGame();
-}
-
-
-// ==========================================
-// 7. GAME LOOP & ELEVATOR PROGRESSION
-// ==========================================
-
-function startGame() {
-    if (!gameState.questions || gameState.questions.length === 0) {
-        gameState.questions = generateFallbackQuestions();
-    }
-    gameState.currentFloor = 1;
-    gameState.currentQuestionIndex = 0;
-    showScreen('game-screen');
-    
-    const hud = document.getElementById('floor-hud-container');
-    const header = document.getElementById('gameplay-header');
-    if (hud) hud.style.display = 'flex';
-    if (header) header.style.display = 'flex';
-
-    updateFloorUI();
-    loadNextQuestion();
-}
-
-function resetGame() {
-    clearInterval(gameState.timer);
-    gameState.currentFloor = 1;
-}
-
-function updateFloorUI() {
-    const cardFloorEl = document.getElementById('card-floor-text');
-    if (cardFloorEl) {
-        cardFloorEl.innerHTML = getOrdinalFloorHTML(gameState.currentFloor);
-    }
-    
-    const activeBatch = floorMessageBatches[gameState.batchIndex % floorMessageBatches.length] || floorMessageBatches[0];
-    const ruleMsg = activeBatch[gameState.currentFloor - 1] || "No mistakes!";
-    safeSetText('floor-rule-text', ruleMsg);
-
-    document.querySelectorAll('.tower-floor, .floor-block').forEach(block => {
-        const floorNum = parseInt(block.getAttribute('data-floor'), 10);
-        block.classList.toggle('active', floorNum === gameState.currentFloor);
-        block.classList.toggle('active-floor', floorNum === gameState.currentFloor);
-        block.classList.toggle('completed', floorNum < gameState.currentFloor);
-        block.classList.remove('failed');
-    });
-}
-
-function loadNextQuestion() {
-    startQuestionTimer();
-    
-    const currentQ = gameState.questions[gameState.currentQuestionIndex];
-    if (!currentQ) return;
-
-    safeSetText('question-text', currentQ.question);
-    
-    const shuffledOptions = shuffleArray(currentQ.options);
-    
-    const optionButtons = document.querySelectorAll('#options-grid .btn-option');
-    optionButtons.forEach((btn, idx) => {
-        btn.className = 'btn-option';
-        if (typeof btn.blur === 'function') {
-            btn.blur();
-        }
-        const optionVal = shuffledOptions[idx] || null;
-        btn.textContent = optionVal || '';
-        btn.style.display = optionVal ? 'block' : 'none';
-        
-        const isCorrect = (optionVal === currentQ.answer);
-        btn.onclick = () => handleAnswerSelect(isCorrect, btn); 
-    });
-}
-
-function startQuestionTimer() {
-    clearInterval(gameState.timer);
-    const totalDuration = 15000;
-    const startTime = Date.now();
-    gameState.timeLeft = 15;
-    const timerBar = document.getElementById('timer-bar');
-    
-    if (timerBar) {
-        timerBar.style.width = '100%';
-        timerBar.classList.remove('warning');
-    }
-
-    gameState.timer = setInterval(() => {
-        const elapsed = Date.now() - startTime;
-        const remaining = Math.max(0, totalDuration - elapsed);
-        gameState.timeLeft = Math.ceil(remaining / 1000);
-
-        if (timerBar) {
-            timerBar.style.width = `${(remaining / totalDuration) * 100}%`;
-            if (remaining <= totalDuration / 2) {
-                timerBar.classList.add('warning');
-            }
-        }
-
-        if (remaining <= 0) {
-            clearInterval(gameState.timer);
-            handleGameOver('TIME EXPIRED');
-        }
-    }, 50);
-}
-
-function handleAnswerSelect(isCorrect, buttonEl) {
-    clearInterval(gameState.timer);
-    
-    document.querySelectorAll('#options-grid .btn-option').forEach(btn => {
-        btn.onclick = null;
-        if (typeof btn.blur === 'function') {
-            btn.blur();
-        }
-    });
-    
-    if (isCorrect) {
-        if (buttonEl) buttonEl.classList.add('selected-correct');
-        playElevatorDing();
-        triggerHaptic([35, 40, 35]);
-        
-        setTimeout(() => {
-            if (gameState.currentFloor >= gameState.maxFloors) {
-                handleVictory();
-            } else {
-                gameState.currentFloor++;
-                gameState.currentQuestionIndex++;
-                if (gameState.currentFloor > gameState.stats.bestFloor) {
-                    gameState.stats.bestFloor = gameState.currentFloor;
-                }
-                updateFloorUI();
-                loadNextQuestion();
-            }
-        }, 800);
-    } else {
-        if (buttonEl) buttonEl.classList.add('selected-wrong');
-        triggerHaptic([80, 50, 120]);
-        
-        const activeBlock = document.querySelector(`.tower-floor[data-floor="${gameState.currentFloor}"]`);
-        if (activeBlock) activeBlock.classList.add('failed');
-
-        setTimeout(() => {
-            handleGameOver('INCORRECT ANSWER');
-        }, 800);
-    }
-}
-
-function handleGameOver(reason) {
-    stopSessionTimer();
-    gameState.stats.played++;
-    gameState.stats.streak = 0;
-    saveStats();
-    
-    safeSetText('game-over-title', 'ELEVATOR STOPPED');
-    safeSetText('game-over-message', reason);
-    
-    const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
-    const ord = ordinals[gameState.currentFloor - 1] || `${gameState.currentFloor}th`;
-    const finalEl = document.getElementById('final-floor-reached');
-    if (finalEl) {
-        finalEl.innerHTML = `Stopped at <span style="color: var(--state-error, #EF4444); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
-    }
-    
-    openModal('modal-game-over');
-}
-
-function handleVictory() {
-    stopSessionTimer();
-    gameState.currentFloor = 11;
-    gameState.stats.played++;
-    gameState.stats.wins++;
-    gameState.stats.streak++;
-    gameState.stats.bestFloor = 11;
-    saveStats();
-    
-    triggerHaptic([50, 50, 50, 50, 100]);
-    
-    const victoryTimeDisplay = document.getElementById('victory-time-display');
-    const victoryStreakDisplay = document.getElementById('victory-streak-display');
-    const hudContainer = document.getElementById('floor-hud-container');
-    const gameWorkspace = document.getElementById('game-workspace');
-    const gameplayHeader = document.getElementById('gameplay-header');
-    const activeGameTimer = document.getElementById('active-game-timer');
-    const victoryScreen = document.getElementById('victory-screen');
-    const footerText = document.getElementById('footer-text');
-
-    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formatTime(gameState.timeElapsedSeconds);
-    if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${gameState.stats.streak} Days`;
-
-    if (hudContainer) hudContainer.style.display = 'none';
-    if (gameWorkspace) gameWorkspace.style.display = 'none';
-    if (gameplayHeader) gameplayHeader.style.display = 'none';
-    if (activeGameTimer) activeGameTimer.style.display = 'none';
-    if (footerText) footerText.style.display = 'none';
-
-    if (victoryScreen) victoryScreen.style.display = 'flex';
-}
-
-function generateFallbackQuestions() {
-    return [
-        { question: "Which Premier League club plays their home matches at Villa Park?", options: ["Aston Villa", "Everton", "Fulham", "West Ham United"], answer: "Aston Villa" },
-        { question: "Who holds the record for the most Premier League goals scored in a single 38-game season?", options: ["Erling Haaland", "Mohamed Salah", "Alan Shearer", "Cristiano Ronaldo"], answer: "Erling Haaland" },
-        { question: "Which manager won three Premier League titles with Chelsea across two spells?", options: ["José Mourinho", "Carlo Ancelotti", "Antonio Conte", "Claudio Ranieri"], answer: "José Mourinho" },
-        { question: "Which club went undefeated through the entire 2003–04 Premier League season?", options: ["Arsenal", "Manchester United", "Chelsea", "Liverpool"], answer: "Arsenal" },
-        { question: "Who is the all-time leading goalscorer in Premier League history?", options: ["Alan Shearer", "Wayne Rooney", "Harry Kane", "Andrew Cole"], answer: "Alan Shearer" },
-        { question: "Which country won the FIFA World Cup in 2018 in Russia?", options: ["France", "Croatia", "Belgium", "England"], answer: "France" },
-        { question: "Which English goalkeeper won six top-flight titles with Liverpool during the 1980s?", options: ["Bruce Grobbelaar", "Ray Clemence", "David Seaman", "Neville Southall"], answer: "Bruce Grobbelaar" },
-        { question: "Which club won their first ever Premier League title in the 2015–16 season against 5000–1 odds?", options: ["Leicester City", "Blackburn Rovers", "Tottenham Hotspur", "Southampton"], answer: "Leicester City" },
-        { question: "Which player holds the record for issuing the most assists in Premier League history?", options: ["Ryan Giggs", "Cesc Fàbregas", "Kevin De Bruyne", "Wayne Rooney"], answer: "Ryan Giggs" },
-        { question: "Which two players are the only ones to score Premier League penalties with both their right and left feet?", options: ["Obafemi Martins & Bobby Zamora", "Santi Cazorla & Pedro", "Marek Hamsik & Son Heung-min", "Morten Gamst Pedersen & Harry Kewell"], answer: "Obafemi Martins & Bobby Zamora" }
-    ];
-}
