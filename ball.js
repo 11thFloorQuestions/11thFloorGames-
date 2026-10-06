@@ -394,7 +394,7 @@ async function fetchFileWithFallbacks(filename) {
 }
 
 async function startDailyClimb() {
-    let data = window.BALL_QUESTIONS || window.BALL_DAILY_SET || window.TYKB_DAILY_SET || null;
+    let data = window.BALL_QUESTIONS || window.BALL_DAILY_SET || window.TYKB_DAILY_SET || window.BALL_DATA || null;
 
     if (!data) {
         data = await fetchFileWithFallbacks('ball-questions.json');
