@@ -89,16 +89,16 @@ const STATS_KEY = '11th_floor_tykb_stats';
 
 const floorMessageBatches = [
     [
-        "KEEP CLIMBING",
-        "STAY SHARP",
-        "WELL DONE",
-        "FLOOR CLEARED",
-        "HALFWAY THERE",
-        "PURE PRECISION",
-        "KEEP GOING",
-        "SO CLOSE",
-        "NEARLY THERE",
-        "FINAL STEP"
+        "Terrace banter warmth — get climbing!",
+        "Matchweek trends incoming — stay sharp!",
+        "Topical Premier League heat ahead!",
+        "Tactical records — watch your step!",
+        "Historical achievements (1992–present)!",
+        "Deep Premier League stats unlocked!",
+        "Squad Number assignment rules apply!",
+        "Terrace Expert level trivia begins!",
+        "Niche records ahead — stay locked in!",
+        "Final floor hurdle — earn Floor 11!"
     ]
 ];
 
@@ -472,7 +472,7 @@ function updateFloorUI() {
     }
     
     const activeBatch = floorMessageBatches[0];
-    const ruleMsg = activeBatch[gameState.currentFloor - 1] || "KEEP GOING";
+    const ruleMsg = activeBatch[gameState.currentFloor - 1] || "No mistakes!";
     safeSetText('floor-rule-text', ruleMsg);
 
     document.querySelectorAll('.tower-floor, .floor-block').forEach(block => {
