@@ -230,13 +230,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function resetToLandingScreen() {
     stopSessionTimer();
-    const screens = ['victory-screen', 'game-workspace', 'floor-hud-container', 'gameplay-header', 'active-game-timer', 'footer-text'];
+    const screens = ['victory-screen', 'game-screen', 'floor-hud-container', 'gameplay-header', 'active-game-timer', 'footer-text'];
     screens.forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'none';
     });
     const landing = document.getElementById('landing-screen');
     if (landing) landing.style.display = 'flex';
+}
+
+function showScreen(screenId) {
+    const victoryScreen = document.getElementById('victory-screen');
+    if (victoryScreen) victoryScreen.style.display = 'none';
+
+    const screens = ['landing-screen', 'game-screen'];
+    screens.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.style.display = (id === screenId) ? 'flex' : 'none';
+        }
+    });
+    if (screenId === 'landing-screen') {
+        triggerLandingPageDing();
+    }
 }
 
 function updateSoundUI() {
@@ -394,19 +410,12 @@ async function fetchFileWithFallbacks(filename) {
 }
 
 async function startDailyClimb() {
-    let data = window.BALL_QUESTIONS || window.BALL_DAILY_SET || window.TYKB_DAILY_SET || window.BALL_DATA || null;
-
-    if (!data) {
-        data = await fetchFileWithFallbacks('ball-questions.json');
-    }
-    if (!data) {
-        data = await fetchFileWithFallbacks('sandbox-ball.22.json');
-    }
+    let data = await fetchFileWithFallbacks('ball-questions.json');
+    if (!data) data = await fetchFileWithFallbacks('sandbox-ball.22.json');
 
     if (data) {
         gameState.questions = normalizeQuestions(data);
     }
-    
     launchGameUI();
 }
 
@@ -445,6 +454,7 @@ function launchGameUI() {
 function startGame() {
     gameState.currentFloor = 1;
     gameState.currentQuestionIndex = 0;
+    showScreen('game-screen');
     
     const hud = document.getElementById('floor-hud-container');
     const header = document.getElementById('gameplay-header');
