@@ -1,633 +1,261 @@
-// ==========================================================================
-// 11th Floor TYKB (Think You Know Ball?) — Core Game Engine
-// ==========================================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>11th Floor — Think You Know Ball?</title>
 
-function safeAddListener(id, event, handler) {
-    const el = document.getElementById(id);
-    if (el) {
-        el.addEventListener(event, (e) => {
-            triggerHaptic(15);
-            handler(e);
-        });
-    }
-}
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+    <link rel="apple-touch-icon" href="/favicon.svg?v=2">
 
-function safeSetText(id, text) {
-    const el = document.getElementById(id);
-    if (el) {
-        el.textContent = text;
-    }
-}
-
-function safeToggleClass(id, className, force) {
-    const el = document.getElementById(id);
-    if (el) {
-        el.classList.toggle(className, force);
-    }
-}
-
-function shuffleArray(array) {
-    const arr = [...array];
-    for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-}
-
-function getOrdinalFloorHTML(floorNum) {
-    const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
-    const ord = ordinals[floorNum - 1] || `${floorNum}th`;
-    return `<span style="color: var(--genre-pitch, #22c55e); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
-}
-
-function getFailedOrdinalFloorHTML(floorNum) {
-    const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
-    const ord = ordinals[floorNum - 1] || `${floorNum}th`;
-    return `<span style="color: var(--state-error, #EF4444); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
-}
-
-
-// ==========================================
-// HAPTIC FEEDBACK ENGINE
-// ==========================================
-
-function triggerHaptic(pattern) {
-    if ('vibrate' in navigator) {
-        try {
-            navigator.vibrate(pattern);
-        } catch (e) {}
-    }
-}
-
-
-// ==========================================
-// STATE MANAGEMENT & PERSISTENCE
-// ==========================================
-
-const gameState = {
-    currentFloor: 1,
-    maxFloors: 10,
-    soundEnabled: true,
-    timer: null,
-    timeLeft: 20,
-    questions: [],
-    currentQuestionIndex: 0,
-    batchIndex: 0,
-    startTime: 0,
-    timerInterval: null,
-    timeElapsedSeconds: 0,
-    stats: {
-        played: 0,
-        wins: 0,
-        streak: 0,
-        bestFloor: 1
-    }
-};
-
-const STATS_KEY = '11th_floor_tykb_stats';
-
-const floorMessageBatches = [
-    [
-        "Terrace banter warmth — get climbing!",
-        "Matchweek trends incoming — stay sharp!",
-        "Topical Premier League heat ahead!",
-        "Tactical records — watch your step!",
-        "Historical achievements (1992–present)!",
-        "Deep Premier League stats unlocked!",
-        "Squad Number assignment rules apply!",
-        "Terrace Expert level trivia begins!",
-        "Niche records ahead — stay locked in!",
-        "Final floor hurdle — earn Floor 11!"
-    ]
-];
-
-function loadSavedStats() {
-    try {
-        const saved = localStorage.getItem(STATS_KEY);
-        if (saved) {
-            gameState.stats = { ...gameState.stats, ...JSON.parse(saved) };
-        }
-    } catch (e) {
-        console.warn('Could not load stats from localStorage.');
-    }
-}
-
-function saveStats() {
-    try {
-        localStorage.setItem(STATS_KEY, JSON.stringify(gameState.stats));
-    } catch (e) {
-        console.warn('Could not save stats to localStorage.');
-    }
-}
-
-loadSavedStats();
-
-
-// ==========================================
-// GAMEPLAY SESSION STOPWATCH TIMER
-// ==========================================
-
-function startSessionTimer() {
-    stopSessionTimer();
-    gameState.timeElapsedSeconds = 0;
-    gameState.startTime = Date.now();
-    const activeGameTimer = document.getElementById("active-game-timer");
-    if (activeGameTimer) {
-        activeGameTimer.style.display = "block";
-        activeGameTimer.textContent = "00:00";
-    }
-    gameState.timerInterval = setInterval(updateSessionTimerDisplay, 1000);
-}
-
-function stopSessionTimer() {
-    if (gameState.timerInterval) clearInterval(gameState.timerInterval);
-}
-
-function updateSessionTimerDisplay() {
-    gameState.timeElapsedSeconds = Math.floor((Date.now() - gameState.startTime) / 1000);
-    const activeGameTimer = document.getElementById("active-game-timer");
-    if (activeGameTimer) {
-        activeGameTimer.textContent = formatTime(gameState.timeElapsedSeconds);
-    }
-}
-
-function formatTime(totalSeconds) {
-    const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
-    const s = (totalSeconds % 60).toString().padStart(2, '0');
-    return `${m}:${s}`;
-}
-
-
-// ==========================================
-// AUDIO ENGINE
-// ==========================================
-
-const elevatorDingAudio = new Audio();
-elevatorDingAudio.src = 'ding.mp3';
-
-function playElevatorDing() {
-    if (!gameState.soundEnabled) return;
-    try {
-        elevatorDingAudio.currentTime = 0;
-        elevatorDingAudio.play().catch(e => {
-            elevatorDingAudio.src = 'assets/audio/ding.mp3';
-            elevatorDingAudio.play().catch(() => {});
-        });
-    } catch (e) {
-        console.warn('Audio playback error:', e);
-    }
-}
-
-function triggerLandingPageDing() {
-    setTimeout(() => {
-        playElevatorDing();
-    }, 1370);
-}
-
-
-// ==========================================
-// NAVIGATION & CONTROLS
-// ==========================================
-
-document.addEventListener('DOMContentLoaded', () => {
-    safeAddListener('btn-start-climb', 'click', () => {
-        startDailyClimb();
-    });
-
-    safeAddListener('btn-landing-stats', 'click', () => openVault());
-    
-    safeAddListener('btn-victory-stats', 'click', () => {
-        openVault();
-    });
-
-    safeAddListener('btn-back-vault', 'click', () => {
-        closeModal('modal-game-over');
-        openVault();
-    });
-
-    safeAddListener('btn-close-vault', 'click', () => {
-        closeModal('modal-vault');
-        const victoryScreen = document.getElementById('victory-screen');
-        if (victoryScreen && victoryScreen.style.display !== 'none') {
-            resetToLandingScreen();
-        }
-    });
-
-    safeAddListener('btn-try-again', 'click', () => {
-        closeModal('modal-game-over');
-        if (gameState.questions && gameState.questions.length > 0) {
-            startGame();
-        } else {
-            startDailyClimb();
-        }
-    });
-
-    safeAddListener('btn-sound-toggle', 'click', toggleSound);
-
-    updateSoundUI();
-});
-
-function resetToLandingScreen() {
-    stopSessionTimer();
-    const screens = ['victory-screen', 'game-screen', 'floor-hud-container', 'gameplay-header', 'active-game-timer', 'footer-text'];
-    screens.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.style.display = 'none';
-    });
-    const landing = document.getElementById('landing-screen');
-    if (landing) landing.style.display = 'flex';
-}
-
-function showScreen(screenId) {
-    const victoryScreen = document.getElementById('victory-screen');
-    if (victoryScreen) victoryScreen.style.display = 'none';
-
-    const screens = ['landing-screen', 'game-screen'];
-    screens.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) {
-            el.style.display = (id === screenId) ? 'flex' : 'none';
-        }
-    });
-    if (screenId === 'landing-screen') {
-        triggerLandingPageDing();
-    }
-}
-
-function updateSoundUI() {
-    const label = `SOUND: ${gameState.soundEnabled ? 'ON' : 'OFF'}`;
-    safeSetText('btn-sound-toggle', label);
-}
-
-function toggleSound() {
-    gameState.soundEnabled = !gameState.soundEnabled;
-    if (gameState.soundEnabled) {
-        playElevatorDing();
-    }
-    updateSoundUI();
-}
-
-
-// ==========================================
-// MODAL & HIGH-SPEED VAULT CONTROLS
-// ==========================================
-
-function openModal(modalId) {
-    safeToggleClass(modalId, 'hidden', false);
-}
-
-function closeModal(modalId) {
-    safeToggleClass(modalId, 'hidden', true);
-}
-
-function openVault() {
-    renderStatsUI();
-    populateVault();
-    openModal('modal-vault');
-}
-
-function renderStatsUI() {
-    const winRate = gameState.stats.played > 0 
-        ? Math.round((gameState.stats.wins / gameState.stats.played) * 100) 
-        : 0;
-
-    safeSetText('stat-played', gameState.stats.played);
-    safeSetText('stat-wins', gameState.stats.wins);
-    safeSetText('stat-winrate', `${winRate}%`);
-    safeSetText('stat-streak', gameState.stats.streak);
-
-    const bestEl = document.getElementById('stat-bestfloor');
-    if (bestEl) {
-        bestEl.innerHTML = getOrdinalFloorHTML(gameState.stats.bestFloor);
-    }
-}
-
-async function populateVault() {
-    const vaultList = document.getElementById('vault-list');
-    if (!vaultList) return;
-    
-    vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
-    
-    const BATCH_SIZE = 5;
-    const MAX_ARCHIVES = 100;
-    const buttons = [];
-    let currentId = 1;
-
-    while (currentId <= MAX_ARCHIVES) {
-        const batchPromises = [];
-        for (let i = 0; i < BATCH_SIZE && (currentId + i) <= MAX_ARCHIVES; i++) {
-            const idNum = currentId + i;
-            const paddedId = String(idNum).padStart(2, '0');
-            const filename = `sandbox-ball.${paddedId}.json`;
-            batchPromises.push(
-                fetchFileWithFallbacks(filename).then(data => ({ id: paddedId, idNum, data }))
-            );
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --bg-deep: #000000;
+            --surface: #0a0a0a;
+            --surface-border: #222222;
+            --surface-border-light: #333333;
+            --text-primary: #ffffff;
+            --text-muted: #888888;
+            --genre-pitch: #22c55e;
+            --genre-pitch-glow: rgba(34, 197, 94, 0.35);
+            --state-active: #facc15;
+            --state-success: #22c55e;
+            --state-error: #ef4444;
+            --state-error-glow: rgba(239, 68, 68, 0.3);
         }
 
-        const batchResults = await Promise.all(batchPromises);
-        let missingFound = false;
-
-        for (const res of batchResults) {
-            if (res.data) {
-                const btn = document.createElement('button');
-                btn.className = 'vault-item-btn';
-                btn.innerHTML = `<strong>Archive ${res.id}</strong>`;
-                btn.onclick = () => {
-                    triggerHaptic(15);
-                    loadVaultSet(res.id, res.data);
-                };
-                buttons.push(btn);
-            } else {
-                missingFound = true;
-            }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        if (missingFound) break;
-        currentId += BATCH_SIZE;
-    }
-
-    vaultList.innerHTML = '';
-    if (buttons.length === 0) {
-        vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">No archives found.</div>';
-    } else {
-        buttons.forEach(btn => vaultList.appendChild(btn));
-    }
-}
-
-
-// ==========================================
-// DATA LOADING & NORMALIZATION
-// ==========================================
-
-function normalizeQuestions(data) {
-    let rawList = [];
-    if (!data) return [];
-    
-    if (Array.isArray(data)) rawList = data;
-    else if (Array.isArray(data.floors)) rawList = data.floors;
-    else if (Array.isArray(data.questions)) rawList = data.questions;
-
-    return rawList.map(q => {
-        const options = Array.isArray(q.options) ? [...q.options] : ["Option A", "Option B", "Option C", "Option D"];
-        
-        let answerText = "";
-        if (typeof q.answer === 'string') answerText = q.answer;
-        else if (typeof q.correct === 'string') answerText = q.correct;
-        else if (typeof q.correctAnswer === 'string') answerText = q.correctAnswer;
-        else if (typeof q.correct_answer === 'string') answerText = q.correct_answer;
-        else if (typeof q.answerIndex === 'number' && options[q.answerIndex]) answerText = options[q.answerIndex];
-        else if (typeof q.correctIndex === 'number' && options[q.correctIndex]) answerText = options[q.correctIndex];
-        else if (typeof q.correct === 'number' && options[q.correct]) answerText = options[0];
-        else answerText = options[0];
-
-        return {
-            question: q.question || "Question missing",
-            options: options,
-            answer: answerText
-        };
-    });
-}
-
-async function fetchFileWithFallbacks(filename) {
-    const candidatePaths = [
-        `./archives/${filename}`,
-        `./${filename}`,
-        `./assets/data/floors/${filename}`,
-        `./data/${filename}`,
-        filename
-    ];
-
-    for (const path of candidatePaths) {
-        try {
-            const res = await fetch(path);
-            if (res.ok) {
-                return await res.json();
-            }
-        } catch (e) {}
-    }
-    return null;
-}
-
-async function startDailyClimb() {
-    let data = await fetchFileWithFallbacks('ball-questions.json');
-    if (!data) data = await fetchFileWithFallbacks('sandbox-ball.22.json');
-
-    if (data) {
-        gameState.questions = normalizeQuestions(data);
-    }
-    launchGameUI();
-}
-
-function loadVaultSet(paddedId, data) {
-    if (data) {
-        gameState.questions = normalizeQuestions(data);
-        closeModal('modal-vault');
-        launchGameUI();
-    }
-}
-
-function launchGameUI() {
-    const landing = document.getElementById('landing-screen');
-    const victory = document.getElementById('victory-screen');
-    const hud = document.getElementById('floor-hud-container');
-    const workspace = document.getElementById('game-workspace');
-    const header = document.getElementById('gameplay-header');
-    const footer = document.getElementById('footer-text');
-
-    if (landing) landing.style.display = 'none';
-    if (victory) victory.style.display = 'none';
-    if (hud) hud.style.display = 'flex';
-    if (workspace) workspace.style.display = 'flex';
-    if (header) header.style.display = 'flex';
-    if (footer) footer.style.display = 'block';
-
-    startSessionTimer();
-    startGame();
-}
-
-
-// ==========================================
-// GAME LOOP & ELEVATOR PROGRESSION
-// ==========================================
-
-function startGame() {
-    gameState.currentFloor = 1;
-    gameState.currentQuestionIndex = 0;
-    showScreen('game-screen');
-    
-    const hud = document.getElementById('floor-hud-container');
-    const header = document.getElementById('gameplay-header');
-    if (hud) hud.style.display = 'flex';
-    if (header) header.style.display = 'flex';
-
-    updateFloorUI();
-    loadNextQuestion();
-}
-
-function updateFloorUI() {
-    const cardFloorEl = document.getElementById('card-floor-text');
-    if (cardFloorEl) {
-        cardFloorEl.innerHTML = getOrdinalFloorHTML(gameState.currentFloor);
-    }
-    
-    const activeBatch = floorMessageBatches[0];
-    const ruleMsg = activeBatch[gameState.currentFloor - 1] || "No mistakes!";
-    safeSetText('floor-rule-text', ruleMsg);
-
-    document.querySelectorAll('.tower-floor, .floor-block').forEach(block => {
-        const floorNum = parseInt(block.getAttribute('data-floor'), 10);
-        block.classList.toggle('active', floorNum === gameState.currentFloor);
-        block.classList.toggle('active-floor', floorNum === gameState.currentFloor);
-        block.classList.toggle('completed', floorNum < gameState.currentFloor);
-        block.classList.remove('failed');
-    });
-}
-
-function loadNextQuestion() {
-    startQuestionTimer();
-    
-    const currentQ = gameState.questions[gameState.currentQuestionIndex];
-    if (!currentQ) return;
-
-    safeSetText('question-text', currentQ.question);
-    
-    const shuffledOptions = shuffleArray(currentQ.options);
-    
-    const optionButtons = document.querySelectorAll('#options-grid .btn-option');
-    optionButtons.forEach((btn, idx) => {
-        btn.className = 'btn-option';
-        if (typeof btn.blur === 'function') {
-            btn.blur();
-        }
-        const optionVal = shuffledOptions[idx] || null;
-        btn.textContent = optionVal || '';
-        btn.style.display = optionVal ? 'block' : 'none';
-        
-        const isCorrect = (optionVal === currentQ.answer);
-        btn.onclick = () => handleAnswerSelect(isCorrect, btn); 
-    });
-}
-
-function startQuestionTimer() {
-    clearInterval(gameState.timer);
-    const totalDuration = 20000;
-    const startTime = Date.now();
-    gameState.timeLeft = 20;
-    const timerBar = document.getElementById('timer-bar');
-    
-    if (timerBar) {
-        timerBar.style.width = '100%';
-        timerBar.style.backgroundColor = 'var(--genre-pitch)';
-    }
-
-    gameState.timer = setInterval(() => {
-        const elapsed = Date.now() - startTime;
-        const remaining = Math.max(0, totalDuration - elapsed);
-        gameState.timeLeft = Math.ceil(remaining / 1000);
-
-        if (timerBar) {
-            timerBar.style.width = `${(remaining / totalDuration) * 100}%`;
-            if (remaining <= totalDuration / 2) {
-                timerBar.style.backgroundColor = 'var(--state-error)';
-            } else {
-                timerBar.style.backgroundColor = 'var(--genre-pitch)';
-            }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 10px;
+            overflow-x: hidden;
         }
 
-        if (remaining <= 0) {
-            clearInterval(gameState.timer);
-            handleGameOver('TIME EXPIRED');
+        .top-bar {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
         }
-    }, 50);
-}
 
-function handleAnswerSelect(isCorrect, buttonEl) {
-    clearInterval(gameState.timer);
-    
-    document.querySelectorAll('#options-grid .btn-option').forEach(btn => {
-        btn.onclick = null;
-        if (typeof btn.blur === 'function') {
-            btn.blur();
+        .pill-btn {
+            background: var(--surface);
+            border: 1px solid var(--surface-border-light);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
-    });
-    
-    if (isCorrect) {
-        if (buttonEl) buttonEl.classList.add('selected-correct');
-        playElevatorDing();
-        triggerHaptic([35, 40, 35]);
-        
-        setTimeout(() => {
-            if (gameState.currentFloor >= gameState.maxFloors) {
-                handleVictory();
-            } else {
-                gameState.currentFloor++;
-                gameState.currentQuestionIndex++;
-                if (gameState.currentFloor > gameState.stats.bestFloor) {
-                    gameState.stats.bestFloor = gameState.currentFloor;
-                }
-                updateFloorUI();
-                loadNextQuestion();
-            }
-        }, 800);
-    } else {
-        if (buttonEl) buttonEl.classList.add('selected-wrong');
-        triggerHaptic([80, 50, 120]);
-        
-        const activeBlock = document.querySelector(`.tower-floor[data-floor="${gameState.currentFloor}"]`);
-        if (activeBlock) activeBlock.classList.add('failed');
 
-        setTimeout(() => {
-            handleGameOver('INCORRECT ANSWER');
-        }, 800);
-    }
-}
+        .pill-btn:hover {
+            border-color: var(--genre-pitch);
+            color: var(--genre-pitch);
+        }
 
-function handleGameOver(reason) {
-    stopSessionTimer();
-    gameState.stats.played++;
-    gameState.stats.streak = 0;
-    saveStats();
-    
-    safeSetText('game-over-title', 'ELEVATOR STOPPED');
-    safeSetText('game-over-message', reason);
-    
-    const finalEl = document.getElementById('final-floor-reached');
-    if (finalEl) {
-        finalEl.innerHTML = `Stopped at ${getFailedOrdinalFloorHTML(gameState.currentFloor)}`;
-    }
-    
-    openModal('modal-game-over');
-}
+        .header-timer {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--state-active);
+            letter-spacing: 1px;
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            padding: 4px 12px;
+            border-radius: 12px;
+            display: none;
+        }
 
-function handleVictory() {
-    stopSessionTimer();
-    gameState.currentFloor = 11;
-    gameState.stats.played++;
-    gameState.stats.wins++;
-    gameState.stats.streak++;
-    gameState.stats.bestFloor = 11;
-    saveStats();
-    
-    triggerHaptic([50, 50, 50, 50, 100]);
-    
-    const victoryTimeDisplay = document.getElementById('victory-time-display');
-    const victoryStreakDisplay = document.getElementById('victory-streak-display');
-    const hudContainer = document.getElementById('floor-hud-container');
-    const gameWorkspace = document.getElementById('game-workspace');
-    const gameplayHeader = document.getElementById('gameplay-header');
-    const activeGameTimer = document.getElementById('active-game-timer');
-    const victoryScreen = document.getElementById('victory-screen');
-    const footerText = document.getElementById('footer-text');
+        .game-logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 8px;
+            text-align: center;
+            flex-shrink: 0;
+        }
 
-    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formatTime(gameState.timeElapsedSeconds);
-    if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${gameState.stats.streak} Days`;
+        .game-logo-pitch {
+            font-family: 'Anton', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: var(--genre-pitch);
+            line-height: 0.85;
+            letter-spacing: -1px;
+            text-shadow: 0 0 20px var(--genre-pitch-glow);
+            margin-bottom: 4px;
+        }
 
-    if (hudContainer) hudContainer.style.display = 'none';
-    if (gameWorkspace) gameWorkspace.style.display = 'none';
-    if (gameplayHeader) gameplayHeader.style.display = 'none';
-    if (activeGameTimer) activeGameTimer.style.display = 'none';
-    if (footerText) footerText.style.display = 'none';
+        .game-logo-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            margin-bottom: 2px;
+        }
 
-    if (victoryScreen) victoryScreen.style.display = 'flex';
-}
+        .game-logo-sub {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--genre-pitch);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .landing-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+            padding: 20px 16px;
+            width: 100%;
+            max-width: 600px;
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            border-radius: 8px;
+            margin-top: 6px;
+        }
+
+        .landing-shaft-graphic {
+            display: flex;
+            flex-direction: column;
+            width: 52px;
+            height: 150px;
+            border: 1px solid var(--surface-border);
+            border-radius: 8px;
+            padding: 6px;
+            gap: 3px;
+            background-color: var(--surface);
+        }
+
+        .landing-shaft-box {
+            flex: 1;
+            background-color: #111111;
+            border: 1px solid var(--surface-border);
+            border-radius: 2px;
+        }
+
+        .btn-start {
+            background-color: var(--surface);
+            border: 1px solid var(--genre-pitch);
+            color: var(--genre-pitch);
+            padding: 12px 28px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 24px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--genre-pitch-glow);
+            transition: all 0.2s ease;
+        }
+
+        .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 6px; flex-shrink: 0; }
+        .tower-stack { display: flex; flex-direction: column; gap: 2px; width: 52px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 6px; justify-content: space-between; flex-shrink: 0; }
+        .tower-floor { height: 7px; border: 1px solid var(--surface-border); background: #111111; transition: all 0.2s ease; border-radius: 2px; }
+        .tower-floor.active, .tower-floor.active-floor { border-color: var(--genre-pitch); background: var(--genre-pitch); box-shadow: 0 0 8px var(--genre-pitch-glow); }
+        .tower-floor.completed { border-color: var(--state-success); background: var(--state-success); }
+        .tower-floor.failed { border-color: var(--state-error); background: var(--state-error); }
+        .floor-info-box { flex-grow: 1; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
+
+        .play-card { width: 100%; max-width: 600px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 14px 10px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 12px; flex-grow: 1; margin-bottom: 6px; overflow: hidden; min-height: 0; }
+        .timer-bar-container { width: 100%; height: 4px; background: #111111; border-radius: 2px; overflow: hidden; }
+        .timer-bar { width: 100%; height: 100%; background: var(--genre-pitch); transition: width 0.05s linear; }
+        .question-box { width: 100%; background: #111111; border: 1px solid var(--surface-border); border-radius: 6px; padding: 12px 14px; text-align: center; }
+        .options-grid { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+        .btn-option { width: 100%; background: #111111; border: 1px solid var(--surface-border-light); border-radius: 8px; padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-primary); text-align: left; cursor: pointer; }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.92); display: flex; align-items: center; justify-content: center; z-index: 100; }
+        .modal-overlay.hidden { display: none !important; }
+        .modal-card { background-color: var(--surface); border: 1px solid var(--surface-border); padding: 28px 24px; border-radius: 14px; width: 90%; max-width: 360px; text-align: center; }
+        .stats-summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0 12px 0; background: var(--bg-deep); border: 1px solid var(--surface-border); border-radius: 10px; padding: 14px; }
+        .vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 8px; max-height: 220px; overflow-y: auto; margin: 12px 0; }
+        .vault-item-btn { background-color: #111111; border: 1px solid var(--surface-border); color: var(--text-primary); padding: 10px 6px; border-radius: 8px; cursor: pointer; text-align: center; }
+        .btn-modal { width: 100%; background-color: #111111; border: 1px solid var(--surface-border); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 10px; }
+    </style>
+</head>
+<body class="game-ball">
+
+    <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 100%;">
+        <div class="top-bar">
+            <a href="index.html" class="pill-btn">← LOBBY</a>
+            <div id="active-game-timer" class="header-timer">00:00</div>
+            <button class="pill-btn" id="btn-sound-toggle">SOUND: ON</button>
+        </div>
+
+        <!-- LANDING SCREEN -->
+        <div id="landing-screen" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <div class="game-logo-box">
+                <h1 class="game-logo-pitch">11FL?</h1>
+                <p class="game-logo-title">Eleventh Floor</p>
+                <p class="game-logo-sub">THINK YOU KNOW BALL?</p>
+            </div>
+
+            <div class="landing-container">
+                <div class="landing-shaft-graphic">
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                </div>
+
+                <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+                    <strong>CAN YOU REACH THE 11TH FLOOR?</strong><br><br>
+                    Answer expert Premier League trivia to climb through 10 floors. One mistake and you drop back to Ground Floor.
+                </div>
+
+                <div style="display: flex; gap: 8px; margin-top: 4px;">
+                    <button id="btn-landing-stats" class="pill-btn" style="padding: 10px 18px; border-radius: 24px;">STATS / ARCHIVE</button>
+                    <button id="btn-start-climb" class="btn-start">Start Climb</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAMEPLAY SCREEN CONTAINER -->
+        <div id="game-screen" style="display: none; width: 100%; flex-direction: column; align-items: center;">
+            <div id="gameplay-header" class="game-logo-box" style="margin-bottom: 6px;">
+                <p class="game-logo-title">Eleventh Floor</p>
+                <p class="game-logo-sub">THINK YOU KNOW BALL?</p>
+            </div>
+
+            <!-- Gameplay HUD Header -->
+            <div class="hud-sidebar-container" id="floor-hud-container">
+                <div class="tower-stack" id="tower-stack">
+                    <div class="tower-floor floor-block" data-floor="11"></div>
+                    <div class="tower
