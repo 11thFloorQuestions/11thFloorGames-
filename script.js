@@ -563,6 +563,7 @@ function startQuestionTimer() {
     
     if (timerBar) {
         timerBar.style.width = '100%';
+        timerBar.classList.remove('warning');
     }
 
     gameState.timer = setInterval(() => {
@@ -572,6 +573,9 @@ function startQuestionTimer() {
 
         if (timerBar) {
             timerBar.style.width = `${(remaining / totalDuration) * 100}%`;
+            if (remaining <= totalDuration / 2) {
+                timerBar.classList.add('warning');
+            }
         }
 
         if (remaining <= 0) {
