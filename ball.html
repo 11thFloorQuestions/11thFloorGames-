@@ -234,6 +234,12 @@
         .vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 8px; max-height: 220px; overflow-y: auto; margin: 12px 0; }
         .vault-item-btn { background-color: #111111; border: 1px solid var(--surface-border); color: var(--text-primary); padding: 10px 6px; border-radius: 8px; cursor: pointer; text-align: center; }
         .btn-modal { width: 100%; background-color: #111111; border: 1px solid var(--surface-border); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 10px; }
+
+        /* Ecosystem Victory Receipt Card Layout */
+        .victory-receipt { width: 100%; max-width: 320px; background: #111111; border: 1px solid var(--genre-pitch); border-radius: 12px; padding: 20px 20px; margin: 16px 0 20px 0; box-shadow: 0 0 25px var(--genre-pitch-glow); display: flex; flex-direction: column; gap: 14px; text-align: left; }
+        .victory-row { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--surface-border-light); padding-bottom: 8px; }
+        .victory-label { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .victory-data { font-size: 1rem; font-family: 'Inter', sans-serif; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
     </style>
 </head>
 <body class="game-ball">
@@ -330,15 +336,40 @@
             </div>
         </div>
 
-        <!-- VICTORY SCREEN -->
-        <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; text-align: center; padding: 10px 16px;">
-            <div class="game-logo-box">
+        <!-- FINAL ECOSYSTEM VICTORY SCREEN LAYOUT -->
+        <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
+            
+            <div class="game-logo-box" style="margin-bottom: 0;">
                 <h1 class="game-logo-pitch">11FL?</h1>
                 <p class="game-logo-title">Eleventh Floor</p>
                 <p class="game-logo-sub">THINK YOU KNOW BALL?</p>
             </div>
-            <div style="margin: 20px 0; font-size: 1.2rem; font-weight: 800; color: var(--genre-pitch);">DESTINATION REACHED!</div>
-            <button id="btn-victory-stats" class="btn-start" style="width: 100%; max-width: 320px;">VIEW STATS</button>
+
+            <div class="victory-receipt">
+                <div style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 3px; color: var(--genre-pitch); text-transform: uppercase; text-align: center; margin-bottom: 2px;">DESTINATION REACHED</div>
+                <div style="font-family: 'Anton', sans-serif; font-size: 2rem; color: #ffffff; letter-spacing: 1px; margin-bottom: 4px; text-align: center;">PERFECT</div>
+                
+                <div class="victory-row">
+                    <span class="victory-label">Time Elapsed</span>
+                    <span id="victory-time-display" class="victory-data">00:00</span>
+                </div>
+                
+                <div class="victory-row">
+                    <span class="victory-label">Accuracy</span>
+                    <span class="victory-data" style="color: var(--state-success);">100% (10/10)</span>
+                </div>
+                
+                <div class="victory-row" style="border-bottom: none; padding-bottom: 0;">
+                    <span class="victory-label">Active Streak</span>
+                    <span id="victory-streak-display" class="victory-data" style="color: var(--state-active);">0 Days</span>
+                </div>
+            </div>
+
+            <button id="btn-victory-stats" class="btn-start" style="width: 100%; max-width: 320px; margin-bottom: 12px; background-color: var(--genre-pitch); color: #000000; border-color: var(--genre-pitch);">VIEW STATS & ARCHIVES</button>
+            
+            <div style="font-size: 0.65rem; color: var(--text-muted); font-weight: 600; letter-spacing: 1px; max-width: 280px; line-height: 1.5;">
+                Unlock all past daily games and custom quizzes for £2 a month or a discounted price of £20 a year in the Archive Vault.
+            </div>
         </div>
 
         <footer id="footer-text" style="font-size: 0.6rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-top: 4px;">
