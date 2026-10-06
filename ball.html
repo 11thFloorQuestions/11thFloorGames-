@@ -70,7 +70,7 @@
             font-weight: 700;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: border-color 0.2s ease, color 0.2s ease;
         }
 
         .pill-btn:hover {
@@ -176,12 +176,12 @@
             border-radius: 24px;
             cursor: pointer;
             box-shadow: 0 0 15px var(--genre-pitch-glow);
-            transition: all 0.2s ease;
+            transition: border-color 0.2s ease;
         }
 
         .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 6px; flex-shrink: 0; }
         .tower-stack { display: flex; flex-direction: column; gap: 2px; width: 52px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 6px; justify-content: space-between; flex-shrink: 0; }
-        .tower-floor { height: 7px; border: 1px solid var(--surface-border); background: #111111; transition: all 0.2s ease; border-radius: 2px; }
+        .tower-floor { height: 7px; border: 1px solid var(--surface-border); background: #111111; transition: background 0.2s ease, border-color 0.2s ease; border-radius: 2px; }
         .tower-floor.active, .tower-floor.active-floor { border-color: var(--genre-pitch); background: var(--genre-pitch); box-shadow: 0 0 8px var(--genre-pitch-glow); }
         .tower-floor.completed { border-color: var(--state-success); background: var(--state-success); }
         .tower-floor.failed { border-color: var(--state-error); background: var(--state-error); }
@@ -189,10 +189,40 @@
 
         .play-card { width: 100%; max-width: 600px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 14px 10px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 12px; flex-grow: 1; margin-bottom: 6px; overflow: hidden; min-height: 0; }
         .timer-bar-container { width: 100%; height: 4px; background: #111111; border-radius: 2px; overflow: hidden; }
-        .timer-bar { width: 100%; height: 100%; background: var(--genre-pitch); transition: width 0.05s linear; }
+        .timer-bar { width: 100%; height: 100%; background: var(--genre-pitch); }
         .question-box { width: 100%; background: #111111; border: 1px solid var(--surface-border); border-radius: 6px; padding: 12px 14px; text-align: center; }
         .options-grid { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
-        .btn-option { width: 100%; background: #111111; border: 1px solid var(--surface-border-light); border-radius: 8px; padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-primary); text-align: left; cursor: pointer; }
+        
+        /* Instant-reset Option Buttons (No transition delays on tap/reset) */
+        .btn-option { 
+            width: 100%; 
+            background: #111111; 
+            border: 1px solid var(--surface-border-light); 
+            border-radius: 8px; 
+            padding: 12px 14px; 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 0.82rem; 
+            font-weight: 600; 
+            color: var(--text-primary); 
+            text-align: left; 
+            cursor: pointer;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-option.selected-correct {
+            border-color: var(--state-success) !important;
+            color: var(--state-success) !important;
+            background-color: rgba(34, 197, 94, 0.1) !important;
+            box-shadow: 0 0 10px var(--genre-pitch-glow) !important;
+        }
+
+        .btn-option.selected-wrong {
+            border-color: var(--state-error) !important;
+            color: var(--state-error) !important;
+            background-color: rgba(239, 68, 68, 0.1) !important;
+            box-shadow: 0 0 10px var(--state-error-glow) !important;
+        }
 
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.92); display: flex; align-items: center; justify-content: center; z-index: 100; }
         .modal-overlay.hidden { display: none !important; }
