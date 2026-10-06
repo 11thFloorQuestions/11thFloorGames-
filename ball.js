@@ -518,6 +518,7 @@ function startQuestionTimer() {
     
     if (timerBar) {
         timerBar.style.width = '100%';
+        timerBar.style.backgroundColor = 'var(--genre-pitch)';
     }
 
     gameState.timer = setInterval(() => {
@@ -527,6 +528,11 @@ function startQuestionTimer() {
 
         if (timerBar) {
             timerBar.style.width = `${(remaining / totalDuration) * 100}%`;
+            if (remaining <= totalDuration / 2) {
+                timerBar.style.backgroundColor = 'var(--state-error)';
+            } else {
+                timerBar.style.backgroundColor = 'var(--genre-pitch)';
+            }
         }
 
         if (remaining <= 0) {
