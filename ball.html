@@ -258,4 +258,86 @@
             <div class="hud-sidebar-container" id="floor-hud-container">
                 <div class="tower-stack" id="tower-stack">
                     <div class="tower-floor floor-block" data-floor="11"></div>
-                    <div class="tower
+                    <div class="tower-floor floor-block" data-floor="10"></div>
+                    <div class="tower-floor floor-block" data-floor="9"></div>
+                    <div class="tower-floor floor-block" data-floor="8"></div>
+                    <div class="tower-floor floor-block" data-floor="7"></div>
+                    <div class="tower-floor floor-block" data-floor="6"></div>
+                    <div class="tower-floor floor-block" data-floor="5"></div>
+                    <div class="tower-floor floor-block" data-floor="4"></div>
+                    <div class="tower-floor floor-block" data-floor="3"></div>
+                    <div class="tower-floor floor-block" data-floor="2"></div>
+                    <div class="tower-floor floor-block" data-floor="1"></div>
+                </div>
+
+                <div class="floor-info-box">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <div id="card-floor-text" style="font-size: 1.1rem; font-weight: 800;"><span style="color: var(--genre-pitch);">1st</span> Floor</div>
+                        <div id="floor-rule-text" style="font-size: 0.65rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">No mistakes!</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Play Card Workspace -->
+            <div id="game-workspace" class="play-card">
+                <div class="timer-bar-container">
+                    <div id="timer-bar" class="timer-bar"></div>
+                </div>
+
+                <div class="question-box">
+                    <div id="question-text" style="font-size: 0.9rem; font-weight: 600; color: #ffffff;">Loading trivia...</div>
+                </div>
+
+                <div class="options-grid" id="options-grid">
+                    <button class="btn-option"></button>
+                    <button class="btn-option"></button>
+                    <button class="btn-option"></button>
+                    <button class="btn-option"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- VICTORY SCREEN -->
+        <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; text-align: center; padding: 10px 16px;">
+            <div class="game-logo-box">
+                <h1 class="game-logo-pitch">11FL?</h1>
+                <p class="game-logo-title">Eleventh Floor</p>
+                <p class="game-logo-sub">THINK YOU KNOW BALL?</p>
+            </div>
+            <div style="margin: 20px 0; font-size: 1.2rem; font-weight: 800; color: var(--genre-pitch);">DESTINATION REACHED!</div>
+            <button id="btn-victory-stats" class="btn-start" style="width: 100%; max-width: 320px;">VIEW STATS</button>
+        </div>
+
+        <footer id="footer-text" style="font-size: 0.6rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-top: 4px;">
+            ONE MISTAKE RESETS THE CLIMB TO GROUND FLOOR.
+        </footer>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-vault" class="modal-overlay hidden">
+        <div class="modal-card">
+            <h2>STATS</h2>
+            <div class="stats-summary-grid">
+                <div><span id="stat-played">0</span><br><small>Played</small></div>
+                <div><span id="stat-wins">0</span><br><small>Wins</small></div>
+                <div><span id="stat-winrate">0%</span><br><small>Win %</small></div>
+            </div>
+            <div id="vault-list" class="vault-grid"></div>
+            <button id="btn-close-vault" class="btn-modal">CLOSE</button>
+        </div>
+    </div>
+
+    <div id="modal-game-over" class="modal-overlay hidden">
+        <div class="modal-card">
+            <h2 id="game-over-title">ELEVATOR STOPPED</h2>
+            <p id="game-over-message"></p>
+            <p id="final-floor-reached"></p>
+            <button id="btn-try-again" class="btn-modal" style="background: var(--genre-pitch); color: #000000;">TRY AGAIN</button>
+            <button id="btn-back-vault" class="btn-modal">VAULT</button>
+        </div>
+    </div>
+
+    <!-- LINK TO SEPARATE BALL.JS SCRIPT FILE -->
+    <script src="ball.js"></script>
+</body>
+</html>
