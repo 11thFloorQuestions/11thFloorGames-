@@ -1,6 +1,6 @@
-// ==========================================================================
-// 11th Floor TYKB (Think You Know Ball?) — Core Game Engine
-// ==========================================================================
+// ==========================================
+// 1. HELPER FUNCTIONS & UTILITIES
+// ==========================================
 
 function safeAddListener(id, event, handler) {
     const el = document.getElementById(id);
@@ -41,12 +41,6 @@ function getOrdinalFloorHTML(floorNum) {
     return `<span style="color: var(--genre-pitch, #22c55e); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
 }
 
-function getFailedOrdinalFloorHTML(floorNum) {
-    const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
-    const ord = ordinals[floorNum - 1] || `${floorNum}th`;
-    return `<span style="color: var(--state-error, #EF4444); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
-}
-
 
 // ==========================================
 // HAPTIC FEEDBACK ENGINE
@@ -62,7 +56,7 @@ function triggerHaptic(pattern) {
 
 
 // ==========================================
-// STATE MANAGEMENT & PERSISTENCE
+// 2. STATE MANAGEMENT & STATS PERSISTENCE
 // ==========================================
 
 const gameState = {
@@ -70,7 +64,7 @@ const gameState = {
     maxFloors: 10,
     soundEnabled: true,
     timer: null,
-    timeLeft: 20,
+    timeLeft: 15,
     questions: [],
     currentQuestionIndex: 0,
     batchIndex: 0,
@@ -85,26 +79,51 @@ const gameState = {
     }
 };
 
-const STATS_KEY = '11th_floor_tykb_stats';
-
 const floorMessageBatches = [
+    // Batch 1: Classic Climb
     [
-        "Terrace banter warmth — get climbing!",
-        "Matchweek trends incoming — stay sharp!",
-        "Topical Premier League heat ahead!",
-        "Tactical records — watch your step!",
-        "Historical achievements (1992–present)!",
-        "Deep Premier League stats unlocked!",
-        "Squad Number assignment rules apply!",
-        "Terrace Expert level trivia begins!",
-        "Niche records ahead — stay locked in!",
-        "Final floor hurdle — earn Floor 11!"
+        "Tough questions ahead — no mistakes!",
+        "Get this wrong and down to Ground Floor you go!",
+        "3rd Floor reached — stay sharp!",
+        "One mistake resets you to Ground Floor.",
+        "Halfway up! Stay focused.",
+        "6th Floor unlocked — pure precision!",
+        "Ground Floor is far below now.",
+        "Almost there!",
+        "Keep going!",
+        "Final hurdle — make it count!"
+    ],
+    // Batch 2: High Energy
+    [
+        "Watch your step — no mistakes!",
+        "Miss one and back to Ground Floor!",
+        "Moving up nicely — keep going!",
+        "One slip resets the climb.",
+        "Halfway mark — stay locked in!",
+        "Great streak — hold your focus!",
+        "Ground Floor is way behind you.",
+        "You're so close!",
+        "Almost at the top!",
+        "One right answer left!"
+    ],
+    // Batch 3: Focused & Direct
+    [
+        "The climb begins — take your time.",
+        "Wrong answer sends you back down!",
+        "3rd Floor reached — smooth sailing.",
+        "Stay cool under pressure.",
+        "Halfway to victory!",
+        "Step by step — pure focus.",
+        "High altitude — keep it clean!",
+        "Almost there!",
+        "Push through!",
+        "Final question — finish it!"
     ]
 ];
 
 function loadSavedStats() {
     try {
-        const saved = localStorage.getItem(STATS_KEY);
+        const saved = localStorage.getItem('11fl_stats');
         if (saved) {
             gameState.stats = { ...gameState.stats, ...JSON.parse(saved) };
         }
@@ -115,7 +134,7 @@ function loadSavedStats() {
 
 function saveStats() {
     try {
-        localStorage.setItem(STATS_KEY, JSON.stringify(gameState.stats));
+        localStorage.setItem('11fl_stats', JSON.stringify(gameState.stats));
     } catch (e) {
         console.warn('Could not save stats to localStorage.');
     }
@@ -160,7 +179,7 @@ function formatTime(totalSeconds) {
 
 
 // ==========================================
-// AUDIO ENGINE
+// AUDIO ENGINE (EXACT SOUND FILE PLAYBACK)
 // ==========================================
 
 const elevatorDingAudio = new Audio();
@@ -187,7 +206,7 @@ function triggerLandingPageDing() {
 
 
 // ==========================================
-// NAVIGATION & CONTROLS
+// 3. NAVIGATION & SCREEN SWITCHING
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -255,6 +274,11 @@ function showScreen(screenId) {
     }
 }
 
+
+// ==========================================
+// 4. SOUND TOGGLE CONTROLS
+// ==========================================
+
 function updateSoundUI() {
     const label = `SOUND: ${gameState.soundEnabled ? 'ON' : 'OFF'}`;
     safeSetText('btn-sound-toggle', label);
@@ -270,7 +294,7 @@ function toggleSound() {
 
 
 // ==========================================
-// MODAL & HIGH-SPEED VAULT CONTROLS
+// 5. MODAL, STATS & HIGH-SPEED VAULT CONTROLS
 // ==========================================
 
 function openModal(modalId) {
@@ -357,16 +381,17 @@ async function populateVault() {
 
 
 // ==========================================
-// DATA LOADING & NORMALIZATION
+// 6. DATA LOADING & NORMALIZATION
 // ==========================================
 
 function normalizeQuestions(data) {
     let rawList = [];
-    if (!data) return [];
+    if (!data) return generateFallbackQuestions();
     
     if (Array.isArray(data)) rawList = data;
     else if (Array.isArray(data.floors)) rawList = data.floors;
     else if (Array.isArray(data.questions)) rawList = data.questions;
+    else return generateFallbackQuestions();
 
     return rawList.map(q => {
         const options = Array.isArray(q.options) ? [...q.options] : ["Option A", "Option B", "Option C", "Option D"];
@@ -379,6 +404,7 @@ function normalizeQuestions(data) {
         else if (typeof q.answerIndex === 'number' && options[q.answerIndex]) answerText = options[q.answerIndex];
         else if (typeof q.correctIndex === 'number' && options[q.correctIndex]) answerText = options[q.correctIndex];
         else if (typeof q.correct === 'number' && options[q.correct]) answerText = options[0];
+        else if (typeof q.answer === 'number' && options[q.answer]) answerText = options[0];
         else answerText = options[0];
 
         return {
@@ -410,17 +436,28 @@ async function fetchFileWithFallbacks(filename) {
 }
 
 async function startDailyClimb() {
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now - start;
+    const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
+    gameState.batchIndex = dayOfYear % floorMessageBatches.length;
+
     let data = await fetchFileWithFallbacks('ball-questions.json');
-    if (!data) data = await fetchFileWithFallbacks('sandbox-ball.22.json');
+    if (!data) data = await fetchFileWithFallbacks('sandbox-ball.23.json');
 
     if (data) {
         gameState.questions = normalizeQuestions(data);
+    } else {
+        gameState.questions = generateFallbackQuestions();
     }
+    
     launchGameUI();
 }
 
 function loadVaultSet(paddedId, data) {
     if (data) {
+        const archiveNum = parseInt(paddedId, 10) || 1;
+        gameState.batchIndex = archiveNum % floorMessageBatches.length;
         gameState.questions = normalizeQuestions(data);
         closeModal('modal-vault');
         launchGameUI();
@@ -448,10 +485,13 @@ function launchGameUI() {
 
 
 // ==========================================
-// GAME LOOP & ELEVATOR PROGRESSION
+// 7. GAME LOOP & ELEVATOR PROGRESSION
 // ==========================================
 
 function startGame() {
+    if (!gameState.questions || gameState.questions.length === 0) {
+        gameState.questions = generateFallbackQuestions();
+    }
     gameState.currentFloor = 1;
     gameState.currentQuestionIndex = 0;
     showScreen('game-screen');
@@ -465,13 +505,18 @@ function startGame() {
     loadNextQuestion();
 }
 
+function resetGame() {
+    clearInterval(gameState.timer);
+    gameState.currentFloor = 1;
+}
+
 function updateFloorUI() {
     const cardFloorEl = document.getElementById('card-floor-text');
     if (cardFloorEl) {
         cardFloorEl.innerHTML = getOrdinalFloorHTML(gameState.currentFloor);
     }
     
-    const activeBatch = floorMessageBatches[0];
+    const activeBatch = floorMessageBatches[gameState.batchIndex % floorMessageBatches.length] || floorMessageBatches[0];
     const ruleMsg = activeBatch[gameState.currentFloor - 1] || "No mistakes!";
     safeSetText('floor-rule-text', ruleMsg);
 
@@ -511,13 +556,14 @@ function loadNextQuestion() {
 
 function startQuestionTimer() {
     clearInterval(gameState.timer);
-    const totalDuration = 20000;
+    const totalDuration = 15000;
     const startTime = Date.now();
-    gameState.timeLeft = 20;
+    gameState.timeLeft = 15;
     const timerBar = document.getElementById('timer-bar');
     
     if (timerBar) {
         timerBar.style.width = '100%';
+        timerBar.classList.remove('warning');
     }
 
     gameState.timer = setInterval(() => {
@@ -527,6 +573,9 @@ function startQuestionTimer() {
 
         if (timerBar) {
             timerBar.style.width = `${(remaining / totalDuration) * 100}%`;
+            if (remaining <= totalDuration / 2) {
+                timerBar.classList.add('warning');
+            }
         }
 
         if (remaining <= 0) {
@@ -586,9 +635,11 @@ function handleGameOver(reason) {
     safeSetText('game-over-title', 'ELEVATOR STOPPED');
     safeSetText('game-over-message', reason);
     
+    const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
+    const ord = ordinals[gameState.currentFloor - 1] || `${gameState.currentFloor}th`;
     const finalEl = document.getElementById('final-floor-reached');
     if (finalEl) {
-        finalEl.innerHTML = `Stopped at ${getFailedOrdinalFloorHTML(gameState.currentFloor)}`;
+        finalEl.innerHTML = `Stopped at <span style="color: var(--state-error, #EF4444); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
     }
     
     openModal('modal-game-over');
@@ -624,4 +675,19 @@ function handleVictory() {
     if (footerText) footerText.style.display = 'none';
 
     if (victoryScreen) victoryScreen.style.display = 'flex';
+}
+
+function generateFallbackQuestions() {
+    return [
+        { question: "Which Premier League club plays their home matches at Villa Park?", options: ["Aston Villa", "Everton", "Fulham", "West Ham United"], answer: "Aston Villa" },
+        { question: "Who holds the record for the most Premier League goals scored in a single 38-game season?", options: ["Erling Haaland", "Mohamed Salah", "Alan Shearer", "Cristiano Ronaldo"], answer: "Erling Haaland" },
+        { question: "Which manager won three Premier League titles with Chelsea across two spells?", options: ["José Mourinho", "Carlo Ancelotti", "Antonio Conte", "Claudio Ranieri"], answer: "José Mourinho" },
+        { question: "Which club went undefeated through the entire 2003–04 Premier League season?", options: ["Arsenal", "Manchester United", "Chelsea", "Liverpool"], answer: "Arsenal" },
+        { question: "Who is the all-time leading goalscorer in Premier League history?", options: ["Alan Shearer", "Wayne Rooney", "Harry Kane", "Andrew Cole"], answer: "Alan Shearer" },
+        { question: "Which country won the FIFA World Cup in 2018 in Russia?", options: ["France", "Croatia", "Belgium", "England"], answer: "France" },
+        { question: "Which English goalkeeper won six top-flight titles with Liverpool during the 1980s?", options: ["Bruce Grobbelaar", "Ray Clemence", "David Seaman", "Neville Southall"], answer: "Bruce Grobbelaar" },
+        { question: "Which club won their first ever Premier League title in the 2015–16 season against 5000–1 odds?", options: ["Leicester City", "Blackburn Rovers", "Tottenham Hotspur", "Southampton"], answer: "Leicester City" },
+        { question: "Which player holds the record for issuing the most assists in Premier League history?", options: ["Ryan Giggs", "Cesc Fàbregas", "Kevin De Bruyne", "Wayne Rooney"], answer: "Ryan Giggs" },
+        { question: "Which two players are the only ones to score Premier League penalties with both their right and left feet?", options: ["Obafemi Martins & Bobby Zamora", "Santi Cazorla & Pedro", "Marek Hamsik & Son Heung-min", "Morten Gamst Pedersen & Harry Kewell"], answer: "Obafemi Martins & Bobby Zamora" }
+    ];
 }
