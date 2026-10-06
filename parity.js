@@ -305,12 +305,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const pct = Math.max(0, (timeRemaining / totalFloorTime) * 100);
         timerBarFill.style.width = `${pct}%`;
 
-        if (pct <= 20) {
+        if (pct <= 50) {
             timerBarFill.style.backgroundColor = 'var(--state-error)';
             timerBarFill.style.boxShadow = '0 0 10px var(--state-error-glow)';
-        } else if (pct <= 50) {
-            timerBarFill.style.backgroundColor = 'var(--state-warning)';
-            timerBarFill.style.boxShadow = '0 0 8px var(--state-warning-glow)';
         } else {
             timerBarFill.style.backgroundColor = 'var(--state-active)';
             timerBarFill.style.boxShadow = '0 0 8px var(--state-active-glow)';
