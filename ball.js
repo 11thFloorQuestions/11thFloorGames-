@@ -310,7 +310,7 @@ async function populateVault() {
     vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
     
     const BATCH_SIZE = 5;
-    const MAX_ARCHIVES = 100;
+    const MAX_ARCHIVES = 50;
     const buttons = [];
     let currentId = 1;
 
@@ -319,14 +319,22 @@ async function populateVault() {
         for (let i = 0; i < BATCH_SIZE && (currentId + i) <= MAX_ARCHIVES; i++) {
             const idNum = currentId + i;
             const paddedId = String(idNum).padStart(2, '0');
-            const filename = `sandbox-ball.${paddedId}.json`;
+            
             batchPromises.push(
-                fetchFileWithFallbacks(filename).then(data => ({ id: paddedId, idNum, data }))
+                (async () => {
+                    let data = await fetchFileWithFallbacks(`sandbox-ball.${paddedId}.json`);
+                    if (!data) {
+                        data = await fetchFileWithFallbacks(`sandbox-terrace.${paddedId}.json`);
+                    }
+                    if (!data) {
+                        data = await fetchFileWithFallbacks(`ball.${String(idNum).padStart(3, '0')}.json`);
+                    }
+                    return { id: paddedId, idNum, data };
+                })()
             );
         }
 
         const batchResults = await Promise.all(batchPromises);
-        let missingFound = false;
 
         for (const res of batchResults) {
             if (res.data) {
@@ -338,12 +346,9 @@ async function populateVault() {
                     loadVaultSet(res.id, res.data);
                 };
                 buttons.push(btn);
-            } else {
-                missingFound = true;
             }
         }
 
-        if (missingFound) break;
         currentId += BATCH_SIZE;
     }
 
@@ -411,6 +416,7 @@ async function fetchFileWithFallbacks(filename) {
 
 async function startDailyClimb() {
     let data = await fetchFileWithFallbacks('ball-questions.json');
+    if (!data) data = await fetchFileWithFallbacks('sandbox-ball.23.json');
     if (!data) data = await fetchFileWithFallbacks('sandbox-ball.22.json');
 
     if (data) {
