@@ -1,0 +1,27 @@
+{
+  "title": "Norse Mythology & Runes",
+  "floors": [
+    { "floor": 1, "pairs": 1, "timeLimit": 12, "icons": ["valknut"] },
+    { "floor": 2, "pairs": 2, "timeLimit": 16, "icons": ["valknut", "mjolnir"] },
+    { "floor": 3, "pairs": 3, "timeLimit": 22, "icons": ["valknut", "mjolnir", "yggdrasil"] },
+    { "floor": 4, "pairs": 4, "timeLimit": 28, "icons": ["valknut", "mjolnir", "yggdrasil", "raven"] },
+    { "floor": 5, "pairs": 5, "timeLimit": 34, "icons": ["valknut", "mjolnir", "yggdrasil", "raven", "helm"] },
+    { "floor": 6, "pairs": 6, "timeLimit": 40, "icons": ["valknut", "mjolnir", "yggdrasil", "raven", "helm", "longship"] },
+    { "floor": 7, "pairs": 7, "timeLimit": 46, "icons": ["valknut", "mjolnir", "yggdrasil", "raven", "helm", "longship", "horn"] },
+    { "floor": 8, "pairs": 8, "timeLimit": 52, "icons": ["valknut", "mjolnir", "yggdrasil", "raven", "helm", "longship", "horn", "axe"] },
+    { "floor": 9, "pairs": 9, "timeLimit": 58, "icons": ["valknut", "mjolnir", "yggdrasil", "raven", "helm", "longship", "horn", "axe", "runestone"] },
+    { "floor": 10, "pairs": 10, "timeLimit": 64, "icons": ["valknut", "mjolnir", "yggdrasil", "raven", "helm", "longship", "horn", "axe", "runestone", "bifrost"] }
+  ],
+  "svgMap": {
+    "valknut": "<svg viewBox=\"0 0 24 24\"><polygon points=\"12,2 2,20 22,20\" fill=\"none\" stroke=\"#FFD700\" stroke-width=\"1.5\"/><polygon points=\"12,7 6,17 18,17\" fill=\"none\" stroke=\"#FFD700\" stroke-width=\"1.5\"/></svg>",
+    "mjolnir": "<svg viewBox=\"0 0 24 24\"><rect x=\"6\" y=\"4\" width=\"12\" height=\"7\" rx=\"1\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><rect x=\"11\" y=\"11\" width=\"2\" height=\"10\" fill=\"#00F0FF\"/></svg>",
+    "yggdrasil": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><path d=\"M12 20v-6m0 0c-2-2-4-1-4-4m4 4c2-2 4-1 4-4\" fill=\"none\" stroke=\"#39FF14\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></svg>",
+    "raven": "<svg viewBox=\"0 0 24 24\"><path d=\"M4 12c4-4 8-4 12-2l4-4c-1 3 0 5 0 5l-2 2c1 3 0 5 0 5l-4-3c-3 1-6 0-10-3z\" fill=\"#0d1117\" stroke=\"#FF007F\" stroke-width=\"1.5\"/><circle cx=\"16\" cy=\"10\" r=\"1\" fill=\"#FF007F\"/></svg>",
+    "helm": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><line x1=\"12\" y1=\"3\" x2=\"12\" y2=\"21\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><line x1=\"3\" y1=\"12\" x2=\"21\" y2=\"12\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><line x1=\"6\" y1=\"18\" x2=\"18\" y2=\"6\" stroke=\"#7000FF\" stroke-width=\"1.5\"/></svg>",
+    "longship": "<svg viewBox=\"0 0 24 24\"><path d=\"M3 14c5 0 8 2 18 0l-2 4H5l-2-4z\" fill=\"#0d1117\" stroke=\"#FFD700\" stroke-width=\"1.5\"/><line x1=\"12\" y1=\"4\" x2=\"12\" y2=\"14\" stroke=\"#FFD700\" stroke-width=\"1.5\"/><polygon points=\"12,4 17,8 12,8\" fill=\"#FFD700\"/></svg>",
+    "horn": "<svg viewBox=\"0 0 24 24\"><path d=\"M4 16c4 0 8-2 10-5s4-6 6-6c0 3-2 6-5 8s-6 5-11 5v-2z\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/></svg>",
+    "axe": "<svg viewBox=\"0 0 24 24\"><line x1=\"6\" y1=\"20\" x2=\"18\" y2=\"4\" stroke=\"#39FF14\" stroke-width=\"2\"/><path d=\"M14 6c2-2 5-2 6 0s0 5-2 6l-4-6z\" fill=\"#39FF14\"/></svg>",
+    "runestone": "<svg viewBox=\"0 0 24 24\"><path d=\"M7 3h10l3 8-3 10H7L4 11l3-8z\" fill=\"#0d1117\" stroke=\"#FF007F\" stroke-width=\"1.5\"/><path d=\"M12 7v10M9 9l6 6M15 9l-6 6\" stroke=\"#FF007F\" stroke-width=\"1.5\"/></svg>",
+    "bifrost": "<svg viewBox=\"0 0 24 24\"><path d=\"M4 18A8 8 0 0 1 20 18\" fill=\"none\" stroke=\"#FF007F\" stroke-width=\"2\"/><path d=\"M6 18A6 6 0 0 1 18 18\" fill=\"none\" stroke=\"#FFD700\" stroke-width=\"2\"/><path d=\"M8 18A4 4 0 0 1 16 18\" fill=\"none\" stroke=\"#00F0FF\" stroke-width=\"2\"/></svg>"
+  }
+}
