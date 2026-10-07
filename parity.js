@@ -149,10 +149,11 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchFileWithFallbacks(filename) {
         const candidatePaths = [
             `./archives/${filename}`,
+            `archives/${filename}`,
             `./${filename}`,
+            `${filename}`,
             `./assets/data/floors/${filename}`,
-            `./data/${filename}`,
-            filename
+            `./data/${filename}`
         ];
 
         for (const path of candidatePaths) {
@@ -160,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const res = await fetch(path);
                 if (res.ok) {
                     const data = await res.json();
-                    if (data) return data;
+                    if (data && data.floors) return data;
                 }
             } catch (e) {}
         }
@@ -172,9 +173,12 @@ document.addEventListener('DOMContentLoaded', () => {
         vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
         
         const fetchPromises = [];
-        for (let i = 1; i <= 100; i++) {
+        for (let i = 1; i <= 50; i++) {
             const paddedId = String(i).padStart(2, '0');
-            fetchPromises.push(fetchFileWithFallbacks(`sandbox-parity.${paddedId}.json`).then(data => ({ id: paddedId, data })));
+            fetchPromises.push(
+                fetchFileWithFallbacks(`sandbox-parity.${paddedId}.json`)
+                    .then(data => ({ id: paddedId, data }))
+            );
         }
 
         const results = await Promise.all(fetchPromises);
@@ -331,7 +335,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const pct = Math.max(0, (timeRemaining / totalFloorTime) * 100);
         timerBarFill.style.width = `${pct}%`;
 
-        // Color transition: Red at <= 50% remaining, Yellow otherwise
         if (pct <= 50) {
             timerBarFill.style.backgroundColor = 'var(--state-error)';
             timerBarFill.style.boxShadow = '0 0 10px var(--state-error-glow)';
