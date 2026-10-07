@@ -316,4 +316,342 @@
 
         .floor-left-group { display: flex; flex-direction: column; gap: 2px; }
         .current-floor-display { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 800; letter-spacing: 1px; }
-        .floor-rule-text { font-family: 'Montserrat', sans-serif; font-size: 0.62rem; font-weight: 700; color: var(--genre-
+        .floor-rule-text { font-family: 'Montserrat', sans-serif; font-size: 0.62rem; font-weight: 700; color: var(--genre-pink); letter-spacing: 0.8px; text-transform: uppercase; }
+
+        .play-card {
+            width: 100%;
+            max-width: 600px;
+            background: var(--surface);
+            border: 1px solid var(--surface-border-light);
+            border-radius: 8px;
+            padding: 10px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            flex: 1;
+            margin-bottom: 4px;
+            overflow: hidden;
+            min-height: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        #message-box {
+            min-height: 14px;
+            color: var(--state-error);
+            font-weight: 700;
+            font-size: 0.68rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .timer-bar-container {
+            width: 100%;
+            height: 5px;
+            background: #111111;
+            border: 1px solid var(--surface-border);
+            border-radius: 4px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .timer-bar-fill {
+            height: 100%;
+            width: 100%;
+            background-color: var(--state-active);
+            box-shadow: 0 0 8px var(--state-active-glow);
+            transition: width 0.1s linear, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .parity-grid {
+            display: grid;
+            gap: 8px;
+            width: 100%;
+            max-width: 380px;
+            flex: 1;
+            min-height: 0;
+            max-height: 52vh;
+            margin: auto;
+            align-content: center;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .parity-tile {
+            aspect-ratio: 1;
+            width: 100%;
+            height: 100%;
+            background: #161616;
+            border: 1px solid var(--surface-border-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            perspective: 1000px;
+            padding: 4px;
+            max-height: 80px;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            touch-action: manipulation;
+        }
+
+        .parity-tile:hover {
+            border-color: var(--genre-pink);
+            background: #1f1f1f;
+            transform: translateY(-2px);
+            box-shadow: 0 0 12px var(--genre-pink-glow);
+        }
+
+        .parity-tile.selected {
+            border-color: var(--state-active);
+            background: #222215;
+            box-shadow: 0 0 12px var(--state-active-glow);
+            transform: scale(1.03);
+        }
+
+        .parity-tile.matched {
+            border-color: var(--state-success);
+            background: #122417;
+            box-shadow: 0 0 12px var(--state-success-glow);
+            opacity: 0.9;
+            cursor: default;
+        }
+
+        .parity-tile.error {
+            border-color: var(--state-error);
+            background: #281414;
+            box-shadow: 0 0 12px var(--state-error-glow);
+            animation: shake 0.3s ease;
+        }
+
+        .parity-tile svg {
+            width: 65%;
+            height: 65%;
+            color: #ffffff;
+            display: block;
+            margin: auto;
+            transition: transform 0.2s ease;
+        }
+
+        .parity-tile.face-down {
+            background: #141414;
+            border: 1px solid #383838;
+        }
+
+        .parity-tile.face-down svg {
+            display: none;
+        }
+
+        .parity-tile.face-down::after {
+            content: "?";
+            font-family: 'Anton', sans-serif;
+            font-size: 1.3rem;
+            color: var(--genre-pink);
+            opacity: 0.35;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .parity-tile.face-down:hover::after {
+            opacity: 0.85;
+            transform: scale(1.1);
+        }
+
+        .parity-tile.pulse-hint {
+            animation: starterPulse 1.4s infinite ease-in-out;
+        }
+
+        @keyframes starterPulse {
+            0%, 100% { border-color: #383838; box-shadow: none; }
+            50% { border-color: var(--genre-pink); box-shadow: 0 0 14px var(--genre-pink-glow); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-4px); }
+            75% { transform: translateX(4px); }
+        }
+
+        footer {
+            font-size: 0.58rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 2px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.92); display: flex; align-items: center; justify-content: center; z-index: 100; }
+        .modal-overlay.hidden { display: none !important; }
+        .modal-card { background-color: var(--surface); border: 1px solid var(--surface-border-light); padding: 24px 20px; border-radius: 14px; width: 90%; max-width: 360px; text-align: center; }
+        .modal-large { max-width: 440px; }
+        .stats-summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 0 12px 0; background: var(--bg-deep); border: 1px solid var(--surface-border); border-radius: 10px; padding: 12px; }
+        .stat-box { display: flex; flex-direction: column; align-items: center; }
+        .stat-val { font-size: 1.2rem; font-weight: 800; color: var(--genre-pink); }
+        .stat-lbl { font-size: 0.55rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
+        .vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 8px; max-height: 200px; overflow-y: auto; margin: 12px 0; }
+        .vault-item-btn { background-color: #111111; border: 1px solid var(--surface-border); color: var(--text-primary); padding: 10px 6px; border-radius: 8px; cursor: pointer; text-align: center; }
+        .vault-item-btn:hover { border-color: var(--genre-pink); background-color: #1a1a1a; }
+        .btn-modal { flex-grow: 1; width: 100%; background-color: #111111; border: 1px solid var(--surface-border-light); color: var(--text-primary); padding: 11px; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 8px; }
+
+        .victory-receipt { width: 100%; max-width: 320px; background: #111111; border: 1px solid var(--genre-pink); border-radius: 12px; padding: 20px 20px; margin: 16px 0 20px 0; box-shadow: 0 0 25px var(--genre-pink-glow); display: flex; flex-direction: column; gap: 14px; text-align: left; }
+        .victory-row { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--surface-border-light); padding-bottom: 8px; }
+        .victory-label { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .victory-data { font-size: 1rem; font-family: 'Inter', sans-serif; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
+    </style>
+</head>
+<body class="game-parity">
+
+    <div class="main-wrapper">
+        <div class="top-bar">
+            <a href="index.html" class="pill-btn">← LOBBY</a>
+            <div id="active-game-timer" class="header-timer">00:00</div>
+            <button class="pill-btn" id="btn-sound">SOUND: ON</button>
+        </div>
+
+        <!-- LANDING SCREEN -->
+        <div id="start-screen">
+            <div class="game-logo-box">
+                <h1 class="game-logo-pink">11FL?</h1>
+                <p class="game-logo-title">Eleventh Floor</p>
+                <p class="game-logo-sub">PARITY</p>
+            </div>
+
+            <div class="landing-container">
+                <div class="landing-shaft-graphic">
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                </div>
+
+                <div class="landing-challenge-text">
+                    <strong>CAN YOU REACH THE 11TH FLOOR?</strong><br><br>
+                    Match all identical pairs before time runs out on each floor. One mistake or missed timer resets you to the ground floor.
+                </div>
+
+                <div style="display: flex; gap: 8px; margin-top: 4px;">
+                    <button id="btn-landing-stats" class="pill-btn" style="padding: 10px 18px; border-radius: 24px;">STATS / ARCHIVE</button>
+                    <button id="start-climb-btn" class="btn-start">Start Climb</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAMEPLAY HEADER -->
+        <div id="gameplay-header" class="gameplay-header-box" style="display: none;">
+            <p class="game-logo-title">Eleventh Floor</p>
+            <p class="game-logo-sub">PARITY</p>
+        </div>
+
+        <!-- Gameplay HUD Header -->
+        <div class="hud-sidebar-container" id="floor-hud-container" style="display: none;">
+            <div class="tower-stack" id="tower-stack">
+                <div class="tower-floor" data-floor="11"></div>
+                <div class="tower-floor" data-floor="10"></div>
+                <div class="tower-floor" data-floor="9"></div>
+                <div class="tower-floor" data-floor="8"></div>
+                <div class="tower-floor" data-floor="7"></div>
+                <div class="tower-floor" data-floor="6"></div>
+                <div class="tower-floor" data-floor="5"></div>
+                <div class="tower-floor" data-floor="4"></div>
+                <div class="tower-floor" data-floor="3"></div>
+                <div class="tower-floor" data-floor="2"></div>
+                <div class="tower-floor" data-floor="1"></div>
+            </div>
+
+            <div class="floor-info-box">
+                <div class="floor-left-group">
+                    <div class="current-floor-display" id="floor-number-val"><span style="color: var(--genre-pink);">1st</span> <span style="color: #ffffff;">Floor</span></div>
+                    <div class="floor-rule-text" id="floor-rule-text">1 PAIR • TAP ANY TILE TO REVEAL</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Play Card Workspace -->
+        <div id="game-workspace" class="play-card" style="display: none;">
+            <div id="message-box"></div>
+
+            <div class="timer-bar-container">
+                <div id="timer-bar-fill" class="timer-bar-fill"></div>
+            </div>
+
+            <div id="parity-grid" class="parity-grid"></div>
+        </div>
+
+        <!-- VICTORY SCREEN LAYOUT -->
+        <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
+            
+            <div class="game-logo-box" style="margin-bottom: 0;">
+                <h1 class="game-logo-pink">11FL?</h1>
+                <p class="game-logo-title">Eleventh Floor</p>
+                <p class="game-logo-sub">PARITY</p>
+            </div>
+
+            <div class="victory-receipt">
+                <div style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 3px; color: var(--genre-pink); text-transform: uppercase; text-align: center; margin-bottom: 2px;">DESTINATION REACHED</div>
+                <div style="font-family: 'Anton', sans-serif; font-size: 2rem; color: #ffffff; letter-spacing: 1px; margin-bottom: 4px; text-align: center;">PERFECT</div>
+                
+                <div class="victory-row">
+                    <span class="victory-label">Time Elapsed</span>
+                    <span id="victory-time-display" class="victory-data">00:00</span>
+                </div>
+                
+                <div class="victory-row">
+                    <span class="victory-label">Accuracy</span>
+                    <span class="victory-data" style="color: var(--state-success);">100% (10/10)</span>
+                </div>
+                
+                <div class="victory-row" style="border-bottom: none; padding-bottom: 0;">
+                    <span class="victory-label">Active Streak</span>
+                    <span id="victory-streak-display" class="victory-data" style="color: var(--state-active);">0 Days</span>
+                </div>
+            </div>
+
+            <button id="btn-victory-stats" class="btn-start" style="width: 100%; max-width: 320px; margin-bottom: 12px; background-color: var(--genre-pink); color: #ffffff; border-color: var(--genre-pink);">VIEW STATS & ARCHIVES</button>
+            
+            <div style="font-size: 0.65rem; color: var(--text-muted); font-weight: 600; letter-spacing: 1px; max-width: 280px; line-height: 1.5;">
+                Unlock all past daily games and custom quizzes for £2 a month or a discounted price of £20 a year in the Archive Vault.
+            </div>
+        </div>
+
+        <footer>
+            <div id="footer-text">ONE MISTAKE RESETS THE CLIMB TO 1ST FLOOR.</div>
+        </footer>
+    </div>
+
+    <!-- Stats & Archive Vault Modal -->
+    <div id="modal-vault" class="modal-overlay hidden">
+        <div class="modal-card modal-large">
+            <h2 style="font-size: 1.2rem; font-weight: 800; color: var(--genre-pink);">STATS</h2>
+            <div class="stats-summary-grid">
+                <div class="stat-box"><span id="stat-played" class="stat-val" style="color: var(--genre-pink);">0</span><span class="stat-lbl">Played</span></div>
+                <div class="stat-box"><span id="stat-wins" class="stat-val" style="color: var(--genre-pink);">0</span><span class="stat-lbl">Wins</span></div>
+                <div class="stat-box"><span id="stat-winrate" class="stat-val" style="color: var(--genre-pink);">0%</span><span class="stat-lbl">Win %</span></div>
+                <div class="stat-box"><span id="stat-streak" class="stat-val" style="color: var(--genre-pink);">0</span><span class="stat-lbl">Streak</span></div>
+                <div class="stat-box" style="grid-column: span 2;"><span id="stat-bestfloor" class="stat-val">FL 01</span><span class="stat-lbl">Best Peak</span></div>
+            </div>
+
+            <h3 style="font-size: 0.72rem; font-weight: 700; color: var(--genre-pink); margin-top: 10px; text-transform: uppercase;">ARCHIVE VAULT</h3>
+            <div id="vault-list" class="vault-grid"></div>
+            <button id="btn-close-vault" class="btn-modal">CLOSE</button>
+        </div>
+    </div>
+
+    <script src="parity-data.js"></script>
+    <script src="parity.js"></script>
+</body>
+</html>
