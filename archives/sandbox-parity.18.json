@@ -1,0 +1,27 @@
+{
+  "title": "Deep Space Station",
+  "floors": [
+    { "floor": 1, "pairs": 1, "timeLimit": 12, "icons": ["spacestation"] },
+    { "floor": 2, "pairs": 2, "timeLimit": 16, "icons": ["spacestation", "shuttle"] },
+    { "floor": 3, "pairs": 3, "timeLimit": 22, "icons": ["spacestation", "shuttle", "astronaut"] },
+    { "floor": 4, "pairs": 4, "timeLimit": 28, "icons": ["spacestation", "shuttle", "astronaut", "solarpanel"] },
+    { "floor": 5, "pairs": 5, "timeLimit": 34, "icons": ["spacestation", "shuttle", "astronaut", "solarpanel", "rover"] },
+    { "floor": 6, "pairs": 6, "timeLimit": 40, "icons": ["spacestation", "shuttle", "astronaut", "solarpanel", "rover", "blackhole"] },
+    { "floor": 7, "pairs": 7, "timeLimit": 46, "icons": ["spacestation", "shuttle", "astronaut", "solarpanel", "rover", "blackhole", "alienhead"] },
+    { "floor": 8, "pairs": 8, "timeLimit": 52, "icons": ["spacestation", "shuttle", "astronaut", "solarpanel", "rover", "blackhole", "alienhead", "satellitedish"] },
+    { "floor": 9, "pairs": 9, "timeLimit": 58, "icons": ["spacestation", "shuttle", "astronaut", "solarpanel", "rover", "blackhole", "alienhead", "satellitedish", "meteor"] },
+    { "floor": 10, "pairs": 10, "timeLimit": 64, "icons": ["spacestation", "shuttle", "astronaut", "solarpanel", "rover", "blackhole", "alienhead", "satellitedish", "meteor", "warpcore"] }
+  ],
+  "svgMap": {
+    "spacestation": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"4\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\" stroke=\"#00F0FF\" stroke-width=\"2\"/><line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"22\" stroke=\"#00F0FF\" stroke-width=\"2\"/></svg>",
+    "shuttle": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 2c-3 4-3 10-3 14l-4 2v2l7-2 7 2v-2l-4-2c0-4 0-10-3-14z\" fill=\"#0d1117\" stroke=\"#FFD700\" stroke-width=\"1.5\"/><circle cx=\"12\" cy=\"9\" r=\"1.5\" fill=\"#FFD700\"/></svg>",
+    "astronaut": "<svg viewBox=\"0 0 24 24\"><rect x=\"6\" y=\"5\" width=\"12\" height=\"10\" rx=\"5\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><rect x=\"8\" y=\"7\" width=\"8\" height=\"6\" rx=\"3\" fill=\"#39FF14\"/></svg>",
+    "solarpanel": "<svg viewBox=\"0 0 24 24\"><rect x=\"2\" y=\"8\" width=\"20\" height=\"8\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><line x1=\"8\" y1=\"8\" x2=\"8\" y2=\"16\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><line x1=\"16\" y1=\"8\" x2=\"16\" y2=\"16\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\" stroke=\"#7000FF\" stroke-width=\"1.5\"/></svg>",
+    "rover": "<svg viewBox=\"0 0 24 24\"><rect x=\"5\" y=\"8\" width=\"14\" height=\"7\" rx=\"1\" fill=\"#0d1117\" stroke=\"#FF007F\" stroke-width=\"1.5\"/><circle cx=\"7\" cy=\"18\" r=\"2\" fill=\"#FF007F\"/><circle cx=\"12\" cy=\"18\" r=\"2\" fill=\"#FF007F\"/><circle cx=\"17\" cy=\"18\" r=\"2\" fill=\"#FF007F\"/></svg>",
+    "blackhole": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"5\" fill=\"#000\" stroke=\"#00F0FF\" stroke-width=\"2\"/><ellipse cx=\"12\" cy=\"12\" rx=\"10\" ry=\"3\" fill=\"none\" stroke=\"#FFD700\" stroke-width=\"1.5\"/></svg>",
+    "alienhead": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 3c-5 0-8 4-8 9 0 4 3 9 8 9s8-5 8-9c0-5-3-9-8-9z\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><ellipse cx=\"8.5\" cy=\"11\" rx=\"2.5\" ry=\"4\" fill=\"#39FF14\" transform=\"rotate(-15 8.5 11)\"/><ellipse cx=\"15.5\" cy=\"11\" rx=\"2.5\" ry=\"4\" fill=\"#39FF14\" transform=\"rotate(15 15.5 11)\"/></svg>",
+    "satellitedish": "<svg viewBox=\"0 0 24 24\"><path d=\"M4 15c0-6 5-11 11-11\" stroke=\"#FF007F\" stroke-width=\"2\" fill=\"none\"/><line x1=\"9\" y1=\"9\" x2=\"16\" y2=\"16\" stroke=\"#FF007F\" stroke-width=\"2\"/><line x1=\"12\" y1=\"20\" x2=\"16\" y2=\"16\" stroke=\"#FF007F\" stroke-width=\"2\"/></svg>",
+    "meteor": "<svg viewBox=\"0 0 24 24\"><circle cx=\"17\" cy=\"7\" r=\"4\" fill=\"#FFD700\"/><path d=\"M14 9L4 19M11 12L3 16M16 5L8 3\" stroke=\"#FFD700\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></svg>",
+    "warpcore": "<svg viewBox=\"0 0 24 24\"><rect x=\"7\" y=\"3\" width=\"10\" height=\"18\" rx=\"2\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><circle cx=\"12\" cy=\"8\" r=\"2\" fill=\"#00F0FF\"/><circle cx=\"12\" cy=\"12\" r=\"2\" fill=\"#39FF14\"/><circle cx=\"12\" cy=\"16\" r=\"2\" fill=\"#FF007F\"/></svg>"
+  }
+}
