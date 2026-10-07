@@ -1,0 +1,27 @@
+{
+  "title": "High-Altitude Aviation",
+  "floors": [
+    { "floor": 1, "pairs": 1, "timeLimit": 12, "icons": ["altimeter"] },
+    { "floor": 2, "pairs": 2, "timeLimit": 16, "icons": ["altimeter", "biplane"] },
+    { "floor": 3, "pairs": 3, "timeLimit": 22, "icons": ["altimeter", "biplane", "propeller"] },
+    { "floor": 4, "pairs": 4, "timeLimit": 28, "icons": ["altimeter", "biplane", "propeller", "horizon"] },
+    { "floor": 5, "pairs": 5, "timeLimit": 34, "icons": ["altimeter", "biplane", "propeller", "horizon", "jetengine"] },
+    { "floor": 6, "pairs": 6, "timeLimit": 40, "icons": ["altimeter", "biplane", "propeller", "horizon", "jetengine", "radarscope"] },
+    { "floor": 7, "pairs": 7, "timeLimit": 46, "icons": ["altimeter", "biplane", "propeller", "horizon", "jetengine", "radarscope", "windsock"] },
+    { "floor": 8, "pairs": 8, "timeLimit": 52, "icons": ["altimeter", "biplane", "propeller", "horizon", "jetengine", "radarscope", "windsock", "aviatorwings"] },
+    { "floor": 9, "pairs": 9, "timeLimit": 58, "icons": ["altimeter", "biplane", "propeller", "horizon", "jetengine", "radarscope", "windsock", "aviatorwings", "beaconlight"] },
+    { "floor": 10, "pairs": 10, "timeLimit": 64, "icons": ["altimeter", "biplane", "propeller", "horizon", "jetengine", "radarscope", "windsock", "aviatorwings", "beaconlight", "flightyoke"] }
+  ],
+  "svgMap": {
+    "altimeter": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><line x1=\"12\" y1=\"12\" x2=\"12\" y2=\"6\" stroke=\"#FFD700\" stroke-width=\"2\"/><line x1=\"12\" y1=\"12\" x2=\"16\" y2=\"14\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/></svg>",
+    "biplane": "<svg viewBox=\"0 0 24 24\"><line x1=\"3\" y1=\"8\" x2=\"21\" y2=\"8\" stroke=\"#39FF14\" stroke-width=\"2\"/><line x1=\"5\" y1=\"14\" x2=\"19\" y2=\"14\" stroke=\"#39FF14\" stroke-width=\"2\"/><rect x=\"11\" y=\"6\" width=\"2\" height=\"10\" fill=\"#39FF14\"/></svg>",
+    "propeller": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"2.5\" fill=\"#FF007F\"/><ellipse cx=\"12\" cy=\"6\" rx=\"2\" ry=\"4\" fill=\"#FF007F\"/><ellipse cx=\"12\" cy=\"18\" rx=\"2\" ry=\"4\" fill=\"#FF007F\"/><ellipse cx=\"6\" cy=\"12\" rx=\"4\" ry=\"2\" fill=\"#FF007F\"/><ellipse cx=\"18\" cy=\"12\" rx=\"4\" ry=\"2\" fill=\"#FF007F\"/></svg>",
+    "horizon": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><line x1=\"3\" y1=\"12\" x2=\"21\" y2=\"12\" stroke=\"#FFD700\" stroke-width=\"2\"/><polygon points=\"12,8 10,12 14,12\" fill=\"#FFD700\"/></svg>",
+    "jetengine": "<svg viewBox=\"0 0 24 24\"><ellipse cx=\"12\" cy=\"12\" rx=\"8\" ry=\"9\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><circle cx=\"12\" cy=\"12\" r=\"3\" fill=\"#00F0FF\"/><line x1=\"12\" y1=\"3\" x2=\"12\" y2=\"21\" stroke=\"#00F0FF\" stroke-width=\"1\"/></svg>",
+    "radarscope": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><line x1=\"12\" y1=\"12\" x2=\"19\" y2=\"8\" stroke=\"#39FF14\" stroke-width=\"2\"/><circle cx=\"16\" cy=\"9\" r=\"1.5\" fill=\"#39FF14\"/></svg>",
+    "windsock": "<svg viewBox=\"0 0 24 24\"><path d=\"M6 5v16M6 6h12l-3 3h-9l3 3h-6\" stroke=\"#FF007F\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"/></svg>",
+    "aviatorwings": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 10c-3-3-8-3-10 0 3 4 8 3 10 0zM12 10c3-3 8-3 10 0-3 4-8 3-10 0z\" fill=\"#0d1117\" stroke=\"#FFD700\" stroke-width=\"1.5\"/><circle cx=\"12\" cy=\"10\" r=\"2\" fill=\"#FFD700\"/></svg>",
+    "beaconlight": "<svg viewBox=\"0 0 24 24\"><polygon points=\"8,20 16,20 14,12 10,12\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><circle cx=\"12\" cy=\"8\" r=\"4\" fill=\"#FFD700\"/></svg>",
+    "flightyoke": "<svg viewBox=\"0 0 24 24\"><path d=\"M5 10v4a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4\" stroke=\"#00F0FF\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\" stroke=\"#00F0FF\" stroke-width=\"2\"/></svg>"
+  }
+}
