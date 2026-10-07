@@ -50,6 +50,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     init();
 
+    function triggerHaptic() {
+        if (navigator.vibrate) {
+            navigator.vibrate([10, 30, 10]);
+        }
+    }
+
+    function bindInteraction(element, handler) {
+        if (!element) return;
+        let handled = false;
+
+        element.addEventListener('pointerdown', (e) => {
+            handled = true;
+            triggerHaptic();
+            handler(e);
+        });
+
+        element.addEventListener('click', (e) => {
+            if (handled) {
+                handled = false;
+                e.preventDefault();
+                return;
+            }
+            triggerHaptic();
+            handler(e);
+        });
+    }
+
     function init() {
         activeDataSet = window.PARITY_DAILY_SET || null;
         activeGameData = activeDataSet ? activeDataSet.floors : [];
@@ -58,24 +85,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function bindEvents() {
-        if (startClimbBtn) startClimbBtn.addEventListener('click', startGame);
+        if (startClimbBtn) bindInteraction(startClimbBtn, startGame);
 
         if (statsBtn) {
-            statsBtn.addEventListener('click', () => {
+            bindInteraction(statsBtn, () => {
                 if (statsModal) statsModal.classList.remove('hidden');
                 populateVault();
             });
         }
 
         if (victoryStatsBtn) {
-            victoryStatsBtn.addEventListener('click', () => {
+            bindInteraction(victoryStatsBtn, () => {
                 if (statsModal) statsModal.classList.remove('hidden');
                 populateVault();
             });
         }
 
         if (closeVaultBtn) {
-            closeVaultBtn.addEventListener('click', () => {
+            bindInteraction(closeVaultBtn, () => {
                 if (statsModal) statsModal.classList.add('hidden');
                 if (victoryScreen && victoryScreen.style.display !== 'none') {
                     resetToStartScreen();
@@ -84,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (soundBtn) {
-            soundBtn.addEventListener('click', () => {
+            bindInteraction(soundBtn, () => {
                 soundEnabled = !soundEnabled;
                 soundBtn.textContent = `SOUND: ${soundEnabled ? 'ON' : 'OFF'}`;
             });
@@ -159,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const btn = document.createElement('button');
                 btn.className = 'vault-item-btn';
                 btn.innerHTML = `<strong>Archive ${id}</strong>`;
-                btn.onclick = () => loadVaultSet(data);
+                bindInteraction(btn, () => loadVaultSet(data));
                 buttons.push(btn);
             }
         });
@@ -277,198 +304,3 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             tile.dataset.icon = iconKey;
-            tile.dataset.index = index;
-            tile.innerHTML = svgMap[iconKey] || '';
-            tile.addEventListener('click', () => handleTileClick(tile));
-            parityGrid.appendChild(tile);
-        });
-    }
-
-    function startTimer(seconds) {
-        timeRemaining = seconds;
-        totalFloorTime = seconds;
-        updateTimerBar();
-
-        timerInterval = setInterval(() => {
-            timeRemaining -= 0.1;
-            updateTimerBar();
-
-            if (timeRemaining <= 0) {
-                clearInterval(timerInterval);
-                handleFloorFailure('TIME EXPIRED — DROPPED TO 1ST FLOOR');
-            }
-        }, 100);
-    }
-
-    function updateTimerBar() {
-        if (!timerBarFill) return;
-        const pct = Math.max(0, (timeRemaining / totalFloorTime) * 100);
-        timerBarFill.style.width = `${pct}%`;
-
-        if (pct <= 50) {
-            timerBarFill.style.backgroundColor = 'var(--state-error)';
-            timerBarFill.style.boxShadow = '0 0 10px var(--state-error-glow)';
-        } else {
-            timerBarFill.style.backgroundColor = 'var(--state-active)';
-            timerBarFill.style.boxShadow = '0 0 8px var(--state-active-glow)';
-        }
-    }
-
-    function handleTileClick(tile) {
-        if (isProcessing || tile.classList.contains('matched') || tile.classList.contains('selected') || selectedTiles.length >= 2) {
-            return;
-        }
-
-        document.querySelectorAll('.parity-tile.pulse-hint').forEach(t => t.classList.remove('pulse-hint'));
-
-        tile.classList.remove('face-down');
-        tile.classList.add('selected');
-        selectedTiles.push(tile);
-
-        if (selectedTiles.length === 2) {
-            isProcessing = true;
-            checkMatch();
-        }
-    }
-
-    function checkMatch() {
-        const [tile1, tile2] = selectedTiles;
-
-        if (tile1.dataset.icon === tile2.dataset.icon) {
-            tile1.classList.remove('selected');
-            tile2.classList.remove('selected');
-            tile1.classList.add('matched');
-            tile2.classList.add('matched');
-
-            matchedPairsCount++;
-            selectedTiles = [];
-            isProcessing = false;
-
-            const floorData = activeGameData[currentFloorIndex];
-            if (matchedPairsCount === floorData.pairs) {
-                clearInterval(timerInterval);
-                showMessage('PARITY MATCHED!', true);
-
-                setTimeout(() => {
-                    if (currentFloorIndex + 1 >= activeGameData.length) {
-                        stopMatchTimer();
-                        const newStats = recordGameResult(true, 11);
-
-                        if (victoryTimeDisplay) victoryTimeDisplay.textContent = formatTime(totalElapsedSeconds);
-                        if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${newStats.streak} Days`;
-
-                        if (hudContainer) hudContainer.style.display = 'none';
-                        if (gameWorkspace) gameWorkspace.style.display = 'none';
-                        if (gameplayHeader) gameplayHeader.style.display = 'none';
-                        if (activeGameTimer) activeGameTimer.style.display = 'none';
-                        if (footerText) footerText.style.display = 'none';
-
-                        if (victoryScreen) victoryScreen.style.display = 'flex';
-                    } else {
-                        currentFloorIndex++;
-                        loadFloor(currentFloorIndex);
-                    }
-                }, 800);
-            }
-        } else {
-            tile1.classList.add('error');
-            tile2.classList.add('error');
-
-            setTimeout(() => {
-                tile1.classList.remove('selected', 'error');
-                tile2.classList.remove('selected', 'error');
-                tile1.classList.add('face-down');
-                tile2.classList.add('face-down');
-
-                selectedTiles = [];
-                isProcessing = false;
-            }, 600);
-        }
-    }
-
-    function handleFloorFailure(reason) {
-        isProcessing = true;
-        showMessage(reason, false);
-
-        const towerFloors = document.querySelectorAll('.tower-floor');
-        const activeTowerFloor = Array.from(towerFloors).find(
-            f => parseInt(f.dataset.floor) === currentFloorIndex + 1
-        );
-        if (activeTowerFloor) activeTowerFloor.classList.add('failed');
-
-        stopMatchTimer();
-        recordGameResult(false, currentFloorIndex + 1);
-
-        setTimeout(() => {
-            currentFloorIndex = 0;
-            startMatchTimer();
-            loadFloor(0);
-        }, 1500);
-    }
-
-    function updateTowerStack(activeFloorNum) {
-        const towerFloors = document.querySelectorAll('.tower-floor');
-        towerFloors.forEach(floorElem => {
-            const floorVal = parseInt(floorElem.dataset.floor);
-            floorElem.classList.remove('active', 'completed', 'failed');
-
-            if (floorVal === activeFloorNum) {
-                floorElem.classList.add('active');
-            } else if (floorVal < activeFloorNum) {
-                floorElem.classList.add('completed');
-            }
-        });
-    }
-
-    function showMessage(msg, isSuccess = false) {
-        if (!messageBox) return;
-        messageBox.textContent = msg;
-        messageBox.style.color = isSuccess ? 'var(--state-success)' : 'var(--state-error)';
-    }
-
-    function recordGameResult(isWin, peakFloor) {
-        const stats = getStats();
-        stats.played++;
-        if (isWin) {
-            stats.wins++;
-            stats.streak++;
-        } else {
-            stats.streak = 0;
-        }
-
-        if (peakFloor > stats.bestFloor) {
-            stats.bestFloor = peakFloor;
-        }
-
-        localStorage.setItem(STATS_KEY, JSON.stringify(stats));
-        updateStatsDisplay();
-        return stats;
-    }
-
-    function getStats() {
-        const raw = localStorage.getItem(STATS_KEY);
-        if (!raw) {
-            return { played: 0, wins: 0, streak: 0, bestFloor: 1 };
-        }
-        return JSON.parse(raw);
-    }
-
-    function updateStatsDisplay() {
-        const stats = getStats();
-        const playedElem = document.getElementById('stat-played');
-        const winsElem = document.getElementById('stat-wins');
-        const winrateElem = document.getElementById('stat-winrate');
-        const streakElem = document.getElementById('stat-streak');
-        const bestfloorElem = document.getElementById('stat-bestfloor');
-
-        if (playedElem) playedElem.textContent = stats.played;
-        if (winsElem) winsElem.textContent = stats.wins;
-
-        const winRate = stats.played > 0 ? Math.round((stats.wins / stats.played) * 100) : 0;
-        if (winrateElem) winrateElem.textContent = `${winRate}%`;
-        if (streakElem) streakElem.textContent = `${stats.streak}`;
-
-        const bestOrd = ordinals[stats.bestFloor - 1] || `${stats.bestFloor}th`;
-        if (bestfloorElem) bestfloorElem.textContent = `${bestOrd} Floor`;
-    }
-});
