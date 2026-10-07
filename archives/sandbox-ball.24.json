@@ -1,0 +1,144 @@
+{
+  "setId": "23",
+  "title": "Think You Know Ball? - Set 23",
+  "questions": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "Which soon to be Championship team (if half the league get their way) recently found themselves up in court?",
+      "options": [
+        "Manchester City",
+        "Manchester City"
+      ],
+      "answer": "Manchester City",
+      "explanation": "Manchester City lodged a formal appeal regarding their ongoing legal case with the Premier League.",
+      "anchorClues": "Manchester City legal appeal"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "Which iconic goalkeeper has a birthday today?",
+      "options": [
+        "Bruce Grobbelaar",
+        "Ray Clemence",
+        "David Seaman",
+        "Neville Southall"
+      ],
+      "answer": "Bruce Grobbelaar",
+      "explanation": "Born 6 October 1957, Bruce Grobbelaar won six league titles and the European Cup with Liverpool.",
+      "anchorClues": "Bruce Grobbelaar birthday"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "Which team is currently 3rd from bottom?",
+      "options": [
+        "Coventry City",
+        "Bournemouth",
+        "Fulham",
+        "Tottenham Hotspur"
+      ],
+      "answer": "Coventry City",
+      "explanation": "Coventry City sit 18th in the table heading into the October 2026 international break.",
+      "anchorClues": "Coventry City 18th place"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "Which Premier League side suffered a 4–2 defeat to Brighton before the international break?",
+      "options": [
+        "Chelsea",
+        "West Ham United",
+        "Everton",
+        "Wolverhampton Wanderers"
+      ],
+      "answer": "Chelsea",
+      "explanation": "Chelsea lost 4–2 to Brighton in matchweek 7.",
+      "anchorClues": "Chelsea 4-2 Brighton"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "Which player holds the record for receiving the most yellow cards in a single Premier League season, picking up 14 bookings?",
+      "options": [
+        "João Palhinha",
+        "Etienne Capoue",
+        "Lee Cattermole",
+        "José Holebas"
+      ],
+      "answer": "João Palhinha",
+      "explanation": "João Palhinha picked up 14 yellow cards for Fulham during the 2022–23 campaign.",
+      "anchorClues": "João Palhinha 14 yellow cards single season"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "Which manager recorded 95 points in his Premier League debut season in 2004–05?",
+      "options": [
+        "José Mourinho",
+        "Antonio Conte",
+        "Carlo Ancelotti",
+        "Pep Guardiola"
+      ],
+      "answer": "José Mourinho",
+      "explanation": "José Mourinho accumulated 95 points in his first Chelsea season.",
+      "anchorClues": "José Mourinho 95 points 2004-05"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "Which squad number was assigned to James Milner upon his transfer to Aston Villa from Newcastle United in 2008?",
+      "options": [
+        "7",
+        "8",
+        "11",
+        "20"
+      ],
+      "answer": "7",
+      "explanation": "James Milner took the vacant number 7 shirt at Villa Park, maintaining our permanent Floor 7 answer.",
+      "anchorClues": "James Milner squad number 7 / Villa 2008"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "Which referee holds the record for issuing the most red cards in Premier League history?",
+      "options": [
+        "Mike Dean",
+        "Martin Atkinson",
+        "Graham Poll",
+        "Phil Dowd"
+      ],
+      "answer": "Mike Dean",
+      "explanation": "Mike Dean issued 89 red cards during his Premier League officiating career.",
+      "anchorClues": "Mike Dean 89 red cards"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "Which player holds the record for scoring the most penalties in a single Premier League season?",
+      "options": [
+        "Bruno Fernandes",
+        "Jamie Vardy",
+        "Frank Lampard",
+        "Harry Kane"
+      ],
+      "answer": "Bruno Fernandes",
+      "explanation": "Bruno Fernandes scored 10 penalties in a single top-flight campaign.",
+      "anchorClues": "Bruno Fernandes penalty record"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "Which two players have scored Premier League penalties with both their right and left foot?",
+      "options": [
+        "Obafemi Martins & Bobby Zamora",
+        "Santi Cazorla & Pedro",
+        "Marek Hamsik & Son Heung-min",
+        "Morten Gamst Pedersen & Harry Kewell"
+      ],
+      "answer": "Obafemi Martins & Bobby Zamora",
+      "explanation": "Obafemi Martins and Bobby Zamora are the only players to convert top-flight penalties using both feet.",
+      "anchorClues": "Obafemi Martins Bobby Zamora two-footed penalty record"
+    }
+  ]
+}
