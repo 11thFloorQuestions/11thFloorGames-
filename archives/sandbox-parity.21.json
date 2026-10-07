@@ -1,0 +1,27 @@
+{
+  "title": "Pirate Cursed Gold",
+  "floors": [
+    { "floor": 1, "pairs": 1, "timeLimit": 12, "icons": ["doubloon"] },
+    { "floor": 2, "pairs": 2, "timeLimit": 16, "icons": ["doubloon", "cutlass"] },
+    { "floor": 3, "pairs": 3, "timeLimit": 22, "icons": ["doubloon", "cutlass", "jollyroger"] },
+    { "floor": 4, "pairs": 4, "timeLimit": 28, "icons": ["doubloon", "cutlass", "jollyroger", "chest"] },
+    { "floor": 5, "pairs": 5, "timeLimit": 34, "icons": ["doubloon", "cutlass", "jollyroger", "chest", "flintlock"] },
+    { "floor": 6, "pairs": 6, "timeLimit": 40, "icons": ["doubloon", "cutlass", "jollyroger", "chest", "flintlock", "spyglass"] },
+    { "floor": 7, "pairs": 7, "timeLimit": 46, "icons": ["doubloon", "cutlass", "jollyroger", "chest", "flintlock", "spyglass", "kraken"] },
+    { "floor": 8, "pairs": 8, "timeLimit": 52, "icons": ["doubloon", "cutlass", "jollyroger", "chest", "flintlock", "spyglass", "kraken", "cannon"] },
+    { "floor": 9, "pairs": 9, "timeLimit": 58, "icons": ["doubloon", "cutlass", "jollyroger", "chest", "flintlock", "spyglass", "kraken", "cannon", "shipwheel"] },
+    { "floor": 10, "pairs": 10, "timeLimit": 64, "icons": ["doubloon", "cutlass", "jollyroger", "chest", "flintlock", "spyglass", "kraken", "cannon", "shipwheel", "mapcompass"] }
+  ],
+  "svgMap": {
+    "doubloon": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"#0d1117\" stroke=\"#FFD700\" stroke-width=\"1.5\"/><polygon points=\"12,5 14,10 19,10 15,13 17,18 12,15 7,18 9,13 5,10 10,10\" fill=\"#FFD700\"/></svg>",
+    "cutlass": "<svg viewBox=\"0 0 24 24\"><path d=\"M4 20c8-2 13-7 16-16-5 2-10 7-12 12\" stroke=\"#00F0FF\" stroke-width=\"2\" fill=\"#0d1117\" stroke-linecap=\"round\"/><path d=\"M4 20c1 1 3 0 4-2\" stroke=\"#FFD700\" stroke-width=\"2\" fill=\"none\"/></svg>",
+    "jollyroger": "<svg viewBox=\"0 0 24 24\"><path d=\"M7 10a5 5 0 1 1 10 0c0 2-1 3-2 4H9c-1-1-2-2-2-4z\" fill=\"#0d1117\" stroke=\"#FF007F\" stroke-width=\"1.5\"/><line x1=\"4\" y1=\"19\" x2=\"20\" y2=\"7\" stroke=\"#FF007F\" stroke-width=\"1.5\"/><line x1=\"4\" y1=\"7\" x2=\"20\" y2=\"19\" stroke=\"#FF007F\" stroke-width=\"1.5\"/></svg>",
+    "chest": "<svg viewBox=\"0 0 24 24\"><rect x=\"4\" y=\"8\" width=\"16\" height=\"11\" rx=\"2\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><path d=\"M4 8c0-3 3-5 8-5s8 2 8 5\" fill=\"none\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><circle cx=\"12\" cy=\"13\" r=\"1.5\" fill=\"#FFD700\"/></svg>",
+    "flintlock": "<svg viewBox=\"0 0 24 24\"><path d=\"M3 14l4-4h12v3h-7l-3 5H5z\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><rect x=\"17\" y=\"10\" width=\"4\" height=\"3\" fill=\"#7000FF\"/></svg>",
+    "spyglass": "<svg viewBox=\"0 0 24 24\"><polygon points=\"3,16 8,13 14,15 21,8 19,6 12,13 7,11 2,14\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><line x1=\"21\" y1=\"8\" x2=\"19\" y2=\"6\" stroke=\"#FFD700\" stroke-width=\"2\"/></svg>",
+    "kraken": "<svg viewBox=\"0 0 24 24\"><path d=\"M6 14c-1 3-3 4-3 6m6-6c0 3-1 5-2 7m8-7c0 3 1 5 2 7m2-7c1 3 3 4 3 6\" stroke=\"#FF007F\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/><circle cx=\"12\" cy=\"9\" r=\"5\" fill=\"#0d1117\" stroke=\"#FF007F\" stroke-width=\"1.5\"/></svg>",
+    "cannon": "<svg viewBox=\"0 0 24 24\"><polygon points=\"4,10 18,7 19,13 5,14\" fill=\"#0d1117\" stroke=\"#FFD700\" stroke-width=\"1.5\"/><circle cx=\"8\" cy=\"17\" r=\"3\" fill=\"#FFD700\"/><circle cx=\"15\" cy=\"17\" r=\"3\" fill=\"#FFD700\"/></svg>",
+    "shipwheel": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"5\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><circle cx=\"12\" cy=\"12\" r=\"8\" fill=\"none\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"22\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\" stroke=\"#39FF14\" stroke-width=\"1.5\"/></svg>",
+    "mapcompass": "<svg viewBox=\"0 0 24 24\"><rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"2\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><polygon points=\"12,6 15,12 12,18 9,12\" fill=\"#00F0FF\"/><line x1=\"7\" y1=\"17\" x2=\"10\" y2=\"14\" stroke=\"#7000FF\" stroke-width=\"1.5\"/></svg>"
+  }
+}
