@@ -1,0 +1,27 @@
+{
+  "title": "Volcanic Igneous Forge",
+  "floors": [
+    { "floor": 1, "pairs": 1, "timeLimit": 12, "icons": ["magma"] },
+    { "floor": 2, "pairs": 2, "timeLimit": 16, "icons": ["magma", "anvil"] },
+    { "floor": 3, "pairs": 3, "timeLimit": 22, "icons": ["magma", "anvil", "obsidian"] },
+    { "floor": 4, "pairs": 4, "timeLimit": 28, "icons": ["magma", "anvil", "obsidian", "volcano"] },
+    { "floor": 5, "pairs": 5, "timeLimit": 34, "icons": ["magma", "anvil", "obsidian", "volcano", "hammer"] },
+    { "floor": 6, "pairs": 6, "timeLimit": 40, "icons": ["magma", "anvil", "obsidian", "volcano", "hammer", "crucible"] },
+    { "floor": 7, "pairs": 7, "timeLimit": 46, "icons": ["magma", "anvil", "obsidian", "volcano", "hammer", "crucible", "bellows"] },
+    { "floor": 8, "pairs": 8, "timeLimit": 52, "icons": ["magma", "anvil", "obsidian", "volcano", "hammer", "crucible", "bellows", "firecrest"] },
+    { "floor": 9, "pairs": 9, "timeLimit": 58, "icons": ["magma", "anvil", "obsidian", "volcano", "hammer", "crucible", "bellows", "firecrest", "tongs"] },
+    { "floor": 10, "pairs": 10, "timeLimit": 64, "icons": ["magma", "anvil", "obsidian", "volcano", "hammer", "crucible", "bellows", "firecrest", "tongs", "moltencore"] }
+  ],
+  "svgMap": {
+    "magma": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 2c3 5 7 8 7 12a7 7 0 0 1-14 0c0-4 4-7 7-12z\" fill=\"#0d1117\" stroke=\"#FF751F\" stroke-width=\"1.5\"/><path d=\"M12 9c1.5 2.5 3.5 4 3.5 6a3.5 3.5 0 0 1-7 0c0-2 2-3.5 3.5-6z\" fill=\"#FF751F\"/></svg>",
+    "anvil": "<svg viewBox=\"0 0 24 24\"><path d=\"M4 11h16l-3 4h2v3H5v-3h2l-3-4zM8 7h8v4H8V7z\" fill=\"#0d1117\" stroke=\"#FFD700\" stroke-width=\"1.5\"/></svg>",
+    "obsidian": "<svg viewBox=\"0 0 24 24\"><polygon points=\"12,2 20,7 18,18 12,22 6,18 4,7\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"22\" stroke=\"#7000FF\" stroke-width=\"1\"/><line x1=\"4\" y1=\"7\" x2=\"18\" y2=\"18\" stroke=\"#7000FF\" stroke-width=\"1\"/></svg>",
+    "volcano": "<svg viewBox=\"0 0 24 24\"><polygon points=\"2,20 8,8 16,8 22,20\" fill=\"#0d1117\" stroke=\"#FF007F\" stroke-width=\"1.5\"/><path d=\"M10 5c-1-2 0-3 2-3s3 1 2 3\" stroke=\"#FF751F\" stroke-width=\"2\" fill=\"none\"/></svg>",
+    "hammer": "<svg viewBox=\"0 0 24 24\"><rect x=\"10\" y=\"4\" width=\"10\" height=\"6\" rx=\"1\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><line x1=\"4\" y1=\"18\" x2=\"12\" y2=\"8\" stroke=\"#39FF14\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>",
+    "crucible": "<svg viewBox=\"0 0 24 24\"><path d=\"M6 6h12l-2 12H8L6 6z\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><ellipse cx=\"12\" cy=\"6\" rx=\"6\" ry=\"2\" fill=\"#FF751F\"/></svg>",
+    "bellows": "<svg viewBox=\"0 0 24 24\"><polygon points=\"4,6 20,10 4,14\" fill=\"#0d1117\" stroke=\"#FFD700\" stroke-width=\"1.5\"/><line x1=\"20\" y1=\"10\" x2=\"23\" y2=\"10\" stroke=\"#FFD700\" stroke-width=\"2\"/></svg>",
+    "firecrest": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 3l3 6 6 3-6 3-3 6-3-6-6-3 6-3 3-6z\" fill=\"#FF007F\"/></svg>",
+    "tongs": "<svg viewBox=\"0 0 24 24\"><path d=\"M6 4l6 8 6-8M8 20l4-8 4 8\" stroke=\"#39FF14\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"/></svg>",
+    "moltencore": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"#0d1117\" stroke=\"#FF751F\" stroke-width=\"1.5\"/><circle cx=\"12\" cy=\"12\" r=\"5\" fill=\"#FF751F\"/><circle cx=\"12\" cy=\"12\" r=\"2\" fill=\"#FFD700\"/></svg>"
+  }
+}
