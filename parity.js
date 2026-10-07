@@ -178,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fetchPromises.push(
                 fetchFileWithFallbacks(`sandbox-parity.${paddedId}.json`)
                     .then(data => ({ id: paddedId, data }))
+                    .catch(() => ({ id: paddedId, data: null }))
             );
         }
 
