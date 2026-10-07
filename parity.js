@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const pct = Math.max(0, (timeRemaining / totalFloorTime) * 100);
         timerBarFill.style.width = `${pct}%`;
 
-        // Turn red at halfway point (<= 50%), otherwise active yellow
+        // Color transition: Red at <= 50% remaining, Yellow otherwise
         if (pct <= 50) {
             timerBarFill.style.backgroundColor = 'var(--state-error)';
             timerBarFill.style.boxShadow = '0 0 10px var(--state-error-glow)';
