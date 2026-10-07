@@ -1,27 +1,27 @@
 {
-  "title": "Medieval Heraldry & Sigils",
+  "title": "Subterranean Caverns & Crystals",
   "floors": [
-    { "floor": 1, "pairs": 1, "timeLimit": 12, "icons": ["lion"] },
-    { "floor": 2, "pairs": 2, "timeLimit": 16, "icons": ["lion", "gauntlet"] },
-    { "floor": 3, "pairs": 3, "timeLimit": 22, "icons": ["lion", "gauntlet", "fleur"] },
-    { "floor": 4, "pairs": 4, "timeLimit": 28, "icons": ["lion", "gauntlet", "fleur", "griffin"] },
-    { "floor": 5, "pairs": 5, "timeLimit": 34, "icons": ["lion", "gauntlet", "fleur", "griffin", "broadsword"] },
-    { "floor": 6, "pairs": 6, "timeLimit": 40, "icons": ["lion", "gauntlet", "fleur", "griffin", "broadsword", "fortress"] },
-    { "floor": 7, "pairs": 7, "timeLimit": 46, "icons": ["lion", "gauntlet", "fleur", "griffin", "broadsword", "fortress", "warhorn"] },
-    { "floor": 8, "pairs": 8, "timeLimit": 52, "icons": ["lion", "gauntlet", "fleur", "griffin", "broadsword", "fortress", "warhorn", "banner"] },
-    { "floor": 9, "pairs": 9, "timeLimit": 58, "icons": ["lion", "gauntlet", "fleur", "griffin", "broadsword", "fortress", "warhorn", "banner", "ironcrown"] },
-    { "floor": 10, "pairs": 10, "timeLimit": 64, "icons": ["lion", "gauntlet", "fleur", "griffin", "broadsword", "fortress", "warhorn", "banner", "ironcrown", "crestshield"] }
+    { "floor": 1, "pairs": 1, "timeLimit": 12, "icons": ["geode"] },
+    { "floor": 2, "pairs": 2, "timeLimit": 16, "icons": ["geode", "pickaxe"] },
+    { "floor": 3, "pairs": 3, "timeLimit": 22, "icons": ["geode", "pickaxe", "stalactite"] },
+    { "floor": 4, "pairs": 4, "timeLimit": 28, "icons": ["geode", "pickaxe", "stalactite", "lantern"] },
+    { "floor": 5, "pairs": 5, "timeLimit": 34, "icons": ["geode", "pickaxe", "stalactite", "lantern", "emerald"] },
+    { "floor": 6, "pairs": 6, "timeLimit": 40, "icons": ["geode", "pickaxe", "stalactite", "lantern", "emerald", "amber"] },
+    { "floor": 7, "pairs": 7, "timeLimit": 46, "icons": ["geode", "pickaxe", "stalactite", "lantern", "emerald", "amber", "fossil"] },
+    { "floor": 8, "pairs": 8, "timeLimit": 52, "icons": ["geode", "pickaxe", "stalactite", "lantern", "emerald", "amber", "fossil", "compass"] },
+    { "floor": 9, "pairs": 9, "timeLimit": 58, "icons": ["geode", "pickaxe", "stalactite", "lantern", "emerald", "amber", "fossil", "compass", "dynamite"] },
+    { "floor": 10, "pairs": 10, "timeLimit": 64, "icons": ["geode", "pickaxe", "stalactite", "lantern", "emerald", "amber", "fossil", "compass", "dynamite", "crystalcluster"] }
   ],
   "svgMap": {
-    "lion": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"#0d1117\" stroke=\"#FFD700\" stroke-width=\"1.5\"/><path d=\"M12 7c-2 0-3 1.5-3 3 0 2 2 3 3 5 1-2 3-3 3-5 0-1.5-1-3-3-3z\" fill=\"#FFD700\"/><circle cx=\"9.5\" cy=\"9.5\" r=\"0.8\" fill=\"#0d1117\"/><circle cx=\"14.5\" cy=\"9.5\" r=\"0.8\" fill=\"#0d1117\"/></svg>",
-    "gauntlet": "<svg viewBox=\"0 0 24 24\"><rect x=\"6\" y=\"10\" width=\"12\" height=\"10\" rx=\"2\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><path d=\"M8 10V5a1.5 1.5 0 0 1 3 0v5M11 10V4a1.5 1.5 0 0 1 3 0v6M14 10V6a1.5 1.5 0 0 1 3 0v4\" fill=\"none\" stroke=\"#00F0FF\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></svg>",
-    "fleur": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 2c1.5 3 2 5 2 7 0 2.5-1.5 4-2 4s-2-1.5-2-4c0-2 .5-4 2-7z\" fill=\"#FF007F\"/><path d=\"M6 10c2 0 4 1 5 3-2 1-4 0-5-3zM18 10c-2 0-4 1-5 3 2 1 4 0 5-3z\" fill=\"#FF007F\"/><line x1=\"5\" y1=\"14\" x2=\"19\" y2=\"14\" stroke=\"#FF007F\" stroke-width=\"2\"/></svg>",
-    "griffin": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 3l3 6h6l-5 4 2 7-6-4-6 4 2-7-5-4h6z\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/><circle cx=\"12\" cy=\"11\" r=\"2\" fill=\"#39FF14\"/></svg>",
-    "broadsword": "<svg viewBox=\"0 0 24 24\"><line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"17\" stroke=\"#7000FF\" stroke-width=\"2\" stroke-linecap=\"round\"/><polygon points=\"12,2 10,6 14,6\" fill=\"#7000FF\"/><line x1=\"7\" y1=\"17\" x2=\"17\" y2=\"17\" stroke=\"#FFD700\" stroke-width=\"2\" stroke-linecap=\"round\"/><circle cx=\"12\" cy=\"21\" r=\"1.5\" fill=\"#FFD700\"/></svg>",
-    "fortress": "<svg viewBox=\"0 0 24 24\"><path d=\"M4 21V9l3-2 3 2 2-2 2 2 3-2 3 2v12H4z\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><rect x=\"10\" y=\"15\" width=\"4\" height=\"6\" fill=\"#00F0FF\"/></svg>",
-    "warhorn": "<svg viewBox=\"0 0 24 24\"><path d=\"M3 14c4 0 7-1 10-4s4-6 8-6v6c-4 0-5 3-8 6s-6 2-10 2v-4z\" fill=\"#0d1117\" stroke=\"#FFD700\" stroke-width=\"1.5\"/><ellipse cx=\"21\" cy=\"7\" rx=\"1\" ry=\"3\" fill=\"#FFD700\"/></svg>",
-    "banner": "<svg viewBox=\"0 0 24 24\"><line x1=\"6\" y1=\"2\" x2=\"6\" y2=\"22\" stroke=\"#FF007F\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M6 4h14l-4 5 4 5H6V4z\" fill=\"#0d1117\" stroke=\"#FF007F\" stroke-width=\"1.5\"/></svg>",
-    "ironcrown": "<svg viewBox=\"0 0 24 24\"><polygon points=\"3,18 4,7 8,12 12,4 16,12 20,7 21,18\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/><rect x=\"3\" y=\"18\" width=\"18\" height=\"3\" rx=\"1\" fill=\"#39FF14\"/></svg>",
-    "crestshield": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 2L4 5v6c0 5.5 3.8 10.7 8 12 4.2-1.3 8-6.5 8-12V5l-8-3z\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><polygon points=\"12,6 15,11 12,16 9,11\" fill=\"#FFD700\"/></svg>"
+    "geode": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 2L4 7v10l8 5 8-5V7l-8-5z\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><polygon points=\"12,6 15,10 12,14 9,10\" fill=\"#00F0FF\"/></svg>",
+    "pickaxe": "<svg viewBox=\"0 0 24 24\"><path d=\"M14 4c2 0 5 1 7 3l-2 2c-2-2-4-2-5-2M4 20l9-9\" stroke=\"#39FF14\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M10 14l2 2\" stroke=\"#FFD700\" stroke-width=\"2\"/></svg>",
+    "stalactite": "<svg viewBox=\"0 0 24 24\"><polygon points=\"4,2 20,2 12,22\" fill=\"#0d1117\" stroke=\"#FF007F\" stroke-width=\"1.5\"/><polygon points=\"8,2 16,2 12,14\" fill=\"#FF007F\"/></svg>",
+    "lantern": "<svg viewBox=\"0 0 24 24\"><rect x=\"7\" y=\"8\" width=\"10\" height=\"11\" rx=\"2\" fill=\"#0d1117\" stroke=\"#FFD700\" stroke-width=\"1.5\"/><path d=\"M9 8V5a3 3 0 0 1 6 0v3\" fill=\"none\" stroke=\"#FFD700\" stroke-width=\"1.5\"/><circle cx=\"12\" cy=\"13.5\" r=\"2.5\" fill=\"#FFD700\"/></svg>",
+    "emerald": "<svg viewBox=\"0 0 24 24\"><polygon points=\"7,3 17,3 21,9 12,21 3,9\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><polygon points=\"9,5 15,5 18,9 12,18 6,9\" fill=\"#39FF14\" opacity=\"0.6\"/></svg>",
+    "amber": "<svg viewBox=\"0 0 24 24\"><ellipse cx=\"12\" cy=\"13\" rx=\"7\" ry=\"9\" fill=\"#0d1117\" stroke=\"#FF751F\" stroke-width=\"1.5\"/><circle cx=\"12\" cy=\"13\" r=\"3\" fill=\"#FF751F\"/></svg>",
+    "fossil": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><path d=\"M12 6c3 0 5 2 5 5s-2 5-5 5-3-1-3-3 1-2 3-2\" fill=\"none\" stroke=\"#7000FF\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>",
+    "compass": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><polygon points=\"12,5 14.5,12 12,11 9.5,12\" fill=\"#FF007F\"/><polygon points=\"12,19 14.5,12 12,13 9.5,12\" fill=\"#00F0FF\"/></svg>",
+    "dynamite": "<svg viewBox=\"0 0 24 24\"><rect x=\"8\" y=\"8\" width=\"8\" height=\"13\" rx=\"1\" fill=\"#0d1117\" stroke=\"#FF007F\" stroke-width=\"1.5\"/><path d=\"M12 8V4c1-1 3-1 4-2\" fill=\"none\" stroke=\"#FFD700\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><line x1=\"6\" y1=\"12\" x2=\"18\" y2=\"12\" stroke=\"#FF007F\" stroke-width=\"1.5\"/></svg>",
+    "crystalcluster": "<svg viewBox=\"0 0 24 24\"><polygon points=\"12,2 15,9 12,18 9,9\" fill=\"#39FF14\"/><polygon points=\"6,8 9,13 6,21 3,13\" fill=\"#00F0FF\"/><polygon points=\"18,8 21,13 18,21 15,13\" fill=\"#7000FF\"/></svg>"
   }
 }
