@@ -1,0 +1,104 @@
+{
+  "floors": [
+    {
+      "question": "Which ancient wonder of the world, located in modern-day Iraq, was supposedly built by King Nebuchadnezzar II for his homesick wife?",
+      "options": [
+        "Hanging Gardens of Babylon",
+        "Lighthouse of Alexandria",
+        "Colossus of Rhodes",
+        "Temple of Artemis"
+      ],
+      "answer": "Hanging Gardens of Babylon"
+    },
+    {
+      "question": "Which legendary British comedy group produced the iconic 1975 satirical film The Holy Grail?",
+      "options": [
+        "Monty Python",
+        "The Goon Show",
+        "Beyond the Fringe",
+        "The League of Gentlemen"
+      ],
+      "answer": "Monty Python"
+    },
+    {
+      "question": "Which sharp satirical HBO drama, created by British writer Jesse Armstrong, follows the dysfunctional owners of global media conglomerate Waystar RoyCo?",
+      "options": [
+        "Succession",
+        "The Newsroom",
+        "Billions",
+        "Veep"
+      ],
+      "answer": "Succession"
+    },
+    {
+      "question": "Which French chemist and microbiologist developed the process of heating liquids to kill harmful bacteria, a method that now bears his name?",
+      "options": [
+        "Louis Pasteur",
+        "Antoine Lavoisier",
+        "Pierre Curie",
+        "Robert Koch"
+      ],
+      "answer": "Louis Pasteur"
+    },
+    {
+      "question": "In avian anatomy, what is the term for the specialized muscular stomach organ used by birds to grind down tough food particles?",
+      "options": [
+        "Gizzard",
+        "Crop",
+        "Proventriculus",
+        "Cloaca"
+      ],
+      "answer": "Gizzard"
+    },
+    {
+      "question": "Which 19th-century British author wrote the celebrated gothic masterpiece Wuthering Heights under the pen name Ellis Bell?",
+      "options": [
+        "Emily Brontë",
+        "Charlotte Brontë",
+        "Anne Brontë",
+        "Mary Shelley"
+      ],
+      "answer": "Emily Brontë"
+    },
+    {
+      "question": "Which chemical element, represented by the symbol W on the periodic table, boasts the highest melting point of all metallic elements?",
+      "options": [
+        "Tungsten",
+        "Titanium",
+        "Platinum",
+        "Molybdenum"
+      ],
+      "answer": "Tungsten"
+    },
+    {
+      "question": "Which renowned Italian architect designed the iconic, red-tiled octagonal dome of Florence Cathedral (Santa Maria del Fiore)?",
+      "options": [
+        "Filippo Brunelleschi",
+        "Donato Bramante",
+        "Michelangelo",
+        "Andrea Palladio"
+      ],
+      "answer": "Filippo Brunelleschi"
+    },
+    {
+      "question": "What is the name of the narrow sea strait that separates the Crimean Peninsula from Russia's Taman Peninsula, connecting the Black Sea to the Sea of Azov?",
+      "options": [
+        "Kerch Strait",
+        "Bosphorus Strait",
+        "Dardanelles",
+        "Malacca Strait"
+      ],
+      "answer": "Kerch Strait"
+    },
+    {
+      "question": "In classical music, which German composer wrote the monumental Goldberg Variations for harpsichord, published in 1741?",
+      "options": [
+        "Johann Sebastian Bach",
+        "George Frideric Handel",
+        "Ludwig van Beethoven",
+        "Franz Schubert"
+      ],
+      "answer": "Johann Sebastian Bach"
+    }
+  ]
+}
