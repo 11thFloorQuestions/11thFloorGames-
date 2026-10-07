@@ -118,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Active Match Timer ---
     function startMatchTimer() {
         stopMatchTimer();
         totalElapsedSeconds = 0;
@@ -332,6 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const pct = Math.max(0, (timeRemaining / totalFloorTime) * 100);
         timerBarFill.style.width = `${pct}%`;
 
+        // Turn red at halfway point (<= 50%), otherwise active yellow
         if (pct <= 50) {
             timerBarFill.style.backgroundColor = 'var(--state-error)';
             timerBarFill.style.boxShadow = '0 0 10px var(--state-error-glow)';
