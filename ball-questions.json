@@ -1,144 +1,146 @@
 {
-  "setId": "23",
-  "title": "Think You Know Ball? - Set 23",
+  "setId": "24",
+  "title": "Think You Know Ball? - Set 24",
   "questions": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Which soon to be Championship team (if half the league get their way) recently found themselves up in court?",
+      "question": "Cole Palmer recently dropped out of the England squad for what official reason?",
       "options": [
-        "Manchester City",
-        "Manchester City"
+        "Muscle injury",
+        "Girlfriend's birthday",
+        "Twisted sock",
+        "Chelsea team request"
       ],
-      "answer": "Manchester City",
-      "explanation": "Manchester City lodged a formal appeal regarding their ongoing legal case with the Premier League.",
-      "anchorClues": "Manchester City legal appeal"
+      "answer": "Muscle injury",
+      "explanation": "Cole Palmer withdrew from the England squad citing a muscle injury.",
+      "anchorClues": "Cole Palmer England withdrawal muscle injury"
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which iconic goalkeeper has a birthday today?",
+      "question": "Which former or current Premier League player celebrates his birthday today?",
       "options": [
-        "Bruce Grobbelaar",
-        "Ray Clemence",
-        "David Seaman",
-        "Neville Southall"
+        "Diego Costa",
+        "Jermain Defoe",
+        "Trent Alexander-Arnold",
+        "All Three"
       ],
-      "answer": "Bruce Grobbelaar",
-      "explanation": "Born 6 October 1957, Bruce Grobbelaar won six league titles and the European Cup with Liverpool.",
-      "anchorClues": "Bruce Grobbelaar birthday"
+      "answer": "All Three",
+      "explanation": "Diego Costa, Jermain Defoe, and Trent Alexander-Arnold were all born on 7 October.",
+      "anchorClues": "Diego Costa Jermain Defoe Trent Alexander-Arnold birthday October 7"
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Which team is currently 3rd from bottom?",
+      "question": "Heading into today's action, where do Chelsea currently sit in the Premier League table?",
       "options": [
-        "Coventry City",
-        "Bournemouth",
-        "Fulham",
-        "Tottenham Hotspur"
+        "4th",
+        "6th",
+        "8th",
+        "10th"
       ],
-      "answer": "Coventry City",
-      "explanation": "Coventry City sit 18th in the table heading into the October 2026 international break.",
-      "anchorClues": "Coventry City 18th place"
+      "answer": "10th",
+      "explanation": "Chelsea currently occupy 10th spot in the Premier League standings.",
+      "anchorClues": "Chelsea 10th place Premier League standings"
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Which Premier League side suffered a 4–2 defeat to Brighton before the international break?",
+      "question": "Which team managed to throw away a 2-0 half-time lead to completely collapse on the south coast right before the international break?",
       "options": [
-        "Chelsea",
-        "West Ham United",
-        "Everton",
-        "Wolverhampton Wanderers"
+        "Tottenham Hotspur",
+        "Manchester United",
+        "Aston Villa",
+        "Newcastle United"
       ],
-      "answer": "Chelsea",
-      "explanation": "Chelsea lost 4–2 to Brighton in matchweek 7.",
-      "anchorClues": "Chelsea 4-2 Brighton"
+      "answer": "Tottenham Hotspur",
+      "explanation": "Tottenham Hotspur surrendered a 2–0 half-time lead to lose 3–2 against Brighton.",
+      "anchorClues": "Tottenham Hotspur 2-0 collapse Brighton"
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Which player holds the record for receiving the most yellow cards in a single Premier League season, picking up 14 bookings?",
+      "question": "Which player holds the record for making the most consecutive Premier League appearances?",
       "options": [
-        "João Palhinha",
-        "Etienne Capoue",
-        "Lee Cattermole",
-        "José Holebas"
+        "Brad Friedel",
+        "Frank Lampard",
+        "David James",
+        "Gareth Barry"
       ],
-      "answer": "João Palhinha",
-      "explanation": "João Palhinha picked up 14 yellow cards for Fulham during the 2022–23 campaign.",
-      "anchorClues": "João Palhinha 14 yellow cards single season"
+      "answer": "Brad Friedel",
+      "explanation": "Brad Friedel made 403 consecutive Premier League appearances between 2004 and 2012.",
+      "anchorClues": "Brad Friedel 403 consecutive appearances record"
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "Which manager recorded 95 points in his Premier League debut season in 2004–05?",
+      "question": "Which manager holds the record for the shortest permanent reign in Premier League history, lasting just 41 days?",
       "options": [
-        "José Mourinho",
-        "Antonio Conte",
-        "Carlo Ancelotti",
-        "Pep Guardiola"
+        "Les Reed",
+        "Frank de Boer",
+        "Nathan Jones",
+        "Bob Bradley"
       ],
-      "answer": "José Mourinho",
-      "explanation": "José Mourinho accumulated 95 points in his first Chelsea season.",
-      "anchorClues": "José Mourinho 95 points 2004-05"
+      "answer": "Les Reed",
+      "explanation": "Les Reed's permanent spell in charge of Charlton Athletic in 2006 lasted only 41 days.",
+      "anchorClues": "Les Reed 41 days Charlton Athletic record"
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Which squad number was assigned to James Milner upon his transfer to Aston Villa from Newcastle United in 2008?",
+      "question": "What squad number was famously worn by cult hero Matt Le Tissier for the vast majority of his Premier League career at Southampton?",
       "options": [
         "7",
         "8",
-        "11",
-        "20"
+        "9",
+        "10"
       ],
       "answer": "7",
-      "explanation": "James Milner took the vacant number 7 shirt at Villa Park, maintaining our permanent Floor 7 answer.",
-      "anchorClues": "James Milner squad number 7 / Villa 2008"
+      "explanation": "Matt Le Tissier famously wore the number 7 shirt for Southampton.",
+      "anchorClues": "Matt Le Tissier squad number 7 Southampton"
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Which referee holds the record for issuing the most red cards in Premier League history?",
+      "question": "Which referee allowed the infamous 'beach ball' goal to stand between Sunderland and Liverpool in 2009?",
       "options": [
-        "Mike Dean",
-        "Martin Atkinson",
-        "Graham Poll",
-        "Phil Dowd"
+        "Mike Jones",
+        "Andre Marriner",
+        "Howard Webb",
+        "Mark Clattenburg"
       ],
-      "answer": "Mike Dean",
-      "explanation": "Mike Dean issued 89 red cards during his Premier League officiating career.",
-      "anchorClues": "Mike Dean 89 red cards"
+      "answer": "Mike Jones",
+      "explanation": "Referee Mike Jones allowed Darren Bent's deflected shot off a beach ball to stand.",
+      "anchorClues": "Mike Jones beach ball goal Sunderland Liverpool 2009"
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "Which player holds the record for scoring the most penalties in a single Premier League season?",
+      "question": "Which club holds the record for scoring the fewest home goals in a single Premier League campaign, managing just 10 at their own ground?",
       "options": [
-        "Bruno Fernandes",
-        "Jamie Vardy",
-        "Frank Lampard",
-        "Harry Kane"
+        "Manchester City",
+        "Derby County",
+        "Sunderland",
+        "Sheffield United"
       ],
-      "answer": "Bruno Fernandes",
-      "explanation": "Bruno Fernandes scored 10 penalties in a single top-flight campaign.",
-      "anchorClues": "Bruno Fernandes penalty record"
+      "answer": "Manchester City",
+      "explanation": "Manchester City scored just 10 home league goals during the 2006–07 season under Stuart Pearce.",
+      "anchorClues": "Manchester City 10 home goals record 2006-07"
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Which two players have scored Premier League penalties with both their right and left foot?",
+      "question": "I played for Arsenal, Chelsea, and Tottenham Hotspur in the Premier League, wore the number 10 shirt as a centre-back, and once staged an on-pitch sit-down strike at St Andrew's. Who am I?",
       "options": [
-        "Obafemi Martins & Bobby Zamora",
-        "Santi Cazorla & Pedro",
-        "Marek Hamsik & Son Heung-min",
-        "Morten Gamst Pedersen & Harry Kewell"
+        "William Gallas",
+        "Emmanuel Adebayor",
+        "Sol Campbell",
+        "David Luiz"
       ],
-      "answer": "Obafemi Martins & Bobby Zamora",
-      "explanation": "Obafemi Martins and Bobby Zamora are the only players to convert top-flight penalties using both feet.",
-      "anchorClues": "Obafemi Martins Bobby Zamora two-footed penalty record"
+      "answer": "William Gallas",
+      "explanation": "William Gallas played for Arsenal, Chelsea, and Spurs, wore number 10 as a centre-back at Arsenal, and famously sat on the pitch at Birmingham City in 2008.",
+      "anchorClues": "William Gallas Arsenal Chelsea Spurs number 10 sit-down strike"
     }
   ]
 }
