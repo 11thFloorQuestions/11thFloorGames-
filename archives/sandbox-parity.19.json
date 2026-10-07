@@ -1,0 +1,27 @@
+{
+  "title": "Feudal Samurai Artifacts",
+  "floors": [
+    { "floor": 1, "pairs": 1, "timeLimit": 12, "icons": ["katana"] },
+    { "floor": 2, "pairs": 2, "timeLimit": 16, "icons": ["katana", "kabuto"] },
+    { "floor": 3, "pairs": 3, "timeLimit": 22, "icons": ["katana", "kabuto", "shuriken"] },
+    { "floor": 4, "pairs": 4, "timeLimit": 28, "icons": ["katana", "kabuto", "shuriken", "torii"] },
+    { "floor": 5, "pairs": 5, "timeLimit": 34, "icons": ["katana", "kabuto", "shuriken", "torii", "oni"] },
+    { "floor": 6, "pairs": 6, "timeLimit": 40, "icons": ["katana", "kabuto", "shuriken", "torii", "oni", "sensu"] },
+    { "floor": 7, "pairs": 7, "timeLimit": 46, "icons": ["katana", "kabuto", "shuriken", "torii", "oni", "sensu", "pagoda"] },
+    { "floor": 8, "pairs": 8, "timeLimit": 52, "icons": ["katana", "kabuto", "shuriken", "torii", "oni", "sensu", "pagoda", "kunai"] },
+    { "floor": 9, "pairs": 9, "timeLimit": 58, "icons": ["katana", "kabuto", "shuriken", "torii", "oni", "sensu", "pagoda", "kunai", "bonsai"] },
+    { "floor": 10, "pairs": 10, "timeLimit": 64, "icons": ["katana", "kabuto", "shuriken", "torii", "oni", "sensu", "pagoda", "kunai", "bonsai", "taiko"] }
+  ],
+  "svgMap": {
+    "katana": "<svg viewBox=\"0 0 24 24\"><path d=\"M3 21c8-8 12-14 18-18\" stroke=\"#FF007F\" stroke-width=\"2\" stroke-linecap=\"round\" fill=\"none\"/><line x1=\"6\" y1=\"18\" x2=\"4\" y2=\"20\" stroke=\"#FFD700\" stroke-width=\"3\"/></svg>",
+    "kabuto": "<svg viewBox=\"0 0 24 24\"><path d=\"M5 14a7 7 0 0 1 14 0v4H5v-4z\" fill=\"#0d1117\" stroke=\"#FFD700\" stroke-width=\"1.5\"/><path d=\"M7 8l5 4 5-4\" stroke=\"#FFD700\" stroke-width=\"2\" fill=\"none\"/></svg>",
+    "shuriken": "<svg viewBox=\"0 0 24 24\"><polygon points=\"12,2 14,9 21,12 14,15 12,22 10,15 3,12 10,9\" fill=\"#00F0FF\"/><circle cx=\"12\" cy=\"12\" r=\"2\" fill=\"#0d1117\"/></svg>",
+    "torii": "<svg viewBox=\"0 0 24 24\"><line x1=\"2\" y1=\"5\" x2=\"22\" y2=\"5\" stroke=\"#FF007F\" stroke-width=\"2.5\"/><line x1=\"4\" y1=\"8\" x2=\"20\" y2=\"8\" stroke=\"#FF007F\" stroke-width=\"1.5\"/><line x1=\"6\" y1=\"5\" x2=\"6\" y2=\"21\" stroke=\"#FF007F\" stroke-width=\"2\"/><line x1=\"18\" y1=\"5\" x2=\"18\" y2=\"21\" stroke=\"#FF007F\" stroke-width=\"2\"/></svg>",
+    "oni": "<svg viewBox=\"0 0 24 24\"><path d=\"M6 10a6 6 0 0 0 12 0v6H6v-6z\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><path d=\"M5 8l3 3M19 8l-3 3\" stroke=\"#39FF14\" stroke-width=\"2\"/></svg>",
+    "sensu": "<svg viewBox=\"0 0 24 24\"><path d=\"M3 17a10 10 0 0 1 18 0L12 20 3 17z\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><line x1=\"12\" y1=\"20\" x2=\"12\" y2=\"7\" stroke=\"#7000FF\" stroke-width=\"1.5\"/></svg>",
+    "pagoda": "<svg viewBox=\"0 0 24 24\"><path d=\"M10 3l2-2 2 2v3h-4V3zM6 8l6-2 6 2v4H6V8zM4 14l8-2 8 2v8H4v-8z\" fill=\"#0d1117\" stroke=\"#FFD700\" stroke-width=\"1.5\"/></svg>",
+    "kunai": "<svg viewBox=\"0 0 24 24\"><polygon points=\"12,2 15,11 12,14 9,11\" fill=\"#00F0FF\"/><line x1=\"12\" y1=\"14\" x2=\"12\" y2=\"19\" stroke=\"#00F0FF\" stroke-width=\"2\"/><circle cx=\"12\" cy=\"20.5\" r=\"1.5\" fill=\"none\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/></svg>",
+    "bonsai": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 18v-5c2-1 3-3 3-5m-3 5c-2-1-3-3-3-5\" stroke=\"#39FF14\" stroke-width=\"2\" fill=\"none\"/><circle cx=\"15\" cy=\"7\" r=\"3\" fill=\"#39FF14\"/><circle cx=\"9\" cy=\"7\" r=\"3\" fill=\"#39FF14\"/><rect x=\"6\" y=\"18\" width=\"12\" height=\"3\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/></svg>",
+    "taiko": "<svg viewBox=\"0 0 24 24\"><ellipse cx=\"12\" cy=\"7\" rx=\"8\" ry=\"3\" fill=\"#0d1117\" stroke=\"#FF007F\" stroke-width=\"1.5\"/><path d=\"M4 7v10c0 1.6 3.6 3 8 3s8-1.4 8-3V7\" fill=\"none\" stroke=\"#FF007F\" stroke-width=\"1.5\"/></svg>"
+  }
+}
