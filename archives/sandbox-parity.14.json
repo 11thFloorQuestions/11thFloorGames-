@@ -1,0 +1,27 @@
+{
+  "title": "Deep Ocean Trench",
+  "floors": [
+    { "floor": 1, "pairs": 1, "timeLimit": 12, "icons": ["trilobite"] },
+    { "floor": 2, "pairs": 2, "timeLimit": 16, "icons": ["trilobite", "angler"] },
+    { "floor": 3, "pairs": 3, "timeLimit": 22, "icons": ["trilobite", "angler", "squid"] },
+    { "floor": 4, "pairs": 4, "timeLimit": 28, "icons": ["trilobite", "angler", "squid", "pearl"] },
+    { "floor": 5, "pairs": 5, "timeLimit": 34, "icons": ["trilobite", "angler", "squid", "pearl", "anchor"] },
+    { "floor": 6, "pairs": 6, "timeLimit": 40, "icons": ["trilobite", "angler", "squid", "pearl", "anchor", "nautilus"] },
+    { "floor": 7, "pairs": 7, "timeLimit": 46, "icons": ["trilobite", "angler", "squid", "pearl", "anchor", "nautilus", "harpoon"] },
+    { "floor": 8, "pairs": 8, "timeLimit": 52, "icons": ["trilobite", "angler", "squid", "pearl", "anchor", "nautilus", "harpoon", "submersible"] },
+    { "floor": 9, "pairs": 9, "timeLimit": 58, "icons": ["trilobite", "angler", "squid", "pearl", "anchor", "nautilus", "harpoon", "submersible", "coral"] },
+    { "floor": 10, "pairs": 10, "timeLimit": 64, "icons": ["trilobite", "angler", "squid", "pearl", "anchor", "nautilus", "harpoon", "submersible", "coral", "tridentgem"] }
+  ],
+  "svgMap": {
+    "trilobite": "<svg viewBox=\"0 0 24 24\"><ellipse cx=\"12\" cy=\"12\" rx=\"6\" ry=\"9\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><line x1=\"6\" y1=\"9\" x2=\"18\" y2=\"9\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><line x1=\"6\" y1=\"12\" x2=\"18\" y2=\"12\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><line x1=\"6\" y1=\"15\" x2=\"18\" y2=\"15\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/></svg>",
+    "angler": "<svg viewBox=\"0 0 24 24\"><path d=\"M18 12c0 4-3 7-7 7s-7-3-7-7 3-6 7-6c2 0 4 1 5 3\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><path d=\"M11 6c-1-3 1-5 4-4\" stroke=\"#FFD700\" stroke-width=\"1.5\" fill=\"none\"/><circle cx=\"16\" cy=\"2\" r=\"1.5\" fill=\"#FFD700\"/></svg>",
+    "squid": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 3a5 5 0 0 0-5 5v5h10V8a5 5 0 0 0-5-5z\" fill=\"#0d1117\" stroke=\"#FF007F\" stroke-width=\"1.5\"/><path d=\"M8 13v7M10 13v9M14 13v9M16 13v7\" stroke=\"#FF007F\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></svg>",
+    "pearl": "<svg viewBox=\"0 0 24 24\"><path d=\"M4 16c0-5 4-10 8-10s8 5 8 10a8 8 0 0 1-16 0z\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><circle cx=\"12\" cy=\"14\" r=\"3\" fill=\"#00F0FF\"/></svg>",
+    "anchor": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"5\" r=\"2\" fill=\"none\" stroke=\"#FFD700\" stroke-width=\"1.5\"/><line x1=\"12\" y1=\"7\" x2=\"12\" y2=\"19\" stroke=\"#FFD700\" stroke-width=\"2\"/><path d=\"M5 14a7 7 0 0 0 14 0\" fill=\"none\" stroke=\"#FFD700\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>",
+    "nautilus": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><path d=\"M12 3a9 9 0 0 1 9 9c0 5-4 9-9 9a5 5 0 0 1-5-5c0-3 2-5 5-5a2 2 0 0 1 2 2\" fill=\"none\" stroke=\"#7000FF\" stroke-width=\"1.5\"/></svg>",
+    "harpoon": "<svg viewBox=\"0 0 24 24\"><line x1=\"4\" y1=\"20\" x2=\"18\" y2=\"6\" stroke=\"#39FF14\" stroke-width=\"2\"/><polygon points=\"18,6 20,2 14,4\" fill=\"#39FF14\"/></svg>",
+    "submersible": "<svg viewBox=\"0 0 24 24\"><rect x=\"4\" y=\"8\" width=\"14\" height=\"8\" rx=\"4\" fill=\"#0d1117\" stroke=\"#FF007F\" stroke-width=\"1.5\"/><circle cx=\"9\" cy=\"12\" r=\"1.5\" fill=\"#FF007F\"/><circle cx=\"13\" cy=\"12\" r=\"1.5\" fill=\"#FF007F\"/><line x1=\"18\" y1=\"12\" x2=\"21\" y2=\"12\" stroke=\"#FF007F\" stroke-width=\"2\"/></svg>",
+    "coral": "<svg viewBox=\"0 0 24 24\"><path d=\"M6 20v-6c0-2 2-3 2-5M12 20v-9c0-2-2-3-2-5M18 20v-7c0-2 2-3 2-5\" fill=\"none\" stroke=\"#00F0FF\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>",
+    "tridentgem": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 3v18M6 5v5c0 3 2.5 5 6 5s6-2 6-5V5\" fill=\"none\" stroke=\"#FFD700\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><circle cx=\"12\" cy=\"13\" r=\"2\" fill=\"#FF007F\"/></svg>"
+  }
+}
