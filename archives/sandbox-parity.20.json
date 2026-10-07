@@ -1,0 +1,27 @@
+{
+  "title": "Steampunk Workshop",
+  "floors": [
+    { "floor": 1, "pairs": 1, "timeLimit": 12, "icons": ["brassgear"] },
+    { "floor": 2, "pairs": 2, "timeLimit": 16, "icons": ["brassgear", "monocle"] },
+    { "floor": 3, "pairs": 3, "timeLimit": 22, "icons": ["brassgear", "monocle", "pressuregauge"] },
+    { "floor": 4, "pairs": 4, "timeLimit": 28, "icons": ["brassgear", "monocle", "pressuregauge", "pocketwatch"] },
+    { "floor": 5, "pairs": 5, "timeLimit": 34, "icons": ["brassgear", "monocle", "pressuregauge", "pocketwatch", "airship"] },
+    { "floor": 6, "pairs": 6, "timeLimit": 40, "icons": ["brassgear", "monocle", "pressuregauge", "pocketwatch", "airship", "tesla coil"] },
+    { "floor": 7, "pairs": 7, "timeLimit": 46, "icons": ["brassgear", "monocle", "pressuregauge", "pocketwatch", "airship", "tesla coil", "lightbulb"] },
+    { "floor": 8, "pairs": 8, "timeLimit": 52, "icons": ["brassgear", "monocle", "pressuregauge", "pocketwatch", "airship", "tesla coil", "lightbulb", "steamvalve"] },
+    { "floor": 9, "pairs": 9, "timeLimit": 58, "icons": ["brassgear", "monocle", "pressuregauge", "pocketwatch", "airship", "tesla coil", "lightbulb", "steamvalve", "goggles"] },
+    { "floor": 10, "pairs": 10, "timeLimit": 64, "icons": ["brassgear", "monocle", "pressuregauge", "pocketwatch", "airship", "tesla coil", "lightbulb", "steamvalve", "goggles", "automaton"] }
+  ],
+  "svgMap": {
+    "brassgear": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"6\" fill=\"#0d1117\" stroke=\"#FFD700\" stroke-width=\"1.5\"/><path d=\"M12 2v4M12 18v4M2 12h4M18 12h4\" stroke=\"#FFD700\" stroke-width=\"2\"/></svg>",
+    "monocle": "<svg viewBox=\"0 0 24 24\"><circle cx=\"10\" cy=\"10\" r=\"5\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><path d=\"M15 10c3 0 4 5 4 10\" stroke=\"#00F0FF\" stroke-width=\"1.5\" fill=\"none\"/></svg>",
+    "pressuregauge": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"#0d1117\" stroke=\"#FF007F\" stroke-width=\"1.5\"/><line x1=\"12\" y1=\"12\" x2=\"16\" y2=\"8\" stroke=\"#FF007F\" stroke-width=\"2\"/></svg>",
+    "pocketwatch": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"14\" r=\"8\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><rect x=\"11\" y=\"2\" width=\"2\" height=\"4\" fill=\"#39FF14\"/></svg>",
+    "airship": "<svg viewBox=\"0 0 24 24\"><ellipse cx=\"12\" cy=\"9\" rx=\"9\" ry=\"5\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><rect x=\"9\" y=\"16\" width=\"6\" height=\"3\" fill=\"#7000FF\"/></svg>",
+    "tesla coil": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"4\" r=\"3\" fill=\"#00F0FF\"/><polygon points=\"10,7 14,7 12,21\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/></svg>",
+    "lightbulb": "<svg viewBox=\"0 0 24 24\"><path d=\"M9 18h6m-5 3h4M12 3a6 6 0 0 0-4 10c1 1 1 2 1 3h6c0-1 0-2 1-3a6 6 0 0 0-4-10z\" fill=\"#0d1117\" stroke=\"#FFD700\" stroke-width=\"1.5\"/></svg>",
+    "steamvalve": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"4\" fill=\"#FF007F\"/><circle cx=\"12\" cy=\"12\" r=\"8\" fill=\"none\" stroke=\"#FF007F\" stroke-width=\"1.5\"/></svg>",
+    "goggles": "<svg viewBox=\"0 0 24 24\"><circle cx=\"7\" cy=\"12\" r=\"4\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><circle cx=\"17\" cy=\"12\" r=\"4\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><line x1=\"11\" y1=\"12\" x2=\"13\" y2=\"12\" stroke=\"#39FF14\" stroke-width=\"2\"/></svg>",
+    "automaton": "<svg viewBox=\"0 0 24 24\"><rect x=\"6\" y=\"6\" width=\"12\" height=\"12\" rx=\"2\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><rect x=\"8\" y=\"9\" width=\"3\" height=\"3\" fill=\"#FFD700\"/><rect x=\"13\" y=\"9\" width=\"3\" height=\"3\" fill=\"#FFD700\"/><line x1=\"9\" y1=\"15\" x2=\"15\" y2=\"15\" stroke=\"#FFD700\" stroke-width=\"1.5\"/></svg>"
+  }
+}
