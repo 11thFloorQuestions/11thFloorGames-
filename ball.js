@@ -5,8 +5,11 @@
 function safeAddListener(id, event, handler) {
     const el = document.getElementById(id);
     if (el) {
-        el.addEventListener(event, (e) => {
+        // Bind pointerdown for immediate, unblocked mobile haptic feedback
+        el.addEventListener('pointerdown', () => {
             triggerHaptic(15);
+        });
+        el.addEventListener(event, (e) => {
             handler(e);
         });
     }
@@ -341,8 +344,8 @@ async function populateVault() {
                 const btn = document.createElement('button');
                 btn.className = 'vault-item-btn';
                 btn.innerHTML = `<strong>Archive ${res.id}</strong>`;
+                btn.onpointerdown = () => triggerHaptic(15);
                 btn.onclick = () => {
-                    triggerHaptic(15);
                     loadVaultSet(res.id, res.data);
                 };
                 buttons.push(btn);
@@ -514,6 +517,11 @@ function loadNextQuestion() {
         btn.style.display = optionVal ? 'block' : 'none';
         
         const isCorrect = (optionVal === currentQ.answer);
+        
+        // Immediate touch vibration trigger on finger-down to prevent mobile browser gesture blocks
+        btn.onpointerdown = () => {
+            triggerHaptic(15);
+        };
         btn.onclick = () => handleAnswerSelect(isCorrect, btn); 
     });
 }
@@ -556,6 +564,7 @@ function handleAnswerSelect(isCorrect, buttonEl) {
     
     document.querySelectorAll('#options-grid .btn-option').forEach(btn => {
         btn.onclick = null;
+        btn.onpointerdown = null;
         if (typeof btn.blur === 'function') {
             btn.blur();
         }
