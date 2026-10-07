@@ -1,0 +1,27 @@
+{
+  "title": "Botanical Poison & Alchemy",
+  "floors": [
+    { "floor": 1, "pairs": 1, "timeLimit": 12, "icons": ["nightshade"] },
+    { "floor": 2, "pairs": 2, "timeLimit": 16, "icons": ["nightshade", "vial"] },
+    { "floor": 3, "pairs": 3, "timeLimit": 22, "icons": ["nightshade", "vial", "mandrake"] },
+    { "floor": 4, "pairs": 4, "timeLimit": 28, "icons": ["nightshade", "vial", "mandrake", "spores"] },
+    { "floor": 5, "pairs": 5, "timeLimit": 34, "icons": ["nightshade", "vial", "mandrake", "spores", "mortar"] },
+    { "floor": 6, "pairs": 6, "timeLimit": 40, "icons": ["nightshade", "vial", "mandrake", "spores", "mortar", "serpentvine"] },
+    { "floor": 7, "pairs": 7, "timeLimit": 46, "icons": ["nightshade", "vial", "mandrake", "spores", "mortar", "serpentvine", "cauldron"] },
+    { "floor": 8, "pairs": 8, "timeLimit": 52, "icons": ["nightshade", "vial", "mandrake", "spores", "mortar", "serpentvine", "cauldron", "flytrap"] },
+    { "floor": 9, "pairs": 9, "timeLimit": 58, "icons": ["nightshade", "vial", "mandrake", "spores", "mortar", "serpentvine", "cauldron", "flytrap", "grimoire"] },
+    { "floor": 10, "pairs": 10, "timeLimit": 64, "icons": ["nightshade", "vial", "mandrake", "spores", "mortar", "serpentvine", "cauldron", "flytrap", "grimoire", "elixircore"] }
+  ],
+  "svgMap": {
+    "nightshade": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 3a6 6 0 0 1 6 6c0 5-6 11-6 11S6 14 6 9a6 6 0 0 1 6-6z\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><circle cx=\"12\" cy=\"9\" r=\"2\" fill=\"#39FF14\"/></svg>",
+    "vial": "<svg viewBox=\"0 0 24 24\"><path d=\"M9 3h6v3l3 5v8a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-8l3-5V3z\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><rect x=\"8\" y=\"13\" width=\"8\" height=\"6\" fill=\"#7000FF\" opacity=\"0.6\"/></svg>",
+    "mandrake": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 4v6m-4 4c0 4 2 6 4 6s4-2 4-6\" stroke=\"#FFD700\" stroke-width=\"1.5\" fill=\"none\"/><circle cx=\"9\" cy=\"8\" r=\"3\" fill=\"#39FF14\"/><circle cx=\"15\" cy=\"8\" r=\"3\" fill=\"#39FF14\"/></svg>",
+    "spores": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"3\" fill=\"#FF007F\"/><circle cx=\"6\" cy=\"8\" r=\"2\" fill=\"#FF007F\"/><circle cx=\"18\" cy=\"8\" r=\"2\" fill=\"#FF007F\"/><circle cx=\"8\" cy=\"18\" r=\"2\" fill=\"#FF007F\"/><circle cx=\"16\" cy=\"18\" r=\"2\" fill=\"#FF007F\"/></svg>",
+    "mortar": "<svg viewBox=\"0 0 24 24\"><path d=\"M4 10a8 8 0 0 0 16 0H4z\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><line x1=\"15\" y1=\"4\" x2=\"10\" y2=\"13\" stroke=\"#00F0FF\" stroke-width=\"2.5\" stroke-linecap=\"round\"/></svg>",
+    "serpentvine": "<svg viewBox=\"0 0 24 24\"><path d=\"M4 12c4-6 8 6 12 0s4-6 4-6\" stroke=\"#39FF14\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/><circle cx=\"8\" cy=\"9\" r=\"1.5\" fill=\"#39FF14\"/></svg>",
+    "cauldron": "<svg viewBox=\"0 0 24 24\"><path d=\"M4 9c0 6 3.5 10 8 10s8-4 8-10H4z\" fill=\"#0d1117\" stroke=\"#FF007F\" stroke-width=\"1.5\"/><circle cx=\"9\" cy=\"6\" r=\"1.5\" fill=\"#FF007F\"/><circle cx=\"14\" cy=\"5\" r=\"1\" fill=\"#FF007F\"/></svg>",
+    "flytrap": "<svg viewBox=\"0 0 24 24\"><path d=\"M6 8a6 6 0 0 1 12 0c0 4-3 8-6 8s-6-4-6-8z\" fill=\"#0d1117\" stroke=\"#39FF14\" stroke-width=\"1.5\"/><line x1=\"8\" y1=\"8\" x2=\"8\" y2=\"12\" stroke=\"#FF007F\" stroke-width=\"1.5\"/><line x1=\"16\" y1=\"8\" x2=\"16\" y2=\"12\" stroke=\"#FF007F\" stroke-width=\"1.5\"/></svg>",
+    "grimoire": "<svg viewBox=\"0 0 24 24\"><rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"2\" fill=\"#0d1117\" stroke=\"#7000FF\" stroke-width=\"1.5\"/><polygon points=\"12,7 14,11 18,11 15,13 16,17 12,14 8,17 9,13 6,11 10,11\" fill=\"#7000FF\"/></svg>",
+    "elixircore": "<svg viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"#0d1117\" stroke=\"#00F0FF\" stroke-width=\"1.5\"/><path d=\"M8 12a4 4 0 0 0 8 0H8z\" fill=\"#39FF14\"/></svg>"
+  }
+}
