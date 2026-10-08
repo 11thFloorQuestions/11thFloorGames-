@@ -1,389 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>11th Floor Games - Promo Studio (Static Challenge)</title>
-
-    <!-- Favicon link pointing to your Canva SVG asset -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="apple-touch-icon" href="/favicon.svg">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-deep: #000000;
-            --surface: #0a0a0a;
-            --surface-border: #222222;
-            --surface-border-light: #333333;
-            --accent-red: #ff1f2d;
-            --accent-red-glow: rgba(255, 31, 45, 0.2);
-            --accent-green: #84CC16;
-            --text-primary: #ffffff;
-            --text-muted: #888888;
-
-            --genre-terrace: #84CC16;
-            --state-active: #facc15;
-            --state-success: #22c55e;
-            --state-error: #ef4444;
-            --state-error-glow: rgba(239, 68, 68, 0.2);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--bg-deep);
-            color: var(--text-primary);
-            font-family: 'Montserrat', sans-serif;
-            height: 100vh;
-            height: 100dvh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .promo-canvas {
-            width: 360px;
-            height: 640px;
-            background-color: var(--bg-deep);
-            border: 2px solid var(--surface-border);
-            border-radius: 12px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.9);
-            overflow: hidden;
-        }
-
-        .promo-hub-logo-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 10;
-            flex-shrink: 0;
-        }
-
-        .promo-hub-logo-green {
-            font-family: 'Anton', sans-serif;
-            font-size: 2.0rem;
-            font-weight: 400;
-            color: var(--accent-green);
-            line-height: 0.85;
-            letter-spacing: -1px;
-            text-shadow: 0 0 8px rgba(132, 204, 22, 0.25);
-            margin-bottom: 2px;
-        }
-
-        .promo-hub-logo-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 300;
-            color: #ffffff;
-            letter-spacing: 1.5px;
-            margin-bottom: 1px;
-        }
-
-        .promo-hub-logo-sub {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.45rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 3px;
-        }
-
-        .promo-presents {
-            font-size: 0.42rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #ffffff;
-            margin-bottom: 2px;
-        }
-
-        .promo-game-title {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.25rem;
-            letter-spacing: 0.8px;
-            color: var(--accent-green);
-            text-transform: uppercase;
-            text-shadow: 0 0 6px rgba(132, 204, 22, 0.2);
-            margin-top: 1px;
-        }
-
-        .promo-game-tagline {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.52rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-top: 2px;
-        }
-
-        .promo-body {
-            height: 55px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            z-index: 20;
-            position: relative;
-            flex-shrink: 0;
-            margin: 2px 0;
-        }
-
-        .promo-text {
-            font-family: 'Impact', sans-serif;
-            font-size: 1.25rem;
-            font-weight: normal;
-            letter-spacing: 0.5px;
-            line-height: 1.15;
-            color: #ffffff;
-            position: absolute;
-            width: 100%;
-            padding: 0 6px;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
-        }
-
-        .promo-mock-device {
-            width: 220px;
-            height: 290px;
-            background-color: var(--surface);
-            border: 2px solid var(--surface-border);
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.8);
-            z-index: 5;
-            flex-shrink: 0;
-        }
-
-        .promo-game-viewport {
-            width: 320px;
-            height: 425px;
-            transform: scale(0.675);
-            transform-origin: center center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: 8px;
-            pointer-events: none;
-        }
-
-        .hud-sidebar-container { 
-            width: 100%; 
-            display: flex; 
-            align-items: stretch; 
-            gap: 8px; 
-            margin-bottom: 6px; 
-            flex-shrink: 0; 
-        }
-
-        .tower-stack { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 2px; 
-            width: 44px; 
-            background: var(--surface); 
-            border: 1px solid var(--surface-border); 
-            border-radius: 6px; 
-            padding: 5px; 
-            justify-content: space-between; 
-            flex-shrink: 0; 
-        }
-
-        .tower-floor { 
-            height: 6px; 
-            border: 1px solid var(--surface-border); 
-            background: #111111; 
-            transition: all 0.25s ease; 
-            border-radius: 1px; 
-        }
-
-        .tower-floor.active { 
-            border-color: var(--state-active); 
-            background: var(--state-active); 
-        }
-
-        .tower-floor.completed { 
-            border-color: var(--state-success); 
-            background: var(--state-success); 
-        }
-
-        .floor-info-box {
-            flex-grow: 1;
-            background-color: var(--surface);
-            border: 1px solid var(--surface-border);
-            border-radius: 6px;
-            padding: 8px 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .floor-left-group { display: flex; flex-direction: column; gap: 2px; }
-        .current-floor-display { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 800; }
-        .floor-rule-text { font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
-
-        .play-card {
-            width: 100%;
-            background: var(--surface);
-            border: 1px solid var(--surface-border);
-            border-radius: 6px;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            flex-grow: 1;
-            overflow: hidden;
-        }
-
-        .timer-track { width: 100%; height: 4px; background: #111111; border-radius: 2px; overflow: hidden; }
-        .timer-fill { height: 100%; background: var(--state-active); width: 100%; }
-
-        .question-box {
-            width: 100%;
-            background: #111111;
-            border: 1px solid var(--surface-border);
-            border-radius: 6px;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .question-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: #ffffff;
-            line-height: 1.35;
-        }
-
-        .options-grid { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        .btn-option { 
-            width: 100%; 
-            min-height: 42px; 
-            background: #111111; 
-            border: 1px solid rgba(250, 204, 21, 0.3); 
-            border-radius: 6px; 
-            color: #ffffff; 
-            font-family: 'Montserrat', sans-serif; 
-            font-size: 0.68rem; 
-            font-weight: 700; 
-            padding: 6px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            text-align: center; 
-        }
-
-        .promo-footer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            z-index: 10;
-            flex-shrink: 0;
-            padding-bottom: 2px;
-        }
-
-        .promo-footer-text {
-            font-size: 0.65rem;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: #ffffff;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="promo-canvas">
-        <div class="promo-hub-logo-box">
-            <h1 class="promo-hub-logo-green">11FL?</h1>
-            <p class="promo-hub-logo-title">Eleventh Floor</p>
-            <p class="promo-hub-logo-sub">GAMES LOBBY</p>
-            <div class="promo-presents">PRESENTS</div>
-            <div class="promo-game-title" id="brand-game-title">Think You Know Ball?</div>
-            <div class="promo-game-tagline">The New Daily Football Quiz</div>
-        </div>
-
-        <div class="promo-body">
-            <div class="promo-text">DROP YOUR GUESS IN THE COMMENTS 👇</div>
-        </div>
-
-        <div class="promo-mock-device" id="mock-device">
-            <div class="promo-game-viewport">
-                
-                <div id="gameplay-container" style="width: 100%; display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
-                    <div class="hud-sidebar-container">
-                        <div class="tower-stack">
-                            <div class="tower-floor" data-floor="11"></div>
-                            <div class="tower-floor" data-floor="10"></div>
-                            <div class="tower-floor" data-floor="9"></div>
-                            <div class="tower-floor active" data-floor="8"></div>
-                            <div class="tower-floor completed" data-floor="7"></div>
-                            <div class="tower-floor completed" data-floor="6"></div>
-                            <div class="tower-floor completed" data-floor="5"></div>
-                            <div class="tower-floor completed" data-floor="4"></div>
-                            <div class="tower-floor completed" data-floor="3"></div>
-                            <div class="tower-floor completed" data-floor="2"></div>
-                            <div class="tower-floor completed" data-floor="1"></div>
-                        </div>
-
-                        <div class="floor-info-box">
-                            <div class="floor-left-group">
-                                <div class="current-floor-display"><span style="color: var(--genre-terrace); font-weight: 800;">8th</span> <span style="color: #ffffff;">Floor</span></div>
-                                <div class="floor-rule-text">No mistakes!</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="play-card">
-                        <div class="timer-track"><div class="timer-fill"></div></div>
-                        
-                        <div class="question-box">
-                            <div class="question-text">England won 7-0 in Croatia on Saturday, but how did the FA decide which 100 supporters got into the banned stadium?</div>
-                        </div>
-
-                        <div class="options-grid">
-                            <button class="btn-option">Highest Away Caps</button>
-                            <button class="btn-option">Travel Club Ballot</button>
-                            <button class="btn-option">First at Airport</button>
-                            <button class="btn-option">Club Flag Owners</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="promo-footer">
-            <span class="promo-footer-text">CAN YOU REACH THE 11TH FLOOR?</span>
-        </div>
+<!-- PROMOTIONAL / SANDBOX VICTORY RECEIPT CARD -->
+<div class="victory-receipt-card" id="victory-card-sandbox">
+  
+  <!-- Header / Badge Bar -->
+  <div class="receipt-header">
+    <div class="brand-title">THINK YOU KNOW BALL?</div>
+    <div class="club-badge-slot" id="user-club-badge">
+      <!-- Optional Club Crest SVG/PNG -->
+      <span class="badge-placeholder">🛡️ [CLUB]</span>
     </div>
+  </div>
 
-</body>
-</html>
+  <div class="receipt-divider"></div>
+
+  <!-- Hero Flex Banner -->
+  <div class="hero-flex-box">
+    <span class="flex-status">DESTINATION REACHED</span>
+    <h1 class="hero-time">00:29</h1>
+    <span class="flex-title">TOP BALL KNOWER</span>
+  </div>
+
+  <!-- Core Game Metrics -->
+  <div class="receipt-details">
+    <div class="receipt-row">
+      <span class="row-label">ACCURACY</span>
+      <span class="row-val success">100% (10/10)</span>
+    </div>
+    <div class="receipt-row">
+      <span class="row-label">ACTIVE STREAK</span>
+      <span class="row-val active">1 Day</span>
+    </div>
+  </div>
+
+  <!-- Footer Link Branding -->
+  <div class="receipt-footer">
+    <span>11THFLOOR.GAMES/BALL</span>
+  </div>
+
+</div>
+
+<!-- Primary Action Controls -->
+<div class="share-actions-group">
+  <button id="btn-copy-text" class="btn-share-primary">📋 COPY TEXT FLEX</button>
+  <button id="btn-share-image" class="btn-share-secondary">📸 SHARE CARD</button>
+</div>
