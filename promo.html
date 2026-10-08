@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>11th Floor — Victory Card Sandbox</title>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
-    <link rel="apple-touch-icon" href="/favicon.svg?v=2">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
+    <link rel="apple-touch-icon" href="favicon.svg?v=2">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +16,6 @@
         :root {
             --bg-deep: #000000;
             --surface-card: #111111;
-            --surface-border: #222222;
             --surface-border-light: #333333;
             --text-primary: #ffffff;
             --text-muted: #888888;
@@ -38,7 +36,7 @@
         html, body {
             width: 100%;
             min-height: 100vh;
-            background-color: var(--bg-deep);
+            background-color: var(--bg-deep) !important;
             color: var(--text-primary);
             font-family: 'Inter', sans-serif;
             display: flex;
@@ -46,7 +44,7 @@
             align-items: center;
             justify-content: center;
             padding: 20px 14px;
-            overflow-y: auto;
+            overflow-y: auto !important;
         }
 
         .sandbox-container {
@@ -58,7 +56,7 @@
             gap: 16px;
         }
 
-        /* THE VICTORY RECEIPT CARD */
+        /* VICTORY RECEIPT CARD */
         .victory-receipt-card {
             width: 100%;
             background: var(--surface-card);
@@ -144,27 +142,4 @@
             color: var(--genre-pitch);
             letter-spacing: 2px;
             text-transform: uppercase;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid var(--genre-pitch);
-            padding: 6px 16px;
-            border-radius: 12px;
-            margin-top: 6px;
-        }
-
-        /* Metric Rows (Inter Font) */
-        .receipt-details {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            border-top: 1px solid var(--surface-border-light);
-            padding-top: 14px;
-        }
-
-        .receipt-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .row-label {
-            font-family: '
+            background: rgba(34, 197, 94, 0
