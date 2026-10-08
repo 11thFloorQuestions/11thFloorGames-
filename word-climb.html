@@ -257,7 +257,6 @@
                     <div class="current-floor-display" id="floor-number-val"><span style="color: var(--genre-blue, #3B82F6); font-weight: 800;">1st</span> <span style="color: #ffffff;">Floor</span></div>
                     <div class="floor-rule-text" id="floor-rule-text">5-letter English word • No mistakes!</div>
                 </div>
-                <!-- MOVED TIMER HERE EXACTLY MATCHING PARITY STRUCTURE -->
                 <div id="active-game-timer" class="header-timer">00:00</div>
             </div>
         </div>
@@ -316,3 +315,26 @@
             <div id="footer-text">ONE MISTAKE RESETS THE CLIMB TO GROUND FLOOR.</div>
         </footer>
     </div>
+
+    <!-- Stats & Archive Vault Modal -->
+    <div id="modal-vault" class="modal-overlay hidden">
+        <div class="modal-card modal-large">
+            <h2 style="font-size: 1.2rem; font-weight: 800;">STATS</h2>
+            <div class="stats-summary-grid">
+                <div class="stat-box"><span id="stat-played" class="stat-val">0</span><span class="stat-lbl">Played</span></div>
+                <div class="stat-box"><span id="stat-wins" class="stat-val">0</span><span class="stat-lbl">Wins</span></div>
+                <div class="stat-box"><span id="stat-winrate" class="stat-val">0%</span><span class="stat-lbl">Win %</span></div>
+                <div class="stat-box"><span id="stat-streak" class="stat-val">0</span><span class="stat-lbl">Streak</span></div>
+                <div class="stat-box" style="grid-column: span 2;"><span id="stat-bestfloor" class="stat-val">FL 01</span><span class="stat-lbl">Best Peak</span></div>
+            </div>
+
+            <h3 style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); margin-top: 12px; text-transform: uppercase;">ARCHIVE VAULT</h3>
+            <div id="vault-list" class="vault-grid"></div>
+            <button id="btn-close-vault" class="btn-modal">CLOSE</button>
+        </div>
+    </div>
+
+    <script src="words.js"></script>
+    <script src="word-climb.js"></script>
+</body>
+</html>
