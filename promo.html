@@ -1,45 +1,168 @@
-<!-- PROMOTIONAL / SANDBOX VICTORY RECEIPT CARD -->
-<div class="victory-receipt-card" id="victory-card-sandbox">
-  
-  <!-- Header / Badge Bar -->
-  <div class="receipt-header">
-    <div class="brand-title">THINK YOU KNOW BALL?</div>
-    <div class="club-badge-slot" id="user-club-badge">
-      <!-- Optional Club Crest SVG/PNG -->
-      <span class="badge-placeholder">🛡️ [CLUB]</span>
-    </div>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>11th Floor — Victory Card Sandbox</title>
 
-  <div class="receipt-divider"></div>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800;900&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Hero Flex Banner -->
-  <div class="hero-flex-box">
-    <span class="flex-status">DESTINATION REACHED</span>
-    <h1 class="hero-time">00:29</h1>
-    <span class="flex-title">TOP BALL KNOWER</span>
-  </div>
+    <style>
+        :root {
+            --bg-deep: #000000;
+            --surface: #0a0a0a;
+            --surface-card: #111111;
+            --surface-border: #222222;
+            --surface-border-light: #333333;
+            --text-primary: #ffffff;
+            --text-muted: #888888;
+            --genre-pitch: #22c55e;
+            --genre-pitch-glow: rgba(34, 197, 94, 0.35);
+            --state-active: #facc15;
+            --state-success: #22c55e;
+            --state-error: #ef4444;
+        }
 
-  <!-- Core Game Metrics -->
-  <div class="receipt-details">
-    <div class="receipt-row">
-      <span class="row-label">ACCURACY</span>
-      <span class="row-val success">100% (10/10)</span>
-    </div>
-    <div class="receipt-row">
-      <span class="row-label">ACTIVE STREAK</span>
-      <span class="row-val active">1 Day</span>
-    </div>
-  </div>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-  <!-- Footer Link Branding -->
-  <div class="receipt-footer">
-    <span>11THFLOOR.GAMES/BALL</span>
-  </div>
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 12px;
+            overflow-x: hidden;
+        }
 
-</div>
+        .sandbox-container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
 
-<!-- Primary Action Controls -->
-<div class="share-actions-group">
-  <button id="btn-copy-text" class="btn-share-primary">📋 COPY TEXT FLEX</button>
-  <button id="btn-share-image" class="btn-share-secondary">📸 SHARE CARD</button>
-</div>
+        /* Branding Header */
+        .game-logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .game-logo-pitch {
+            font-family: 'Anton', sans-serif;
+            font-size: 3rem;
+            color: var(--genre-pitch);
+            line-height: 0.85;
+            text-shadow: 0 0 20px var(--genre-pitch-glow);
+            margin-bottom: 4px;
+        }
+
+        .game-logo-title {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+        }
+
+        .game-logo-sub {
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--genre-pitch);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* THE VICTORY RECEIPT CARD (THE HERO SHARE CONTAINER) */
+        .victory-receipt-card {
+            width: 100%;
+            background: var(--surface-card);
+            border: 1px solid var(--genre-pitch);
+            border-radius: 14px;
+            padding: 20px 18px;
+            box-shadow: 0 0 25px var(--genre-pitch-glow);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+        }
+
+        /* Card Header Bar */
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--surface-border-light);
+            padding-bottom: 10px;
+        }
+
+        .receipt-brand-tag {
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--genre-pitch);
+            text-transform: uppercase;
+        }
+
+        .club-badge-slot {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #181818;
+            border: 1px solid var(--surface-border-light);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* Hero Time & Flex Section */
+        .hero-flex-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 8px 0;
+        }
+
+        .flex-status-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        /* HERO TIME DISPLAY */
+        .hero-time-display {
+            font-family: 'Anton', sans-serif;
+            font-size: 3.8rem;
+            line-height: 0.9;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            margin: 4px 0;
+        }
+
+        .flex-tier-badge {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--genre-pitch);
+            letter-spacing:
