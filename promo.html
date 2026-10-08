@@ -11,135 +11,54 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0; padding:20px 14px; width:100%; min-height:100vh; background-color:#000000; color:#ffffff; font-family:'Inter', sans-serif; display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box;">
 
-    <style>
-        :root {
-            --bg-deep: #000000;
-            --surface-card: #111111;
-            --surface-border-light: #333333;
-            --text-primary: #ffffff;
-            --text-muted: #888888;
-            --genre-pitch: #22c55e;
-            --genre-pitch-glow: rgba(34, 197, 94, 0.35);
-            --state-active: #facc15;
-            --state-success: #22c55e;
-        }
+    <div style="width:100%; max-width:340px; display:flex; flex-direction:column; align-items:center; gap:16px;">
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
+        <!-- THE VICTORY RECEIPT CARD -->
+        <div style="width:100%; background:#111111; border:1px solid #22c55e; border-radius:14px; padding:22px 20px; box-shadow:0 0 25px rgba(34, 197, 94, 0.35); display:flex; flex-direction:column; gap:16px; box-sizing:border-box;">
+            
+            <!-- HEADER LOGO BAR -->
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #333333; padding-bottom:12px;">
+                <span style="font-family:'Anton', sans-serif; font-size:1.3rem; letter-spacing:1px; line-height:1; text-transform:uppercase;">
+                    <span style="color:#22c55e;">11th</span> <span style="color:#ffffff;">Floor Games</span>
+                </span>
+                <span style="font-family:'Inter', sans-serif; font-size:0.65rem; font-weight:800; color:#888888; letter-spacing:1px; text-transform:uppercase;">[BADGE AREA]</span>
+            </div>
 
-        html, body {
-            width: 100%;
-            min-height: 100vh;
-            background-color: var(--bg-deep) !important;
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px 14px;
-            overflow-y: auto !important;
-        }
+            <!-- HERO SECTION -->
+            <div style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:4px 0;">
+                <div style="font-family:'Anton', sans-serif; font-size:1.8rem; color:#22c55e; letter-spacing:1px; text-transform:uppercase; line-height:1; margin-bottom:6px; text-shadow:0 0 12px rgba(34, 197, 94, 0.35);">
+                    THINK YOU KNOW BALL?
+                </div>
+                
+                <div style="font-family:'Anton', sans-serif; font-size:1.1rem; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">
+                    <span style="color:#22c55e;">11th</span> <span style="color:#ffffff;">Floor Reached</span>
+                </div>
 
-        .sandbox-container {
-            width: 100%;
-            max-width: 340px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-        }
+                <div id="display-time" style="font-family:'Anton', sans-serif; font-size:4.2rem; line-height:0.85; color:#ffffff; letter-spacing:2px; margin:8px 0;">
+                    00:44
+                </div>
+                
+                <div id="flex-tier-msg" style="font-family:'Anton', sans-serif; font-size:1.1rem; color:#22c55e; letter-spacing:2px; text-transform:uppercase; background:rgba(34, 197, 94, 0.1); border:1px solid #22c55e; padding:6px 16px; border-radius:12px; margin-top:6px;">
+                    EXPERT
+                </div>
+            </div>
 
-        /* VICTORY RECEIPT CARD */
-        .victory-receipt-card {
-            width: 100%;
-            background: var(--surface-card);
-            border: 1px solid var(--genre-pitch);
-            border-radius: 14px;
-            padding: 22px 20px;
-            box-shadow: 0 0 25px var(--genre-pitch-glow);
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            position: relative;
-        }
+            <!-- METRIC ROWS -->
+            <div style="display:flex; flex-direction:column; gap:12px; border-top:1px solid #333333; padding-top:14px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-family:'Inter', sans-serif; font-size:0.75rem; font-weight:800; color:#888888; text-transform:uppercase; letter-spacing:1px;">Accuracy</span>
+                    <span style="font-family:'Inter', sans-serif; font-size:0.9rem; font-weight:800; color:#22c55e; letter-spacing:0.5px;">100% (10/10)</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-family:'Inter', sans-serif; font-size:0.75rem; font-weight:800; color:#888888; text-transform:uppercase; letter-spacing:1px;">Active Streak</span>
+                    <span style="font-family:'Inter', sans-serif; font-size:0.9rem; font-weight:800; color:#facc15; letter-spacing:0.5px;">1 Day</span>
+                </div>
+            </div>
 
-        /* Top Header Logo Bar */
-        .receipt-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--surface-border-light);
-            padding-bottom: 12px;
-        }
+        </div>
 
-        .receipt-brand-logo {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.3rem;
-            letter-spacing: 1px;
-            line-height: 1;
-            text-transform: uppercase;
-        }
-
-        .brand-green { color: var(--genre-pitch); }
-        .brand-white { color: #ffffff; }
-
-        .badge-slot-reserved {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 800;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Hero Header Section */
-        .hero-flex-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 4px 0;
-        }
-
-        .game-title-header {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.8rem;
-            color: var(--genre-pitch);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            line-height: 1;
-            margin-bottom: 6px;
-            text-shadow: 0 0 12px var(--genre-pitch-glow);
-        }
-
-        .flex-status-label {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .hero-time-display {
-            font-family: 'Anton', sans-serif;
-            font-size: 4.2rem;
-            line-height: 0.85;
-            color: #ffffff;
-            letter-spacing: 2px;
-            margin: 8px 0;
-        }
-
-        .flex-tier-badge {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.1rem;
-            color: var(--genre-pitch);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: rgba(34, 197, 94, 0
+        <!-- CONTROLS -->
+        <div style="width:100%; display
