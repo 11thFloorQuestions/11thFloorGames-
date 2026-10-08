@@ -1,74 +1,144 @@
-/**
- * ============================================================================
- * 11TH FLOOR CLUSTERS - CORE GAME LOGIC (clusters.js)
- * ============================================================================
- * Logic: Distractor pools, lock correct groups above grid, reduce pool size,
- * 3-strike lives system, 10 playable floors leading to 11th floor destination.
- * ============================================================================
- */
+// ==========================================================================
+// 11th Floor Cluegram — Core Interactive Game Engine & Archive Integration
+// ==========================================================================
 
-(function () {
-    'use strict';
-
-    let puzzleData = null;
-    let currentFloor = 1;
-    let gameState = 'intro';
-    let selectedTiles = [];
-    let activeTiles = [];
-    let remainingGroups = [];
-    let currentLives = 3;
-
+document.addEventListener('DOMContentLoaded', () => {
+    // Current Game State Variables
+    let currentFloorIndex = 0; // 0 = 1st Floor, 9 = 10th Floor
+    let userGuess = [];
+    let rackTiles = [];
+    let isProcessing = false;
+    let soundEnabled = true;
+    let activeGameData = [];
+    
     // Timer Variables
-    let gameStartTime = 0;
-    let activeGameTimerInterval = null;
-    let totalElapsedSeconds = 0;
+    let startTime = 0;
+    let timerInterval = null;
+    let timeElapsedSeconds = 0;
 
-    let floorNumVal = null;
-    let puzzlePrompt = null;
-    let solvedGroupsContainer = null;
-    let tileGrid = null;
-    let btnShuffle = null;
-    let btnSubmit = null;
-    let statusMessage = null;
-    let penaltyOverlay = null;
-    let actionPanelContainer = null;
-    let towerStack = null;
-    let btnSound = null;
-    let floorHudContainer = null;
-    let startScreen = null;
-    let mainContent = null;
-    let btnStartClimb = null;
-    let activeGameTimer = null;
-    let pips = [];
+    // Local Storage Player Stats Key
+    const STATS_KEY = '11th_floor_cluegram_stats';
 
-    function getOrdinalFloorHTML(floorNum) {
-        const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
-        const ord = ordinals[floorNum - 1] || `${floorNum}th`;
-        return `<span style="color: var(--genre-orange); font-size: 1.25rem; font-weight: 700;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
+    // DOM Element References
+    const startScreen = document.getElementById('start-screen');
+    const startClimbBtn = document.getElementById('start-climb-btn');
+    const hudContainer = document.getElementById('floor-hud-container');
+    const gameWorkspace = document.getElementById('game-workspace');
+    const gameControls = document.getElementById('game-controls');
+    const gameplayHeader = document.getElementById('gameplay-header');
+    
+    const victoryScreen = document.getElementById('victory-screen');
+    const victoryStatsBtn = document.getElementById('btn-victory-stats');
+    const victoryTimeDisplay = document.getElementById('victory-time-display');
+    const victoryStreakDisplay = document.getElementById('victory-streak-display');
+    const activeGameTimer = document.getElementById('active-game-timer');
+    const footerText = document.getElementById('footer-text');
+    
+    const floorNumberVal = document.getElementById('floor-number-val');
+    const floorRuleText = document.getElementById('floor-rule-text');
+    const clueText = document.getElementById('clue-text');
+    const targetSlotsContainer = document.getElementById('target-word-slots');
+    const letterRackContainer = document.getElementById('letter-rack');
+    const messageBox = document.getElementById('message-box');
+
+    const backspaceBtn = document.getElementById('action-backspace-btn');
+    const shuffleBtn = document.getElementById('action-shuffle-btn');
+    const submitBtn = document.getElementById('action-submit-btn');
+
+    const statsModal = document.getElementById('modal-vault');
+    const statsBtn = document.getElementById('btn-landing-stats');
+    const closeVaultBtn = document.getElementById('btn-close-vault');
+    const soundBtn = document.getElementById('btn-sound');
+    const vaultList = document.getElementById('vault-list');
+
+    const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
+
+    // Initialize Game Engine
+    init();
+
+    function init() {
+        if (window.CLUEGRAM_DAILY_SET) {
+            activeGameData = Array.isArray(window.CLUEGRAM_DAILY_SET) 
+                ? window.CLUEGRAM_DAILY_SET 
+                : (window.CLUEGRAM_DAILY_SET.floors || []);
+        } else {
+            activeGameData = [];
+        }
+        
+        bindEvents();
+        updateStatsDisplay();
     }
 
-    // --- Active Game Timer Functions ---
-    function startMatchTimer() {
-        stopMatchTimer();
-        totalElapsedSeconds = 0;
-        gameStartTime = Date.now();
-        activeGameTimer = document.getElementById('active-game-timer');
+    function bindEvents() {
+        if (startClimbBtn) startClimbBtn.addEventListener('click', startGame);
+        if (backspaceBtn) backspaceBtn.addEventListener('click', handleBackspace);
+        if (shuffleBtn) shuffleBtn.addEventListener('click', handleShuffle);
+        if (submitBtn) submitBtn.addEventListener('click', handleSubmit);
+
+        if (statsBtn) {
+            statsBtn.addEventListener('click', () => {
+                if (statsModal) statsModal.classList.remove('hidden');
+                populateVault();
+            });
+        }
+
+        if (victoryStatsBtn) {
+            victoryStatsBtn.addEventListener('click', () => {
+                if (statsModal) statsModal.classList.remove('hidden');
+                populateVault();
+            });
+        }
+
+        if (closeVaultBtn) {
+            closeVaultBtn.addEventListener('click', () => {
+                if (statsModal) statsModal.classList.add('hidden');
+                if (victoryScreen && victoryScreen.style.display !== 'none') {
+                    resetToStartScreen();
+                }
+            });
+        }
+
+        if (soundBtn) {
+            soundBtn.addEventListener('click', () => {
+                soundEnabled = !soundEnabled;
+                soundBtn.textContent = `SOUND: ${soundEnabled ? 'ON' : 'OFF'}`;
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (!gameWorkspace || gameWorkspace.style.display === 'none' || isProcessing) return;
+
+            const key = e.key.toUpperCase();
+            if (/^[A-Z]$/.test(key)) {
+                selectFirstAvailableLetter(key);
+            } else if (e.key === 'Backspace') {
+                handleBackspace();
+            } else if (e.key === 'Enter') {
+                handleSubmit();
+            }
+        });
+    }
+
+    // --- Timer Functions ---
+    function startTimer() {
+        stopTimer();
+        timeElapsedSeconds = 0;
+        startTime = Date.now();
         if (activeGameTimer) {
             activeGameTimer.style.display = 'block';
             activeGameTimer.textContent = '00:00';
         }
-        activeGameTimerInterval = setInterval(updateMatchTimerDisplay, 1000);
+        timerInterval = setInterval(updateTimerDisplay, 1000);
     }
 
-    function stopMatchTimer() {
-        if (activeGameTimerInterval) clearInterval(activeGameTimerInterval);
+    function stopTimer() {
+        if (timerInterval) clearInterval(timerInterval);
     }
 
-    function updateMatchTimerDisplay() {
-        totalElapsedSeconds = Math.floor((Date.now() - gameStartTime) / 1000);
-        if (!activeGameTimer) activeGameTimer = document.getElementById('active-game-timer');
+    function updateTimerDisplay() {
+        timeElapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
         if (activeGameTimer) {
-            activeGameTimer.textContent = formatTime(totalElapsedSeconds);
+            activeGameTimer.textContent = formatTime(timeElapsedSeconds);
         }
     }
 
@@ -78,311 +148,331 @@
         return `${m}:${s}`;
     }
 
-    function init() {
-        floorNumVal = document.getElementById('floor-number-val');
-        puzzlePrompt = document.getElementById('puzzle-prompt');
-        solvedGroupsContainer = document.getElementById('solved-groups-container');
-        tileGrid = document.getElementById('tile-grid');
-        btnShuffle = document.getElementById('btn-shuffle');
-        btnSubmit = document.getElementById('btn-submit');
-        statusMessage = document.getElementById('status-message');
-        penaltyOverlay = document.getElementById('penalty-overlay');
-        actionPanelContainer = document.getElementById('action-panel-container');
-        towerStack = document.getElementById('tower-stack');
-        btnSound = document.getElementById('btn-sound');
-        floorHudContainer = document.getElementById('floor-hud-container');
-        startScreen = document.getElementById('start-screen');
-        mainContent = document.getElementById('game-main-content');
-        btnStartClimb = document.getElementById('btn-start-climb');
-        activeGameTimer = document.getElementById('active-game-timer');
-        pips = [document.getElementById('pip-1'), document.getElementById('pip-2'), document.getElementById('pip-3')];
+    // --- Data Loading ---
+    function fetchFileWithFallbacks(filename) {
+        const candidatePaths = [`./archives/${filename}`, `./${filename}`, `./data/${filename}`, filename];
+        return new Promise(async (resolve) => {
+            for (const path of candidatePaths) {
+                try {
+                    const res = await fetch(path);
+                    if (res.ok) return resolve(await res.json());
+                } catch (e) {}
+            }
+            resolve(null);
+        });
+    }
 
-        if (!window.CLUSTERS_DATA) {
-            if (statusMessage) statusMessage.textContent = "ERROR: CLUSTERS DATA NOT LOADED.";
-            return;
-        }
-
-        const availableDates = Object.keys(window.CLUSTERS_DATA).sort();
-        const todayStr = new Date().toISOString().split('T')[0];
-        const activeDateKey = window.CLUSTERS_DATA[todayStr] ? todayStr : availableDates[availableDates.length - 1];
-
-        puzzleData = window.CLUSTERS_DATA[activeDateKey];
-
-        if (btnShuffle) btnShuffle.addEventListener('click', shuffleActiveTiles);
-        if (btnSubmit) btnSubmit.addEventListener('click', handleSubmission);
+    async function populateVault() {
+        if (!vaultList) return;
+        vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
         
-        if (btnSound) {
-            btnSound.addEventListener('click', () => {
-                btnSound.textContent = btnSound.textContent.includes('OFF') ? 'SOUND: ON' : 'SOUND: OFF';
-            });
+        const fetchPromises = [];
+        for (let i = 1; i <= 51; i++) {
+            const paddedId = String(i).padStart(2, '0');
+            fetchPromises.push(fetchFileWithFallbacks(`cluegram-${paddedId}.json`).then(data => ({ id: paddedId, data })));
         }
 
-        if (btnStartClimb) {
-            btnStartClimb.addEventListener('click', startClimb);
-        }
+        const results = await Promise.all(fetchPromises);
+        const buttons = [];
 
-        renderTowerStack(0);
-    }
-
-    function renderTowerStack(activeFloor) {
-        if (!towerStack) return;
-        towerStack.innerHTML = '';
-        for (let i = 1; i <= 10; i++) {
-            const floorBar = document.createElement('div');
-            floorBar.className = 'tower-floor';
-            if (i <= activeFloor) {
-                floorBar.classList.add('active');
-            }
-            towerStack.appendChild(floorBar);
-        }
-    }
-
-    function updateLivesDisplay() {
-        pips.forEach((pip, index) => {
-            if (!pip) return;
-            if (index < currentLives) {
-                pip.classList.remove('lost');
-            } else {
-                pip.classList.add('lost');
+        results.forEach(({ id, data }) => {
+            if (data) {
+                const btn = document.createElement('button');
+                btn.className = 'vault-item-btn';
+                btn.innerHTML = `<strong>Archive ${id}</strong>`;
+                btn.onclick = () => loadVaultArchive(id);
+                buttons.push(btn);
             }
         });
+
+        vaultList.innerHTML = '';
+        if (buttons.length === 0) {
+            vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">No archives found.</div>';
+        } else {
+            buttons.forEach(btn => vaultList.appendChild(btn));
+        }
     }
 
-    function startClimb() {
-        if (!puzzleData || !puzzleData.floors) {
-            if (statusMessage) statusMessage.textContent = "DATA ERROR: COULD NOT START CLIMB.";
-            return;
+    async function loadVaultArchive(paddedId) {
+        const data = await fetchFileWithFallbacks(`cluegram-${paddedId}.json`);
+        let extractedFloors = [];
+        if (data) extractedFloors = Array.isArray(data) ? data : (data.floors || []);
+
+        if (extractedFloors.length > 0) {
+            activeGameData = extractedFloors;
+            launchGameUI();
+        } else {
+            showMessage(`COULD NOT LOAD ARCHIVE ${paddedId}`, false);
         }
+    }
 
-        gameState = 'playing';
-        currentLives = 3;
-        updateLivesDisplay();
+    function startGame() {
+        if (!activeGameData || activeGameData.length === 0) {
+            if (window.CLUEGRAM_DAILY_SET) {
+                activeGameData = Array.isArray(window.CLUEGRAM_DAILY_SET) 
+                    ? window.CLUEGRAM_DAILY_SET 
+                    : (window.CLUEGRAM_DAILY_SET.floors || []);
+            }
+        }
+        if (!activeGameData || activeGameData.length === 0) return;
+        launchGameUI();
+    }
 
+    function launchGameUI() {
         if (startScreen) startScreen.style.display = 'none';
-        if (floorHudContainer) floorHudContainer.style.display = 'flex';
-        if (mainContent) mainContent.style.display = 'flex';
-        if (actionPanelContainer) actionPanelContainer.style.display = 'flex';
+        if (victoryScreen) victoryScreen.style.display = 'none';
+        if (hudContainer) hudContainer.style.display = 'flex';
+        if (gameWorkspace) gameWorkspace.style.display = 'flex';
+        if (gameControls) gameControls.style.display = 'flex';
+        if (statsModal) statsModal.classList.add('hidden');
+        if (gameplayHeader) gameplayHeader.style.display = 'flex';
+        if (footerText) footerText.style.display = 'block';
 
-        currentFloor = 1;
-        startMatchTimer();
-        loadFloor(currentFloor);
+        currentFloorIndex = 0;
+        startTimer();
+        loadFloor(currentFloorIndex);
     }
 
-    function loadFloor(floorNum) {
-        currentFloor = floorNum;
-        if (floorNumVal) {
-            floorNumVal.innerHTML = getOrdinalFloorHTML(currentFloor);
-        }
-        renderTowerStack(currentFloor);
-        selectedTiles = [];
-        if (solvedGroupsContainer) solvedGroupsContainer.innerHTML = '';
-        if (statusMessage) statusMessage.textContent = '';
-        if (btnSubmit) btnSubmit.disabled = true;
+    function resetToStartScreen() {
+        if (victoryScreen) victoryScreen.style.display = 'none';
+        if (hudContainer) hudContainer.style.display = 'none';
+        if (gameWorkspace) gameWorkspace.style.display = 'none';
+        if (gameControls) gameControls.style.display = 'none';
+        if (gameplayHeader) gameplayHeader.style.display = 'none';
+        if (activeGameTimer) activeGameTimer.style.display = 'none';
+        if (startScreen) startScreen.style.display = 'flex';
+    }
 
-        const floorConfig = puzzleData.floors[currentFloor];
-        if (!floorConfig) {
-            renderVictory();
-            return;
-        }
+    // --- Core Logic ---
+    function getOrdinalFloorHTML(floorNum) {
+        const ord = ordinals[floorNum - 1] || `${floorNum}th`;
+        return `<span style="color: var(--genre-magenta);">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
+    }
 
-        activeTiles = [...floorConfig.tiles];
-        remainingGroups = floorConfig.groups.map(g => ({ ...g }));
+    function loadFloor(index) {
+        if (!activeGameData || index >= activeGameData.length) return;
 
-        if (puzzlePrompt) {
-            if (currentFloor <= 4) {
-                puzzlePrompt.textContent = "Find 2 groups of 3 from the 12 tiles.";
-            } else if (currentFloor >= 5 && currentFloor <= 9) {
-                puzzlePrompt.textContent = "Find 3 groups of 3 from the 12 tiles.";
-            } else if (currentFloor === 10) {
-                puzzlePrompt.textContent = "Sort all 16 tiles into 4 groups of 4.";
+        const floorData = activeGameData[index];
+        userGuess = [];
+        showMessage('', false);
+        isProcessing = false;
+
+        if (floorNumberVal) floorNumberVal.innerHTML = getOrdinalFloorHTML(index + 1);
+        if (floorRuleText) floorRuleText.textContent = `${floorData.target.length}-letter Anagram • No mistakes!`;
+        if (clueText) clueText.textContent = floorData.clue;
+
+        updateTowerStack(index + 1);
+
+        if (targetSlotsContainer) {
+            targetSlotsContainer.innerHTML = '';
+            for (let i = 0; i < floorData.target.length; i++) {
+                const slot = document.createElement('div');
+                slot.className = 'target-slot';
+                slot.dataset.slotIndex = i;
+                slot.addEventListener('click', () => handleSlotClick(i));
+                targetSlotsContainer.appendChild(slot);
             }
         }
 
-        shuffleArray(activeTiles);
-        renderGrid();
+        rackTiles = floorData.scrambled.split('').map((char, i) => ({
+            id: i,
+            letter: char,
+            used: false
+        }));
+
+        renderRack();
     }
 
-    function renderGrid() {
-        if (!tileGrid) return;
-        tileGrid.innerHTML = '';
+    function renderRack() {
+        if (!letterRackContainer) return;
+        letterRackContainer.innerHTML = '';
+        rackTiles.forEach((tile) => {
+            const tileElem = document.createElement('div');
+            tileElem.className = `rack-tile ${tile.used ? 'used' : ''}`;
+            tileElem.textContent = tile.letter;
+            tileElem.addEventListener('click', () => handleTileClick(tile));
+            letterRackContainer.appendChild(tileElem);
+        });
+        renderTargetSlots();
+    }
 
-        if (currentFloor === 10) {
-            tileGrid.className = 'tile-grid grid-col-4';
-        } else {
-            tileGrid.className = 'tile-grid grid-col-3';
-        }
-
-        activeTiles.forEach(tileText => {
-            const tileEl = document.createElement('div');
-            tileEl.className = 'cluster-tile';
-            if (selectedTiles.includes(tileText)) {
-                tileEl.classList.add('selected');
+    function renderTargetSlots() {
+        if (!targetSlotsContainer) return;
+        const slots = targetSlotsContainer.querySelectorAll('.target-slot');
+        slots.forEach((slot, i) => {
+            if (i < userGuess.length) {
+                slot.textContent = userGuess[i].letter;
+                slot.classList.add('filled');
+            } else {
+                slot.textContent = '';
+                slot.classList.remove('filled');
             }
-            tileEl.textContent = tileText;
-            tileEl.addEventListener('click', () => handleTileClick(tileText, tileEl));
-            tileGrid.appendChild(tileEl);
+            slot.classList.remove('state-error', 'state-success');
         });
     }
 
-    function handleTileClick(tileText, tileEl) {
-        if (gameState !== 'playing') return;
-
-        const maxSelection = (currentFloor === 10) ? 4 : 3;
-
-        const index = selectedTiles.indexOf(tileText);
-        if (index > -1) {
-            selectedTiles.splice(index, 1);
-            tileEl.classList.remove('selected');
-        } else {
-            if (selectedTiles.length < maxSelection) {
-                selectedTiles.push(tileText);
-                tileEl.classList.add('selected');
-            }
+    function handleTileClick(tile) {
+        if (tile.used || isProcessing) return;
+        const currentFloor = activeGameData[currentFloorIndex];
+        if (userGuess.length < currentFloor.target.length) {
+            tile.used = true;
+            userGuess.push(tile);
+            renderRack();
         }
-
-        if (btnSubmit) btnSubmit.disabled = (selectedTiles.length !== maxSelection);
     }
 
-    function shuffleActiveTiles() {
-        if (gameState !== 'playing') return;
-        shuffleArray(activeTiles);
-        renderGrid();
+    function handleSlotClick(index) {
+        if (isProcessing || index >= userGuess.length) return;
+        const removedTile = userGuess.splice(index, 1)[0];
+        const originalTile = rackTiles.find(t => t.id === removedTile.id);
+        if (originalTile) originalTile.used = false;
+        renderRack();
     }
 
-    function handleSubmission() {
-        if (gameState !== 'playing') return;
+    function selectFirstAvailableLetter(letter) {
+        const availableTile = rackTiles.find(t => !t.used && t.letter === letter);
+        if (availableTile) handleTileClick(availableTile);
+    }
 
-        const maxSelection = (currentFloor === 10) ? 4 : 3;
-        if (selectedTiles.length !== maxSelection) return;
+    function handleBackspace() {
+        if (userGuess.length === 0 || isProcessing) return;
+        const removedTile = userGuess.pop();
+        const originalTile = rackTiles.find(t => t.id === removedTile.id);
+        if (originalTile) originalTile.used = false;
+        renderRack();
+    }
 
-        let matchedGroupIndex = -1;
-        for (let i = 0; i < remainingGroups.length; i++) {
-            const groupWords = remainingGroups[i].words;
-            const isMatch = selectedTiles.every(t => groupWords.includes(t)) && groupWords.every(t => selectedTiles.includes(t));
-            if (isMatch) {
-                matchedGroupIndex = i;
-                break;
-            }
+    function handleShuffle() {
+        if (isProcessing) return;
+        for (let i = rackTiles.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [rackTiles[i], rackTiles[j]] = [rackTiles[j], rackTiles[i]];
+        }
+        renderRack();
+    }
+
+    function handleSubmit() {
+        if (isProcessing) return;
+        const currentFloor = activeGameData[currentFloorIndex];
+        if (userGuess.length < currentFloor.target.length) {
+            showMessage('FILL ALL SLOTS BEFORE SUBMITTING', false);
+            return;
         }
 
-        if (matchedGroupIndex > -1) {
-            gameState = 'animating';
-            if (btnSubmit) btnSubmit.disabled = true;
+        isProcessing = true;
+        const submittedWord = userGuess.map(t => t.letter).join('');
+        const slots = targetSlotsContainer.querySelectorAll('.target-slot');
 
-            const tileElements = tileGrid.querySelectorAll('.cluster-tile');
-            tileElements.forEach(el => {
-                if (selectedTiles.includes(el.textContent)) {
-                    el.classList.remove('selected');
-                    el.classList.add('success');
-                }
-            });
-
-            if (statusMessage) statusMessage.textContent = "CORRECT CLUSTER.";
+        if (submittedWord === currentFloor.target) {
+            slots.forEach(slot => slot.classList.add('state-success'));
+            showMessage('CORRECT ANAGRAM!', true);
 
             setTimeout(() => {
-                const solvedGroup = remainingGroups.splice(matchedGroupIndex, 1)[0];
-                solvedGroup.words.forEach(word => {
-                    const idx = activeTiles.indexOf(word);
-                    if (idx > -1) activeTiles.splice(idx, 1);
-                });
-
-                appendSolvedCard(solvedGroup);
-                selectedTiles = [];
-                gameState = 'playing';
-                renderGrid();
-
-                if (remainingGroups.length === 0) {
-                    setTimeout(() => {
-                        if (currentFloor < 10) {
-                            const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
-                            if (statusMessage) statusMessage.textContent = `${ordinals[currentFloor - 1].toUpperCase()} FLOOR CLEARED. ADVANCING...`;
-                            setTimeout(() => loadFloor(currentFloor + 1), 900);
-                        } else {
-                            renderVictory();
-                        }
-                    }, 400);
+                if (currentFloorIndex + 1 >= activeGameData.length) {
+                    stopTimer();
+                    const newStats = recordGameResult(true, 11);
+                    
+                    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formatTime(timeElapsedSeconds);
+                    if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${newStats.streak} Days`;
+                    
+                    if (hudContainer) hudContainer.style.display = 'none';
+                    if (gameWorkspace) gameWorkspace.style.display = 'none';
+                    if (gameControls) gameControls.style.display = 'none';
+                    if (gameplayHeader) gameplayHeader.style.display = 'none';
+                    if (activeGameTimer) activeGameTimer.style.display = 'none';
+                    if (footerText) footerText.style.display = 'none';
+                    
+                    if (victoryScreen) victoryScreen.style.display = 'flex';
+                    
+                } else {
+                    currentFloorIndex++;
+                    loadFloor(currentFloorIndex);
                 }
-            }, 600);
-
+            }, 800);
         } else {
-            currentLives--;
-            updateLivesDisplay();
+            slots.forEach(slot => slot.classList.add('state-error'));
+            showMessage('INCORRECT — DROPPED TO 1ST FLOOR', false);
 
-            if (currentLives > 0) {
-                if (statusMessage) statusMessage.textContent = `INCORRECT. ${currentLives} LIVES REMAINING.`;
-                selectedTiles = [];
-                if (btnSubmit) btnSubmit.disabled = true;
-                renderGrid();
-            } else {
-                triggerBrutalReset();
+            const towerFloors = document.querySelectorAll('.tower-floor');
+            const activeTowerFloor = Array.from(towerFloors).find(
+                f => parseInt(f.dataset.floor) === currentFloorIndex + 1
+            );
+            if (activeTowerFloor) activeTowerFloor.classList.add('failed');
+
+            stopTimer();
+            recordGameResult(false, currentFloorIndex + 1);
+
+            setTimeout(() => {
+                currentFloorIndex = 0;
+                startTimer();
+                loadFloor(0);
+            }, 1500);
+        }
+    }
+
+    function updateTowerStack(activeFloorNum) {
+        const towerFloors = document.querySelectorAll('.tower-floor');
+        towerFloors.forEach(floorElem => {
+            const floorVal = parseInt(floorElem.dataset.floor);
+            floorElem.classList.remove('active', 'completed', 'failed');
+
+            if (floorVal === activeFloorNum) {
+                floorElem.classList.add('active');
+            } else if (floorVal < activeFloorNum) {
+                floorElem.classList.add('completed');
             }
+        });
+    }
+
+    function showMessage(msg, isSuccess = false) {
+        if (!messageBox) return;
+        messageBox.textContent = msg;
+        messageBox.style.color = isSuccess ? 'var(--state-success)' : 'var(--state-error)';
+    }
+
+    function recordGameResult(isWin, peakFloor) {
+        const stats = getStats();
+        stats.played++;
+        if (isWin) {
+            stats.wins++;
+            stats.streak++;
+        } else {
+            stats.streak = 0;
         }
+
+        if (peakFloor > stats.bestFloor) {
+            stats.bestFloor = peakFloor;
+        }
+
+        localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+        updateStatsDisplay();
+        return stats;
     }
 
-    function appendSolvedCard(group) {
-        if (!solvedGroupsContainer) return;
-        const card = document.createElement('div');
-        card.className = 'solved-group-card';
-        card.innerHTML = `
-            <div class="solved-group-category">${group.category}</div>
-            <div class="solved-group-words">${group.words.join(' // ')}</div>
-        `;
-        solvedGroupsContainer.appendChild(card);
+    function getStats() {
+        const raw = localStorage.getItem(STATS_KEY);
+        if (!raw) {
+            return { played: 0, wins: 0, streak: 0, bestFloor: 1 };
+        }
+        return JSON.parse(raw);
     }
 
-    function triggerBrutalReset() {
-        gameState = 'penalty';
-        if (btnSubmit) btnSubmit.disabled = true;
-        stopMatchTimer();
+    function updateStatsDisplay() {
+        const stats = getStats();
+        const playedElem = document.getElementById('stat-played');
+        const winsElem = document.getElementById('stat-wins');
+        const winrateElem = document.getElementById('stat-winrate');
+        const streakElem = document.getElementById('stat-streak');
+        const bestfloorElem = document.getElementById('stat-bestfloor');
+
+        if (playedElem) playedElem.textContent = stats.played;
+        if (winsElem) winsElem.textContent = stats.wins;
         
-        if (penaltyOverlay) penaltyOverlay.classList.add('flash');
-        if (statusMessage) statusMessage.textContent = "OUT OF LIVES. DROPPED TO 1ST FLOOR.";
-
-        setTimeout(() => {
-            if (penaltyOverlay) penaltyOverlay.classList.remove('flash');
-            currentLives = 3;
-            updateLivesDisplay();
-            startMatchTimer();
-            loadFloor(1);
-        }, 1200);
+        const winRate = stats.played > 0 ? Math.round((stats.wins / stats.played) * 100) : 0;
+        if (winrateElem) winrateElem.textContent = `${winRate}%`;
+        if (streakElem) streakElem.textContent = stats.streak;
+        
+        const bestOrd = ordinals[stats.bestFloor - 1] || `${stats.bestFloor}th`;
+        if (bestfloorElem) bestfloorElem.textContent = `${bestOrd} Floor`;
     }
-
-    function renderVictory() {
-        gameState = 'victory';
-        stopMatchTimer();
-        if (floorHudContainer) floorHudContainer.style.display = 'none';
-        if (actionPanelContainer) actionPanelContainer.style.display = 'none';
-        if (solvedGroupsContainer) solvedGroupsContainer.innerHTML = '';
-        if (puzzlePrompt) puzzlePrompt.textContent = "";
-        renderTowerStack(10);
-
-        if (tileGrid) {
-            tileGrid.className = 'tile-grid grid-col-3';
-            tileGrid.innerHTML = `
-                <div style="grid-column: span 3;" class="landing-container">
-                    <div style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--state-success); letter-spacing: 1.5px;">
-                        11TH FLOOR REACHED
-                    </div>
-                    <div style="font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 800; color: #ffffff; margin: 10px 0;">
-                        TIME: ${formatTime(totalElapsedSeconds)}
-                    </div>
-                    <div class="landing-challenge-text">
-                        Congratulations! You have reached the 11th Floor. Come back tomorrow to continue your streak.
-                    </div>
-                    <a href="index.html" class="btn-start" style="text-decoration: none; display: inline-block; text-align: center; margin-top: 10px;">RETURN TO LOBBY</a>
-                </div>
-            `;
-        }
-    }
-
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    }
-
-    window.addEventListener('DOMContentLoaded', init);
-
-})();
+});
