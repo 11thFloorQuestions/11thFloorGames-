@@ -345,3 +345,50 @@
             </div>
 
         </div>
+
+        <!-- SHARING CONTROLS -->
+        <div class="controls-group">
+            <button class="btn-flex-action" id="btn-copy-flex">SHARE</button>
+            <button class="btn-secondary-action" id="btn-stats-vault">VIEW STATS & ARCHIVES</button>
+        </div>
+
+    </div>
+
+    <div id="toast-msg">COPIED TO CLIPBOARD</div>
+
+    <script>
+        function getTierRank(totalSeconds) {
+            if (totalSeconds < 50) return "EXPERT";
+            if (totalSeconds <= 65) return "PUNDIT LEVEL";
+            return "I KNOW BALL";
+        }
+
+        const sampleSeconds = 44;
+        const formattedTime = "00:44";
+        const calculatedRank = getTierRank(sampleSeconds);
+
+        document.getElementById('display-time').textContent = formattedTime;
+        document.getElementById('flex-tier-msg').textContent = calculatedRank;
+
+        document.getElementById('btn-copy-flex').addEventListener('click', () => {
+            const flexText = 
+`11th Floor: Think You Know Ball?
+11th Floor Reached
+Time: ${formattedTime} | ${calculatedRank}
+Streak: 1 Day
+
+Prove you know ball:
+https://11thfloorquestions.vercel.app/ball.html`;
+
+            navigator.clipboard.writeText(flexText).then(() => {
+                const toast = document.getElementById('toast-msg');
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2000);
+            });
+        });
+    </script>
+
+</body>
+</html>
