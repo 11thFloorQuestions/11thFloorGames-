@@ -37,77 +37,9 @@
 
             <!-- HERO SECTION -->
             <div style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 4px 0;">
-                <div style="font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #22c55e; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 6px; text-shadow: 0 0 12px rgba(34, 197, 94, 0.35);">
+                <!-- WHITE TITLE -->
+                <div style="font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 6px;">
                     THINK YOU KNOW BALL?
                 </div>
                 
-                <div style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px;">
-                    <span style="color: #22c55e;">11th</span> <span style="color: #ffffff;">Floor Reached</span>
-                </div>
-
-                <div id="display-time" style="font-family: 'Anton', sans-serif; font-size: 4.2rem; line-height: 0.85; color: #ffffff; letter-spacing: 2px; margin: 8px 0;">
-                    00:44
-                </div>
-                
-                <div id="flex-tier-msg" style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; color: #22c55e; letter-spacing: 2px; text-transform: uppercase; background: rgba(34, 197, 94, 0.1); border: 1px solid #22c55e; padding: 6px 16px; border-radius: 12px; margin-top: 6px;">
-                    EXPERT
-                </div>
-            </div>
-
-            <!-- METRIC ROWS -->
-            <div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #333333; padding-top: 14px;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: #888888; text-transform: uppercase; letter-spacing: 1px;">Accuracy</span>
-                    <span style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; color: #22c55e; letter-spacing: 0.5px;">100% (10/10)</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: #888888; text-transform: uppercase; letter-spacing: 1px;">Active Streak</span>
-                    <span style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; color: #facc15; letter-spacing: 0.5px;">1 Day</span>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- CONTROLS -->
-        <div style="width: 100%; display: flex; flex-direction: column; gap: 10px;">
-            <button id="btn-copy-flex" style="width: 100%; background-color: #22c55e; border: 1px solid #22c55e; color: #000000; padding: 14px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border-radius: 24px; cursor: pointer; box-shadow: 0 0 15px rgba(34, 197, 94, 0.35);">SHARE</button>
-            <button id="btn-stats-vault" style="width: 100%; background-color: #111111; border: 1px solid #333333; color: #ffffff; padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 24px; cursor: pointer;">VIEW STATS & ARCHIVES</button>
-        </div>
-
-    </div>
-
-    <div id="toast-msg" style="position: fixed; bottom: 20px; background: #22c55e; color: #000000; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.75rem; padding: 8px 16px; border-radius: 20px; display: none; box-shadow: 0 0 15px rgba(34, 197, 94, 0.35); z-index: 100;">COPIED TO CLIPBOARD</div>
-
-    <script>
-        function getTierRank(totalSeconds) {
-            if (totalSeconds < 50) return "EXPERT";
-            if (totalSeconds <= 65) return "PUNDIT LEVEL";
-            return "I KNOW BALL";
-        }
-
-        const sampleSeconds = 44;
-        const formattedTime = "00:44";
-        const calculatedRank = getTierRank(sampleSeconds);
-
-        document.getElementById('display-time').textContent = formattedTime;
-        document.getElementById('flex-tier-msg').textContent = calculatedRank;
-
-        document.getElementById('btn-copy-flex').addEventListener('click', () => {
-            const flexText = 
-`11th Floor: Think You Know Ball?
-11th Floor Reached
-Time: ${formattedTime} | ${calculatedRank}
-Streak: 1 Day`;
-
-            navigator.clipboard.writeText(flexText).then(() => {
-                const toast = document.getElementById('toast-msg');
-                toast.style.display = 'block';
-                setTimeout(() => {
-                    toast.style.display = 'none';
-                }, 2000);
-            });
-        });
-    </script>
-
-</body>
-</html>
+                <div style="font-family: 'Montserrat', sans-serif; font-
