@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800;900&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
 
     <style>
         :root {
@@ -26,7 +25,7 @@
             --state-error: #ef4444;
         }
 
-        * {
+        *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -34,18 +33,18 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        body {
+        html, body {
+            width: 100%;
+            min-height: 100vh;
             background-color: var(--bg-deep);
             color: var(--text-primary);
             font-family: 'Montserrat', sans-serif;
-            min-height: 100vh;
-            min-height: 100dvh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 16px 12px;
-            overflow-x: hidden;
+            padding: 20px 14px;
+            overflow-y: auto;
         }
 
         .sandbox-container {
@@ -67,7 +66,7 @@
 
         .game-logo-pitch {
             font-family: 'Anton', sans-serif;
-            font-size: 3rem;
+            font-size: 3.2rem;
             color: var(--genre-pitch);
             line-height: 0.85;
             text-shadow: 0 0 20px var(--genre-pitch-glow);
@@ -91,3 +90,266 @@
 
         /* THE VICTORY RECEIPT CARD (THE HERO SHARE CONTAINER) */
         .victory-receipt-card {
+            width: 100%;
+            background: var(--surface-card);
+            border: 1px solid var(--genre-pitch);
+            border-radius: 14px;
+            padding: 22px 20px;
+            box-shadow: 0 0 25px var(--genre-pitch-glow);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+        }
+
+        /* Card Header Bar */
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--surface-border-light);
+            padding-bottom: 12px;
+        }
+
+        .receipt-brand-tag {
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--genre-pitch);
+            text-transform: uppercase;
+        }
+
+        .club-badge-slot {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #181818;
+            border: 1px solid var(--surface-border-light);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* Hero Time & Flex Section */
+        .hero-flex-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 6px 0;
+        }
+
+        .flex-status-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        /* HERO TIME DISPLAY */
+        .hero-time-display {
+            font-family: 'Anton', sans-serif;
+            font-size: 4rem;
+            line-height: 0.9;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            margin: 6px 0;
+        }
+
+        .flex-tier-badge {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--genre-pitch);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid var(--genre-pitch);
+            padding: 5px 14px;
+            border-radius: 12px;
+            margin-top: 6px;
+        }
+
+        /* Metric Rows */
+        .receipt-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-top: 1px solid var(--surface-border-light);
+            padding-top: 14px;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .row-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .row-val {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .row-val.success { color: var(--state-success); }
+        .row-val.active { color: var(--state-active); }
+
+        /* Card Footer Link */
+        .receipt-footer-link {
+            text-align: center;
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            border-top: 1px dashed var(--surface-border-light);
+            padding-top: 12px;
+        }
+
+        /* BUTTON CONTROLS */
+        .controls-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-flex-action {
+            width: 100%;
+            background-color: var(--genre-pitch);
+            border: 1px solid var(--genre-pitch);
+            color: #000000;
+            padding: 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 24px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--genre-pitch-glow);
+            transition: transform 0.1s ease;
+        }
+
+        .btn-flex-action:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary-action {
+            width: 100%;
+            background-color: var(--surface-card);
+            border: 1px solid var(--surface-border-light);
+            color: var(--text-primary);
+            padding: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 24px;
+            cursor: pointer;
+        }
+
+        #toast-msg {
+            position: fixed;
+            bottom: 20px;
+            background: var(--genre-pitch);
+            color: #000000;
+            font-weight: 800;
+            font-size: 0.75rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: none;
+            box-shadow: 0 0 15px var(--genre-pitch-glow);
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sandbox-container">
+
+        <!-- LOGO HEADER -->
+        <div class="game-logo-box">
+            <h1 class="game-logo-pitch">11FL?</h1>
+            <p class="game-logo-title">Eleventh Floor</p>
+            <p class="game-logo-sub">THINK YOU KNOW BALL?</p>
+        </div>
+
+        <!-- THE RECEIPT CARD CONTAINER -->
+        <div class="victory-receipt-card" id="victory-card">
+            
+            <div class="receipt-header">
+                <span class="receipt-brand-tag">11th Floor Games</span>
+                <div class="club-badge-slot">
+                    <span>🛡️ Arsenal</span>
+                </div>
+            </div>
+
+            <div class="hero-flex-box">
+                <span class="flex-status-label">Destination Reached</span>
+                <div class="hero-time-display" id="display-time">00:29</div>
+                <div class="flex-tier-badge">Top Ball Knower</div>
+            </div>
+
+            <div class="receipt-details">
+                <div class="receipt-row">
+                    <span class="row-label">Accuracy</span>
+                    <span class="row-val success">100% (10/10)</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="row-label">Active Streak</span>
+                    <span class="row-val active">1 Day</span>
+                </div>
+            </div>
+
+            <div class="receipt-footer-link">
+                11THFLOOR.GAMES/BALL
+            </div>
+
+        </div>
+
+        <!-- SHARING CONTROLS -->
+        <div class="controls-group">
+            <button class="btn-flex-action" id="btn-copy-flex">📋 COPY TEXT FLEX</button>
+            <button class="btn-secondary-action" id="btn-stats-vault">VIEW STATS & ARCHIVES</button>
+        </div>
+
+    </div>
+
+    <div id="toast-msg">COPIED TO CLIPBOARD!</div>
+
+    <script>
+        document.getElementById('btn-copy-flex').addEventListener('click', () => {
+            const flexText = 
+`11th Floor: Think You Know Ball? ⚽
+Floor 11/11 — DESTINATION REACHED 🏆
+⏱️ Time: 00:29 | 🔥 1 Day Streak
+
+Think you know ball? Prove it:
+https://11thfloor.games/ball`;
+
+            navigator.clipboard.writeText(flexText).then(() => {
+                const toast = document.getElementById('toast-msg');
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2000);
+            });
+        });
+    </script>
+
+</body>
+</html>
