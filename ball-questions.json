@@ -1,146 +1,144 @@
 {
-  "setId": "24",
-  "title": "Think You Know Ball? - Set 24",
+  "setId": "25",
+  "title": "Think You Know Ball? - Set 25",
   "questions": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Cole Palmer recently dropped out of the England squad for what official reason?",
+      "question": "Which manager landed a bumper new contract this week?",
       "options": [
-        "Muscle injury",
-        "Girlfriend's birthday",
-        "Twisted sock",
-        "Chelsea team request"
+        "Arteta",
+        "De Zerbi"
       ],
-      "answer": "Muscle injury",
-      "explanation": "Cole Palmer withdrew from the England squad citing a muscle injury.",
-      "anchorClues": "Cole Palmer England withdrawal muscle injury"
+      "answer": "Arteta",
+      "explanation": "Mikel Arteta signed a major new long-term deal at Arsenal.",
+      "anchorClues": "Mikel Arteta new contract extension Arsenal"
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which former or current Premier League player celebrates his birthday today?",
+      "question": "Which key Premier League defender celebrates his birthday today?",
       "options": [
-        "Diego Costa",
-        "Jermain Defoe",
-        "Trent Alexander-Arnold",
-        "All Three"
+        "Ben White",
+        "Virgil van Dijk",
+        "Kyle Walker",
+        "Gabriel Magalhães"
       ],
-      "answer": "All Three",
-      "explanation": "Diego Costa, Jermain Defoe, and Trent Alexander-Arnold were all born on 7 October.",
-      "anchorClues": "Diego Costa Jermain Defoe Trent Alexander-Arnold birthday October 7"
+      "answer": "Ben White",
+      "explanation": "Arsenal defender Ben White celebrates his birthday.",
+      "anchorClues": "Ben White birthday"
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Heading into today's action, where do Chelsea currently sit in the Premier League table?",
+      "question": "Who is bottom of the Premier League today (Thursday)?",
       "options": [
-        "4th",
-        "6th",
-        "8th",
-        "10th"
+        "Tottenham Hotspur",
+        "Fulham",
+        "AFC Bournemouth",
+        "Aston Villa"
       ],
-      "answer": "10th",
-      "explanation": "Chelsea currently occupy 10th spot in the Premier League standings.",
-      "anchorClues": "Chelsea 10th place Premier League standings"
+      "answer": "Tottenham Hotspur",
+      "explanation": "Spurs sit at the foot of the table following the early season fixtures.",
+      "anchorClues": "Tottenham bottom Premier League table"
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Which team managed to throw away a 2-0 half-time lead to completely collapse on the south coast right before the international break?",
+      "question": "Ahead of the big clash between Liverpool and Man City, what was the score in the same fixture last season?",
       "options": [
-        "Tottenham Hotspur",
-        "Manchester United",
-        "Aston Villa",
-        "Newcastle United"
+        "1-2 City win",
+        "2-2 draw",
+        "2-0 Liverpool win",
+        "0-1 City win"
       ],
-      "answer": "Tottenham Hotspur",
-      "explanation": "Tottenham Hotspur surrendered a 2–0 half-time lead to lose 3–2 against Brighton.",
-      "anchorClues": "Tottenham Hotspur 2-0 collapse Brighton"
+      "answer": "1-2 City win",
+      "explanation": "Manchester City took away a 2-1 victory from Anfield last season.",
+      "anchorClues": "Liverpool vs Man City score last season Anfield"
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Which player holds the record for making the most consecutive Premier League appearances?",
+      "question": "Which player holds the unwanted Premier League record for scoring the most own goals in a single calendar year?",
       "options": [
-        "Brad Friedel",
-        "Frank Lampard",
-        "David James",
-        "Gareth Barry"
+        "Martin Skrtel",
+        "Jamie Carragher",
+        "Richard Dunne",
+        "Wes Brown"
       ],
-      "answer": "Brad Friedel",
-      "explanation": "Brad Friedel made 403 consecutive Premier League appearances between 2004 and 2012.",
-      "anchorClues": "Brad Friedel 403 consecutive appearances record"
+      "answer": "Richard Dunne",
+      "explanation": "Richard Dunne managed to stick four past his own goalkeeper during 2014 alone.",
+      "anchorClues": "Richard Dunne most own goals calendar year"
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "Which manager holds the record for the shortest permanent reign in Premier League history, lasting just 41 days?",
+      "question": "Which club spent a record 140 days sitting rock bottom of the Premier League table during a single season *without* actually getting relegated?",
       "options": [
-        "Les Reed",
-        "Frank de Boer",
-        "Nathan Jones",
-        "Bob Bradley"
+        "Leicester City",
+        "Aston Villa",
+        "Sunderland",
+        "Crystal Palace"
       ],
-      "answer": "Les Reed",
-      "explanation": "Les Reed's permanent spell in charge of Charlton Athletic in 2006 lasted only 41 days.",
-      "anchorClues": "Les Reed 41 days Charlton Athletic record"
+      "answer": "Leicester City",
+      "explanation": "The Foxes somehow survived the drop during their miraculous escape under Nigel Pearson before the title win.",
+      "anchorClues": "Leicester City bottom of table 140 days escape"
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "What squad number was famously worn by cult hero Matt Le Tissier for the vast majority of his Premier League career at Southampton?",
+      "question": "What squad number did Jimmy Floyd Hasselbaink wear during his lethal goalscoring spell at Chelsea?",
       "options": [
         "7",
-        "8",
         "9",
-        "10"
+        "8",
+        "17"
       ],
       "answer": "7",
-      "explanation": "Matt Le Tissier famously wore the number 7 shirt for Southampton.",
-      "anchorClues": "Matt Le Tissier squad number 7 Southampton"
+      "explanation": "Hasselbaink famously wore the number 7 shirt as a central striker for Chelsea.",
+      "anchorClues": "Jimmy Floyd Hasselbaink squad number 7 Chelsea"
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Which referee allowed the infamous 'beach ball' goal to stand between Sunderland and Liverpool in 2009?",
+      "question": "Which referee famously sent off two Tottenham players while also managing to trip over one of them during a match against Stoke?",
       "options": [
-        "Mike Jones",
-        "Andre Marriner",
-        "Howard Webb",
-        "Mark Clattenburg"
+        "Mike Dean",
+        "Mark Clattenburg",
+        "Lee Probert",
+        "Howard Webb"
       ],
-      "answer": "Mike Jones",
-      "explanation": "Referee Mike Jones allowed Darren Bent's deflected shot off a beach ball to stand.",
-      "anchorClues": "Mike Jones beach ball goal Sunderland Liverpool 2009"
+      "answer": "Lee Probert",
+      "explanation": "Lee Probert had a chaotic afternoon at the Britannia Stadium, accidentally wiping out a player mid-match before brandishing red cards.",
+      "anchorClues": "Lee Probert referee trip Stoke Tottenham"
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "Which club holds the record for scoring the fewest home goals in a single Premier League campaign, managing just 10 at their own ground?",
+      "question": "Which club holds the record for suffering the heaviest defeat in Premier League history, losing 9-0 away from home?",
       "options": [
-        "Manchester City",
-        "Derby County",
-        "Sunderland",
-        "Sheffield United"
+        "Ipswich Town",
+        "Southampton",
+        "Sheffield United",
+        "Watford"
       ],
-      "answer": "Manchester City",
-      "explanation": "Manchester City scored just 10 home league goals during the 2006–07 season under Stuart Pearce.",
-      "anchorClues": "Manchester City 10 home goals record 2006-07"
+      "answer": "Southampton",
+      "explanation": "Southampton hold the unwanted record after heavy defeats on the road.",
+      "anchorClues": "Southampton heaviest defeat 9-0 away Premier League"
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "I played for Arsenal, Chelsea, and Tottenham Hotspur in the Premier League, wore the number 10 shirt as a centre-back, and once staged an on-pitch sit-down strike at St Andrew's. Who am I?",
+      "question": "I played as a Premier League full-back for Everton and Sunderland, won an FA Cup, and later gained viral fame on social media for my deadpan punditry and cooking videos. Who am I?",
       "options": [
-        "William Gallas",
-        "Emmanuel Adebayor",
-        "Sol Campbell",
-        "David Luiz"
+        "Andy Reid",
+        "Phil Bardsley",
+        "Kevin Campbell",
+        "Julius Aghahowa"
       ],
-      "answer": "William Gallas",
-      "explanation": "William Gallas played for Arsenal, Chelsea, and Spurs, wore number 10 as a centre-back at Arsenal, and famously sat on the pitch at Birmingham City in 2008.",
-      "anchorClues": "William Gallas Arsenal Chelsea Spurs number 10 sit-down strike"
+      "answer": "Phil Bardsley",
+      "explanation": "Bardsley transitioned from tough-tackling defender to a cult internet figure following his retirement.",
+      "anchorClues": "Phil Bardsley Everton Sunderland punditry cooking"
     }
   ]
 }
