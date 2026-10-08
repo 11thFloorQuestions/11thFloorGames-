@@ -15,6 +15,22 @@
     <link href="https://fonts.cdnfonts.com/css/glacial-indifference" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
+        body {
+            background-color: var(--bg-deep, #000000);
+            color: var(--text-primary, #ffffff);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh;
+            height: 100vh;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 10px;
+            overflow: hidden;
+        }
+
         .top-bar {
             width: 100%;
             max-width: 600px;
@@ -22,6 +38,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 8px;
+            flex-shrink: 0;
         }
 
         .pill-btn {
@@ -177,4 +194,41 @@
         .vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 8px; max-height: 220px; overflow-y: auto; margin: 12px 0; }
         .vault-item-btn { background-color: #111111; border: 1px solid var(--surface-border); color: var(--text-primary); padding: 10px 6px; border-radius: 8px; cursor: pointer; text-align: center; }
         .vault-item-btn:hover { border-color: var(--genre-blue, #3B82F6); background-color: #1a1a1a; }
-        .btn-modal { flex-grow: 1; width: 100%; background-color: #111111; border: 1px solid var(--surface-border); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin
+        .btn-modal { flex-grow: 1; width: 100%; background-color: #111111; border: 1px solid var(--surface-border); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 10px; }
+
+        /* Victory Receipt Card */
+        .victory-receipt { width: 100%; max-width: 320px; background: #111111; border: 1px solid var(--genre-blue, #3B82F6); border-radius: 12px; padding: 20px 20px; margin: 16px 0 20px 0; box-shadow: 0 0 25px rgba(59, 130, 246, 0.3); display: flex; flex-direction: column; gap: 14px; text-align: left; }
+        .victory-row { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--surface-border-light, #333333); padding-bottom: 8px; }
+        .victory-label { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .victory-data { font-size: 1rem; font-family: 'Inter', sans-serif; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
+    </style>
+</head>
+<body class="game-wordclimb">
+
+    <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 100%;">
+        <div class="top-bar">
+            <a href="index.html" class="pill-btn">← LOBBY</a>
+            <button class="pill-btn" id="btn-sound">SOUND: ON</button>
+        </div>
+
+        <!-- LANDING SCREEN -->
+        <div id="start-screen" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <div class="game-logo-box">
+                <h1 class="game-logo-blue">11FL?</h1>
+                <p class="game-logo-title">Eleventh Floor</p>
+                <p class="game-logo-sub" style="color: var(--genre-blue, #3B82F6);">WORD CLIMB</p>
+            </div>
+
+            <div class="landing-container">
+                <div class="landing-shaft-graphic">
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
