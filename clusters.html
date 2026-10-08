@@ -11,10 +11,53 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/glacial-indifference" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
+        .top-bar {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            flex-shrink: 0;
+        }
+
+        .pill-btn {
+            background: var(--surface, #0a0a0a);
+            border: 1px solid var(--surface-border-light, #333333);
+            color: var(--text-primary, #ffffff);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .pill-btn:hover {
+            border-color: var(--genre-orange, #ff751f);
+            color: var(--genre-orange, #ff751f);
+        }
+
+        /* Active Timer Display */
+        .header-timer {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--state-active, #facc15);
+            letter-spacing: 1px;
+            background: var(--surface, #0a0a0a);
+            border: 1px solid var(--surface-border, #222222);
+            padding: 4px 12px;
+            border-radius: 12px;
+            display: none;
+            margin-bottom: 4px;
+        }
+
         .landing-shaft-graphic .landing-shaft-box { animation: sweepMiddle 1.2s ease-in-out forwards; }
         .landing-shaft-graphic .landing-shaft-box:nth-child(11) { animation: sweepBottomSettle 2.6s ease-in-out forwards; animation-delay: 0.05s; }
         .landing-shaft-graphic .landing-shaft-box:nth-child(10) { animation-delay: 0.15s; }
@@ -54,8 +97,8 @@
         }
 
         /* Gameplay Area */
-        .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 12px; }
-        .tower-stack { display: flex; flex-direction: column-reverse; gap: 2px; width: 52px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 6px; justify-content: space-between; }
+        .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 12px; flex-shrink: 0; }
+        .tower-stack { display: flex; flex-direction: column-reverse; gap: 2px; width: 52px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 6px; justify-content: space-between; flex-shrink: 0; }
         .tower-floor { height: 7px; border: 1px solid var(--surface-border); background: #111111; transition: all 0.2s ease; border-radius: 2px; }
         .tower-floor.active { border-color: var(--genre-orange); background: rgba(255, 117, 31, 0.3); box-shadow: 0 0 6px var(--genre-orange-glow); }
         .floor-info-box { flex-grow: 1; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
@@ -140,6 +183,8 @@
             <div class="floor-info-box">
                 <div class="current-floor-display" id="floor-number-val">FLOOR 01</div>
                 <div class="floor-right-group" style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <!-- GOLD TIMER PLACED DIRECTLY ABOVE LIVES PIPS -->
+                    <div id="active-game-timer" class="header-timer">00:00</div>
                     <div class="lives-container" id="lives-container">
                         <div class="life-pip" id="pip-1"></div>
                         <div class="life-pip" id="pip-2"></div>
@@ -167,21 +212,5 @@
 
     <script src="clusters-data.js"></script>
     <script src="clusters.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const startBtn = document.getElementById('btn-start-climb');
-            const startScreen = document.getElementById('start-screen');
-            const hudContainer = document.getElementById('floor-hud-container');
-            const mainContent = document.getElementById('game-main-content');
-
-            if (startBtn) {
-                startBtn.addEventListener('click', () => {
-                    if (startScreen) startScreen.style.display = 'none';
-                    if (hudContainer) hudContainer.style.display = 'flex';
-                    if (mainContent) mainContent.style.display = 'flex';
-                });
-            }
-        });
-    </script>
 </body>
 </html>
