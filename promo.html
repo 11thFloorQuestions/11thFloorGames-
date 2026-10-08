@@ -37,16 +37,20 @@
 
         html, body {
             width: 100%;
-            min-height: 100vh;
+            height: 100%;
             background-color: var(--bg-deep);
             color: var(--text-primary);
             font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        body {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 20px 14px;
-            overflow-y: auto;
+            justify-content: flex-start;
+            padding: 24px 14px;
         }
 
         .sandbox-container {
@@ -56,6 +60,7 @@
             flex-direction: column;
             align-items: center;
             gap: 16px;
+            margin: auto 0;
         }
 
         /* VICTORY RECEIPT CARD */
@@ -212,4 +217,131 @@
 
         .row-val {
             font-family: 'Montserrat', sans-serif;
-            font-size:
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .row-val.success { color: var(--state-success); }
+        .row-val.active { color: var(--state-active); }
+
+        .card-footer-link {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            border-top: 1px dashed var(--surface-border-light);
+            padding-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* BUTTON CONTROLS */
+        .controls-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-flex-action {
+            width: 100%;
+            background-color: var(--genre-pitch);
+            border: 1px solid var(--genre-pitch);
+            color: #000000;
+            padding: 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 24px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--genre-pitch-glow);
+        }
+
+        .btn-flex-action:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary-action {
+            width: 100%;
+            background-color: var(--surface-card);
+            border: 1px solid var(--surface-border-light);
+            color: var(--text-primary);
+            padding: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 24px;
+            cursor: pointer;
+        }
+
+        #toast-msg {
+            position: fixed;
+            bottom: 20px;
+            background: var(--genre-pitch);
+            color: #000000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.75rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: none;
+            box-shadow: 0 0 15px var(--genre-pitch-glow);
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sandbox-container">
+
+        <!-- THE RECEIPT CARD CONTAINER -->
+        <div class="victory-receipt-card" id="victory-card">
+            
+            <div class="receipt-header">
+                <!-- TWO-COLUMN BRAND LOCKUP -->
+                <div class="brand-lockup-container">
+                    <span class="brand-mark-left">11FL?</span>
+                    <div class="brand-text-stacked">
+                        <span class="brand-title-top">Eleventh Floor</span>
+                        <span class="brand-title-bottom">GAMES</span>
+                    </div>
+                </div>
+
+                <span class="badge-slot-reserved">[BADGE AREA]</span>
+            </div>
+
+            <div class="hero-flex-box">
+                <div class="game-title-header">THINK YOU KNOW BALL?</div>
+                
+                <div class="flex-status-label">
+                    <span class="brand-green">11th</span> <span class="brand-white">Floor Reached</span>
+                </div>
+
+                <div class="hero-time-display" id="display-time">00:44</div>
+                
+                <div class="flex-tier-badge" id="flex-tier-msg">EXPERT</div>
+            </div>
+
+            <div class="receipt-details">
+                <div class="receipt-row">
+                    <span class="row-label">Accuracy</span>
+                    <span class="row-val success">100% (10/10)</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="row-label">Active Streak</span>
+                    <span class="row-val active">1 Day</span>
+                </div>
+            </div>
+
+            <div class="card-footer-link">
+                11THFLOORQUESTIONS.VERCEL.APP/BALL.HTML
+            </div>
+
+        </div>
