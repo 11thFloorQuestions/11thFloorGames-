@@ -9,58 +9,207 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
     <link rel="apple-touch-icon" href="favicon.svg?v=2">
 
-    <!-- Google Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-</head>
-<body style="margin: 0 !important; padding: 20px 14px !important; width: 100% !important; min-height: 100vh !important; background-color: #000000 !important; color: #ffffff !important; font-family: 'Montserrat', sans-serif !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; box-sizing: border-box !important; overflow-y: auto !important;">
 
-    <div style="width: 100%; max-width: 340px; display: flex; flex-direction: column; align-items: center; gap: 16px; box-sizing: border-box;">
+    <style>
+        :root {
+            --bg-deep: #000000;
+            --surface-card: #111111;
+            --surface-border-light: #333333;
+            --text-primary: #ffffff;
+            --text-muted: #888888;
+            --genre-pitch: #22c55e;
+            --genre-pitch-glow: rgba(34, 197, 94, 0.35);
+            --state-active: #facc15;
+            --state-success: #22c55e;
+        }
 
-        <!-- THE VICTORY RECEIPT CARD CONTAINER -->
-        <div style="width: 100%; background: #111111; border: 1px solid #22c55e; border-radius: 14px; padding: 22px 20px; box-shadow: 0 0 25px rgba(34, 197, 94, 0.35); display: flex; flex-direction: column; gap: 16px; box-sizing: border-box;">
-            
-            <!-- HEADER LOGO BAR WITH TWO-COLUMN BRAND LOCKUP -->
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333333; padding-bottom: 12px;">
-                
-                <!-- BRAND LOCKUP -->
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <span style="font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #22c55e; line-height: 0.85; letter-spacing: -0.5px; text-shadow: 0 0 10px rgba(34, 197, 94, 0.35);">11FL?</span>
-                    <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
-                        <span style="font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 300; color: #ffffff; letter-spacing: 0.5px; line-height: 1.1;">Eleventh Floor</span>
-                        <span style="font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: #ffffff; letter-spacing: 2.5px; text-transform: uppercase; line-height: 1.1;">GAMES</span>
-                    </div>
-                </div>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-                <!-- RESERVED BADGE AREA -->
-                <span style="font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; color: #888888; letter-spacing: 1px; text-transform: uppercase;">[BADGE AREA]</span>
-            </div>
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 14px;
+            overflow-y: auto;
+        }
 
-            <!-- HERO SECTION -->
-            <div style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 4px 0;">
-                <!-- WHITE TITLE -->
-                <div style="font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 6px;">
-                    THINK YOU KNOW BALL?
-                </div>
-                
-                <!-- FLOOR STATUS -->
-                <div style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px;">
-                    <span style="color: #22c55e;">11th</span> <span style="color: #ffffff;">Floor Reached</span>
-                </div>
+        .sandbox-container {
+            width: 100%;
+            max-width: 340px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
 
-                <!-- HERO TIME -->
-                <div id="display-time" style="font-family: 'Anton', sans-serif; font-size: 4.2rem; line-height: 0.85; color: #ffffff; letter-spacing: 2px; margin: 8px 0;">
-                    00:44
-                </div>
-                
-                <!-- DYNAMIC FLEX BADGE -->
-                <div id="flex-tier-msg" style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; color: #22c55e; letter-spacing: 2px; text-transform: uppercase; background: rgba(34, 197, 94, 0.1); border: 1px solid #22c55e; padding: 6px 16px; border-radius: 12px; margin-top: 6px;">
-                    EXPERT
-                </div>
-            </div>
+        /* VICTORY RECEIPT CARD */
+        .victory-receipt-card {
+            width: 100%;
+            background: var(--surface-card);
+            border: 1px solid var(--genre-pitch);
+            border-radius: 14px;
+            padding: 22px 20px;
+            box-shadow: 0 0 25px var(--genre-pitch-glow);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+        }
 
-            <!-- METRIC ROWS -->
-            <div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #333333; padding-top: 14px;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: #888888; text-transform: uppercase; letter
+        /* Top Header Logo Bar */
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--surface-border-light);
+            padding-bottom: 12px;
+        }
+
+        /* Brand Lockup */
+        .brand-lockup-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-mark-left {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.8rem;
+            color: var(--genre-pitch);
+            line-height: 0.85;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 10px var(--genre-pitch-glow);
+        }
+
+        .brand-text-stacked {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .brand-title-top {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+        }
+
+        .brand-title-bottom {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.55rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .badge-slot-reserved {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Hero Content Section */
+        .hero-flex-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 4px 0;
+        }
+
+        .game-title-header {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.8rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .flex-status-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .brand-green { color: var(--genre-pitch); }
+        .brand-white { color: #ffffff; }
+
+        .hero-time-display {
+            font-family: 'Anton', sans-serif;
+            font-size: 4.2rem;
+            line-height: 0.85;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin: 8px 0;
+        }
+
+        .flex-tier-badge {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--genre-pitch);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid var(--genre-pitch);
+            padding: 6px 16px;
+            border-radius: 12px;
+            margin-top: 6px;
+        }
+
+        /* Metric Rows */
+        .receipt-details {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-top: 1px solid var(--surface-border-light);
+            padding-top: 14px;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .row-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .row-val {
+            font-family: 'Montserrat', sans-serif;
+            font-size:
