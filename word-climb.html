@@ -15,6 +15,33 @@
     <link href="https://fonts.cdnfonts.com/css/glacial-indifference" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
+        body {
+            background-color: var(--bg-deep, #000000);
+            color: var(--text-primary, #ffffff);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh;
+            height: 100vh;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 10px;
+            overflow: hidden;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            flex-grow: 1;
+        }
+
         .top-bar {
             width: 100%;
             max-width: 600px;
@@ -22,6 +49,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 8px;
+            flex-shrink: 0;
         }
 
         .pill-btn {
@@ -63,4 +91,17 @@
         .landing-shaft-graphic .landing-shaft-box:nth-child(8)  { animation-delay: 0.35s; }
         .landing-shaft-graphic .landing-shaft-box:nth-child(7)  { animation-delay: 0.45s; }
         .landing-shaft-graphic .landing-shaft-box:nth-child(6)  { animation-delay: 0.55s; }
-        .landing-
+        .landing-shaft-graphic .landing-shaft-box:nth-child(5)  { animation-delay: 0.65s; }
+        .landing-shaft-graphic .landing-shaft-box:nth-child(4)  { animation-delay: 0.75s; }
+        .landing-shaft-graphic .landing-shaft-box:nth-child(3)  { animation-delay: 0.85s; }
+        .landing-shaft-graphic .landing-shaft-box:nth-child(2)  { animation-delay: 0.95s; }
+        .landing-shaft-graphic .landing-shaft-box:nth-child(1)  { animation: sweepTopGreen 1.6s ease-in-out forwards; animation-delay: 1.05s; }
+
+        @keyframes sweepMiddle {
+            0% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+            30% { background-color: var(--genre-blue); border-color: var(--genre-blue); box-shadow: 0 0 10px var(--genre-blue-glow); }
+            60%, 100% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+        }
+
+        @keyframes sweepTopGreen {
+            0% { background-color: #111111; border
