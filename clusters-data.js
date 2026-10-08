@@ -7,8 +7,8 @@
  */
 
 window.CLUSTERS_DATA = {
-  "2026-09-26": {
-    date: "2026-09-26",
+  "2026-10-08": {
+    date: "2026-10-08",
     title: "Puzzle #01: Global Alignment",
     floors: {
       // Floor 01: 12 Tiles (2 groups of 3 + 6 clean distractors)
