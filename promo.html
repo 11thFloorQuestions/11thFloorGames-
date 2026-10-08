@@ -2,51 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>11th Floor — Victory Card Sandbox</title>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
     <link rel="apple-touch-icon" href="favicon.svg?v=2">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --bg-deep: #000000;
-            --surface-card: #111111;
-            --surface-border-light: #333333;
-            --text-primary: #ffffff;
-            --text-muted: #888888;
-            --brand-red: #dc2626;
-            --brand-red-glow: rgba(220, 38, 38, 0.35);
-            --genre-pitch: #22c55e;
-            --genre-pitch-glow: rgba(34, 197, 94, 0.35);
-            --state-active: #facc15;
-            --state-success: #22c55e;
-        }
-
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
         }
 
-        html, body {
-            width: 100%;
-            min-height: 100vh;
-            background-color: var(--bg-deep) !important;
-            color: var(--text-primary) !important;
-            font-family: 'Montserrat', sans-serif;
+        html {
+            background-color: #000000;
         }
 
         body {
-            padding: 24px 14px;
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            padding: 20px 14px;
+            display: block;
         }
 
         .sandbox-container {
@@ -59,12 +41,13 @@
         /* VICTORY RECEIPT CARD */
         .victory-receipt-card {
             width: 100%;
-            background: var(--surface-card);
-            border: 1px solid var(--genre-pitch);
+            background-color: #111111;
+            border: 1px solid #22c55e;
             border-radius: 14px;
             padding: 22px 20px;
-            box-shadow: 0 0 25px var(--genre-pitch-glow);
+            box-shadow: 0 0 25px rgba(34, 197, 94, 0.35);
             margin-bottom: 16px;
+            display: block;
         }
 
         /* Top Header Logo Bar */
@@ -72,7 +55,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--surface-border-light);
+            border-bottom: 1px solid #333333;
             padding-bottom: 12px;
             margin-bottom: 16px;
         }
@@ -87,173 +70,14 @@
         .brand-mark-left {
             font-family: 'Anton', sans-serif;
             font-size: 1.8rem;
-            color: var(--brand-red);
+            color: #dc2626;
             line-height: 0.85;
             letter-spacing: -0.5px;
-            text-shadow: 0 0 10px var(--brand-red-glow);
+            text-shadow: 0 0 10px rgba(220, 38, 38, 0.35);
         }
 
         .brand-text-stacked {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            text-align: left;
-        }
-
-        .brand-title-top {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 300;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-            line-height: 1.1;
-        }
-
-        .brand-title-bottom {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.55rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            line-height: 1.1;
-        }
-
-        .badge-slot-reserved {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Hero Content Section */
-        .hero-flex-box {
-            text-align: center;
-            padding: 4px 0;
-            margin-bottom: 16px;
-        }
-
-        .game-title-header {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.8rem;
-            color: #ffffff;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            line-height: 1;
-            margin-bottom: 6px;
-        }
-
-        .flex-status-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .brand-green { color: var(--genre-pitch); }
-        .brand-white { color: #ffffff; }
-
-        .hero-time-display {
-            font-family: 'Anton', sans-serif;
-            font-size: 3.4rem;
-            line-height: 0.9;
-            color: #ffffff;
-            letter-spacing: 2px;
-            margin: 8px 0;
-        }
-
-        .hero-time-unit {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-            margin-left: 2px;
-            text-transform: lowercase;
-        }
-
-        .flex-tier-badge {
-            display: inline-block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: var(--genre-pitch);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid var(--genre-pitch);
-            padding: 6px 16px;
-            border-radius: 12px;
-            margin-top: 6px;
-        }
-
-        /* Metric Rows */
-        .receipt-details {
-            border-top: 1px solid var(--surface-border-light);
-            padding-top: 14px;
-            margin-bottom: 16px;
-        }
-
-        .receipt-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .receipt-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .row-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .row-val {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-        }
-
-        .row-val.success { color: var(--state-success); }
-        .row-val.active { color: var(--state-active); }
-
-        .card-footer-cta {
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.6rem;
-            font-weight: 800;
-            color: var(--text-muted);
-            letter-spacing: 1.5px;
-            border-top: 1px dashed var(--surface-border-light);
-            padding-top: 10px;
-            text-transform: uppercase;
-        }
-
-        /* BUTTON CONTROLS */
-        .controls-group {
-            width: 100%;
-        }
-
-        .btn-flex-action {
-            width: 100%;
-            background-color: var(--genre-pitch);
-            border: 1px solid var(--genre-pitch);
-            color: #000000;
-            padding: 14px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px
+            text-align:
