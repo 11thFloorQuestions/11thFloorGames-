@@ -501,10 +501,230 @@
         .vault-item-btn:hover { border-color: var(--genre-pink); background-color: #1a1a1a; }
         .btn-modal { flex-grow: 1; width: 100%; background-color: #111111; border: 1px solid var(--surface-border-light); color: var(--text-primary); padding: 11px; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 8px; }
 
-        .victory-receipt { width: 100%; max-width: 320px; background: #111111; border: 1px solid var(--genre-pink); border-radius: 12px; padding: 20px 20px; margin: 16px 0 20px 0; box-shadow: 0 0 25px var(--genre-pink-glow); display: flex; flex-direction: column; gap: 14px; text-align: left; }
-        .victory-row { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--surface-border-light); padding-bottom: 8px; }
-        .victory-label { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-        .victory-data { font-size: 1rem; font-family: 'Inter', sans-serif; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
+        /* IN-GAME VICTORY RECEIPT CARD SPECIFICATIONS */
+        .victory-receipt-card {
+            width: 100%;
+            max-width: 340px;
+            background-color: #111111;
+            border: 1px solid var(--genre-pink);
+            border-radius: 14px;
+            padding: 22px 20px;
+            box-shadow: 0 0 25px var(--genre-pink-glow);
+            margin-bottom: 16px;
+            text-align: left;
+            display: block;
+        }
+
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .brand-lockup-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-mark-left {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.8rem;
+            color: var(--genre-pink);
+            line-height: 0.85;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 10px var(--genre-pink-glow);
+        }
+
+        .brand-text-stacked {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .brand-title-top {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+        }
+
+        .brand-title-bottom {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.55rem;
+            font-weight: 700;
+            color: var(--genre-pink);
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .badge-slot-reserved {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #888888;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-flex-box {
+            text-align: center;
+            padding: 4px 0;
+            margin-bottom: 16px;
+        }
+
+        .game-title-header {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.8rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .flex-status-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .brand-pink { color: var(--genre-pink); }
+        .brand-green { color: var(--state-success); }
+        .brand-white { color: #ffffff; }
+
+        .hero-time-display {
+            font-family: 'Anton', sans-serif;
+            font-size: 3.4rem;
+            line-height: 0.9;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin: 8px 0;
+        }
+
+        .hero-time-unit {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #888888;
+            letter-spacing: 1px;
+            margin-left: 2px;
+            text-transform: lowercase;
+        }
+
+        .flex-tier-badge {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--genre-pink);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(255, 153, 153, 0.1);
+            border: 1px solid var(--genre-pink);
+            padding: 6px 16px;
+            border-radius: 12px;
+            margin-top: 6px;
+        }
+
+        .receipt-details {
+            border-top: 1px solid #333333;
+            padding-top: 14px;
+            margin-bottom: 16px;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .receipt-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .row-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .row-val {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .row-val.success { color: var(--state-success); }
+        .row-val.active { color: var(--genre-pink); }
+
+        .card-footer-cta {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 800;
+            color: #888888;
+            letter-spacing: 1.5px;
+            border-top: 1px dashed #333333;
+            padding-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .controls-group {
+            width: 100%;
+            max-width: 340px;
+            display: block;
+        }
+
+        .btn-flex-action {
+            width: 100%;
+            background-color: var(--genre-pink);
+            border: 1px solid var(--genre-pink);
+            color: #000000;
+            padding: 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 24px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--genre-pink-glow);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .btn-secondary-action {
+            width: 100%;
+            background-color: #111111;
+            border: 1px solid #333333;
+            color: #ffffff;
+            padding: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 24px;
+            cursor: pointer;
+            display: block;
+        }
     </style>
 </head>
 <body class="game-parity">
@@ -577,7 +797,6 @@
                     <div class="current-floor-display" id="floor-number-val"><span style="color: var(--genre-pink);">1st</span> <span style="color: #ffffff;">Floor</span></div>
                     <div class="floor-rule-text" id="floor-rule-text">1 PAIR • TAP ANY TILE TO REVEAL</div>
                 </div>
-                <!-- MOVED TIMER HERE -->
                 <div id="active-game-timer" class="header-timer">00:00</div>
             </div>
         </div>
@@ -593,39 +812,55 @@
             <div id="parity-grid" class="parity-grid"></div>
         </div>
 
-        <!-- VICTORY SCREEN LAYOUT -->
+        <!-- INTEGRATED VICTORY SCREEN RECEIPT CARD -->
         <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
             
-            <div class="game-logo-box" style="margin-bottom: 0;">
-                <h1 class="game-logo-pink">11FL?</h1>
-                <p class="game-logo-title">Eleventh Floor</p>
-                <p class="game-logo-sub">PARITY</p>
+            <div class="victory-receipt-card" id="victory-card">
+                <div class="receipt-header">
+                    <div class="brand-lockup-container">
+                        <div class="brand-mark-left">11FL?</div>
+                        <div class="brand-text-stacked">
+                            <span class="brand-title-top">ELEVENTH FLOOR</span>
+                            <span class="brand-title-bottom">PARITY</span>
+                        </div>
+                    </div>
+                    <div class="badge-slot-reserved">VERIFIED</div>
+                </div>
+
+                <div class="hero-flex-box">
+                    <div class="game-title-header">
+                        <span class="brand-pink">11th</span> <span class="brand-white">Floor Parity</span>
+                    </div>
+                    <div class="flex-status-label">
+                        <span class="brand-pink">11th</span> <span class="brand-white">Floor Cleared</span>
+                    </div>
+                    <div class="hero-time-display"><span id="victory-time-display">00:00</span><span class="hero-time-unit">s</span></div>
+                    <div class="flex-tier-badge">PERFECT</div>
+                </div>
+
+                <div class="receipt-details">
+                    <div class="receipt-row">
+                        <span class="row-label">ELEVENTH FLOOR PARITY</span>
+                        <span class="row-val">#042</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">ACCURACY</span>
+                        <span class="row-val success">100% (10/10)</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">CURRENT STREAK</span>
+                        <span id="victory-streak-display" class="row-val active">0 Days</span>
+                    </div>
+                </div>
+
+                <div class="card-footer-cta">
+                    NEW GAME DAILY!
+                </div>
             </div>
 
-            <div class="victory-receipt">
-                <div style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 3px; color: var(--genre-pink); text-transform: uppercase; text-align: center; margin-bottom: 2px;">DESTINATION REACHED</div>
-                <div style="font-family: 'Anton', sans-serif; font-size: 2rem; color: #ffffff; letter-spacing: 1px; margin-bottom: 4px; text-align: center;">PERFECT</div>
-                
-                <div class="victory-row">
-                    <span class="victory-label">Time Elapsed</span>
-                    <span id="victory-time-display" class="victory-data">00:00</span>
-                </div>
-                
-                <div class="victory-row">
-                    <span class="victory-label">Accuracy</span>
-                    <span class="victory-data" style="color: var(--state-success);">100% (10/10)</span>
-                </div>
-                
-                <div class="victory-row" style="border-bottom: none; padding-bottom: 0;">
-                    <span class="victory-label">Active Streak</span>
-                    <span id="victory-streak-display" class="victory-data" style="color: var(--state-active);">0 Days</span>
-                </div>
-            </div>
-
-            <button id="btn-victory-stats" class="btn-start" style="width: 100%; max-width: 320px; margin-bottom: 12px; background-color: var(--genre-pink); color: #ffffff; border-color: var(--genre-pink);">VIEW STATS & ARCHIVES</button>
-            
-            <div style="font-size: 0.65rem; color: var(--text-muted); font-weight: 600; letter-spacing: 1px; max-width: 280px; line-height: 1.5;">
-                Unlock all past daily games and custom quizzes for £2 a month or a discounted price of £20 a year in the Archive Vault.
+            <!-- ACTION CONTROL BUTTONS -->
+            <div class="controls-group">
+                <button class="btn-flex-action" id="btn-victory-stats">VIEW STATS & ARCHIVES</button>
             </div>
         </div>
 
@@ -656,3 +891,4 @@
     <script src="parity.js"></script>
 </body>
 </html>
+<!-- END OF FILE -->
