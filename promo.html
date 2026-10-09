@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>11th Floor — Victory Card Sandbox</title>
 
     <!-- Favicon -->
@@ -37,16 +37,17 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        html {
-            background-color: var(--bg-deep);
-        }
-
-        body {
+        html, body {
+            width: 100%;
+            min-height: 100%;
             background-color: var(--bg-deep);
             color: var(--text-primary);
             font-family: 'Montserrat', sans-serif;
-            padding: 24px 14px;
+        }
+
+        body {
             display: block;
+            padding: 24px 14px;
         }
 
         .sandbox-container {
@@ -122,75 +123,4 @@
 
         .badge-slot-reserved {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Hero Content Section */
-        .hero-flex-box {
-            text-align: center;
-            padding: 4px 0;
-            margin-bottom: 16px;
-        }
-
-        .game-title-header {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.8rem;
-            color: #ffffff;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            line-height: 1;
-            margin-bottom: 6px;
-        }
-
-        .flex-status-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .brand-green { color: var(--genre-pitch); }
-        .brand-white { color: #ffffff; }
-
-        /* HERO TIMER STACK (Digits strictly centered, unit stacked underneath) */
-        .timer-container {
-            display: block;
-            text-align: center;
-            margin: 8px 0;
-        }
-
-        .hero-time-digits {
-            font-family: 'Anton', sans-serif;
-            font-size: 3.8rem;
-            line-height: 0.85;
-            color: #ffffff;
-            letter-spacing: 2px;
-            text-align: center;
-        }
-
-        .hero-time-unit {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 4px;
-            text-align: center;
-        }
-
-        .flex-tier-badge {
-            display: inline-block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: var(--genre-pitch);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: rgba(34,
+            font-size: 0.65
