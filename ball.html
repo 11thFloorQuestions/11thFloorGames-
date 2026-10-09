@@ -27,6 +27,8 @@
             --text-muted: #888888;
             --genre-pitch: #22c55e;
             --genre-pitch-glow: rgba(34, 197, 94, 0.35);
+            --brand-red: #ef4444;
+            --brand-red-glow: rgba(239, 68, 68, 0.35);
             --state-active: #facc15;
             --state-success: #22c55e;
             --state-error: #ef4444;
@@ -248,7 +250,7 @@
         .vault-item-btn { background-color: #111111; border: 1px solid var(--surface-border); color: var(--text-primary); padding: 10px 6px; border-radius: 8px; cursor: pointer; text-align: center; }
         .btn-modal { width: 100%; background-color: #111111; border: 1px solid var(--surface-border); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 10px; }
 
-        /* IN-GAME VICTORY RECEIPT CARD STYLING — THINK YOU KNOW BALL? (PITCH GREEN THEME) */
+        /* IN-GAME VICTORY RECEIPT CARD STYLING — THINK YOU KNOW BALL? */
         .victory-receipt-card {
             width: 100%;
             max-width: 340px;
@@ -277,13 +279,13 @@
             gap: 8px;
         }
 
-        .brand-mark-left {
+        .brand-mark-red {
             font-family: 'Anton', sans-serif;
             font-size: 1.8rem;
-            color: var(--genre-pitch);
+            color: var(--brand-red);
             line-height: 0.85;
             letter-spacing: -0.5px;
-            text-shadow: 0 0 10px var(--genre-pitch-glow);
+            text-shadow: 0 0 10px var(--brand-red-glow);
         }
 
         .brand-text-stacked {
@@ -296,9 +298,9 @@
         .brand-title-top {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.75rem;
-            font-weight: 300;
+            font-weight: 800;
             color: #ffffff;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             line-height: 1.1;
         }
 
@@ -306,7 +308,7 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.55rem;
             font-weight: 700;
-            color: var(--genre-pitch);
+            color: #888888;
             letter-spacing: 2px;
             text-transform: uppercase;
             line-height: 1.1;
@@ -591,10 +593,10 @@
             <div class="victory-receipt-card" id="victory-card">
                 <div class="receipt-header">
                     <div class="brand-lockup-container">
-                        <div class="brand-mark-left">11FL?</div>
+                        <div class="brand-mark-red">11FL?</div>
                         <div class="brand-text-stacked">
                             <span class="brand-title-top">ELEVENTH FLOOR</span>
-                            <span class="brand-title-bottom">THINK YOU KNOW BALL?</span>
+                            <span class="brand-title-bottom">GAMES</span>
                         </div>
                     </div>
                     <div class="badge-slot-reserved">VERIFIED</div>
@@ -602,7 +604,7 @@
 
                 <div class="hero-flex-box">
                     <div class="game-title-header">
-                        <span class="brand-green">Think You Know Ball?</span>
+                        <span class="brand-white">Think You Know Ball?</span>
                     </div>
                     <div class="flex-status-label">
                         <span class="brand-green">11th</span> <span class="brand-white">Floor Cleared</span>
