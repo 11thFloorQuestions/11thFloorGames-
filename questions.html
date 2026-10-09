@@ -39,24 +39,24 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        html {
-            background-color: var(--bg-deep);
-            height: 100%;
-        }
-
-        body {
+        html, body {
             background-color: var(--bg-deep);
             color: var(--text-primary);
             font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
             min-height: 100dvh;
             width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        body {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
             padding: 10px 10px;
-            overflow: hidden;
         }
 
         .top-bar {
@@ -93,25 +93,11 @@
             font-weight: 800;
             color: var(--state-active);
             letter-spacing: 1px;
-            background: var(--surface);
-            border: 1px solid var(--surface-border);
-            padding: 4px 10px;
-            border-radius: 12px;
-            display: none;
-        }
-
-        /* Prevent layout collapse when script shows timer inside HUD */
-        .floor-info-box .header-timer {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: var(--state-active);
-            letter-spacing: 1px;
             background: #111111;
             border: 1px solid var(--surface-border-light);
             padding: 4px 10px;
             border-radius: 8px;
-            flex-shrink: 0;
+            display: none;
         }
 
         .game-logo-box {
@@ -276,7 +262,7 @@
         .current-floor-display { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; }
         .floor-rule-text { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; }
 
-        #game-workspace.play-card { 
+        .play-card { 
             width: 100%; 
             max-width: 600px; 
             background: var(--surface); 
