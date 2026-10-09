@@ -39,36 +39,18 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        html {
-            background-color: var(--bg-deep);
-            height: 100%;
-        }
-
         body {
             background-color: var(--bg-deep);
             color: var(--text-primary);
             font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
             min-height: 100dvh;
-            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            padding: 8px 10px;
-            overflow: hidden;
-        }
-
-        .main-wrapper {
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 100vh;
-            min-height: 100dvh;
-            flex-grow: 1;
+            padding: 12px 10px;
+            overflow-x: hidden;
         }
 
         .top-bar {
@@ -77,17 +59,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 4px;
-            flex-shrink: 0;
+            margin-bottom: 8px;
         }
 
         .pill-btn {
             background: var(--surface);
             border: 1px solid var(--surface-border-light);
             color: var(--text-primary);
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 0.68rem;
+            font-size: 0.7rem;
             font-weight: 700;
             text-decoration: none;
             cursor: pointer;
@@ -116,7 +97,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             text-align: center;
             flex-shrink: 0;
         }
@@ -154,7 +135,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             text-align: center;
             flex-shrink: 0;
         }
@@ -164,32 +145,31 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 14px;
-            padding: 16px 14px;
+            gap: 16px;
+            padding: 20px 16px;
             width: 100%;
             max-width: 600px;
             background: var(--surface);
-            border: 1px solid var(--surface-border-light);
+            border: 1px solid var(--surface-border);
             border-radius: 8px;
-            margin-top: 4px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            margin-top: 6px;
         }
 
         .landing-shaft-graphic {
             display: flex;
             flex-direction: column;
             width: 52px;
-            height: 140px;
-            border: 1px solid var(--surface-border-light);
+            height: 150px;
+            border: 1px solid var(--surface-border);
             border-radius: 8px;
             padding: 6px;
             gap: 3px;
-            background-color: #111111;
+            background-color: var(--surface);
         }
 
         .landing-shaft-box {
             flex: 1;
-            background-color: #080808;
+            background-color: #111111;
             border: 1px solid var(--surface-border);
             border-radius: 2px;
         }
@@ -208,6 +188,221 @@
         .landing-shaft-graphic .landing-shaft-box:nth-child(1)  { animation: sweepTopGreen 1.6s ease-in-out forwards; animation-delay: 1.05s; }
 
         @keyframes sweepMiddle {
-            0% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
+            0% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
             30% { background-color: var(--genre-gold); border-color: var(--genre-gold); box-shadow: 0 0 10px var(--genre-gold-glow); }
-            60%, 100% { background-color: #080808; border-color: var(--surface-border); box-shadow: none
+            60%, 100% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+        }
+
+        @keyframes sweepTopGreen {
+            0% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+            20%, 70% { background-color: var(--state-success); border-color: var(--state-success); box-shadow: 0 0 16px var(--state-success-glow); }
+            100% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+        }
+
+        @keyframes sweepBottomSettle {
+            0% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+            15% { background-color: var(--genre-gold); border-color: var(--genre-gold); box-shadow: 0 0 10px var(--genre-gold-glow); }
+            30%, 80% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+            95%, 100% { background-color: var(--genre-gold); border-color: var(--genre-gold); box-shadow: 0 0 8px var(--genre-gold-glow); }
+        }
+
+        .landing-challenge-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .btn-start {
+            background-color: var(--surface);
+            border: 1px solid var(--genre-gold);
+            color: var(--genre-gold);
+            padding: 12px 28px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 24px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--genre-gold-glow);
+            transition: all 0.2s ease;
+        }
+
+        .btn-start:hover {
+            background-color: var(--genre-gold);
+            color: #000000;
+            box-shadow: 0 4px 25px var(--genre-gold-glow);
+        }
+
+        .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 6px; flex-shrink: 0; }
+        .tower-stack { display: flex; flex-direction: column; gap: 2px; width: 52px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 6px; justify-content: space-between; flex-shrink: 0; }
+        .tower-floor { height: 7px; border: 1px solid var(--surface-border); background: #111111; transition: all 0.2s ease; border-radius: 2px; }
+        .tower-floor.active, .tower-floor.active-floor { border-color: var(--genre-gold); background: var(--genre-gold); box-shadow: 0 0 8px var(--genre-gold-glow); }
+        .tower-floor.completed { border-color: var(--state-success); background: var(--state-success); box-shadow: 0 0 6px var(--state-success-glow); }
+        .tower-floor.failed { border-color: var(--state-error); background: var(--state-error); box-shadow: 0 0 6px var(--state-error-glow); }
+        .floor-info-box { flex-grow: 1; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
+        .floor-left-group { display: flex; flex-direction: column; gap: 4px; }
+        .current-floor-display { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; }
+        .floor-rule-text { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; }
+
+        .play-card { width: 100%; max-width: 600px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 14px 10px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 12px; flex-grow: 1; margin-bottom: 6px; overflow: hidden; min-height: 0; }
+        
+        .timer-bar-container { width: 100%; height: 4px; background: #111111; border-radius: 2px; overflow: hidden; }
+        .timer-bar { width: 100%; height: 100%; background: var(--genre-gold); transition: width 0.05s linear; }
+
+        .question-box { width: 100%; background: #111111; border: 1px solid var(--surface-border); border-radius: 6px; padding: 12px 14px; text-align: center; box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); }
+
+        .question-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 0.3px;
+            line-height: 1.35;
+        }
+
+        .options-grid { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+        .btn-option {
+            width: 100%;
+            background: #111111;
+            border: 1px solid var(--surface-border-light);
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        @media (hover: hover) {
+            .btn-option:hover {
+                border-color: var(--genre-gold);
+                background: #181818;
+            }
+        }
+        .btn-option.selected-correct {
+            border-color: var(--state-success) !important;
+            background: rgba(34, 197, 94, 0.15) !important;
+            color: var(--state-success) !important;
+            box-shadow: 0 0 8px var(--state-success-glow);
+        }
+        .btn-option.selected-wrong {
+            border-color: var(--state-error) !important;
+            background: rgba(239, 68, 68, 0.15) !important;
+            color: var(--state-error) !important;
+            box-shadow: 0 0 8px var(--state-error-glow);
+        }
+
+        footer {
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.92); display: flex; align-items: center; justify-content: center; z-index: 100; }
+        .modal-overlay.hidden { display: none !important; }
+        .modal-card { background-color: var(--surface); border: 1px solid var(--surface-border); padding: 28px 24px; border-radius: 14px; width: 90%; max-width: 360px; text-align: center; }
+        .modal-large { max-width: 440px; }
+        .stats-summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0 12px 0; background: var(--bg-deep); border: 1px solid var(--surface-border); border-radius: 10px; padding: 14px; }
+        .stat-box { display: flex; flex-direction: column; align-items: center; }
+        .stat-val { font-size: 1.25rem; font-weight: 800; color: var(--text-primary); }
+        .stat-lbl { font-size: 0.55rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-top: 3px; }
+        .vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 8px; max-height: 220px; overflow-y: auto; margin: 12px 0; }
+        .vault-item-btn { background-color: #111111; border: 1px solid var(--surface-border); color: var(--text-primary); padding: 10px 6px; border-radius: 8px; cursor: pointer; text-align: center; }
+        .vault-item-btn:hover { border-color: var(--genre-gold); background-color: #1a1a1a; }
+        .btn-modal { flex-grow: 1; width: 100%; background-color: #111111; border: 1px solid var(--surface-border); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 10px; }
+
+        /* Ecosystem Victory Receipt Card Layout */
+        .victory-receipt { width: 100%; max-width: 320px; background: #111111; border: 1px solid var(--genre-gold); border-radius: 12px; padding: 20px 20px; margin: 16px 0 20px 0; box-shadow: 0 0 25px var(--genre-gold-glow); display: flex; flex-direction: column; gap: 14px; text-align: left; }
+        .victory-row { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--surface-border-light); padding-bottom: 8px; }
+        .victory-label { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .victory-data { font-size: 1rem; font-family: 'Inter', sans-serif; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
+    </style>
+</head>
+<body class="game-questions">
+
+    <div class="top-bar">
+        <a href="index.html" class="pill-btn">← LOBBY</a>
+        <div id="active-game-timer" class="header-timer">00:00</div>
+        <button class="pill-btn" id="btn-sound-toggle">SOUND: ON</button>
+    </div>
+
+    <!-- LANDING SCREEN -->
+    <div id="landing-screen" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+        <div class="game-logo-box">
+            <h1 class="game-logo-gold">11FL?</h1>
+            <p class="game-logo-title">Eleventh Floor</p>
+            <p class="game-logo-sub">QUESTIONS</p>
+        </div>
+
+        <div class="landing-container">
+            <div class="landing-shaft-graphic">
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+            </div>
+
+            <div class="landing-challenge-text">
+                <strong>CAN YOU REACH THE 11TH FLOOR?</strong><br><br>
+                Answer trivia questions accurately to ascend through 10 challenging floors. One mistake and you return to Ground Floor.
+            </div>
+
+            <div style="display: flex; gap: 8px; margin-top: 4px;">
+                <button id="btn-landing-stats" class="pill-btn" style="padding: 10px 18px; border-radius: 24px;">STATS / ARCHIVE</button>
+                <button id="btn-start-climb" class="btn-start">Start Climb</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GAMEPLAY HEADER -->
+    <div id="gameplay-header" class="gameplay-header-box" style="display: none;">
+        <p class="game-logo-title">Eleventh Floor</p>
+        <p class="game-logo-sub">QUESTIONS</p>
+    </div>
+
+    <!-- Gameplay HUD Header -->
+    <div class="hud-sidebar-container" id="floor-hud-container" style="display: none;">
+        <div class="tower-stack" id="tower-stack">
+            <div class="tower-floor floor-block" data-floor="11"></div>
+            <div class="tower-floor floor-block" data-floor="10"></div>
+            <div class="tower-floor floor-block" data-floor="9"></div>
+            <div class="tower-floor floor-block" data-floor="8"></div>
+            <div class="tower-floor floor-block" data-floor="7"></div>
+            <div class="tower-floor floor-block" data-floor="6"></div>
+            <div class="tower-floor floor-block" data-floor="5"></div>
+            <div class="tower-floor floor-block" data-floor="4"></div>
+            <div class="tower-floor floor-block" data-floor="3"></div>
+            <div class="tower-floor floor-block" data-floor="2"></div>
+            <div class="tower-floor floor-block" data-floor="1"></div>
+        </div>
+
+        <div class="floor-info-box">
+            <div class="floor-left-group">
+                <div class="current-floor-display" id="card-floor-text"><span style="color: var(--genre-gold);">1st</span> <span style="color: #ffffff;">Floor</span></div>
+                <div class="floor-rule-text" id="floor-rule-text">Tough questions ahead — no mistakes!</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Play Card Workspace (Referenced as game-screen in showScreen) -->
+    <div id="game-screen" class="play-card" style="display: none;">
+        <div class="timer-bar-container">
+            <div id="timer-bar" class="timer-bar"></div>
+        </div>
+
+        <div class="question-box">
+            <div id="question-text" class="question-text">
