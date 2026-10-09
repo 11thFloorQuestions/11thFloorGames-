@@ -13,6 +13,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <!-- HTML2CANVAS LIBRARY FOR RECEIPT SCREENSHOT CAPTURE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <style>
         :root {
             --bg-deep: #000000;
@@ -878,7 +882,7 @@
 
             <!-- ACTION CONTROL BUTTONS -->
             <div class="controls-group">
-                <button class="btn-flex-action" id="share-btn">SHARE</button>
+                <button class="btn-flex-action" id="share-btn">SHARE SCREENSHOT</button>
                 <button class="btn-secondary-action" id="btn-victory-stats">STATS & ARCHIVES</button>
             </div>
         </div>
@@ -889,7 +893,7 @@
     </div>
 
     <!-- Toast Notification -->
-    <div id="toast-msg">COPIED TO CLIPBOARD</div>
+    <div id="toast-msg">SCREENSHOT GENERATED</div>
 
     <!-- Stats & Archive Vault Modal -->
     <div id="modal-vault" class="modal-overlay hidden">
@@ -912,10 +916,11 @@
     <script src="parity-data.js"></script>
     <script src="parity.js"></script>
 
-    <!-- INLINE SHARE SHEET ENGINE -->
+    <!-- REAL SCREENSHOT GENERATOR & SHARE ENGINE -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const shareBtn = document.getElementById('share-btn');
+            const victoryCard = document.getElementById('victory-card');
             const toast = document.getElementById('toast-msg');
 
             function showToast(text) {
@@ -927,23 +932,40 @@
                 }, 2000);
             }
 
-            if (shareBtn) {
+            if (shareBtn && victoryCard) {
                 shareBtn.addEventListener('click', async () => {
-                    const timeText = document.getElementById('victory-time-display')?.innerText || '00:00';
-                    const shareText = `11th Floor Games — Eleventh Floor Parity\n11th Floor Cleared in ${timeText}s! 🧩⚡\nhttps://11thfloorgames.com`;
+                    try {
+                        showToast('CAPTURING SCREENSHOT...');
+                        const canvas = await html2canvas(victoryCard, {
+                            backgroundColor: '#111111',
+                            scale: 2,
+                            useCORS: true
+                        });
 
-                    if (navigator.share) {
-                        try {
-                            await navigator.share({
-                                title: '11th Floor Games Result',
-                                text: shareText
-                            });
-                        } catch (e) {
-                            console.log('Share cancelled or unavailable');
-                        }
-                    } else {
-                        navigator.clipboard.writeText(shareText);
-                        showToast('COPIED TO CLIPBOARD');
+                        canvas.toBlob(async (blob) => {
+                            if (!blob) return;
+                            const file = new File([blob], '11th-floor-parity-victory.png', { type: 'image/png' });
+
+                            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                                try {
+                                    await navigator.share({
+                                        title: '11th Floor Parity Victory Card',
+                                        files: [file]
+                                    });
+                                } catch (e) {
+                                    console.log('Share prompt dismissed');
+                                }
+                            } else {
+                                const downloadLink = document.createElement('a');
+                                downloadLink.href = URL.createObjectURL(file);
+                                downloadLink.download = '11th-floor-parity-victory.png';
+                                downloadLink.click();
+                                showToast('SCREENSHOT SAVED TO DEVICE');
+                            }
+                        }, 'image/png');
+                    } catch (err) {
+                        console.error('Screenshot capture error:', err);
+                        showToast('ERROR GENERATING SCREENSHOT');
                     }
                 });
             }
