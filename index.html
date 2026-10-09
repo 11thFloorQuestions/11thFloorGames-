@@ -22,9 +22,9 @@
             --surface-border: #222222;
             --surface-border-light: #333333;
             --accent-red: #ff1f2d;
-            --accent-red-glow: rgba(255, 31, 45, 0.15); /* Softened glow */
+            --accent-red-glow: rgba(255, 31, 45, 0.25);
             --accent-green: #22c55e;
-            --accent-green-glow: rgba(34, 197, 94, 0.25);
+            --accent-green-glow: rgba(34, 197, 94, 0.3);
             --text-primary: #ffffff;
             --text-muted: #888888;
 
@@ -74,7 +74,6 @@
             margin-bottom: 12px;
         }
 
-        /* Softened, refined 11FL? Header Text Shadow */
         .hub-logo-red {
             font-family: 'Anton', sans-serif;
             font-size: 4.2rem;
@@ -82,7 +81,7 @@
             color: var(--accent-red);
             line-height: 0.85;
             letter-spacing: -1px;
-            text-shadow: 0 0 10px rgba(255, 31, 45, 0.18); /* Toned down glow */
+            text-shadow: 0 0 20px rgba(255, 31, 45, 0.35);
             margin-bottom: 4px;
             animation: logoColorCycle 2.6s ease-in-out forwards;
         }
@@ -143,35 +142,35 @@
         @keyframes logoColorCycle {
             0% {
                 color: var(--accent-red);
-                text-shadow: 0 0 10px rgba(255, 31, 45, 0.18);
+                text-shadow: 0 0 20px rgba(255, 31, 45, 0.35);
             }
             16% {
                 color: var(--color-terrace);
-                text-shadow: 0 0 12px var(--color-terrace-glow);
+                text-shadow: 0 0 20px var(--color-terrace-glow);
             }
             32% {
                 color: var(--color-cluegram);
-                text-shadow: 0 0 12px var(--color-cluegram-glow);
+                text-shadow: 0 0 20px var(--color-cluegram-glow);
             }
             48% {
                 color: var(--color-questions);
-                text-shadow: 0 0 12px var(--color-questions-glow);
+                text-shadow: 0 0 20px var(--color-questions-glow);
             }
             64% {
                 color: var(--color-wordclimb);
-                text-shadow: 0 0 12px var(--color-wordclimb-glow);
+                text-shadow: 0 0 20px var(--color-wordclimb-glow);
             }
             78% {
                 color: var(--color-clusters);
-                text-shadow: 0 0 12px var(--color-clusters-glow);
+                text-shadow: 0 0 20px var(--color-clusters-glow);
             }
             90% {
                 color: var(--color-parity);
-                text-shadow: 0 0 12px var(--color-parity-glow);
+                text-shadow: 0 0 20px var(--color-parity-glow);
             }
             100% {
                 color: var(--accent-red);
-                text-shadow: 0 0 10px rgba(255, 31, 45, 0.18);
+                text-shadow: 0 0 20px rgba(255, 31, 45, 0.35);
             }
         }
 
@@ -184,7 +183,7 @@
             30% {
                 background-color: var(--accent-red);
                 border-color: var(--accent-red);
-                box-shadow: 0 0 8px var(--accent-red-glow);
+                box-shadow: 0 0 10px var(--accent-red-glow);
             }
             60%, 100% {
                 background-color: #111111;
@@ -202,12 +201,12 @@
             20% {
                 background-color: var(--accent-green);
                 border-color: var(--accent-green);
-                box-shadow: 0 0 12px var(--accent-green-glow);
+                box-shadow: 0 0 16px var(--accent-green-glow);
             }
             70% {
                 background-color: var(--accent-green);
                 border-color: var(--accent-green);
-                box-shadow: 0 0 12px var(--accent-green-glow);
+                box-shadow: 0 0 16px var(--accent-green-glow);
             }
             100% {
                 background-color: #111111;
@@ -225,7 +224,7 @@
             15% {
                 background-color: var(--accent-red);
                 border-color: var(--accent-red);
-                box-shadow: 0 0 8px var(--accent-red-glow);
+                box-shadow: 0 0 10px var(--accent-red-glow);
             }
             30% {
                 background-color: #111111;
@@ -240,7 +239,7 @@
             95%, 100% {
                 background-color: var(--accent-red);
                 border-color: var(--accent-red);
-                box-shadow: 0 0 6px var(--accent-red-glow);
+                box-shadow: 0 0 8px var(--accent-red-glow);
             }
         }
 
@@ -281,14 +280,6 @@
             text-align: center;
         }
 
-        /* Persistent Color Accent Borders on Resting Buttons */
-        .btn-hub-option.terrace { border-color: rgba(132, 204, 22, 0.35); }
-        .btn-hub-option.cluegram { border-color: rgba(204, 0, 126, 0.35); }
-        .btn-hub-option.questions { border-color: rgba(212, 175, 55, 0.35); }
-        .btn-hub-option.wordclimb { border-color: rgba(59, 130, 246, 0.35); }
-        .btn-hub-option.clusters { border-color: rgba(255, 117, 31, 0.35); }
-        .btn-hub-option.parity { border-color: rgba(255, 153, 153, 0.35); }
-
         .btn-hub-option:hover {
             background-color: #111111;
             transform: translateY(-2px);
@@ -298,7 +289,7 @@
             transform: translateY(0);
         }
 
-        /* Game-Specific Outline & Glow Highlights on Hover */
+        /* Game-Specific Outline & Glow Highlights */
         .btn-hub-option.terrace:hover,
         .btn-hub-option.terrace:active {
             border-color: var(--color-terrace);
@@ -428,4 +419,119 @@
 
         <a href="clusters.html" class="btn-hub-option clusters">
             <div class="hub-btn-header">
-                <span class="hub-
+                <span class="hub-btn-num clusters">11th</span>
+                <span class="hub-btn-floor">Floor</span>
+            </div>
+            <div class="hub-btn-game">Clusters</div>
+        </a>
+
+        <a href="parity.html" class="btn-hub-option parity">
+            <div class="hub-btn-header">
+                <span class="hub-btn-num parity">11th</span>
+                <span class="hub-btn-floor">Floor</span>
+            </div>
+            <div class="hub-btn-game">Parity</div>
+        </a>
+    </div>
+
+    <script>
+        let lobbyAudioCtx = null;
+
+        function triggerLobbyHaptic(pattern) {
+            if ('vibrate' in navigator) {
+                try {
+                    navigator.vibrate(pattern);
+                } catch (e) {}
+            }
+        }
+
+        function getLobbyAudioContext() {
+            if (!lobbyAudioCtx) {
+                lobbyAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (lobbyAudioCtx.state === 'suspended') {
+                lobbyAudioCtx.resume();
+            }
+            return lobbyAudioCtx;
+        }
+
+        function playLobbyDing() {
+            try {
+                const ctx = getLobbyAudioContext();
+                const now = ctx.currentTime;
+
+                const bufferSize = ctx.sampleRate * 0.012;
+                const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+                const output = noiseBuffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    output[i] = Math.random() * 2 - 1;
+                }
+                const noise = ctx.createBufferSource();
+                noise.buffer = noiseBuffer;
+
+                const noiseFilter = ctx.createBiquadFilter();
+                noiseFilter.type = 'bandpass';
+                noiseFilter.frequency.setValueAtTime(2400, now);
+                noiseFilter.Q.setValueAtTime(4, now);
+
+                const noiseGain = ctx.createGain();
+                noiseGain.gain.setValueAtTime(0.2, now);
+                noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.012);
+
+                noise.connect(noiseFilter);
+                noiseFilter.connect(noiseGain);
+                noiseGain.connect(ctx.destination);
+                noise.start(now);
+
+                const baseFreq = 830;
+                const modes = [
+                    { freq: baseFreq * 1.0, gain: 0.35, decay: 1.6 },
+                    { freq: baseFreq * 1.58, gain: 0.18, decay: 1.1 },
+                    { freq: baseFreq * 2.24, gain: 0.10, decay: 0.7 },
+                    { freq: baseFreq * 2.91, gain: 0.05, decay: 0.4 }
+                ];
+
+                modes.forEach(mode => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(mode.freq, now);
+
+                    gain.gain.setValueAtTime(0, now);
+                    gain.gain.linearRampToValueAtTime(mode.gain, now + 0.003);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, now + mode.decay);
+
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+
+                    osc.start(now);
+                    osc.stop(now + mode.decay);
+                });
+            } catch (e) {
+                console.warn('Lobby audio error:', e);
+            }
+        }
+
+        document.querySelectorAll('.btn-hub-option').forEach(btn => {
+            btn.addEventListener('click', () => {
+                triggerLobbyHaptic(15);
+            });
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const unlock = () => {
+                getLobbyAudioContext();
+                document.removeEventListener('click', unlock);
+                document.removeEventListener('touchstart', unlock);
+            };
+            document.addEventListener('click', unlock);
+            document.addEventListener('touchstart', unlock);
+
+            setTimeout(() => {
+                playLobbyDing();
+            }, 1370);
+        });
+    </script>
+</body>
+</html>
