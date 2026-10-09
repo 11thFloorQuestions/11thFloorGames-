@@ -73,16 +73,16 @@
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "Which manager holds the record for taking charge of the highest number of different Premier League clubs?",
+      "question": "Which manager holds the record for drawing the highest percentage of his total Premier League matches?",
       "options": [
-        "Sam Allardyce",
-        "Mark Hughes",
-        "Roy Hodgson",
-        "Claudio Ranieri"
+        "Mick McCarthy",
+        "Steve Bruce",
+        "Sean Dyche",
+        "Sam Allardyce"
       ],
-      "answer": "Sam Allardyce",
-      "explanation": "Sam Allardyce managed a record 9 distinct Premier League clubs during his career.",
-      "anchorClues": "Sam Allardyce 9 Premier League clubs managed record"
+      "answer": "Mick McCarthy",
+      "explanation": "Mick McCarthy drew over 33% of all top-flight games he managed across his tenure at Sunderland and Wolves.",
+      "anchorClues": "Mick McCarthy highest draw percentage Premier League manager"
     },
     {
       "floor": 7,
@@ -103,14 +103,14 @@
       "type": "multiple_choice",
       "question": "Which referee brandished the fastest red card in Premier League history, sending off Keith Gillespie after zero seconds on the pitch?",
       "options": [
-        "Dave McKeon",
+        "Mark Halsey",
         "Mike Dean",
         "Mark Clattenburg",
         "Howard Webb"
       ],
-      "answer": "Dave McKeon",
-      "explanation": "McKeon showed Gillespie a straight red for an elbow before play had even restarted after coming on as a sub.",
-      "anchorClues": "Dave McKeon Keith Gillespie fastest red card zero seconds"
+      "answer": "Mark Halsey",
+      "explanation": "Mark Halsey showed Gillespie a straight red for elbowing Stephen Hunt before play had even restarted after coming on as a sub.",
+      "anchorClues": "Mark Halsey Keith Gillespie fastest red card zero seconds"
     },
     {
       "floor": 9,
