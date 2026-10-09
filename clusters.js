@@ -1,256 +1,217 @@
-// ==========================================================================
-// 11th Floor Clusters — Core Game Engine & Active Timer
-// ==========================================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>11th Floor Clusters — Daily Puzzle</title>
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Game State Variables
-    let currentFloorIndex = 0;
-    let selectedTiles = [];
-    let lives = 3;
-    let soundEnabled = false;
-    let isProcessing = false;
-    let activeGameData = [];
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+    <link rel="apple-touch-icon" href="/favicon.svg?v=2">
 
-    // Session Timer State
-    let startTime = 0;
-    let timerInterval = null;
-    let timeElapsedSeconds = 0;
-
-    const STATS_KEY = '11th_floor_clusters_stats';
-
-    // DOM Element References
-    const startScreen = document.getElementById('start-screen');
-    const startClimbBtn = document.getElementById('btn-start-climb');
-    const hudContainer = document.getElementById('floor-hud-container');
-    const mainContent = document.getElementById('game-main-content');
-    const activeGameTimer = document.getElementById('active-game-timer');
-    const floorNumberVal = document.getElementById('floor-number-val');
-    const livesContainer = document.getElementById('lives-container');
-    const tileGrid = document.getElementById('tile-grid');
-    const solvedGroupsContainer = document.getElementById('solved-groups-container');
-    const puzzlePrompt = document.getElementById('puzzle-prompt');
-    const statusMessage = document.getElementById('status-message');
-
-    const submitBtn = document.getElementById('btn-submit');
-    const shuffleBtn = document.getElementById('btn-shuffle');
-    const soundBtn = document.getElementById('btn-sound');
-
-    // Initialize Game
-    init();
-
-    function init() {
-        if (window.CLUSTERS_DAILY_SET) {
-            activeGameData = Array.isArray(window.CLUSTERS_DAILY_SET) 
-                ? window.CLUSTERS_DAILY_SET 
-                : (window.CLUSTERS_DAILY_SET.floors || []);
-        } else {
-            activeGameData = [];
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/glacial-indifference" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .top-bar {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            flex-shrink: 0;
         }
 
-        bindEvents();
-    }
-
-    function bindEvents() {
-        if (startClimbBtn) startClimbBtn.addEventListener('click', startGame);
-        if (submitBtn) submitBtn.addEventListener('click', handleSubmit);
-        if (shuffleBtn) shuffleBtn.addEventListener('click', handleShuffle);
-
-        if (soundBtn) {
-            soundBtn.addEventListener('click', () => {
-                soundEnabled = !soundEnabled;
-                soundBtn.textContent = `SOUND: ${soundEnabled ? 'ON' : 'OFF'}`;
-            });
-        }
-    }
-
-    // ==========================================
-    // SESSION STOPWATCH TIMER ENGINE
-    // ==========================================
-
-    function startTimer() {
-        stopTimer();
-        timeElapsedSeconds = 0;
-        startTime = Date.now();
-        if (activeGameTimer) {
-            activeGameTimer.style.display = 'block';
-            activeGameTimer.textContent = '00:00';
-        }
-        timerInterval = setInterval(updateTimerDisplay, 1000);
-    }
-
-    function stopTimer() {
-        if (timerInterval) clearInterval(timerInterval);
-    }
-
-    function updateTimerDisplay() {
-        timeElapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-        if (activeGameTimer) {
-            activeGameTimer.textContent = formatTime(timeElapsedSeconds);
-        }
-    }
-
-    function formatTime(totalSeconds) {
-        const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
-        const s = (totalSeconds % 60).toString().padStart(2, '0');
-        return `${m}:${s}`;
-    }
-
-    // ==========================================
-    // CORE GAMEPLAY FLOW
-    // ==========================================
-
-    function startGame() {
-        if (!activeGameData || activeGameData.length === 0) {
-            if (window.CLUSTERS_DAILY_SET) {
-                activeGameData = Array.isArray(window.CLUSTERS_DAILY_SET) 
-                    ? window.CLUSTERS_DAILY_SET 
-                    : (window.CLUSTERS_DAILY_SET.floors || []);
-            }
+        .pill-btn {
+            background: var(--surface, #0a0a0a);
+            border: 1px solid var(--surface-border-light, #333333);
+            color: var(--text-primary, #ffffff);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        if (startScreen) startScreen.style.display = 'none';
-        if (hudContainer) hudContainer.style.display = 'flex';
-        if (mainContent) mainContent.style.display = 'flex';
-
-        currentFloorIndex = 0;
-        lives = 3;
-        updateLivesUI();
-        startTimer();
-        loadFloor(currentFloorIndex);
-    }
-
-    function loadFloor(index) {
-        if (!activeGameData || index >= activeGameData.length) return;
-
-        const floorData = activeGameData[index];
-        selectedTiles = [];
-        isProcessing = false;
-
-        if (floorNumberVal) floorNumberVal.textContent = `FLOOR ${String(index + 1).padStart(2, '0')}`;
-        if (puzzlePrompt) puzzlePrompt.textContent = floorData.prompt || 'Group the tiles into 4 categories of 3';
-        if (statusMessage) statusMessage.textContent = '';
-
-        if (solvedGroupsContainer) solvedGroupsContainer.innerHTML = '';
-        if (submitBtn) submitBtn.disabled = true;
-
-        renderTileGrid(floorData);
-    }
-
-    function renderTileGrid(floorData) {
-        if (!tileGrid) return;
-        tileGrid.innerHTML = '';
-
-        let allTiles = [];
-        if (floorData.groups) {
-            floorData.groups.forEach((group, groupIdx) => {
-                group.words.forEach(word => {
-                    allTiles.push({ word, groupIdx });
-                });
-            });
+        .pill-btn:hover {
+            border-color: var(--genre-orange, #ff751f);
+            color: var(--genre-orange, #ff751f);
         }
 
-        // Shuffle tiles
-        for (let i = allTiles.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [allTiles[i], allTiles[j]] = [allTiles[j], allTiles[i]];
+        /* Active Timer Display */
+        .header-timer {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--state-active, #facc15);
+            letter-spacing: 1px;
+            background: #111111;
+            border: 1px solid var(--surface-border-light, #333333);
+            padding: 4px 10px;
+            border-radius: 8px;
+            display: none;
+            margin-bottom: 6px;
         }
 
-        allTiles.forEach(tileObj => {
-            const tileElem = document.createElement('div');
-            tileElem.className = 'cluster-tile';
-            tileElem.textContent = tileObj.word;
-            tileElem.dataset.groupIdx = tileObj.groupIdx;
+        .landing-shaft-graphic .landing-shaft-box { animation: sweepMiddle 1.2s ease-in-out forwards; }
+        .landing-shaft-graphic .landing-shaft-box:nth-child(11) { animation: sweepBottomSettle 2.6s ease-in-out forwards; animation-delay: 0.05s; }
+        .landing-shaft-graphic .landing-shaft-box:nth-child(10) { animation-delay: 0.15s; }
+        .landing-shaft-graphic .landing-shaft-box:nth-child(9)  { animation-delay: 0.25s; }
+        .landing-shaft-graphic .landing-shaft-box:nth-child(8)  { animation-delay: 0.35s; }
+        .landing-shaft-graphic .landing-shaft-box:nth-child(7)  { animation-delay: 0.45s; }
+        .landing-shaft-graphic .landing-shaft-box:nth-child(6)  { animation-delay: 0.55s; }
+        .landing-shaft-graphic .landing-shaft-box:nth-child(5)  { animation-delay: 0.65s; }
+        .landing-shaft-graphic .landing-shaft-box:nth-child(4)  { animation-delay: 0.75s; }
+        .landing-shaft-graphic .landing-shaft-box:nth-child(3)  { animation-delay: 0.85s; }
+        .landing-shaft-graphic .landing-shaft-box:nth-child(2)  { animation-delay: 0.95s; }
+        .landing-shaft-graphic .landing-shaft-box:nth-child(1)  { animation: sweepTopGreen 1.6s ease-in-out forwards; animation-delay: 1.05s; }
 
-            tileElem.addEventListener('click', () => handleTileSelect(tileElem));
-            tileGrid.appendChild(tileElem);
-        });
-    }
-
-    function handleTileSelect(tileElem) {
-        if (isProcessing || tileElem.classList.contains('success')) return;
-
-        if (tileElem.classList.contains('selected')) {
-            tileElem.classList.remove('selected');
-            selectedTiles = selectedTiles.filter(t => t !== tileElem);
-        } else {
-            if (selectedTiles.length < 3) {
-                tileElem.classList.add('selected');
-                selectedTiles.push(tileElem);
-            }
+        @keyframes sweepMiddle {
+            0% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+            30% { background-color: var(--genre-orange); border-color: var(--genre-orange); box-shadow: 0 0 10px var(--genre-orange-glow); }
+            60%, 100% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
         }
 
-        if (submitBtn) submitBtn.disabled = (selectedTiles.length !== 3);
-    }
-
-    function handleShuffle() {
-        if (isProcessing || !tileGrid) return;
-        const tiles = Array.from(tileGrid.children);
-        for (let i = tiles.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            tileGrid.appendChild(tiles[j]);
+        @keyframes sweepTopGreen {
+            0% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+            20%, 70% { background-color: var(--state-success); border-color: var(--state-success); box-shadow: 0 0 16px var(--state-success-glow); }
+            100% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
         }
-    }
 
-    function handleSubmit() {
-        if (selectedTiles.length !== 3 || isProcessing) return;
-        isProcessing = true;
-
-        const firstGroup = selectedTiles[0].dataset.groupIdx;
-        const isMatch = selectedTiles.every(t => t.dataset.groupIdx === firstGroup);
-
-        if (isMatch) {
-            selectedTiles.forEach(t => {
-                t.classList.remove('selected');
-                t.classList.add('success');
-            });
-
-            if (statusMessage) {
-                statusMessage.textContent = 'CLUSTER CLEARED!';
-                statusMessage.style.color = 'var(--state-success)';
-            }
-
-            setTimeout(() => {
-                currentFloorIndex++;
-                if (currentFloorIndex >= activeGameData.length) {
-                    stopTimer();
-                    if (statusMessage) statusMessage.textContent = 'DESTINATION REACHED! PERFECT CLIMB.';
-                } else {
-                    loadFloor(currentFloorIndex);
-                }
-            }, 1000);
-        } else {
-            lives--;
-            updateLivesUI();
-
-            selectedTiles.forEach(t => t.classList.remove('selected'));
-            selectedTiles = [];
-            if (submitBtn) submitBtn.disabled = true;
-
-            if (lives <= 0) {
-                stopTimer();
-                if (statusMessage) {
-                    statusMessage.textContent = 'OUT OF LIVES — RESETTING TO FLOOR 01';
-                    statusMessage.style.color = 'var(--state-error)';
-                }
-                setTimeout(() => {
-                    startGame();
-                }, 1500);
-            } else {
-                if (statusMessage) {
-                    statusMessage.textContent = 'INCORRECT CLUSTER — TRY AGAIN';
-                    statusMessage.style.color = 'var(--state-error)';
-                }
-                isProcessing = false;
-            }
+        @keyframes sweepBottomSettle {
+            0% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+            15% { background-color: var(--genre-orange); border-color: var(--genre-orange); box-shadow: 0 0 10px var(--genre-orange-glow); }
+            30%, 80% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+            95%, 100% { background-color: var(--genre-orange); border-color: var(--genre-orange); box-shadow: 0 0 8px var(--genre-orange-glow); }
         }
-    }
 
-    function updateLivesUI() {
-        for (let i = 1; i <= 3; i++) {
-            const pip = document.getElementById(`pip-${i}`);
-            if (pip) {
-                pip.classList.toggle('lost', i > lives);
-            }
+        .btn-start:hover {
+            background-color: var(--genre-orange);
+            color: #ffffff;
+            box-shadow: 0 4px 25px var(--genre-orange-glow);
         }
-    }
-});
+
+        /* Gameplay Area */
+        .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 12px; flex-shrink: 0; }
+        .tower-stack { display: flex; flex-direction: column-reverse; gap: 2px; width: 52px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 6px; justify-content: space-between; flex-shrink: 0; }
+        .tower-floor { height: 7px; border: 1px solid var(--surface-border); background: #111111; transition: all 0.2s ease; border-radius: 2px; }
+        .tower-floor.active { border-color: var(--genre-orange); background: rgba(255, 117, 31, 0.3); box-shadow: 0 0 6px var(--genre-orange-glow); }
+        .floor-info-box { flex-grow: 1; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
+        .current-floor-display { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; color: var(--genre-orange); }
+
+        /* Cleaned spacing between timer and life pips */
+        .floor-right-group { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+        .lives-container { display: flex; gap: 6px; margin-top: 2px; }
+        .life-pip { width: 8px; height: 8px; background-color: var(--genre-orange); border-radius: 50%; box-shadow: 0 0 6px var(--genre-orange-glow); transition: all 0.2s ease; }
+        .life-pip.lost { background-color: #222222; box-shadow: none; }
+
+        main { width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; flex-grow: 1; justify-content: center; }
+        .puzzle-prompt { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px; text-align: center; letter-spacing: 0.5px; }
+        #solved-groups-container { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
+        .solved-group-card { background: rgba(34, 197, 94, 0.1); border: 1px solid var(--state-success); padding: 10px 14px; display: flex; flex-direction: column; gap: 3px; border-radius: 8px; box-shadow: 0 0 15px var(--state-success-glow); }
+        .solved-group-category { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--state-success); font-weight: 700; }
+        .solved-group-words { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px; }
+
+        .tile-grid { display: grid; gap: 10px; width: 100%; margin-bottom: 20px; }
+        .grid-col-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-col-4 { grid-template-columns: repeat(4, 1fr); }
+        .cluster-tile { background-color: #0f0f0f; border: 1px solid var(--surface-border); color: var(--text-primary); font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; padding: 16px 8px; text-align: center; cursor: pointer; transition: all 0.15s ease; display: flex; align-items: center; justify-content: center; min-height: 55px; border-radius: 8px; }
+        .cluster-tile:hover { background-color: #1a1a1a; border-color: var(--genre-orange); }
+        .cluster-tile.selected { background-color: var(--genre-orange); color: #000000; border-color: var(--genre-orange); box-shadow: 0 0 15px var(--genre-orange-glow); }
+        .cluster-tile.success { background-color: var(--state-success) !important; color: #000000 !important; border-color: var(--state-success) !important; box-shadow: 0 0 20px var(--state-success-glow) !important; }
+
+        .action-panel { width: 100%; max-width: 600px; display: flex; gap: 12px; justify-content: center; }
+        .btn { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 12px 20px; cursor: pointer; border: 2px solid var(--genre-orange); border-radius: 8px; transition: all 0.2s ease; }
+        .btn-secondary { background: transparent; color: var(--text-muted); border-color: var(--surface-border); }
+        .btn-secondary:hover { color: var(--text-primary); border-color: var(--text-muted); }
+        .btn-primary { background: var(--genre-orange); color: #000000; border-color: var(--genre-orange); }
+        .btn-primary:hover { background: transparent; color: var(--genre-orange); box-shadow: 0 0 20px var(--genre-orange-glow); }
+        .btn:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none !important; }
+
+        #penalty-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255, 117, 31, 0.2); pointer-events: none; opacity: 0; transition: opacity 0.2s ease; z-index: 999; }
+        #penalty-overlay.flash { opacity: 1; }
+        #status-message { min-height: 20px; color: var(--genre-orange); font-weight: 700; margin-bottom: 4px; }
+    </style>
+</head>
+<body>
+
+    <div id="penalty-overlay"></div>
+
+    <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 100%;">
+        <div class="top-bar">
+            <a href="index.html" class="pill-btn">← LOBBY</a>
+            <button class="pill-btn" id="btn-sound">SOUND: OFF</button>
+        </div>
+
+        <div class="game-logo-box">
+            <h1 class="game-logo-orange">11FL?</h1>
+            <p class="game-logo-title">Eleventh Floor</p>
+            <p class="game-logo-sub" style="color: var(--genre-orange);">CLUSTERS</p>
+        </div>
+
+        <!-- Standardized Landing Screen -->
+        <div id="start-screen" class="landing-container">
+            <div class="landing-shaft-graphic">
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+                <div class="landing-shaft-box"></div>
+            </div>
+
+            <div class="landing-challenge-text">
+                <strong>CAN YOU REACH THE 11TH FLOOR?</strong><br><br>
+                Group the 12 tiles into categories of 3 to ascend.<br><br>
+                One mistake resets the climb to 1st floor.
+            </div>
+
+            <button id="btn-start-climb" class="btn-start">Start Climb</button>
+        </div>
+
+        <!-- Gameplay HUD -->
+        <div class="hud-sidebar-container" id="floor-hud-container" style="display: none;">
+            <div class="tower-stack" id="tower-stack"></div>
+            <div class="floor-info-box">
+                <div class="current-floor-display" id="floor-number-val">FLOOR 01</div>
+                <div class="floor-right-group">
+                    <div id="active-game-timer" class="header-timer">00:00</div>
+                    <div class="lives-container" id="lives-container">
+                        <div class="life-pip" id="pip-1"></div>
+                        <div class="life-pip" id="pip-2"></div>
+                        <div class="life-pip" id="pip-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main id="game-main-content" style="display: none;">
+            <div class="puzzle-prompt" id="puzzle-prompt"></div>
+            <div id="solved-groups-container"></div>
+            <div class="tile-grid grid-col-3" id="tile-grid"></div>
+            <div class="action-panel" id="action-panel-container">
+                <button class="btn btn-secondary" id="btn-shuffle">SHUFFLE</button>
+                <button class="btn btn-primary" id="btn-submit" disabled>SUBMIT</button>
+            </div>
+        </main>
+
+        <footer>
+            <div id="status-message"></div>
+            <div>ONE MISTAKE RESETS THE CLIMB TO 1ST FLOOR.</div>
+        </footer>
+    </div>
+
+    <script src="clusters-data.js"></script>
+    <script src="clusters.js"></script>
+</body>
+</html>
