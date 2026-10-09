@@ -725,6 +725,24 @@
             cursor: pointer;
             display: block;
         }
+
+        #toast-msg {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--genre-pink);
+            color: #000000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.75rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: none;
+            z-index: 1000;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body class="game-parity">
@@ -860,7 +878,8 @@
 
             <!-- ACTION CONTROL BUTTONS -->
             <div class="controls-group">
-                <button class="btn-flex-action" id="btn-victory-stats">VIEW STATS & ARCHIVES</button>
+                <button class="btn-flex-action" id="share-btn">SHARE</button>
+                <button class="btn-secondary-action" id="btn-victory-stats">STATS & ARCHIVES</button>
             </div>
         </div>
 
@@ -868,6 +887,9 @@
             <div id="footer-text">ONE MISTAKE RESETS THE CLIMB TO 1ST FLOOR.</div>
         </footer>
     </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-msg">COPIED TO CLIPBOARD</div>
 
     <!-- Stats & Archive Vault Modal -->
     <div id="modal-vault" class="modal-overlay hidden">
@@ -889,6 +911,44 @@
 
     <script src="parity-data.js"></script>
     <script src="parity.js"></script>
+
+    <!-- INLINE SHARE SHEET ENGINE -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const shareBtn = document.getElementById('share-btn');
+            const toast = document.getElementById('toast-msg');
+
+            function showToast(text) {
+                if (!toast) return;
+                toast.innerText = text;
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2000);
+            }
+
+            if (shareBtn) {
+                shareBtn.addEventListener('click', async () => {
+                    const timeText = document.getElementById('victory-time-display')?.innerText || '00:00';
+                    const shareText = `11th Floor Games — Eleventh Floor Parity\n11th Floor Cleared in ${timeText}s! 🧩⚡\nhttps://11thfloorgames.com`;
+
+                    if (navigator.share) {
+                        try {
+                            await navigator.share({
+                                title: '11th Floor Games Result',
+                                text: shareText
+                            });
+                        } catch (e) {
+                            console.log('Share cancelled or unavailable');
+                        }
+                    } else {
+                        navigator.clipboard.writeText(shareText);
+                        showToast('COPIED TO CLIPBOARD');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
 <!-- END OF FILE -->
