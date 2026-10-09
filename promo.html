@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000000">
     <title>11th Floor — Victory Card Sandbox</title>
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
@@ -19,16 +20,25 @@
             padding: 0;
         }
 
-        html {
-            background-color: #000000;
-        }
-
-        body {
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            min-height: 100dvh;
             background-color: #000000;
             color: #ffffff;
             font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
             padding: 20px 14px;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
         }
 
         .sandbox-container {
@@ -36,6 +46,8 @@
             max-width: 340px;
             margin: 0 auto;
             display: block;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
 
         /* VICTORY RECEIPT CARD */
@@ -167,3 +179,215 @@
             color: #22c55e;
             letter-spacing: 2px;
             text-transform: uppercase;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid #22c55e;
+            padding: 6px 16px;
+            border-radius: 12px;
+            margin-top: 6px;
+        }
+
+        /* Metric Rows */
+        .receipt-details {
+            border-top: 1px solid #333333;
+            padding-top: 14px;
+            margin-bottom: 16px;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .receipt-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .row-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .row-val {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .row-val.success { color: #22c55e; }
+        .row-val.active { color: #facc15; }
+
+        .card-footer-cta {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 800;
+            color: #888888;
+            letter-spacing: 1.5px;
+            border-top: 1px dashed #333333;
+            padding-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* BUTTON CONTROLS */
+        .controls-group {
+            width: 100%;
+            display: block;
+        }
+
+        .btn-flex-action {
+            width: 100%;
+            background-color: #22c55e;
+            border: 1px solid #22c55e;
+            color: #000000;
+            padding: 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 24px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.35);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .btn-secondary-action {
+            width: 100%;
+            background-color: #111111;
+            border: 1px solid #333333;
+            color: #ffffff;
+            padding: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 24px;
+            cursor: pointer;
+            display: block;
+        }
+
+        #toast-msg {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #22c55e;
+            color: #000000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.75rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: none;
+            z-index: 1000;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sandbox-container">
+        <!-- VICTORY RECEIPT CARD -->
+        <div class="victory-receipt-card" id="victory-card">
+            <div class="receipt-header">
+                <div class="brand-lockup-container">
+                    <div class="brand-mark-left">11</div>
+                    <div class="brand-text-stacked">
+                        <span class="brand-title-top">ELEVENTH FLOOR</span>
+                        <span class="brand-title-bottom">GAMES</span>
+                    </div>
+                </div>
+                <div class="badge-slot-reserved">VERIFIED</div>
+            </div>
+
+            <div class="hero-flex-box">
+                <div class="game-title-header">THINK YOU KNOW BALL?</div>
+                <div class="flex-status-label">
+                    <span class="brand-green">11th</span> <span class="brand-white">Floor Cleared</span>
+                </div>
+                <div class="hero-time-display">00:42<span class="hero-time-unit">s</span></div>
+                <div class="flex-tier-badge">TOP 5% SPEED</div>
+            </div>
+
+            <div class="receipt-details">
+                <div class="receipt-row">
+                    <span class="row-label">DAILY PUZZLE</span>
+                    <span class="row-val">#042</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="row-label">ACCURACY</span>
+                    <span class="row-val success">100%</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="row-label">CURRENT STREAK</span>
+                    <span class="row-val active">12 DAYS</span>
+                </div>
+            </div>
+
+            <div class="card-footer-cta">
+                NEW GAME DAILY!
+            </div>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="controls-group">
+            <button class="btn-flex-action" id="share-btn">SHARE RESULT</button>
+            <button class="btn-secondary-action" id="copy-btn">COPY SUMMARY</button>
+        </div>
+    </div>
+
+    <div id="toast-msg">COPIED TO CLIPBOARD</div>
+
+    <script>
+        const shareBtn = document.getElementById('share-btn');
+        const copyBtn = document.getElementById('copy-btn');
+        const toast = document.getElementById('toast-msg');
+
+        function showToast(text) {
+            toast.innerText = text;
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2000);
+        }
+
+        const shareText = "11th Floor Games — Think You Know Ball?\n11th Floor Cleared in 00:42s! ⚽🔥\nhttps://11thfloorgames.com";
+
+        if (shareBtn) {
+            shareBtn.addEventListener('click', async () => {
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: '11th Floor Games Result',
+                            text: shareText
+                        });
+                    } catch (e) {
+                        console.log('Share cancelled or unavailable');
+                    }
+                } else {
+                    navigator.clipboard.writeText(shareText);
+                    showToast('COPIED TO CLIPBOARD');
+                }
+            });
+        }
+
+        if (copyBtn) {
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(shareText);
+                showToast('COPIED TO CLIPBOARD');
+            });
+        }
+    </script>
+</body>
+</html>
