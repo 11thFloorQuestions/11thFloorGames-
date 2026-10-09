@@ -18,6 +18,11 @@
     let remainingGroups = [];
     let currentLives = 3;
 
+    // Session Timer State Variables
+    let startTime = 0;
+    let timerInterval = null;
+    let timeElapsedSeconds = 0;
+
     const floorNumVal = document.getElementById('floor-number-val');
     const floorPhaseTag = document.getElementById('floor-phase-tag');
     const puzzlePrompt = document.getElementById('puzzle-prompt');
@@ -34,7 +39,40 @@
     const startScreen = document.getElementById('start-screen');
     const mainContent = document.getElementById('game-main-content');
     const btnStartClimb = document.getElementById('btn-start-climb');
+    const activeGameTimer = document.getElementById('active-game-timer');
     const pips = [document.getElementById('pip-1'), document.getElementById('pip-2'), document.getElementById('pip-3')];
+
+    // ==========================================
+    // SESSION STOPWATCH TIMER ENGINE
+    // ==========================================
+
+    function startSessionTimer() {
+        stopSessionTimer();
+        timeElapsedSeconds = 0;
+        startTime = Date.now();
+        if (activeGameTimer) {
+            activeGameTimer.style.display = 'block';
+            activeGameTimer.textContent = '00:00';
+        }
+        timerInterval = setInterval(updateSessionTimerDisplay, 1000);
+    }
+
+    function stopSessionTimer() {
+        if (timerInterval) clearInterval(timerInterval);
+    }
+
+    function updateSessionTimerDisplay() {
+        timeElapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+        if (activeGameTimer) {
+            activeGameTimer.textContent = formatTime(timeElapsedSeconds);
+        }
+    }
+
+    function formatTime(totalSeconds) {
+        const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+        const s = (totalSeconds % 60).toString().padStart(2, '0');
+        return `${m}:${s}`;
+    }
 
     function getOrdinalFloorHTML(floorNum) {
         const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
@@ -105,6 +143,7 @@
         if (actionPanelContainer) actionPanelContainer.style.display = 'flex';
 
         currentFloor = 1;
+        startSessionTimer();
         loadFloor(currentFloor);
     }
 
@@ -241,6 +280,7 @@
                             if (statusMessage) statusMessage.textContent = `${ordinals[currentFloor - 1].toUpperCase()} FLOOR CLEARED. ADVANCING...`;
                             setTimeout(() => loadFloor(currentFloor + 1), 900);
                         } else {
+                            stopSessionTimer();
                             renderVictory();
                         }
                     }, 400);
@@ -257,6 +297,7 @@
                 if (btnSubmit) btnSubmit.disabled = true;
                 renderGrid();
             } else {
+                stopSessionTimer();
                 triggerBrutalReset();
             }
         }
@@ -284,6 +325,7 @@
             if (penaltyOverlay) penaltyOverlay.classList.remove('flash');
             currentLives = 3;
             updateLivesDisplay();
+            startSessionTimer();
             loadFloor(1);
         }, 1200);
     }
@@ -304,7 +346,7 @@
                         11TH FLOOR REACHED
                     </div>
                     <div class="landing-challenge-text">
-                        Congratulations! You have reached the 11th Floor. Come back tomorrow to continue your streak.
+                        Congratulations! You have reached the 11th Floor in ${formatTime(timeElapsedSeconds)}. Come back tomorrow to continue your streak.
                     </div>
                     <a href="index.html" class="btn-start" style="text-decoration: none; display: inline-block; text-align: center;">RETURN TO LOBBY</a>
                 </div>
