@@ -1,0 +1,144 @@
+{
+  "setId": "25",
+  "title": "Think You Know Ball? - Set 25",
+  "questions": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "Which manager landed a bumper new contract this week?",
+      "options": [
+        "Arteta",
+        "De Zerbi"
+      ],
+      "answer": "Arteta",
+      "explanation": "Mikel Arteta signed a major new long-term deal at Arsenal.",
+      "anchorClues": "Mikel Arteta new contract extension Arsenal"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "Which key Premier League defender celebrates his birthday today?",
+      "options": [
+        "Ben White",
+        "Virgil van Dijk",
+        "Kyle Walker",
+        "Gabriel Magalhães"
+      ],
+      "answer": "Ben White",
+      "explanation": "Arsenal defender Ben White celebrates his birthday.",
+      "anchorClues": "Ben White birthday"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "Who is bottom of the Premier League today (Thursday)?",
+      "options": [
+        "Tottenham Hotspur",
+        "Fulham",
+        "AFC Bournemouth",
+        "Aston Villa"
+      ],
+      "answer": "Tottenham Hotspur",
+      "explanation": "Spurs sit at the foot of the table following the early season fixtures.",
+      "anchorClues": "Tottenham bottom Premier League table"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "Ahead of the big clash between Liverpool and Man City, what was the score in the same fixture last season?",
+      "options": [
+        "1-2 City win",
+        "2-2 draw",
+        "2-0 Liverpool win",
+        "0-1 City win"
+      ],
+      "answer": "1-2 City win",
+      "explanation": "Manchester City took away a 2-1 victory from Anfield last season.",
+      "anchorClues": "Liverpool vs Man City score last season Anfield"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "Which player holds the unwanted Premier League record for scoring the most own goals in a single calendar year?",
+      "options": [
+        "Martin Skrtel",
+        "Jamie Carragher",
+        "Richard Dunne",
+        "Wes Brown"
+      ],
+      "answer": "Richard Dunne",
+      "explanation": "Richard Dunne managed to stick four past his own goalkeeper during 2014 alone.",
+      "anchorClues": "Richard Dunne most own goals calendar year"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "Which club spent a record 140 days sitting rock bottom of the Premier League table during a single season *without* actually getting relegated?",
+      "options": [
+        "Leicester City",
+        "Aston Villa",
+        "Sunderland",
+        "Crystal Palace"
+      ],
+      "answer": "Leicester City",
+      "explanation": "The Foxes somehow survived the drop during their miraculous escape under Nigel Pearson before the title win.",
+      "anchorClues": "Leicester City bottom of table 140 days escape"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "What squad number did Jimmy Floyd Hasselbaink wear during his lethal goalscoring spell at Chelsea?",
+      "options": [
+        "7",
+        "9",
+        "8",
+        "17"
+      ],
+      "answer": "7",
+      "explanation": "Hasselbaink famously wore the number 7 shirt as a central striker for Chelsea.",
+      "anchorClues": "Jimmy Floyd Hasselbaink squad number 7 Chelsea"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "Which referee famously sent off two Tottenham players while also managing to trip over one of them during a match against Stoke?",
+      "options": [
+        "Mike Dean",
+        "Mark Clattenburg",
+        "Lee Probert",
+        "Howard Webb"
+      ],
+      "answer": "Lee Probert",
+      "explanation": "Lee Probert had a chaotic afternoon at the Britannia Stadium, accidentally wiping out a player mid-match before brandishing red cards.",
+      "anchorClues": "Lee Probert referee trip Stoke Tottenham"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "Which club holds the record for suffering the heaviest defeat in Premier League history, losing 9-0 away from home?",
+      "options": [
+        "Ipswich Town",
+        "Southampton",
+        "Sheffield United",
+        "Watford"
+      ],
+      "answer": "Southampton",
+      "explanation": "Southampton hold the unwanted record after heavy defeats on the road.",
+      "anchorClues": "Southampton heaviest defeat 9-0 away Premier League"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "I played as a Premier League full-back for Everton and Sunderland, won an FA Cup, and later gained viral fame on social media for my deadpan punditry and cooking videos. Who am I?",
+      "options": [
+        "Andy Reid",
+        "Phil Bardsley",
+        "Kevin Campbell",
+        "Julius Aghahowa"
+      ],
+      "answer": "Phil Bardsley",
+      "explanation": "Bardsley transitioned from tough-tackling defender to a cult internet figure following his retirement.",
+      "anchorClues": "Phil Bardsley Everton Sunderland punditry cooking"
+    }
+  ]
+}
