@@ -398,11 +398,96 @@
         </div>
     </div>
 
-    <!-- Main Play Card Workspace (Referenced as game-screen in showScreen) -->
-    <div id="game-screen" class="play-card" style="display: none;">
+    <!-- Main Play Card Workspace (Aliased as game-workspace and game-screen for script compatibility) -->
+    <div id="game-workspace" id="game-screen" class="play-card" style="display: none;">
         <div class="timer-bar-container">
             <div id="timer-bar" class="timer-bar"></div>
         </div>
 
         <div class="question-box">
-            <div id="question-text" class="question-text">
+            <div id="question-text" class="question-text">Loading question...</div>
+        </div>
+
+        <div class="options-grid" id="options-grid">
+            <button class="btn-option"></button>
+            <button class="btn-option"></button>
+            <button class="btn-option"></button>
+            <button class="btn-option"></button>
+        </div>
+    </div>
+
+    <!-- FINAL ECOSYSTEM VICTORY SCREEN LAYOUT -->
+    <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
+        
+        <div class="game-logo-box" style="margin-bottom: 0;">
+            <h1 class="game-logo-gold">11FL?</h1>
+            <p class="game-logo-title">Eleventh Floor</p>
+            <p class="game-logo-sub">QUESTIONS</p>
+        </div>
+
+        <div class="victory-receipt">
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 3px; color: var(--genre-gold); text-transform: uppercase; text-align: center; margin-bottom: 2px;">DESTINATION REACHED</div>
+            <div style="font-family: 'Anton', sans-serif; font-size: 2rem; color: #ffffff; letter-spacing: 1px; margin-bottom: 4px; text-align: center;">PERFECT</div>
+            
+            <div class="victory-row">
+                <span class="victory-label">Time Elapsed</span>
+                <span id="victory-time-display" class="victory-data">00:00</span>
+            </div>
+            
+            <div class="victory-row">
+                <span class="victory-label">Accuracy</span>
+                <span class="victory-data" style="color: var(--state-success);">100% (10/10)</span>
+            </div>
+            
+            <div class="victory-row" style="border-bottom: none; padding-bottom: 0;">
+                <span class="victory-label">Active Streak</span>
+                <span id="victory-streak-display" class="victory-data" style="color: var(--state-active);">0 Days</span>
+            </div>
+        </div>
+
+        <button id="btn-victory-stats" class="btn-start" style="width: 100%; max-width: 320px; margin-bottom: 12px; background-color: var(--genre-gold); color: #000000; border-color: var(--genre-gold);">VIEW STATS & ARCHIVES</button>
+        
+        <div style="font-size: 0.65rem; color: var(--text-muted); font-weight: 600; letter-spacing: 1px; max-width: 280px; line-height: 1.5;">
+            Unlock all past daily games and custom quizzes for £2 a month or a discounted price of £20 a year in the Archive Vault.
+        </div>
+    </div>
+
+    <footer>
+        <div id="footer-text">ONE MISTAKE RESETS THE CLIMB TO GROUND FLOOR.</div>
+    </footer>
+
+    <!-- Stats & Archive Vault Modal -->
+    <div id="modal-vault" class="modal-overlay hidden">
+        <div class="modal-card modal-large">
+            <h2 style="font-size: 1.2rem; font-weight: 800; color: var(--genre-gold);">STATS</h2>
+            <div class="stats-summary-grid">
+                <div class="stat-box"><span id="stat-played" class="stat-val">0</span><span class="stat-lbl">Played</span></div>
+                <div class="stat-box"><span id="stat-wins" class="stat-val">0</span><span class="stat-lbl">Wins</span></div>
+                <div class="stat-box"><span id="stat-winrate" class="stat-val">0%</span><span class="stat-lbl">Win %</span></div>
+                <div class="stat-box"><span id="stat-streak" class="stat-val">0</span><span class="stat-lbl">Streak</span></div>
+                <div class="stat-box" style="grid-column: span 2;"><span id="stat-bestfloor" class="stat-val">FL 01</span><span class="stat-lbl">Best Peak</span></div>
+            </div>
+
+            <h3 style="font-size: 0.72rem; font-weight: 700; color: var(--genre-gold); margin-top: 10px; text-transform: uppercase;">ARCHIVE VAULT</h3>
+            <div id="vault-list" class="vault-grid"></div>
+            <button id="btn-close-vault" class="btn-modal">CLOSE</button>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="modal-game-over" class="modal-overlay hidden">
+        <div class="modal-card">
+            <h2 id="game-over-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">ELEVATOR STOPPED</h2>
+            <p id="game-over-message" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;"></p>
+            <p id="final-floor-reached" style="font-size: 1rem; font-weight: 700; margin-bottom: 20px;"></p>
+            
+            <div style="display: flex; gap: 8px; flex-direction: column;">
+                <button id="btn-try-again" class="btn-modal" style="background: var(--genre-gold); color: #000000;">TRY AGAIN</button>
+                <button id="btn-back-vault" class="btn-modal">ARCHIVE VAULT</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
