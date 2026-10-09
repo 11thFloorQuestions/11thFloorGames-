@@ -46,16 +46,16 @@
         /* Active Timer Display */
         .header-timer {
             font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 800;
             color: var(--state-active, #facc15);
             letter-spacing: 1px;
-            background: var(--surface, #0a0a0a);
-            border: 1px solid var(--surface-border, #222222);
-            padding: 4px 12px;
-            border-radius: 12px;
+            background: #111111;
+            border: 1px solid var(--surface-border-light, #333333);
+            padding: 4px 10px;
+            border-radius: 8px;
             display: none;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .landing-shaft-graphic .landing-shaft-box { animation: sweepMiddle 1.2s ease-in-out forwards; }
@@ -183,6 +183,7 @@
             <div class="floor-info-box">
                 <div class="current-floor-display" id="floor-number-val">FLOOR 01</div>
                 <div class="floor-right-group" style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <!-- Clock positioned directly above the life pips -->
                     <div id="active-game-timer" class="header-timer">00:00</div>
                     <div class="lives-container" id="lives-container">
                         <div class="life-pip" id="pip-1"></div>
@@ -197,19 +198,4 @@
             <div class="puzzle-prompt" id="puzzle-prompt"></div>
             <div id="solved-groups-container"></div>
             <div class="tile-grid grid-col-3" id="tile-grid"></div>
-            <div class="action-panel" id="action-panel-container">
-                <button class="btn btn-secondary" id="btn-shuffle">SHUFFLE</button>
-                <button class="btn btn-primary" id="btn-submit" disabled>SUBMIT</button>
-            </div>
-        </main>
-
-        <footer>
-            <div id="status-message"></div>
-            <div>ONE MISTAKE RESETS THE CLIMB TO 1ST FLOOR.</div>
-        </footer>
-    </div>
-
-    <script src="clusters-data.js"></script>
-    <script src="clusters.js"></script>
-</body>
-</html>
+            <div class="action-
