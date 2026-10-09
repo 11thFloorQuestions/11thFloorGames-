@@ -1,217 +1,325 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>11th Floor Clusters — Daily Puzzle</title>
+/**
+ * ============================================================================
+ * 11TH FLOOR CLUSTERS - CORE GAME LOGIC (clusters.js)
+ * ============================================================================
+ * Logic: Distractor pools, lock correct groups above grid, reduce pool size,
+ * 3-strike lives system, 10 playable floors leading to 11th floor destination.
+ * ============================================================================
+ */
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
-    <link rel="apple-touch-icon" href="/favicon.svg?v=2">
+(function () {
+    'use strict';
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/glacial-indifference" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .top-bar {
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-            flex-shrink: 0;
+    let puzzleData = null;
+    let currentFloor = 1;
+    let gameState = 'intro';
+    let selectedTiles = [];
+    let activeTiles = [];
+    let remainingGroups = [];
+    let currentLives = 3;
+
+    const floorNumVal = document.getElementById('floor-number-val');
+    const floorPhaseTag = document.getElementById('floor-phase-tag');
+    const puzzlePrompt = document.getElementById('puzzle-prompt');
+    const solvedGroupsContainer = document.getElementById('solved-groups-container');
+    const tileGrid = document.getElementById('tile-grid');
+    const btnShuffle = document.getElementById('btn-shuffle');
+    const btnSubmit = document.getElementById('btn-submit');
+    const statusMessage = document.getElementById('status-message');
+    const penaltyOverlay = document.getElementById('penalty-overlay');
+    const actionPanelContainer = document.getElementById('action-panel-container');
+    const towerStack = document.getElementById('tower-stack');
+    const btnSound = document.getElementById('btn-sound');
+    const floorHudContainer = document.getElementById('floor-hud-container');
+    const startScreen = document.getElementById('start-screen');
+    const mainContent = document.getElementById('game-main-content');
+    const btnStartClimb = document.getElementById('btn-start-climb');
+    const pips = [document.getElementById('pip-1'), document.getElementById('pip-2'), document.getElementById('pip-3')];
+
+    function getOrdinalFloorHTML(floorNum) {
+        const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
+        const ord = ordinals[floorNum - 1] || `${floorNum}th`;
+        return `<span style="color: var(--genre-orange); font-size: 1.25rem; font-weight: 700;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
+    }
+
+    function init() {
+        if (!window.CLUSTERS_DATA) {
+            if (statusMessage) statusMessage.textContent = "ERROR: CLUSTERS DATA NOT LOADED.";
+            return;
         }
 
-        .pill-btn {
-            background: var(--surface, #0a0a0a);
-            border: 1px solid var(--surface-border-light, #333333);
-            color: var(--text-primary, #ffffff);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
+        const availableDates = Object.keys(window.CLUSTERS_DATA).sort();
+        const todayStr = new Date().toISOString().split('T')[0];
+        const activeDateKey = window.CLUSTERS_DATA[todayStr] ? todayStr : availableDates[availableDates.length - 1];
+
+        puzzleData = window.CLUSTERS_DATA[activeDateKey];
+
+        if (btnShuffle) btnShuffle.addEventListener('click', shuffleActiveTiles);
+        if (btnSubmit) btnSubmit.addEventListener('click', handleSubmission);
+        
+        if (btnSound) {
+            btnSound.addEventListener('click', () => {
+                btnSound.textContent = btnSound.textContent.includes('OFF') ? 'SOUND: ON' : 'SOUND: OFF';
+            });
         }
 
-        .pill-btn:hover {
-            border-color: var(--genre-orange, #ff751f);
-            color: var(--genre-orange, #ff751f);
+        if (btnStartClimb) {
+            btnStartClimb.addEventListener('click', startClimb);
         }
 
-        /* Active Timer Display */
-        .header-timer {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: var(--state-active, #facc15);
-            letter-spacing: 1px;
-            background: #111111;
-            border: 1px solid var(--surface-border-light, #333333);
-            padding: 4px 10px;
-            border-radius: 8px;
-            display: none;
-            margin-bottom: 6px;
+        renderTowerStack(0);
+    }
+
+    function renderTowerStack(activeFloor) {
+        if (!towerStack) return;
+        towerStack.innerHTML = '';
+        for (let i = 1; i <= 10; i++) {
+            const floorBar = document.createElement('div');
+            floorBar.className = 'tower-floor';
+            if (i <= activeFloor) {
+                floorBar.classList.add('active');
+            }
+            towerStack.appendChild(floorBar);
+        }
+    }
+
+    function updateLivesDisplay() {
+        pips.forEach((pip, index) => {
+            if (!pip) return;
+            if (index < currentLives) {
+                pip.classList.remove('lost');
+            } else {
+                pip.classList.add('lost');
+            }
+        });
+    }
+
+    function startClimb() {
+        gameState = 'playing';
+        currentLives = 3;
+        updateLivesDisplay();
+
+        if (startScreen) startScreen.style.display = 'none';
+        if (floorHudContainer) floorHudContainer.style.display = 'flex';
+        if (mainContent) mainContent.style.display = 'flex';
+        if (actionPanelContainer) actionPanelContainer.style.display = 'flex';
+
+        currentFloor = 1;
+        loadFloor(currentFloor);
+    }
+
+    function loadFloor(floorNum) {
+        currentFloor = floorNum;
+        if (floorNumVal) {
+            floorNumVal.innerHTML = getOrdinalFloorHTML(currentFloor);
+        }
+        renderTowerStack(currentFloor);
+        selectedTiles = [];
+        if (solvedGroupsContainer) solvedGroupsContainer.innerHTML = '';
+        if (statusMessage) statusMessage.textContent = '';
+        if (btnSubmit) btnSubmit.disabled = true;
+
+        const floorConfig = puzzleData.floors[currentFloor];
+        if (!floorConfig) {
+            renderVictory();
+            return;
         }
 
-        .landing-shaft-graphic .landing-shaft-box { animation: sweepMiddle 1.2s ease-in-out forwards; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(11) { animation: sweepBottomSettle 2.6s ease-in-out forwards; animation-delay: 0.05s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(10) { animation-delay: 0.15s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(9)  { animation-delay: 0.25s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(8)  { animation-delay: 0.35s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(7)  { animation-delay: 0.45s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(6)  { animation-delay: 0.55s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(5)  { animation-delay: 0.65s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(4)  { animation-delay: 0.75s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(3)  { animation-delay: 0.85s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(2)  { animation-delay: 0.95s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(1)  { animation: sweepTopGreen 1.6s ease-in-out forwards; animation-delay: 1.05s; }
+        activeTiles = [...floorConfig.tiles];
+        remainingGroups = floorConfig.groups.map(g => ({ ...g }));
 
-        @keyframes sweepMiddle {
-            0% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
-            30% { background-color: var(--genre-orange); border-color: var(--genre-orange); box-shadow: 0 0 10px var(--genre-orange-glow); }
-            60%, 100% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+        if (puzzlePrompt) {
+            if (currentFloor <= 4) {
+                if (floorPhaseTag) floorPhaseTag.textContent = "ASCENT";
+                puzzlePrompt.textContent = "Find 2 groups of 3 from the 12 tiles.";
+            } else if (currentFloor >= 5 && currentFloor <= 9) {
+                if (floorPhaseTag) floorPhaseTag.textContent = "SQUEEZE";
+                puzzlePrompt.textContent = "Find 3 groups of 3 from the 12 tiles.";
+            } else if (currentFloor === 10) {
+                if (floorPhaseTag) floorPhaseTag.textContent = "FINAL WALL";
+                puzzlePrompt.textContent = "Sort all 16 tiles into 4 groups of 4.";
+            }
         }
 
-        @keyframes sweepTopGreen {
-            0% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
-            20%, 70% { background-color: var(--state-success); border-color: var(--state-success); box-shadow: 0 0 16px var(--state-success-glow); }
-            100% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+        shuffleArray(activeTiles);
+        renderGrid();
+    }
+
+    function renderGrid() {
+        if (!tileGrid) return;
+        tileGrid.innerHTML = '';
+
+        if (currentFloor === 10) {
+            tileGrid.className = 'tile-grid grid-col-4';
+        } else {
+            tileGrid.className = 'tile-grid grid-col-3';
         }
 
-        @keyframes sweepBottomSettle {
-            0% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
-            15% { background-color: var(--genre-orange); border-color: var(--genre-orange); box-shadow: 0 0 10px var(--genre-orange-glow); }
-            30%, 80% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
-            95%, 100% { background-color: var(--genre-orange); border-color: var(--genre-orange); box-shadow: 0 0 8px var(--genre-orange-glow); }
+        activeTiles.forEach(tileText => {
+            const tileEl = document.createElement('div');
+            tileEl.className = 'cluster-tile';
+            if (selectedTiles.includes(tileText)) {
+                tileEl.classList.add('selected');
+            }
+            tileEl.textContent = tileText;
+            tileEl.addEventListener('click', () => handleTileClick(tileText, tileEl));
+            tileGrid.appendChild(tileEl);
+        });
+    }
+
+    function handleTileClick(tileText, tileEl) {
+        if (gameState !== 'playing') return;
+
+        const maxSelection = (currentFloor === 10) ? 4 : 3;
+
+        const index = selectedTiles.indexOf(tileText);
+        if (index > -1) {
+            selectedTiles.splice(index, 1);
+            tileEl.classList.remove('selected');
+        } else {
+            if (selectedTiles.length < maxSelection) {
+                selectedTiles.push(tileText);
+                tileEl.classList.add('selected');
+            }
         }
 
-        .btn-start:hover {
-            background-color: var(--genre-orange);
-            color: #ffffff;
-            box-shadow: 0 4px 25px var(--genre-orange-glow);
+        if (btnSubmit) btnSubmit.disabled = (selectedTiles.length !== maxSelection);
+    }
+
+    function shuffleActiveTiles() {
+        if (gameState !== 'playing') return;
+        shuffleArray(activeTiles);
+        renderGrid();
+    }
+
+    function handleSubmission() {
+        if (gameState !== 'playing') return;
+
+        const maxSelection = (currentFloor === 10) ? 4 : 3;
+        if (selectedTiles.length !== maxSelection) return;
+
+        let matchedGroupIndex = -1;
+        for (let i = 0; i < remainingGroups.length; i++) {
+            const groupWords = remainingGroups[i].words;
+            const isMatch = selectedTiles.every(t => groupWords.includes(t)) && groupWords.every(t => selectedTiles.includes(t));
+            if (isMatch) {
+                matchedGroupIndex = i;
+                break;
+            }
         }
 
-        /* Gameplay Area */
-        .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 12px; flex-shrink: 0; }
-        .tower-stack { display: flex; flex-direction: column-reverse; gap: 2px; width: 52px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 6px; justify-content: space-between; flex-shrink: 0; }
-        .tower-floor { height: 7px; border: 1px solid var(--surface-border); background: #111111; transition: all 0.2s ease; border-radius: 2px; }
-        .tower-floor.active { border-color: var(--genre-orange); background: rgba(255, 117, 31, 0.3); box-shadow: 0 0 6px var(--genre-orange-glow); }
-        .floor-info-box { flex-grow: 1; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
-        .current-floor-display { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; color: var(--genre-orange); }
+        if (matchedGroupIndex > -1) {
+            gameState = 'animating';
+            if (btnSubmit) btnSubmit.disabled = true;
 
-        /* Cleaned spacing between timer and life pips */
-        .floor-right-group { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
-        .lives-container { display: flex; gap: 6px; margin-top: 2px; }
-        .life-pip { width: 8px; height: 8px; background-color: var(--genre-orange); border-radius: 50%; box-shadow: 0 0 6px var(--genre-orange-glow); transition: all 0.2s ease; }
-        .life-pip.lost { background-color: #222222; box-shadow: none; }
+            const tileElements = tileGrid.querySelectorAll('.cluster-tile');
+            tileElements.forEach(el => {
+                if (selectedTiles.includes(el.textContent)) {
+                    el.classList.remove('selected');
+                    el.classList.add('success');
+                }
+            });
 
-        main { width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; flex-grow: 1; justify-content: center; }
-        .puzzle-prompt { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px; text-align: center; letter-spacing: 0.5px; }
-        #solved-groups-container { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
-        .solved-group-card { background: rgba(34, 197, 94, 0.1); border: 1px solid var(--state-success); padding: 10px 14px; display: flex; flex-direction: column; gap: 3px; border-radius: 8px; box-shadow: 0 0 15px var(--state-success-glow); }
-        .solved-group-category { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--state-success); font-weight: 700; }
-        .solved-group-words { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px; }
+            if (statusMessage) statusMessage.textContent = "CORRECT CLUSTER.";
 
-        .tile-grid { display: grid; gap: 10px; width: 100%; margin-bottom: 20px; }
-        .grid-col-3 { grid-template-columns: repeat(3, 1fr); }
-        .grid-col-4 { grid-template-columns: repeat(4, 1fr); }
-        .cluster-tile { background-color: #0f0f0f; border: 1px solid var(--surface-border); color: var(--text-primary); font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; padding: 16px 8px; text-align: center; cursor: pointer; transition: all 0.15s ease; display: flex; align-items: center; justify-content: center; min-height: 55px; border-radius: 8px; }
-        .cluster-tile:hover { background-color: #1a1a1a; border-color: var(--genre-orange); }
-        .cluster-tile.selected { background-color: var(--genre-orange); color: #000000; border-color: var(--genre-orange); box-shadow: 0 0 15px var(--genre-orange-glow); }
-        .cluster-tile.success { background-color: var(--state-success) !important; color: #000000 !important; border-color: var(--state-success) !important; box-shadow: 0 0 20px var(--state-success-glow) !important; }
+            setTimeout(() => {
+                const solvedGroup = remainingGroups.splice(matchedGroupIndex, 1)[0];
+                solvedGroup.words.forEach(word => {
+                    const idx = activeTiles.indexOf(word);
+                    if (idx > -1) activeTiles.splice(idx, 1);
+                });
 
-        .action-panel { width: 100%; max-width: 600px; display: flex; gap: 12px; justify-content: center; }
-        .btn { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 12px 20px; cursor: pointer; border: 2px solid var(--genre-orange); border-radius: 8px; transition: all 0.2s ease; }
-        .btn-secondary { background: transparent; color: var(--text-muted); border-color: var(--surface-border); }
-        .btn-secondary:hover { color: var(--text-primary); border-color: var(--text-muted); }
-        .btn-primary { background: var(--genre-orange); color: #000000; border-color: var(--genre-orange); }
-        .btn-primary:hover { background: transparent; color: var(--genre-orange); box-shadow: 0 0 20px var(--genre-orange-glow); }
-        .btn:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none !important; }
+                appendSolvedCard(solvedGroup);
+                selectedTiles = [];
+                gameState = 'playing';
+                renderGrid();
 
-        #penalty-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255, 117, 31, 0.2); pointer-events: none; opacity: 0; transition: opacity 0.2s ease; z-index: 999; }
-        #penalty-overlay.flash { opacity: 1; }
-        #status-message { min-height: 20px; color: var(--genre-orange); font-weight: 700; margin-bottom: 4px; }
-    </style>
-</head>
-<body>
+                if (remainingGroups.length === 0) {
+                    setTimeout(() => {
+                        if (currentFloor < 10) {
+                            const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
+                            if (statusMessage) statusMessage.textContent = `${ordinals[currentFloor - 1].toUpperCase()} FLOOR CLEARED. ADVANCING...`;
+                            setTimeout(() => loadFloor(currentFloor + 1), 900);
+                        } else {
+                            renderVictory();
+                        }
+                    }, 400);
+                }
+            }, 600);
 
-    <div id="penalty-overlay"></div>
+        } else {
+            currentLives--;
+            updateLivesDisplay();
 
-    <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 100%;">
-        <div class="top-bar">
-            <a href="index.html" class="pill-btn">← LOBBY</a>
-            <button class="pill-btn" id="btn-sound">SOUND: OFF</button>
-        </div>
+            if (currentLives > 0) {
+                if (statusMessage) statusMessage.textContent = `INCORRECT. ${currentLives} LIVES REMAINING.`;
+                selectedTiles = [];
+                if (btnSubmit) btnSubmit.disabled = true;
+                renderGrid();
+            } else {
+                triggerBrutalReset();
+            }
+        }
+    }
 
-        <div class="game-logo-box">
-            <h1 class="game-logo-orange">11FL?</h1>
-            <p class="game-logo-title">Eleventh Floor</p>
-            <p class="game-logo-sub" style="color: var(--genre-orange);">CLUSTERS</p>
-        </div>
+    function appendSolvedCard(group) {
+        if (!solvedGroupsContainer) return;
+        const card = document.createElement('div');
+        card.className = 'solved-group-card';
+        card.innerHTML = `
+            <div class="solved-group-category">${group.category}</div>
+            <div class="solved-group-words">${group.words.join(' // ')}</div>
+        `;
+        solvedGroupsContainer.appendChild(card);
+    }
 
-        <!-- Standardized Landing Screen -->
-        <div id="start-screen" class="landing-container">
-            <div class="landing-shaft-graphic">
-                <div class="landing-shaft-box"></div>
-                <div class="landing-shaft-box"></div>
-                <div class="landing-shaft-box"></div>
-                <div class="landing-shaft-box"></div>
-                <div class="landing-shaft-box"></div>
-                <div class="landing-shaft-box"></div>
-                <div class="landing-shaft-box"></div>
-                <div class="landing-shaft-box"></div>
-                <div class="landing-shaft-box"></div>
-                <div class="landing-shaft-box"></div>
-                <div class="landing-shaft-box"></div>
-            </div>
+    function triggerBrutalReset() {
+        gameState = 'penalty';
+        if (btnSubmit) btnSubmit.disabled = true;
+        
+        if (penaltyOverlay) penaltyOverlay.classList.add('flash');
+        if (statusMessage) statusMessage.textContent = "OUT OF LIVES. DROPPED TO 1ST FLOOR.";
 
-            <div class="landing-challenge-text">
-                <strong>CAN YOU REACH THE 11TH FLOOR?</strong><br><br>
-                Group the 12 tiles into categories of 3 to ascend.<br><br>
-                One mistake resets the climb to 1st floor.
-            </div>
+        setTimeout(() => {
+            if (penaltyOverlay) penaltyOverlay.classList.remove('flash');
+            currentLives = 3;
+            updateLivesDisplay();
+            loadFloor(1);
+        }, 1200);
+    }
 
-            <button id="btn-start-climb" class="btn-start">Start Climb</button>
-        </div>
+    function renderVictory() {
+        gameState = 'victory';
+        if (floorHudContainer) floorHudContainer.style.display = 'none';
+        if (actionPanelContainer) actionPanelContainer.style.display = 'none';
+        if (solvedGroupsContainer) solvedGroupsContainer.innerHTML = '';
+        if (puzzlePrompt) puzzlePrompt.textContent = "";
+        renderTowerStack(10);
 
-        <!-- Gameplay HUD -->
-        <div class="hud-sidebar-container" id="floor-hud-container" style="display: none;">
-            <div class="tower-stack" id="tower-stack"></div>
-            <div class="floor-info-box">
-                <div class="current-floor-display" id="floor-number-val">FLOOR 01</div>
-                <div class="floor-right-group">
-                    <div id="active-game-timer" class="header-timer">00:00</div>
-                    <div class="lives-container" id="lives-container">
-                        <div class="life-pip" id="pip-1"></div>
-                        <div class="life-pip" id="pip-2"></div>
-                        <div class="life-pip" id="pip-3"></div>
+        if (tileGrid) {
+            tileGrid.className = 'tile-grid grid-col-3';
+            tileGrid.innerHTML = `
+                <div style="grid-column: span 3;" class="landing-container">
+                    <div style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--state-success); letter-spacing: 1.5px;">
+                        11TH FLOOR REACHED
                     </div>
+                    <div class="landing-challenge-text">
+                        Congratulations! You have reached the 11th Floor. Come back tomorrow to continue your streak.
+                    </div>
+                    <a href="index.html" class="btn-start" style="text-decoration: none; display: inline-block; text-align: center;">RETURN TO LOBBY</a>
                 </div>
-            </div>
-        </div>
+            `;
+        }
+    }
 
-        <main id="game-main-content" style="display: none;">
-            <div class="puzzle-prompt" id="puzzle-prompt"></div>
-            <div id="solved-groups-container"></div>
-            <div class="tile-grid grid-col-3" id="tile-grid"></div>
-            <div class="action-panel" id="action-panel-container">
-                <button class="btn btn-secondary" id="btn-shuffle">SHUFFLE</button>
-                <button class="btn btn-primary" id="btn-submit" disabled>SUBMIT</button>
-            </div>
-        </main>
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
 
-        <footer>
-            <div id="status-message"></div>
-            <div>ONE MISTAKE RESETS THE CLIMB TO 1ST FLOOR.</div>
-        </footer>
-    </div>
+    window.addEventListener('DOMContentLoaded', init);
 
-    <script src="clusters-data.js"></script>
-    <script src="clusters.js"></script>
-</body>
-</html>
+})();
