@@ -398,21 +398,23 @@
         </div>
     </div>
 
-    <!-- Main Play Card Workspace (Aliased as game-workspace and game-screen for script compatibility) -->
-    <div id="game-workspace" id="game-screen" class="play-card" style="display: none;">
-        <div class="timer-bar-container">
-            <div id="timer-bar" class="timer-bar"></div>
-        </div>
+    <!-- Main Play Card Workspace (Targeted by showScreen as game-screen, and launchGameUI as game-workspace) -->
+    <div id="game-screen" class="play-card" style="display: none;">
+        <div id="game-workspace" style="width: 100%; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+            <div class="timer-bar-container">
+                <div id="timer-bar" class="timer-bar"></div>
+            </div>
 
-        <div class="question-box">
-            <div id="question-text" class="question-text">Loading question...</div>
-        </div>
+            <div class="question-box">
+                <div id="question-text" class="question-text">Loading question...</div>
+            </div>
 
-        <div class="options-grid" id="options-grid">
-            <button class="btn-option"></button>
-            <button class="btn-option"></button>
-            <button class="btn-option"></button>
-            <button class="btn-option"></button>
+            <div class="options-grid" id="options-grid">
+                <button class="btn-option"></button>
+                <button class="btn-option"></button>
+                <button class="btn-option"></button>
+                <button class="btn-option"></button>
+            </div>
         </div>
     </div>
 
@@ -459,35 +461,4 @@
     <!-- Stats & Archive Vault Modal -->
     <div id="modal-vault" class="modal-overlay hidden">
         <div class="modal-card modal-large">
-            <h2 style="font-size: 1.2rem; font-weight: 800; color: var(--genre-gold);">STATS</h2>
-            <div class="stats-summary-grid">
-                <div class="stat-box"><span id="stat-played" class="stat-val">0</span><span class="stat-lbl">Played</span></div>
-                <div class="stat-box"><span id="stat-wins" class="stat-val">0</span><span class="stat-lbl">Wins</span></div>
-                <div class="stat-box"><span id="stat-winrate" class="stat-val">0%</span><span class="stat-lbl">Win %</span></div>
-                <div class="stat-box"><span id="stat-streak" class="stat-val">0</span><span class="stat-lbl">Streak</span></div>
-                <div class="stat-box" style="grid-column: span 2;"><span id="stat-bestfloor" class="stat-val">FL 01</span><span class="stat-lbl">Best Peak</span></div>
-            </div>
-
-            <h3 style="font-size: 0.72rem; font-weight: 700; color: var(--genre-gold); margin-top: 10px; text-transform: uppercase;">ARCHIVE VAULT</h3>
-            <div id="vault-list" class="vault-grid"></div>
-            <button id="btn-close-vault" class="btn-modal">CLOSE</button>
-        </div>
-    </div>
-
-    <!-- Game Over Modal -->
-    <div id="modal-game-over" class="modal-overlay hidden">
-        <div class="modal-card">
-            <h2 id="game-over-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">ELEVATOR STOPPED</h2>
-            <p id="game-over-message" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;"></p>
-            <p id="final-floor-reached" style="font-size: 1rem; font-weight: 700; margin-bottom: 20px;"></p>
-            
-            <div style="display: flex; gap: 8px; flex-direction: column;">
-                <button id="btn-try-again" class="btn-modal" style="background: var(--genre-gold); color: #000000;">TRY AGAIN</button>
-                <button id="btn-back-vault" class="btn-modal">ARCHIVE VAULT</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+            <h2 style="font-size: 1.2rem
