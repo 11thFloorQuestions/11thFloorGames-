@@ -294,8 +294,8 @@ function resetToStartScreen() {
 }
 
 function initDailyPuzzle() {
-    masterNineLetterWord = "ALGORITHMS";
-    const initialArr = ["A", "L", "G", "O", "R", "I", "T", "H", "M"];
+    masterNineLetterWord = "DANGEROUS";
+    const initialArr = ["D", "A", "N", "G", "E", "R", "O", "U", "S"];
     initialDailyWheel = shuffleAndVerifyWheel(initialArr, masterNineLetterWord);
     wheelLetters = [...initialDailyWheel];
 }
