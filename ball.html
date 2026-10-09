@@ -403,4 +403,333 @@
 
         .row-label {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.75
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .row-val {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .row-val.success { color: var(--genre-pitch); }
+        .row-val.active { color: var(--state-active); }
+
+        .card-footer-cta {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 800;
+            color: #888888;
+            letter-spacing: 1.5px;
+            border-top: 1px dashed #333333;
+            padding-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .controls-group {
+            width: 100%;
+            max-width: 340px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn-flex-action {
+            width: 100%;
+            background-color: var(--genre-pitch);
+            border: 1px solid var(--genre-pitch);
+            color: #000000;
+            padding: 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 24px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--genre-pitch-glow);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .btn-secondary-action {
+            width: 100%;
+            background-color: #111111;
+            border: 1px solid #333333;
+            color: #ffffff;
+            padding: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 24px;
+            cursor: pointer;
+            display: block;
+        }
+
+        #toast-msg {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--genre-pitch);
+            color: #000000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.75rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: none;
+            z-index: 1000;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body class="game-ball">
+
+    <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 100%;">
+        <div class="top-bar">
+            <a href="index.html" class="pill-btn">← LOBBY</a>
+            <button class="pill-btn" id="btn-sound-toggle">SOUND: ON</button>
+        </div>
+
+        <!-- LANDING SCREEN -->
+        <div id="landing-screen" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <div class="game-logo-box">
+                <h1 class="game-logo-pitch">11FL?</h1>
+                <p class="game-logo-title">Eleventh Floor</p>
+                <p class="game-logo-sub">THINK YOU KNOW BALL?</p>
+            </div>
+
+            <div class="landing-container">
+                <div class="landing-shaft-graphic">
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                    <div class="landing-shaft-box"></div>
+                </div>
+
+                <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+                    <strong>CAN YOU REACH THE 11TH FLOOR?</strong><br><br>
+                    Answer expert Premier League trivia to climb through 10 floors. One mistake and you drop back to Ground Floor.
+                </div>
+
+                <div style="display: flex; gap: 8px; margin-top: 4px;">
+                    <button id="btn-landing-stats" class="pill-btn" style="padding: 10px 18px; border-radius: 24px;">STATS / ARCHIVE</button>
+                    <button id="btn-start-climb" class="btn-start">Start Climb</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAMEPLAY HEADER -->
+        <div id="gameplay-header" class="gameplay-header-box" style="display: none;">
+            <p class="game-logo-title">Eleventh Floor</p>
+            <p class="game-logo-sub">THINK YOU KNOW BALL?</p>
+        </div>
+
+        <!-- Gameplay HUD Header -->
+        <div class="hud-sidebar-container" id="floor-hud-container" style="display: none;">
+            <div class="tower-stack" id="tower-stack">
+                <div class="tower-floor floor-block" data-floor="11"></div>
+                <div class="tower-floor floor-block" data-floor="10"></div>
+                <div class="tower-floor floor-block" data-floor="9"></div>
+                <div class="tower-floor floor-block" data-floor="8"></div>
+                <div class="tower-floor floor-block" data-floor="7"></div>
+                <div class="tower-floor floor-block" data-floor="6"></div>
+                <div class="tower-floor floor-block" data-floor="5"></div>
+                <div class="tower-floor floor-block" data-floor="4"></div>
+                <div class="tower-floor floor-block" data-floor="3"></div>
+                <div class="tower-floor floor-block" data-floor="2"></div>
+                <div class="tower-floor floor-block" data-floor="1"></div>
+            </div>
+
+            <div class="floor-info-box">
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <div id="card-floor-text" style="font-size: 1.1rem; font-weight: 800;"><span style="color: var(--genre-pitch);">1st</span> Floor</div>
+                    <div id="floor-rule-text" style="font-size: 0.65rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">No mistakes!</div>
+                </div>
+                <!-- Timer Relocated inside HUD Info Box -->
+                <div id="active-game-timer" class="header-timer">00:00</div>
+            </div>
+        </div>
+
+        <!-- Main Play Card Workspace -->
+        <div id="game-workspace" class="play-card" style="display: none;">
+            <div class="timer-bar-container">
+                <div id="timer-bar" class="timer-bar"></div>
+            </div>
+
+            <div class="question-box">
+                <div id="question-text" style="font-size: 0.9rem; font-weight: 600; color: #ffffff;">Loading trivia...</div>
+            </div>
+
+            <div class="options-grid" id="options-grid">
+                <button class="btn-option"></button>
+                <button class="btn-option"></button>
+                <button class="btn-option"></button>
+                <button class="btn-option"></button>
+            </div>
+        </div>
+
+        <!-- FINAL ECOSYSTEM VICTORY SCREEN LAYOUT -->
+        <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
+            
+            <div class="victory-receipt-card" id="victory-card">
+                <div class="receipt-header">
+                    <div class="brand-lockup-container">
+                        <div class="brand-mark-left">11FL?</div>
+                        <div class="brand-text-stacked">
+                            <span class="brand-title-top">ELEVENTH FLOOR</span>
+                            <span class="brand-title-bottom">THINK YOU KNOW BALL?</span>
+                        </div>
+                    </div>
+                    <div class="badge-slot-reserved">VERIFIED</div>
+                </div>
+
+                <div class="hero-flex-box">
+                    <div class="game-title-header">
+                        <span class="brand-white">Think You Know Ball?</span>
+                    </div>
+                    <div class="flex-status-label">
+                        <span class="brand-green">11th</span> <span class="brand-white">Floor Cleared</span>
+                    </div>
+                    <div class="hero-time-display"><span id="victory-time-display">00:00</span><span class="hero-time-unit">s</span></div>
+                    <div class="flex-tier-badge">PERFECT</div>
+                </div>
+
+                <div class="receipt-details">
+                    <div class="receipt-row">
+                        <span class="row-label">THINK YOU KNOW BALL?</span>
+                        <span class="row-val">#042</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">ACCURACY</span>
+                        <span class="row-val success">100% (10/10)</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">CURRENT STREAK</span>
+                        <span id="victory-streak-display" class="row-val active">0 Days</span>
+                    </div>
+                </div>
+
+                <div class="card-footer-cta">
+                    NEW GAME DAILY!
+                </div>
+            </div>
+
+            <!-- ACTION CONTROL BUTTONS -->
+            <div class="controls-group">
+                <button class="btn-flex-action" id="share-btn">SHARE SCREENSHOT</button>
+                <button class="btn-secondary-action" id="btn-victory-stats">STATS & ARCHIVES</button>
+            </div>
+        </div>
+
+        <footer id="footer-text" style="font-size: 0.6rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-top: 4px;">
+            ONE MISTAKE RESETS THE CLIMB TO GROUND FLOOR.
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-msg">SCREENSHOT GENERATED</div>
+
+    <!-- Modals -->
+    <div id="modal-vault" class="modal-overlay hidden">
+        <div class="modal-card">
+            <h2>STATS</h2>
+            <div class="stats-summary-grid">
+                <div><span id="stat-played">0</span><br><small>Played</small></div>
+                <div><span id="stat-wins">0</span><br><small>Wins</small></div>
+                <div><span id="stat-winrate">0%</span><br><small>Win %</small></div>
+            </div>
+            <div id="vault-list" class="vault-grid"></div>
+            <button id="btn-close-vault" class="btn-modal">CLOSE</button>
+        </div>
+    </div>
+
+    <div id="modal-game-over" class="modal-overlay hidden">
+        <div class="modal-card">
+            <h2 id="game-over-title">ELEVATOR STOPPED</h2>
+            <p id="game-over-message"></p>
+            <p id="final-floor-reached"></p>
+            <button id="btn-try-again" class="btn-modal" style="background: var(--genre-pitch); color: #000000;">TRY AGAIN</button>
+            <button id="btn-back-vault" class="btn-modal">VAULT</button>
+        </div>
+    </div>
+
+    <!-- LINK TO SEPARATE BALL.JS SCRIPT FILE -->
+    <script src="ball.js"></script>
+
+    <!-- REAL SCREENSHOT GENERATOR & SHARE ENGINE -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const shareBtn = document.getElementById('share-btn');
+            const victoryCard = document.getElementById('victory-card');
+            const toast = document.getElementById('toast-msg');
+
+            function showToast(text) {
+                if (!toast) return;
+                toast.innerText = text;
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2000);
+            }
+
+            if (shareBtn && victoryCard) {
+                shareBtn.addEventListener('click', async () => {
+                    try {
+                        showToast('CAPTURING SCREENSHOT...');
+                        const canvas = await html2canvas(victoryCard, {
+                            backgroundColor: '#111111',
+                            scale: 2,
+                            useCORS: true
+                        });
+
+                        canvas.toBlob(async (blob) => {
+                            if (!blob) return;
+                            const file = new File([blob], '11th-floor-tykb-victory.png', { type: 'image/png' });
+
+                            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                                try {
+                                    await navigator.share({
+                                        title: 'Think You Know Ball? Victory Card',
+                                        files: [file]
+                                    });
+                                } catch (e) {
+                                    console.log('Share prompt dismissed');
+                                }
+                            } else {
+                                const downloadLink = document.createElement('a');
+                                downloadLink.href = URL.createObjectURL(file);
+                                downloadLink.download = '11th-floor-tykb-victory.png';
+                                downloadLink.click();
+                                showToast('SCREENSHOT SAVED TO DEVICE');
+                            }
+                        }, 'image/png');
+                    } catch (err) {
+                        console.error('Screenshot capture error:', err);
+                        showToast('ERROR GENERATING SCREENSHOT');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+<!-- END OF FILE -->
