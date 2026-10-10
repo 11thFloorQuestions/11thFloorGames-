@@ -1,104 +1,104 @@
 {
   "floors": [
     {
-      "question": "Which Roman emperor famously ordered the construction of a 73-mile stone wall across northern Britain in 122 AD to mark the empire's north-western frontier?",
+      "question": "Which Carthaginian military commander famously led an army, including war elephants, across the Alps to invade Italy during the Second Punic War?",
       "options": [
-        "Hadrian",
-        "Trajan",
-        "Marcus Aurelius",
-        "Nero"
+        "Hannibal",
+        "Hamilcar Barca",
+        "Hasdrubal",
+        "Scipio Africanus"
       ],
-      "answer": "Hadrian"
+      "answer": "Hannibal"
     },
     {
-      "question": "Which iconic 1979 Ridley Scott science-fiction horror film features the famous tagline 'In space, no one can hear you scream'?",
+      "question": "Which landmark 1975 album by Pink Floyd was conceived as a tribute to former band member Syd Barrett and features the epic nine-part track 'Shine On You Crazy Diamond'?",
       "options": [
-        "Alien",
-        "Blade Runner",
-        "The Thing",
-        "2001: A Space Odyssey"
+        "Wish You Were Here",
+        "The Dark Side of the Moon",
+        "Animals",
+        "The Wall"
       ],
-      "answer": "Alien"
+      "answer": "Wish You Were Here"
     },
     {
-      "question": "Situated on the border between Zambia and Zimbabwe, which massive waterfall on the Zambezi River was named Mosi-oa-Tunya ('The Smoke That Thunders') by the indigenous Tonga people?",
+      "question": "Which landlocked European nation is entirely surrounded by Italy and holds the distinction of being the world's oldest surviving republic?",
       "options": [
-        "Victoria Falls",
-        "Iguazu Falls",
-        "Angel Falls",
-        "Niagara Falls"
+        "San Marino",
+        "Liechtenstein",
+        "Andorra",
+        "Monaco"
       ],
-      "answer": "Victoria Falls"
+      "answer": "San Marino"
     },
     {
-      "question": "What is the medical name for the main and largest artery in the human body, originating directly from the left ventricle of the heart?",
+      "question": "What is the primary function of the mitochondria within eukaryotic cells?",
       "options": [
-        "Aorta",
-        "Carotid artery",
-        "Pulmonary artery",
-        "Femoral artery"
+        "ATP energy production",
+        "Protein synthesis",
+        "Lipid storage",
+        "DNA replication"
       ],
-      "answer": "Aorta"
+      "answer": "ATP energy production"
     },
     {
-      "question": "Which British Prime Minister delivered the famous 'Iron Curtain' speech at Westminster College in Fulton, Missouri, in March 1946?",
+      "question": "In 1911, Norwegian explorer Roald Amundsen became the first human to reach the South Pole, narrowly beating which British naval officer?",
       "options": [
-        "Winston Churchill",
-        "Clement Attlee",
-        "Anthony Eden",
-        "Harold Macmillan"
+        "Robert Falcon Scott",
+        "Ernest Shackleton",
+        "James Clark Ross",
+        "Douglas Mawson"
       ],
-      "answer": "Winston Churchill"
+      "answer": "Robert Falcon Scott"
     },
     {
-      "question": "In William Shakespeare's tragedy Macbeth, which Scottish nobleman flees to England before returning to defeat and slay Macbeth in battle?",
+      "question": "In Herman Melville's classic 1851 novel Moby-Dick, what is the name of the whaling ship commanded by Captain Ahab?",
       "options": [
-        "Macduff",
-        "Banquo",
-        "Lennox",
-        "Ross"
+        "Pequod",
+        "Bounty",
+        "Essex",
+        "Endeavour"
       ],
-      "answer": "Macduff"
+      "answer": "Pequod"
     },
     {
-      "question": "Which chemical compound, represented by the formula N2O, is commonly known as laughing gas and was historically used as an early dental anaesthetic?",
+      "question": "Which halogen element, with the atomic number 35, is one of only two elements on the periodic table that exist as a liquid at standard room temperature?",
       "options": [
-        "Nitrous oxide",
-        "Nitric oxide",
-        "Nitrogen dioxide",
-        "Dinitrogen tetroxide"
+        "Bromine",
+        "Mercury",
+        "Iodine",
+        "Gallium"
       ],
-      "answer": "Nitrous oxide"
+      "answer": "Bromine"
     },
     {
-      "question": "Which Post-Impressionist masterpiece by Georges Seurat, painted between 1884 and 1886, famously pioneered the technique of Pointillism using tiny dots of colour?",
+      "question": "Which Renaissance sculptor created the famed bronze relief doors of the Florence Baptistery, which Michelangelo famously declared the 'Gates of Paradise'?",
       "options": [
-        "A Sunday on La Grande Jatte",
-        "The Bathers at Asnières",
-        "The Potato Eaters",
-        "Dance at Le Moulin de la Galette"
+        "Lorenzo Ghiberti",
+        "Donatello",
+        "Filippo Brunelleschi",
+        "Andrea del Verrocchio"
       ],
-      "answer": "A Sunday on La Grande Jatte"
+      "answer": "Lorenzo Ghiberti"
     },
     {
-      "question": "Which island nation in the Indian Ocean, located approximately 2,000 kilometres off the south-east coast of Africa, has its capital at Port Louis?",
+      "question": "Which high-altitude lake, straddling the border between Peru and Bolivia in the Andes Mountains, is recognized as the world's highest commercially navigable body of water?",
       "options": [
-        "Mauritius",
-        "Seychelles",
-        "Madagascar",
-        "Comoros"
+        "Lake Titicaca",
+        "Lake Poopó",
+        "Lake Maracaibo",
+        "Lake Atitlán"
       ],
-      "answer": "Mauritius"
+      "answer": "Lake Titicaca"
     },
     {
-      "question": "Which Austrian physicist formulated the fundamental wave equation of quantum mechanics in 1925, sharing the 1933 Nobel Prize in Physics with Paul Dirac?",
+      "question": "Which French mathematician and philosopher introduced Cartesian coordinates and formulated the philosophical proposition 'Cogito, ergo sum' in 1637?",
       "options": [
-        "Erwin Schrödinger",
-        "Werner Heisenberg",
-        "Max Born",
-        "Louis de Broglie"
+        "René Descartes",
+        "Blaise Pascal",
+        "Pierre de Fermat",
+        "Gottfried Wilhelm Leibniz"
       ],
-      "answer": "Erwin Schrödinger"
+      "answer": "René Descartes"
     }
   ]
 }
