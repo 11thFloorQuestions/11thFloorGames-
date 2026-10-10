@@ -6,81 +6,81 @@ window.CLUEGRAM_DAILY_SET = [
   {
     floor: 1,
     length: 5,
-    domain: "Antiquities & Discoveries",
-    scrambled: "OVERT",
-    target: "TROVE",
-    clue: "A curated collection of valuable items discovered in a single hidden location."
+    domain: "Maritime & Cartography",
+    scrambled: "AOTLL",
+    target: "ATOLL",
+    clue: "A ring-shaped coral reef or ring of islets surrounding a central lagoon."
   },
   {
     floor: 2,
     length: 5,
-    domain: "Mythology & Nature",
-    scrambled: "HYPNM",
-    target: "NYMPH",
-    clue: "A mythological spirit inhabiting nature, or the immature form of certain insects."
+    domain: "Botany & Culinary",
+    scrambled: "ENISA",
+    target: "ANISE",
+    clue: "A Mediterranean plant of the parsley family, cultivated for its liquorice-flavoured seeds."
   },
   {
     floor: 3,
     length: 6,
-    domain: "Transport & Engineering",
-    scrambled: "ACAMRT",
-    target: "TARMAC",
-    clue: "A road-surfacing material of crushed stone sealed with tar, named after its Scottish inventor."
+    domain: "Metallurgy & History",
+    scrambled: "EZRNOB",
+    target: "BRONZE",
+    clue: "A durable alloy consisting primarily of copper and tin, marking a major leap in early human toolmaking."
   },
   {
     floor: 4,
     length: 6,
-    domain: "Tools & Mixology",
-    scrambled: "LIGTEM",
-    target: "GIMLET",
-    clue: "A small T-shaped hand tool used for boring holes, or a classic cocktail of gin and lime juice."
+    domain: "Ecology & Forestry",
+    scrambled: "NOAPCY",
+    target: "CANOPY",
+    clue: "The high, continuous layer formed by the crowns of mature trees in a forest or woodland."
   },
   {
     floor: 5,
     length: 7,
-    domain: "Architecture & Joinery",
-    scrambled: "DELPNLAE",
-    target: "PANELLED",
-    clue: "Fitted or decorated with raised timber boards, characteristic of classic study interiors."
+    domain: "Military & Architecture",
+    scrambled: "TALICED",
+    target: "CITADEL",
+    clue: "A fortress overlooking a city, historically constructed to defend the garrison and populace."
   },
   {
     floor: 6,
     length: 7,
-    domain: "Ballistics & Standards",
-    scrambled: "RACBELI",
-    target: "CALIBRE",
-    clue: "The internal diameter of a gun barrel, or the level of ability and competence possessed by an individual."
+    domain: "Literature & Antiquity",
+    scrambled: "ACARADI",
+    target: "ARCADIA",
+    clue: "A mountainous region of ancient Greece featured in pastoral poetry as an idyllic earthly paradise."
   },
   {
     floor: 7,
     length: 8,
-    domain: "Geopolitics & Power",
-    scrambled: "EEYGMHON",
-    target: "HEGEMONY",
-    clue: "Political or cultural dominance and leadership exercised by one nation over others within a region."
+    domain: "Geology & Monuments",
+    scrambled: "THILOMON",
+    target: "MONOLITH",
+    clue: "A single massive stone or rock formation, often erected as a monument or geological landmark."
   },
   {
     floor: 8,
     length: 8,
-    domain: "Architecture & Commemoration",
-    scrambled: "PATECHON",
-    target: "CENOTAPH",
-    clue: "A monument erected to honour individuals whose remains are buried elsewhere or missing at sea."
+    domain: "Defence & History",
+    scrambled: "SINGORRA",
+    target: "GARRISON",
+    clue: "A body of troops stationed in a fortified town or building to guard and defend it."
   },
   {
     floor: 9,
     length: 9,
-    domain: "Geology & History",
-    scrambled: "ACTALSYMC",
-    target: "CATACLYSM",
-    clue: "A violent social or political upheaval, or a devastating natural disaster that radically alters the landscape."
+    domain: "Cosmology & Science",
+    scrambled: "NORAYSMOT",
+    target: "ASTRONOMY",
+    clue: "The scientific study of celestial bodies, space, and the physical universe beyond Earth's atmosphere."
   },
   {
     floor: 10,
     length: 9,
-    domain: "Classical Legend & Architecture",
-    scrambled: "BALYRHITN",
-    target: "LABYRINTH",
-    clue: "An intricate structure of interconnecting passages designed to confuse anyone attempting to navigate it."
+    domain: "Architecture & Religion",
+    scrambled: "ALERDATHC",
+    target: "CATHEDRAL",
+    clue: "A principal Christian church of a diocese, housing the official seat or throne of a bishop."
   }
 ];
