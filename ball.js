@@ -41,7 +41,7 @@ function shuffleArray(array) {
 function getOrdinalFloorHTML(floorNum) {
     const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
     const ord = ordinals[floorNum - 1] || `${floorNum}th`;
-    return `<span style="color: var(--genre-pitch, #22c55e); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
+    return `<span style="color: var(--genre-pitch, #22c55e); font-weight: 800;">${ord}</span>`;
 }
 
 function getFailedOrdinalFloorHTML(floorNum) {
@@ -84,7 +84,8 @@ const gameState = {
         played: 0,
         wins: 0,
         streak: 0,
-        bestFloor: 1
+        bestFloor: 1,
+        bestTimeSeconds: null
     }
 };
 
@@ -156,6 +157,7 @@ function updateSessionTimerDisplay() {
 }
 
 function formatTime(totalSeconds) {
+    if (totalSeconds === null || totalSeconds === undefined) return "--:--";
     const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
     const s = (totalSeconds % 60).toString().padStart(2, '0');
     return `${m}:${s}`;
@@ -303,6 +305,11 @@ function renderStatsUI() {
     const bestEl = document.getElementById('stat-bestfloor');
     if (bestEl) {
         bestEl.innerHTML = getOrdinalFloorHTML(gameState.stats.bestFloor);
+    }
+
+    const bestTimeEl = document.getElementById('stat-besttime');
+    if (bestTimeEl) {
+        bestTimeEl.textContent = formatTime(gameState.stats.bestTimeSeconds);
     }
 }
 
@@ -477,7 +484,7 @@ function startGame() {
 function updateFloorUI() {
     const cardFloorEl = document.getElementById('card-floor-text');
     if (cardFloorEl) {
-        cardFloorEl.innerHTML = getOrdinalFloorHTML(gameState.currentFloor);
+        cardFloorEl.innerHTML = getOrdinalFloorHTML(gameState.currentFloor) + ' <span style="color: #ffffff;">Floor</span>';
     }
     
     const activeBatch = floorMessageBatches[0];
@@ -625,6 +632,11 @@ function handleVictory() {
     gameState.stats.wins++;
     gameState.stats.streak++;
     gameState.stats.bestFloor = 11;
+
+    if (gameState.stats.bestTimeSeconds === null || gameState.timeElapsedSeconds < gameState.stats.bestTimeSeconds) {
+        gameState.stats.bestTimeSeconds = gameState.timeElapsedSeconds;
+    }
+
     saveStats();
     
     triggerHaptic([50, 50, 50, 50, 100]);
