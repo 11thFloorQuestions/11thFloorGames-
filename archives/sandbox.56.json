@@ -1,0 +1,104 @@
+{
+  "floors": [
+    {
+      "question": "Which Roman emperor famously ordered the construction of a 73-mile stone wall across northern Britain in 122 AD to mark the empire's north-western frontier?",
+      "options": [
+        "Hadrian",
+        "Trajan",
+        "Marcus Aurelius",
+        "Nero"
+      ],
+      "answer": "Hadrian"
+    },
+    {
+      "question": "Which iconic 1979 Ridley Scott science-fiction horror film features the famous tagline 'In space, no one can hear you scream'?",
+      "options": [
+        "Alien",
+        "Blade Runner",
+        "The Thing",
+        "2001: A Space Odyssey"
+      ],
+      "answer": "Alien"
+    },
+    {
+      "question": "Situated on the border between Zambia and Zimbabwe, which massive waterfall on the Zambezi River was named Mosi-oa-Tunya ('The Smoke That Thunders') by the indigenous Tonga people?",
+      "options": [
+        "Victoria Falls",
+        "Iguazu Falls",
+        "Angel Falls",
+        "Niagara Falls"
+      ],
+      "answer": "Victoria Falls"
+    },
+    {
+      "question": "What is the medical name for the main and largest artery in the human body, originating directly from the left ventricle of the heart?",
+      "options": [
+        "Aorta",
+        "Carotid artery",
+        "Pulmonary artery",
+        "Femoral artery"
+      ],
+      "answer": "Aorta"
+    },
+    {
+      "question": "Which British Prime Minister delivered the famous 'Iron Curtain' speech at Westminster College in Fulton, Missouri, in March 1946?",
+      "options": [
+        "Winston Churchill",
+        "Clement Attlee",
+        "Anthony Eden",
+        "Harold Macmillan"
+      ],
+      "answer": "Winston Churchill"
+    },
+    {
+      "question": "In William Shakespeare's tragedy Macbeth, which Scottish nobleman flees to England before returning to defeat and slay Macbeth in battle?",
+      "options": [
+        "Macduff",
+        "Banquo",
+        "Lennox",
+        "Ross"
+      ],
+      "answer": "Macduff"
+    },
+    {
+      "question": "Which chemical compound, represented by the formula N2O, is commonly known as laughing gas and was historically used as an early dental anaesthetic?",
+      "options": [
+        "Nitrous oxide",
+        "Nitric oxide",
+        "Nitrogen dioxide",
+        "Dinitrogen tetroxide"
+      ],
+      "answer": "Nitrous oxide"
+    },
+    {
+      "question": "Which Post-Impressionist masterpiece by Georges Seurat, painted between 1884 and 1886, famously pioneered the technique of Pointillism using tiny dots of colour?",
+      "options": [
+        "A Sunday on La Grande Jatte",
+        "The Bathers at Asnières",
+        "The Potato Eaters",
+        "Dance at Le Moulin de la Galette"
+      ],
+      "answer": "A Sunday on La Grande Jatte"
+    },
+    {
+      "question": "Which island nation in the Indian Ocean, located approximately 2,000 kilometres off the south-east coast of Africa, has its capital at Port Louis?",
+      "options": [
+        "Mauritius",
+        "Seychelles",
+        "Madagascar",
+        "Comoros"
+      ],
+      "answer": "Mauritius"
+    },
+    {
+      "question": "Which Austrian physicist formulated the fundamental wave equation of quantum mechanics in 1925, sharing the 1933 Nobel Prize in Physics with Paul Dirac?",
+      "options": [
+        "Erwin Schrödinger",
+        "Werner Heisenberg",
+        "Max Born",
+        "Louis de Broglie"
+      ],
+      "answer": "Erwin Schrödinger"
+    }
+  ]
+}
