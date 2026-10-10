@@ -2,8 +2,8 @@
  * ============================================================================
  * 11TH FLOOR CLUSTERS - CORE GAME LOGIC (clusters.js)
  * ============================================================================
- * Sequential Clue Target Engine, 20s Stage Countdown Timer, Global Session Timer,
- * Lives & Reset System, 10 Playable Floors leading to 11th Floor Destination.
+ * Sequential Clue Target Engine, 30s Stage Countdown Timer, Global Session Timer,
+ * Single Mistake Game-Over Reset, 10 Playable Floors leading to 11th Floor.
  * ============================================================================
  */
 
@@ -17,16 +17,15 @@
     let activeTiles = [];
     let remainingGroups = [];
     let currentTargetGroup = null;
-    let currentLives = 3;
 
     // Session Stopwatch Timer State Variables
     let startTime = 0;
     let timerInterval = null;
     let timeElapsedSeconds = 0;
 
-    // Stage Countdown Bar Timer State Variables
+    // Stage Countdown Bar Timer State Variables (30 Seconds Per Stage)
     let stageTimer = null;
-    let stageTimeLeft = 20;
+    let stageTimeLeft = 30;
 
     // Local Storage Player Stats Key
     const STATS_KEY = '11th_floor_clusters_stats';
@@ -53,7 +52,6 @@
     const timerBar = document.getElementById('timer-bar');
     const clueBanner = document.getElementById('clue-banner');
     const clueText = document.getElementById('clue-text');
-    const pips = [document.getElementById('pip-1'), document.getElementById('pip-2'), document.getElementById('pip-3')];
 
     const victoryScreen = document.getElementById('victory-screen');
     const victoryTimeDisplay = document.getElementById('victory-time-display');
@@ -116,14 +114,14 @@
     }
 
     // ==========================================
-    // STAGE COUNTDOWN TIMER ENGINE
+    // STAGE COUNTDOWN TIMER ENGINE (30s)
     // ==========================================
 
     function startStageTimer() {
         stopStageTimer();
-        const totalDuration = 20000;
+        const totalDuration = 30000;
         const stageStartTime = Date.now();
-        stageTimeLeft = 20;
+        stageTimeLeft = 30;
 
         if (timerBarWrapper) timerBarWrapper.style.display = 'block';
         if (timerBar) {
@@ -158,6 +156,7 @@
 
     function handleTimeExpired() {
         triggerHaptic([80, 50, 120]);
+        recordGameResult(false, currentFloor);
         handleGameOver('TIME EXPIRED');
     }
 
@@ -284,17 +283,6 @@
         }
     }
 
-    function updateLivesDisplay() {
-        pips.forEach((pip, index) => {
-            if (!pip) return;
-            if (index < currentLives) {
-                pip.classList.remove('lost');
-            } else {
-                pip.classList.add('lost');
-            }
-        });
-    }
-
     function startClimb() {
         if (!puzzleData && window.CLUSTERS_DATA) {
             const availableDates = Object.keys(window.CLUSTERS_DATA).sort();
@@ -309,8 +297,6 @@
         }
 
         gameState = 'playing';
-        currentLives = 3;
-        updateLivesDisplay();
 
         if (startScreen) startScreen.style.display = 'none';
         if (victoryScreen) victoryScreen.style.display = 'none';
@@ -479,21 +465,10 @@
             }, 600);
 
         } else {
-            currentLives--;
-            updateLivesDisplay();
             triggerHaptic([80, 50, 120]);
-
-            if (currentLives > 0) {
-                if (statusMessage) statusMessage.textContent = `INCORRECT. ${currentLives} LIVES REMAINING.`;
-                selectedTiles = [];
-                if (btnSubmit) btnSubmit.disabled = true;
-                renderGrid();
-                startStageTimer();
-            } else {
-                stopSessionTimer();
-                recordGameResult(false, currentFloor);
-                handleGameOver('OUT OF LIVES');
-            }
+            stopSessionTimer();
+            recordGameResult(false, currentFloor);
+            handleGameOver('INCORRECT SELECTION');
         }
     }
 
