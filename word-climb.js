@@ -1,5 +1,6 @@
 // ==========================================================================
-// 11th Floor Word Climb - Daily Game Engine & Archive Integration
+// 11th Floor Word Climb - Main Daily Game Engine
+// Active Master Word: OUTSPREAD
 // ==========================================================================
 
 let currentFloor = 1;
@@ -11,9 +12,11 @@ let wheelLetters = [];
 
 // HARDENED FALLBACK DICTIONARY
 const INTERNAL_FALLBACK_WORDS = new Set([
-    "DANGER", "DANGEROUS", "GARDEN", "GARDENS", "GROUND", "GRAND", "ROUNDS", "SOUND", "UNDER",
-    "RANGE", "ANGER", "RANGES", "ANGERS", "READS", "GARDS", "GRADE", "GRADES", "SUGAR", "SEGAN",
-    "URBAN", "ORGAN", "ORGANS", "BONUS", "BONUSES", "BONED", "BOUND", "BOUNDS", "SOUNDS"
+    "PASTE", "PASTO", "PROUD", "READS", "STARE", "TRADE", "TREAD",
+    "PASTED", "PASTOR", "PROUTS", "SPREAD", "STREAM",
+    "PASTURE", "PROUTED", "READOUT",
+    "READOUTS",
+    "OUTSPREAD"
 ]);
 
 let validWordSet = INTERNAL_FALLBACK_WORDS;
@@ -27,7 +30,6 @@ let timeElapsedSeconds = 0;
 const STATS_KEY = '11th_floor_wordclimb_stats';
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Explicitly guarantee initial landing display visibility
     const startScreen = document.getElementById("start-screen");
     if (startScreen) startScreen.style.display = "flex";
 
@@ -126,7 +128,6 @@ async function resolveDictionary() {
         } catch (e) {}
     }
 
-    // Default to embedded fallback word list safely
     validWordSet = INTERNAL_FALLBACK_WORDS;
     return true;
 }
@@ -306,9 +307,10 @@ function resetToStartScreen() {
     if (startScreen) startScreen.style.display = "flex";
 }
 
+// DAILY PUZZLE INITIALIZATION - OUTSPREAD
 function initDailyPuzzle() {
-    masterNineLetterWord = "DANGEROUS";
-    const initialArr = ["D", "A", "N", "G", "E", "R", "O", "U", "S"];
+    masterNineLetterWord = "OUTSPREAD";
+    const initialArr = ["O", "U", "T", "S", "P", "R", "E", "A", "D"];
     initialDailyWheel = shuffleAndVerifyWheel(initialArr, masterNineLetterWord);
     wheelLetters = [...initialDailyWheel];
 }
@@ -611,7 +613,7 @@ function showMessage(text, isError = false) {
     }
 }
 
-// --- Player Stats & Persistence ---
+// Player Stats & Persistence
 function recordGameResult(isWin, peakFloor) {
     const stats = getStats();
     stats.played++;
