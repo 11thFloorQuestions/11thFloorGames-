@@ -548,4 +548,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-// END OF FILE: parity.js
