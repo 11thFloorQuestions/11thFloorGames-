@@ -23,6 +23,9 @@
     let timerInterval = null;
     let timeElapsedSeconds = 0;
 
+    // Local Storage Player Stats Key
+    const STATS_KEY = '11th_floor_clusters_stats';
+
     const floorNumVal = document.getElementById('floor-number-val');
     const floorPhaseTag = document.getElementById('floor-phase-tag');
     const puzzlePrompt = document.getElementById('puzzle-prompt');
@@ -41,6 +44,18 @@
     const btnStartClimb = document.getElementById('btn-start-climb');
     const activeGameTimer = document.getElementById('active-game-timer');
     const pips = [document.getElementById('pip-1'), document.getElementById('pip-2'), document.getElementById('pip-3')];
+
+    const victoryScreen = document.getElementById('victory-screen');
+    const victoryTimeDisplay = document.getElementById('victory-time-display');
+    const victoryTimeRowDisplay = document.getElementById('victory-time-row-display');
+    const victoryStreakDisplay = document.getElementById('victory-streak-display');
+    const footerText = document.getElementById('footer-text');
+
+    const statsModal = document.getElementById('modal-vault');
+    const statsBtnLanding = document.getElementById('btn-landing-stats');
+    const victoryStatsBtn = document.getElementById('btn-victory-stats');
+    const closeVaultBtn = document.getElementById('btn-close-vault');
+    const vaultList = document.getElementById('vault-list');
 
     // ==========================================
     // SESSION STOPWATCH TIMER ENGINE
@@ -69,6 +84,7 @@
     }
 
     function formatTime(totalSeconds) {
+        if (totalSeconds === null || totalSeconds === undefined) return "--:--";
         const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
         const s = (totalSeconds % 60).toString().padStart(2, '0');
         return `${m}:${s}`;
@@ -77,35 +93,68 @@
     function getOrdinalFloorHTML(floorNum) {
         const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
         const ord = ordinals[floorNum - 1] || `${floorNum}th`;
-        return `<span style="color: var(--genre-orange); font-size: 1.25rem; font-weight: 700;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
+        return `<span style="color: var(--genre-orange); font-size: 1.25rem; font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
     }
 
     function init() {
-        if (!window.CLUSTERS_DATA) {
-            if (statusMessage) statusMessage.textContent = "ERROR: CLUSTERS DATA NOT LOADED.";
-            return;
+        // Guarantee landing screen visibility immediately
+        if (startScreen) startScreen.style.display = 'flex';
+
+        bindEvents();
+        updateStatsDisplay();
+
+        if (window.CLUSTERS_DATA) {
+            const availableDates = Object.keys(window.CLUSTERS_DATA).sort();
+            const todayStr = new Date().toISOString().split('T')[0];
+            const activeDateKey = window.CLUSTERS_DATA[todayStr] ? todayStr : availableDates[availableDates.length - 1];
+            puzzleData = window.CLUSTERS_DATA[activeDateKey];
         }
 
-        const availableDates = Object.keys(window.CLUSTERS_DATA).sort();
-        const todayStr = new Date().toISOString().split('T')[0];
-        const activeDateKey = window.CLUSTERS_DATA[todayStr] ? todayStr : availableDates[availableDates.length - 1];
+        renderTowerStack(0);
+    }
 
-        puzzleData = window.CLUSTERS_DATA[activeDateKey];
-
+    function bindEvents() {
         if (btnShuffle) btnShuffle.addEventListener('click', shuffleActiveTiles);
         if (btnSubmit) btnSubmit.addEventListener('click', handleSubmission);
-        
+        if (btnStartClimb) btnStartClimb.addEventListener('click', startClimb);
+
         if (btnSound) {
             btnSound.addEventListener('click', () => {
                 btnSound.textContent = btnSound.textContent.includes('OFF') ? 'SOUND: ON' : 'SOUND: OFF';
             });
         }
 
-        if (btnStartClimb) {
-            btnStartClimb.addEventListener('click', startClimb);
+        if (statsBtnLanding) {
+            statsBtnLanding.addEventListener('click', () => {
+                if (statsModal) statsModal.classList.remove('hidden');
+                populateVault();
+            });
         }
 
-        renderTowerStack(0);
+        if (victoryStatsBtn) {
+            victoryStatsBtn.addEventListener('click', () => {
+                if (statsModal) statsModal.classList.remove('hidden');
+                populateVault();
+            });
+        }
+
+        if (closeVaultBtn) {
+            closeVaultBtn.addEventListener('click', () => {
+                if (statsModal) statsModal.classList.add('hidden');
+                if (victoryScreen && victoryScreen.style.display !== 'none') {
+                    resetToStartScreen();
+                }
+            });
+        }
+    }
+
+    function resetToStartScreen() {
+        if (victoryScreen) victoryScreen.style.display = 'none';
+        if (floorHudContainer) floorHudContainer.style.display = 'none';
+        if (mainContent) mainContent.style.display = 'none';
+        if (actionPanelContainer) actionPanelContainer.style.display = 'none';
+        if (activeGameTimer) activeGameTimer.style.display = 'none';
+        if (startScreen) startScreen.style.display = 'flex';
     }
 
     function renderTowerStack(activeFloor) {
@@ -133,14 +182,28 @@
     }
 
     function startClimb() {
+        if (!puzzleData && window.CLUSTERS_DATA) {
+            const availableDates = Object.keys(window.CLUSTERS_DATA).sort();
+            const todayStr = new Date().toISOString().split('T')[0];
+            const activeDateKey = window.CLUSTERS_DATA[todayStr] ? todayStr : availableDates[availableDates.length - 1];
+            puzzleData = window.CLUSTERS_DATA[activeDateKey];
+        }
+
+        if (!puzzleData) {
+            if (statusMessage) statusMessage.textContent = "ERROR: CLUSTERS DATA NOT LOADED.";
+            return;
+        }
+
         gameState = 'playing';
         currentLives = 3;
         updateLivesDisplay();
 
         if (startScreen) startScreen.style.display = 'none';
+        if (victoryScreen) victoryScreen.style.display = 'none';
         if (floorHudContainer) floorHudContainer.style.display = 'flex';
         if (mainContent) mainContent.style.display = 'flex';
         if (actionPanelContainer) actionPanelContainer.style.display = 'flex';
+        if (footerText) footerText.style.display = 'block';
 
         currentFloor = 1;
         startSessionTimer();
@@ -281,6 +344,7 @@
                             setTimeout(() => loadFloor(currentFloor + 1), 900);
                         } else {
                             stopSessionTimer();
+                            recordGameResult(true, 11);
                             renderVictory();
                         }
                     }, 400);
@@ -298,6 +362,7 @@
                 renderGrid();
             } else {
                 stopSessionTimer();
+                recordGameResult(false, currentFloor);
                 triggerBrutalReset();
             }
         }
@@ -333,24 +398,132 @@
     function renderVictory() {
         gameState = 'victory';
         if (floorHudContainer) floorHudContainer.style.display = 'none';
+        if (mainContent) mainContent.style.display = 'none';
         if (actionPanelContainer) actionPanelContainer.style.display = 'none';
-        if (solvedGroupsContainer) solvedGroupsContainer.innerHTML = '';
-        if (puzzlePrompt) puzzlePrompt.textContent = "";
-        renderTowerStack(10);
+        if (footerText) footerText.style.display = 'none';
 
-        if (tileGrid) {
-            tileGrid.className = 'tile-grid grid-col-3';
-            tileGrid.innerHTML = `
-                <div style="grid-column: span 3;" class="landing-container">
-                    <div style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--state-success); letter-spacing: 1.5px;">
-                        11TH FLOOR REACHED
-                    </div>
-                    <div class="landing-challenge-text">
-                        Congratulations! You have reached the 11th Floor in ${formatTime(timeElapsedSeconds)}. Come back tomorrow to continue your streak.
-                    </div>
-                    <a href="index.html" class="btn-start" style="text-decoration: none; display: inline-block; text-align: center;">RETURN TO LOBBY</a>
-                </div>
-            `;
+        const formattedTime = formatTime(timeElapsedSeconds);
+        const stats = getStats();
+
+        if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
+        if (victoryTimeRowDisplay) victoryTimeRowDisplay.textContent = `${formattedTime}s`;
+        if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${stats.streak} Days`;
+
+        if (victoryScreen) victoryScreen.style.display = 'flex';
+    }
+
+    function fetchFileWithFallbacks(filename) {
+        const candidatePaths = [`./archives/${filename}`, `./${filename}`, `./data/${filename}`, filename];
+        return new Promise(async (resolve) => {
+            for (const path of candidatePaths) {
+                try {
+                    const res = await fetch(path);
+                    if (res.ok) return resolve(await res.json());
+                } catch (e) {}
+            }
+            resolve(null);
+        });
+    }
+
+    async function populateVault() {
+        if (!vaultList) return;
+        vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
+        
+        const fetchPromises = [];
+        for (let i = 1; i <= 100; i++) {
+            const paddedId = String(i).padStart(2, '0');
+            fetchPromises.push(fetchFileWithFallbacks(`clusters-${paddedId}.json`).then(data => ({ id: paddedId, data })));
+        }
+
+        const results = await Promise.all(fetchPromises);
+        const buttons = [];
+
+        results.forEach(({ id, data }) => {
+            if (data) {
+                const btn = document.createElement('button');
+                btn.className = 'vault-item-btn';
+                btn.innerHTML = `<strong>Archive ${id}</strong>`;
+                btn.onclick = () => loadVaultArchive(paddedId, data);
+                buttons.push(btn);
+            }
+        });
+
+        vaultList.innerHTML = '';
+        if (buttons.length === 0) {
+            vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">No archives found.</div>';
+        } else {
+            buttons.forEach(btn => vaultList.appendChild(btn));
+        }
+    }
+
+    function loadVaultArchive(paddedId, data) {
+        if (data) {
+            puzzleData = data;
+            startClimb();
+            if (statsModal) statsModal.classList.add('hidden');
+        }
+    }
+
+    function recordGameResult(isWin, peakFloor) {
+        const stats = getStats();
+        stats.played++;
+        if (isWin) {
+            stats.wins++;
+            stats.streak++;
+            if (stats.bestTimeSeconds === null || timeElapsedSeconds < stats.bestTimeSeconds) {
+                stats.bestTimeSeconds = timeElapsedSeconds;
+            }
+        } else {
+            stats.streak = 0;
+        }
+
+        if (peakFloor > stats.bestFloor) {
+            stats.bestFloor = peakFloor;
+        }
+
+        try {
+            localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+        } catch (e) {
+            console.warn("LocalStorage save blocked.");
+        }
+        updateStatsDisplay();
+        return stats;
+    }
+
+    function getStats() {
+        try {
+            const raw = localStorage.getItem(STATS_KEY);
+            if (!raw) {
+                return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
+            }
+            return JSON.parse(raw);
+        } catch (e) {
+            return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
+        }
+    }
+
+    function updateStatsDisplay() {
+        const stats = getStats();
+        const playedElem = document.getElementById('stat-played');
+        const winsElem = document.getElementById('stat-wins');
+        const winrateElem = document.getElementById('stat-winrate');
+        const streakElem = document.getElementById('stat-streak');
+        const bestfloorElem = document.getElementById('stat-bestfloor');
+        const besttimeElem = document.getElementById('stat-besttime');
+
+        if (playedElem) playedElem.textContent = stats.played;
+        if (winsElem) winsElem.textContent = stats.wins;
+        
+        const winRate = stats.played > 0 ? Math.round((stats.wins / stats.played) * 100) : 0;
+        if (winrateElem) winrateElem.textContent = `${winRate}%`;
+        if (streakElem) streakElem.textContent = stats.streak;
+        
+        if (bestfloorElem) {
+            bestfloorElem.innerHTML = getOrdinalFloorHTML(stats.bestFloor);
+        }
+
+        if (besttimeElem) {
+            besttimeElem.textContent = formatTime(stats.bestTimeSeconds);
         }
     }
 
@@ -365,3 +538,4 @@
     window.addEventListener('DOMContentLoaded', init);
 
 })();
+// END OF FILE: clusters.js
