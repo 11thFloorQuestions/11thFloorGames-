@@ -1,4 +1,6 @@
-// 11th Floor Word Climb - Daily Game Engine
+// ==========================================================================
+// 11th Floor Word Climb - Daily Game Engine & Archive Integration
+// ==========================================================================
 
 let currentFloor = 1;
 let currentGuess = "";
@@ -61,6 +63,7 @@ function updateTimerDisplay() {
 }
 
 function formatTime(totalSeconds) {
+    if (totalSeconds === null || totalSeconds === undefined) return "--:--";
     const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
     const s = (totalSeconds % 60).toString().padStart(2, '0');
     return `${m}:${s}`;
@@ -563,8 +566,11 @@ function handleVictory() {
     stopTimer();
     const newStats = recordGameResult(true, 11);
 
+    const formattedTime = formatTime(timeElapsedSeconds);
     const victoryTimeDisplay = document.getElementById("victory-time-display");
+    const victoryTimeRowDisplay = document.getElementById("victory-time-row-display");
     const victoryStreakDisplay = document.getElementById("victory-streak-display");
+
     const hudContainer = document.getElementById("floor-hud-container");
     const gameWorkspace = document.getElementById("game-workspace");
     const gameControls = document.getElementById("game-controls");
@@ -573,7 +579,8 @@ function handleVictory() {
     const victoryScreen = document.getElementById("victory-screen");
     const footerText = document.getElementById("footer-text");
 
-    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formatTime(timeElapsedSeconds);
+    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
+    if (victoryTimeRowDisplay) victoryTimeRowDisplay.textContent = `${formattedTime}s`;
     if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${newStats.streak} Days`;
 
     if (hudContainer) hudContainer.style.display = "none";
@@ -601,6 +608,9 @@ function recordGameResult(isWin, peakFloor) {
     if (isWin) {
         stats.wins++;
         stats.streak++;
+        if (stats.bestTimeSeconds === null || timeElapsedSeconds < stats.bestTimeSeconds) {
+            stats.bestTimeSeconds = timeElapsedSeconds;
+        }
     } else {
         stats.streak = 0;
     }
@@ -609,17 +619,25 @@ function recordGameResult(isWin, peakFloor) {
         stats.bestFloor = peakFloor;
     }
 
-    localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+    try {
+        localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+    } catch (e) {
+        console.warn("LocalStorage save blocked.");
+    }
     updateStatsDisplay();
     return stats;
 }
 
 function getStats() {
-    const raw = localStorage.getItem(STATS_KEY);
-    if (!raw) {
-        return { played: 0, wins: 0, streak: 0, bestFloor: 1 };
+    try {
+        const raw = localStorage.getItem(STATS_KEY);
+        if (!raw) {
+            return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
+        }
+        return JSON.parse(raw);
+    } catch (e) {
+        return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
     }
-    return JSON.parse(raw);
 }
 
 function updateStatsDisplay() {
@@ -629,8 +647,7 @@ function updateStatsDisplay() {
     const winrateElem = document.getElementById('stat-winrate');
     const streakElem = document.getElementById('stat-streak');
     const bestfloorElem = document.getElementById('stat-bestfloor');
-
-    const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
+    const besttimeElem = document.getElementById('stat-besttime');
 
     if (playedElem) playedElem.textContent = stats.played;
     if (winsElem) winsElem.textContent = stats.wins;
@@ -639,6 +656,12 @@ function updateStatsDisplay() {
     if (winrateElem) winrateElem.textContent = `${winRate}%`;
     if (streakElem) streakElem.textContent = stats.streak;
     
-    const bestOrd = ordinals[stats.bestFloor - 1] || `${stats.bestFloor}th`;
-    if (bestfloorElem) bestfloorElem.textContent = `${bestOrd} Floor`;
+    if (bestfloorElem) {
+        bestfloorElem.innerHTML = getOrdinalFloorHTML(stats.bestFloor);
+    }
+
+    if (besttimeElem) {
+        besttimeElem.textContent = formatTime(stats.bestTimeSeconds);
+    }
 }
+// END OF FILE: word-climb.js
