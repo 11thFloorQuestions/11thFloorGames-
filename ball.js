@@ -652,3 +652,4 @@ function handleVictory() {
 
     if (victoryScreen) victoryScreen.style.display = 'flex';
 }
+// END OF FILE: ball.js
