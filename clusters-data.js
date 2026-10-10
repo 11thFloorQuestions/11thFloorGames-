@@ -3,6 +3,7 @@
  * 11TH FLOOR CLUSTERS - DAILY PUZZLE DATA (clusters-data.js)
  * ============================================================================
  * Standard: Airtight global logic, clean categorical separation, zero overlap.
+ * Each group contains a clear clue string for the sequential clearance engine.
  * ============================================================================
  */
 
@@ -11,93 +12,85 @@ window.CLUSTERS_DATA = {
     date: "2026-10-08",
     title: "Puzzle #01: Global Alignment",
     floors: {
-      // Floor 01: 12 Tiles (2 groups of 3 + 6 clean distractors)
+      // Floor 01: 12 Tiles (2 target groups + distractors)
       1: {
-        type: "distractor-12",
         tiles: ["LONDON", "PARIS", "TOKYO", "NILE", "AMAZON", "YANGTZE", "PIANO", "GUITAR", "VIOLIN", "DRUM", "FLUTE", "TRUMPET"],
         groups: [
-          { words: ["LONDON", "PARIS", "TOKYO"], category: "Major global capital cities" },
-          { words: ["NILE", "AMAZON", "YANGTZE"], category: "Major world rivers" }
+          { words: ["LONDON", "PARIS", "TOKYO"], category: "Major global capital cities", clue: "Capital Cities" },
+          { words: ["NILE", "AMAZON", "YANGTZE"], category: "Major world rivers", clue: "Global Rivers" }
         ]
       },
-      // Floor 02: 12 Tiles (2 groups of 3 + 6 clean distractors)
+      // Floor 02: 12 Tiles (2 target groups + distractors)
       2: {
-        type: "distractor-12",
         tiles: ["GOLD", "SILVER", "BRONZE", "DIAMOND", "RUBY", "EMERALD", "SQUARE", "CIRCLE", "TRIANGLE", "RECTANGLE", "OVAL", "PENTAGON"],
         groups: [
-          { words: ["GOLD", "SILVER", "BRONZE"], category: "Precious metals / podium medals" },
-          { words: ["DIAMOND", "RUBY", "EMERALD"], category: "Precious gemstones" }
+          { words: ["GOLD", "SILVER", "BRONZE"], category: "Precious metals / podium medals", clue: "Podium Metals" },
+          { words: ["DIAMOND", "RUBY", "EMERALD"], category: "Precious gemstones", clue: "Gemstones" }
         ]
       },
-      // Floor 03: 12 Tiles (2 groups of 3 + 6 clean distractors)
+      // Floor 03: 12 Tiles (2 target groups + distractors)
       3: {
-        type: "distractor-12",
         tiles: ["MARS", "VENUS", "JUPITER", "LION", "TIGER", "LEOPARD", "EAGLE", "HAWK", "FALCON", "OWL", "CROW", "SWAN"],
         groups: [
-          { words: ["MARS", "VENUS", "JUPITER"], category: "Planets of the solar system" },
-          { words: ["LION", "TIGER", "LEOPARD"], category: "Large wild cats" }
+          { words: ["MARS", "VENUS", "JUPITER"], category: "Planets of the solar system", clue: "Solar Planets" },
+          { words: ["LION", "TIGER", "LEOPARD"], category: "Large wild cats", clue: "Wild Cats" }
         ]
       },
-      // Floor 04: 12 Tiles (2 groups of 3 + 6 clean distractors)
+      // Floor 04: 12 Tiles (2 target groups + distractors)
       4: {
-        type: "distractor-12",
         tiles: ["RED", "BLUE", "GREEN", "OAK", "PINE", "MAPLE", "APPLE", "BANANA", "ORANGE", "GRAPE", "MANGO", "PEACH"],
         groups: [
-          { words: ["RED", "BLUE", "GREEN"], category: "Primary and standard colors" },
-          { words: ["OAK", "PINE", "MAPLE"], category: "Common tree species" }
+          { words: ["RED", "BLUE", "GREEN"], category: "Primary and standard colors", clue: "Primary Colors" },
+          { words: ["OAK", "PINE", "MAPLE"], category: "Common tree species", clue: "Tree Species" }
         ]
       },
-
-      // Floors 05–09: 12 Tiles (3 groups of 3 = 9 correct, 3 distractors)
+      // Floor 05: 12 Tiles (3 target groups + distractors)
       5: {
-        type: "distractor-12-three",
         tiles: ["FOOTBALL", "TENNIS", "CRICKET", "CHESS", "POKER", "BRIDGE", "VIOLIN", "CELLO", "FLUTE", "PYTHON", "VIPER", "COBRA"],
         groups: [
-          { words: ["FOOTBALL", "TENNIS", "CRICKET"], category: "Popular global ball sports" },
-          { words: ["CHESS", "POKER", "BRIDGE"], category: "Strategic tabletop / card games" },
-          { words: ["VIOLIN", "CELLO", "FLUTE"], category: "Orchestral instruments" }
+          { words: ["FOOTBALL", "TENNIS", "CRICKET"], category: "Popular global ball sports", clue: "Ball Sports" },
+          { words: ["CHESS", "POKER", "BRIDGE"], category: "Strategic tabletop / card games", clue: "Strategy Games" },
+          { words: ["VIOLIN", "CELLO", "FLUTE"], category: "Orchestral instruments", clue: "Orchestral Instruments" }
         ]
       },
+      // Floor 06: 12 Tiles (3 target groups + distractors)
       6: {
-        type: "distractor-12-three",
         tiles: ["IRON", "COPPER", "TIN", "WHEAT", "RICE", "MAIZE", "MILK", "WATER", "JUICE", "SOFA", "TABLE", "CHAIR"],
         groups: [
-          { words: ["IRON", "COPPER", "TIN"], category: "Industrial base metals" },
-          { words: ["WHEAT", "RICE", "MAIZE"], category: "Major global staple grains" },
-          { words: ["MILK", "WATER", "JUICE"], category: "Common daily beverages" }
+          { words: ["IRON", "COPPER", "TIN"], category: "Industrial base metals", clue: "Base Metals" },
+          { words: ["WHEAT", "RICE", "MAIZE"], category: "Major global staple grains", clue: "Staple Grains" },
+          { words: ["MILK", "WATER", "JUICE"], category: "Common daily beverages", clue: "Daily Drinks" }
         ]
       },
+      // Floor 07: 12 Tiles (3 target groups + distractors)
       7: {
-        type: "distractor-12-three",
         tiles: ["PLATO", "ARISTOTLE", "SOCRATES", "BACH", "MOZART", "BEETHOVEN", "NEWTON", "EINSTEIN", "DARWIN", "SHAKESPEARE", "DANTE", "HOMER"],
         groups: [
-          { words: ["PLATO", "ARISTOTLE", "SOCRATES"], category: "Ancient Greek philosophers" },
-          { words: ["BACH", "MOZART", "BEETHOVEN"], category: "Classical composers" },
-          { words: ["NEWTON", "EINSTEIN", "DARWIN"], category: "Revolutionary scientists" }
+          { words: ["PLATO", "ARISTOTLE", "SOCRATES"], category: "Ancient Greek philosophers", clue: "Greek Philosophers" },
+          { words: ["BACH", "MOZART", "BEETHOVEN"], category: "Classical composers", clue: "Classical Composers" },
+          { words: ["NEWTON", "EINSTEIN", "DARWIN"], category: "Revolutionary scientists", clue: "Scientists" }
         ]
       },
+      // Floor 08: 12 Tiles (3 target groups + distractors)
       8: {
-        type: "distractor-12-three",
         tiles: ["PACIFIC", "ATLANTIC", "INDIAN", "EVEREST", "K2", "KILIMANJARO", "SAHARA", "GOBI", "KALAHARI", "LYON", "MARSEILLE", "NICE"],
         groups: [
-          { words: ["PACIFIC", "ATLANTIC", "INDIAN"], category: "Major world oceans" },
-          { words: ["EVEREST", "K2", "KILIMANJARO"], category: "Highest mountain peaks" },
-          { words: ["SAHARA", "GOBI", "KALAHARI"], category: "Major global deserts" }
+          { words: ["PACIFIC", "ATLANTIC", "INDIAN"], category: "Major world oceans", clue: "World Oceans" },
+          { words: ["EVEREST", "K2", "KILIMANJARO"], category: "Highest mountain peaks", clue: "Mountain Peaks" },
+          { words: ["SAHARA", "GOBI", "KALAHARI"], category: "Major global deserts", clue: "Global Deserts" }
         ]
       },
+      // Floor 09: 12 Tiles (3 target groups + distractors)
       9: {
-        type: "distractor-12-three",
         tiles: ["TUDOR", "STUART", "WINDSOR", "SPRING", "SUMMER", "AUTUMN", "NORTH", "SOUTH", "EAST", "RAIN", "SNOW", "WIND"],
         groups: [
-          { words: ["TUDOR", "STUART", "WINDSOR"], category: "Historic royal houses / dynasties" },
-          { words: ["SPRING", "SUMMER", "AUTUMN"], category: "Temperate calendar seasons" },
-          { words: ["NORTH", "SOUTH", "EAST"], category: "Primary cardinal directions" }
+          { words: ["TUDOR", "STUART", "WINDSOR"], category: "Historic royal houses / dynasties", clue: "Royal Dynasties" },
+          { words: ["SPRING", "SUMMER", "AUTUMN"], category: "Temperate calendar seasons", clue: "Calendar Seasons" },
+          { words: ["NORTH", "SOUTH", "EAST"], category: "Primary cardinal directions", clue: "Cardinal Directions" }
         ]
       },
-
-      // Floor 10: Final 16-Tile Wall (4 groups of 4)
+      // Floor 10: Final Wall (4 groups of 4)
       10: {
-        type: "wall-16",
         tiles: [
           "THAMES", "SEVERN", "TRENT", "CLYDE",
           "GOLD", "SILVER", "BRONZE", "PLATINUM",
@@ -105,10 +98,10 @@ window.CLUSTERS_DATA = {
           "OXFORD", "BOND", "FLEET", "LOMBARD"
         ],
         groups: [
-          { words: ["THAMES", "SEVERN", "TRENT", "CLYDE"], category: "Major regional river systems" },
-          { words: ["GOLD", "SILVER", "BRONZE", "PLATINUM"], category: "Precious metals / podium medals" },
-          { words: ["MARBLE", "GRANITE", "SLATE", "CHALK"], category: "Types of geological stone" },
-          { words: ["OXFORD", "BOND", "FLEET", "LOMBARD"], category: "Famous historic thoroughfares" }
+          { words: ["THAMES", "SEVERN", "TRENT", "CLYDE"], category: "Major regional river systems", clue: "UK River Systems" },
+          { words: ["GOLD", "SILVER", "BRONZE", "PLATINUM"], category: "Precious metals / podium medals", clue: "Precious Metals" },
+          { words: ["MARBLE", "GRANITE", "SLATE", "CHALK"], category: "Types of geological stone", clue: "Geological Stones" },
+          { words: ["OXFORD", "BOND", "FLEET", "LOMBARD"], category: "Famous historic thoroughfares", clue: "Famous London Streets" }
         ]
       }
     }
