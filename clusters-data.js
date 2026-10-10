@@ -2,55 +2,56 @@
  * ============================================================================
  * 11TH FLOOR CLUSTERS - DAILY PUZZLE DATA (clusters-data.js)
  * ============================================================================
- * Standard: UK English spelling, non-recycled subjects, balanced difficulty.
- * Banned Topics: Mountains, Rivers, Capitals, Metals, Toddler Primaries.
+ * Standard: Strict UK English spelling & terms (FOOTBALL, COLOUR, TROUSERS).
+ * Zero distractors, zero category crossovers, zero recycled subjects.
+ * Every single tile belongs to an active target cluster on the floor.
  * ============================================================================
  */
 
 window.CLUSTERS_DATA = {
-  "2026-10-12": {
-    date: "2026-10-12",
-    title: "Puzzle #04: Fresh Circuit",
+  "2026-10-10": {
+    date: "2026-10-10",
+    title: "Puzzle #04: Clean Circuit",
     floors: {
-      // Floor 01: 12 Tiles (2 groups of 3 + 6 clean distractors)
+      // Floor 01: 6 Tiles (2 groups of 3)
       1: {
-        tiles: ["ESPRESSO", "CAPPUCCINO", "MACCHIATO", "CROISSANT", "BRIOCHE", "BAGUETTE", "SHIRT", "TROUSERS", "JACKET", "FORK", "SPOON", "KNIFE"],
+        tiles: ["ESPRESSO", "CAPPUCCINO", "MACCHIATO", "CROISSANT", "BRIOCHE", "BAGUETTE"],
         groups: [
-          { words: ["ESPRESSO", "CAPPUCCINO", "MACCHIATO"], category: "Classic coffee drinks", clue: "Classic Coffee Drinks" },
+          { words: ["ESPRESSO", "CAPPUCCINO", "MACCHIATO"], category: "Classic coffee styles", clue: "Coffee Styles" },
           { words: ["CROISSANT", "BRIOCHE", "BAGUETTE"], category: "French bakery items", clue: "French Bakery Items" }
         ]
       },
 
-      // Floor 02: 12 Tiles (2 groups of 3 + 6 clean distractors)
+      // Floor 02: 6 Tiles (2 groups of 3)
       2: {
-        tiles: ["ARCHERY", "FENCING", "EQUESTRIAN", "SAXOPHONE", "CLARINET", "OBOE", "SKATING", "SKIING", "CURLING", "PAINTER", "SCULPTOR", "ACTOR"],
+        tiles: ["ARCHERY", "FENCING", "EQUESTRIAN", "SAXOPHONE", "CLARINET", "OBOE"],
         groups: [
-          { words: ["ARCHERY", "FENCING", "EQUESTRIAN"], category: "Individual Olympic sports", clue: "Individual Olympic Sports" },
+          { words: ["ARCHERY", "FENCING", "EQUESTRIAN"], category: "Individual Olympic disciplines", clue: "Individual Olympic Disciplines" },
           { words: ["SAXOPHONE", "CLARINET", "OBOE"], category: "Woodwind instruments", clue: "Woodwind Instruments" }
         ]
       },
 
-      // Floor 03: 12 Tiles (2 groups of 3 + 6 clean distractors)
+      // Floor 03: 6 Tiles (2 groups of 3)
       3: {
-        tiles: ["CINNAMON", "CARDAMOM", "TURMERIC", "SALMON", "TROUT", "MACKEREL", "BASIL", "OREGANO", "THYME", "STEAK", "ROAST", "CHOPS"],
+        tiles: ["CINNAMON", "CARDAMOM", "TURMERIC", "SALMON", "TROUT", "MACKEREL"],
         groups: [
           { words: ["CINNAMON", "CARDAMOM", "TURMERIC"], category: "Culinary spices", clue: "Culinary Spices" },
           { words: ["SALMON", "TROUT", "MACKEREL"], category: "Oily fish species", clue: "Oily Fish Species" }
         ]
       },
 
-      // Floor 04: 12 Tiles (2 groups of 3 + 6 clean distractors)
+      // Floor 04: 6 Tiles (2 groups of 3)
       4: {
-        tiles: ["TSUNAMI", "AVALANCHE", "HURRICANE", "GOTHIC", "BAROQUE", "ROCOCO", "TORNADO", "DROUGHT", "FLOOD", "NOVEL", "POEM", "ESSAY"],
+        tiles: ["TSUNAMI", "AVALANCHE", "HURRICANE", "BALLET", "OPERETTA", "PANTOMIME"],
         groups: [
-          { words: ["TSUNAMI", "AVALANCHE", "HURRICANE"], category: "Natural disasters", clue: "Natural Disasters" },
-          { words: ["GOTHIC", "BAROQUE", "ROCOCO"], category: "Architectural styles", clue: "Architectural Styles" }
+          { words: ["TSUNAMI", "AVALANCHE", "HURRICANE"], category: "Severe natural disasters", clue: "Natural Disasters" },
+          { words: ["BALLET", "OPERETTA", "PANTOMIME"], category: "Stage performance arts", clue: "Stage Performance Arts" }
         ]
       },
 
-      // Floor 05: 12 Tiles (3 groups of 3 + 3 clean distractors)
+      // Floor 05: 9 Tiles (3 groups of 3)
       5: {
-        tiles: ["KANGAROO", "KOALA", "WOMBAT", "EAGLE", "FALCON", "OSPREY", "SAPPHIRE", "AMETHYST", "TOPAZ", "PENGUIN", "SEAL", "WALRUS"],
+        tiles: ["KANGAROO", "KOALA", "WOMBAT", "EAGLE", "FALCON", "OSPREY", "SAPPHIRE", "AMETHYST", "TOPAZ"],
         groups: [
           { words: ["KANGAROO", "KOALA", "WOMBAT"], category: "Australian marsupials", clue: "Australian Marsupials" },
           { words: ["EAGLE", "FALCON", "OSPREY"], category: "Birds of prey", clue: "Birds of Prey" },
@@ -58,43 +59,43 @@ window.CLUSTERS_DATA = {
         ]
       },
 
-      // Floor 06: 12 Tiles (3 groups of 3 + 3 clean distractors)
+      // Floor 06: 9 Tiles (3 groups of 3)
       6: {
-        tiles: ["HYPERBOLE", "METAPHOR", "ALLITERATION", "NEURON", "SYNAPSE", "DENDRITE", "OCTOPUS", "SQUID", "NAUTILUS", "GLUCOSE", "ENZYME", "PROTEIN"],
+        tiles: ["HYPERBOLE", "METAPHOR", "ALLITERATION", "NEURON", "SYNAPSE", "DENDRITE", "OCTOPUS", "SQUID", "NAUTILUS"],
         groups: [
           { words: ["HYPERBOLE", "METAPHOR", "ALLITERATION"], category: "Literary devices", clue: "Literary Devices" },
-          { words: ["NEURON", "SYNAPSE", "DENDRITE"], category: "Nervous system parts", clue: "Nervous System Parts" },
+          { words: ["NEURON", "SYNAPSE", "DENDRITE"], category: "Nervous system elements", clue: "Nervous System Elements" },
           { words: ["OCTOPUS", "SQUID", "NAUTILUS"], category: "Cephalopods", clue: "Cephalopods" }
         ]
       },
 
-      // Floor 07: 12 Tiles (3 groups of 3 + 3 clean distractors)
+      // Floor 07: 9 Tiles (3 groups of 3)
       7: {
-        tiles: ["HEMINGWAY", "ORWELL", "STEINBECK", "COPERNICUS", "GALILEO", "KEPLER", "BALLET", "OPERETTA", "PANTOMIME", "HAWKING", "NEWTON", "DARWIN"],
+        tiles: ["HEMINGWAY", "ORWELL", "STEINBECK", "COPERNICUS", "GALILEO", "KEPLER", "COMMUTATIVE", "ASSOCIATIVE", "DISTRIBUTIVE"],
         groups: [
           { words: ["HEMINGWAY", "ORWELL", "STEINBECK"], category: "20th-century novelists", clue: "20th-Century Novelists" },
           { words: ["COPERNICUS", "GALILEO", "KEPLER"], category: "Historical astronomers", clue: "Historical Astronomers" },
-          { words: ["BALLET", "OPERETTA", "PANTOMIME"], category: "Stage performance arts", clue: "Stage Performance Arts" }
-        ]
-      },
-
-      // Floor 08: 12 Tiles (3 groups of 3 + 3 clean distractors)
-      8: {
-        tiles: ["MERCUTIO", "TYBALT", "BENVOLIO", "TITANIC", "LUSITANIA", "BRITANNIC", "COMMUTATIVE", "ASSOCIATIVE", "DISTRIBUTIVE", "HAMLET", "MACBETH", "OTHELLO"],
-        groups: [
-          { words: ["MERCUTIO", "TYBALT", "BENVOLIO"], category: "Romeo & Juliet characters", clue: "Romeo & Juliet Characters" },
-          { words: ["TITANIC", "LUSITANIA", "BRITANNIC"], category: "Historic ocean liners", clue: "Historic Ocean Liners" },
           { words: ["COMMUTATIVE", "ASSOCIATIVE", "DISTRIBUTIVE"], category: "Algebraic laws", clue: "Algebraic Laws" }
         ]
       },
 
-      // Floor 09: 12 Tiles (3 groups of 3 + 3 clean distractors)
-      9: {
-        tiles: ["GLAUCOMA", "CATARACTS", "ASTIGMATISM", "MONET", "REMBRANDT", "VERMEER", "HELICOPTER", "GLIDER", "DIRIGIBLE", "PICASSO", "DALÍ", "WARHOL"],
+      // Floor 08: 9 Tiles (3 groups of 3)
+      8: {
+        tiles: ["MERCUTIO", "TYBALT", "BENVOLIO", "TITANIC", "LUSITANIA", "BRITANNIC", "HELICOPTER", "GLIDER", "DIRIGIBLE"],
         groups: [
-          { words: ["GLAUCOMA", "CATARACTS", "ASTIGMATISM"], category: "Eye conditions", clue: "Eye Conditions" },
-          { words: ["MONET", "REMBRANDT", "VERMEER"], category: "Master painters", clue: "Master Painters" },
+          { words: ["MERCUTIO", "TYBALT", "BENVOLIO"], category: "Romeo and Juliet characters", clue: "Romeo & Juliet Characters" },
+          { words: ["TITANIC", "LUSITANIA", "BRITANNIC"], category: "Historic ocean liners", clue: "Historic Ocean Liners" },
           { words: ["HELICOPTER", "GLIDER", "DIRIGIBLE"], category: "Non-commercial aircraft", clue: "Non-Commercial Aircraft" }
+        ]
+      },
+
+      // Floor 09: 9 Tiles (3 groups of 3)
+      9: {
+        tiles: ["GLAUCOMA", "CATARACTS", "ASTIGMATISM", "MONET", "REMBRANDT", "VERMEER", "PICASSO", "DALÍ", "WARHOL"],
+        groups: [
+          { words: ["GLAUCOMA", "CATARACTS", "ASTIGMATISM"], category: "Ophthalmic eye conditions", clue: "Eye Conditions" },
+          { words: ["MONET", "REMBRANDT", "VERMEER"], category: "Old master & impressionist painters", clue: "Master Painters" },
+          { words: ["PICASSO", "DALÍ", "WARHOL"], category: "Modern & surrealist artists", clue: "Modern Artists" }
         ]
       },
 
@@ -107,7 +108,7 @@ window.CLUSTERS_DATA = {
           "DORIC", "IONIC", "CORINTHIAN", "TUSCAN"
         ],
         groups: [
-          { words: ["IGNEOUS", "METAMORPHIC", "SEDIMENTARY", "VOLCANIC"], category: "Rock formation types", clue: "Rock Formation Types" },
+          { words: ["IGNEOUS", "METAMORPHIC", "SEDIMENTARY", "VOLCANIC"], category: "Rock formation types", clue: "Rock Formations" },
           { words: ["TROPOSPHERE", "STRATOSPHERE", "MESOSPHERE", "THERMOSPHERE"], category: "Atmospheric layers", clue: "Atmospheric Layers" },
           { words: ["TROJAN", "WORM", "SPYWARE", "RANSOMWARE"], category: "Malware types", clue: "Malware Types" },
           { words: ["DORIC", "IONIC", "CORINTHIAN", "TUSCAN"], category: "Classical architectural orders", clue: "Classical Architectural Orders" }
