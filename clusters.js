@@ -2,8 +2,8 @@
  * ============================================================================
  * 11TH FLOOR CLUSTERS - CORE GAME LOGIC (clusters.js)
  * ============================================================================
- * Logic: Distractor pools, lock correct groups above grid, reduce pool size,
- * 3-strike lives system, 10 playable floors leading to 11th floor destination.
+ * Sequential Clue Target Engine, 20s Stage Countdown Timer, Global Session Timer,
+ * Lives & Reset System, 10 Playable Floors leading to 11th Floor Destination.
  * ============================================================================
  */
 
@@ -16,18 +16,23 @@
     let selectedTiles = [];
     let activeTiles = [];
     let remainingGroups = [];
+    let currentTargetGroup = null;
     let currentLives = 3;
 
-    // Session Timer State Variables
+    // Session Stopwatch Timer State Variables
     let startTime = 0;
     let timerInterval = null;
     let timeElapsedSeconds = 0;
+
+    // Stage Countdown Bar Timer State Variables
+    let stageTimer = null;
+    let stageTimeLeft = 20;
 
     // Local Storage Player Stats Key
     const STATS_KEY = '11th_floor_clusters_stats';
 
     const floorNumVal = document.getElementById('floor-number-val');
-    const floorPhaseTag = document.getElementById('floor-phase-tag');
+    const floorRuleText = document.getElementById('floor-rule-text');
     const puzzlePrompt = document.getElementById('puzzle-prompt');
     const solvedGroupsContainer = document.getElementById('solved-groups-container');
     const tileGrid = document.getElementById('tile-grid');
@@ -39,10 +44,15 @@
     const towerStack = document.getElementById('tower-stack');
     const btnSound = document.getElementById('btn-sound');
     const floorHudContainer = document.getElementById('floor-hud-container');
+    const gameplayHeader = document.getElementById('gameplay-header');
     const startScreen = document.getElementById('start-screen');
     const mainContent = document.getElementById('game-main-content');
     const btnStartClimb = document.getElementById('btn-start-climb');
     const activeGameTimer = document.getElementById('active-game-timer');
+    const timerBarWrapper = document.getElementById('timer-bar-wrapper');
+    const timerBar = document.getElementById('timer-bar');
+    const clueBanner = document.getElementById('clue-banner');
+    const clueText = document.getElementById('clue-text');
     const pips = [document.getElementById('pip-1'), document.getElementById('pip-2'), document.getElementById('pip-3')];
 
     const victoryScreen = document.getElementById('victory-screen');
@@ -52,10 +62,25 @@
     const footerText = document.getElementById('footer-text');
 
     const statsModal = document.getElementById('modal-vault');
+    const gameOverModal = document.getElementById('modal-game-over');
     const statsBtnLanding = document.getElementById('btn-landing-stats');
     const victoryStatsBtn = document.getElementById('btn-victory-stats');
     const closeVaultBtn = document.getElementById('btn-close-vault');
+    const btnTryAgain = document.getElementById('btn-try-again');
+    const btnBackVault = document.getElementById('btn-back-vault');
     const vaultList = document.getElementById('vault-list');
+
+    // ==========================================
+    // HAPTIC FEEDBACK ENGINE
+    // ==========================================
+
+    function triggerHaptic(pattern) {
+        if ('vibrate' in navigator) {
+            try {
+                navigator.vibrate(pattern);
+            } catch (e) {}
+        }
+    }
 
     // ==========================================
     // SESSION STOPWATCH TIMER ENGINE
@@ -90,16 +115,66 @@
         return `${m}:${s}`;
     }
 
+    // ==========================================
+    // STAGE COUNTDOWN TIMER ENGINE
+    // ==========================================
+
+    function startStageTimer() {
+        stopStageTimer();
+        const totalDuration = 20000;
+        const stageStartTime = Date.now();
+        stageTimeLeft = 20;
+
+        if (timerBarWrapper) timerBarWrapper.style.display = 'block';
+        if (timerBar) {
+            timerBar.style.width = '100%';
+            timerBar.style.backgroundColor = 'var(--genre-orange)';
+        }
+
+        stageTimer = setInterval(() => {
+            const elapsed = Date.now() - stageStartTime;
+            const remaining = Math.max(0, totalDuration - elapsed);
+            stageTimeLeft = Math.ceil(remaining / 1000);
+
+            if (timerBar) {
+                timerBar.style.width = `${(remaining / totalDuration) * 100}%`;
+                if (remaining <= totalDuration / 2) {
+                    timerBar.style.backgroundColor = 'var(--state-error)';
+                } else {
+                    timerBar.style.backgroundColor = 'var(--genre-orange)';
+                }
+            }
+
+            if (remaining <= 0) {
+                stopStageTimer();
+                handleTimeExpired();
+            }
+        }, 50);
+    }
+
+    function stopStageTimer() {
+        if (stageTimer) clearInterval(stageTimer);
+    }
+
+    function handleTimeExpired() {
+        triggerHaptic([80, 50, 120]);
+        handleGameOver('TIME EXPIRED');
+    }
+
     function getOrdinalFloorHTML(floorNum) {
         const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
         const ord = ordinals[floorNum - 1] || `${floorNum}th`;
-        return `<span style="color: var(--genre-orange); font-size: 1.25rem; font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
+        return `<span style="color: var(--genre-orange); font-size: 1.1rem; font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
+    }
+
+    function getFailedOrdinalFloorHTML(floorNum) {
+        const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
+        const ord = ordinals[floorNum - 1] || `${floorNum}th`;
+        return `<span style="color: var(--state-error); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
     }
 
     function init() {
-        // Guarantee landing screen visibility immediately
         if (startScreen) startScreen.style.display = 'flex';
-
         bindEvents();
         updateStatsDisplay();
 
@@ -114,17 +189,30 @@
     }
 
     function bindEvents() {
-        if (btnShuffle) btnShuffle.addEventListener('click', shuffleActiveTiles);
-        if (btnSubmit) btnSubmit.addEventListener('click', handleSubmission);
-        if (btnStartClimb) btnStartClimb.addEventListener('click', startClimb);
+        if (btnShuffle) {
+            btnShuffle.addEventListener('pointerdown', () => triggerHaptic(15));
+            btnShuffle.addEventListener('click', shuffleActiveTiles);
+        }
+
+        if (btnSubmit) {
+            btnSubmit.addEventListener('pointerdown', () => triggerHaptic(15));
+            btnSubmit.addEventListener('click', handleSubmission);
+        }
+
+        if (btnStartClimb) {
+            btnStartClimb.addEventListener('pointerdown', () => triggerHaptic(15));
+            btnStartClimb.addEventListener('click', startClimb);
+        }
 
         if (btnSound) {
+            btnSound.addEventListener('pointerdown', () => triggerHaptic(15));
             btnSound.addEventListener('click', () => {
                 btnSound.textContent = btnSound.textContent.includes('OFF') ? 'SOUND: ON' : 'SOUND: OFF';
             });
         }
 
         if (statsBtnLanding) {
+            statsBtnLanding.addEventListener('pointerdown', () => triggerHaptic(15));
             statsBtnLanding.addEventListener('click', () => {
                 if (statsModal) statsModal.classList.remove('hidden');
                 populateVault();
@@ -132,6 +220,7 @@
         }
 
         if (victoryStatsBtn) {
+            victoryStatsBtn.addEventListener('pointerdown', () => triggerHaptic(15));
             victoryStatsBtn.addEventListener('click', () => {
                 if (statsModal) statsModal.classList.remove('hidden');
                 populateVault();
@@ -139,6 +228,7 @@
         }
 
         if (closeVaultBtn) {
+            closeVaultBtn.addEventListener('pointerdown', () => triggerHaptic(15));
             closeVaultBtn.addEventListener('click', () => {
                 if (statsModal) statsModal.classList.add('hidden');
                 if (victoryScreen && victoryScreen.style.display !== 'none') {
@@ -146,13 +236,35 @@
                 }
             });
         }
+
+        if (btnTryAgain) {
+            btnTryAgain.addEventListener('pointerdown', () => triggerHaptic(15));
+            btnTryAgain.addEventListener('click', () => {
+                if (gameOverModal) gameOverModal.classList.add('hidden');
+                startClimb();
+            });
+        }
+
+        if (btnBackVault) {
+            btnBackVault.addEventListener('pointerdown', () => triggerHaptic(15));
+            btnBackVault.addEventListener('click', () => {
+                if (gameOverModal) gameOverModal.classList.add('hidden');
+                if (statsModal) statsModal.classList.remove('hidden');
+                populateVault();
+            });
+        }
     }
 
     function resetToStartScreen() {
+        stopSessionTimer();
+        stopStageTimer();
         if (victoryScreen) victoryScreen.style.display = 'none';
         if (floorHudContainer) floorHudContainer.style.display = 'none';
+        if (gameplayHeader) gameplayHeader.style.display = 'none';
         if (mainContent) mainContent.style.display = 'none';
         if (actionPanelContainer) actionPanelContainer.style.display = 'none';
+        if (timerBarWrapper) timerBarWrapper.style.display = 'none';
+        if (clueBanner) clueBanner.style.display = 'none';
         if (activeGameTimer) activeGameTimer.style.display = 'none';
         if (startScreen) startScreen.style.display = 'flex';
     }
@@ -163,8 +275,10 @@
         for (let i = 1; i <= 10; i++) {
             const floorBar = document.createElement('div');
             floorBar.className = 'tower-floor';
-            if (i <= activeFloor) {
+            if (i === activeFloor) {
                 floorBar.classList.add('active');
+            } else if (i < activeFloor) {
+                floorBar.classList.add('completed');
             }
             towerStack.appendChild(floorBar);
         }
@@ -201,6 +315,9 @@
         if (startScreen) startScreen.style.display = 'none';
         if (victoryScreen) victoryScreen.style.display = 'none';
         if (floorHudContainer) floorHudContainer.style.display = 'flex';
+        if (gameplayHeader) gameplayHeader.style.display = 'flex';
+        if (timerBarWrapper) timerBarWrapper.style.display = 'block';
+        if (clueBanner) clueBanner.style.display = 'block';
         if (mainContent) mainContent.style.display = 'flex';
         if (actionPanelContainer) actionPanelContainer.style.display = 'flex';
         if (footerText) footerText.style.display = 'block';
@@ -214,6 +331,9 @@
         currentFloor = floorNum;
         if (floorNumVal) {
             floorNumVal.innerHTML = getOrdinalFloorHTML(currentFloor);
+        }
+        if (floorRuleText) {
+            floorRuleText.textContent = "No mistakes!";
         }
         renderTowerStack(currentFloor);
         selectedTiles = [];
@@ -232,19 +352,27 @@
 
         if (puzzlePrompt) {
             if (currentFloor <= 4) {
-                if (floorPhaseTag) floorPhaseTag.textContent = "ASCENT";
-                puzzlePrompt.textContent = "Find 2 groups of 3 from the 12 tiles.";
+                puzzlePrompt.textContent = "Select 3 tiles matching the active target cluster.";
             } else if (currentFloor >= 5 && currentFloor <= 9) {
-                if (floorPhaseTag) floorPhaseTag.textContent = "SQUEEZE";
-                puzzlePrompt.textContent = "Find 3 groups of 3 from the 12 tiles.";
+                puzzlePrompt.textContent = "Select 3 tiles matching the active target cluster.";
             } else if (currentFloor === 10) {
-                if (floorPhaseTag) floorPhaseTag.textContent = "FINAL WALL";
-                puzzlePrompt.textContent = "Sort all 16 tiles into 4 groups of 4.";
+                puzzlePrompt.textContent = "Select 4 tiles matching the active target cluster.";
             }
         }
 
         shuffleArray(activeTiles);
+        setupNextStageClue();
         renderGrid();
+    }
+
+    function setupNextStageClue() {
+        if (remainingGroups.length > 0) {
+            currentTargetGroup = remainingGroups[0];
+            if (clueText) {
+                clueText.textContent = currentTargetGroup.clue || currentTargetGroup.category;
+            }
+            startStageTimer();
+        }
     }
 
     function renderGrid() {
@@ -264,6 +392,8 @@
                 tileEl.classList.add('selected');
             }
             tileEl.textContent = tileText;
+
+            tileEl.addEventListener('pointerdown', () => triggerHaptic(15));
             tileEl.addEventListener('click', () => handleTileClick(tileText, tileEl));
             tileGrid.appendChild(tileEl);
         });
@@ -295,24 +425,21 @@
     }
 
     function handleSubmission() {
-        if (gameState !== 'playing') return;
+        if (gameState !== 'playing' || !currentTargetGroup) return;
 
         const maxSelection = (currentFloor === 10) ? 4 : 3;
         if (selectedTiles.length !== maxSelection) return;
 
-        let matchedGroupIndex = -1;
-        for (let i = 0; i < remainingGroups.length; i++) {
-            const groupWords = remainingGroups[i].words;
-            const isMatch = selectedTiles.every(t => groupWords.includes(t)) && groupWords.every(t => selectedTiles.includes(t));
-            if (isMatch) {
-                matchedGroupIndex = i;
-                break;
-            }
-        }
+        stopStageTimer();
 
-        if (matchedGroupIndex > -1) {
+        const groupWords = currentTargetGroup.words;
+        const isMatch = selectedTiles.every(t => groupWords.includes(t)) && groupWords.every(t => selectedTiles.includes(t));
+
+        if (isMatch) {
             gameState = 'animating';
             if (btnSubmit) btnSubmit.disabled = true;
+
+            triggerHaptic([35, 40, 35]);
 
             const tileElements = tileGrid.querySelectorAll('.cluster-tile');
             tileElements.forEach(el => {
@@ -325,7 +452,7 @@
             if (statusMessage) statusMessage.textContent = "CORRECT CLUSTER.";
 
             setTimeout(() => {
-                const solvedGroup = remainingGroups.splice(matchedGroupIndex, 1)[0];
+                const solvedGroup = remainingGroups.shift();
                 solvedGroup.words.forEach(word => {
                     const idx = activeTiles.indexOf(word);
                     if (idx > -1) activeTiles.splice(idx, 1);
@@ -334,36 +461,38 @@
                 appendSolvedCard(solvedGroup);
                 selectedTiles = [];
                 gameState = 'playing';
-                renderGrid();
 
                 if (remainingGroups.length === 0) {
-                    setTimeout(() => {
-                        if (currentFloor < 10) {
-                            const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
-                            if (statusMessage) statusMessage.textContent = `${ordinals[currentFloor - 1].toUpperCase()} FLOOR CLEARED. ADVANCING...`;
-                            setTimeout(() => loadFloor(currentFloor + 1), 900);
-                        } else {
-                            stopSessionTimer();
-                            recordGameResult(true, 11);
-                            renderVictory();
-                        }
-                    }, 400);
+                    if (currentFloor < 10) {
+                        const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
+                        if (statusMessage) statusMessage.textContent = `${ordinals[currentFloor - 1].toUpperCase()} FLOOR CLEARED. ADVANCING...`;
+                        setTimeout(() => loadFloor(currentFloor + 1), 900);
+                    } else {
+                        stopSessionTimer();
+                        recordGameResult(true, 11);
+                        renderVictory();
+                    }
+                } else {
+                    setupNextStageClue();
+                    renderGrid();
                 }
             }, 600);
 
         } else {
             currentLives--;
             updateLivesDisplay();
+            triggerHaptic([80, 50, 120]);
 
             if (currentLives > 0) {
                 if (statusMessage) statusMessage.textContent = `INCORRECT. ${currentLives} LIVES REMAINING.`;
                 selectedTiles = [];
                 if (btnSubmit) btnSubmit.disabled = true;
                 renderGrid();
+                startStageTimer();
             } else {
                 stopSessionTimer();
                 recordGameResult(false, currentFloor);
-                triggerBrutalReset();
+                handleGameOver('OUT OF LIVES');
             }
         }
     }
@@ -379,28 +508,36 @@
         solvedGroupsContainer.appendChild(card);
     }
 
-    function triggerBrutalReset() {
+    function handleGameOver(reason) {
+        stopSessionTimer();
+        stopStageTimer();
         gameState = 'penalty';
-        if (btnSubmit) btnSubmit.disabled = true;
-        
-        if (penaltyOverlay) penaltyOverlay.classList.add('flash');
-        if (statusMessage) statusMessage.textContent = "OUT OF LIVES. DROPPED TO 1ST FLOOR.";
 
-        setTimeout(() => {
-            if (penaltyOverlay) penaltyOverlay.classList.remove('flash');
-            currentLives = 3;
-            updateLivesDisplay();
-            startSessionTimer();
-            loadFloor(1);
-        }, 1200);
+        const gameOverTitle = document.getElementById('game-over-title');
+        const gameOverMsg = document.getElementById('game-over-message');
+        const finalFloor = document.getElementById('final-floor-reached');
+
+        if (gameOverTitle) gameOverTitle.textContent = "ELEVATOR STOPPED";
+        if (gameOverMsg) gameOverMsg.textContent = reason;
+        if (finalFloor) finalFloor.innerHTML = `Stopped at ${getFailedOrdinalFloorHTML(currentFloor)}`;
+
+        if (gameOverModal) gameOverModal.classList.remove('hidden');
     }
 
     function renderVictory() {
+        stopSessionTimer();
+        stopStageTimer();
         gameState = 'victory';
+
         if (floorHudContainer) floorHudContainer.style.display = 'none';
+        if (gameplayHeader) gameplayHeader.style.display = 'none';
+        if (timerBarWrapper) timerBarWrapper.style.display = 'none';
+        if (clueBanner) clueBanner.style.display = 'none';
         if (mainContent) mainContent.style.display = 'none';
         if (actionPanelContainer) actionPanelContainer.style.display = 'none';
         if (footerText) footerText.style.display = 'none';
+
+        triggerHaptic([50, 50, 50, 50, 100]);
 
         const formattedTime = formatTime(timeElapsedSeconds);
         const stats = getStats();
@@ -443,7 +580,8 @@
                 const btn = document.createElement('button');
                 btn.className = 'vault-item-btn';
                 btn.innerHTML = `<strong>Archive ${id}</strong>`;
-                btn.onclick = () => loadVaultArchive(paddedId, data);
+                btn.onpointerdown = () => triggerHaptic(15);
+                btn.onclick = () => loadVaultArchive(id, data);
                 buttons.push(btn);
             }
         });
@@ -459,8 +597,8 @@
     function loadVaultArchive(paddedId, data) {
         if (data) {
             puzzleData = data;
-            startClimb();
             if (statsModal) statsModal.classList.add('hidden');
+            startClimb();
         }
     }
 
@@ -538,4 +676,3 @@
     window.addEventListener('DOMContentLoaded', init);
 
 })();
-// END OF FILE: clusters.js
