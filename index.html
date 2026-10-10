@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-deep: #000000;
@@ -64,9 +65,15 @@
             text-align: center;
             padding: 20px 16px;
             overflow-x: hidden;
+            opacity: 0;
+            animation: fadeInBody 0.25s ease-in forwards;
         }
 
-        /* Scaled-down Logo Box */
+        @keyframes fadeInBody {
+            to { opacity: 1; }
+        }
+
+        /* Scaled-down Logo Box with instant render guard */
         .hub-logo-box {
             display: flex;
             flex-direction: column;
