@@ -1,5 +1,5 @@
 // ==========================================================================
-// 11th Floor Parity — Core Engine & Matching Rules
+// 11th Floor Parity — Core Engine & Matching Rules (Fail-Safe Hardened)
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,6 +20,27 @@ document.addEventListener('DOMContentLoaded', () => {
     let totalElapsedSeconds = 0;
 
     const STATS_KEY = '11th_floor_parity_stats';
+
+    const DEFAULT_SVG_MAP = {
+        'star': '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',
+        'heart': '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>',
+        'diamond': '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>',
+        'square': '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3z"/></svg>',
+        'circle': '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>'
+    };
+
+    const FALLBACK_FLOORS = [
+        { pairs: 1, timeLimit: 12, icons: ['star'] },
+        { pairs: 2, timeLimit: 15, icons: ['star', 'heart'] },
+        { pairs: 3, timeLimit: 18, icons: ['star', 'heart', 'diamond'] },
+        { pairs: 4, timeLimit: 20, icons: ['star', 'heart', 'diamond', 'square'] },
+        { pairs: 5, timeLimit: 22, icons: ['star', 'heart', 'diamond', 'square', 'circle'] },
+        { pairs: 6, timeLimit: 25, icons: ['star', 'heart', 'diamond', 'square', 'circle', 'star'] },
+        { pairs: 7, timeLimit: 28, icons: ['star', 'heart', 'diamond', 'square', 'circle', 'star', 'heart'] },
+        { pairs: 8, timeLimit: 30, icons: ['star', 'heart', 'diamond', 'square', 'circle', 'star', 'heart', 'diamond'] },
+        { pairs: 9, timeLimit: 32, icons: ['star', 'heart', 'diamond', 'square', 'circle', 'star', 'heart', 'diamond', 'square'] },
+        { pairs: 10, timeLimit: 35, icons: ['star', 'heart', 'diamond', 'square', 'circle', 'star', 'heart', 'diamond', 'square', 'circle'] }
+    ];
 
     const startScreen = document.getElementById('start-screen');
     const startClimbBtn = document.getElementById('start-climb-btn');
@@ -52,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     init();
 
     function triggerHaptic() {
-        if (navigator.vibrate) {
+        if ('vibrate' in navigator) {
             try {
                 navigator.vibrate([10, 30, 10]);
             } catch(e) {}
@@ -81,8 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function init() {
-        activeDataSet = window.PARITY_DAILY_SET || null;
-        activeGameData = activeDataSet ? activeDataSet.floors : [];
+        try {
+            activeDataSet = window.PARITY_DAILY_SET || null;
+            activeGameData = (activeDataSet && Array.isArray(activeDataSet.floors)) ? activeDataSet.floors : FALLBACK_FLOORS;
+        } catch (e) {
+            activeGameData = FALLBACK_FLOORS;
+        }
         bindEvents();
         updateStatsDisplay();
     }
@@ -218,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function startGame() {
         if (!activeGameData || activeGameData.length === 0) {
             activeDataSet = window.PARITY_DAILY_SET || null;
-            activeGameData = activeDataSet ? activeDataSet.floors : [];
+            activeGameData = (activeDataSet && activeDataSet.floors) ? activeDataSet.floors : FALLBACK_FLOORS;
         }
 
         if (startScreen) startScreen.style.display = 'none';
@@ -300,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const svgMap = (activeDataSet && activeDataSet.svgMap) 
             ? activeDataSet.svgMap 
-            : (window.PARITY_DAILY_SET ? window.PARITY_DAILY_SET.svgMap : {});
+            : DEFAULT_SVG_MAP;
 
         deck.forEach((iconKey, index) => {
             const tile = document.createElement('div');
@@ -312,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             tile.dataset.icon = iconKey;
             tile.dataset.index = index;
-            tile.innerHTML = svgMap[iconKey] || '';
+            tile.innerHTML = svgMap[iconKey] || DEFAULT_SVG_MAP.star;
             bindInteraction(tile, () => handleTileClick(tile));
             parityGrid.appendChild(tile);
         });
@@ -479,17 +504,23 @@ document.addEventListener('DOMContentLoaded', () => {
             stats.bestFloor = peakFloor;
         }
 
-        localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+        try {
+            localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+        } catch (e) {
+            console.warn('LocalStorage save blocked.');
+        }
         updateStatsDisplay();
         return stats;
     }
 
     function getStats() {
-        const raw = localStorage.getItem(STATS_KEY);
-        if (!raw) {
+        try {
+            const raw = localStorage.getItem(STATS_KEY);
+            if (!raw) return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
+            return JSON.parse(raw);
+        } catch (e) {
             return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
         }
-        return JSON.parse(raw);
     }
 
     function updateStatsDisplay() {
