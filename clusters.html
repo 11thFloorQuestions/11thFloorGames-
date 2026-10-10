@@ -14,7 +14,58 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/glacial-indifference" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <!-- HTML2CANVAS LIBRARY FOR RECEIPT SCREENSHOT CAPTURE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <style>
+        :root {
+            --bg-deep: #000000;
+            --surface: #0a0a0a;
+            --surface-border: #222222;
+            --surface-border-light: #333333;
+            --text-primary: #ffffff;
+            --text-muted: #888888;
+            --genre-orange: #ff751f;
+            --genre-orange-glow: rgba(255, 117, 31, 0.35);
+            --brand-red: #cc0000;
+            --brand-red-glow: rgba(204, 0, 0, 0.35);
+            --state-active: #facc15;
+            --state-active-glow: rgba(250, 204, 21, 0.3);
+            --state-success: #22c55e;
+            --state-success-glow: rgba(34, 197, 94, 0.3);
+            --state-error: #ef4444;
+            --state-error-glow: rgba(239, 68, 68, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            background-color: var(--bg-deep);
+            height: 100%;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 10px;
+            overflow: hidden;
+        }
+
         .top-bar {
             width: 100%;
             max-width: 600px;
@@ -58,6 +109,50 @@
             margin-bottom: 4px;
         }
 
+        .game-logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 8px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .landing-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 14px;
+            padding: 16px 14px;
+            width: 100%;
+            max-width: 600px;
+            background: var(--surface);
+            border: 1px solid var(--surface-border-light);
+            border-radius: 8px;
+            margin-top: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .landing-shaft-graphic {
+            display: flex;
+            flex-direction: column;
+            width: 52px;
+            height: 140px;
+            border: 1px solid var(--surface-border-light);
+            border-radius: 8px;
+            padding: 6px;
+            gap: 3px;
+            background-color: #111111;
+        }
+
+        .landing-shaft-box {
+            flex: 1;
+            background-color: #080808;
+            border: 1px solid var(--surface-border);
+            border-radius: 2px;
+        }
+
         .landing-shaft-graphic .landing-shaft-box { animation: sweepMiddle 1.2s ease-in-out forwards; }
         .landing-shaft-graphic .landing-shaft-box:nth-child(11) { animation: sweepBottomSettle 2.6s ease-in-out forwards; animation-delay: 0.05s; }
         .landing-shaft-graphic .landing-shaft-box:nth-child(10) { animation-delay: 0.15s; }
@@ -88,6 +183,27 @@
             15% { background-color: var(--genre-orange); border-color: var(--genre-orange); box-shadow: 0 0 10px var(--genre-orange-glow); }
             30%, 80% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
             95%, 100% { background-color: var(--genre-orange); border-color: var(--genre-orange); box-shadow: 0 0 8px var(--genre-orange-glow); }
+        }
+
+        .landing-challenge-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .btn-start {
+            background-color: var(--surface);
+            border: 1px solid var(--genre-orange);
+            color: var(--genre-orange);
+            padding: 11px 26px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
         .btn-start:hover {
@@ -134,9 +250,272 @@
         #penalty-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255, 117, 31, 0.2); pointer-events: none; opacity: 0; transition: opacity 0.2s ease; z-index: 999; }
         #penalty-overlay.flash { opacity: 1; }
         #status-message { min-height: 20px; color: var(--genre-orange); font-weight: 700; margin-bottom: 4px; }
+
+        /* Modal Styles */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.92); display: flex; align-items: center; justify-content: center; z-index: 100; }
+        .modal-overlay.hidden { display: none !important; }
+        .modal-card { background-color: var(--surface); border: 1px solid var(--genre-orange); box-shadow: 0 0 20px var(--genre-orange-glow); padding: 24px 20px; border-radius: 14px; width: 92%; max-width: 380px; text-align: center; }
+
+        .modal-sub-header { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 800; color: var(--genre-orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .modal-main-title { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 14px; }
+
+        .stats-summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 12px 0 16px 0; background: var(--bg-deep); border: 1px solid var(--surface-border); border-radius: 10px; padding: 12px 8px; }
+        .stat-item { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .stat-value { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 800; color: #ffffff; }
+        .stat-value.active { color: var(--state-active); }
+        .stat-value.orange { color: var(--genre-orange); }
+        .stat-label { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+        .vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 8px; max-height: 200px; overflow-y: auto; margin: 12px 0; padding-right: 2px; }
+        .vault-item-btn { background-color: #111111; border: 1px solid var(--genre-orange); color: var(--text-primary); padding: 10px 6px; border-radius: 8px; cursor: pointer; text-align: center; box-shadow: 0 0 8px var(--genre-orange-glow); transition: transform 0.1s ease, border-color 0.2s ease; }
+        .vault-item-btn:hover { border-color: #ffffff; }
+        .btn-modal { width: 100%; background-color: #111111; border: 1px solid var(--surface-border-light); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
+
+        /* IN-GAME VICTORY RECEIPT CARD SPECIFICATIONS */
+        .victory-receipt-card {
+            width: 100%;
+            max-width: 340px;
+            background-color: #111111;
+            border: 1px solid var(--genre-orange);
+            border-radius: 14px;
+            padding: 22px 20px;
+            box-shadow: 0 0 25px var(--genre-orange-glow);
+            margin-bottom: 16px;
+            text-align: left;
+            display: block;
+        }
+
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .brand-lockup-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-mark-left {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.8rem;
+            color: var(--brand-red);
+            line-height: 0.85;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 10px var(--brand-red-glow);
+        }
+
+        .brand-text-stacked {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .brand-title-top {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+        }
+
+        .brand-title-bottom {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.55rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .badge-slot-reserved {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #888888;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-flex-box {
+            text-align: center;
+            padding: 4px 0;
+            margin-bottom: 16px;
+        }
+
+        .game-title-header {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.8rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .flex-status-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .brand-orange { color: var(--genre-orange); }
+        .brand-green { color: var(--state-success); }
+        .brand-white { color: #ffffff; }
+
+        .hero-time-display {
+            font-family: 'Anton', sans-serif;
+            font-size: 3.4rem;
+            line-height: 0.9;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin: 8px 0;
+        }
+
+        .hero-time-unit {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #888888;
+            letter-spacing: 1px;
+            margin-left: 2px;
+            text-transform: lowercase;
+        }
+
+        .flex-tier-badge {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--genre-orange);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(255, 117, 31, 0.1);
+            border: 1px solid var(--genre-orange);
+            padding: 6px 16px;
+            border-radius: 12px;
+            margin-top: 6px;
+        }
+
+        .receipt-details {
+            border-top: 1px solid #333333;
+            padding-top: 14px;
+            margin-bottom: 16px;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .receipt-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .row-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .row-val {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .row-val.success { color: var(--state-success); }
+        .row-val.active { color: var(--genre-orange); }
+
+        .card-footer-cta {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 800;
+            color: #888888;
+            letter-spacing: 1.5px;
+            border-top: 1px dashed #333333;
+            padding-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .controls-group {
+            width: 100%;
+            max-width: 340px;
+            display: block;
+        }
+
+        .btn-flex-action {
+            width: 100%;
+            background-color: var(--genre-orange);
+            border: 1px solid var(--genre-orange);
+            color: #000000;
+            padding: 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 24px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--genre-orange-glow);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .btn-secondary-action {
+            width: 100%;
+            background-color: #111111;
+            border: 1px solid #333333;
+            color: #ffffff;
+            padding: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 24px;
+            cursor: pointer;
+            display: block;
+        }
+
+        #toast-msg {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--genre-orange);
+            color: #000000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.75rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: none;
+            z-index: 1000;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
-<body>
+<body class="game-clusters">
 
     <div id="penalty-overlay"></div>
 
@@ -152,8 +531,8 @@
             <p class="game-logo-sub" style="color: var(--genre-orange);">CLUSTERS</p>
         </div>
 
-        <!-- Standardized Landing Screen -->
-        <div id="start-screen" class="landing-container">
+        <!-- Landing Screen -->
+        <div id="start-screen" class="landing-container" style="display: flex;">
             <div class="landing-shaft-graphic">
                 <div class="landing-shaft-box"></div>
                 <div class="landing-shaft-box"></div>
@@ -174,7 +553,10 @@
                 One mistake resets the climb to 1st floor.
             </div>
 
-            <button id="btn-start-climb" class="btn-start">Start Climb</button>
+            <div style="display: flex; gap: 8px; margin-top: 4px;">
+                <button id="btn-landing-stats" class="pill-btn" style="padding: 10px 18px; border-radius: 24px;">STATS / ARCHIVE</button>
+                <button id="btn-start-climb" class="btn-start">Start Climb</button>
+            </div>
         </div>
 
         <!-- Gameplay HUD -->
@@ -203,13 +585,149 @@
             </div>
         </main>
 
+        <!-- INTEGRATED VICTORY SCREEN RECEIPT CARD -->
+        <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
+            
+            <div class="victory-receipt-card" id="victory-card">
+                <div class="receipt-header">
+                    <div class="brand-lockup-container">
+                        <div class="brand-mark-left">11FL?</div>
+                        <div class="brand-text-stacked">
+                            <span class="brand-title-top">ELEVENTH FLOOR</span>
+                            <span class="brand-title-bottom">GAMES</span>
+                        </div>
+                    </div>
+                    <div class="badge-slot-reserved">VERIFIED</div>
+                </div>
+
+                <div class="hero-flex-box">
+                    <div class="game-title-header">
+                        <span class="brand-orange">11th</span> <span class="brand-white">Floor Clusters</span>
+                    </div>
+                    <div class="flex-status-label">
+                        <span class="brand-orange">11th</span> <span class="brand-white">Floor Cleared</span>
+                    </div>
+                    <div class="hero-time-display"><span id="victory-time-display">00:00</span><span class="hero-time-unit">s</span></div>
+                    <div class="flex-tier-badge">PERFECT</div>
+                </div>
+
+                <div class="receipt-details">
+                    <div class="receipt-row">
+                        <span class="row-label">ELEVENTH FLOOR CLUSTERS</span>
+                        <span class="row-val">#042</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">TODAY'S TIME</span>
+                        <span id="victory-time-row-display" class="row-val active">00:00s</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">ACCURACY</span>
+                        <span class="row-val success">100% (10/10)</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">CURRENT STREAK</span>
+                        <span id="victory-streak-display" class="row-val active">0 Days</span>
+                    </div>
+                </div>
+
+                <div class="card-footer-cta">
+                    NEW GAME DAILY!
+                </div>
+            </div>
+
+            <!-- ACTION CONTROL BUTTONS -->
+            <div class="controls-group">
+                <button class="btn-flex-action" id="share-btn">SHARE SCREENSHOT</button>
+                <button class="btn-secondary-action" id="btn-victory-stats">STATS & ARCHIVES</button>
+            </div>
+        </div>
+
         <footer>
             <div id="status-message"></div>
-            <div>ONE MISTAKE RESETS THE CLIMB TO 1ST FLOOR.</div>
+            <div id="footer-text">ONE MISTAKE RESETS THE CLIMB TO 1ST FLOOR.</div>
         </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-msg">SCREENSHOT GENERATED</div>
+
+    <!-- Stats & Archive Vault Modal -->
+    <div id="modal-vault" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-sub-header">11TH FLOOR CLUSTERS</div>
+            <div class="modal-main-title">STATS & ARCHIVES</div>
+            <div class="stats-summary-grid">
+                <div class="stat-item"><span id="stat-played" class="stat-value">0</span><span class="stat-label">Played</span></div>
+                <div class="stat-item"><span id="stat-wins" class="stat-value orange">0</span><span class="stat-label">Wins</span></div>
+                <div class="stat-item"><span id="stat-winrate" class="stat-value">0%</span><span class="stat-label">Win %</span></div>
+                <div class="stat-item"><span id="stat-streak" class="stat-value active">0</span><span class="stat-label">Streak</span></div>
+                <div class="stat-item"><span id="stat-bestfloor" class="stat-value orange">1st</span><span class="stat-label">Highest Floor</span></div>
+                <div class="stat-item"><span id="stat-besttime" class="stat-value active">--:--</span><span class="stat-label">Best Time</span></div>
+            </div>
+            <div id="vault-list" class="vault-grid"></div>
+            <button id="btn-close-vault" class="btn-modal">CLOSE</button>
+        </div>
     </div>
 
     <script src="clusters-data.js"></script>
     <script src="clusters.js"></script>
+
+    <!-- SCREENSHOT GENERATOR ENGINE -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const shareBtn = document.getElementById('share-btn');
+            const victoryCard = document.getElementById('victory-card');
+            const toast = document.getElementById('toast-msg');
+
+            function showToast(text) {
+                if (!toast) return;
+                toast.innerText = text;
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2000);
+            }
+
+            if (shareBtn && victoryCard) {
+                shareBtn.addEventListener('click', async () => {
+                    try {
+                        showToast('CAPTURING SCREENSHOT...');
+                        const canvas = await html2canvas(victoryCard, {
+                            backgroundColor: '#111111',
+                            scale: 2,
+                            useCORS: true,
+                            allowTaint: true
+                        });
+
+                        canvas.toBlob(async (blob) => {
+                            if (!blob) return;
+                            const file = new File([blob], '11th-floor-clusters-victory.png', { type: 'image/png' });
+
+                            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                                try {
+                                    await navigator.share({
+                                        title: '11th Floor Clusters Victory Card',
+                                        files: [file]
+                                    });
+                                } catch (e) {
+                                    console.log('Share prompt dismissed');
+                                }
+                            } else {
+                                const downloadLink = document.createElement('a');
+                                downloadLink.href = URL.createObjectURL(file);
+                                downloadLink.download = '11th-floor-clusters-victory.png';
+                                downloadLink.click();
+                                showToast('SCREENSHOT SAVED TO DEVICE');
+                            }
+                        }, 'image/png');
+                    } catch (err) {
+                        console.error('Screenshot capture error:', err);
+                        showToast('ERROR GENERATING SCREENSHOT');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
+<!-- END OF FILE: clusters.html -->
