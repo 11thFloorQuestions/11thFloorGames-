@@ -630,6 +630,7 @@ function handleVictory() {
     triggerHaptic([50, 50, 50, 50, 100]);
     
     const victoryTimeDisplay = document.getElementById('victory-time-display');
+    const victoryTimeRowDisplay = document.getElementById('victory-time-row-display');
     const victoryStreakDisplay = document.getElementById('victory-streak-display');
     const hudContainer = document.getElementById('floor-hud-container');
     const gameWorkspace = document.getElementById('game-workspace');
@@ -638,7 +639,9 @@ function handleVictory() {
     const victoryScreen = document.getElementById('victory-screen');
     const footerText = document.getElementById('footer-text');
 
-    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formatTime(gameState.timeElapsedSeconds);
+    const formattedTime = formatTime(gameState.timeElapsedSeconds);
+    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
+    if (victoryTimeRowDisplay) victoryTimeRowDisplay.textContent = `${formattedTime}s`;
     if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${gameState.stats.streak} Days`;
 
     if (hudContainer) hudContainer.style.display = 'none';
