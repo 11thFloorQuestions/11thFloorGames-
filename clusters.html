@@ -94,7 +94,6 @@
             color: var(--genre-orange, #ff751f);
         }
 
-        /* Active Timer Display */
         .header-timer {
             font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
@@ -106,7 +105,6 @@
             padding: 4px 12px;
             border-radius: 12px;
             display: none;
-            margin-bottom: 4px;
         }
 
         .game-logo-box {
@@ -116,6 +114,44 @@
             margin-bottom: 8px;
             text-align: center;
             flex-shrink: 0;
+        }
+
+        .gameplay-header-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 6px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .game-logo-orange {
+            font-family: 'Anton', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: var(--genre-orange);
+            line-height: 0.85;
+            letter-spacing: -1px;
+            text-shadow: 0 0 20px var(--genre-orange-glow);
+            margin-bottom: 4px;
+        }
+
+        .game-logo-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            margin-bottom: 2px;
+        }
+
+        .game-logo-sub {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--genre-orange);
+            letter-spacing: 4px;
+            text-transform: uppercase;
         }
 
         .landing-container {
@@ -213,28 +249,64 @@
         }
 
         /* Gameplay Area */
-        .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 12px; flex-shrink: 0; }
+        .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 8px; flex-shrink: 0; }
         .tower-stack { display: flex; flex-direction: column-reverse; gap: 2px; width: 52px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 6px; justify-content: space-between; flex-shrink: 0; }
         .tower-floor { height: 7px; border: 1px solid var(--surface-border); background: #111111; transition: all 0.2s ease; border-radius: 2px; }
-        .tower-floor.active { border-color: var(--genre-orange); background: rgba(255, 117, 31, 0.3); box-shadow: 0 0 6px var(--genre-orange-glow); }
+        .tower-floor.active, .tower-floor.active-floor { border-color: var(--genre-orange); background: rgba(255, 117, 31, 0.3); box-shadow: 0 0 6px var(--genre-orange-glow); }
+        .tower-floor.completed { border-color: var(--state-success); background: var(--state-success); }
+        .tower-floor.failed { border-color: var(--state-error); background: var(--state-error); }
+        
         .floor-info-box { flex-grow: 1; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
         .current-floor-display { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; color: var(--genre-orange); }
 
-        .lives-container { display: flex; gap: 5px; }
+        .lives-container { display: flex; gap: 5px; margin-top: 4px; }
         .life-pip { width: 8px; height: 8px; background-color: var(--genre-orange); border-radius: 50%; box-shadow: 0 0 6px var(--genre-orange-glow); transition: all 0.2s ease; }
         .life-pip.lost { background-color: #222222; box-shadow: none; }
 
-        main { width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; flex-grow: 1; justify-content: center; }
-        .puzzle-prompt { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px; text-align: center; letter-spacing: 0.5px; }
-        #solved-groups-container { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
-        .solved-group-card { background: rgba(34, 197, 94, 0.1); border: 1px solid var(--state-success); padding: 10px 14px; display: flex; flex-direction: column; gap: 3px; border-radius: 8px; box-shadow: 0 0 15px var(--state-success-glow); }
-        .solved-group-category { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--state-success); font-weight: 700; }
-        .solved-group-words { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px; }
+        .timer-bar-container { width: 100%; max-width: 600px; height: 4px; background: #111111; border-radius: 2px; overflow: hidden; margin-bottom: 8px; flex-shrink: 0; }
+        .timer-bar { width: 100%; height: 100%; background: var(--genre-orange); transition: width 0.05s linear; }
 
-        .tile-grid { display: grid; gap: 10px; width: 100%; margin-bottom: 20px; }
+        .clue-banner {
+            width: 100%;
+            max-width: 600px;
+            background: #111111;
+            border: 1px solid var(--genre-orange);
+            border-radius: 8px;
+            padding: 10px 14px;
+            text-align: center;
+            margin-bottom: 10px;
+            box-shadow: 0 0 12px var(--genre-orange-glow);
+            flex-shrink: 0;
+        }
+
+        .clue-label {
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 2px;
+        }
+
+        .clue-text {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--genre-orange);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        main { width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; flex-grow: 1; justify-content: center; }
+        .puzzle-prompt { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 10px; text-align: center; letter-spacing: 0.5px; }
+        #solved-groups-container { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+        .solved-group-card { background: rgba(34, 197, 94, 0.1); border: 1px solid var(--state-success); padding: 8px 12px; display: flex; flex-direction: column; gap: 2px; border-radius: 8px; box-shadow: 0 0 12px var(--state-success-glow); }
+        .solved-group-category { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--state-success); font-weight: 700; }
+        .solved-group-words { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px; }
+
+        .tile-grid { display: grid; gap: 8px; width: 100%; margin-bottom: 14px; }
         .grid-col-3 { grid-template-columns: repeat(3, 1fr); }
         .grid-col-4 { grid-template-columns: repeat(4, 1fr); }
-        .cluster-tile { background-color: #0f0f0f; border: 1px solid var(--surface-border); color: var(--text-primary); font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; padding: 16px 8px; text-align: center; cursor: pointer; transition: all 0.15s ease; display: flex; align-items: center; justify-content: center; min-height: 55px; border-radius: 8px; }
+        .cluster-tile { background-color: #0f0f0f; border: 1px solid var(--surface-border); color: var(--text-primary); font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; padding: 14px 6px; text-align: center; cursor: pointer; transition: all 0.15s ease; display: flex; align-items: center; justify-content: center; min-height: 52px; border-radius: 8px; }
         .cluster-tile:hover { background-color: #1a1a1a; border-color: var(--genre-orange); }
         .cluster-tile.selected { background-color: var(--genre-orange); color: #000000; border-color: var(--genre-orange); box-shadow: 0 0 15px var(--genre-orange-glow); }
         .cluster-tile.success { background-color: var(--state-success) !important; color: #000000 !important; border-color: var(--state-success) !important; box-shadow: 0 0 20px var(--state-success-glow) !important; }
@@ -249,7 +321,7 @@
 
         #penalty-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255, 117, 31, 0.2); pointer-events: none; opacity: 0; transition: opacity 0.2s ease; z-index: 999; }
         #penalty-overlay.flash { opacity: 1; }
-        #status-message { min-height: 20px; color: var(--genre-orange); font-weight: 700; margin-bottom: 4px; }
+        #status-message { min-height: 20px; color: var(--genre-orange); font-weight: 700; margin-bottom: 4px; text-align: center; }
 
         /* Modal Styles */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.92); display: flex; align-items: center; justify-content: center; z-index: 100; }
@@ -459,7 +531,9 @@
         .controls-group {
             width: 100%;
             max-width: 340px;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .btn-flex-action {
@@ -525,14 +599,14 @@
             <button class="pill-btn" id="btn-sound">SOUND: OFF</button>
         </div>
 
-        <div class="game-logo-box">
-            <h1 class="game-logo-orange">11FL?</h1>
-            <p class="game-logo-title">Eleventh Floor</p>
-            <p class="game-logo-sub" style="color: var(--genre-orange);">CLUSTERS</p>
-        </div>
-
         <!-- Landing Screen -->
         <div id="start-screen" class="landing-container" style="display: flex;">
+            <div class="game-logo-box">
+                <h1 class="game-logo-orange">11FL?</h1>
+                <p class="game-logo-title">Eleventh Floor</p>
+                <p class="game-logo-sub" style="color: var(--genre-orange);">CLUSTERS</p>
+            </div>
+
             <div class="landing-shaft-graphic">
                 <div class="landing-shaft-box"></div>
                 <div class="landing-shaft-box"></div>
@@ -549,8 +623,8 @@
 
             <div class="landing-challenge-text">
                 <strong>CAN YOU REACH THE 11TH FLOOR?</strong><br><br>
-                Group the 12 tiles into categories of 3 to ascend.<br><br>
-                One mistake resets the climb to 1st floor.
+                Match clue targets to group tiles into categories and ascend.<br><br>
+                One mistake or expired timer resets the climb to 1st floor.
             </div>
 
             <div style="display: flex; gap: 8px; margin-top: 4px;">
@@ -559,12 +633,21 @@
             </div>
         </div>
 
+        <!-- Gameplay Header -->
+        <div id="gameplay-header" class="gameplay-header-box" style="display: none;">
+            <p class="game-logo-title">Eleventh Floor</p>
+            <p class="game-logo-sub" style="color: var(--genre-orange);">CLUSTERS</p>
+        </div>
+
         <!-- Gameplay HUD -->
         <div class="hud-sidebar-container" id="floor-hud-container" style="display: none;">
             <div class="tower-stack" id="tower-stack"></div>
             <div class="floor-info-box">
-                <div class="current-floor-display" id="floor-number-val">FLOOR 01</div>
-                <div class="floor-right-group" style="display: flex; flex-direction: column; align-items: flex-end;">
+                <div style="display: flex; flex-direction: column; gap: 2px;">
+                    <div class="current-floor-display" id="floor-number-val">FLOOR 01</div>
+                    <div id="floor-rule-text" style="font-size: 0.65rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">No mistakes!</div>
+                </div>
+                <div class="floor-right-group" style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
                     <div id="active-game-timer" class="header-timer">00:00</div>
                     <div class="lives-container" id="lives-container">
                         <div class="life-pip" id="pip-1"></div>
@@ -573,6 +656,17 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Timer Bar -->
+        <div id="timer-bar-wrapper" class="timer-bar-container" style="display: none;">
+            <div id="timer-bar" class="timer-bar"></div>
+        </div>
+
+        <!-- Target Clue Banner -->
+        <div id="clue-banner" class="clue-banner" style="display: none;">
+            <div class="clue-label">TARGET CLUSTER</div>
+            <div id="clue-text" class="clue-text">LOADING CLUE...</div>
         </div>
 
         <main id="game-main-content" style="display: none;">
@@ -587,7 +681,6 @@
 
         <!-- INTEGRATED VICTORY SCREEN RECEIPT CARD -->
         <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
-            
             <div class="victory-receipt-card" id="victory-card">
                 <div class="receipt-header">
                     <div class="brand-lockup-container">
@@ -669,6 +762,17 @@
         </div>
     </div>
 
+    <!-- Game Over Modal -->
+    <div id="modal-game-over" class="modal-overlay hidden">
+        <div class="modal-card">
+            <h2 id="game-over-title" style="font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;">ELEVATOR STOPPED</h2>
+            <p id="game-over-message" style="font-size: 0.8rem; color: var(--genre-orange); font-weight: 700; margin-bottom: 8px; text-transform: uppercase;"></p>
+            <p id="final-floor-reached" style="font-size: 0.85rem; color: var(--text-primary); margin-bottom: 16px;"></p>
+            <button id="btn-try-again" class="btn-modal" style="background: var(--genre-orange); color: #000000; border-color: var(--genre-orange);">TRY AGAIN</button>
+            <button id="btn-back-vault" class="btn-modal">VAULT</button>
+        </div>
+    </div>
+
     <script src="clusters-data.js"></script>
     <script src="clusters.js"></script>
 
@@ -730,4 +834,3 @@
     </script>
 </body>
 </html>
-<!-- END OF FILE: clusters.html -->
