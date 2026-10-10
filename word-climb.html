@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>11th Floor Word Climb — Daily Puzzle</title>
+    <title>11th Floor Cluegram — Daily Puzzle</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
@@ -12,26 +12,88 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/glacial-indifference" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <!-- HTML2CANVAS LIBRARY FOR RECEIPT SCREENSHOT CAPTURE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <style>
+        :root {
+            --bg-deep: #000000;
+            --surface: #0a0a0a;
+            --surface-border: #222222;
+            --surface-border-light: #333333;
+            --text-primary: #ffffff;
+            --text-muted: #888888;
+            --genre-magenta: #cc007e;
+            --genre-magenta-glow: rgba(204, 0, 126, 0.35);
+            --brand-red: #cc0000;
+            --brand-red-glow: rgba(204, 0, 0, 0.35);
+            --state-active: #facc15;
+            --state-active-glow: rgba(250, 204, 21, 0.3);
+            --state-success: #22c55e;
+            --state-success-glow: rgba(34, 197, 94, 0.3);
+            --state-error: #ef4444;
+            --state-error-glow: rgba(239, 68, 68, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            background-color: var(--bg-deep);
+            height: 100%;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 10px;
+            overflow: hidden;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            min-height: 100dvh;
+            flex-grow: 1;
+        }
+
         .top-bar {
             width: 100%;
             max-width: 600px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             flex-shrink: 0;
         }
 
         .pill-btn {
-            background: var(--surface, #0a0a0a);
-            border: 1px solid var(--surface-border-light, #333333);
-            color: var(--text-primary, #ffffff);
-            padding: 6px 12px;
+            background: var(--surface);
+            border: 1px solid var(--surface-border-light);
+            color: var(--text-primary);
+            padding: 5px 10px;
             border-radius: 20px;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             font-weight: 700;
             text-decoration: none;
             cursor: pointer;
@@ -39,22 +101,126 @@
         }
 
         .pill-btn:hover {
-            border-color: var(--genre-blue, #3B82F6);
-            color: var(--genre-blue, #3B82F6);
+            border-color: var(--genre-magenta);
+            color: var(--genre-magenta);
         }
 
-        /* Active Timer Display */
+        /* Header Timer Display */
         .header-timer {
             font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
             font-weight: 800;
-            color: var(--state-active, #facc15);
+            color: var(--state-active);
             letter-spacing: 1px;
-            background: var(--surface, #0a0a0a);
-            border: 1px solid var(--surface-border, #222222);
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
             padding: 4px 12px;
             border-radius: 12px;
             display: none;
+        }
+
+        /* Landing Logo Box */
+        .game-logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 6px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .game-logo-magenta {
+            font-family: 'Anton', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: var(--genre-magenta);
+            line-height: 0.85;
+            letter-spacing: -1px;
+            text-shadow: 0 0 20px var(--genre-magenta-glow);
+            margin-bottom: 4px;
+        }
+
+        .game-logo-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            margin-bottom: 2px;
+        }
+
+        .game-logo-sub {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--genre-magenta);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* Gameplay Compact Header Box */
+        .gameplay-header-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 4px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .gameplay-header-box .game-logo-title {
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 1px;
+        }
+
+        .gameplay-header-box .game-logo-sub {
+            font-size: 0.55rem;
+            letter-spacing: 3px;
+        }
+
+        #start-screen {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .landing-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 14px;
+            padding: 16px 14px;
+            width: 100%;
+            max-width: 600px;
+            background: var(--surface);
+            border: 1px solid var(--surface-border-light);
+            border-radius: 8px;
+            margin-top: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .landing-shaft-graphic {
+            display: flex;
+            flex-direction: column;
+            width: 52px;
+            height: 140px;
+            border: 1px solid var(--surface-border-light);
+            border-radius: 8px;
+            padding: 6px;
+            gap: 3px;
+            background-color: #111111;
+        }
+
+        .landing-shaft-box {
+            flex: 1;
+            background-color: #080808;
+            border: 1px solid var(--surface-border);
+            border-radius: 2px;
         }
 
         .landing-shaft-graphic .landing-shaft-box { animation: sweepMiddle 1.2s ease-in-out forwards; }
@@ -71,136 +237,449 @@
         .landing-shaft-graphic .landing-shaft-box:nth-child(1)  { animation: sweepTopGreen 1.6s ease-in-out forwards; animation-delay: 1.05s; }
 
         @keyframes sweepMiddle {
-            0% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
-            30% { background-color: var(--genre-blue); border-color: var(--genre-blue); box-shadow: 0 0 10px var(--genre-blue-glow); }
-            60%, 100% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+            0% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
+            30% { background-color: var(--genre-magenta); border-color: var(--genre-magenta); box-shadow: 0 0 10px var(--genre-magenta-glow); }
+            60%, 100% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
         }
 
         @keyframes sweepTopGreen {
-            0% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+            0% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
             20%, 70% { background-color: var(--state-success); border-color: var(--state-success); box-shadow: 0 0 16px var(--state-success-glow); }
-            100% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
+            100% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
         }
 
         @keyframes sweepBottomSettle {
-            0% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
-            15% { background-color: var(--genre-blue); border-color: var(--genre-blue); box-shadow: 0 0 10px var(--genre-blue-glow); }
-            30%, 80% { background-color: #111111; border-color: var(--surface-border); box-shadow: none; }
-            95%, 100% { background-color: var(--genre-blue); border-color: var(--genre-blue); box-shadow: 0 0 8px var(--genre-blue-glow); }
+            0% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
+            15% { background-color: var(--genre-magenta); border-color: var(--genre-magenta); box-shadow: 0 0 10px var(--genre-magenta-glow); }
+            30%, 80% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
+            95%, 100% { background-color: var(--genre-magenta); border-color: var(--genre-magenta); box-shadow: 0 0 8px var(--genre-magenta-glow); }
         }
 
-        .game-logo-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 8px;
-            text-align: center;
-            flex-shrink: 0;
+        .landing-challenge-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
-        .gameplay-header-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 6px;
-            text-align: center;
-            flex-shrink: 0;
+        .btn-start {
+            background-color: var(--surface);
+            border: 1px solid var(--genre-magenta);
+            color: var(--genre-magenta);
+            padding: 11px 26px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
         .btn-start:hover {
-            background-color: var(--genre-blue);
+            background-color: var(--genre-magenta);
             color: #ffffff;
-            box-shadow: 0 4px 25px var(--genre-blue-glow);
+            box-shadow: 0 4px 25px var(--genre-magenta-glow);
         }
 
-        /* Gameplay Area */
-        .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 6px; flex-shrink: 0; }
-        .tower-stack { display: flex; flex-direction: column; gap: 2px; width: 52px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 6px; justify-content: space-between; flex-shrink: 0; }
-        .tower-floor { height: 7px; border: 1px solid var(--surface-border); background: #111111; transition: all 0.2s ease; border-radius: 2px; }
+        /* Gameplay Area Header & Tower Stack */
+        .hud-sidebar-container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            align-items: stretch;
+            gap: 8px;
+            margin-bottom: 4px;
+            flex-shrink: 0;
+        }
+
+        .tower-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            width: 44px;
+            background: var(--surface);
+            border: 1px solid var(--surface-border-light);
+            border-radius: 8px;
+            padding: 4px;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        .tower-floor {
+            height: 6px;
+            border: 1px solid var(--surface-border);
+            background: #111111;
+            transition: all 0.2s ease;
+            border-radius: 2px;
+        }
+
         .tower-floor.active { border-color: var(--state-active); background: var(--state-active); box-shadow: 0 0 8px var(--state-active-glow); }
         .tower-floor.completed { border-color: var(--state-success); background: var(--state-success); box-shadow: 0 0 6px var(--state-success-glow); }
         .tower-floor.failed { border-color: var(--state-error); background: var(--state-error); box-shadow: 0 0 6px var(--state-error-glow); }
-        .floor-info-box { flex-grow: 1; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
-        .floor-left-group { display: flex; flex-direction: column; gap: 4px; }
-        .current-floor-display { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; }
-        .floor-rule-text { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; }
 
-        .play-card { width: 100%; max-width: 600px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 2px; flex-grow: 1; margin-bottom: 6px; overflow: hidden; min-height: 0; }
-        #message-box { min-height: 16px; color: var(--state-error); font-weight: 700; font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; text-align: center; }
-        
-        #target-word-slots { 
-            display: flex; 
-            gap: 4px; 
-            justify-content: center; 
-            align-items: center; 
-            width: 100%; 
-            min-height: 38px; 
-            flex-wrap: nowrap; 
+        .floor-info-box {
+            flex-grow: 1;
+            background: var(--surface);
+            border: 1px solid var(--surface-border-light);
+            border-radius: 8px;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .target-slot { 
-            width: clamp(26px, 8.5vw, 32px); 
-            height: 38px; 
-            border: 1px solid rgba(250, 204, 21, 0.4); 
-            border-radius: 6px; 
-            background: #111111; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-family: 'Inter', sans-serif; 
-            font-weight: 800; 
-            font-size: clamp(0.85rem, 3.5vw, 1rem); 
-            letter-spacing: -0.5px; 
-            color: var(--text-primary); 
-            transition: all 0.15s ease; 
-            flex-shrink: 0; 
+
+        .floor-left-group { display: flex; flex-direction: column; gap: 2px; }
+        .current-floor-display { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 800; letter-spacing: 1px; }
+        .floor-rule-text { font-family: 'Montserrat', sans-serif; font-size: 0.62rem; font-weight: 700; color: var(--genre-magenta); letter-spacing: 0.8px; text-transform: uppercase; }
+
+        .play-card {
+            width: 100%;
+            max-width: 600px;
+            background: var(--surface);
+            border: 1px solid var(--surface-border-light);
+            border-radius: 8px;
+            padding: 12px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            flex-grow: 1;
+            margin-bottom: 4px;
+            overflow: hidden;
+            min-height: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
+
+        #message-box {
+            min-height: 14px;
+            color: var(--state-error);
+            font-weight: 700;
+            font-size: 0.68rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .clue-box {
+            width: 100%;
+            background: #111111;
+            border: 1px solid var(--surface-border);
+            border-radius: 6px;
+            padding: 10px 12px;
+            text-align: center;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .clue-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 0.3px;
+            line-height: 1.35;
+        }
+
+        #target-word-slots { display: flex; gap: 4px; justify-content: center; align-items: center; width: 100%; min-height: 42px; flex-wrap: nowrap; }
+        .target-slot { width: clamp(26px, 8.5vw, 34px); height: 42px; border: 1px solid rgba(250, 204, 21, 0.4); border-radius: 6px; background: #111111; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 800; font-size: clamp(0.9rem, 3.5vw, 1.1rem); letter-spacing: -0.5px; color: var(--text-primary); cursor: pointer; transition: all 0.15s ease; flex-shrink: 0; }
         .target-slot.filled { border-color: var(--state-active); box-shadow: 0 0 6px var(--state-active-glow); }
         .target-slot.state-success { border-color: var(--state-success); color: var(--state-success); }
         .target-slot.state-error { border-color: var(--state-error); color: var(--state-error); }
 
-        #guess-display { display: flex; justify-content: center; gap: 4px; min-height: 28px; align-items: center; font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; color: var(--text-primary); margin-bottom: 2px; }
-        #wheel-container { width: min(295px, 36vh); height: min(295px, 36vh); max-width: 100%; position: relative; margin: 0 auto; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        .rack-container { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 4px; }
+        .rack-label { font-size: 0.6rem; font-weight: 700; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+        #letter-rack { display: flex; gap: 4px; justify-content: center; align-items: center; flex-wrap: nowrap; width: 100%; }
+        .rack-tile { width: clamp(26px, 8.5vw, 36px); height: 44px; background: #141414; border: 1px solid var(--surface-border); border-radius: 6px; color: #ffffff; font-family: 'Inter', sans-serif; font-weight: 700; font-size: clamp(0.9rem, 3.5vw, 1.1rem); letter-spacing: -0.5px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s ease; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); flex-shrink: 0; }
+        .rack-tile:hover { border-color: var(--state-active); background: #1c1c1c; }
+        .rack-tile.used { opacity: 0.15; pointer-events: none; border-color: transparent; box-shadow: none; }
 
-        .action-panel { width: 100%; max-width: 600px; display: flex; gap: 12px; justify-content: center; flex-shrink: 0; margin-bottom: 4px; }
-        .btn { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 12px 20px; cursor: pointer; border-radius: 8px; flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .action-panel { width: 100%; max-width: 600px; display: flex; gap: 8px; justify-content: center; flex-shrink: 0; margin-bottom: 4px; }
+        .btn { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 11px 14px; cursor: pointer; border-radius: 8px; flex: 1; display: flex; align-items: center; justify-content: center; }
         .btn-secondary { background: #111111; color: var(--text-muted); border: 1px solid var(--surface-border); }
         .btn-secondary:hover { color: var(--text-primary); border-color: var(--text-muted); background: #181818; }
-        .btn-primary { background: #111111; color: var(--state-active, #facc15); border: 1px solid var(--state-active, #facc15); box-shadow: 0 0 10px var(--state-active-glow, rgba(250, 204, 21, 0.25)); }
+        .btn-primary { background: #111111; color: var(--state-active); border: 1px solid var(--state-active); box-shadow: 0 0 10px var(--state-active-glow); }
+
+        footer { font-size: 0.58rem; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; text-align: center; flex-shrink: 0; }
 
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.92); display: flex; align-items: center; justify-content: center; z-index: 100; }
         .modal-overlay.hidden { display: none !important; }
-        .modal-card { background-color: var(--surface); border: 1px solid var(--surface-border); padding: 28px 24px; border-radius: 14px; width: 90%; max-width: 360px; text-align: center; }
-        .modal-large { max-width: 440px; }
-        .stats-summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0 12px 0; background: var(--bg-deep); border: 1px solid var(--surface-border); border-radius: 10px; padding: 14px; }
-        .stat-box { display: flex; flex-direction: column; align-items: center; }
-        .stat-val { font-size: 1.25rem; font-weight: 800; color: var(--text-primary); }
-        .stat-lbl { font-size: 0.55rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-top: 3px; }
-        .vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 8px; max-height: 220px; overflow-y: auto; margin: 12px 0; }
-        .vault-item-btn { background-color: #111111; border: 1px solid var(--surface-border); color: var(--text-primary); padding: 10px 6px; border-radius: 8px; cursor: pointer; text-align: center; }
-        .vault-item-btn:hover { border-color: var(--genre-blue, #3B82F6); background-color: #1a1a1a; }
-        .btn-modal { flex-grow: 1; width: 100%; background-color: #111111; border: 1px solid var(--surface-border); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 10px; }
+        .modal-card { background-color: var(--surface); border: 1px solid var(--genre-magenta); box-shadow: 0 0 20px var(--genre-magenta-glow); padding: 24px 20px; border-radius: 14px; width: 92%; max-width: 380px; text-align: center; }
 
-        /* Victory Receipt Card */
-        .victory-receipt { width: 100%; max-width: 320px; background: #111111; border: 1px solid var(--genre-blue, #3B82F6); border-radius: 12px; padding: 20px 20px; margin: 16px 0 20px 0; box-shadow: 0 0 25px rgba(59, 130, 246, 0.3); display: flex; flex-direction: column; gap: 14px; text-align: left; }
-        .victory-row { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--surface-border-light, #333333); padding-bottom: 8px; }
-        .victory-label { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-        .victory-data { font-size: 1rem; font-family: 'Inter', sans-serif; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
+        .modal-sub-header { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 800; color: var(--genre-magenta); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .modal-main-title { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 14px; }
+
+        .stats-summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 12px 0 16px 0; background: var(--bg-deep); border: 1px solid var(--surface-border); border-radius: 10px; padding: 12px 8px; }
+        .stat-item { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .stat-value { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 800; color: #ffffff; }
+        .stat-value.active { color: var(--state-active); }
+        .stat-value.magenta { color: var(--genre-magenta); }
+        .stat-label { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+        .vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 8px; max-height: 200px; overflow-y: auto; margin: 12px 0; padding-right: 2px; }
+        .vault-item-btn { background-color: #111111; border: 1px solid var(--genre-magenta); color: var(--text-primary); padding: 10px 6px; border-radius: 8px; cursor: pointer; text-align: center; box-shadow: 0 0 8px var(--genre-magenta-glow); transition: transform 0.1s ease, border-color 0.2s ease; }
+        .vault-item-btn:hover { border-color: #ffffff; }
+        .btn-modal { width: 100%; background-color: #111111; border: 1px solid var(--surface-border-light); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
+
+        /* IN-GAME VICTORY RECEIPT CARD SPECIFICATIONS */
+        .victory-receipt-card {
+            width: 100%;
+            max-width: 340px;
+            background-color: #111111;
+            border: 1px solid var(--genre-magenta);
+            border-radius: 14px;
+            padding: 22px 20px;
+            box-shadow: 0 0 25px var(--genre-magenta-glow);
+            margin-bottom: 16px;
+            text-align: left;
+            display: block;
+        }
+
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .brand-lockup-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-mark-left {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.8rem;
+            color: var(--brand-red);
+            line-height: 0.85;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 10px var(--brand-red-glow);
+        }
+
+        .brand-text-stacked {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .brand-title-top {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+        }
+
+        .brand-title-bottom {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.55rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .badge-slot-reserved {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #888888;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-flex-box {
+            text-align: center;
+            padding: 4px 0;
+            margin-bottom: 16px;
+        }
+
+        .game-title-header {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.8rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .flex-status-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .brand-magenta { color: var(--genre-magenta); }
+        .brand-green { color: var(--state-success); }
+        .brand-white { color: #ffffff; }
+
+        .hero-time-display {
+            font-family: 'Anton', sans-serif;
+            font-size: 3.4rem;
+            line-height: 0.9;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin: 8px 0;
+        }
+
+        .hero-time-unit {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #888888;
+            letter-spacing: 1px;
+            margin-left: 2px;
+            text-transform: lowercase;
+        }
+
+        .flex-tier-badge {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--genre-magenta);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(204, 0, 126, 0.1);
+            border: 1px solid var(--genre-magenta);
+            padding: 6px 16px;
+            border-radius: 12px;
+            margin-top: 6px;
+        }
+
+        .receipt-details {
+            border-top: 1px solid #333333;
+            padding-top: 14px;
+            margin-bottom: 16px;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .receipt-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .row-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .row-val {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .row-val.success { color: var(--state-success); }
+        .row-val.active { color: var(--genre-magenta); }
+
+        .card-footer-cta {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 800;
+            color: #888888;
+            letter-spacing: 1.5px;
+            border-top: 1px dashed #333333;
+            padding-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .controls-group {
+            width: 100%;
+            max-width: 340px;
+            display: block;
+        }
+
+        .btn-flex-action {
+            width: 100%;
+            background-color: var(--genre-magenta);
+            border: 1px solid var(--genre-magenta);
+            color: #ffffff;
+            padding: 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 24px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--genre-magenta-glow);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .btn-secondary-action {
+            width: 100%;
+            background-color: #111111;
+            border: 1px solid #333333;
+            color: #ffffff;
+            padding: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 24px;
+            cursor: pointer;
+            display: block;
+        }
+
+        #toast-msg {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--genre-magenta);
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.75rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: none;
+            z-index: 1000;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
-<body class="game-wordclimb">
+<body class="game-cluegram">
 
-    <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 100%;">
+    <div class="main-wrapper">
         <div class="top-bar">
             <a href="index.html" class="pill-btn">← LOBBY</a>
             <button class="pill-btn" id="btn-sound">SOUND: ON</button>
         </div>
 
         <!-- LANDING SCREEN -->
-        <div id="start-screen" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+        <div id="start-screen">
             <div class="game-logo-box">
-                <h1 class="game-logo-blue">11FL?</h1>
+                <h1 class="game-logo-magenta">11FL?</h1>
                 <p class="game-logo-title">Eleventh Floor</p>
-                <p class="game-logo-sub" style="color: var(--genre-blue, #3B82F6);">WORD CLIMB</p>
+                <p class="game-logo-sub">CLUEGRAM</p>
             </div>
 
             <div class="landing-container">
@@ -220,9 +699,9 @@
 
                 <div class="landing-challenge-text">
                     <strong>CAN YOU REACH THE 11TH FLOOR?</strong><br><br>
-                    Find valid English words on every floor, from 5 to 9 letters. One mistake and you lose your streak and are sent back to Ground Floor.
+                    Solve the anagrams using the clues on every floor. One mistake and you lose your streak and return to the ground floor.
                 </div>
-
+                
                 <div style="display: flex; gap: 8px; margin-top: 4px;">
                     <button id="btn-landing-stats" class="pill-btn" style="padding: 10px 18px; border-radius: 24px;">STATS / ARCHIVE</button>
                     <button id="start-climb-btn" class="btn-start">Start Climb</button>
@@ -233,7 +712,7 @@
         <!-- GAMEPLAY HEADER -->
         <div id="gameplay-header" class="gameplay-header-box" style="display: none;">
             <p class="game-logo-title">Eleventh Floor</p>
-            <p class="game-logo-sub" style="color: var(--genre-blue, #3B82F6);">WORD CLIMB</p>
+            <p class="game-logo-sub">CLUEGRAM</p>
         </div>
 
         <!-- Gameplay HUD Header -->
@@ -254,8 +733,8 @@
 
             <div class="floor-info-box">
                 <div class="floor-left-group">
-                    <div class="current-floor-display" id="floor-number-val"><span style="color: var(--genre-blue, #3B82F6); font-weight: 800;">1st</span> <span style="color: #ffffff;">Floor</span></div>
-                    <div class="floor-rule-text" id="floor-rule-text">5-letter English word • No mistakes!</div>
+                    <div class="current-floor-display" id="floor-number-val"><span style="color: var(--genre-magenta);">1st</span> <span style="color: #ffffff;">Floor</span></div>
+                    <div class="floor-rule-text" id="floor-rule-text">5-letter Anagram • No mistakes!</div>
                 </div>
                 <div id="active-game-timer" class="header-timer">00:00</div>
             </div>
@@ -264,77 +743,168 @@
         <!-- Main Play Card Workspace -->
         <div id="game-workspace" class="play-card" style="display: none;">
             <div id="message-box"></div>
+
+            <div class="clue-box">
+                <div id="clue-text" class="clue-text">Loading clue...</div>
+            </div>
+
             <div id="target-word-slots"></div>
-            <div id="guess-display"></div>
-            <div id="wheel-container"></div>
+
+            <div class="rack-container">
+                <div class="rack-label">SCRAMBLED LETTERS</div>
+                <div id="letter-rack"></div>
+            </div>
         </div>
 
         <!-- Action Panel Controls -->
         <div class="action-panel" id="game-controls" style="display: none;">
-            <button class="btn btn-secondary" id="action-delete-btn">DELETE</button>
+            <button class="btn btn-secondary" id="action-backspace-btn">BACKSPACE</button>
+            <button class="btn btn-secondary" id="action-shuffle-btn">SHUFFLE</button>
             <button class="btn btn-primary" id="action-submit-btn">SUBMIT</button>
         </div>
 
-        <!-- ECOSYSTEM VICTORY SCREEN LAYOUT -->
+        <!-- INTEGRATED VICTORY SCREEN RECEIPT CARD -->
         <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
             
-            <div class="game-logo-box" style="margin-bottom: 0;">
-                <h1 class="game-logo-blue">11FL?</h1>
-                <p class="game-logo-title">Eleventh Floor</p>
-                <p class="game-logo-sub" style="color: var(--genre-blue, #3B82F6);">WORD CLIMB</p>
+            <div class="victory-receipt-card" id="victory-card">
+                <div class="receipt-header">
+                    <div class="brand-lockup-container">
+                        <div class="brand-mark-left">11FL?</div>
+                        <div class="brand-text-stacked">
+                            <span class="brand-title-top">ELEVENTH FLOOR</span>
+                            <span class="brand-title-bottom">GAMES</span>
+                        </div>
+                    </div>
+                    <div class="badge-slot-reserved">VERIFIED</div>
+                </div>
+
+                <div class="hero-flex-box">
+                    <div class="game-title-header">
+                        <span class="brand-magenta">11th</span> <span class="brand-white">Floor Cluegram</span>
+                    </div>
+                    <div class="flex-status-label">
+                        <span class="brand-magenta">11th</span> <span class="brand-white">Floor Cleared</span>
+                    </div>
+                    <div class="hero-time-display"><span id="victory-time-display">00:00</span><span class="hero-time-unit">s</span></div>
+                    <div class="flex-tier-badge">PERFECT</div>
+                </div>
+
+                <div class="receipt-details">
+                    <div class="receipt-row">
+                        <span class="row-label">ELEVENTH FLOOR CLUEGRAM</span>
+                        <span class="row-val">#042</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">TODAY'S TIME</span>
+                        <span id="victory-time-row-display" class="row-val active">00:00s</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">ACCURACY</span>
+                        <span class="row-val success">100% (10/10)</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">CURRENT STREAK</span>
+                        <span id="victory-streak-display" class="row-val active">0 Days</span>
+                    </div>
+                </div>
+
+                <div class="card-footer-cta">
+                    NEW GAME DAILY!
+                </div>
             </div>
 
-            <div class="victory-receipt">
-                <div style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 3px; color: var(--genre-blue, #3B82F6); text-transform: uppercase; text-align: center; margin-bottom: 2px;">DESTINATION REACHED</div>
-                <div style="font-family: 'Anton', sans-serif; font-size: 2rem; color: #ffffff; letter-spacing: 1px; margin-bottom: 4px; text-align: center;">PERFECT</div>
-                
-                <div class="victory-row">
-                    <span class="victory-label">Time Elapsed</span>
-                    <span id="victory-time-display" class="victory-data">00:00</span>
-                </div>
-                
-                <div class="victory-row">
-                    <span class="victory-label">Accuracy</span>
-                    <span class="victory-data" style="color: var(--state-success, #22c55e);">100% (10/10)</span>
-                </div>
-                
-                <div class="victory-row" style="border-bottom: none; padding-bottom: 0;">
-                    <span class="victory-label">Active Streak</span>
-                    <span id="victory-streak-display" class="victory-data" style="color: var(--state-active, #facc15);">0 Days</span>
-                </div>
-            </div>
-
-            <button id="btn-victory-stats" class="btn-start" style="width: 100%; max-width: 320px; margin-bottom: 12px; background-color: var(--genre-blue, #3B82F6); color: #ffffff; border-color: var(--genre-blue, #3B82F6);">VIEW STATS & ARCHIVES</button>
-            
-            <div style="font-size: 0.65rem; color: var(--text-muted, #888888); font-weight: 600; letter-spacing: 1px; max-width: 280px; line-height: 1.5;">
-                Unlock all past daily games and custom quizzes for £2 a month or a discounted price of £20 a year in the Archive Vault.
+            <!-- ACTION CONTROL BUTTONS -->
+            <div class="controls-group">
+                <button class="btn-flex-action" id="share-btn">SHARE SCREENSHOT</button>
+                <button class="btn-secondary-action" id="btn-victory-stats">STATS & ARCHIVES</button>
             </div>
         </div>
 
         <footer>
-            <div id="footer-text">ONE MISTAKE RESETS THE CLIMB TO GROUND FLOOR.</div>
+            <div id="footer-text">ONE MISTAKE RESETS THE CLIMB TO 1ST FLOOR.</div>
         </footer>
     </div>
 
+    <!-- Toast Notification -->
+    <div id="toast-msg">SCREENSHOT GENERATED</div>
+
     <!-- Stats & Archive Vault Modal -->
     <div id="modal-vault" class="modal-overlay hidden">
-        <div class="modal-card modal-large">
-            <h2 style="font-size: 1.2rem; font-weight: 800;">STATS</h2>
+        <div class="modal-card">
+            <div class="modal-sub-header">11TH FLOOR CLUEGRAM</div>
+            <div class="modal-main-title">STATS & ARCHIVES</div>
             <div class="stats-summary-grid">
-                <div class="stat-box"><span id="stat-played" class="stat-val">0</span><span class="stat-lbl">Played</span></div>
-                <div class="stat-box"><span id="stat-wins" class="stat-val">0</span><span class="stat-lbl">Wins</span></div>
-                <div class="stat-box"><span id="stat-winrate" class="stat-val">0%</span><span class="stat-lbl">Win %</span></div>
-                <div class="stat-box"><span id="stat-streak" class="stat-val">0</span><span class="stat-lbl">Streak</span></div>
-                <div class="stat-box" style="grid-column: span 2;"><span id="stat-bestfloor" class="stat-val">FL 01</span><span class="stat-lbl">Best Peak</span></div>
+                <div class="stat-item"><span id="stat-played" class="stat-value">0</span><span class="stat-label">Played</span></div>
+                <div class="stat-item"><span id="stat-wins" class="stat-value magenta">0</span><span class="stat-label">Wins</span></div>
+                <div class="stat-item"><span id="stat-winrate" class="stat-value">0%</span><span class="stat-label">Win %</span></div>
+                <div class="stat-item"><span id="stat-streak" class="stat-value active">0</span><span class="stat-label">Streak</span></div>
+                <div class="stat-item"><span id="stat-bestfloor" class="stat-value magenta">1st</span><span class="stat-label">Highest Floor</span></div>
+                <div class="stat-item"><span id="stat-besttime" class="stat-value active">--:--</span><span class="stat-label">Best Time</span></div>
             </div>
-
-            <h3 style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); margin-top: 12px; text-transform: uppercase;">ARCHIVE VAULT</h3>
             <div id="vault-list" class="vault-grid"></div>
             <button id="btn-close-vault" class="btn-modal">CLOSE</button>
         </div>
     </div>
 
-    <script src="words.js"></script>
-    <script src="word-climb.js"></script>
+    <script src="cluegram-data.js"></script>
+    <script src="cluegram.js"></script>
+
+    <!-- REAL SCREENSHOT GENERATOR & SHARE ENGINE -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const shareBtn = document.getElementById('share-btn');
+            const victoryCard = document.getElementById('victory-card');
+            const toast = document.getElementById('toast-msg');
+
+            function showToast(text) {
+                if (!toast) return;
+                toast.innerText = text;
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2000);
+            }
+
+            if (shareBtn && victoryCard) {
+                shareBtn.addEventListener('click', async () => {
+                    try {
+                        showToast('CAPTURING SCREENSHOT...');
+                        const canvas = await html2canvas(victoryCard, {
+                            backgroundColor: '#111111',
+                            scale: 2,
+                            useCORS: true,
+                            allowTaint: true
+                        });
+
+                        canvas.toBlob(async (blob) => {
+                            if (!blob) return;
+                            const file = new File([blob], '11th-floor-cluegram-victory.png', { type: 'image/png' });
+
+                            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                                try {
+                                    await navigator.share({
+                                        title: '11th Floor Cluegram Victory Card',
+                                        files: [file]
+                                    });
+                                } catch (e) {
+                                    console.log('Share prompt dismissed');
+                                }
+                            } else {
+                                const downloadLink = document.createElement('a');
+                                downloadLink.href = URL.createObjectURL(file);
+                                downloadLink.download = '11th-floor-cluegram-victory.png';
+                                downloadLink.click();
+                                showToast('SCREENSHOT SAVED TO DEVICE');
+                            }
+                        }, 'image/png');
+                    } catch (err) {
+                        console.error('Screenshot capture error:', err);
+                        showToast('ERROR GENERATING SCREENSHOT');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
+<!-- END OF FILE: cluegram.html -->
