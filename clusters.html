@@ -259,10 +259,6 @@
         .floor-info-box { flex-grow: 1; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
         .current-floor-display { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; color: var(--genre-orange); }
 
-        .lives-container { display: flex; gap: 5px; margin-top: 4px; }
-        .life-pip { width: 8px; height: 8px; background-color: var(--genre-orange); border-radius: 50%; box-shadow: 0 0 6px var(--genre-orange-glow); transition: all 0.2s ease; }
-        .life-pip.lost { background-color: #222222; box-shadow: none; }
-
         .timer-bar-container { width: 100%; max-width: 600px; height: 4px; background: #111111; border-radius: 2px; overflow: hidden; margin-bottom: 8px; flex-shrink: 0; }
         .timer-bar { width: 100%; height: 100%; background: var(--genre-orange); transition: width 0.05s linear; }
 
@@ -647,14 +643,7 @@
                     <div class="current-floor-display" id="floor-number-val">FLOOR 01</div>
                     <div id="floor-rule-text" style="font-size: 0.65rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">No mistakes!</div>
                 </div>
-                <div class="floor-right-group" style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
-                    <div id="active-game-timer" class="header-timer">00:00</div>
-                    <div class="lives-container" id="lives-container">
-                        <div class="life-pip" id="pip-1"></div>
-                        <div class="life-pip" id="pip-2"></div>
-                        <div class="life-pip" id="pip-3"></div>
-                    </div>
-                </div>
+                <div id="active-game-timer" class="header-timer">00:00</div>
             </div>
         </div>
 
