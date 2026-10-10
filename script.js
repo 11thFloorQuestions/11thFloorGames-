@@ -38,7 +38,7 @@ function shuffleArray(array) {
 function getOrdinalFloorHTML(floorNum) {
     const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
     const ord = ordinals[floorNum - 1] || `${floorNum}th`;
-    return `<span style="color: var(--genre-gold, #facc15); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
+    return `<span style="color: var(--genre-gold, #facc15); font-weight: 800;">${ord}</span>`;
 }
 
 
@@ -75,7 +75,8 @@ const gameState = {
         played: 0,
         wins: 0,
         streak: 0,
-        bestFloor: 1
+        bestFloor: 1,
+        bestTimeSeconds: null
     }
 };
 
@@ -172,6 +173,7 @@ function updateSessionTimerDisplay() {
 }
 
 function formatTime(totalSeconds) {
+    if (totalSeconds === null || totalSeconds === undefined) return "--:--";
     const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
     const s = (totalSeconds % 60).toString().padStart(2, '0');
     return `${m}:${s}`;
@@ -324,6 +326,11 @@ function renderStatsUI() {
     const bestEl = document.getElementById('stat-bestfloor');
     if (bestEl) {
         bestEl.innerHTML = getOrdinalFloorHTML(gameState.stats.bestFloor);
+    }
+
+    const bestTimeEl = document.getElementById('stat-besttime');
+    if (bestTimeEl) {
+        bestTimeEl.textContent = formatTime(gameState.stats.bestTimeSeconds);
     }
 }
 
@@ -513,7 +520,7 @@ function resetGame() {
 function updateFloorUI() {
     const cardFloorEl = document.getElementById('card-floor-text');
     if (cardFloorEl) {
-        cardFloorEl.innerHTML = getOrdinalFloorHTML(gameState.currentFloor);
+        cardFloorEl.innerHTML = getOrdinalFloorHTML(gameState.currentFloor) + ' <span style="color: #ffffff;">Floor</span>';
     }
     
     const activeBatch = floorMessageBatches[gameState.batchIndex % floorMessageBatches.length] || floorMessageBatches[0];
@@ -654,11 +661,17 @@ function handleVictory() {
     gameState.stats.wins++;
     gameState.stats.streak++;
     gameState.stats.bestFloor = 11;
+
+    if (gameState.stats.bestTimeSeconds === null || gameState.timeElapsedSeconds < gameState.stats.bestTimeSeconds) {
+        gameState.stats.bestTimeSeconds = gameState.timeElapsedSeconds;
+    }
+
     saveStats();
     
     triggerHaptic([50, 50, 50, 50, 100]);
     
     const victoryTimeDisplay = document.getElementById('victory-time-display');
+    const victoryTimeRowDisplay = document.getElementById('victory-time-row-display');
     const victoryStreakDisplay = document.getElementById('victory-streak-display');
     const hudContainer = document.getElementById('floor-hud-container');
     const gameWorkspace = document.getElementById('game-workspace');
@@ -667,7 +680,9 @@ function handleVictory() {
     const victoryScreen = document.getElementById('victory-screen');
     const footerText = document.getElementById('footer-text');
 
-    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formatTime(gameState.timeElapsedSeconds);
+    const formattedTime = formatTime(gameState.timeElapsedSeconds);
+    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
+    if (victoryTimeRowDisplay) victoryTimeRowDisplay.textContent = `${formattedTime}s`;
     if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${gameState.stats.streak} Days`;
 
     if (hudContainer) hudContainer.style.display = 'none';
@@ -693,3 +708,4 @@ function generateFallbackQuestions() {
         { question: "What gas do plants absorb during photosynthesis?", options: ["Carbon Dioxide", "Oxygen", "Nitrogen", "Hydrogen"], answer: "Carbon Dioxide" }
     ];
 }
+// END OF FILE: script.js / questions.js
