@@ -1,104 +1,104 @@
 {
   "floors": [
     {
-      "question": "Which Carthaginian military commander famously led an army, including war elephants, across the Alps to invade Italy during the Second Punic War?",
+      "question": "Which English monarch was forced by his rebel barons to sign the Magna Carta at Runnymede in 1215?",
       "options": [
-        "Hannibal",
-        "Hamilcar Barca",
-        "Hasdrubal",
-        "Scipio Africanus"
+        "King John",
+        "Richard the Lionheart",
+        "Henry II",
+        "Edward I"
       ],
-      "answer": "Hannibal"
+      "answer": "King John"
     },
     {
-      "question": "Which landmark 1975 album by Pink Floyd was conceived as a tribute to former band member Syd Barrett and features the epic nine-part track 'Shine On You Crazy Diamond'?",
+      "question": "In culinary science, what chemical reaction between amino acids and reducing sugars is responsible for the browning and complex flavor of seared meat and baked bread?",
       "options": [
-        "Wish You Were Here",
-        "The Dark Side of the Moon",
-        "Animals",
-        "The Wall"
+        "Maillard reaction",
+        "Caramelization",
+        "Enzymatic browning",
+        "Pyrolysis"
       ],
-      "answer": "Wish You Were Here"
+      "answer": "Maillard reaction"
     },
     {
-      "question": "Which landlocked European nation is entirely surrounded by Italy and holds the distinction of being the world's oldest surviving republic?",
+      "question": "Which dystopian 1932 novel by Aldous Huxley depicts a technologically advanced future society divided into castes named Alpha, Beta, Gamma, Delta, and Epsilon?",
       "options": [
-        "San Marino",
-        "Liechtenstein",
-        "Andorra",
-        "Monaco"
+        "Brave New World",
+        "Fahrenheit 451",
+        "We",
+        "Island"
       ],
-      "answer": "San Marino"
+      "answer": "Brave New World"
     },
     {
-      "question": "What is the primary function of the mitochondria within eukaryotic cells?",
+      "question": "Which river flows through six countries—China, Myanmar, Laos, Thailand, Cambodia, and Vietnam—before emptying into the South China Sea?",
       "options": [
-        "ATP energy production",
-        "Protein synthesis",
-        "Lipid storage",
-        "DNA replication"
+        "Mekong River",
+        "Irrawaddy River",
+        "Red River",
+        "Salween River"
       ],
-      "answer": "ATP energy production"
+      "answer": "Mekong River"
     },
     {
-      "question": "In 1911, Norwegian explorer Roald Amundsen became the first human to reach the South Pole, narrowly beating which British naval officer?",
+      "question": "Which song surpassed 3 billion streams on Spotify first, setting an all-time record for the platform in late 2021?",
       "options": [
-        "Robert Falcon Scott",
-        "Ernest Shackleton",
-        "James Clark Ross",
-        "Douglas Mawson"
+        "Shape of You by Ed Sheeran",
+        "Blinding Lights by The Weeknd",
+        "Dance Monkey by Tones and I",
+        "Rockstar by Post Malone"
       ],
-      "answer": "Robert Falcon Scott"
+      "answer": "Shape of You by Ed Sheeran"
     },
     {
-      "question": "In Herman Melville's classic 1851 novel Moby-Dick, what is the name of the whaling ship commanded by Captain Ahab?",
+      "question": "Which archipelago in the North Atlantic Ocean is an autonomous territory within the Kingdom of Denmark, situated between Norway and Iceland?",
       "options": [
-        "Pequod",
-        "Bounty",
-        "Essex",
-        "Endeavour"
+        "Faroe Islands",
+        "Shetland Islands",
+        "Aland Islands",
+        "Svalbard"
       ],
-      "answer": "Pequod"
+      "answer": "Faroe Islands"
     },
     {
-      "question": "Which halogen element, with the atomic number 35, is one of only two elements on the periodic table that exist as a liquid at standard room temperature?",
+      "question": "Traditional Korean kimchi relies primarily on which microorganism family during its lactic acid fermentation process?",
       "options": [
-        "Bromine",
-        "Mercury",
-        "Iodine",
-        "Gallium"
+        "Lactobacillus",
+        "Saccharomyces",
+        "Acetobacter",
+        "Aspergillus"
       ],
-      "answer": "Bromine"
+      "answer": "Lactobacillus"
     },
     {
-      "question": "Which Renaissance sculptor created the famed bronze relief doors of the Florence Baptistery, which Michelangelo famously declared the 'Gates of Paradise'?",
+      "question": "Designed by architect Jørn Utzon, which iconic modern building featuring shell-like concrete vaults opened in 1973 on Bennelong Point?",
       "options": [
-        "Lorenzo Ghiberti",
-        "Donatello",
-        "Filippo Brunelleschi",
-        "Andrea del Verrocchio"
+        "Sydney Opera House",
+        "Guggenheim Museum Bilbao",
+        "Lotus Temple",
+        "Walt Disney Concert Hall"
       ],
-      "answer": "Lorenzo Ghiberti"
+      "answer": "Sydney Opera House"
     },
     {
-      "question": "Which high-altitude lake, straddling the border between Peru and Bolivia in the Andes Mountains, is recognized as the world's highest commercially navigable body of water?",
+      "question": "Which video game franchise introduced the 'Nemesis System', where procedural enemies remember previous encounters and adapt to the player's choices?",
       "options": [
-        "Lake Titicaca",
-        "Lake Poopó",
-        "Lake Maracaibo",
-        "Lake Atitlán"
+        "Middle-earth: Shadow of Mordor",
+        "The Witcher 3",
+        "Dark Souls",
+        "Assassin's Creed Odyssey"
       ],
-      "answer": "Lake Titicaca"
+      "answer": "Middle-earth: Shadow of Mordor"
     },
     {
-      "question": "Which French mathematician and philosopher introduced Cartesian coordinates and formulated the philosophical proposition 'Cogito, ergo sum' in 1637?",
+      "question": "In film sound design, what is the term for re-recording ambient natural everyday sounds (like footsteps, rustling cloth, or breaking glass) in a studio to match the visual scene?",
       "options": [
-        "René Descartes",
-        "Blaise Pascal",
-        "Pierre de Fermat",
-        "Gottfried Wilhelm Leibniz"
+        "Foley sound",
+        "ADR",
+        "Diegetic track",
+        "Temp track"
       ],
-      "answer": "René Descartes"
+      "answer": "Foley sound"
     }
   ]
 }
