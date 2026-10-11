@@ -1,366 +1,409 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#000000">
-    <title>11th Floor Parity — Victory Card Sandbox</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11th Floor Games — Speedrun Promo</title>
+  <style>
+    :root {
+      --bg-dark: #0B0E14;
+      --card-bg: #161B22;
+      --border-color: #21262D;
+      --text-main: #F0F6FC;
+      --text-muted: #8B949E;
+      --accent-gold: #D29922;
+      --active-accent: #58A6FF;
+    }
 
-    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
-    <link rel="apple-touch-icon" href="favicon.svg?v=2">
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    body {
+      background-color: #010409;
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
 
-    <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    /* 9:16 Vertical Screen Frame */
+    .phone-container {
+      width: 100vw;
+      max-width: 414px;
+      height: 100vh;
+      max-height: 896px;
+      background-color: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+      overflow: hidden;
+    }
 
-        html, body {
-            width: 100%;
-            min-height: 100vh;
-            min-height: 100dvh;
-            background-color: #000000 !important;
-            color: #ffffff;
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
-        }
+    /* Persistent Speedrun HUD */
+    .promo-hud {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      background: rgba(22, 27, 34, 0.95);
+      border-bottom: 2px solid var(--active-accent);
+      z-index: 10;
+      transition: border-color 0.3s ease;
+    }
 
-        body {
-            padding: 20px 14px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-        }
+    .hud-badge {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: var(--border-color);
+      color: var(--text-main);
+    }
 
-        .sandbox-container {
-            width: 100%;
-            max-width: 340px;
-            margin: 0 auto;
-            display: block;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
+    .hud-timer {
+      font-family: monospace;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
 
-        /* VICTORY RECEIPT CARD — PINK/PARITY GENRE THEME */
-        .victory-receipt-card {
-            width: 100%;
-            background-color: #111111;
-            border: 1px solid #ff9999;
-            border-radius: 14px;
-            padding: 22px 20px;
-            box-shadow: 0 0 25px rgba(255, 153, 153, 0.35);
-            margin-bottom: 16px;
-            display: block;
-        }
+    /* Controls Bar for Recording Setup */
+    .rec-bar {
+      position: absolute;
+      top: 60px;
+      right: 12px;
+      z-index: 100;
+      display: flex;
+      gap: 6px;
+    }
 
-        /* Top Header Logo Bar */
-        .receipt-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #333333;
-            padding-bottom: 12px;
-            margin-bottom: 16px;
-        }
+    .rec-btn {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-        /* Brand Lockup */
-        .brand-lockup-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    /* Game Stage Display */
+    .game-stage {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
 
-        .brand-mark-left {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.8rem;
-            color: #ff9999;
-            line-height: 0.85;
-            letter-spacing: -0.5px;
-            text-shadow: 0 0 10px rgba(255, 153, 153, 0.35);
-        }
+    .game-title {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
 
-        .brand-text-stacked {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: left;
-        }
+    .game-prompt {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
 
-        .brand-title-top {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 300;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-            line-height: 1.1;
-        }
+    /* Grid Options / Taps */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+    }
 
-        .brand-title-bottom {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.55rem;
-            font-weight: 700;
-            color: #ff9999;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            line-height: 1.1;
-        }
+    .opt-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
 
-        .badge-slot-reserved {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: #888888;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+    .opt-card.correct-flash {
+      background: rgba(46, 160, 67, 0.3) !important;
+      border-color: #3fb950 !important;
+      color: #3fb950 !important;
+      transform: scale(0.98);
+    }
 
-        /* Hero Content Section */
-        .hero-flex-box {
-            text-align: center;
-            padding: 4px 0;
-            margin-bottom: 16px;
-        }
+    /* Victory Screen Overlay */
+    .victory-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 24px;
+      background: radial-gradient(circle at center, #1C1917 0%, #0B0E14 100%);
+      animation: fadeIn 0.5s ease forwards;
+    }
 
-        .game-title-header {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.8rem;
-            color: #ffffff;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            line-height: 1;
-            margin-bottom: 6px;
-        }
+    .victory-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
 
-        .flex-status-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
+    .victory-time-box {
+      background: var(--card-bg);
+      border: 1px solid var(--accent-gold);
+      padding: 16px 32px;
+      border-radius: 12px;
+      margin: 16px 0;
+      text-align: center;
+    }
 
-        .brand-pink { color: #ff9999; }
-        .brand-green { color: #22c55e; }
-        .brand-white { color: #ffffff; }
+    .victory-time-box h3 {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
 
-        .hero-time-display {
-            font-family: 'Anton', sans-serif;
-            font-size: 3.4rem;
-            line-height: 0.9;
-            color: #ffffff;
-            letter-spacing: 2px;
-            margin: 8px 0;
-        }
+    .victory-time-box div {
+      font-family: monospace;
+      font-size: 32px;
+      color: #FFF;
+      font-weight: bold;
+    }
 
-        .hero-time-unit {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #888888;
-            letter-spacing: 1px;
-            margin-left: 2px;
-            text-transform: lowercase;
-        }
+    .copy-brag-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent-gold);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      margin-top: 16px;
+      cursor: pointer;
+    }
 
-        .flex-tier-badge {
-            display: inline-block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: #ff9999;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: rgba(255, 153, 153, 0.1);
-            border: 1px solid #ff9999;
-            padding: 6px 16px;
-            border-radius: 12px;
-            margin-top: 6px;
-        }
-
-        /* Metric Rows */
-        .receipt-details {
-            border-top: 1px solid #333333;
-            padding-top: 14px;
-            margin-bottom: 16px;
-        }
-
-        .receipt-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .receipt-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .row-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #888888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .row-val {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-        }
-
-        .row-val.success { color: #22c55e; }
-        .row-val.active { color: #ff9999; }
-
-        .card-footer-cta {
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.6rem;
-            font-weight: 800;
-            color: #888888;
-            letter-spacing: 1.5px;
-            border-top: 1px dashed #333333;
-            padding-top: 10px;
-            text-transform: uppercase;
-        }
-
-        /* BUTTON CONTROLS */
-        .controls-group {
-            width: 100%;
-            display: block;
-        }
-
-        .btn-flex-action {
-            width: 100%;
-            background-color: #ff9999;
-            border: 1px solid #ff9999;
-            color: #000000;
-            padding: 14px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 24px;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(255, 153, 153, 0.35);
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .btn-secondary-action {
-            width: 100%;
-            background-color: #111111;
-            border: 1px solid #333333;
-            color: #ffffff;
-            padding: 12px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-radius: 24px;
-            cursor: pointer;
-            display: block;
-        }
-
-        #toast-msg {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #ff9999;
-            color: #000000;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 0.75rem;
-            padding: 8px 16px;
-            border-radius: 20px;
-            display: none;
-            z-index: 1000;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-    </style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="sandbox-container">
-        <!-- VICTORY RECEIPT CARD -->
-        <div class="victory-receipt-card" id="victory-card">
-            <div class="receipt-header">
-                <div class="brand-lockup-container">
-                    <div class="brand-mark-left">11FL?</div>
-                    <div class="brand-text-stacked">
-                        <span class="brand-title-top">ELEVENTH FLOOR</span>
-                        <span class="brand-title-bottom">PARITY</span>
-                    </div>
-                </div>
-                <div class="badge-slot-reserved">VERIFIED</div>
-            </div>
+<div class="phone-container">
+  <!-- Dynamic HUD -->
+  <div class="promo-hud" id="hud">
+    <div>
+      <span class="hud-badge" id="hudGame">Questions</span>
+      <span style="font-size: 12px; margin-left: 6px; color: var(--text-muted);" id="hudFloor">FLOOR 1/11</span>
+    </div>
+    <div class="hud-timer" id="hudTimer">00:00.00</div>
+  </div>
 
-            <div class="hero-flex-box">
-                <div class="game-title-header">
-                    <span class="brand-pink">11th</span> <span class="brand-white">Floor Parity</span>
-                </div>
-                <div class="flex-status-label">
-                    <span class="brand-pink">11th</span> <span class="brand-white">Floor Cleared</span>
-                </div>
-                <div class="hero-time-display">01:04<span class="hero-time-unit">s</span></div>
-                <div class="flex-tier-badge">PERFECT</div>
-            </div>
+  <!-- Manual Screen Record Control Bar -->
+  <div class="rec-bar">
+    <button class="rec-btn" onclick="startAutoRun()">▶ Run Demo</button>
+    <button class="rec-btn" onclick="resetDemo()">↻ Reset</button>
+  </div>
 
-            <div class="receipt-details">
-                <div class="receipt-row">
-                    <span class="row-label">ELEVENTH FLOOR PARITY</span>
-                    <span class="row-val">#042</span>
-                </div>
-                <div class="receipt-row">
-                    <span class="row-label">ACCURACY</span>
-                    <span class="row-val success">100% (10/10)</span>
-                </div>
-                <div class="receipt-row">
-                    <span class="row-label">CURRENT STREAK</span>
-                    <span class="row-val active">12 DAYS</span>
-                </div>
-            </div>
+  <!-- Interactive Demo Stage -->
+  <div class="game-stage" id="stage">
+    <div class="game-title" id="stageGameTitle">11th Floor Questions</div>
+    <div class="game-prompt" id="stagePrompt">Which chemical element has the symbol 'Fe'?</div>
+    
+    <div class="options-grid" id="stageOptions">
+      <div class="opt-card" onclick="triggerCorrect(this, 0)">Iron</div>
+      <div class="opt-card">Copper</div>
+      <div class="opt-card">Lead</div>
+      <div class="opt-card">Silver</div>
+    </div>
+  </div>
 
-            <div class="card-footer-cta">
-                NEW GAME DAILY!
-            </div>
-        </div>
-
-        <!-- ACTION BUTTONS -->
-        <div class="controls-group">
-            <button class="btn-flex-action" id="share-btn">SHARE</button>
-            <button class="btn-secondary-action" id="copy-btn">COPY SUMMARY</button>
-        </div>
+  <!-- Final Brag Screen Overlay -->
+  <div class="victory-screen" id="victoryScreen">
+    <div style="font-size: 40px; margin-bottom: 8px;">🏆</div>
+    <div class="victory-title">11th Floor Reached!</div>
+    <p style="color: var(--text-muted); font-size: 14px;">All 6 Daily Micro-Games Cleared</p>
+    
+    <div class="victory-time-box">
+      <h3>Official Clear Time</h3>
+      <div id="finalTimeDisplay">00:48.32</div>
     </div>
 
-    <div id="toast-msg">COPIED TO CLIPBOARD</div>
+    <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
+      🟢 Questions | 🔴 Ball | 🟣 Word Climb<br>🟢 Parity | 🟠 Clusters | 🟡 Cluegram
+    </div>
 
-    <script>
-        const shareBtn = document.getElementById('share-btn');
-        const copyBtn = document.getElementById('copy-btn');
-        const toast = document.getElementById('toast-msg');
+    <button class="copy-brag-btn" id="bragBtn" onclick="copyBragText()">📋 Copy Brag Stats</button>
+  </div>
+</div>
 
-        function showToast(text) {
-            toast.innerText = text;
-            toast.style.display = 'block';
-            setTimeout(() => {
-                toast.style.display = 'none';
-            }, 2000);
+<script>
+  let startTime = null;
+  let timerInterval = null;
+  let currentStep = 0;
+
+  const demoSteps = [
+    {
+      game: "Questions",
+      accent: "#58A6FF",
+      floor: "FLOOR 1/11",
+      title: "11th Floor Questions",
+      prompt: "Which element has the symbol 'Fe'?",
+      options: ["Iron", "Copper", "Lead", "Silver"],
+      correctIndex: 0
+    },
+    {
+      game: "Think You Know Ball?",
+      accent: "#DA3633",
+      floor: "FLOOR 3/11",
+      title: "Think You Know Ball?",
+      prompt: "Who won the Premier League Golden Boot in 2022/23?",
+      options: ["Erling Haaland", "Harry Kane", "Mohamed Salah", "Marcus Rashford"],
+      correctIndex: 0
+    },
+    {
+      game: "Word Climb",
+      accent: "#A371F7",
+      floor: "FLOOR 5/11",
+      title: "11th Floor Word Climb",
+      prompt: "Target Length: 9 Letters",
+      options: ["ELEVATION", "ELEVATOR", "VALENTINE", "VERTICAL"],
+      correctIndex: 0
+    },
+    {
+      game: "Parity",
+      accent: "#3FB950",
+      floor: "FLOOR 7/11",
+      title: "11th Floor Parity",
+      prompt: "Find the odd pattern out:",
+      options: ["Pattern A", "Pattern B (Odd)", "Pattern C", "Pattern D"],
+      correctIndex: 1
+    },
+    {
+      game: "Clusters",
+      accent: "#F0883E",
+      floor: "FLOOR 9/11",
+      title: "11th Floor Clusters",
+      prompt: "Group 4: British Game Shows",
+      options: ["Only Connect", "Wordle", "Chess", "Scrabble"],
+      correctIndex: 0
+    },
+    {
+      game: "Cluegram",
+      accent: "#D29922",
+      floor: "FLOOR 11/11",
+      title: "11th Floor Cluegram",
+      prompt: "Final Cryptic Clue: 'Top Floor Victory'",
+      options: ["SKYSCRAPER", "ELEVATOR", "PENTHOUSE", "VICTORY"],
+      correctIndex: 0
+    }
+  ];
+
+  function startTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    startTime = performance.now();
+    timerInterval = setInterval(() => {
+      const elapsed = performance.now() - startTime;
+      const secs = Math.floor(elapsed / 1000);
+      const ms = Math.floor((elapsed % 1000) / 10);
+      const formatted = String(secs).padStart(2, '0') + ':' + String(ms).padStart(2, '0');
+      document.getElementById('hudTimer').innerText = '00:' + formatted;
+    }, 10);
+  }
+
+  function loadStep(index) {
+    if (index >= demoSteps.length) {
+      finishRun();
+      return;
+    }
+
+    const step = demoSteps[index];
+    document.getElementById('hudGame').innerText = step.game;
+    document.getElementById('hudFloor').innerText = step.floor;
+    document.getElementById('hud').style.borderColor = step.accent;
+    
+    document.getElementById('stageGameTitle').innerText = step.title;
+    document.getElementById('stagePrompt').innerText = step.prompt;
+
+    const optGrid = document.getElementById('stageOptions');
+    optGrid.innerHTML = '';
+
+    step.options.forEach((optText, idx) => {
+      const div = document.createElement('div');
+      div.className = 'opt-card';
+      div.innerText = optText;
+      div.onclick = () => triggerCorrect(div, idx === step.correctIndex);
+      optGrid.appendChild(div);
+    });
+  }
+
+  function triggerCorrect(element, isCorrect) {
+    element.classList.add('correct-flash');
+    setTimeout(() => {
+      currentStep++;
+      loadStep(currentStep);
+    }, 400);
+  }
+
+  function startAutoRun() {
+    resetDemo();
+    startTimer();
+
+    let delay = 300;
+    demoSteps.forEach((_, idx) => {
+      setTimeout(() => {
+        const opts = document.querySelectorAll('.opt-card');
+        const correctIdx = demoSteps[idx].correctIndex;
+        if (opts[correctIdx]) {
+          triggerCorrect(opts[correctIdx], true);
         }
+      }, delay);
+      delay += 1400; // Step through every 1.4 seconds for crisp speedrun pacing
+    });
+  }
+
+  function finishRun() {
+    clearInterval(timerInterval);
+    const finalTime = document.getElementById('hudTimer').innerText;
+    document.getElementById('finalTimeDisplay').innerText = finalTime;
+    document.getElementById('stage').style.display = 'none';
+    document.getElementById('victoryScreen').style.display = 'flex';
+  }
+
+  function copyBragText() {
+    const btn = document.getElementById('bragBtn');
+    btn.innerText = "✓ Copied to Clipboard!";
+    btn.style.background = "#3FB950";
+    btn.style.color = "#FFF";
+  }
+
+  function resetDemo() {
+    clearInterval(timerInterval);
+    currentStep = 0;
+    document.getElementById('hudTimer').innerText = '00:00.00';
+    document.getElementById('stage').style.display = 'flex';
+    document.getElementById('victoryScreen').style.display = 'none';
+    loadStep(0);
+  }
+
+  loadStep(0);
+</script>
+</body>
+</html>
