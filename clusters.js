@@ -2,7 +2,7 @@
  * ============================================================================
  * 11TH FLOOR CLUSTERS - CORE GAME LOGIC (clusters.js)
  * ============================================================================
- * Sequential Clue Target Engine, 30s Stage Countdown Timer, Global Session Timer,
+ * Sequential Clue Target Engine, 20s Stage Countdown Timer, Global Session Timer,
  * Single Mistake Game-Over Reset, 10 Playable Floors leading to 11th Floor.
  * ============================================================================
  */
@@ -23,9 +23,9 @@
     let timerInterval = null;
     let timeElapsedSeconds = 0;
 
-    // Stage Countdown Bar Timer State Variables (30 Seconds Per Stage)
+    // Stage Countdown Bar Timer State Variables (20 Seconds Per Stage)
     let stageTimer = null;
-    let stageTimeLeft = 30;
+    let stageTimeLeft = 20;
 
     // Local Storage Player Stats Key
     const STATS_KEY = '11th_floor_clusters_stats';
@@ -114,14 +114,14 @@
     }
 
     // ==========================================
-    // STAGE COUNTDOWN TIMER ENGINE (30s)
+    // STAGE COUNTDOWN TIMER ENGINE (20s)
     // ==========================================
 
     function startStageTimer() {
         stopStageTimer();
-        const totalDuration = 30000;
+        const totalDuration = 20000;
         const stageStartTime = Date.now();
-        stageTimeLeft = 30;
+        stageTimeLeft = 20;
 
         if (timerBarWrapper) timerBarWrapper.style.display = 'block';
         if (timerBar) {
