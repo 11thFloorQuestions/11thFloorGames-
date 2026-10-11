@@ -1,0 +1,140 @@
+{
+  "setId": "27",
+  "title": "Think You Know Ball? - Set 27",
+  "questions": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "Which football club announced this week that they are up for sale?",
+      "options": [
+        "Everton",
+        "Manchester City"
+      ],
+      "answer": "Everton",
+      "explanation": "Everton was officially put on the market this week.",
+      "anchorClues": "Everton club up for sale"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "Which iconic Arsenal legend celebrates his birthday today?",
+      "options": [
+        "Tony Adams",
+        "Thierry Henry",
+        "Ian Wright",
+        "Nicolas Pépé"
+      ],
+      "answer": "Tony Adams",
+      "explanation": "Former Gunners captain Tony Adams celebrates his birthday today.",
+      "anchorClues": "Tony Adams birthday October 10"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "Ahead of today's clash between Chelsea and Bournemouth, who sits higher in the Premier League table?",
+      "options": [
+        "Chelsea",
+        "Bournemouth"
+      ],
+      "answer": "Chelsea",
+      "explanation": "Chelsea head into the fixture positioned higher in the league table than Bournemouth.",
+      "anchorClues": "Chelsea higher league table Bournemouth"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "What is the highest league position Tottenham Hotspur have held during the calendar year 2026?",
+      "options": [
+        "1st",
+        "5th",
+        "11th",
+        "13th"
+      ],
+      "answer": "11th",
+      "explanation": "Spurs' highest spot in the top flight throughout 2026 has been 11th.",
+      "anchorClues": "Tottenham highest Premier League position calendar year 2026"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "Which player holds the record for creating the most chances in a single Premier League match without recording an assist?",
+      "options": [
+        "Mesut Özil",
+        "David Silva",
+        "Cesc Fàbregas",
+        "James Maddison"
+      ],
+      "answer": "Mesut Özil",
+      "explanation": "Mesut Özil created 12 chances against Cardiff City in 2018, the most recorded in a single match without setting up a goal.",
+      "anchorClues": "Mesut Ozil most chances created single game no assist"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "Which manager recorded 11 consecutive away victories in the Premier League between April and December 2008?",
+      "options": [
+        "Luiz Felipe Scolari",
+        "Sir Alex Ferguson",
+        "Arsène Wenger",
+        "Rafael Benítez"
+      ],
+      "answer": "Luiz Felipe Scolari",
+      "explanation": "Chelsea set the top-flight record with 11 straight away wins in 2008, a run started under Guus Hiddink's brief tenure and completed under Luiz Felipe Scolari.",
+      "anchorClues": "Luiz Felipe Scolari 11 consecutive away wins Premier League 2008 record"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "Which squad number did Robert Pires wear throughout his six seasons at Arsenal?",
+      "options": [
+        "7",
+        "11",
+        "8",
+        "10"
+      ],
+      "answer": "7",
+      "explanation": "The Secret '7' Easter Egg.",
+      "anchorClues": "Easter egg secret seven answer Robert Pires Arsenal squad number"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "Which referee officiated the Premier League match between Stoke City and Tottenham in 2008 where two Spurs players were sent off?",
+      "options": [
+        "Lee Mason",
+        "Martin Atkinson"
+      ],
+      "answer": "Lee Mason",
+      "explanation": "Lee Mason issued red cards to both Gareth Bale and Michael Dawson during a chaotic match at the bet365 Stadium.",
+      "anchorClues": "Lee Mason referee Stoke City vs Tottenham red cards 2008"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "Which club conceded 104 goals across a single 38-game campaign, setting the record for the most goals conceded in a single Premier League season?",
+      "options": [
+        "Sheffield United",
+        "Derby County",
+        "Swindon Town",
+        "Huddersfield Town"
+      ],
+      "answer": "Sheffield United",
+      "explanation": "Sheffield United conceded 104 goals during the 2023–24 campaign, surpassing Swindon Town's previous 42-game era mark.",
+      "anchorClues": "Sheffield United most goals conceded Premier League season 104 goals 2023-24"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "Which player holds the all-time Premier League record for scoring for seven different clubs in the competition?",
+      "options": [
+        "Craig Bellamy",
+        "Marcus Bent",
+        "Nicolas Anelka",
+        "Peter Crouch"
+      ],
+      "answer": "Craig Bellamy",
+      "explanation": "Craig Bellamy scored in the Premier League for Coventry, Newcastle, Blackburn, Liverpool, West Ham, Man City, and Cardiff City.",
+      "anchorClues": "Craig Bellamy scored seven different Premier League clubs record"
+    }
+  ]
+}
