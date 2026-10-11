@@ -1,140 +1,142 @@
 {
-  "setId": "27",
-  "title": "Think You Know Ball? - Set 27",
+  "setId": "28",
+  "title": "Think You Know Ball? - Set 28",
   "questions": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Which football club announced this week that they are up for sale?",
+      "question": "Who scored the opener for Chelsea yesterday?",
       "options": [
-        "Everton",
-        "Manchester City"
+        "Jordan Henderson",
+        "Jordan Air Max"
       ],
-      "answer": "Everton",
-      "explanation": "Everton was officially put on the market this week.",
-      "anchorClues": "Everton club up for sale"
+      "answer": "Jordan Henderson",
+      "explanation": "Jordan Henderson scored the opening goal for Chelsea.",
+      "anchorClues": "Chelsea opener goal Jordan Henderson"
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which iconic Arsenal legend celebrates his birthday today?",
+      "question": "Which former Everton player celebrates his birthday today?",
       "options": [
-        "Tony Adams",
-        "Thierry Henry",
-        "Ian Wright",
-        "Nicolas Pépé"
+        "Seamus Coleman",
+        "Leighton Baines",
+        "Phil Jagielka",
+        "Ross Barkley"
       ],
-      "answer": "Tony Adams",
-      "explanation": "Former Gunners captain Tony Adams celebrates his birthday today.",
-      "anchorClues": "Tony Adams birthday October 10"
+      "answer": "Seamus Coleman",
+      "explanation": "Seamus Coleman celebrates his birthday today (born 11 October 1988).",
+      "anchorClues": "Seamus Coleman birthday October 11"
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Ahead of today's clash between Chelsea and Bournemouth, who sits higher in the Premier League table?",
+      "question": "Who scored the opening goal in Saturday’s early kick-off game between Arsenal and Leeds?",
       "options": [
-        "Chelsea",
-        "Bournemouth"
+        "James Justin",
+        "Riccardo Calafiori",
+        "Bukayo Saka",
+        "Dominic Calvert-Lewin"
       ],
-      "answer": "Chelsea",
-      "explanation": "Chelsea head into the fixture positioned higher in the league table than Bournemouth.",
-      "anchorClues": "Chelsea higher league table Bournemouth"
+      "answer": "James Justin",
+      "explanation": "James Justin scored the opening goal in the match between Arsenal and Leeds.",
+      "anchorClues": "James Justin opening goal Arsenal vs Leeds"
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "What is the highest league position Tottenham Hotspur have held during the calendar year 2026?",
+      "question": "Which player was sent off in yesterday's game between Man Utd and Spurs?",
       "options": [
-        "1st",
-        "5th",
-        "11th",
-        "13th"
+        "Rodrigo Bentancur",
+        "Lisandro Martínez",
+        "Yves Bissouma",
+        "Cristian Romero"
       ],
-      "answer": "11th",
-      "explanation": "Spurs' highest spot in the top flight throughout 2026 has been 11th.",
-      "anchorClues": "Tottenham highest Premier League position calendar year 2026"
+      "answer": "Rodrigo Bentancur",
+      "explanation": "Rodrigo Bentancur received a red card in the Man Utd vs Spurs fixture.",
+      "anchorClues": "Rodrigo Bentancur red card Man Utd vs Spurs"
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Which player holds the record for creating the most chances in a single Premier League match without recording an assist?",
+      "question": "The big game today is Liverpool v Man City. What is Anfield's capacity?",
       "options": [
-        "Mesut Özil",
-        "David Silva",
-        "Cesc Fàbregas",
-        "James Maddison"
+        "61,276",
+        "58,222"
       ],
-      "answer": "Mesut Özil",
-      "explanation": "Mesut Özil created 12 chances against Cardiff City in 2018, the most recorded in a single match without setting up a goal.",
-      "anchorClues": "Mesut Ozil most chances created single game no assist"
+      "answer": "61,276",
+      "explanation": "Anfield's official capacity stands at 61,276.",
+      "anchorClues": "Anfield official stadium capacity 61276"
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "Which manager recorded 11 consecutive away victories in the Premier League between April and December 2008?",
+      "question": "Which manager holds the record for winning 18 consecutive Premier League matches during a single season?",
       "options": [
-        "Luiz Felipe Scolari",
+        "Pep Guardiola",
+        "Jürgen Klopp",
         "Sir Alex Ferguson",
-        "Arsène Wenger",
-        "Rafael Benítez"
+        "Arsène Wenger"
       ],
-      "answer": "Luiz Felipe Scolari",
-      "explanation": "Chelsea set the top-flight record with 11 straight away wins in 2008, a run started under Guus Hiddink's brief tenure and completed under Luiz Felipe Scolari.",
-      "anchorClues": "Luiz Felipe Scolari 11 consecutive away wins Premier League 2008 record"
+      "answer": "Pep Guardiola",
+      "explanation": "Pep Guardiola guided Manchester City to 18 consecutive Premier League victories during the 2017–18 season.",
+      "anchorClues": "Pep Guardiola 18 consecutive Premier League wins record"
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Which squad number did Robert Pires wear throughout his six seasons at Arsenal?",
+      "question": "What shirt number has Mason Mount been given this season?",
       "options": [
         "7",
-        "11",
-        "8",
-        "10"
+        "19",
+        "10",
+        "8"
       ],
       "answer": "7",
       "explanation": "The Secret '7' Easter Egg.",
-      "anchorClues": "Easter egg secret seven answer Robert Pires Arsenal squad number"
+      "anchorClues": "Easter egg secret seven answer Mason Mount Manchester United shirt number 7"
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Which referee officiated the Premier League match between Stoke City and Tottenham in 2008 where two Spurs players were sent off?",
+      "question": "Which player became the first in Premier League history to score a hat-trick of headers in a single match during a 3–2 victory in 1997?",
       "options": [
-        "Lee Mason",
-        "Martin Atkinson"
+        "Duncan Ferguson",
+        "Les Ferdinand",
+        "Alan Shearer",
+        "Dion Dublin"
       ],
-      "answer": "Lee Mason",
-      "explanation": "Lee Mason issued red cards to both Gareth Bale and Michael Dawson during a chaotic match at the bet365 Stadium.",
-      "anchorClues": "Lee Mason referee Stoke City vs Tottenham red cards 2008"
+      "answer": "Duncan Ferguson",
+      "explanation": "Duncan Ferguson scored three headers for Everton in a 3–2 win over Bolton Wanderers in December 1997.",
+      "anchorClues": "Duncan Ferguson hat trick headers Everton Bolton 1997 record"
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "Which club conceded 104 goals across a single 38-game campaign, setting the record for the most goals conceded in a single Premier League season?",
+      "question": "Which club holds the record for keeping the most clean sheets in a single 38-game Premier League season, shutting out opponents 25 times?",
       "options": [
-        "Sheffield United",
-        "Derby County",
-        "Swindon Town",
-        "Huddersfield Town"
+        "Chelsea",
+        "Manchester United",
+        "Arsenal",
+        "Liverpool"
       ],
-      "answer": "Sheffield United",
-      "explanation": "Sheffield United conceded 104 goals during the 2023–24 campaign, surpassing Swindon Town's previous 42-game era mark.",
-      "anchorClues": "Sheffield United most goals conceded Premier League season 104 goals 2023-24"
+      "answer": "Chelsea",
+      "explanation": "Under José Mourinho in the 2004–05 season, Chelsea kept 25 clean sheets and conceded just 15 goals across the entire campaign.",
+      "anchorClues": "Chelsea most clean sheets single Premier League season 25 record"
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Which player holds the all-time Premier League record for scoring for seven different clubs in the competition?",
+      "question": "Which player has played in the North London derby, the Merseyside derby, and El Clásico during his career?",
       "options": [
-        "Craig Bellamy",
-        "Marcus Bent",
         "Nicolas Anelka",
-        "Peter Crouch"
+        "Thomas Vermaelen",
+        "Alex Song",
+        "Eiður Guðjohnsen"
       ],
-      "answer": "Craig Bellamy",
-      "explanation": "Craig Bellamy scored in the Premier League for Coventry, Newcastle, Blackburn, Liverpool, West Ham, Man City, and Cardiff City.",
-      "anchorClues": "Craig Bellamy scored seven different Premier League clubs record"
+      "answer": "Nicolas Anelka",
+      "explanation": "Nicolas Anelka featured for Arsenal (North London derby), Real Madrid (El Clásico), and Liverpool (Merseyside derby).",
+      "anchorClues": "Nicolas Anelka played North London derby Merseyside derby El Clasico"
     }
   ]
 }
