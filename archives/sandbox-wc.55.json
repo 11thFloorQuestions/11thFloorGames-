@@ -1,0 +1,13 @@
+{
+  "setId": "55",
+  "title": "11th Floor Word Climb - Set 55 Archive",
+  "masterWord": "OUTSPREAD",
+  "wheelLetters": ["O", "U", "T", "S", "P", "R", "E", "A", "D"],
+  "fallbackDictionary": [
+    "PASTE", "PASTO", "PROUD", "READS", "STARE", "TRADE", "TREAD",
+    "PASTED", "PASTOR", "PROUTS", "SPREAD", "STREAM",
+    "PASTURE", "PROUTED", "READOUT",
+    "READOUTS",
+    "OUTSPREAD"
+  ]
+}
