@@ -62,17 +62,26 @@ document.addEventListener('DOMContentLoaded', () => {
     init();
 
     function getDailyDataset() {
-        if (!window.CLUEGRAM_DAILY_SET) return [];
-        if (Array.isArray(window.CLUEGRAM_DAILY_SET)) {
-            return window.CLUEGRAM_DAILY_SET;
-        }
-        if (window.CLUEGRAM_DAILY_SET.floors && Array.isArray(window.CLUEGRAM_DAILY_SET.floors)) {
-            return window.CLUEGRAM_DAILY_SET.floors;
+        if (typeof window.CLUEGRAM_DAILY_SET !== 'undefined') {
+            if (Array.isArray(window.CLUEGRAM_DAILY_SET)) {
+                return window.CLUEGRAM_DAILY_SET;
+            }
+            if (window.CLUEGRAM_DAILY_SET && window.CLUEGRAM_DAILY_SET.floors && Array.isArray(window.CLUEGRAM_DAILY_SET.floors)) {
+                return window.CLUEGRAM_DAILY_SET.floors;
+            }
         }
         return [];
     }
 
     function init() {
+        // Force Landing Screen visibility explicitly on initial load
+        if (startScreen) startScreen.style.display = 'flex';
+        if (hudContainer) hudContainer.style.display = 'none';
+        if (gameWorkspace) gameWorkspace.style.display = 'none';
+        if (gameControls) gameControls.style.display = 'none';
+        if (gameplayHeader) gameplayHeader.style.display = 'none';
+        if (victoryScreen) victoryScreen.style.display = 'none';
+
         activeGameData = getDailyDataset();
         bindEvents();
         updateStatsDisplay();
