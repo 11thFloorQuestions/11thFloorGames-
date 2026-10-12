@@ -152,6 +152,7 @@ function stopSessionTimer() {
 }
 
 function updateSessionTimerDisplay() {
+    if (!gameState.startTime) return;
     gameState.timeElapsedSeconds = Math.floor((Date.now() - gameState.startTime) / 1000);
     const activeGameTimer = document.getElementById("active-game-timer");
     if (activeGameTimer) {
@@ -244,4 +245,214 @@ function resetToLandingScreen() {
         if (el) el.style.display = 'none';
     });
     const landing = document.getElementById('landing-screen');
-    if (landing
+    if (landing) landing.style.display = 'flex';
+}
+
+function showScreen(screenId) {
+    const victoryScreen = document.getElementById('victory-screen');
+    if (victoryScreen) victoryScreen.style.display = 'none';
+
+    const screens = ['landing-screen', 'game-screen'];
+    screens.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.style.display = (id === screenId) ? 'flex' : 'none';
+        }
+    });
+    if (screenId === 'landing-screen') {
+        triggerLandingPageDing();
+    }
+}
+
+function updateSoundUI() {
+    const label = `SOUND: ${gameState.soundEnabled ? 'ON' : 'OFF'}`;
+    safeSetText('btn-sound-toggle', label);
+}
+
+function toggleSound() {
+    gameState.soundEnabled = !gameState.soundEnabled;
+    if (gameState.soundEnabled) {
+        playElevatorDing();
+    }
+    updateSoundUI();
+}
+
+
+// ==========================================
+// MODAL & HIGH-SPEED VAULT CONTROLS
+// ==========================================
+
+function openModal(modalId) {
+    safeToggleClass(modalId, 'hidden', false);
+}
+
+function closeModal(modalId) {
+    safeToggleClass(modalId, 'hidden', true);
+}
+
+function openVault() {
+    renderStatsUI();
+    populateVault();
+    openModal('modal-vault');
+}
+
+function renderStatsUI() {
+    const winRate = gameState.stats.played > 0 
+        ? Math.round((gameState.stats.wins / gameState.stats.played) * 100) 
+        : 0;
+
+    safeSetText('stat-played', gameState.stats.played);
+    safeSetText('stat-wins', gameState.stats.wins);
+    safeSetText('stat-winrate', `${winRate}%`);
+    safeSetText('stat-streak', gameState.stats.streak);
+
+    const bestEl = document.getElementById('stat-bestfloor');
+    if (bestEl) {
+        bestEl.innerHTML = getOrdinalFloorHTML(gameState.stats.bestFloor);
+    }
+
+    const bestTimeEl = document.getElementById('stat-besttime');
+    if (bestTimeEl) {
+        bestTimeEl.textContent = formatTime(gameState.stats.bestTimeSeconds);
+    }
+}
+
+async function populateVault() {
+    const vaultList = document.getElementById('vault-list');
+    if (!vaultList) return;
+    
+    vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
+    
+    const BATCH_SIZE = 5;
+    const MAX_ARCHIVES = 50;
+    const buttons = [];
+    let currentId = 1;
+
+    while (currentId <= MAX_ARCHIVES) {
+        const batchPromises = [];
+        for (let i = 0; i < BATCH_SIZE && (currentId + i) <= MAX_ARCHIVES; i++) {
+            const idNum = currentId + i;
+            const paddedId = String(idNum).padStart(2, '0');
+            
+            batchPromises.push(
+                (async () => {
+                    let data = await fetchFileWithFallbacks(`sandbox-ball.${paddedId}.json`);
+                    if (!data) {
+                        data = await fetchFileWithFallbacks(`sandbox-terrace.${paddedId}.json`);
+                    }
+                    if (!data) {
+                        data = await fetchFileWithFallbacks(`ball.${String(idNum).padStart(3, '0')}.json`);
+                    }
+                    return { id: paddedId, idNum, data };
+                })()
+            );
+        }
+
+        const batchResults = await Promise.all(batchPromises);
+
+        for (const res of batchResults) {
+            if (res.data) {
+                const btn = document.createElement('button');
+                btn.className = 'vault-item-btn';
+                btn.innerHTML = `<strong>Archive ${res.id}</strong>`;
+                btn.onpointerdown = () => triggerHaptic(15);
+                btn.onclick = () => {
+                    loadVaultSet(res.id, res.data);
+                };
+                buttons.push(btn);
+            }
+        }
+
+        currentId += BATCH_SIZE;
+    }
+
+    vaultList.innerHTML = '';
+    if (buttons.length === 0) {
+        vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">No archives found.</div>';
+    } else {
+        buttons.forEach(btn => vaultList.appendChild(btn));
+    }
+}
+
+
+// ==========================================
+// DATA LOADING & NORMALIZATION
+// ==========================================
+
+function normalizeQuestions(data) {
+    let rawList = [];
+    if (!data) return [];
+    
+    if (Array.isArray(data)) rawList = data;
+    else if (Array.isArray(data.floors)) rawList = data.floors;
+    else if (Array.isArray(data.questions)) rawList = data.questions;
+
+    return rawList.map(q => {
+        const options = Array.isArray(q.options) ? [...q.options] : ["Option A", "Option B", "Option C", "Option D"];
+        
+        let answerText = "";
+        if (typeof q.answer === 'string') answerText = q.answer;
+        else if (typeof q.correct === 'string') answerText = q.correct;
+        else if (typeof q.correctAnswer === 'string') answerText = q.correctAnswer;
+        else if (typeof q.correct_answer === 'string') answerText = q.correct_answer;
+        else if (typeof q.answerIndex === 'number' && options[q.answerIndex]) answerText = options[q.answerIndex];
+        else if (typeof q.correctIndex === 'number' && options[q.correctIndex]) answerText = options[q.correctIndex];
+        else if (typeof q.correct === 'number' && options[q.correct]) answerText = options[0];
+        else answerText = options[0];
+
+        return {
+            question: q.question || "Question missing",
+            options: options,
+            answer: answerText
+        };
+    });
+}
+
+async function fetchFileWithFallbacks(filename) {
+    const candidatePaths = [
+        `./archives/${filename}`,
+        `./${filename}`,
+        `./assets/data/floors/${filename}`,
+        `./data/${filename}`,
+        filename
+    ];
+
+    for (const path of candidatePaths) {
+        try {
+            const res = await fetch(path);
+            if (res.ok) {
+                return await res.json();
+            }
+        } catch (e) {}
+    }
+    return null;
+}
+
+async function startDailyClimb() {
+    let data = await fetchFileWithFallbacks('ball-questions.json');
+    if (!data) data = await fetchFileWithFallbacks('sandbox-ball.23.json');
+    if (!data) data = await fetchFileWithFallbacks('sandbox-ball.22.json');
+
+    if (data) {
+        gameState.questions = normalizeQuestions(data);
+    }
+    launchGameUI();
+}
+
+function loadVaultSet(paddedId, data) {
+    if (data) {
+        gameState.questions = normalizeQuestions(data);
+        closeModal('modal-vault');
+        launchGameUI();
+    }
+}
+
+function launchGameUI() {
+    const landing = document.getElementById('landing-screen');
+    const victory = document.getElementById('victory-screen');
+    const hud = document.getElementById('floor-hud-container');
+    const workspace = document.getElementById('game-workspace');
+    const header = document.getElementById('gameplay-header');
+    const footer = document.getElementById('footer-text');
+
+    if (landing)
