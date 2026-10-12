@@ -1,916 +1,572 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>11th Floor Cluegram — Daily Puzzle</title>
+// ==========================================================================
+// 11th Floor Cluegram — Core Interactive Game Engine & Archive Integration
+// ==========================================================================
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
-    <link rel="apple-touch-icon" href="/favicon.svg?v=2">
+document.addEventListener('DOMContentLoaded', () => {
+    // Current Game State Variables
+    let currentFloorIndex = 0; // 0 = 1st Floor, 9 = 10th Floor
+    let userGuess = [];
+    let rackTiles = [];
+    let isProcessing = false;
+    let soundEnabled = true;
+    let activeGameData = [];
+    
+    // Timer Variables
+    let startTime = 0;
+    let timerInterval = null;
+    let timeElapsedSeconds = 0;
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    // Question Timer Bar Variables (20-Second Countdown)
+    let questionTimer = null;
+    let questionTimeLeft = 20;
 
-    <!-- HTML2CANVAS LIBRARY FOR RECEIPT SCREENSHOT CAPTURE -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    // Local Storage Player Stats Key
+    const STATS_KEY = '11th_floor_cluegram_stats';
 
-    <style>
-        :root {
-            --bg-deep: #000000;
-            --surface: #0a0a0a;
-            --surface-border: #222222;
-            --surface-border-light: #333333;
-            --text-primary: #ffffff;
-            --text-muted: #888888;
-            --genre-magenta: #cc007e;
-            --genre-magenta-glow: rgba(204, 0, 126, 0.35);
-            --brand-red: #cc0000;
-            --brand-red-glow: rgba(204, 0, 0, 0.35);
-            --state-active: #facc15;
-            --state-active-glow: rgba(250, 204, 21, 0.3);
-            --state-success: #22c55e;
-            --state-success-glow: rgba(34, 197, 94, 0.3);
-            --state-error: #ef4444;
-            --state-error-glow: rgba(239, 68, 68, 0.3);
+    // DOM Element References
+    const startScreen = document.getElementById('start-screen');
+    const startClimbBtn = document.getElementById('start-climb-btn');
+    const hudContainer = document.getElementById('floor-hud-container');
+    const gameWorkspace = document.getElementById('game-workspace');
+    const gameControls = document.getElementById('game-controls');
+    const gameplayHeader = document.getElementById('gameplay-header');
+    
+    const victoryScreen = document.getElementById('victory-screen');
+    const victoryStatsBtn = document.getElementById('btn-victory-stats');
+    const victoryTimeDisplay = document.getElementById('victory-time-display');
+    const victoryTimeRowDisplay = document.getElementById('victory-time-row-display');
+    const victoryStreakDisplay = document.getElementById('victory-streak-display');
+    const activeGameTimer = document.getElementById('active-game-timer');
+    const footerText = document.getElementById('footer-text');
+    
+    const floorNumberVal = document.getElementById('floor-number-val');
+    const floorRuleText = document.getElementById('floor-rule-text');
+    const clueText = document.getElementById('clue-text');
+    const targetSlotsContainer = document.getElementById('target-word-slots');
+    const letterRackContainer = document.getElementById('letter-rack');
+    const messageBox = document.getElementById('message-box');
+
+    const backspaceBtn = document.getElementById('action-backspace-btn');
+    const shuffleBtn = document.getElementById('action-shuffle-btn');
+    const submitBtn = document.getElementById('action-submit-btn');
+
+    const statsModal = document.getElementById('modal-vault');
+    const statsBtn = document.getElementById('btn-landing-stats');
+    const closeVaultBtn = document.getElementById('btn-close-vault');
+    const soundBtn = document.getElementById('btn-sound');
+    const vaultList = document.getElementById('vault-list');
+
+    const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
+
+    // Initialize Game Engine
+    init();
+
+    function getDailyDataset() {
+        if (!window.CLUEGRAM_DAILY_SET) return [];
+        if (Array.isArray(window.CLUEGRAM_DAILY_SET)) {
+            return window.CLUEGRAM_DAILY_SET;
+        }
+        if (window.CLUEGRAM_DAILY_SET.floors && Array.isArray(window.CLUEGRAM_DAILY_SET.floors)) {
+            return window.CLUEGRAM_DAILY_SET.floors;
+        }
+        return [];
+    }
+
+    function init() {
+        activeGameData = getDailyDataset();
+        bindEvents();
+        updateStatsDisplay();
+    }
+
+    function bindEvents() {
+        if (startClimbBtn) startClimbBtn.addEventListener('click', startGame);
+        if (backspaceBtn) backspaceBtn.addEventListener('click', handleBackspace);
+        if (shuffleBtn) shuffleBtn.addEventListener('click', handleShuffle);
+        if (submitBtn) submitBtn.addEventListener('click', handleSubmit);
+
+        if (statsBtn) {
+            statsBtn.addEventListener('click', () => {
+                if (statsModal) statsModal.classList.remove('hidden');
+                populateVault();
+            });
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
+        if (victoryStatsBtn) {
+            victoryStatsBtn.addEventListener('click', () => {
+                if (statsModal) statsModal.classList.remove('hidden');
+                populateVault();
+            });
         }
 
-        html {
-            background-color: var(--bg-deep);
-            height: 100%;
+        if (closeVaultBtn) {
+            closeVaultBtn.addEventListener('click', () => {
+                if (statsModal) statsModal.classList.add('hidden');
+                if (victoryScreen && victoryScreen.style.display !== 'none') {
+                    resetToStartScreen();
+                }
+            });
         }
 
-        body {
-            background-color: var(--bg-deep);
-            color: var(--text-primary);
-            font-family: 'Montserrat', sans-serif;
-            min-height: 100vh;
-            min-height: 100dvh;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: 8px 10px;
-            overflow: hidden;
+        if (soundBtn) {
+            soundBtn.addEventListener('click', () => {
+                soundEnabled = !soundEnabled;
+                soundBtn.textContent = `SOUND: ${soundEnabled ? 'ON' : 'OFF'}`;
+            });
         }
 
-        .main-wrapper {
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 100vh;
-            min-height: 100dvh;
-            flex-grow: 1;
-        }
-
-        .top-bar {
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 4px;
-            flex-shrink: 0;
-        }
-
-        .pill-btn {
-            background: var(--surface);
-            border: 1px solid var(--surface-border-light);
-            color: var(--text-primary);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.68rem;
-            font-weight: 700;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .pill-btn:hover {
-            border-color: var(--genre-magenta);
-            color: var(--genre-magenta);
-        }
-
-        /* Header Timer Display */
-        .header-timer {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 800;
-            color: var(--state-active);
-            letter-spacing: 1px;
-            background: var(--surface);
-            border: 1px solid var(--surface-border);
-            padding: 4px 12px;
-            border-radius: 12px;
-            display: none;
-        }
-
-        /* Landing Logo Box */
-        .game-logo-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 6px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .game-logo-magenta {
-            font-family: 'Anton', sans-serif;
-            font-size: 3.2rem;
-            font-weight: 400;
-            color: var(--genre-magenta);
-            line-height: 0.85;
-            letter-spacing: -1px;
-            text-shadow: 0 0 20px var(--genre-magenta-glow);
-            margin-bottom: 4px;
-        }
-
-        .game-logo-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 300;
-            color: #ffffff;
-            letter-spacing: 1.5px;
-            margin-bottom: 2px;
-        }
-
-        .game-logo-sub {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.6rem;
-            font-weight: 700;
-            color: var(--genre-magenta);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-
-        /* Gameplay Compact Header Box */
-        .gameplay-header-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 4px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .gameplay-header-box .game-logo-title {
-            font-size: 0.85rem;
-            letter-spacing: 1.5px;
-            margin-bottom: 1px;
-        }
-
-        .gameplay-header-box .game-logo-sub {
-            font-size: 0.55rem;
-            letter-spacing: 3px;
-        }
-
-        #start-screen {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex-grow: 1;
-            justify-content: center;
-        }
-
-        .landing-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 14px;
-            padding: 16px 14px;
-            width: 100%;
-            max-width: 600px;
-            background: var(--surface);
-            border: 1px solid var(--surface-border-light);
-            border-radius: 8px;
-            margin-top: 4px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-        }
-
-        .landing-shaft-graphic {
-            display: flex;
-            flex-direction: column;
-            width: 52px;
-            height: 140px;
-            border: 1px solid var(--surface-border-light);
-            border-radius: 8px;
-            padding: 6px;
-            gap: 3px;
-            background-color: #111111;
-        }
-
-        .landing-shaft-box {
-            flex: 1;
-            background-color: #080808;
-            border: 1px solid var(--surface-border);
-            border-radius: 2px;
-        }
-
-        .landing-shaft-graphic .landing-shaft-box { animation: sweepMiddle 1.2s ease-in-out forwards; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(11) { animation: sweepBottomSettle 2.6s ease-in-out forwards; animation-delay: 0.05s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(10) { animation-delay: 0.15s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(9)  { animation-delay: 0.25s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(8)  { animation-delay: 0.35s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(7)  { animation-delay: 0.45s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(6)  { animation-delay: 0.55s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(5)  { animation-delay: 0.65s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(4)  { animation-delay: 0.75s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(3)  { animation-delay: 0.85s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(2)  { animation-delay: 0.95s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(1)  { animation: sweepTopGreen 1.6s ease-in-out forwards; animation-delay: 1.05s; }
-
-        @keyframes sweepMiddle {
-            0% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
-            30% { background-color: var(--genre-magenta); border-color: var(--genre-magenta); box-shadow: 0 0 10px var(--genre-magenta-glow); }
-            60%, 100% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
-        }
-
-        @keyframes sweepTopGreen {
-            0% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
-            20%, 70% { background-color: var(--state-success); border-color: var(--state-success); box-shadow: 0 0 16px var(--state-success-glow); }
-            100% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
-        }
-
-        @keyframes sweepBottomSettle {
-            0% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
-            15% { background-color: var(--genre-magenta); border-color: var(--genre-magenta); box-shadow: 0 0 10px var(--genre-magenta-glow); }
-            30%, 80% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
-            95%, 100% { background-color: var(--genre-magenta); border-color: var(--genre-magenta); box-shadow: 0 0 8px var(--genre-magenta-glow); }
-        }
-
-        .landing-challenge-text {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .btn-start {
-            background-color: var(--surface);
-            border: 1px solid var(--genre-magenta);
-            color: var(--genre-magenta);
-            padding: 11px 26px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.82rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 24px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-start:hover {
-            background-color: var(--genre-magenta);
-            color: #ffffff;
-            box-shadow: 0 4px 25px var(--genre-magenta-glow);
-        }
-
-        /* Gameplay Area Header & Tower Stack */
-        .hud-sidebar-container {
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-            align-items: stretch;
-            gap: 8px;
-            margin-bottom: 4px;
-            flex-shrink: 0;
-        }
-
-        .tower-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            width: 44px;
-            background: var(--surface);
-            border: 1px solid var(--surface-border-light);
-            border-radius: 8px;
-            padding: 4px;
-            justify-content: space-between;
-            flex-shrink: 0;
-        }
-
-        .tower-floor {
-            height: 6px;
-            border: 1px solid var(--surface-border);
-            background: #111111;
-            transition: all 0.2s ease;
-            border-radius: 2px;
-        }
-
-        .tower-floor.active { border-color: var(--state-active); background: var(--state-active); box-shadow: 0 0 8px var(--state-active-glow); }
-        .tower-floor.completed { border-color: var(--state-success); background: var(--state-success); box-shadow: 0 0 6px var(--state-success-glow); }
-        .tower-floor.failed { border-color: var(--state-error); background: var(--state-error); box-shadow: 0 0 6px var(--state-error-glow); }
-
-        .floor-info-box {
-            flex-grow: 1;
-            background: var(--surface);
-            border: 1px solid var(--surface-border-light);
-            border-radius: 8px;
-            padding: 8px 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .floor-left-group { display: flex; flex-direction: column; gap: 2px; }
-        .current-floor-display { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 800; letter-spacing: 1px; }
-        .floor-rule-text { font-family: 'Montserrat', sans-serif; font-size: 0.62rem; font-weight: 700; color: var(--genre-magenta); letter-spacing: 0.8px; text-transform: uppercase; }
-
-        .play-card {
-            width: 100%;
-            max-width: 600px;
-            background: var(--surface);
-            border: 1px solid var(--surface-border-light);
-            border-radius: 8px;
-            padding: 12px 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 10px;
-            flex-grow: 1;
-            margin-bottom: 4px;
-            overflow: hidden;
-            min-height: 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .timer-bar-container { width: 100%; height: 4px; background: #111111; border-radius: 2px; overflow: hidden; }
-        .timer-bar { width: 100%; height: 100%; background: var(--genre-magenta); }
-
-        #message-box {
-            min-height: 14px;
-            color: var(--state-error);
-            font-weight: 700;
-            font-size: 0.68rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .clue-box {
-            width: 100%;
-            background: #111111;
-            border: 1px solid var(--surface-border);
-            border-radius: 6px;
-            padding: 10px 12px;
-            text-align: center;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .clue-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #ffffff;
-            letter-spacing: 0.3px;
-            line-height: 1.35;
-        }
-
-        #target-word-slots { display: flex; gap: 4px; justify-content: center; align-items: center; width: 100%; min-height: 42px; flex-wrap: nowrap; }
-        .target-slot { width: clamp(26px, 8.5vw, 34px); height: 42px; border: 1px solid rgba(250, 204, 21, 0.4); border-radius: 6px; background: #111111; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 800; font-size: clamp(0.9rem, 3.5vw, 1.1rem); letter-spacing: -0.5px; color: var(--text-primary); cursor: pointer; transition: all 0.15s ease; flex-shrink: 0; }
-        .target-slot.filled { border-color: var(--state-active); box-shadow: 0 0 6px var(--state-active-glow); }
-        .target-slot.state-success { border-color: var(--state-success); color: var(--state-success); }
-        .target-slot.state-error { border-color: var(--state-error); color: var(--state-error); }
-
-        .rack-container { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 4px; }
-        .rack-label { font-size: 0.6rem; font-weight: 700; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
-        #letter-rack { display: flex; gap: 4px; justify-content: center; align-items: center; flex-wrap: nowrap; width: 100%; }
-        .rack-tile { width: clamp(26px, 8.5vw, 36px); height: 44px; background: #141414; border: 1px solid var(--surface-border); border-radius: 6px; color: #ffffff; font-family: 'Inter', sans-serif; font-weight: 700; font-size: clamp(0.9rem, 3.5vw, 1.1rem); letter-spacing: -0.5px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s ease; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); flex-shrink: 0; }
-        .rack-tile:hover { border-color: var(--state-active); background: #1c1c1c; }
-        .rack-tile.used { opacity: 0.15; pointer-events: none; border-color: transparent; box-shadow: none; }
-
-        .action-panel { width: 100%; max-width: 600px; display: flex; gap: 8px; justify-content: center; flex-shrink: 0; margin-bottom: 4px; }
-        .btn { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 11px 14px; cursor: pointer; border-radius: 8px; flex: 1; display: flex; align-items: center; justify-content: center; }
-        .btn-secondary { background: #111111; color: var(--text-muted); border: 1px solid var(--surface-border); }
-        .btn-secondary:hover { color: var(--text-primary); border-color: var(--text-muted); background: #181818; }
-        .btn-primary { background: #111111; color: var(--state-active); border: 1px solid var(--state-active); box-shadow: 0 0 10px var(--state-active-glow); }
-
-        footer { font-size: 0.58rem; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; text-align: center; flex-shrink: 0; }
-
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.92); display: flex; align-items: center; justify-content: center; z-index: 100; }
-        .modal-overlay.hidden { display: none !important; }
-        .modal-card { background-color: var(--surface); border: 1px solid var(--genre-magenta); box-shadow: 0 0 20px var(--genre-magenta-glow); padding: 24px 20px; border-radius: 14px; width: 92%; max-width: 380px; text-align: center; }
-
-        .modal-sub-header { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 800; color: var(--genre-magenta); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
-        .modal-main-title { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 14px; }
-
-        .stats-summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 12px 0 16px 0; background: var(--bg-deep); border: 1px solid var(--surface-border); border-radius: 10px; padding: 12px 8px; }
-        .stat-item { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .stat-value { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 800; color: #ffffff; }
-        .stat-value.active { color: var(--state-active); }
-        .stat-value.magenta { color: var(--genre-magenta); }
-        .stat-label { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
-
-        .vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 8px; max-height: 200px; overflow-y: auto; margin: 12px 0; padding-right: 2px; }
-        .vault-item-btn { background-color: #111111; border: 1px solid var(--genre-magenta); color: var(--text-primary); padding: 10px 6px; border-radius: 8px; cursor: pointer; text-align: center; box-shadow: 0 0 8px var(--genre-magenta-glow); transition: transform 0.1s ease, border-color 0.2s ease; }
-        .vault-item-btn:hover { border-color: #ffffff; }
-        .btn-modal { width: 100%; background-color: #111111; border: 1px solid var(--surface-border-light); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
-
-        /* IN-GAME VICTORY RECEIPT CARD SPECIFICATIONS */
-        .victory-receipt-card {
-            width: 100%;
-            max-width: 340px;
-            background-color: #111111;
-            border: 1px solid var(--genre-magenta);
-            border-radius: 14px;
-            padding: 22px 20px;
-            box-shadow: 0 0 25px var(--genre-magenta-glow);
-            margin-bottom: 16px;
-            text-align: left;
-            display: block;
-        }
-
-        .receipt-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #333333;
-            padding-bottom: 12px;
-            margin-bottom: 16px;
-        }
-
-        .brand-lockup-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .brand-mark-left {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.8rem;
-            color: var(--brand-red);
-            line-height: 0.85;
-            letter-spacing: -0.5px;
-            text-shadow: 0 0 10px var(--brand-red-glow);
-        }
-
-        .brand-text-stacked {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: left;
-        }
-
-        .brand-title-top {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 300;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-            line-height: 1.1;
-        }
-
-        .brand-title-bottom {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.55rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            line-height: 1.1;
-        }
-
-        .badge-slot-reserved {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: #888888;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .hero-flex-box {
-            text-align: center;
-            padding: 4px 0;
-            margin-bottom: 16px;
-        }
-
-        .game-title-header {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.8rem;
-            color: #ffffff;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            line-height: 1;
-            margin-bottom: 6px;
-        }
-
-        .flex-status-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .brand-magenta { color: var(--genre-magenta); }
-        .brand-green { color: var(--state-success); }
-        .brand-white { color: #ffffff; }
-
-        .hero-time-display {
-            font-family: 'Anton', sans-serif;
-            font-size: 3.4rem;
-            line-height: 0.9;
-            color: #ffffff;
-            letter-spacing: 2px;
-            margin: 8px 0;
-        }
-
-        .hero-time-unit {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #888888;
-            letter-spacing: 1px;
-            margin-left: 2px;
-            text-transform: lowercase;
-        }
-
-        .flex-tier-badge {
-            display: inline-block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: var(--genre-magenta);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: rgba(204, 0, 126, 0.1);
-            border: 1px solid var(--genre-magenta);
-            padding: 6px 16px;
-            border-radius: 12px;
-            margin-top: 6px;
-        }
-
-        .receipt-details {
-            border-top: 1px solid #333333;
-            padding-top: 14px;
-            margin-bottom: 16px;
-        }
-
-        .receipt-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .receipt-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .row-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #888888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .row-val {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-        }
-
-        .row-val.success { color: var(--state-success); }
-        .row-val.active { color: var(--genre-magenta); }
-
-        .card-footer-cta {
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.6rem;
-            font-weight: 800;
-            color: #888888;
-            letter-spacing: 1.5px;
-            border-top: 1px dashed #333333;
-            padding-top: 10px;
-            text-transform: uppercase;
-        }
-
-        .controls-group {
-            width: 100%;
-            max-width: 340px;
-            display: block;
-        }
-
-        .btn-flex-action {
-            width: 100%;
-            background-color: var(--genre-magenta);
-            border: 1px solid var(--genre-magenta);
-            color: #ffffff;
-            padding: 14px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 24px;
-            cursor: pointer;
-            box-shadow: 0 0 15px var(--genre-magenta-glow);
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .btn-secondary-action {
-            width: 100%;
-            background-color: #111111;
-            border: 1px solid #333333;
-            color: #ffffff;
-            padding: 12px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-radius: 24px;
-            cursor: pointer;
-            display: block;
-        }
-
-        #toast-msg {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--genre-magenta);
-            color: #ffffff;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 0.75rem;
-            padding: 8px 16px;
-            border-radius: 20px;
-            display: none;
-            z-index: 1000;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-    </style>
-</head>
-<body class="game-cluegram">
-
-    <div class="main-wrapper">
-        <div class="top-bar">
-            <a href="index.html" class="pill-btn">← LOBBY</a>
-            <button class="pill-btn" id="btn-sound">SOUND: ON</button>
-        </div>
-
-        <!-- LANDING SCREEN -->
-        <div id="start-screen">
-            <div class="game-logo-box">
-                <h1 class="game-logo-magenta">11FL?</h1>
-                <p class="game-logo-title">Eleventh Floor</p>
-                <p class="game-logo-sub">CLUEGRAM</p>
-            </div>
-
-            <div class="landing-container">
-                <div class="landing-shaft-graphic">
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                </div>
-
-                <div class="landing-challenge-text">
-                    <strong>CAN YOU REACH THE 11TH FLOOR?</strong><br><br>
-                    Solve the anagrams using the clues on every floor. One mistake and you lose your streak and return to the ground floor.
-                </div>
-                
-                <div style="display: flex; gap: 8px; margin-top: 4px;">
-                    <button id="btn-landing-stats" class="pill-btn" style="padding: 10px 18px; border-radius: 24px;">STATS / ARCHIVE</button>
-                    <button id="start-climb-btn" class="btn-start">Start Climb</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- GAMEPLAY HEADER -->
-        <div id="gameplay-header" class="gameplay-header-box" style="display: none;">
-            <p class="game-logo-title">Eleventh Floor</p>
-            <p class="game-logo-sub">CLUEGRAM</p>
-        </div>
-
-        <!-- Gameplay HUD Header -->
-        <div class="hud-sidebar-container" id="floor-hud-container" style="display: none;">
-            <div class="tower-stack" id="tower-stack">
-                <div class="tower-floor" data-floor="11"></div>
-                <div class="tower-floor" data-floor="10"></div>
-                <div class="tower-floor" data-floor="9"></div>
-                <div class="tower-floor" data-floor="8"></div>
-                <div class="tower-floor" data-floor="7"></div>
-                <div class="tower-floor" data-floor="6"></div>
-                <div class="tower-floor" data-floor="5"></div>
-                <div class="tower-floor" data-floor="4"></div>
-                <div class="tower-floor" data-floor="3"></div>
-                <div class="tower-floor" data-floor="2"></div>
-                <div class="tower-floor" data-floor="1"></div>
-            </div>
-
-            <div class="floor-info-box">
-                <div class="floor-left-group">
-                    <div class="current-floor-display" id="floor-number-val"><span style="color: var(--genre-magenta);">1st</span> <span style="color: #ffffff;">Floor</span></div>
-                    <div class="floor-rule-text" id="floor-rule-text">5-letter Anagram • No mistakes!</div>
-                </div>
-                <div id="active-game-timer" class="header-timer">00:00</div>
-            </div>
-        </div>
-
-        <!-- Main Play Card Workspace -->
-        <div id="game-workspace" class="play-card" style="display: none;">
-            <div class="timer-bar-container">
-                <div id="timer-bar" class="timer-bar"></div>
-            </div>
-
-            <div id="message-box"></div>
-
-            <div class="clue-box">
-                <div id="clue-text" class="clue-text">Loading clue...</div>
-            </div>
-
-            <div id="target-word-slots"></div>
-
-            <div class="rack-container">
-                <div class="rack-label">SCRAMBLED LETTERS</div>
-                <div id="letter-rack"></div>
-            </div>
-        </div>
-
-        <!-- Action Panel Controls -->
-        <div class="action-panel" id="game-controls" style="display: none;">
-            <button class="btn btn-secondary" id="action-backspace-btn">BACKSPACE</button>
-            <button class="btn btn-secondary" id="action-shuffle-btn">SHUFFLE</button>
-            <button class="btn btn-primary" id="action-submit-btn">SUBMIT</button>
-        </div>
-
-        <!-- INTEGRATED VICTORY SCREEN RECEIPT CARD -->
-        <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
-            
-            <div class="victory-receipt-card" id="victory-card">
-                <div class="receipt-header">
-                    <div class="brand-lockup-container">
-                        <div class="brand-mark-left">11FL?</div>
-                        <div class="brand-text-stacked">
-                            <span class="brand-title-top">ELEVENTH FLOOR</span>
-                            <span class="brand-title-bottom">GAMES</span>
-                        </div>
-                    </div>
-                    <div class="badge-slot-reserved">VERIFIED</div>
-                </div>
-
-                <div class="hero-flex-box">
-                    <div class="game-title-header">
-                        <span class="brand-magenta">11th</span> <span class="brand-white">Floor Cluegram</span>
-                    </div>
-                    <div class="flex-status-label">
-                        <span class="brand-magenta">11th</span> <span class="brand-white">Floor Cleared</span>
-                    </div>
-                    <div class="hero-time-display"><span id="victory-time-display">00:00</span><span class="hero-time-unit">s</span></div>
-                    <div class="flex-tier-badge">PERFECT</div>
-                </div>
-
-                <div class="receipt-details">
-                    <div class="receipt-row">
-                        <span class="row-label">ELEVENTH FLOOR CLUEGRAM</span>
-                        <span class="row-val">#042</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="row-label">TODAY'S TIME</span>
-                        <span id="victory-time-row-display" class="row-val active">00:00s</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="row-label">ACCURACY</span>
-                        <span class="row-val success">100% (10/10)</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="row-label">CURRENT STREAK</span>
-                        <span id="victory-streak-display" class="row-val active">0 Days</span>
-                    </div>
-                </div>
-
-                <div class="card-footer-cta">
-                    NEW GAME DAILY!
-                </div>
-            </div>
-
-            <!-- ACTION CONTROL BUTTONS -->
-            <div class="controls-group">
-                <button class="btn-flex-action" id="share-btn">SHARE SCREENSHOT</button>
-                <button class="btn-secondary-action" id="btn-victory-stats">STATS & ARCHIVES</button>
-            </div>
-        </div>
-
-        <footer>
-            <div id="footer-text">ONE MISTAKE RESETS THE CLIMB TO 1ST FLOOR.</div>
-        </footer>
-    </div>
-
-    <!-- Toast Notification -->
-    <div id="toast-msg">SCREENSHOT GENERATED</div>
-
-    <!-- Stats & Archive Vault Modal -->
-    <div id="modal-vault" class="modal-overlay hidden">
-        <div class="modal-card">
-            <div class="modal-sub-header">11TH FLOOR CLUEGRAM</div>
-            <div class="modal-main-title">STATS & ARCHIVES</div>
-            <div class="stats-summary-grid">
-                <div class="stat-item"><span id="stat-played" class="stat-value">0</span><span class="stat-label">Played</span></div>
-                <div class="stat-item"><span id="stat-wins" class="stat-value magenta">0</span><span class="stat-label">Wins</span></div>
-                <div class="stat-item"><span id="stat-winrate" class="stat-value">0%</span><span class="stat-label">Win %</span></div>
-                <div class="stat-item"><span id="stat-streak" class="stat-value active">0</span><span class="stat-label">Streak</span></div>
-                <div class="stat-item"><span id="stat-bestfloor" class="stat-value magenta">1st</span><span class="stat-label">Highest Floor</span></div>
-                <div class="stat-item"><span id="stat-besttime" class="stat-value active">--:--</span><span class="stat-label">Best Time</span></div>
-            </div>
-            <div id="vault-list" class="vault-grid"></div>
-            <button id="btn-close-vault" class="btn-modal">CLOSE</button>
-        </div>
-    </div>
-
-    <script src="cluegram-data.js"></script>
-    <script src="cluegram.js"></script>
-
-    <!-- REAL SCREENSHOT GENERATOR & SHARE ENGINE -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const shareBtn = document.getElementById('share-btn');
-            const victoryCard = document.getElementById('victory-card');
-            const toast = document.getElementById('toast-msg');
-
-            function showToast(text) {
-                if (!toast) return;
-                toast.innerText = text;
-                toast.style.display = 'block';
-                setTimeout(() => {
-                    toast.style.display = 'none';
-                }, 2000);
-            }
-
-            if (shareBtn && victoryCard) {
-                shareBtn.addEventListener('click', async () => {
-                    try {
-                        showToast('CAPTURING SCREENSHOT...');
-                        const canvas = await html2canvas(victoryCard, {
-                            backgroundColor: '#111111',
-                            scale: 2,
-                            useCORS: true,
-                            allowTaint: true
-                        });
-
-                        canvas.toBlob(async (blob) => {
-                            if (!blob) return;
-                            const file = new File([blob], '11th-floor-cluegram-victory.png', { type: 'image/png' });
-
-                            if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                                try {
-                                    await navigator.share({
-                                        title: '11th Floor Cluegram Victory Card',
-                                        files: [file]
-                                    });
-                                } catch (e) {
-                                    console.log('Share prompt dismissed');
-                                }
-                            } else {
-                                const downloadLink = document.createElement('a');
-                                downloadLink.href = URL.createObjectURL(file);
-                                downloadLink.download = '11th-floor-cluegram-victory.png';
-                                downloadLink.click();
-                                showToast('SCREENSHOT SAVED TO DEVICE');
-                            }
-                        }, 'image/png');
-                    } catch (err) {
-                        console.error('Screenshot capture error:', err);
-                        showToast('ERROR GENERATING SCREENSHOT');
-                    }
-                });
+        document.addEventListener('keydown', (e) => {
+            if (!gameWorkspace || gameWorkspace.style.display === 'none' || isProcessing) return;
+
+            const key = e.key.toUpperCase();
+            if (/^[A-Z]$/.test(key)) {
+                selectFirstAvailableLetter(key);
+            } else if (e.key === 'Backspace') {
+                handleBackspace();
+            } else if (e.key === 'Enter') {
+                handleSubmit();
             }
         });
-    </script>
-</body>
-</html>
+    }
+
+    // --- Timer Functions ---
+    function startTimer() {
+        if (!timerInterval) {
+            timeElapsedSeconds = 0;
+            startTime = Date.now();
+            if (activeGameTimer) {
+                activeGameTimer.style.display = 'block';
+                activeGameTimer.textContent = '00:00';
+            }
+            timerInterval = setInterval(updateTimerDisplay, 1000);
+        }
+    }
+
+    function stopTimer() {
+        if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+    }
+
+    function updateTimerDisplay() {
+        timeElapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+        if (activeGameTimer) {
+            activeGameTimer.textContent = formatTime(timeElapsedSeconds);
+        }
+    }
+
+    function formatTime(totalSeconds) {
+        if (totalSeconds === null || totalSeconds === undefined) return "--:--";
+        const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+        const s = (totalSeconds % 60).toString().padStart(2, '0');
+        return `${m}:${s}`;
+    }
+
+    // --- 20-Second Question Timer Bar Engine ---
+    function startQuestionTimer() {
+        clearInterval(questionTimer);
+        const totalDuration = 20000;
+        const qStartTime = Date.now();
+        questionTimeLeft = 20;
+        const timerBar = document.getElementById('timer-bar');
+        
+        if (timerBar) {
+            timerBar.style.width = '100%';
+            timerBar.style.backgroundColor = 'var(--genre-magenta)';
+        }
+
+        questionTimer = setInterval(() => {
+            const elapsed = Date.now() - qStartTime;
+            const remaining = Math.max(0, totalDuration - elapsed);
+            questionTimeLeft = Math.ceil(remaining / 1000);
+
+            if (timerBar) {
+                timerBar.style.width = `${(remaining / totalDuration) * 100}%`;
+                if (remaining <= totalDuration / 2) {
+                    timerBar.style.backgroundColor = 'var(--state-error)';
+                } else {
+                    timerBar.style.backgroundColor = 'var(--genre-magenta)';
+                }
+            }
+
+            if (remaining <= 0) {
+                clearInterval(questionTimer);
+                handleTimeExpired();
+            }
+        }, 50);
+    }
+
+    function stopQuestionTimer() {
+        clearInterval(questionTimer);
+    }
+
+    function handleTimeExpired() {
+        if (isProcessing) return;
+        isProcessing = true;
+
+        const slots = targetSlotsContainer ? targetSlotsContainer.querySelectorAll('.target-slot') : [];
+        slots.forEach(slot => slot.classList.add('state-error'));
+        showMessage('TIME EXPIRED — DROPPED TO 1ST FLOOR', false);
+
+        const towerFloors = document.querySelectorAll('.tower-floor');
+        const activeTowerFloor = Array.from(towerFloors).find(
+            f => parseInt(f.dataset.floor) === currentFloorIndex + 1
+        );
+        if (activeTowerFloor) activeTowerFloor.classList.add('failed');
+
+        recordGameResult(false, currentFloorIndex + 1);
+
+        setTimeout(() => {
+            currentFloorIndex = 0;
+            loadFloor(0);
+        }, 1500);
+    }
+
+    // --- Data Loading ---
+    function fetchFileWithFallbacks(filename) {
+        const candidatePaths = [`./archives/${filename}`, `./${filename}`, `./data/${filename}`, filename];
+        return new Promise(async (resolve) => {
+            for (const path of candidatePaths) {
+                try {
+                    const res = await fetch(path);
+                    if (res.ok) return resolve(await res.json());
+                } catch (e) {}
+            }
+            resolve(null);
+        });
+    }
+
+    async function populateVault() {
+        if (!vaultList) return;
+        vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
+        
+        const fetchPromises = [];
+        for (let i = 1; i <= 100; i++) {
+            const paddedId = String(i).padStart(2, '0');
+            fetchPromises.push(fetchFileWithFallbacks(`cluegram-${paddedId}.json`).then(data => ({ id: paddedId, data })));
+        }
+
+        const results = await Promise.all(fetchPromises);
+        const buttons = [];
+
+        results.forEach(({ id, data }) => {
+            if (data) {
+                const btn = document.createElement('button');
+                btn.className = 'vault-item-btn';
+                btn.innerHTML = `<strong>Archive ${id}</strong>`;
+                btn.onclick = () => loadVaultArchive(id);
+                buttons.push(btn);
+            }
+        });
+
+        vaultList.innerHTML = '';
+        if (buttons.length === 0) {
+            vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">No archives found.</div>';
+        } else {
+            buttons.forEach(btn => vaultList.appendChild(btn));
+        }
+    }
+
+    async function loadVaultArchive(paddedId) {
+        const data = await fetchFileWithFallbacks(`cluegram-${paddedId}.json`);
+        let extractedFloors = [];
+        if (data) extractedFloors = Array.isArray(data) ? data : (data.floors || []);
+
+        if (extractedFloors.length > 0) {
+            activeGameData = extractedFloors;
+            launchGameUI();
+        } else {
+            showMessage(`COULD NOT LOAD ARCHIVE ${paddedId}`, false);
+        }
+    }
+
+    function startGame() {
+        if (!activeGameData || activeGameData.length === 0) {
+            activeGameData = getDailyDataset();
+        }
+        if (!activeGameData || activeGameData.length === 0) {
+            console.warn('No cluegram dataset found.');
+            return;
+        }
+        launchGameUI();
+    }
+
+    function launchGameUI() {
+        if (startScreen) startScreen.style.display = 'none';
+        if (victoryScreen) victoryScreen.style.display = 'none';
+        if (hudContainer) hudContainer.style.display = 'flex';
+        if (gameWorkspace) gameWorkspace.style.display = 'flex';
+        if (gameControls) gameControls.style.display = 'flex';
+        if (statsModal) statsModal.classList.add('hidden');
+        if (gameplayHeader) gameplayHeader.style.display = 'flex';
+        if (footerText) footerText.style.display = 'block';
+
+        currentFloorIndex = 0;
+        startTimer();
+        loadFloor(currentFloorIndex);
+    }
+
+    function resetToStartScreen() {
+        stopTimer();
+        stopQuestionTimer();
+        if (victoryScreen) victoryScreen.style.display = 'none';
+        if (hudContainer) hudContainer.style.display = 'none';
+        if (gameWorkspace) gameWorkspace.style.display = 'none';
+        if (gameControls) gameControls.style.display = 'none';
+        if (gameplayHeader) gameplayHeader.style.display = 'none';
+        if (activeGameTimer) activeGameTimer.style.display = 'none';
+        if (startScreen) startScreen.style.display = 'flex';
+    }
+
+    // --- Core Logic ---
+    function getOrdinalFloorHTML(floorNum) {
+        const ord = ordinals[floorNum - 1] || `${floorNum}th`;
+        return `<span style="color: var(--genre-magenta); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
+    }
+
+    function loadFloor(index) {
+        if (!activeGameData || index >= activeGameData.length) return;
+
+        const floorData = activeGameData[index];
+        userGuess = [];
+        showMessage('', false);
+        isProcessing = false;
+
+        if (floorNumberVal) floorNumberVal.innerHTML = getOrdinalFloorHTML(index + 1);
+        if (floorRuleText) floorRuleText.textContent = `${floorData.target.length}-letter Anagram • No mistakes!`;
+        if (clueText) clueText.textContent = floorData.clue;
+
+        updateTowerStack(index + 1);
+
+        if (targetSlotsContainer) {
+            targetSlotsContainer.innerHTML = '';
+            for (let i = 0; i < floorData.target.length; i++) {
+                const slot = document.createElement('div');
+                slot.className = 'target-slot';
+                slot.dataset.slotIndex = i;
+                slot.addEventListener('click', () => handleSlotClick(i));
+                targetSlotsContainer.appendChild(slot);
+            }
+        }
+
+        rackTiles = floorData.scrambled.split('').map((char, i) => ({
+            id: i,
+            letter: char,
+            used: false
+        }));
+
+        renderRack();
+        startQuestionTimer();
+    }
+
+    function renderRack() {
+        if (!letterRackContainer) return;
+        letterRackContainer.innerHTML = '';
+        rackTiles.forEach((tile) => {
+            const tileElem = document.createElement('div');
+            tileElem.className = `rack-tile ${tile.used ? 'used' : ''}`;
+            tileElem.textContent = tile.letter;
+            tileElem.addEventListener('click', () => handleTileClick(tile));
+            letterRackContainer.appendChild(tileElem);
+        });
+        renderTargetSlots();
+    }
+
+    function renderTargetSlots() {
+        if (!targetSlotsContainer) return;
+        const slots = targetSlotsContainer.querySelectorAll('.target-slot');
+        slots.forEach((slot, i) => {
+            if (i < userGuess.length) {
+                slot.textContent = userGuess[i].letter;
+                slot.classList.add('filled');
+            } else {
+                slot.textContent = '';
+                slot.classList.remove('filled');
+            }
+            slot.classList.remove('state-error', 'state-success');
+        });
+    }
+
+    function handleTileClick(tile) {
+        if (tile.used || isProcessing) return;
+        const currentFloor = activeGameData[currentFloorIndex];
+        if (userGuess.length < currentFloor.target.length) {
+            tile.used = true;
+            userGuess.push(tile);
+            renderRack();
+        }
+    }
+
+    function handleSlotClick(index) {
+        if (isProcessing || index >= userGuess.length) return;
+        const removedTile = userGuess.splice(index, 1)[0];
+        const originalTile = rackTiles.find(t => t.id === removedTile.id);
+        if (originalTile) originalTile.used = false;
+        renderRack();
+    }
+
+    function selectFirstAvailableLetter(letter) {
+        const availableTile = rackTiles.find(t => !t.used && t.letter === letter);
+        if (availableTile) handleTileClick(availableTile);
+    }
+
+    function handleBackspace() {
+        if (userGuess.length === 0 || isProcessing) return;
+        const removedTile = userGuess.pop();
+        const originalTile = rackTiles.find(t => t.id === removedTile.id);
+        if (originalTile) originalTile.used = false;
+        renderRack();
+    }
+
+    function handleShuffle() {
+        if (isProcessing) return;
+        for (let i = rackTiles.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [rackTiles[i], rackTiles[j]] = [rackTiles[j], rackTiles[i]];
+        }
+        renderRack();
+    }
+
+    function handleSubmit() {
+        if (isProcessing) return;
+        const currentFloor = activeGameData[currentFloorIndex];
+        if (userGuess.length < currentFloor.target.length) {
+            showMessage('FILL ALL SLOTS BEFORE SUBMITTING', false);
+            return;
+        }
+
+        stopQuestionTimer();
+        isProcessing = true;
+        const submittedWord = userGuess.map(t => t.letter).join('');
+        const slots = targetSlotsContainer.querySelectorAll('.target-slot');
+
+        if (submittedWord === currentFloor.target) {
+            slots.forEach(slot => slot.classList.add('state-success'));
+            showMessage('CORRECT ANAGRAM!', true);
+
+            setTimeout(() => {
+                if (currentFloorIndex + 1 >= activeGameData.length) {
+                    stopTimer();
+                    const newStats = recordGameResult(true, 11);
+                    
+                    const formattedTime = formatTime(timeElapsedSeconds);
+                    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
+                    if (victoryTimeRowDisplay) victoryTimeRowDisplay.textContent = `${formattedTime}s`;
+                    if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${newStats.streak} Days`;
+                    
+                    if (hudContainer) hudContainer.style.display = 'none';
+                    if (gameWorkspace) gameWorkspace.style.display = 'none';
+                    if (gameControls) gameControls.style.display = 'none';
+                    if (gameplayHeader) gameplayHeader.style.display = 'none';
+                    if (activeGameTimer) activeGameTimer.style.display = 'none';
+                    if (footerText) footerText.style.display = 'none';
+                    
+                    if (victoryScreen) victoryScreen.style.display = 'flex';
+                    
+                } else {
+                    currentFloorIndex++;
+                    loadFloor(currentFloorIndex);
+                }
+            }, 800);
+        } else {
+            slots.forEach(slot => slot.classList.add('state-error'));
+            showMessage('INCORRECT — DROPPED TO 1ST FLOOR', false);
+
+            const towerFloors = document.querySelectorAll('.tower-floor');
+            const activeTowerFloor = Array.from(towerFloors).find(
+                f => parseInt(f.dataset.floor) === currentFloorIndex + 1
+            );
+            if (activeTowerFloor) activeTowerFloor.classList.add('failed');
+
+            recordGameResult(false, currentFloorIndex + 1);
+
+            setTimeout(() => {
+                currentFloorIndex = 0;
+                loadFloor(0);
+            }, 1500);
+        }
+    }
+
+    function updateTowerStack(activeFloorNum) {
+        const towerFloors = document.querySelectorAll('.tower-floor');
+        towerFloors.forEach(floorElem => {
+            const floorVal = parseInt(floorElem.dataset.floor);
+            floorElem.classList.remove('active', 'completed', 'failed');
+
+            if (floorVal === activeFloorNum) {
+                floorElem.classList.add('active');
+            } else if (floorVal < activeFloorNum) {
+                floorElem.classList.add('completed');
+            }
+        });
+    }
+
+    function showMessage(msg, isSuccess = false) {
+        if (!messageBox) return;
+        messageBox.textContent = msg;
+        messageBox.style.color = isSuccess ? 'var(--state-success)' : 'var(--state-error)';
+    }
+
+    function recordGameResult(isWin, peakFloor) {
+        const stats = getStats();
+        stats.played++;
+        if (isWin) {
+            stats.wins++;
+            stats.streak++;
+            if (stats.bestTimeSeconds === null || timeElapsedSeconds < stats.bestTimeSeconds) {
+                stats.bestTimeSeconds = timeElapsedSeconds;
+            }
+        } else {
+            stats.streak = 0;
+        }
+
+        if (peakFloor > stats.bestFloor) {
+            stats.bestFloor = peakFloor;
+        }
+
+        try {
+            localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+        } catch (e) {
+            console.warn('LocalStorage save blocked.');
+        }
+        updateStatsDisplay();
+        return stats;
+    }
+
+    function getStats() {
+        try {
+            const raw = localStorage.getItem(STATS_KEY);
+            if (!raw) {
+                return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
+            }
+            return JSON.parse(raw);
+        } catch (e) {
+            return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
+        }
+    }
+
+    function updateStatsDisplay() {
+        const stats = getStats();
+        const playedElem = document.getElementById('stat-played');
+        const winsElem = document.getElementById('stat-wins');
+        const winrateElem = document.getElementById('stat-winrate');
+        const streakElem = document.getElementById('stat-streak');
+        const bestfloorElem = document.getElementById('stat-bestfloor');
+        const besttimeElem = document.getElementById('stat-besttime');
+
+        if (playedElem) playedElem.textContent = stats.played;
+        if (winsElem) winsElem.textContent = stats.wins;
+        
+        const winRate = stats.played > 0 ? Math.round((stats.wins / stats.played) * 100) : 0;
+        if (winrateElem) winrateElem.textContent = `${winRate}%`;
+        if (streakElem) streakElem.textContent = `${stats.streak}`;
+        
+        if (bestfloorElem) {
+            bestfloorElem.innerHTML = getOrdinalFloorHTML(stats.bestFloor);
+        }
+
+        if (besttimeElem) {
+            besttimeElem.textContent = formatTime(stats.bestTimeSeconds);
+        }
+    }
+});
