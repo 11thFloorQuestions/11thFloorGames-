@@ -133,15 +133,16 @@ loadSavedStats();
 // ==========================================
 
 function startSessionTimer() {
-    stopSessionTimer();
-    gameState.timeElapsedSeconds = 0;
-    gameState.startTime = Date.now();
-    const activeGameTimer = document.getElementById("active-game-timer");
-    if (activeGameTimer) {
-        activeGameTimer.style.display = "block";
-        activeGameTimer.textContent = "00:00";
+    if (!gameState.timerInterval) {
+        gameState.timeElapsedSeconds = 0;
+        gameState.startTime = Date.now();
+        const activeGameTimer = document.getElementById("active-game-timer");
+        if (activeGameTimer) {
+            activeGameTimer.style.display = "block";
+            activeGameTimer.textContent = "00:00";
+        }
+        gameState.timerInterval = setInterval(updateSessionTimerDisplay, 1000);
     }
-    gameState.timerInterval = setInterval(updateSessionTimerDisplay, 1000);
 }
 
 function stopSessionTimer() {
@@ -152,7 +153,6 @@ function stopSessionTimer() {
 }
 
 function updateSessionTimerDisplay() {
-    if (!gameState.startTime) return;
     gameState.timeElapsedSeconds = Math.floor((Date.now() - gameState.startTime) / 1000);
     const activeGameTimer = document.getElementById("active-game-timer");
     if (activeGameTimer) {
@@ -455,4 +455,215 @@ function launchGameUI() {
     const header = document.getElementById('gameplay-header');
     const footer = document.getElementById('footer-text');
 
-    if (landing)
+    if (landing) landing.style.display = 'none';
+    if (victory) victory.style.display = 'none';
+    if (hud) hud.style.display = 'flex';
+    if (workspace) workspace.style.display = 'flex';
+    if (header) header.style.display = 'flex';
+    if (footer) footer.style.display = 'block';
+
+    startSessionTimer();
+    startGame();
+}
+
+
+// ==========================================
+// GAME LOOP & ELEVATOR PROGRESSION
+// ==========================================
+
+function startGame() {
+    gameState.currentFloor = 1;
+    gameState.currentQuestionIndex = 0;
+    showScreen('game-screen');
+    
+    const hud = document.getElementById('floor-hud-container');
+    const header = document.getElementById('gameplay-header');
+    if (hud) hud.style.display = 'flex';
+    if (header) header.style.display = 'flex';
+
+    updateFloorUI();
+    loadNextQuestion();
+}
+
+function updateFloorUI() {
+    const cardFloorEl = document.getElementById('card-floor-text');
+    if (cardFloorEl) {
+        cardFloorEl.innerHTML = getOrdinalFloorHTML(gameState.currentFloor) + ' <span style="color: #ffffff;">Floor</span>';
+    }
+    
+    const activeBatch = floorMessageBatches[0];
+    const ruleMsg = activeBatch[gameState.currentFloor - 1] || "No mistakes!";
+    safeSetText('floor-rule-text', ruleMsg);
+
+    document.querySelectorAll('.tower-floor, .floor-block').forEach(block => {
+        const floorNum = parseInt(block.getAttribute('data-floor'), 10);
+        block.classList.toggle('active', floorNum === gameState.currentFloor);
+        block.classList.toggle('active-floor', floorNum === gameState.currentFloor);
+        block.classList.toggle('completed', floorNum < gameState.currentFloor);
+        block.classList.remove('failed');
+    });
+}
+
+function loadNextQuestion() {
+    startQuestionTimer();
+    
+    const currentQ = gameState.questions[gameState.currentQuestionIndex];
+    if (!currentQ) return;
+
+    safeSetText('question-text', currentQ.question);
+    
+    const shuffledOptions = shuffleArray(currentQ.options);
+    
+    const optionButtons = document.querySelectorAll('#options-grid .btn-option');
+    optionButtons.forEach((btn, idx) => {
+        btn.className = 'btn-option';
+        btn.classList.remove('selected-correct', 'selected-wrong');
+        
+        if (typeof btn.blur === 'function') {
+            btn.blur();
+        }
+        
+        const optionVal = shuffledOptions[idx] || null;
+        btn.textContent = optionVal || '';
+        btn.style.display = optionVal ? 'block' : 'none';
+        
+        const isCorrect = (optionVal === currentQ.answer);
+        
+        // Immediate touch vibration trigger on finger-down to prevent mobile browser gesture blocks
+        btn.onpointerdown = () => {
+            triggerHaptic(15);
+        };
+        btn.onclick = () => handleAnswerSelect(isCorrect, btn); 
+    });
+}
+
+function startQuestionTimer() {
+    clearInterval(gameState.timer);
+    const totalDuration = 20000;
+    const startTime = Date.now();
+    gameState.timeLeft = 20;
+    const timerBar = document.getElementById('timer-bar');
+    
+    if (timerBar) {
+        timerBar.style.width = '100%';
+        timerBar.style.backgroundColor = 'var(--genre-pitch)';
+    }
+
+    gameState.timer = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const remaining = Math.max(0, totalDuration - elapsed);
+        gameState.timeLeft = Math.ceil(remaining / 1000);
+
+        if (timerBar) {
+            timerBar.style.width = `${(remaining / totalDuration) * 100}%`;
+            if (remaining <= totalDuration / 2) {
+                timerBar.style.backgroundColor = 'var(--state-error)';
+            } else {
+                timerBar.style.backgroundColor = 'var(--genre-pitch)';
+            }
+        }
+
+        if (remaining <= 0) {
+            clearInterval(gameState.timer);
+            handleGameOver('TIME EXPIRED');
+        }
+    }, 50);
+}
+
+function handleAnswerSelect(isCorrect, buttonEl) {
+    clearInterval(gameState.timer);
+    
+    document.querySelectorAll('#options-grid .btn-option').forEach(btn => {
+        btn.onclick = null;
+        btn.onpointerdown = null;
+        if (typeof btn.blur === 'function') {
+            btn.blur();
+        }
+    });
+    
+    if (isCorrect) {
+        if (buttonEl) buttonEl.classList.add('selected-correct');
+        playElevatorDing();
+        triggerHaptic([35, 40, 35]);
+        
+        setTimeout(() => {
+            if (gameState.currentFloor >= gameState.maxFloors) {
+                handleVictory();
+            } else {
+                gameState.currentFloor++;
+                gameState.currentQuestionIndex++;
+                if (gameState.currentFloor > gameState.stats.bestFloor) {
+                    gameState.stats.bestFloor = gameState.currentFloor;
+                }
+                updateFloorUI();
+                loadNextQuestion();
+            }
+        }, 800);
+    } else {
+        if (buttonEl) buttonEl.classList.add('selected-wrong');
+        triggerHaptic([80, 50, 120]);
+        
+        const activeBlock = document.querySelector(`.tower-floor[data-floor="${gameState.currentFloor}"]`);
+        if (activeBlock) activeBlock.classList.add('failed');
+
+        setTimeout(() => {
+            handleGameOver('INCORRECT ANSWER');
+        }, 800);
+    }
+}
+
+function handleGameOver(reason) {
+    gameState.stats.played++;
+    gameState.stats.streak = 0;
+    saveStats();
+    
+    safeSetText('game-over-title', 'ELEVATOR STOPPED');
+    safeSetText('game-over-message', reason);
+    
+    const finalEl = document.getElementById('final-floor-reached');
+    if (finalEl) {
+        finalEl.innerHTML = `Stopped at ${getFailedOrdinalFloorHTML(gameState.currentFloor)}`;
+    }
+    
+    openModal('modal-game-over');
+}
+
+function handleVictory() {
+    stopSessionTimer();
+    gameState.currentFloor = 11;
+    gameState.stats.played++;
+    gameState.stats.wins++;
+    gameState.stats.streak++;
+    gameState.stats.bestFloor = 11;
+
+    if (gameState.stats.bestTimeSeconds === null || gameState.timeElapsedSeconds < gameState.stats.bestTimeSeconds) {
+        gameState.stats.bestTimeSeconds = gameState.timeElapsedSeconds;
+    }
+
+    saveStats();
+    
+    triggerHaptic([50, 50, 50, 50, 100]);
+    
+    const victoryTimeDisplay = document.getElementById('victory-time-display');
+    const victoryTimeRowDisplay = document.getElementById('victory-time-row-display');
+    const victoryStreakDisplay = document.getElementById('victory-streak-display');
+    const hudContainer = document.getElementById('floor-hud-container');
+    const gameWorkspace = document.getElementById('game-workspace');
+    const gameplayHeader = document.getElementById('gameplay-header');
+    const activeGameTimer = document.getElementById('active-game-timer');
+    const victoryScreen = document.getElementById('victory-screen');
+    const footerText = document.getElementById('footer-text');
+
+    const formattedTime = formatTime(gameState.timeElapsedSeconds);
+    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
+    if (victoryTimeRowDisplay) victoryTimeRowDisplay.textContent = `${formattedTime}s`;
+    if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${gameState.stats.streak} Days`;
+
+    if (hudContainer) hudContainer.style.display = 'none';
+    if (gameWorkspace) gameWorkspace.style.display = 'none';
+    if (gameplayHeader) gameplayHeader.style.display = 'none';
+    if (activeGameTimer) activeGameTimer.style.display = 'none';
+    if (footerText) footerText.style.display = 'none';
+
+    if (victoryScreen) victoryScreen.style.display = 'flex';
+}
