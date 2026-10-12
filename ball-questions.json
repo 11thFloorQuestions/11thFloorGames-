@@ -1,142 +1,142 @@
 {
-  "setId": "28",
-  "title": "Think You Know Ball? - Set 28",
+  "setId": "29",
+  "title": "Think You Know Ball? - Set 29",
   "questions": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Who scored the opener for Chelsea yesterday?",
+      "question": "As a throwback to the 1988/89 season, Man City had what type of inflatables on show yesterday?",
       "options": [
-        "Jordan Henderson",
-        "Jordan Air Max"
+        "Bananas",
+        "Sheep"
       ],
-      "answer": "Jordan Henderson",
-      "explanation": "Jordan Henderson scored the opening goal for Chelsea.",
-      "anchorClues": "Chelsea opener goal Jordan Henderson"
+      "answer": "Bananas",
+      "explanation": "Manchester City fans famously brought inflatable bananas to matches during the late 1980s.",
+      "anchorClues": "Man City inflatable bananas throwback 1988 1989"
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which former Everton player celebrates his birthday today?",
+      "question": "Which former Spurs legend celebrates his birthday today?",
       "options": [
-        "Seamus Coleman",
-        "Leighton Baines",
-        "Phil Jagielka",
-        "Ross Barkley"
+        "Ledley King",
+        "Michael Dawson",
+        "Jermain Defoe",
+        "Robbie Keane"
       ],
-      "answer": "Seamus Coleman",
-      "explanation": "Seamus Coleman celebrates his birthday today (born 11 October 1988).",
-      "anchorClues": "Seamus Coleman birthday October 11"
+      "answer": "Ledley King",
+      "explanation": "Former Tottenham Hotspur captain Ledley King was born on 12 October 1980.",
+      "anchorClues": "Ledley King birthday October 12 Tottenham Hotspur"
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Who scored the opening goal in Saturday’s early kick-off game between Arsenal and Leeds?",
+      "question": "Who scored the opening goal in Sunday's match between Liverpool and Man City?",
       "options": [
-        "James Justin",
-        "Riccardo Calafiori",
-        "Bukayo Saka",
-        "Dominic Calvert-Lewin"
+        "Erling Haaland",
+        "Jérémy Doku",
+        "Rayan Cherki",
+        "Mohamed Salah"
       ],
-      "answer": "James Justin",
-      "explanation": "James Justin scored the opening goal in the match between Arsenal and Leeds.",
-      "anchorClues": "James Justin opening goal Arsenal vs Leeds"
+      "answer": "Erling Haaland",
+      "explanation": "Erling Haaland scored the opening goal for Manchester City at Anfield.",
+      "anchorClues": "Erling Haaland opening goal Liverpool vs Man City"
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Which player was sent off in yesterday's game between Man Utd and Spurs?",
+      "question": "And in the same game, which Liverpool player was sent off?",
       "options": [
-        "Rodrigo Bentancur",
-        "Lisandro Martínez",
-        "Yves Bissouma",
-        "Cristian Romero"
+        "Ryan Gravenberch",
+        "Ronald Araújo",
+        "Virgil van Dijk",
+        "Alexis Mac Allister"
       ],
-      "answer": "Rodrigo Bentancur",
-      "explanation": "Rodrigo Bentancur received a red card in the Man Utd vs Spurs fixture.",
-      "anchorClues": "Rodrigo Bentancur red card Man Utd vs Spurs"
+      "answer": "Ryan Gravenberch",
+      "explanation": "Ryan Gravenberch received a second yellow card during the match.",
+      "anchorClues": "Ryan Gravenberch red card Liverpool vs Man City"
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "The big game today is Liverpool v Man City. What is Anfield's capacity?",
+      "question": "The last time Coventry and Newcastle met in the Premier League, Newcastle won 2–0. What year was that?",
       "options": [
-        "61,276",
-        "58,222"
+        "2000",
+        "2003"
       ],
-      "answer": "61,276",
-      "explanation": "Anfield's official capacity stands at 61,276.",
-      "anchorClues": "Anfield official stadium capacity 61276"
+      "answer": "2000",
+      "explanation": "Newcastle beat Coventry 2–0 at Highfield Road in September 2000.",
+      "anchorClues": "Coventry vs Newcastle Premier League 2000 2-0"
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "Which manager holds the record for winning 18 consecutive Premier League matches during a single season?",
+      "question": "Who was Aston Villa's manager immediately before Unai Emery took over?",
       "options": [
-        "Pep Guardiola",
-        "Jürgen Klopp",
-        "Sir Alex Ferguson",
-        "Arsène Wenger"
+        "Steven Gerrard",
+        "Dean Smith",
+        "Tim Sherwood",
+        "Gary McAllister"
       ],
-      "answer": "Pep Guardiola",
-      "explanation": "Pep Guardiola guided Manchester City to 18 consecutive Premier League victories during the 2017–18 season.",
-      "anchorClues": "Pep Guardiola 18 consecutive Premier League wins record"
+      "answer": "Steven Gerrard",
+      "explanation": "Steven Gerrard managed Aston Villa from November 2021 until October 2022, when he was replaced by Unai Emery.",
+      "anchorClues": "Steven Gerrard manager Aston Villa before Unai Emery"
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "What shirt number has Mason Mount been given this season?",
+      "question": "Which shirt number does Bukayo Saka wear for Arsenal?",
       "options": [
         "7",
-        "19",
-        "10",
-        "8"
+        "11",
+        "77",
+        "10"
       ],
       "answer": "7",
-      "explanation": "The Secret '7' Easter Egg.",
-      "anchorClues": "Easter egg secret seven answer Mason Mount Manchester United shirt number 7"
+      "explanation": "Bukayo Saka wears the number 7 shirt for Arsenal.",
+      "anchorClues": "Bukayo Saka Arsenal shirt number 7 Easter Egg"
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Which player became the first in Premier League history to score a hat-trick of headers in a single match during a 3–2 victory in 1997?",
+      "question": "Which ground hosted Fulham’s home Premier League matches during the 2002/03 season while Craven Cottage was being redeveloped?",
       "options": [
-        "Duncan Ferguson",
-        "Les Ferdinand",
-        "Alan Shearer",
-        "Dion Dublin"
+        "Loftus Road",
+        "Selhurst Park",
+        "Griffin Park",
+        "Upton Park"
       ],
-      "answer": "Duncan Ferguson",
-      "explanation": "Duncan Ferguson scored three headers for Everton in a 3–2 win over Bolton Wanderers in December 1997.",
-      "anchorClues": "Duncan Ferguson hat trick headers Everton Bolton 1997 record"
+      "answer": "Loftus Road",
+      "explanation": "Fulham shared Loftus Road with Queens Park Rangers between 2002 and 2004 while Craven Cottage was upgraded to an all-seater stadium.",
+      "anchorClues": "Fulham groundshare Loftus Road 2002 2003 Craven Cottage"
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "Which club holds the record for keeping the most clean sheets in a single 38-game Premier League season, shutting out opponents 25 times?",
+      "question": "Which Premier League side conceded the fewest total goals during the 2018/19 campaign, letting in just 22 goals across 38 matches?",
       "options": [
-        "Chelsea",
-        "Manchester United",
-        "Arsenal",
-        "Liverpool"
+        "Liverpool",
+        "Manchester City",
+        "Tottenham Hotspur",
+        "Chelsea"
       ],
-      "answer": "Chelsea",
-      "explanation": "Under José Mourinho in the 2004–05 season, Chelsea kept 25 clean sheets and conceded just 15 goals across the entire campaign.",
-      "anchorClues": "Chelsea most clean sheets single Premier League season 25 record"
+      "answer": "Liverpool",
+      "explanation": "Liverpool conceded just 22 goals in 2018/19 (one fewer than champions Manchester City), despite finishing second with 97 points.",
+      "anchorClues": "Liverpool 22 goals conceded fewest 2018 2019 season"
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Which player has played in the North London derby, the Merseyside derby, and El Clásico during his career?",
+      "question": "Which player holds the distinction of scoring a Premier League goal for four different London clubs: West Ham, Charlton, Chelsea, and Tottenham?",
       "options": [
-        "Nicolas Anelka",
-        "Thomas Vermaelen",
-        "Alex Song",
-        "Eiður Guðjohnsen"
+        "Scott Parker",
+        "Clive Allen",
+        "Jermain Defoe",
+        "Carlton Cole"
       ],
-      "answer": "Nicolas Anelka",
-      "explanation": "Nicolas Anelka featured for Arsenal (North London derby), Real Madrid (El Clásico), and Liverpool (Merseyside derby).",
-      "anchorClues": "Nicolas Anelka played North London derby Merseyside derby El Clasico"
+      "answer": "Scott Parker",
+      "explanation": "Scott Parker scored top-flight goals for Charlton Athletic, Chelsea, West Ham United, and Tottenham Hotspur during his Premier League career.",
+      "anchorClues": "Scott Parker scored four London clubs Charlton Chelsea West Ham Spurs"
     }
   ]
 }
