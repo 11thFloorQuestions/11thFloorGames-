@@ -1,0 +1,116 @@
+{
+  "setId": "58",
+  "title": "11th Floor Questions - Set 58",
+  "floors": [
+    {
+      "floor": 1,
+      "question": "Which English monarch was forced by his rebel barons to sign the Magna Carta at Runnymede in 1215?",
+      "options": [
+        "King John",
+        "Richard the Lionheart",
+        "Henry II",
+        "Edward I"
+      ],
+      "answer": "King John"
+    },
+    {
+      "floor": 2,
+      "question": "In culinary science, what chemical reaction between amino acids and reducing sugars is responsible for the browning and complex flavor of seared meat and baked bread?",
+      "options": [
+        "Maillard reaction",
+        "Caramelization",
+        "Enzymatic browning",
+        "Pyrolysis"
+      ],
+      "answer": "Maillard reaction"
+    },
+    {
+      "floor": 3,
+      "question": "Which dystopian 1932 novel by Aldous Huxley depicts a technologically advanced future society divided into castes named Alpha, Beta, Gamma, Delta, and Epsilon?",
+      "options": [
+        "Brave New World",
+        "Fahrenheit 451",
+        "We",
+        "Island"
+      ],
+      "answer": "Brave New World"
+    },
+    {
+      "floor": 4,
+      "question": "Which river flows through six countries—China, Myanmar, Laos, Thailand, Cambodia, and Vietnam—before emptying into the South China Sea?",
+      "options": [
+        "Mekong River",
+        "Irrawaddy River",
+        "Red River",
+        "Salween River"
+      ],
+      "answer": "Mekong River"
+    },
+    {
+      "floor": 5,
+      "question": "Which song surpassed 3 billion streams on Spotify first, setting an all-time record for the platform in late 2021?",
+      "options": [
+        "Shape of You by Ed Sheeran",
+        "Blinding Lights by The Weeknd",
+        "Dance Monkey by Tones and I",
+        "Rockstar by Post Malone"
+      ],
+      "answer": "Shape of You by Ed Sheeran"
+    },
+    {
+      "floor": 6,
+      "question": "Which archipelago in the North Atlantic Ocean is an autonomous territory within the Kingdom of Denmark, situated between Norway and Iceland?",
+      "options": [
+        "Faroe Islands",
+        "Shetland Islands",
+        "Aland Islands",
+        "Svalbard"
+      ],
+      "answer": "Faroe Islands"
+    },
+    {
+      "floor": 7,
+      "question": "Traditional Korean kimchi relies primarily on which microorganism family during its lactic acid fermentation process?",
+      "options": [
+        "Lactobacillus",
+        "Saccharomyces",
+        "Acetobacter",
+        "Aspergillus"
+      ],
+      "answer": "Lactobacillus"
+    },
+    {
+      "floor": 8,
+      "question": "Designed by architect Jørn Utzon, which iconic modern building featuring shell-like concrete vaults opened in 1973 on Bennelong Point?",
+      "options": [
+        "Sydney Opera House",
+        "Guggenheim Museum Bilbao",
+        "Lotus Temple",
+        "Walt Disney Concert Hall"
+      ],
+      "answer": "Sydney Opera House"
+    },
+    {
+      "floor": 9,
+      "question": "Which video game franchise introduced the 'Nemesis System', where procedural enemies remember previous encounters and adapt to the player's choices?",
+      "options": [
+        "Middle-earth: Shadow of Mordor",
+        "The Witcher 3",
+        "Dark Souls",
+        "Assassin's Creed Odyssey"
+      ],
+      "answer": "Middle-earth: Shadow of Mordor"
+    },
+    {
+      "floor": 10,
+      "question": "In film sound design, what is the term for re-recording ambient natural everyday sounds (like footsteps, rustling cloth, or breaking glass) in a studio to match the visual scene?",
+      "options": [
+        "Foley sound",
+        "ADR",
+        "Diegetic track",
+        "Temp track"
+      ],
+      "answer": "Foley sound"
+    }
+  ]
+}
