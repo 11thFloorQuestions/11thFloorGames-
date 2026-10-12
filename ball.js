@@ -50,7 +50,6 @@ function getFailedOrdinalFloorHTML(floorNum) {
     return `<span style="color: var(--state-error, #EF4444); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
 }
 
-
 // ==========================================
 // HAPTIC FEEDBACK ENGINE
 // ==========================================
@@ -62,7 +61,6 @@ function triggerHaptic(pattern) {
         } catch (e) {}
     }
 }
-
 
 // ==========================================
 // STATE MANAGEMENT & PERSISTENCE
@@ -130,7 +128,6 @@ function saveStats() {
 
 loadSavedStats();
 
-
 // ==========================================
 // GAMEPLAY SESSION STOPWATCH TIMER
 // ==========================================
@@ -170,7 +167,6 @@ function formatTime(totalSeconds) {
     return `${m}:${s}`;
 }
 
-
 // ==========================================
 // AUDIO ENGINE & IN-APP BROWSER UNLOCK
 // ==========================================
@@ -207,7 +203,6 @@ function triggerLandingPageDing() {
         playElevatorDing();
     }, 1370);
 }
-
 
 // ==========================================
 // NAVIGATION & CONTROLS
@@ -290,7 +285,6 @@ function toggleSound() {
     }
     updateSoundUI();
 }
-
 
 // ==========================================
 // MODAL & HIGH-SPEED VAULT CONTROLS
@@ -388,9 +382,8 @@ async function populateVault() {
     }
 }
 
-
 // ==========================================
-// DATA LOADING & NORMALIZATION (FAST PARALLEL FETCH)
+// DATA LOADING & NORMALIZATION
 // ==========================================
 
 function normalizeQuestions(data) {
@@ -510,7 +503,6 @@ function launchGameUI() {
     startSessionTimer();
     startGame();
 }
-
 
 // ==========================================
 // GAME LOOP & ELEVATOR PROGRESSION
