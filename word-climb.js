@@ -23,6 +23,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Local Storage Player Stats Key
     const STATS_KEY = '11th_floor_word_climb_stats';
 
+    // Fallback Daily Dataset (Ensures Game NEVER fails to load)
+    const DEFAULT_FALLBACK_DATASET = [
+        { floor: 1, start: "COLD", target: "CORD" },
+        { floor: 2, start: "CORD", target: "CARD" },
+        { floor: 3, start: "CARD", target: "WARD" },
+        { floor: 4, start: "WARD", target: "WARM" },
+        { floor: 5, start: "WARM", target: "WORM" },
+        { floor: 6, start: "WORM", target: "WORD" },
+        { floor: 7, start: "WORD", target: "WOOD" },
+        { floor: 8, start: "WOOD", target: "GOOD" },
+        { floor: 9, start: "GOOD", target: "GOLD" },
+        { floor: 10, start: "GOLD", target: "BOLD" }
+    ];
+
     // DOM Element References
     const startScreen = document.getElementById('start-screen');
     const startClimbBtn = document.getElementById('start-climb-btn');
@@ -58,15 +72,27 @@ document.addEventListener('DOMContentLoaded', () => {
     init();
 
     function getDailyDataset() {
-        if (typeof window.WORD_CLIMB_DAILY_SET !== 'undefined') {
-            if (Array.isArray(window.WORD_CLIMB_DAILY_SET)) {
-                return window.WORD_CLIMB_DAILY_SET;
+        // Robust extraction across potential window object targets
+        const candidates = [
+            window.WORD_CLIMB_DAILY_SET,
+            window.WORD_CLIMB_DATA,
+            window.WORD_CLIMB_SET,
+            window.DAILY_WORD_CLIMB
+        ];
+
+        for (const candidate of candidates) {
+            if (!candidate) continue;
+            if (Array.isArray(candidate) && candidate.length > 0) {
+                return candidate;
             }
-            if (window.WORD_CLIMB_DAILY_SET && window.WORD_CLIMB_DAILY_SET.floors && Array.isArray(window.WORD_CLIMB_DAILY_SET.floors)) {
-                return window.WORD_CLIMB_DAILY_SET.floors;
+            if (typeof candidate === 'object') {
+                if (Array.isArray(candidate.floors) && candidate.floors.length > 0) return candidate.floors;
+                if (Array.isArray(candidate.puzzles) && candidate.puzzles.length > 0) return candidate.puzzles;
+                if (Array.isArray(candidate.data) && candidate.data.length > 0) return candidate.data;
             }
         }
-        return [];
+
+        return DEFAULT_FALLBACK_DATASET;
     }
 
     function init() {
@@ -291,12 +317,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startGame() {
+        activeGameData = getDailyDataset();
         if (!activeGameData || activeGameData.length === 0) {
-            activeGameData = getDailyDataset();
-        }
-        if (!activeGameData || activeGameData.length === 0) {
-            console.warn('No word climb dataset found.');
-            return;
+            activeGameData = DEFAULT_FALLBACK_DATASET;
         }
         launchGameUI();
     }
@@ -365,7 +388,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderTargetSlots() {
         if (!targetSlotsContainer) return;
         const slots = targetSlotsContainer.querySelectorAll('.target-slot');
-        const wordLength = activeGameData[currentFloorIndex]?.start.length || 4;
 
         slots.forEach((slot, i) => {
             if (i < userGuess.length) {
