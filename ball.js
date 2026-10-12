@@ -5,9 +5,10 @@
 function safeAddListener(id, event, handler) {
     const el = document.getElementById(id);
     if (el) {
-        // Bind pointerdown for immediate, unblocked mobile haptic feedback
+        // Bind pointerdown for immediate, unblocked mobile haptic feedback & audio unlock
         el.addEventListener('pointerdown', () => {
             triggerHaptic(15);
+            unlockAudioContext();
         });
         el.addEventListener(event, (e) => {
             handler(e);
@@ -89,6 +90,9 @@ const gameState = {
     }
 };
 
+let isStartClimbLoading = false;
+let audioUnlocked = false;
+
 const STATS_KEY = '11th_floor_tykb_stats';
 
 const floorMessageBatches = [
@@ -169,11 +173,22 @@ function formatTime(totalSeconds) {
 
 
 // ==========================================
-// AUDIO ENGINE
+// AUDIO ENGINE & IN-APP BROWSER UNLOCK
 // ==========================================
 
 const elevatorDingAudio = new Audio();
 elevatorDingAudio.src = 'ding.mp3';
+
+function unlockAudioContext() {
+    if (audioUnlocked) return;
+    try {
+        elevatorDingAudio.play().then(() => {
+            elevatorDingAudio.pause();
+            elevatorDingAudio.currentTime = 0;
+            audioUnlocked = true;
+        }).catch(() => {});
+    } catch (e) {}
+}
 
 function playElevatorDing() {
     if (!gameState.soundEnabled) return;
@@ -376,7 +391,7 @@ async function populateVault() {
 
 
 // ==========================================
-// DATA LOADING & NORMALIZATION
+// DATA LOADING & NORMALIZATION (FAST PARALLEL FETCH)
 // ==========================================
 
 function normalizeQuestions(data) {
@@ -417,25 +432,57 @@ async function fetchFileWithFallbacks(filename) {
         filename
     ];
 
-    for (const path of candidatePaths) {
+    const fetchSingle = async (path) => {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 1500); // Fast 1.5s timeout per path
         try {
-            const res = await fetch(path);
+            const res = await fetch(path, { signal: controller.signal });
+            clearTimeout(timeoutId);
             if (res.ok) {
                 return await res.json();
             }
-        } catch (e) {}
+        } catch (e) {
+            clearTimeout(timeoutId);
+        }
+        throw new Error('Fetch failed');
+    };
+
+    try {
+        // Fast parallel fetch across candidate paths
+        return await Promise.any(candidatePaths.map(path => fetchSingle(path)));
+    } catch (e) {
+        return null;
     }
-    return null;
 }
 
 async function startDailyClimb() {
-    let data = await fetchFileWithFallbacks('ball-questions.json');
-    if (!data) data = await fetchFileWithFallbacks('sandbox-ball.23.json');
-    if (!data) data = await fetchFileWithFallbacks('sandbox-ball.22.json');
+    if (isStartClimbLoading) return;
+    isStartClimbLoading = true;
 
-    if (data) {
-        gameState.questions = normalizeQuestions(data);
+    const startBtn = document.getElementById('btn-start-climb');
+    if (startBtn) {
+        startBtn.textContent = "LOADING...";
+        startBtn.style.opacity = "0.7";
     }
+
+    try {
+        let data = await fetchFileWithFallbacks('ball-questions.json');
+        if (!data) data = await fetchFileWithFallbacks('sandbox-ball.23.json');
+        if (!data) data = await fetchFileWithFallbacks('sandbox-ball.22.json');
+
+        if (data) {
+            gameState.questions = normalizeQuestions(data);
+        }
+    } catch (err) {
+        console.error('Error fetching climb questions:', err);
+    } finally {
+        isStartClimbLoading = false;
+        if (startBtn) {
+            startBtn.textContent = "Start Climb";
+            startBtn.style.opacity = "1.0";
+        }
+    }
+
     launchGameUI();
 }
 
@@ -524,146 +571,4 @@ function loadNextQuestion() {
         }
         
         const optionVal = shuffledOptions[idx] || null;
-        btn.textContent = optionVal || '';
-        btn.style.display = optionVal ? 'block' : 'none';
-        
-        const isCorrect = (optionVal === currentQ.answer);
-        
-        // Immediate touch vibration trigger on finger-down to prevent mobile browser gesture blocks
-        btn.onpointerdown = () => {
-            triggerHaptic(15);
-        };
-        btn.onclick = () => handleAnswerSelect(isCorrect, btn); 
-    });
-}
-
-function startQuestionTimer() {
-    clearInterval(gameState.timer);
-    const totalDuration = 20000;
-    const startTime = Date.now();
-    gameState.timeLeft = 20;
-    const timerBar = document.getElementById('timer-bar');
-    
-    if (timerBar) {
-        timerBar.style.width = '100%';
-        timerBar.style.backgroundColor = 'var(--genre-pitch)';
-    }
-
-    gameState.timer = setInterval(() => {
-        const elapsed = Date.now() - startTime;
-        const remaining = Math.max(0, totalDuration - elapsed);
-        gameState.timeLeft = Math.ceil(remaining / 1000);
-
-        if (timerBar) {
-            timerBar.style.width = `${(remaining / totalDuration) * 100}%`;
-            if (remaining <= totalDuration / 2) {
-                timerBar.style.backgroundColor = 'var(--state-error)';
-            } else {
-                timerBar.style.backgroundColor = 'var(--genre-pitch)';
-            }
-        }
-
-        if (remaining <= 0) {
-            clearInterval(gameState.timer);
-            handleGameOver('TIME EXPIRED');
-        }
-    }, 50);
-}
-
-function handleAnswerSelect(isCorrect, buttonEl) {
-    clearInterval(gameState.timer);
-    
-    document.querySelectorAll('#options-grid .btn-option').forEach(btn => {
-        btn.onclick = null;
-        btn.onpointerdown = null;
-        if (typeof btn.blur === 'function') {
-            btn.blur();
-        }
-    });
-    
-    if (isCorrect) {
-        if (buttonEl) buttonEl.classList.add('selected-correct');
-        playElevatorDing();
-        triggerHaptic([35, 40, 35]);
-        
-        setTimeout(() => {
-            if (gameState.currentFloor >= gameState.maxFloors) {
-                handleVictory();
-            } else {
-                gameState.currentFloor++;
-                gameState.currentQuestionIndex++;
-                if (gameState.currentFloor > gameState.stats.bestFloor) {
-                    gameState.stats.bestFloor = gameState.currentFloor;
-                }
-                updateFloorUI();
-                loadNextQuestion();
-            }
-        }, 800);
-    } else {
-        if (buttonEl) buttonEl.classList.add('selected-wrong');
-        triggerHaptic([80, 50, 120]);
-        
-        const activeBlock = document.querySelector(`.tower-floor[data-floor="${gameState.currentFloor}"]`);
-        if (activeBlock) activeBlock.classList.add('failed');
-
-        setTimeout(() => {
-            handleGameOver('INCORRECT ANSWER');
-        }, 800);
-    }
-}
-
-function handleGameOver(reason) {
-    gameState.stats.played++;
-    gameState.stats.streak = 0;
-    saveStats();
-    
-    safeSetText('game-over-title', 'ELEVATOR STOPPED');
-    safeSetText('game-over-message', reason);
-    
-    const finalEl = document.getElementById('final-floor-reached');
-    if (finalEl) {
-        finalEl.innerHTML = `Stopped at ${getFailedOrdinalFloorHTML(gameState.currentFloor)}`;
-    }
-    
-    openModal('modal-game-over');
-}
-
-function handleVictory() {
-    stopSessionTimer();
-    gameState.currentFloor = 11;
-    gameState.stats.played++;
-    gameState.stats.wins++;
-    gameState.stats.streak++;
-    gameState.stats.bestFloor = 11;
-
-    if (gameState.stats.bestTimeSeconds === null || gameState.timeElapsedSeconds < gameState.stats.bestTimeSeconds) {
-        gameState.stats.bestTimeSeconds = gameState.timeElapsedSeconds;
-    }
-
-    saveStats();
-    
-    triggerHaptic([50, 50, 50, 50, 100]);
-    
-    const victoryTimeDisplay = document.getElementById('victory-time-display');
-    const victoryTimeRowDisplay = document.getElementById('victory-time-row-display');
-    const victoryStreakDisplay = document.getElementById('victory-streak-display');
-    const hudContainer = document.getElementById('floor-hud-container');
-    const gameWorkspace = document.getElementById('game-workspace');
-    const gameplayHeader = document.getElementById('gameplay-header');
-    const activeGameTimer = document.getElementById('active-game-timer');
-    const victoryScreen = document.getElementById('victory-screen');
-    const footerText = document.getElementById('footer-text');
-
-    const formattedTime = formatTime(gameState.timeElapsedSeconds);
-    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
-    if (victoryTimeRowDisplay) victoryTimeRowDisplay.textContent = `${formattedTime}s`;
-    if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${gameState.stats.streak} Days`;
-
-    if (hudContainer) hudContainer.style.display = 'none';
-    if (gameWorkspace) gameWorkspace.style.display = 'none';
-    if (gameplayHeader) gameplayHeader.style.display = 'none';
-    if (activeGameTimer) activeGameTimer.style.display = 'none';
-    if (footerText) footerText.style.display = 'none';
-
-    if (victoryScreen) victoryScreen.style.display = 'flex';
-}
+        btn.textContent = option
