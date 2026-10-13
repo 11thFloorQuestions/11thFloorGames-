@@ -1,5 +1,5 @@
 // ==========================================================================
-// 11th Floor Cluegram — Daily Game Dataset (Set 55)
+// 11th Floor Cluegram — Daily Game Dataset (Set 56)
 // Standardised floor progression: 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 letters
 // Destination: 11th Floor
 // ==========================================================================
@@ -8,81 +8,81 @@ window.CLUEGRAM_DAILY_SET = [
   {
     floor: 1,
     length: 5,
-    domain: "Music & Audio",
-    scrambled: "NAIOP",
-    target: "PIANO",
-    clue: "A large musical instrument with a row of black and white keys."
+    domain: "Oceanography & Marine",
+    scrambled: "LOCRA",
+    target: "CORAL",
+    clue: "A hard stony substance secreted by marine polyps for support and structure."
   },
   {
     floor: 2,
     length: 5,
-    domain: "Geology & Earth",
-    scrambled: "AGMAM",
-    target: "MAGMA",
-    clue: "Extremely hot liquid and semi-liquid rock located under the Earth's surface."
+    domain: "Physics & Optics",
+    scrambled: "SIMPR",
+    target: "PRISM",
+    clue: "A transparent glass body that refracts light to break it into a rainbow spectrum."
   },
   {
     floor: 3,
     length: 6,
-    domain: "Geology & Landforms",
-    scrambled: "NOCNAY",
-    target: "CANYON",
-    clue: "A deep gorge or ravine typically carved through rock by a river."
+    domain: "Zoology & Animals",
+    scrambled: "ONALFC",
+    target: "FALCON",
+    clue: "A bird of prey known for its high-speed diving capability while hunting."
   },
   {
     floor: 4,
     length: 6,
-    domain: "Meteorology & Climate",
-    scrambled: "RAUAOR",
-    target: "AURORA",
-    clue: "A natural light display in Earth's sky caused by disturbance in the magnetosphere."
+    domain: "Architecture & Design",
+    scrambled: "CUMOLN",
+    target: "COLUMN",
+    clue: "A tall vertical cylindrical pillar supporting a building structure or arch."
   },
   {
     floor: 5,
     length: 7,
-    domain: "Cartography & Earth",
-    scrambled: "QROAUTE",
-    target: "EQUATOR",
-    clue: "An imaginary line around the middle of a planet equidistant from both poles."
+    domain: "Literature & Theatre",
+    scrambled: "DRAGETY",
+    target: "TRAGEDY",
+    clue: "A genre of drama featuring serious events and typically an unhappy ending."
   },
   {
     floor: 6,
-    length: 7,
-    domain: "Culinary & Food",
-    scrambled: "FFANROS",
-    target: "SAFFRON",
-    clue: "An orange-red seasoning and dye obtained from the dried stigmas of a crocus flower."
+    length: 6,
+    domain: "Technology & Computing",
+    scrambled: "TOCINA",
+    target: "ACTION",
+    clue: "A process of doing something or performing a specific command in software."
   },
   {
     floor: 7,
-    length: 8,
-    domain: "Monuments & History",
-    scrambled: "MYRPAIDS",
-    target: "PYRAMIDS",
-    clue: "Ancient monumental stone structures with triangular sides converging to a point."
+    length: 7,
+    domain: "Medicine & Health",
+    scrambled: "CICEVAN",
+    target: "VACCINE",
+    clue: "A biological preparation that provides active acquired immunity to a specific disease."
   },
   {
     floor: 8,
-    length: 8,
-    domain: "Meteorology & Weather",
-    scrambled: "ZLRDIAZB",
-    target: "BLIZZARD",
-    clue: "A severe snowstorm with high winds and low visibility."
+    length: 7,
+    domain: "Botany & Nature",
+    scrambled: "DHCROISR",
+    target: "ORCHIDS",
+    clue: "Exotic flowering plants prized globally for their colorful and intricate blooms."
   },
   {
     floor: 9,
     length: 9,
-    domain: "Astronomy & Space",
-    scrambled: "ORSTAIDES",
-    target: "ASTEROIDS",
-    clue: "Minor rocky bodies orbiting the Sun, mostly situated between Mars and Jupiter."
+    domain: "Geometry & Math",
+    scrambled: "RETNAGLCE",
+    target: "RECTANGLE",
+    clue: "A four-sided plane figure with four right angles and opposite sides equal."
   },
   {
     floor: 10,
     length: 9,
-    domain: "Aviation & Science",
-    scrambled: "LACEPRHIS",
-    target: "SPHERICAL",
-    clue: "Shaped like a round ball or three-dimensional globe."
+    domain: "Nautical & Maritime",
+    scrambled: "WRESHPIKC",
+    target: "SHIPWRECK",
+    clue: "The destroyed remains of a vessel sunken at sea or washed ashore."
   }
 ];
