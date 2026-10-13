@@ -665,4 +665,14 @@ function updateStatsDisplay() {
     if (winsElem) winsElem.textContent = stats.wins;
     
     const winRate = stats.played > 0 ? Math.round((stats.wins / stats.played) * 100) : 0;
-    if (
+    if (winrateElem) winrateElem.textContent = `${winRate}%`;
+    if (streakElem) streakElem.textContent = stats.streak;
+    
+    if (bestfloorElem) {
+        bestfloorElem.innerHTML = getOrdinalFloorHTML(stats.bestFloor);
+    }
+
+    if (besttimeElem) {
+        besttimeElem.textContent = formatTime(stats.bestTimeSeconds);
+    }
+}
