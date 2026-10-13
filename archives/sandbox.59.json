@@ -1,0 +1,126 @@
+{
+  "setId": "59",
+  "title": "11th Floor Questions - Set 59",
+  "floors": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "Which solar system body is home to Olympus Mons, an extinct shield volcano three times the height of Mount Everest?",
+      "options": [
+        "Mars",
+        "Venus",
+        "Io",
+        "Mercury"
+      ],
+      "answer": "Mars"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "In Mary Shelley's 1818 novel Frankenstein, what is the first name of the ambitious young scientist who creates the creature?",
+      "options": [
+        "Victor",
+        "Henry",
+        "Robert",
+        "William"
+      ],
+      "answer": "Victor"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "Located in southern Siberia, which body of water is the world's deepest and oldest freshwater lake, containing roughly 20% of Earth's unfrozen surface fresh water?",
+      "options": [
+        "Lake Baikal",
+        "Lake Superior",
+        "Lake Tanganyika",
+        "Lake Victoria"
+      ],
+      "answer": "Lake Baikal"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "In March 1969, which iconic supersonic passenger airliner made its successful maiden flight from Toulouse, France?",
+      "options": [
+        "Concorde",
+        "Tupolev Tu-144",
+        "Boeing 2707",
+        "Lockheed L-2000"
+      ],
+      "answer": "Concorde"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "Which Mediterranean island's historic capital city of Valletta was entirely built as a fortified stronghold by the Knights Hospitaller in the 16th century?",
+      "options": [
+        "Malta",
+        "Cyprus",
+        "Rhodes",
+        "Corfu"
+      ],
+      "answer": "Malta"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "Which 1939 classic film famously wowed cinema audiences by transitioning from sepia-toned Kansas into vibrant Technicolor upon the main character's arrival?",
+      "options": [
+        "The Wizard of Oz",
+        "Gone with the Wind",
+        "Fantasia",
+        "The Adventures of Robin Hood"
+      ],
+      "answer": "The Wizard of Oz"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "What official orange color tone—specifically chosen for high visibility through marine fog—was applied to San Francisco's Golden Gate Bridge?",
+      "options": [
+        "International Orange",
+        "Safety Amber",
+        "Rust Ochre",
+        "Terracotta Blaze"
+      ],
+      "answer": "International Orange"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "On July 13, 1985, which global dual-venue benefit concert organised by Bob Geldof and Midge Ure was watched live by an estimated 1.9 billion viewers across 150 nations?",
+      "options": [
+        "Live Aid",
+        "Band Aid",
+        "Farm Aid",
+        "Live 8"
+      ],
+      "answer": "Live Aid"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "At standard temperature and pressure, sound waves travel fastest through which state of matter?",
+      "options": [
+        "Solids",
+        "Liquids",
+        "Gases",
+        "Plasmas"
+      ],
+      "answer": "Solids"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "After reading a prematurely published obituary that labeled him the 'Merchant of Death', which Swedish industrialist bequeathed his fortune to create the prestigious Nobel Prizes?",
+      "options": [
+        "Alfred Nobel",
+        "Gustaf Dalén",
+        "Svante Arrhenius",
+        "Christopher Polhem"
+      ],
+      "answer": "Alfred Nobel"
+    }
+  ]
+}
