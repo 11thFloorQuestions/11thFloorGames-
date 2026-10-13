@@ -1,6 +1,4 @@
 // 11th Floor Word Climb - Internal Dictionary Loader
-// Handles network timeouts, 0-byte files, and retry logic
-
 window.WORD_LIST = new Set();
 window.WORD_LIST_LOADED = false;
 window.WORD_LIST_PROMISE = null;
@@ -8,30 +6,12 @@ window.WORD_LIST_PROMISE = null;
 window.fetchDictionary = function() {
     window.WORD_LIST_PROMISE = new Promise((resolve) => {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 8000); // 8-second timeout for mobile networks
+        const timeoutId = setTimeout(() => controller.abort(), 8000);
 
-        // Attempt local fetch first, fallback to a reliable public list if 0 bytes or inaccessible
-        fetch('./words.txt', { signal: controller.signal })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Local words.txt file not found or inaccessible');
-                }
-                return response.text();
-            })
-            .then(text => {
-                if (text.trim().length === 0) {
-                    throw new Error('Local words.txt is empty (0 bytes)');
-                }
-                return text;
-            })
-            .catch(err => {
-                console.warn('[11FL Dictionary] Local fetch failed/empty, attempting fallback...', err.message);
-                // Fallback to a standard public English dictionary list to ensure the game works
-                return fetch('https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt', { signal: controller.signal })
-                    .then(res => {
-                        if (!res.ok) throw new Error('Fallback dictionary inaccessible');
-                        return res.text();
-                    });
+        fetch('https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt', { signal: controller.signal })
+            .then(res => {
+                if (!res.ok) throw new Error('Fallback dictionary inaccessible');
+                return res.text();
             })
             .then(text => {
                 clearTimeout(timeoutId);
@@ -57,11 +37,11 @@ window.fetchDictionary = function() {
                 clearTimeout(timeoutId);
                 console.error('[11FL Dictionary] Error loading dictionary:', err);
                 window.WORD_LIST_LOADED = false;
-                resolve(false); // Resolve false so the UI handles the retry state cleanly
+                resolve(false);
             });
     });
     return window.WORD_LIST_PROMISE;
 };
 
-// Initiate the first load attempt immediately
+// Initiate immediate load
 window.fetchDictionary();
