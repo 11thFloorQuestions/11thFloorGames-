@@ -1,142 +1,143 @@
 {
-  "setId": "29",
-  "title": "Think You Know Ball? - Set 29",
+  "setId": "30",
+  "title": "Think You Know Ball? - Set 30",
   "questions": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "As a throwback to the 1988/89 season, Man City had what type of inflatables on show yesterday?",
+      "question": "As of today (Tuesday), who is the top striker in the league so far this season?",
       "options": [
-        "Bananas",
-        "Sheep"
+        "Erling Haaland",
+        "Dominic Solanke"
       ],
-      "answer": "Bananas",
-      "explanation": "Manchester City fans famously brought inflatable bananas to matches during the late 1980s.",
-      "anchorClues": "Man City inflatable bananas throwback 1988 1989"
+      "answer": "Erling Haaland",
+      "explanation": "Erling Haaland currently leads the Premier League scoring charts.",
+      "anchorClues": "Erling Haaland top striker Premier League Tuesday"
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which former Spurs legend celebrates his birthday today?",
+      "question": "Which former Premier League player now turned manager celebrates his birthday today?",
       "options": [
-        "Ledley King",
-        "Michael Dawson",
+        "Scott Parker",
+        "Robbie Keane",
         "Jermain Defoe",
-        "Robbie Keane"
+        "Michael Dawson"
       ],
-      "answer": "Ledley King",
-      "explanation": "Former Tottenham Hotspur captain Ledley King was born on 12 October 1980.",
-      "anchorClues": "Ledley King birthday October 12 Tottenham Hotspur"
+      "answer": "Scott Parker",
+      "explanation": "Scott Parker was born on 13 October 1980.",
+      "anchorClues": "Scott Parker birthday October 13 manager"
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Who scored the opening goal in Sunday's match between Liverpool and Man City?",
+      "question": "Coventry jumped out of the relegation zone after beating Newcastle last night, giving them 6 points. Which other team has 6 points?",
       "options": [
-        "Erling Haaland",
-        "Jérémy Doku",
-        "Rayan Cherki",
-        "Mohamed Salah"
+        "Manchester United",
+        "Aston Villa",
+        "Crystal Palace",
+        "Nottingham Forest"
       ],
-      "answer": "Erling Haaland",
-      "explanation": "Erling Haaland scored the opening goal for Manchester City at Anfield.",
-      "anchorClues": "Erling Haaland opening goal Liverpool vs Man City"
+      "answer": "Manchester United",
+      "explanation": "Manchester United are also sitting on 6 points.",
+      "anchorClues": "Coventry 6 points Manchester United table standings"
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "And in the same game, which Liverpool player was sent off?",
+      "question": "Who is currently performing as the top promoted team so far this season?",
       "options": [
-        "Ryan Gravenberch",
-        "Ronald Araújo",
-        "Virgil van Dijk",
-        "Alexis Mac Allister"
+        "Sunderland",
+        "Coventry City",
+        "Hull City"
       ],
-      "answer": "Ryan Gravenberch",
-      "explanation": "Ryan Gravenberch received a second yellow card during the match.",
-      "anchorClues": "Ryan Gravenberch red card Liverpool vs Man City"
+      "answer": "Sunderland",
+      "explanation": "Sunderland are currently the highest placed of the newly promoted sides.",
+      "anchorClues": "Sunderland top promoted team Premier League"
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "The last time Coventry and Newcastle met in the Premier League, Newcastle won 2–0. What year was that?",
+      "question": "According to Paddy Power today (Tuesday), who are the favourites to be relegated this season?",
       "options": [
-        "2000",
-        "2003"
+        "Coventry City",
+        "Manchester City",
+        "Ipswich Town",
+        "Hull City"
       ],
-      "answer": "2000",
-      "explanation": "Newcastle beat Coventry 2–0 at Highfield Road in September 2000.",
-      "anchorClues": "Coventry vs Newcastle Premier League 2000 2-0"
+      "answer": "Coventry City",
+      "explanation": "Coventry City are listed as 8/15 favourites for relegation on Paddy Power.",
+      "anchorClues": "Coventry City Paddy Power relegation favourites"
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "Who was Aston Villa's manager immediately before Unai Emery took over?",
+      "question": "Before Ange Postecoglou took over at Tottenham, who served as Spurs' interim manager for the final six games of the 2022/23 season?",
       "options": [
-        "Steven Gerrard",
-        "Dean Smith",
+        "Ryan Mason",
+        "Cristian Stellini",
         "Tim Sherwood",
-        "Gary McAllister"
+        "Nuno Espírito Santo"
       ],
-      "answer": "Steven Gerrard",
-      "explanation": "Steven Gerrard managed Aston Villa from November 2021 until October 2022, when he was replaced by Unai Emery.",
-      "anchorClues": "Steven Gerrard manager Aston Villa before Unai Emery"
+      "answer": "Ryan Mason",
+      "explanation": "Ryan Mason stepped in for his second stint as interim head coach in April 2023.",
+      "anchorClues": "Ryan Mason interim manager Tottenham 2023"
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Which shirt number does Bukayo Saka wear for Arsenal?",
+      "question": "Which squad number did Mikel Arteta wear throughout his six-year playing career at Everton?",
       "options": [
         "7",
-        "11",
-        "77",
-        "10"
+        "8",
+        "10",
+        "6"
       ],
       "answer": "7",
-      "explanation": "Bukayo Saka wears the number 7 shirt for Arsenal.",
-      "anchorClues": "Bukayo Saka Arsenal shirt number 7 Easter Egg"
+      "explanation": "Mikel Arteta wore the number 7 shirt for Everton between 2005 and 2011.",
+      "anchorClues": "Mikel Arteta Everton squad shirt number 7 Easter Egg"
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Which ground hosted Fulham’s home Premier League matches during the 2002/03 season while Craven Cottage was being redeveloped?",
+      "question": "Before moving to the London Stadium in 2016, in what year did West Ham United play their final emotional fixture at the Boleyn Ground (Upton Park)?",
       "options": [
-        "Loftus Road",
-        "Selhurst Park",
-        "Griffin Park",
-        "Upton Park"
+        "2016",
+        "2014",
+        "2018",
+        "2015"
       ],
-      "answer": "Loftus Road",
-      "explanation": "Fulham shared Loftus Road with Queens Park Rangers between 2002 and 2004 while Craven Cottage was upgraded to an all-seater stadium.",
-      "anchorClues": "Fulham groundshare Loftus Road 2002 2003 Craven Cottage"
+      "answer": "2016",
+      "explanation": "West Ham beat Manchester United 3–2 in May 2016 in the final match at Upton Park.",
+      "anchorClues": "West Ham Upton Park Boleyn Ground final match 2016"
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "Which Premier League side conceded the fewest total goals during the 2018/19 campaign, letting in just 22 goals across 38 matches?",
+      "question": "Which club set an unwanted Premier League record by going 20 consecutive matches without a single clean sheet across the 2019/20 campaign?",
       "options": [
-        "Liverpool",
-        "Manchester City",
-        "Tottenham Hotspur",
-        "Chelsea"
+        "Bournemouth",
+        "Norwich City",
+        "Aston Villa",
+        "Watford"
       ],
-      "answer": "Liverpool",
-      "explanation": "Liverpool conceded just 22 goals in 2018/19 (one fewer than champions Manchester City), despite finishing second with 97 points.",
-      "anchorClues": "Liverpool 22 goals conceded fewest 2018 2019 season"
+      "answer": "Bournemouth",
+      "explanation": "Bournemouth went 20 straight top-flight games without keeping a clean sheet in 2019/20 before being relegated.",
+      "anchorClues": "Bournemouth 20 games no clean sheet 2019 2020 record"
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Which player holds the distinction of scoring a Premier League goal for four different London clubs: West Ham, Charlton, Chelsea, and Tottenham?",
+      "question": "Who scored the very first Premier League hat-trick after the top flight re-branded in August 1992?",
       "options": [
-        "Scott Parker",
-        "Clive Allen",
-        "Jermain Defoe",
-        "Carlton Cole"
+        "Eric Cantona",
+        "Teddy Sheringham",
+        "Les Ferdinand",
+        "Alan Shearer"
       ],
-      "answer": "Scott Parker",
-      "explanation": "Scott Parker scored top-flight goals for Charlton Athletic, Chelsea, West Ham United, and Tottenham Hotspur during his Premier League career.",
-      "anchorClues": "Scott Parker scored four London clubs Charlton Chelsea West Ham Spurs"
+      "answer": "Eric Cantona",
+      "explanation": "Eric Cantona scored the Premier League's first-ever hat-trick for Leeds United in a 5–0 win over Tottenham in August 1992.",
+      "anchorClues": "Eric Cantona first Premier League hat trick Leeds 1992"
     }
   ]
 }
