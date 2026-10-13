@@ -65,7 +65,7 @@ window.CLUEGRAM_DAILY_SET = [
     floor: 8,
     length: 7,
     domain: "Botany & Nature",
-    scrambled: "DHCROISR",
+    scrambled: "DHCROIS",
     target: "ORCHIDS",
     clue: "Exotic flowering plants prized globally for their colorful and intricate blooms."
   },
