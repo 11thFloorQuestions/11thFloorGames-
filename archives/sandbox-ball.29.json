@@ -1,0 +1,142 @@
+{
+  "setId": "29",
+  "title": "Think You Know Ball? - Set 29",
+  "questions": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "As a throwback to the 1988/89 season, Man City had what type of inflatables on show yesterday?",
+      "options": [
+        "Bananas",
+        "Sheep"
+      ],
+      "answer": "Bananas",
+      "explanation": "Manchester City fans famously brought inflatable bananas to matches during the late 1980s.",
+      "anchorClues": "Man City inflatable bananas throwback 1988 1989"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "Which former Spurs legend celebrates his birthday today?",
+      "options": [
+        "Ledley King",
+        "Michael Dawson",
+        "Jermain Defoe",
+        "Robbie Keane"
+      ],
+      "answer": "Ledley King",
+      "explanation": "Former Tottenham Hotspur captain Ledley King was born on 12 October 1980.",
+      "anchorClues": "Ledley King birthday October 12 Tottenham Hotspur"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "Who scored the opening goal in Sunday's match between Liverpool and Man City?",
+      "options": [
+        "Erling Haaland",
+        "Jérémy Doku",
+        "Rayan Cherki",
+        "Mohamed Salah"
+      ],
+      "answer": "Erling Haaland",
+      "explanation": "Erling Haaland scored the opening goal for Manchester City at Anfield.",
+      "anchorClues": "Erling Haaland opening goal Liverpool vs Man City"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "And in the same game, which Liverpool player was sent off?",
+      "options": [
+        "Ryan Gravenberch",
+        "Ronald Araújo",
+        "Virgil van Dijk",
+        "Alexis Mac Allister"
+      ],
+      "answer": "Ryan Gravenberch",
+      "explanation": "Ryan Gravenberch received a second yellow card during the match.",
+      "anchorClues": "Ryan Gravenberch red card Liverpool vs Man City"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "The last time Coventry and Newcastle met in the Premier League, Newcastle won 2–0. What year was that?",
+      "options": [
+        "2000",
+        "2003"
+      ],
+      "answer": "2000",
+      "explanation": "Newcastle beat Coventry 2–0 at Highfield Road in September 2000.",
+      "anchorClues": "Coventry vs Newcastle Premier League 2000 2-0"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "Who was Aston Villa's manager immediately before Unai Emery took over?",
+      "options": [
+        "Steven Gerrard",
+        "Dean Smith",
+        "Tim Sherwood",
+        "Gary McAllister"
+      ],
+      "answer": "Steven Gerrard",
+      "explanation": "Steven Gerrard managed Aston Villa from November 2021 until October 2022, when he was replaced by Unai Emery.",
+      "anchorClues": "Steven Gerrard manager Aston Villa before Unai Emery"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "Which shirt number does Bukayo Saka wear for Arsenal?",
+      "options": [
+        "7",
+        "11",
+        "77",
+        "10"
+      ],
+      "answer": "7",
+      "explanation": "Bukayo Saka wears the number 7 shirt for Arsenal.",
+      "anchorClues": "Bukayo Saka Arsenal shirt number 7 Easter Egg"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "Which ground hosted Fulham’s home Premier League matches during the 2002/03 season while Craven Cottage was being redeveloped?",
+      "options": [
+        "Loftus Road",
+        "Selhurst Park",
+        "Griffin Park",
+        "Upton Park"
+      ],
+      "answer": "Loftus Road",
+      "explanation": "Fulham shared Loftus Road with Queens Park Rangers between 2002 and 2004 while Craven Cottage was upgraded to an all-seater stadium.",
+      "anchorClues": "Fulham groundshare Loftus Road 2002 2003 Craven Cottage"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "Which Premier League side conceded the fewest total goals during the 2018/19 campaign, letting in just 22 goals across 38 matches?",
+      "options": [
+        "Liverpool",
+        "Manchester City",
+        "Tottenham Hotspur",
+        "Chelsea"
+      ],
+      "answer": "Liverpool",
+      "explanation": "Liverpool conceded just 22 goals in 2018/19 (one fewer than champions Manchester City), despite finishing second with 97 points.",
+      "anchorClues": "Liverpool 22 goals conceded fewest 2018 2019 season"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "Which player holds the distinction of scoring a Premier League goal for four different London clubs: West Ham, Charlton, Chelsea, and Tottenham?",
+      "options": [
+        "Scott Parker",
+        "Clive Allen",
+        "Jermain Defoe",
+        "Carlton Cole"
+      ],
+      "answer": "Scott Parker",
+      "explanation": "Scott Parker scored top-flight goals for Charlton Athletic, Chelsea, West Ham United, and Tottenham Hotspur during his Premier League career.",
+      "anchorClues": "Scott Parker scored four London clubs Charlton Chelsea West Ham Spurs"
+    }
+  ]
+}
