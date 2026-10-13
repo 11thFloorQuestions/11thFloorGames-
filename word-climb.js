@@ -1,16 +1,21 @@
-// DAILY PUZZLE INITIALIZATION - Set 57 (FLAMINGOS)
+// ==========================================================================
+// 11th Floor Word Climb - Daily Game Engine (Set 57)
+// Active Master Word: MAGNITUDE
+// ==========================================================================
+
+// DAILY PUZZLE INITIALIZATION - Set 57 (MAGNITUDE)
 function initDailyPuzzle() {
-    masterNineLetterWord = "FLAMINGOS";
-    const initialArr = ["F", "L", "A", "M", "I", "N", "G", "O", "S"];
+    masterNineLetterWord = "MAGNITUDE";
+    const initialArr = ["M", "A", "G", "N", "I", "T", "U", "D", "E"];
     initialDailyWheel = shuffleAndVerifyWheel(initialArr, masterNineLetterWord);
     wheelLetters = [...initialDailyWheel];
 }
 
-// HARDENED FALLBACK DICTIONARY - Set 57 (FLAMINGOS)
+// HARDENED FALLBACK DICTIONARY - Set 57 (MAGNITUDE)
 const INTERNAL_FALLBACK_WORDS = new Set([
-    "AMONG", "ALONG", "GOALS", "FOALS", "MAILS", "SNAIL", "SLANG", "LOGAN",
-    "LOGINS", "ALONGS",
-    "FLAMING", "LOAFING", "FOALING",
-    "FLAMINGS", "LOAFINGS",
-    "FLAMINGOS"
+    "GIANT", "AGENT", "GUIDE", "IMAGE", "MEDIA", "AMEND", "UNITE", "MINED",
+    "UNITED", "DATING", "MAGNET", "GAINED", "TANDEM",
+    "UNTAMED", "GAUNTED",
+    "UNTAMING",
+    "MAGNITUDE"
 ]);
