@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Eleventh Floor Games — Yesterday's Answers</title>
+
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-deep: #000000;
@@ -44,8 +49,9 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        /* Direct visibility fallback to guarantee no black screen locks */
         body {
-            background-color: var(--bg-deep);
+            background-color: var(--bg-deep) !important;
             color: var(--text-primary);
             font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
@@ -53,6 +59,8 @@
             flex-direction: column;
             align-items: center;
             padding: 16px 12px 32px 12px;
+            opacity: 1 !important;
+            visibility: visible !important;
         }
 
         .top-bar {
@@ -175,7 +183,7 @@
             background: #141414;
         }
 
-        /* Desktop Optimization: Wrap tabs cleanly into a balanced grid without breaking layout */
+        /* Desktop Optimization: Wrap tabs cleanly into a 3-column grid */
         @media (min-width: 600px) {
             .game-tabs-scroll {
                 flex-wrap: wrap;
@@ -346,4 +354,410 @@
 
         .blossom-stat-lbl {
             font-size: 0.48rem;
-            color: var(--text-
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .word-accordion-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-height: 220px;
+            overflow-y: auto;
+            padding-right: 4px;
+            scrollbar-width: thin;
+        }
+
+        .cluster-group-box {
+            background: #080808;
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+            padding: 7px 9px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .cluster-cat-title {
+            font-size: 0.58rem;
+            font-weight: 700;
+            color: var(--current-accent);
+            text-transform: uppercase;
+        }
+
+        .cluster-words-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        /* Context / Fact Callout */
+        .fact-box {
+            background: #080808;
+            border-left: 2px solid var(--current-accent);
+            padding: 8px 10px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .fact-title {
+            font-size: 0.52rem;
+            font-weight: 700;
+            color: var(--current-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+        }
+
+        .fact-text {
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: #bbbbbb;
+            line-height: 1.3;
+        }
+
+        .anchor-tag {
+            display: inline-block;
+            margin-top: 4px;
+            font-size: 0.52rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: #121212;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        /* Commercial Upgrade Banner */
+        .promo-affiliate-card {
+            background: linear-gradient(135deg, #121212 0%, #080808 100%);
+            border: 1px solid var(--current-accent);
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: center;
+            box-shadow: 0 0 12px var(--current-glow);
+            margin-top: 6px;
+        }
+
+        .affiliate-badge {
+            font-size: 0.48rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            color: var(--current-accent);
+            text-transform: uppercase;
+        }
+
+        .affiliate-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 1rem;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .affiliate-desc {
+            font-size: 0.62rem;
+            color: var(--text-muted);
+            line-height: 1.3;
+            font-weight: 400;
+        }
+
+        .affiliate-btn {
+            background: var(--current-accent);
+            color: #000000;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="archive-container">
+        <div class="top-bar">
+            <a href="index.html" class="pill-btn">← LOBBY</a>
+        </div>
+
+        <div class="hub-logo-box">
+            <h1 class="hub-logo-red">11FL?</h1>
+            <p class="hub-logo-title">Eleventh Floor</p>
+            <p class="hub-logo-sub">YESTERDAY'S ANSWERS</p>
+        </div>
+
+        <!-- Game Switcher Tabs -->
+        <div class="game-tabs-scroll">
+            <button class="tab-btn active" data-game="ball" data-color="#84CC16" data-glow="rgba(132, 204, 22, 0.25)">Think You Know Ball?</button>
+            <button class="tab-btn" data-game="cluegram" data-color="#cc007e" data-glow="rgba(204, 0, 126, 0.25)">Cluegram</button>
+            <button class="tab-btn" data-game="questions" data-color="#D4AF37" data-glow="rgba(212, 175, 55, 0.25)">Questions</button>
+            <button class="tab-btn" data-game="wordclimb" data-color="#3B82F6" data-glow="rgba(59, 130, 246, 0.25)">Word Climb</button>
+            <button class="tab-btn" data-game="clusters" data-color="#ff751f" data-glow="rgba(255, 117, 31, 0.25)">Clusters</button>
+            <button class="tab-btn" data-game="parity" data-color="#ff9999" data-glow="rgba(255, 153, 153, 0.25)">Parity</button>
+        </div>
+
+        <!-- Set Metadata Box -->
+        <div class="set-meta-card">
+            <div class="set-title-text" id="meta-set-title">Think You Know Ball? — Set 18</div>
+            <div class="set-date-badge">YESTERDAY'S RECAP</div>
+        </div>
+
+        <!-- Answers Display Zone -->
+        <div class="answers-list" id="answers-list">
+            <!-- Dynamic Content Rendered Here -->
+        </div>
+
+        <div class="promo-affiliate-card">
+            <div class="affiliate-badge">OFFICIAL MATCHDAY PARTNER</div>
+            <div class="affiliate-title">WANT UNLIMITED ARCHIVE ACCESS?</div>
+            <div class="affiliate-desc">Play every past 10-floor climb, unlock custom daily quizzes, and remove single-attempt streak limits.</div>
+            <button class="affiliate-btn">UNLOCK FULL ARCHIVE — £20/YEAR</button>
+        </div>
+    </div>
+
+    <script>
+        /* ==========================================================================
+           FULL DATASETS FOR ALL 6 GAMES
+           ========================================================================== */
+        const gameDataStore = {
+            ball: {
+                title: "Think You Know Ball? - Set 18",
+                type: "ball",
+                questions: [
+                    { floor: 1, type: "multiple_choice", question: "Which manager guided West Ham United to a 7th-place finish and the FA Cup final in the 2005–06 season?", options: ["Alan Pardew", "Glenn Roeder", "Harry Redknapp", "Gianfranco Zola"], answer: "Alan Pardew", explanation: "Pardew led West Ham back to the Premier League and into Europe in his first full top-flight season.", anchorClues: "Alan Pardew / West Ham United 2005–06" },
+                    { floor: 2, type: "boolean", question: "True or False: Sunderland's Stadium of Light hosted England for a Euro 2004 qualifier in April 2003.", options: ["True", "False"], answer: "True", explanation: "England defeated Turkey 2–0 at the Stadium of Light with goals from Vassell and Beckham.", anchorClues: "Stadium of Light / England vs Turkey 2003" },
+                    { floor: 3, type: "multiple_choice", question: "Which club ended Pep Guardiola's Manchester City 22-match unbeaten run in January 2018?", options: ["Liverpool", "Manchester United", "Tottenham Hotspur", "Chelsea"], answer: "Liverpool", explanation: "Klopp's Liverpool claimed a thrilling 4–3 victory at Anfield to inflict City's first league defeat.", anchorClues: "Liverpool beat City 4–3 / Jan 2018" },
+                    { floor: 4, type: "multiple_choice", question: "Which ground served as Derby County's home stadium for 102 years before moving to Pride Park in 1997?", options: ["Baseball Ground", "Victoria Ground", "County Ground", "Ayresome Park"], answer: "Baseball Ground", explanation: "Derby played at the Baseball Ground from 1895 until May 1997.", anchorClues: "Baseball Ground / Derby County" },
+                    { floor: 5, type: "boolean", question: "True or False: Chelsea went through their entire 2004–05 title-winning campaign unbeaten at Stamford Bridge.", options: ["True", "False"], answer: "True", explanation: "José Mourinho recorded 14 wins and 5 draws at home, conceding just 6 league goals at SW6.", anchorClues: "Chelsea unbeaten home record 2004–05" },
+                    { floor: 6, type: "multiple_choice", question: "Which club spent 128 days at the top of the Premier League in 2013–14 before finishing 4th?", options: ["Arsenal", "Liverpool", "Chelsea", "Manchester City"], answer: "Arsenal", explanation: "Arsène Wenger's side led the league for 128 days before late-season injuries caused a slide.", anchorClues: "Arsenal 128 days top 2013–14" },
+                    { floor: 7, type: "multiple_choice", question: "Which shirt number did N'Golo Kanté wear throughout his seven seasons at Chelsea?", options: ["7", "6", "14", "8"], answer: "7", explanation: "Kanté wore number 7 from 2016 to 2023, winning the Premier League, UCL, and FA Cup.", anchorClues: "N'Golo Kanté #7 / Chelsea" },
+                    { floor: 8, type: "multiple_choice", question: "Which team ended Chelsea's record 86-game unbeaten home league run in October 2008?", options: ["Liverpool", "Manchester United", "Arsenal", "Tottenham Hotspur"], answer: "Liverpool", explanation: "Xabi Alonso's deflected strike secured a 1–0 win to snap Chelsea's four-year unbeaten streak.", anchorClues: "Liverpool snap Chelsea 86 home streak 2008" },
+                    { floor: 9, type: "multiple_choice", question: "Which manager took charge of Southampton in January 2013 and led them to an 8th-place finish?", options: ["Mauricio Pochettino", "Ronald Koeman", "Claude Puel", "Ralph Hasenhüttl"], answer: "Mauricio Pochettino", explanation: "Pochettino transformed Saints' pressing style before leaving for Tottenham in May 2014.", anchorClues: "Pochettino / Southampton 2013–14" },
+                    { floor: 10, type: "multiple_choice", question: "Which player holds the Premier League record for scoring in 9 consecutive away matches in 2010–11?", options: ["Robin van Persie", "Ruud van Nistelrooy", "Jimmy Floyd Hasselbaink", "Dennis Bergkamp"], answer: "Robin van Persie", explanation: "Van Persie scored in nine straight away league appearances for Arsenal between Jan and May 2011.", anchorClues: "Van Persie 9 away games record 2010–11" }
+                ]
+            },
+            cluegram: {
+                title: "11th Floor Cluegram — Daily Set 04",
+                type: "cluegram",
+                floors: [
+                    { floor: 1, scrambled: "LANGE", target: "ANGEL", clue: "A spiritual celestial creature typically depicted in white robes with wings." },
+                    { floor: 2, scrambled: "PELAM", target: "MAPLE", clue: "A hardwood tree famous for its distinctive lobed leaves and sweet syrup." },
+                    { floor: 3, scrambled: "TLANEM", target: "MANTLE", clue: "An ornamental structure surrounding a fireplace, or a cloak of authority." },
+                    { floor: 4, scrambled: "CANLOF", target: "FALCON", clue: "A predatory bird known for incredible diving speed while hunting prey." },
+                    { floor: 5, scrambled: "XINOEHP", target: "PHOENIX", clue: "A mythical bird that periodically combusts and regenerates from its own ashes." },
+                    { floor: 6, scrambled: "TREAHTE", target: "THEATRE", clue: "A venue designed for live dramatic performances, plays, or music." },
+                    { floor: 7, scrambled: "TARCCATA", target: "CATARACT", clue: "A large, powerful waterfall, or a clouding of the lens in the eye." },
+                    { floor: 8, scrambled: "DLASAPIE", target: "PALISADE", clue: "A defensive fence made from tall wooden stakes driven firmly into the ground." },
+                    { floor: 9, scrambled: "NNOACSIES", target: "ASCENSION", clue: "The act of rising to a higher position, rank, or spiritual realm." },
+                    { floor: 10, scrambled: "LAUCOGETA", target: "CATALOGUE", clue: "A systematically arranged publication detailing an entire collection or inventory." }
+                ]
+            },
+            questions: {
+                title: "11th Floor Questions — High-Brow Trivia Set 12",
+                type: "questions",
+                questions: [
+                    { floor: 1, type: "multiple_choice", question: "Which element on the periodic table has the chemical symbol 'Hg'?", options: ["Mercury", "Silver", "Hydragyrum", "Lead"], answer: "Mercury", explanation: "Hg comes from 'Hydrargyrum', Latinized Greek for 'water-silver'.", anchorClues: "Element Hg / Mercury" },
+                    { floor: 2, type: "multiple_choice", question: "In classical mythology, who was the Roman equivalent of the Greek god Hermes?", options: ["Mercury", "Apollo", "Vulcan", "Mars"], answer: "Mercury", explanation: "Mercury was the Roman god of financial gain, commerce, and messages.", anchorClues: "Roman Hermes / Mercury" },
+                    { floor: 3, type: "multiple_choice", question: "Which composer wrote the 'Enigma Variations' in 1899?", options: ["Edward Elgar", "Ralph Vaughan Williams", "Gustav Holst", "Benjamin Britten"], answer: "Edward Elgar", explanation: "Elgar dedicated each variation to a person in his social circle.", anchorClues: "Elgar / Enigma Variations" },
+                    { floor: 4, type: "multiple_choice", question: "What is the capital city of Australia?", options: ["Canberra", "Sydney", "Melbourne", "Brisbane"], answer: "Canberra", explanation: "Canberra was chosen as a compromise location between Sydney and Melbourne in 1908.", anchorClues: "Australian Capital / Canberra" },
+                    { floor: 5, type: "multiple_choice", question: "Which novel begins with the famous line 'It was the best of times, it was the worst of times'?", options: ["A Tale of Two Cities", "Great Expectations", "Bleak House", "Oliver Twist"], answer: "A Tale of Two Cities", explanation: "Charles Dickens published the historical novel set in London and Paris in 1859.", anchorClues: "Dickens / A Tale of Two Cities" },
+                    { floor: 6, type: "multiple_choice", question: "Which physical constant is denoted by the letter 'c'?", options: ["Speed of light", "Planck's constant", "Gravitational constant", "Boltzmann constant"], answer: "Speed of light", explanation: "c stands for 'celeritas', Latin for swiftness, equal to 299,792,458 m/s.", anchorClues: "Physics Constant c / Speed of Light" },
+                    { floor: 7, type: "multiple_choice", question: "Who painted 'The Girl with a Pearl Earring' around 1665?", options: ["Johannes Vermeer", "Rembrandt", "Frans Hals", "Jan Steen"], answer: "Johannes Vermeer", explanation: "The masterpiece resides in the Mauritshuis museum in The Hague.", anchorClues: "Vermeer / Girl with Pearl Earring" },
+                    { floor: 8, type: "multiple_choice", question: "Which strait separates Great Britain from continental Europe?", options: ["Strait of Dover", "Strait of Gibraltar", "Kattegat", "Bosporus"], answer: "Strait of Dover", explanation: "The narrowest part of the English Channel measures just 20.7 miles.", anchorClues: "Strait of Dover / English Channel" },
+                    { floor: 9, type: "multiple_choice", question: "Which treaty signed in 1648 ended the Thirty Years' War in Europe?", options: ["Peace of Westphalia", "Treaty of Utrecht", "Treaty of Versailles", "Congress of Vienna"], answer: "Peace of Westphalia", explanation: "It established the precedent of national sovereignty across modern European statecraft.", anchorClues: "Peace of Westphalia 1648" },
+                    { floor: 10, type: "multiple_choice", question: "In organic chemistry, what suffix denotes an alkane hydrocarbon chain?", options: ["-ane", "-ene", "-yne", "-ol"], answer: "-ane", explanation: "Alkanes contain single carbon-carbon bonds (e.g. Methane, Ethane, Propane).", anchorClues: "Organic Chemistry / Alkane -ane" }
+                ]
+            },
+            wordclimb: {
+                title: "11th Floor Word Climb — Master Board 'COMPLAINT'",
+                type: "wordclimb",
+                masterWord: "COMPLAINT",
+                wheelLetters: ["C", "O", "M", "P", "L", "A", "I", "N", "T"],
+                counts: { len5: 42, len6: 28, len7: 14, len8: 5, len9: 1 },
+                wordsByLength: {
+                    5: ["CLAIM", "CLAMP", "COMPT", "PLAIN", "PLANT", "POINT", "ACTION", "PANIC", "LIPOMA", "TAMPO"],
+                    6: ["ACTION", "COMPACT", "IMPACT", "PATROL", "PORTAL", "LAMENT", "MENTAL", "CAPTON"],
+                    7: ["COMPACT", "CAPTAIN", "COMPLAIN", "OPTIMAL", "PATROL"],
+                    8: ["COMPLAIN", "COMPLAINT", "OPTIMAL"],
+                    9: ["COMPLAINT"]
+                }
+            },
+            clusters: {
+                title: "11th Floor Clusters — Puzzle #01: Global Alignment",
+                type: "clusters",
+                floors: {
+                    1: { type: "distractor-12", tiles: ["LONDON", "PARIS", "TOKYO", "NILE", "AMAZON", "YANGTZE", "PIANO", "GUITAR", "VIOLIN", "DRUM", "FLUTE", "TRUMPET"], groups: [{ words: ["LONDON", "PARIS", "TOKYO"], category: "Major global capital cities" }, { words: ["NILE", "AMAZON", "YANGTZE"], category: "Major world rivers" }] },
+                    2: { type: "distractor-12", tiles: ["GOLD", "SILVER", "BRONZE", "DIAMOND", "RUBY", "EMERALD", "SQUARE", "CIRCLE", "TRIANGLE", "RECTANGLE", "OVAL", "PENTAGON"], groups: [{ words: ["GOLD", "SILVER", "BRONZE"], category: "Precious metals / podium medals" }, { words: ["DIAMOND", "RUBY", "EMERALD"], category: "Precious gemstones" }] },
+                    3: { type: "distractor-12", tiles: ["MARS", "VENUS", "JUPITER", "LION", "TIGER", "LEOPARD", "EAGLE", "HAWK", "FALCON", "OWL", "CROW", "SWAN"], groups: [{ words: ["MARS", "VENUS", "JUPITER"], category: "Planets of the solar system" }, { words: ["LION", "TIGER", "LEOPARD"], category: "Large wild cats" }] },
+                    4: { type: "distractor-12", tiles: ["RED", "BLUE", "GREEN", "OAK", "PINE", "MAPLE", "APPLE", "BANANA", "ORANGE", "GRAPE", "MANGO", "PEACH"], groups: [{ words: ["RED", "BLUE", "GREEN"], category: "Primary colors" }, { words: ["OAK", "PINE", "MAPLE"], category: "Common tree species" }] },
+                    5: { type: "distractor-12-three", tiles: ["FOOTBALL", "TENNIS", "CRICKET", "CHESS", "POKER", "BRIDGE", "VIOLIN", "CELLO", "FLUTE", "PYTHON", "VIPER", "COBRA"], groups: [{ words: ["FOOTBALL", "TENNIS", "CRICKET"], category: "Popular global ball sports" }, { words: ["CHESS", "POKER", "BRIDGE"], category: "Strategic tabletop games" }, { words: ["VIOLIN", "CELLO", "FLUTE"], category: "Orchestral instruments" }] },
+                    6: { type: "distractor-12-three", tiles: ["IRON", "COPPER", "TIN", "WHEAT", "RICE", "MAIZE", "MILK", "WATER", "JUICE", "SOFA", "TABLE", "CHAIR"], groups: [{ words: ["IRON", "COPPER", "TIN"], category: "Industrial base metals" }, { words: ["WHEAT", "RICE", "MAIZE"], category: "Staple grains" }, { words: ["MILK", "WATER", "JUICE"], category: "Common beverages" }] },
+                    7: { type: "distractor-12-three", tiles: ["PLATO", "ARISTOTLE", "SOCRATES", "BACH", "MOZART", "BEETHOVEN", "NEWTON", "EINSTEIN", "DARWIN", "SHAKESPEARE", "DANTE", "HOMER"], groups: [{ words: ["PLATO", "ARISTOTLE", "SOCRATES"], category: "Ancient Greek philosophers" }, { words: ["BACH", "MOZART", "BEETHOVEN"], category: "Classical composers" }, { words: ["NEWTON", "EINSTEIN", "DARWIN"], category: "Revolutionary scientists" }] },
+                    8: { type: "distractor-12-three", tiles: ["PACIFIC", "ATLANTIC", "INDIAN", "EVEREST", "K2", "KILIMANJARO", "SAHARA", "GOBI", "KALAHARI", "LYON", "MARSEILLE", "NICE"], groups: [{ words: ["PACIFIC", "ATLANTIC", "INDIAN"], category: "Major world oceans" }, { words: ["EVEREST", "K2", "KILIMANJARO"], category: "Mountain peaks" }, { words: ["SAHARA", "GOBI", "KALAHARI"], category: "Deserts" }] },
+                    9: { type: "distractor-12-three", tiles: ["TUDOR", "STUART", "WINDSOR", "SPRING", "SUMMER", "AUTUMN", "NORTH", "SOUTH", "EAST", "RAIN", "SNOW", "WIND"], groups: [{ words: ["TUDOR", "STUART", "WINDSOR"], category: "Historic royal houses" }, { words: ["SPRING", "SUMMER", "AUTUMN"], category: "Seasons" }, { words: ["NORTH", "SOUTH", "EAST"], category: "Cardinal directions" }] },
+                    10: { type: "wall-16", tiles: ["THAMES", "SEVERN", "TRENT", "CLYDE", "GOLD", "SILVER", "BRONZE", "PLATINUM", "MARBLE", "GRANITE", "SLATE", "CHALK", "OXFORD", "BOND", "FLEET", "LOMBARD"], groups: [{ words: ["THAMES", "SEVERN", "TRENT", "CLYDE"], category: "Regional river systems" }, { words: ["GOLD", "SILVER", "BRONZE", "PLATINUM"], category: "Precious metals" }, { words: ["MARBLE", "GRANITE", "SLATE", "CHALK"], category: "Geological stone" }, { words: ["OXFORD", "BOND", "FLEET", "LOMBARD"], category: "Historic thoroughfares" }] }
+                }
+            },
+            parity: {
+                title: "11th Floor Parity — Guess Who? Retro Avatars",
+                type: "parity",
+                floors: [
+                    { floor: 1, pairs: 1, timeLimit: 12, icons: ["detective"] },
+                    { floor: 2, pairs: 2, timeLimit: 16, icons: ["detective", "chef"] },
+                    { floor: 3, pairs: 3, timeLimit: 22, icons: ["detective", "chef", "pirate"] },
+                    { floor: 4, pairs: 4, timeLimit: 28, icons: ["detective", "chef", "pirate", "spectacles"] },
+                    { floor: 5, pairs: 5, timeLimit: 34, icons: ["detective", "chef", "pirate", "spectacles", "beanie"] },
+                    { floor: 6, pairs: 6, timeLimit: 40, icons: ["detective", "chef", "pirate", "spectacles", "beanie", "monocle"] },
+                    { floor: 7, pairs: 7, timeLimit: 46, icons: ["detective", "chef", "pirate", "spectacles", "beanie", "monocle", "dj"] },
+                    { floor: 8, pairs: 8, timeLimit: 52, icons: ["detective", "chef", "pirate", "spectacles", "beanie", "monocle", "dj", "astronaut"] },
+                    { floor: 9, pairs: 9, timeLimit: 58, icons: ["detective", "chef", "pirate", "spectacles", "beanie", "monocle", "dj", "astronaut", "beret"] },
+                    { floor: 10, pairs: 10, timeLimit: 64, icons: ["detective", "chef", "pirate", "spectacles", "beanie", "monocle", "dj", "astronaut", "beret", "disguise"] }
+                ]
+            }
+        };
+
+        const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th"];
+
+        /* ==========================================================================
+           RENDER ENGINE
+           ========================================================================== */
+        function renderGameAnswers(gameKey) {
+            const data = gameDataStore[gameKey] || gameDataStore.ball;
+            const metaTitle = document.getElementById('meta-set-title');
+            if (metaTitle) {
+                metaTitle.innerText = data.title;
+            }
+            const container = document.getElementById('answers-list');
+            if (!container) return;
+            container.innerHTML = '';
+
+            if (data.type === 'ball' || data.type === 'questions') {
+                data.questions.forEach(q => {
+                    const floorOrd = ordinals[q.floor - 1] || `${q.floor}th`;
+                    let optionsHTML = '';
+                    q.options.forEach(opt => {
+                        const isCorrect = (opt === q.answer);
+                        optionsHTML += `<div class="opt-chip ${isCorrect ? 'correct-chip' : ''}">${opt}</div>`;
+                    });
+
+                    container.innerHTML += `
+                        <div class="floor-card">
+                            <div class="floor-card-header">
+                                <div class="floor-number-badge">${floorOrd} Floor</div>
+                                <div class="floor-type-tag">${q.type === 'boolean' ? 'TRUE / FALSE' : 'MULTIPLE CHOICE'}</div>
+                            </div>
+                            <div class="floor-card-body">
+                                <div class="q-text">${q.question}</div>
+                                <div class="options-list">${optionsHTML}</div>
+                                <div class="fact-box">
+                                    <div class="fact-title">Context & Fact</div>
+                                    <div class="fact-text">${q.explanation}</div>
+                                    ${q.anchorClues ? `<div class="anchor-tag">📌 ${q.anchorClues}</div>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else if (data.type === 'cluegram') {
+                data.floors.forEach(item => {
+                    const floorOrd = ordinals[item.floor - 1] || `${item.floor}th`;
+                    container.innerHTML += `
+                        <div class="floor-card">
+                            <div class="floor-card-header">
+                                <div class="floor-number-badge">${floorOrd} Floor</div>
+                                <div class="floor-type-tag">${item.target.length} LETTERS</div>
+                            </div>
+                            <div class="floor-card-body">
+                                <div class="q-text">Scrambled: <strong style="color: #3B82F6; font-family: monospace;">${item.scrambled}</strong></div>
+                                <div class="opt-chip correct-chip" style="font-size: 0.7rem; letter-spacing: 1px;">TARGET: ${item.target}</div>
+                                <div class="fact-box">
+                                    <div class="fact-title">Clue Definition</div>
+                                    <div class="fact-text">${item.clue}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else if (data.type === 'wordclimb') {
+                const wheelBubbles = data.wheelLetters.map(l => `<div class="letter-bubble">${l}</div>`).join('');
+                
+                container.innerHTML += `
+                    <div class="cluster-group-box" style="border-color: var(--color-wordclimb); margin-bottom: 2px;">
+                        <div class="cluster-cat-title" style="color: var(--color-wordclimb); text-align: center;">DAILY MASTER WHEEL</div>
+                        <div class="wheel-letters-row">${wheelBubbles}</div>
+                        <div style="font-size: 0.58rem; color: var(--text-muted); text-align: center; margin-top: 2px;">Master 9-Letter Target: <strong style="color: #ffffff;">${data.masterWord}</strong></div>
+                    </div>
+
+                    <div class="blossom-stats-grid">
+                        <div><div class="blossom-stat-val">${data.counts.len5}</div><div class="blossom-stat-lbl">5-Letter</div></div>
+                        <div><div class="blossom-stat-val">${data.counts.len6}</div><div class="blossom-stat-lbl">6-Letter</div></div>
+                        <div><div class="blossom-stat-val">${data.counts.len7}</div><div class="blossom-stat-lbl">7-Letter</div></div>
+                        <div><div class="blossom-stat-val">${data.counts.len8}</div><div class="blossom-stat-lbl">8-Letter</div></div>
+                        <div><div class="blossom-stat-val">${data.counts.len9}</div><div class="blossom-stat-lbl">9-Letter</div></div>
+                    </div>
+                `;
+
+                let accordionSections = '';
+                [5, 6, 7, 8, 9].forEach(len => {
+                    const words = data.wordsByLength[len] || [];
+                    if (words.length > 0) {
+                        const wordChips = words.map(w => `<span class="opt-chip ${w === data.masterWord ? 'correct-chip' : ''}" style="padding: 3px 6px; font-size: 0.58rem;">${w}</span>`).join(' ');
+                        accordionSections += `
+                            <div class="cluster-group-box">
+                                <div class="cluster-cat-title">✓ ${len}-LETTER VALID WORDS (${words.length})</div>
+                                <div class="cluster-words-row">${wordChips}</div>
+                            </div>
+                        `;
+                    }
+                });
+
+                container.innerHTML += `
+                    <div class="word-accordion-container">
+                        ${accordionSections}
+                    </div>
+                `;
+            } else if (data.type === 'clusters') {
+                Object.keys(data.floors).forEach(floorNum => {
+                    const fData = data.floors[floorNum];
+                    const floorOrd = ordinals[parseInt(floorNum, 10) - 1] || `${floorNum}th`;
+                    
+                    let groupsHTML = '';
+                    let matchedWords = [];
+                    fData.groups.forEach(g => {
+                        matchedWords.push(...g.words);
+                        const wordsList = g.words.map(w => `<span class="opt-chip correct-chip" style="padding: 3px 5px; font-size: 0.58rem;">${w}</span>`).join(' ');
+                        groupsHTML += `
+                            <div class="cluster-group-box">
+                                <div class="cluster-cat-title">✓ ${g.category}</div>
+                                <div class="cluster-words-row">${wordsList}</div>
+                            </div>
+                        `;
+                    });
+
+                    const distractors = fData.tiles.filter(t => !matchedWords.includes(t));
+                    const distractorsHTML = distractors.map(d => `<span class="opt-chip trap-chip" style="padding: 3px 5px; font-size: 0.58rem;">${d}</span>`).join(' ');
+
+                    container.innerHTML += `
+                        <div class="floor-card">
+                            <div class="floor-card-header">
+                                <div class="floor-number-badge">${floorOrd} Floor</div>
+                                <div class="floor-type-tag">${fData.type.toUpperCase()}</div>
+                            </div>
+                            <div class="floor-card-body">
+                                ${groupsHTML}
+                                ${distractors.length ? `
+                                    <div class="cluster-group-box" style="border-color: rgba(239,68,68,0.2);">
+                                        <div class="cluster-cat-title" style="color: #ef4444;">✖ TRAP DISTRACTORS</div>
+                                        <div class="cluster-words-row">${distractorsHTML}</div>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+            } else if (data.
