@@ -1,126 +1,126 @@
 {
-  "setId": "60",
-  "title": "11th Floor Questions - Set 60",
+  "setId": "61",
+  "title": "11th Floor Questions - Set 61",
   "floors": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Which mammal, native to Australia and Tasmania, is famous for being one of only two egg-laying mammals (monotremes) in the world alongside the echidna?",
+      "question": "Which iconic European capital city is built across a cluster of 14 islands linked by more than 50 bridges?",
       "options": [
-        "Platypus",
-        "Wombat",
-        "Koala",
-        "Tasmanian Devil"
+        "Stockholm",
+        "Amsterdam",
+        "Copenhagen",
+        "Venice"
       ],
-      "answer": "Platypus"
+      "answer": "Stockholm"
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "In painter Leonardo da Vinci's iconic 15th-century mural 'The Last Supper', which apostle is depicted clutching a small bag of silver coins?",
+      "question": "In 1911, which famous masterpiece was stolen from the Louvre by an Italian handyman, making it an overnight global sensation?",
       "options": [
-        "Judas Iscariot",
-        "Peter",
-        "John",
-        "Thomas"
+        "Mona Lisa",
+        "The Starry Night",
+        "Girl with a Pearl Earring",
+        "The Scream"
       ],
-      "answer": "Judas Iscariot"
+      "answer": "Mona Lisa"
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "What is the official currency used in Japan?",
+      "question": "Which fundamental force of nature keeps planets in orbit around the Sun and holds galaxies together?",
       "options": [
-        "Yen",
-        "Won",
-        "Yuan",
-        "Baht"
+        "Gravity",
+        "Electromagnetism",
+        "Strong Nuclear Force",
+        "Weak Nuclear Force"
       ],
-      "answer": "Yen"
+      "answer": "Gravity"
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Which English computer scientist and cryptanalyst played a pivotal role in cracking the Enigma machine code at Bletchley Park during World War II?",
+      "question": "Which 19th-century classic novel features the relentless police Inspector Javert hunting down the fugitive Jean Valjean?",
       "options": [
-        "Alan Turing",
-        "Charles Babbage",
-        "John von Neumann",
-        "Ada Lovelace"
+        "Les Misérables",
+        "The Count of Monte Cristo",
+        "Great Expectations",
+        "The Hunchback of Notre-Dame"
       ],
-      "answer": "Alan Turing"
+      "answer": "Les Misérables"
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Which African country is completely encircled by South Africa, making it one of the world's few enclave nations?",
+      "question": "Which modern Asian nation was formerly known on the world stage as Siam until its name was officially changed in 1939?",
       "options": [
-        "Lesotho",
-        "Eswatini",
-        "Botswana",
-        "Namibia"
+        "Thailand",
+        "Myanmar",
+        "Vietnam",
+        "Cambodia"
       ],
-      "answer": "Lesotho"
+      "answer": "Thailand"
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "In culinary terminology, what basic sauce—made from a white roux and milk—is considered one of the five 'mother sauces' of French cuisine?",
+      "question": "Which British rock band famously recorded their groundbreaking 1969 album cover while crossing a zebra pedestrian path outside EMI Studios?",
       "options": [
-        "Béchamel",
-        "Hollandaise",
-        "Velouté",
-        "Espagnole"
+        "The Beatles",
+        "The Rolling Stones",
+        "The Who",
+        "Led Zeppelin"
       ],
-      "answer": "Béchamel"
+      "answer": "The Beatles"
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Which fundamental chemical element has the symbol 'Fe' on the periodic table?",
+      "question": "What is the hardest naturally occurring substance known on Earth?",
       "options": [
-        "Iron",
-        "Fluorine",
-        "Francium",
-        "Fermium"
+        "Diamond",
+        "Quartz",
+        "Titanium",
+        "Corundum"
       ],
-      "answer": "Iron"
+      "answer": "Diamond"
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Which American playwright authored the 1949 Pulitzer Prize-winning play 'Death of a Salesman'?",
+      "question": "In the original 1977 'Star Wars' film (Episode IV: A New Hope), who directed the movie?",
       "options": [
-        "Arthur Miller",
-        "Tennessee Williams",
-        "Eugene O'Neill",
-        "Thornton Wilder"
+        "George Lucas",
+        "Steven Spielberg",
+        "Ridley Scott",
+        "James Cameron"
       ],
-      "answer": "Arthur Miller"
+      "answer": "George Lucas"
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "Which ancient civilization constructed the massive step-pyramid temple complex known as Chichén Itzá on the Yucatán Peninsula?",
+      "question": "Which historic civilisations built the famous lost citadel of Machu Picchu high in the Andes Mountains?",
       "options": [
-        "Maya",
-        "Aztec",
         "Inca",
-        "Olmec"
+        "Aztec",
+        "Maya",
+        "Toltec"
       ],
-      "answer": "Maya"
+      "answer": "Inca"
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "In classical music, how many completed symphonies were composed by Ludwig van Beethoven?",
+      "question": "Which organ in the human body consumes roughly 20% of the body's total oxygen and energy supply despite making up only 2% of its weight?",
       "options": [
-        "9",
-        "5",
-        "7",
-        "12"
+        "Brain",
+        "Heart",
+        "Liver",
+        "Lungs"
       ],
-      "answer": "9"
+      "answer": "Brain"
     }
   ]
 }
