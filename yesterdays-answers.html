@@ -1,476 +1,460 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yesterday's Answers | Eleventh Floor Games</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Eleventh Floor Games — Yesterday's Answers</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0A0D12;
-            --card-bg: #121824;
-            --card-border: #1E293B;
-            --text-primary: #F8FAFC;
-            --text-secondary: #94A3B8;
-            --text-muted: #64748B;
-            
-            /* Game Theme Accent Colours */
-            --color-tykb: #00F0FF;
-            --color-questions: #3B82F6;
-            --color-cluegram: #A855F7;
-            --color-clusters: #10B981;
-            --color-wordclimb: #FACC15;
-            --color-parity: #FF007F;
-            
-            --radius-lg: 16px;
-            --radius-md: 12px;
-            --radius-sm: 8px;
+            --bg-deep: #000000;
+            --surface: #0a0a0a;
+            --surface-card: #111111;
+            --surface-border: #1e1e1e;
+            --surface-border-light: #2a2a2a;
+            --accent-red: #ff1f2d;
+            --text-primary: #ffffff;
+            --text-muted: #888888;
+
+            /* Game Accent Palette */
+            --color-terrace: #84CC16;
+            --color-terrace-glow: rgba(132, 204, 22, 0.25);
+            --color-cluegram: #cc007e;
+            --color-cluegram-glow: rgba(204, 0, 126, 0.25);
+            --color-questions: #D4AF37;
+            --color-questions-glow: rgba(212, 175, 55, 0.25);
+            --color-wordclimb: #3B82F6;
+            --color-wordclimb-glow: rgba(59, 130, 246, 0.25);
+            --color-clusters: #ff751f;
+            --color-clusters-glow: rgba(255, 117, 31, 0.25);
+            --color-parity: #ff9999;
+            --color-parity-glow: rgba(255, 153, 153, 0.25);
+
+            --current-accent: var(--color-terrace);
+            --current-glow: var(--color-terrace-glow);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            -webkit-font-smoothing: antialiased;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--bg-deep);
             color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 24px 16px 60px;
+            padding: 16px 12px 32px 12px;
         }
 
-        /* Header Navigation & Brand */
-        header {
+        .top-bar {
             width: 100%;
-            max-width: 1000px;
-            margin-bottom: 32px;
+            max-width: 480px;
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .pill-btn {
+            background: var(--surface);
+            border: 1px solid var(--surface-border-light);
+            color: var(--text-primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .pill-btn:hover {
+            border-color: var(--current-accent);
+            color: var(--current-accent);
+        }
+
+        .archive-container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Sleek Header Branding */
+        .hub-logo-box {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            margin-bottom: 2px;
         }
 
-        .back-link {
-            align-self: flex-start;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 14px;
+        .hub-logo-red {
+            font-family: 'Anton', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: var(--accent-red);
+            line-height: 0.85;
+            letter-spacing: -1px;
+            text-shadow: 0 0 20px rgba(255, 31, 45, 0.3);
+            margin-bottom: 4px;
+            animation: logoColorCycle 8s ease-in-out infinite;
+        }
+
+        .hub-logo-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            margin-bottom: 2px;
+        }
+
+        .hub-logo-sub {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
             font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 16px;
-            transition: color 0.2s ease;
-        }
-
-        .back-link:hover {
-            color: var(--text-primary);
-        }
-
-        .page-title {
-            font-size: 32px;
-            font-weight: 900;
-            letter-spacing: -0.02em;
-            color: var(--text-primary);
-            margin-bottom: 8px;
+            color: var(--text-muted);
+            letter-spacing: 3px;
             text-transform: uppercase;
         }
 
-        .page-subtitle {
-            font-size: 15px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            line-height: 1.5;
+        @keyframes logoColorCycle {
+            0%   { color: var(--accent-red); text-shadow: 0 0 20px rgba(255, 31, 45, 0.3); }
+            14%  { color: var(--color-terrace); text-shadow: 0 0 20px var(--color-terrace-glow); }
+            28%  { color: var(--color-cluegram); text-shadow: 0 0 20px var(--color-cluegram-glow); }
+            42%  { color: var(--color-questions); text-shadow: 0 0 20px var(--color-questions-glow); }
+            56%  { color: var(--color-wordclimb); text-shadow: 0 0 20px var(--color-wordclimb-glow); }
+            70%  { color: var(--color-clusters); text-shadow: 0 0 20px var(--color-clusters-glow); }
+            84%  { color: var(--color-parity); text-shadow: 0 0 20px var(--color-parity-glow); }
+            100% { color: var(--accent-red); text-shadow: 0 0 20px rgba(255, 31, 45, 0.3); }
         }
 
-        /* Navigation Tabs */
-        .tabs-container {
+        /* Game Switcher Tabs */
+        .game-tabs-scroll {
             width: 100%;
-            max-width: 1000px;
-            display: flex;
-            gap: 8px;
             overflow-x: auto;
-            padding-bottom: 8px;
-            margin-bottom: 32px;
+            display: flex;
+            gap: 6px;
+            padding: 2px 0;
             scrollbar-width: none;
         }
 
-        .tabs-container::-webkit-scrollbar {
-            display: none;
-        }
+        .game-tabs-scroll::-webkit-scrollbar { display: none; }
 
         .tab-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            color: var(--text-secondary);
-            padding: 12px 18px;
-            border-radius: var(--radius-md);
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
+            background: var(--surface-card);
+            border: 1px solid var(--surface-border);
+            border-radius: 6px;
+            color: var(--text-muted);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 600;
+            padding: 7px 11px;
             white-space: nowrap;
+            cursor: pointer;
             transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            text-transform: uppercase;
         }
 
-        .tab-btn:hover {
-            border-color: var(--text-muted);
-            color: var(--text-primary);
+        .tab-btn.active {
+            color: #ffffff;
+            border-color: var(--current-accent);
+            box-shadow: 0 0 10px var(--current-glow);
+            background: #141414;
         }
 
-        .tab-btn.active[data-game="tykb"] {
-            border-color: var(--color-tykb);
-            color: var(--color-tykb);
-            background: rgba(0, 240, 255, 0.08);
-        }
-
-        .tab-btn.active[data-game="questions"] {
-            border-color: var(--color-questions);
-            color: var(--color-questions);
-            background: rgba(59, 130, 246, 0.08);
-        }
-
-        .tab-btn.active[data-game="cluegram"] {
-            border-color: var(--color-cluegram);
-            color: var(--color-cluegram);
-            background: rgba(168, 85, 247, 0.08);
-        }
-
-        .tab-btn.active[data-game="clusters"] {
-            border-color: var(--color-clusters);
-            color: var(--color-clusters);
-            background: rgba(16, 185, 129, 0.08);
-        }
-
-        .tab-btn.active[data-game="wordclimb"] {
-            border-color: var(--color-wordclimb);
-            color: var(--color-wordclimb);
-            background: rgba(250, 204, 21, 0.08);
-        }
-
-        .tab-btn.active[data-game="parity"] {
-            border-color: var(--color-parity);
-            color: var(--color-parity);
-            background: rgba(255, 0, 127, 0.08);
-        }
-
-        /* Main Content Container */
-        main {
-            width: 100%;
-            max-width: 1000px;
-        }
-
-        .game-panel {
-            display: none;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .game-panel.active {
-            display: flex;
-        }
-
-        /* Meta Header Banner */
-        .meta-banner {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius-lg);
-            padding: 20px 24px;
+        /* Set Metadata Box */
+        .set-meta-card {
+            background: var(--surface-card);
+            border: 1px solid var(--surface-border);
+            border-radius: 6px;
+            padding: 10px 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
         }
 
-        .meta-info h2 {
-            font-size: 20px;
-            font-weight: 800;
-            margin-bottom: 4px;
-        }
-
-        .meta-info p {
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-
-        .read-time-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--card-border);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
+        .set-title-text {
+            font-size: 0.78rem;
             font-weight: 700;
-            color: var(--text-secondary);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+            color: var(--current-accent);
+            text-transform: uppercase;
         }
 
-        /* Item Floor Cards */
-        .floor-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius-lg);
-            padding: 24px;
+        .set-date-badge {
+            font-size: 0.55rem;
+            font-weight: 600;
+            background: #181818;
+            border: 1px solid #282828;
+            padding: 3px 6px;
+            border-radius: 4px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Dynamic Floor Stack */
+        .answers-list {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            position: relative;
+            gap: 8px;
+        }
+
+        .floor-card {
+            background: var(--surface-card);
+            border: 1px solid var(--surface-border);
+            border-radius: 6px;
             overflow: hidden;
         }
 
-        .floor-header {
+        .floor-card-header {
+            padding: 8px 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: #121212;
+            border-bottom: 1px solid #1a1a1a;
         }
 
-        .floor-tag {
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: var(--radius-sm);
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-secondary);
+        .floor-number-badge {
+            font-family: 'Anton', sans-serif;
+            font-size: 1rem;
+            color: var(--current-accent);
+            letter-spacing: 0.5px;
         }
 
-        .question-text {
-            font-size: 17px;
+        .floor-type-tag {
+            font-size: 0.52rem;
             font-weight: 700;
-            line-height: 1.4;
-            color: var(--text-primary);
-        }
-
-        .answer-box {
-            background: rgba(15, 23, 42, 0.6);
-            border-left: 4px solid var(--card-border);
-            padding: 14px 18px;
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .answer-label {
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
             color: var(--text-muted);
+            background: #000000;
+            border: 1px solid #222222;
+            padding: 2px 5px;
+            border-radius: 3px;
+            text-transform: uppercase;
         }
 
-        .answer-value {
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--text-primary);
-        }
-
-        /* Deep Dive & Fact Snippets */
-        .deep-dive-box {
-            background: rgba(30, 41, 59, 0.4);
-            border: 1px dashed var(--card-border);
-            border-radius: var(--radius-md);
-            padding: 16px;
+        .floor-card-body {
+            padding: 10px 12px;
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-        .deep-dive-title {
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .q-text {
+            font-size: 0.74rem;
+            font-weight: 500;
+            line-height: 1.35;
+            color: #eeeeee;
         }
 
-        .deep-dive-body {
-            font-size: 14px;
-            line-height: 1.5;
-            color: var(--text-secondary);
+        .options-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
         }
 
-        .highlight-text {
-            color: var(--text-primary);
+        .opt-chip {
+            font-size: 0.62rem;
             font-weight: 600;
-        }
-
-        /* Game Theme Accent Styling */
-        .panel-tykb .floor-card { border-left: 4px solid var(--color-tykb); }
-        .panel-tykb .answer-box { border-left-color: var(--color-tykb); }
-        .panel-tykb .answer-value { color: var(--color-tykb); }
-
-        .panel-questions .floor-card { border-left: 4px solid var(--color-questions); }
-        .panel-questions .answer-box { border-left-color: var(--color-questions); }
-        .panel-questions .answer-value { color: var(--color-questions); }
-
-        .panel-cluegram .floor-card { border-left: 4px solid var(--color-cluegram); }
-        .panel-cluegram .answer-box { border-left-color: var(--color-cluegram); }
-        .panel-cluegram .answer-value { color: var(--color-cluegram); }
-
-        .panel-clusters .floor-card { border-left: 4px solid var(--color-clusters); }
-        .panel-clusters .answer-box { border-left-color: var(--color-clusters); }
-        .panel-clusters .answer-value { color: var(--color-clusters); }
-
-        .panel-wordclimb .floor-card { border-left: 4px solid var(--color-wordclimb); }
-        .panel-wordclimb .answer-box { border-left-color: var(--color-wordclimb); }
-        .panel-wordclimb .answer-value { color: var(--color-wordclimb); }
-
-        /* Parity Honest Plug Banner */
-        .parity-promo-card {
-            background: linear-gradient(135deg, #121824 0%, #1A0B2E 100%);
-            border: 1px solid var(--color-parity);
-            border-radius: var(--radius-lg);
-            padding: 48px 32px;
+            padding: 6px;
+            border-radius: 4px;
+            background: #080808;
+            border: 1px solid #1a1a1a;
+            color: var(--text-muted);
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 10px 30px rgba(255, 0, 127, 0.1);
         }
 
-        .parity-promo-title {
-            font-size: 28px;
-            font-weight: 900;
-            color: var(--text-primary);
-            text-transform: uppercase;
-            letter-spacing: -0.01em;
+        .opt-chip.correct-chip {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: #22c55e;
+            color: #86EFAC;
         }
 
-        .parity-promo-text {
-            font-size: 16px;
-            color: var(--text-secondary);
-            max-width: 620px;
-            line-height: 1.6;
-        }
-
-        .parity-plug-box {
-            background: rgba(255, 0, 127, 0.08);
-            border: 1px dashed var(--color-parity);
-            border-radius: var(--radius-md);
-            padding: 24px;
-            margin-top: 10px;
-            max-width: 600px;
-            width: 100%;
-        }
-
-        .parity-plug-tag {
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--color-parity);
-            margin-bottom: 8px;
-        }
-
-        .parity-plug-heading {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .parity-plug-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* Clusters Tag Pill Grid */
-        .cluster-words-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .word-pill {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: var(--color-clusters);
-            padding: 6px 12px;
-            border-radius: var(--radius-sm);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-        }
-
-        .distractor-pill {
-            background: rgba(239, 68, 68, 0.08);
-            border: 1px solid rgba(239, 68, 68, 0.25);
+        .opt-chip.trap-chip {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: #ef4444;
             color: #FCA5A5;
-            padding: 6px 12px;
-            border-radius: var(--radius-sm);
-            font-size: 13px;
-            font-weight: 700;
-            text-decoration: line-through;
-            opacity: 0.7;
         }
 
-        /* Word Climb Wheel Display Box */
-        .wheel-display {
+        /* Blossom-Style Word Climb Layout */
+        .wheel-letters-row {
             display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 8px;
+            gap: 5px;
+            align-items: center;
+            justify-content: center;
+            margin: 2px 0;
         }
 
-        .wheel-letter-box {
-            background: #111111;
-            border: 1px solid var(--color-wordclimb);
-            color: var(--text-primary);
-            width: 36px;
-            height: 36px;
-            border-radius: var(--radius-sm);
+        .letter-bubble {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #141414;
+            border: 1px solid var(--surface-border-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 800;
-            font-size: 15px;
-            box-shadow: 0 0 6px rgba(250, 204, 21, 0.2);
-        }
-
-        /* Footer Made by Humans */
-        footer {
-            margin-top: 60px;
-            text-align: center;
-            font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 600;
-            letter-spacing: 0.02em;
-        }
-
-        .human-badge {
-            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
             font-weight: 700;
+            font-size: 0.75rem;
+            color: #ffffff;
         }
 
-        @media (max-width: 640px) {
-            .page-title { font-size: 24px; }
-            .meta-banner { flex-direction: column; align-items: flex-start; }
-            .floor-card { padding: 18px; }
-            .parity-promo-card { padding: 32px 18px; }
+        .blossom-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
+            margin: 4px 0;
+            background: #080808;
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .blossom-stat-val {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-wordclimb);
+        }
+
+        .blossom-stat-lbl {
+            font-size: 0.48rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .word-accordion-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-height: 220px;
+            overflow-y: auto;
+            padding-right: 4px;
+            scrollbar-width: thin;
+        }
+
+        .cluster-group-box {
+            background: #080808;
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+            padding: 7px 9px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .cluster-cat-title {
+            font-size: 0.58rem;
+            font-weight: 700;
+            color: var(--current-accent);
+            text-transform: uppercase;
+        }
+
+        .cluster-words-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        /* Context / Fact Callout */
+        .fact-box {
+            background: #080808;
+            border-left: 2px solid var(--current-accent);
+            padding: 8px 10px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .fact-title {
+            font-size: 0.52rem;
+            font-weight: 700;
+            color: var(--current-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+        }
+
+        .fact-text {
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: #bbbbbb;
+            line-height: 1.3;
+        }
+
+        .anchor-tag {
+            display: inline-block;
+            margin-top: 4px;
+            font-size: 0.52rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: #121212;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        /* Commercial Upgrade Banner */
+        .promo-affiliate-card {
+            background: linear-gradient(135deg, #121212 0%, #080808 100%);
+            border: 1px solid var(--current-accent);
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: center;
+            box-shadow: 0 0 12px var(--current-glow);
+            margin-top: 6px;
+        }
+
+        .affiliate-badge {
+            font-size: 0.48rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            color: var(--current-accent);
+            text-transform: uppercase;
+        }
+
+        .affiliate-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 1rem;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .affiliate-desc {
+            font-size: 0.62rem;
+            color: var(--text-muted);
+            line-height: 1.3;
+            font-weight: 400;
+        }
+
+        .affiliate-btn {
+            background: var(--current-accent);
+            color: #000000;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
         }
     </style>
 
-    <!-- Data Array Script Dependencies -->
+    <!-- Project External Dataset Dependencies -->
     <script src="./cluegram-data.js"></script>
     <script src="./clusters-data.js"></script>
     <script src="./parity-data.js"></script>
@@ -478,136 +462,51 @@
 </head>
 <body>
 
-    <header>
-        <a href="./index.html" class="back-link">&larr; Back to Lobby</a>
-        <h1 class="page-title">Yesterday's Answers</h1>
-        <p class="page-subtitle">Full solutions, tactical breakdowns, historical context, and deep-dive trivia snippets for yesterday's puzzles.</p>
-    </header>
+    <div class="archive-container">
+        <div class="top-bar">
+            <a href="index.html" class="pill-btn">← LOBBY</a>
+        </div>
 
-    <nav class="tabs-container" id="tabs-nav">
-        <button class="tab-btn active" data-game="tykb">Think You Know Ball?</button>
-        <button class="tab-btn" data-game="questions">11th Floor Questions</button>
-        <button class="tab-btn" data-game="cluegram">Cluegram</button>
-        <button class="tab-btn" data-game="clusters">Clusters</button>
-        <button class="tab-btn" data-game="wordclimb">Word Climb</button>
-        <button class="tab-btn" data-game="parity">Parity</button>
-    </nav>
+        <div class="hub-logo-box">
+            <h1 class="hub-logo-red">11FL?</h1>
+            <p class="hub-logo-title">Eleventh Floor</p>
+            <p class="hub-logo-sub">YESTERDAY'S ANSWERS</p>
+        </div>
 
-    <main>
-        <!-- 1. THINK YOU KNOW BALL? PANEL -->
-        <section class="game-panel panel-tykb active" id="panel-tykb">
-            <div class="meta-banner">
-                <div class="meta-info">
-                    <h2 id="tykb-set-title">Think You Know Ball? — Set Review</h2>
-                    <p>Premier League tactics, player histories, and daily football trivia breakdown.</p>
-                </div>
-                <div class="read-time-badge">4 min deep dive</div>
-            </div>
-            <div id="tykb-cards-container"></div>
-        </section>
+        <!-- Game Switcher Tabs -->
+        <div class="game-tabs-scroll">
+            <button class="tab-btn active" data-game="ball" data-color="#84CC16" data-glow="rgba(132, 204, 22, 0.25)">Think You Know Ball?</button>
+            <button class="tab-btn" data-game="cluegram" data-color="#cc007e" data-glow="rgba(204, 0, 126, 0.25)">Cluegram</button>
+            <button class="tab-btn" data-game="questions" data-color="#D4AF37" data-glow="rgba(212, 175, 55, 0.25)">Questions</button>
+            <button class="tab-btn" data-game="wordclimb" data-color="#3B82F6" data-glow="rgba(59, 130, 246, 0.25)">Word Climb</button>
+            <button class="tab-btn" data-game="clusters" data-color="#ff751f" data-glow="rgba(255, 117, 31, 0.25)">Clusters</button>
+            <button class="tab-btn" data-game="parity" data-color="#ff9999" data-glow="rgba(255, 153, 153, 0.25)">Parity</button>
+        </div>
 
-        <!-- 2. 11TH FLOOR QUESTIONS PANEL -->
-        <section class="game-panel panel-questions" id="panel-questions">
-            <div class="meta-banner">
-                <div class="meta-info">
-                    <h2 id="questions-set-title">11th Floor Questions — Set Review</h2>
-                    <p>General knowledge deep dive, tricky curveballs, and behind-the-facts context.</p>
-                </div>
-                <div class="read-time-badge">5 min deep dive</div>
-            </div>
-            <div id="questions-cards-container"></div>
-        </section>
+        <!-- Set Metadata Box -->
+        <div class="set-meta-card">
+            <div class="set-title-text" id="meta-set-title">Think You Know Ball? — Set 30</div>
+            <div class="set-date-badge">YESTERDAY'S RECAP</div>
+        </div>
 
-        <!-- 3. CLUEGRAM PANEL -->
-        <section class="game-panel panel-cluegram" id="panel-cluegram">
-            <div class="meta-banner">
-                <div class="meta-info">
-                    <h2>Cluegram — Solutions & Domain Origins</h2>
-                    <p>Target anagram solutions, definitions, and domain trivia highlights.</p>
-                </div>
-                <div class="read-time-badge">3 min read</div>
-            </div>
-            <div id="cluegram-cards-container"></div>
-        </section>
+        <!-- Answers Display Zone -->
+        <div class="answers-list" id="answers-list">
+            <!-- Dynamic Content Rendered Here -->
+        </div>
 
-        <!-- 4. CLUSTERS PANEL -->
-        <section class="game-panel panel-clusters" id="panel-clusters">
-            <div class="meta-banner">
-                <div class="meta-info">
-                    <h2 id="clusters-set-title">Clusters — Category & Distractor Breakdown</h2>
-                    <p>Floor-by-floor categories, group solutions, and intentional trap words revealed.</p>
-                </div>
-                <div class="read-time-badge">4 min read</div>
-            </div>
-            <div id="clusters-cards-container"></div>
-        </section>
-
-        <!-- 5. WORD CLIMB PANEL -->
-        <section class="game-panel panel-wordclimb" id="panel-wordclimb">
-            <div class="meta-banner">
-                <div class="meta-info">
-                    <h2>Word Climb — Master Word Ladder Breakdown</h2>
-                    <p>Target word lengths, wheel distribution, and valid vocabulary ladders.</p>
-                </div>
-                <div class="read-time-badge">2 min read</div>
-            </div>
-            <div id="wordclimb-cards-container"></div>
-        </section>
-
-        <!-- 6. PARITY PANEL (HONEST HUMOR & PLUG) -->
-        <section class="game-panel panel-parity" id="panel-parity">
-            <div class="parity-promo-card">
-                <h2 class="parity-promo-title">Nothing To See Here</h2>
-                <p class="parity-promo-text">
-                    Let us be entirely honest with you: there are no yesterday's answers for Parity, and there never will be. It is a visual pair-matching memory floor—once you clear the icons, you move on!
-                </p>
-                
-                <div class="parity-plug-box">
-                    <div class="parity-plug-tag">Shameless Plug Alert</div>
-                    <h3 class="parity-plug-heading">Coming Soon: TYKB "The Skyscraper"</h3>
-                    <p class="parity-plug-desc">
-                        Since you are here looking for extra football knowledge, we are shamelessly using this space to announce our upcoming <strong>51-Floor Mega Quiz</strong> built specifically for relentless football fanatics. Prepare to test your terrace knowledge across half a century of English football history.
-                    </p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p class="human-badge">Made by Humans!</p>
-    </footer>
+        <div class="promo-affiliate-card">
+            <div class="affiliate-badge">OFFICIAL MATCHDAY PARTNER</div>
+            <div class="affiliate-title">WANT UNLIMITED ARCHIVE ACCESS?</div>
+            <div class="affiliate-desc">Play every past 10-floor climb, unlock custom daily quizzes, and remove single-attempt streak limits.</div>
+            <button class="affiliate-btn">UNLOCK FULL ARCHIVE — £20/YEAR</button>
+        </div>
+    </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            initTabsNavigation();
-            loadTYKBData();
-            loadQuestionsData();
-            loadCluegramData();
-            loadClustersData();
-            loadWordClimbData();
-        });
+        const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th"];
 
-        /* Tab Switcher Engine */
-        function initTabsNavigation() {
-            const tabs = document.querySelectorAll('.tab-btn');
-            const panels = document.querySelectorAll('.game-panel');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const targetGame = tab.getAttribute('data-game');
-
-                    tabs.forEach(t => t.classList.remove('active'));
-                    panels.forEach(p => p.classList.remove('active'));
-
-                    tab.classList.add('active');
-                    const activePanel = document.getElementById(`panel-${targetGame}`);
-                    if (activePanel) activePanel.classList.add('active');
-                });
-            });
-        }
-
-        /* Helper to fetch local JSON with multiple search fallback paths */
-        async function fetchJSONFile(filename) {
+        /* Dynamic JSON Helper */
+        async function fetchJSON(filename) {
             const paths = [`./${filename}`, `./data/${filename}`, `./archives/${filename}`, filename];
             for (const path of paths) {
                 try {
@@ -618,249 +517,242 @@
             return null;
         }
 
-        /* 1. TYKB DATA LOADER */
-        async function loadTYKBData() {
-            const data = await fetchJSONFile('ball-questions.json');
-            const container = document.getElementById('tykb-cards-container');
-            const titleElem = document.getElementById('tykb-set-title');
-            if (!container) return;
-
-            if (!data || !data.questions) {
-                container.innerHTML = `<div class="floor-card"><p class="deep-dive-body">Yesterday's football dataset is currently archiving. Check back shortly!</p></div>`;
-                return;
-            }
-
-            if (data.title && titleElem) titleElem.textContent = `${data.title} — Full Review`;
+        /* RENDER ENGINE FOR ALL 6 GAMES */
+        async function renderGameAnswers(gameKey) {
+            const container = document.getElementById('answers-list');
+            const metaTitle = document.getElementById('meta-set-title');
             container.innerHTML = '';
 
-            data.questions.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'floor-card';
-                card.innerHTML = `
-                    <div class="floor-header">
-                        <span class="floor-tag">${item.floor ? 'Floor ' + item.floor : 'Question'}</span>
-                    </div>
-                    <div class="question-text">${item.question}</div>
-                    <div class="answer-box">
-                        <span class="answer-label">Correct Answer</span>
-                        <div class="answer-value">${item.answer}</div>
-                    </div>
-                    <div class="deep-dive-box">
-                        <div class="deep-dive-title">Terrace Context & Tactical Breakdown</div>
-                        <div class="deep-dive-body">${item.explanation || 'An essential fixture in Premier League history.'}</div>
-                    </div>
-                    ${item.anchorClues ? `
-                    <div class="deep-dive-box">
-                        <div class="deep-dive-title">Key Search Anchors & Historical Indicators</div>
-                        <div class="deep-dive-body"><span class="highlight-text">Anchors:</span> ${item.anchorClues}</div>
-                    </div>` : ''}
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        /* 2. QUESTIONS DATA LOADER */
-        async function loadQuestionsData() {
-            const data = await fetchJSONFile('questions.json');
-            const container = document.getElementById('questions-cards-container');
-            const titleElem = document.getElementById('questions-set-title');
-            if (!container) return;
-
-            if (!data || !data.floors) {
-                container.innerHTML = `<div class="floor-card"><p class="deep-dive-body">General knowledge set archive loading...</p></div>`;
-                return;
-            }
-
-            if (data.title && titleElem) titleElem.textContent = `${data.title} — Full Breakdown`;
-            container.innerHTML = '';
-
-            data.floors.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'floor-card';
-                card.innerHTML = `
-                    <div class="floor-header">
-                        <span class="floor-tag">Floor ${item.floor}</span>
-                    </div>
-                    <div class="question-text">${item.question}</div>
-                    <div class="answer-box">
-                        <span class="answer-label">Official Answer</span>
-                        <div class="answer-value">${item.answer}</div>
-                    </div>
-                    <div class="deep-dive-box">
-                        <div class="deep-dive-title">Why Players Got Tripped Up (Curveball Breakdown)</div>
-                        <div class="deep-dive-body">
-                            Multiple choice distractors included <span class="highlight-text">${item.options ? item.options.filter(o => o !== item.answer).join(', ') : 'other key options'}</span>. Precision was required to isolate the correct factual match.
-                        </div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        /* 3. CLUEGRAM DATA LOADER */
-        function loadCluegramData() {
-            const container = document.getElementById('cluegram-cards-container');
-            if (!container) return;
-
-            const dataset = window.CLUEGRAM_DAILY_SET;
-            if (!dataset || !Array.isArray(dataset)) {
-                container.innerHTML = `<div class="floor-card"><p class="deep-dive-body">Cluegram set data unavailable.</p></div>`;
-                return;
-            }
-
-            container.innerHTML = '';
-            dataset.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'floor-card';
-                card.innerHTML = `
-                    <div class="floor-header">
-                        <span class="floor-tag">Floor ${item.floor} • ${item.length} Letters</span>
-                        <span class="floor-tag" style="color: var(--color-cluegram);">${item.domain}</span>
-                    </div>
-                    <div class="question-text">Clue: "${item.clue}"</div>
-                    <div class="answer-box">
-                        <span class="answer-label">Target Word Solution (Scrambled: ${item.scrambled})</span>
-                        <div class="answer-value">${item.target}</div>
-                    </div>
-                    <div class="deep-dive-box">
-                        <div class="deep-dive-title">Etymology & Domain Origin Snippet</div>
-                        <div class="deep-dive-body">
-                            In <span class="highlight-text">${item.domain}</span>, <span class="highlight-text">${item.target}</span> represents a core structural concept. The anagram rearranges from scrambled sequence <em>${item.scrambled}</em>.
-                        </div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        /* 4. CLUSTERS DATA LOADER */
-        function loadClustersData() {
-            const container = document.getElementById('clusters-cards-container');
-            const titleElem = document.getElementById('clusters-set-title');
-            if (!container) return;
-
-            const dataset = window.CLUSTERS_DATA;
-            if (!dataset) {
-                container.innerHTML = `<div class="floor-card"><p class="deep-dive-body">Clusters set data unavailable.</p></div>`;
-                return;
-            }
-
-            const dates = Object.keys(dataset);
-            const latestKey = dates[dates.length - 1];
-            const puzzleObj = dataset[latestKey];
-
-            if (!puzzleObj || !puzzleObj.floors) {
-                container.innerHTML = `<div class="floor-card"><p class="deep-dive-body">No cluster floor data located.</p></div>`;
-                return;
-            }
-
-            if (puzzleObj.title && titleElem) titleElem.textContent = `${puzzleObj.title} — Category Breakdown`;
-            container.innerHTML = '';
-
-            Object.keys(puzzleObj.floors).forEach(floorNum => {
-                const floorData = puzzleObj.floors[floorNum];
-                const card = document.createElement('div');
-                card.className = 'floor-card';
-
-                let groupsHTML = '';
-                let groupedWords = new Set();
-
-                floorData.groups.forEach(group => {
-                    group.words.forEach(w => groupedWords.add(w));
-                    groupsHTML += `
-                        <div class="answer-box" style="margin-bottom: 12px;">
-                            <span class="answer-label">Group Category: ${group.clue} (${group.category})</span>
-                            <div class="cluster-words-grid" style="margin-top: 6px;">
-                                ${group.words.map(w => `<span class="word-pill">${w}</span>`).join('')}
+            if (gameKey === 'ball') {
+                const data = await fetchJSON('ball-questions.json');
+                if (data && (data.questions || data.floors)) {
+                    metaTitle.innerText = data.title || "Think You Know Ball?";
+                    const list = data.questions || data.floors;
+                    list.forEach(q => {
+                        const floorOrd = ordinals[(q.floor || 1) - 1] || `${q.floor}th`;
+                        let optionsHTML = '';
+                        if (q.options) {
+                            q.options.forEach(opt => {
+                                const isCorrect = (opt === q.answer);
+                                optionsHTML += `<div class="opt-chip ${isCorrect ? 'correct-chip' : ''}">${opt}</div>`;
+                            });
+                        }
+                        container.innerHTML += `
+                            <div class="floor-card">
+                                <div class="floor-card-header">
+                                    <div class="floor-number-badge">${floorOrd} Floor</div>
+                                    <div class="floor-type-tag">${q.type === 'boolean' ? 'TRUE / FALSE' : 'MULTIPLE CHOICE'}</div>
+                                </div>
+                                <div class="floor-card-body">
+                                    <div class="q-text">${q.question}</div>
+                                    <div class="options-list">${optionsHTML}</div>
+                                    <div class="fact-box">
+                                        <div class="fact-title">Terrace Context & Fact</div>
+                                        <div class="fact-text">${q.explanation || ''}</div>
+                                        ${q.anchorClues ? `<div class="anchor-tag">📌 ${q.anchorClues}</div>` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+            } 
+            else if (gameKey === 'questions') {
+                const data = await fetchJSON('questions.json');
+                if (data && (data.floors || data.questions)) {
+                    metaTitle.innerText = data.title || "11th Floor Questions";
+                    const list = data.floors || data.questions;
+                    list.forEach(q => {
+                        const floorOrd = ordinals[(q.floor || 1) - 1] || `${q.floor}th`;
+                        let optionsHTML = '';
+                        if (q.options) {
+                            q.options.forEach(opt => {
+                                const isCorrect = (opt === q.answer);
+                                optionsHTML += `<div class="opt-chip ${isCorrect ? 'correct-chip' : ''}">${opt}</div>`;
+                            });
+                        }
+                        container.innerHTML += `
+                            <div class="floor-card">
+                                <div class="floor-card-header">
+                                    <div class="floor-number-badge">${floorOrd} Floor</div>
+                                    <div class="floor-type-tag">MULTIPLE CHOICE</div>
+                                </div>
+                                <div class="floor-card-body">
+                                    <div class="q-text">${q.question}</div>
+                                    <div class="options-list">${optionsHTML}</div>
+                                    <div class="fact-box">
+                                        <div class="fact-title">Fact Context & Breakdown</div>
+                                        <div class="fact-text">Correct Answer: <strong>${q.answer}</strong>. Distractor choices included standard high-brow alternatives to test precise recall.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+            } 
+            else if (gameKey === 'cluegram') {
+                const list = window.CLUEGRAM_DAILY_SET || [];
+                metaTitle.innerText = "11th Floor Cluegram — Daily Solutions";
+                list.forEach(item => {
+                    const floorOrd = ordinals[item.floor - 1] || `${item.floor}th`;
+                    container.innerHTML += `
+                        <div class="floor-card">
+                            <div class="floor-card-header">
+                                <div class="floor-number-badge">${floorOrd} Floor</div>
+                                <div class="floor-type-tag">${item.length || item.target.length} LETTERS</div>
+                            </div>
+                            <div class="floor-card-body">
+                                <div class="q-text">Scrambled: <strong style="color: #cc007e; font-family: monospace;">${item.scrambled}</strong></div>
+                                <div class="opt-chip correct-chip" style="font-size: 0.7rem; letter-spacing: 1px;">TARGET: ${item.target}</div>
+                                <div class="fact-box">
+                                    <div class="fact-title">Clue Definition</div>
+                                    <div class="fact-text">${item.clue}</div>
+                                </div>
                             </div>
                         </div>
                     `;
                 });
+            } 
+            else if (gameKey === 'clusters') {
+                const dataset = window.CLUSTERS_DATA || {};
+                const dates = Object.keys(dataset);
+                const latestKey = dates[dates.length - 1];
+                const puzzleObj = dataset[latestKey] || {};
+                metaTitle.innerText = puzzleObj.title || "11th Floor Clusters";
 
-                const distractors = floorData.tiles.filter(t => !groupedWords.has(t));
-                let distractorsHTML = '';
-                if (distractors.length > 0) {
-                    distractorsHTML = `
-                        <div class="deep-dive-box">
-                            <div class="deep-dive-title">Floor Distractor Trap Words</div>
-                            <div class="cluster-words-grid">
-                                ${distractors.map(d => `<span class="distractor-pill">${d}</span>`).join('')}
+                if (puzzleObj.floors) {
+                    Object.keys(puzzleObj.floors).forEach(floorNum => {
+                        const fData = puzzleObj.floors[floorNum];
+                        const floorOrd = ordinals[parseInt(floorNum, 10) - 1] || `${floorNum}th`;
+                        
+                        let groupsHTML = '';
+                        let matchedWords = [];
+                        fData.groups.forEach(g => {
+                            matchedWords.push(...g.words);
+                            const wordsList = g.words.map(w => `<span class="opt-chip correct-chip" style="padding: 3px 5px; font-size: 0.58rem;">${w}</span>`).join(' ');
+                            groupsHTML += `
+                                <div class="cluster-group-box">
+                                    <div class="cluster-cat-title">✓ ${g.clue || g.category} (${g.category})</div>
+                                    <div class="cluster-words-row">${wordsList}</div>
+                                </div>
+                            `;
+                        });
+
+                        const distractors = fData.tiles.filter(t => !matchedWords.includes(t));
+                        const distractorsHTML = distractors.map(d => `<span class="opt-chip trap-chip" style="padding: 3px 5px; font-size: 0.58rem;">${d}</span>`).join(' ');
+
+                        container.innerHTML += `
+                            <div class="floor-card">
+                                <div class="floor-card-header">
+                                    <div class="floor-number-badge">${floorOrd} Floor</div>
+                                    <div class="floor-type-tag">CLUSTER WALL</div>
+                                </div>
+                                <div class="floor-card-body">
+                                    ${groupsHTML}
+                                    ${distractors.length ? `
+                                        <div class="cluster-group-box" style="border-color: rgba(239,68,68,0.2);">
+                                            <div class="cluster-cat-title" style="color: #ef4444;">✖ TRAP DISTRACTORS</div>
+                                            <div class="cluster-words-row">${distractorsHTML}</div>
+                                        </div>
+                                    ` : ''}
+                                </div>
                             </div>
-                            <div class="deep-dive-body" style="margin-top: 6px;">
-                                These distractor words were placed specifically to lure players into false thematic overlap.
-                            </div>
+                        `;
+                    });
+                }
+            } 
+            else if (gameKey === 'wordclimb') {
+                metaTitle.innerText = "11th Floor Word Climb — Master Board 'MAGNITUDE'";
+                const masterWord = "MAGNITUDE";
+                const wheelArr = ["M", "A", "G", "N", "I", "T", "U", "D", "E"];
+                const wheelBubbles = wheelArr.map(l => `<div class="letter-bubble">${l}</div>`).join('');
+
+                container.innerHTML += `
+                    <div class="cluster-group-box" style="border-color: var(--color-wordclimb); margin-bottom: 2px;">
+                        <div class="cluster-cat-title" style="color: var(--color-wordclimb); text-align: center;">DAILY MASTER WHEEL</div>
+                        <div class="wheel-letters-row">${wheelBubbles}</div>
+                        <div style="font-size: 0.58rem; color: var(--text-muted); text-align: center; margin-top: 2px;">Master 9-Letter Target: <strong style="color: #ffffff;">${masterWord}</strong></div>
+                    </div>
+
+                    <div class="blossom-stats-grid">
+                        <div><div class="blossom-stat-val">9</div><div class="blossom-stat-lbl">5-Letter</div></div>
+                        <div><div class="blossom-stat-val">6</div><div class="blossom-stat-lbl">6-Letter</div></div>
+                        <div><div class="blossom-stat-val">2</div><div class="blossom-stat-lbl">7-Letter</div></div>
+                        <div><div class="blossom-stat-val">1</div><div class="blossom-stat-lbl">8-Letter</div></div>
+                        <div><div class="blossom-stat-val">1</div><div class="blossom-stat-lbl">9-Letter</div></div>
+                    </div>
+                `;
+
+                const wordsByLen = {
+                    5: ["GIANT", "AGENT", "GUIDE", "IMAGE", "MEDIA", "AMEND", "UNITE", "MINED", "GAUNT"],
+                    6: ["UNITED", "DATING", "MAGNET", "GAINED", "TANDEM", "UNTIED"],
+                    7: ["UNTAMED", "GAUNTED"],
+                    8: ["UNTAMING"],
+                    9: ["MAGNITUDE"]
+                };
+
+                let accordionSections = '';
+                [5, 6, 7, 8, 9].forEach(len => {
+                    const words = wordsByLen[len] || [];
+                    const wordChips = words.map(w => `<span class="opt-chip ${w === masterWord ? 'correct-chip' : ''}" style="padding: 3px 6px; font-size: 0.58rem;">${w}</span>`).join(' ');
+                    accordionSections += `
+                        <div class="cluster-group-box">
+                            <div class="cluster-cat-title">✓ ${len}-LETTER VALID WORDS (${words.length})</div>
+                            <div class="cluster-words-row">${wordChips}</div>
                         </div>
                     `;
-                }
+                });
 
-                card.innerHTML = `
-                    <div class="floor-header">
-                        <span class="floor-tag">Floor ${floorNum}</span>
+                container.innerHTML += `
+                    <div class="word-accordion-container">
+                        ${accordionSections}
                     </div>
-                    <div>${groupsHTML}</div>
-                    ${distractorsHTML}
                 `;
-                container.appendChild(card);
-            });
-        }
-
-        /* 5. WORD CLIMB DATA LOADER */
-        function loadWordClimbData() {
-            const container = document.getElementById('wordclimb-cards-container');
-            if (!container) return;
-
-            const masterWord = "MAGNITUDE";
-            const wheelArr = ["M", "A", "G", "N", "I", "T", "U", "D", "E"];
-
-            const ladderStructure = [
-                { floor: "1-3", length: 5, example: "AGENT, GIANT, GUIDE, IMAGE, MEDIA, AMEND" },
-                { floor: "4-6", length: 6, example: "UNITED, DATING, MAGNET, GAINED, TANDEM" },
-                { floor: "7-8", length: 7, example: "UNTAMED, GAUNTED" },
-                { floor: 9, length: 8, example: "UNTAMING" },
-                { floor: 10, length: 9, example: "MAGNITUDE" }
-            ];
-
-            container.innerHTML = '';
-
-            const masterCard = document.createElement('div');
-            masterCard.className = 'floor-card';
-            masterCard.innerHTML = `
-                <div class="floor-header">
-                    <span class="floor-tag">Active Daily Wheel</span>
-                    <span class="floor-tag" style="color: var(--color-wordclimb);">9-Letter Target</span>
-                </div>
-                <div class="question-text">Master Word Solution: ${masterWord}</div>
-                <div class="answer-box">
-                    <span class="answer-label">Wheel Distribution</span>
-                    <div class="wheel-display">
-                        ${wheelArr.map(l => `<div class="wheel-letter-box">${l}</div>`).join('')}
-                    </div>
-                </div>
-            `;
-            container.appendChild(masterCard);
-
-            ladderStructure.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'floor-card';
-                card.innerHTML = `
-                    <div class="floor-header">
-                        <span class="floor-tag">Floors ${item.floor}</span>
-                        <span class="floor-tag">${item.length} Letters Required</span>
-                    </div>
-                    <div class="answer-box">
-                        <span class="answer-label">Primary Valid Climb Words</span>
-                        <div class="answer-value">${item.example}</div>
-                    </div>
-                    <div class="deep-dive-box">
-                        <div class="deep-dive-title">Vocabulary & Anagram Mechanics</div>
-                        <div class="deep-dive-body">
-                            All target submissions must be valid English words formed strictly using letters from the wheel set.
+            } 
+            else if (gameKey === 'parity') {
+                metaTitle.innerText = "11th Floor Parity";
+                container.innerHTML = `
+                    <div class="floor-card">
+                        <div class="floor-card-header">
+                            <div class="floor-number-badge">Parity</div>
+                            <div class="floor-type-tag">ANNOUNCEMENT</div>
+                        </div>
+                        <div class="floor-card-body">
+                            <div class="q-text" style="font-weight: 700; color: #ffffff; font-size: 0.85rem;">Nothing to see here! Never will be.</div>
+                            <div class="fact-box" style="border-left-color: var(--color-parity);">
+                                <div class="fact-title" style="color: var(--color-parity);">Shameless Plug Ahead</div>
+                                <div class="fact-text" style="line-height: 1.4;">
+                                    Parity is a dynamic visual pair-matching climb, so yesterday's solutions don't really apply. But since you entered, we are shamelessly using this space to plug our upcoming game...<br><br>
+                                    <strong style="color: #ffffff;">COMING SOON: TYKB "The Skyscraper"</strong> — A 51-floor Mega Quiz for true football fanatics!
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
-                container.appendChild(card);
-            });
+            }
         }
+
+        /* TAB SWITCHER & ACCENT TINTING */
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const gameKey = btn.getAttribute('data-game');
+                const accentColor = btn.getAttribute('data-color');
+                const glowColor = btn.getAttribute('data-glow');
+
+                document.documentElement.style.setProperty('--current-accent', accentColor);
+                document.documentElement.style.setProperty('--current-glow', glowColor);
+
+                renderGameAnswers(gameKey);
+            });
+        });
+
+        // Initial Load
+        window.onload = () => {
+            renderGameAnswers('ball');
+        };
     </script>
 </body>
 </html>
