@@ -412,3 +412,388 @@
 
         /* Commercial Upgrade Banner */
         .promo-affiliate-card {
+            background: linear-gradient(135deg, #121212 0%, #080808 100%);
+            border: 1px solid var(--current-accent);
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: center;
+            box-shadow: 0 0 12px var(--current-glow);
+            margin-top: 6px;
+        }
+
+        .affiliate-badge {
+            font-size: 0.48rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            color: var(--current-accent);
+            text-transform: uppercase;
+        }
+
+        .affiliate-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 1rem;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .affiliate-desc {
+            font-size: 0.62rem;
+            color: var(--text-muted);
+            line-height: 1.3;
+            font-weight: 400;
+        }
+
+        .affiliate-btn {
+            background: var(--current-accent);
+            color: #000000;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+    </style>
+
+    <!-- Optional External Dependencies with Fallback Guards -->
+    <script src="./cluegram-data.js" onerror="console.warn('cluegram-data.js missing - activating fallback')"></script>
+    <script src="./clusters-data.js" onerror="console.warn('clusters-data.js missing - activating fallback')"></script>
+    <script src="./parity-data.js" onerror="console.warn('parity-data.js missing - activating fallback')"></script>
+    <script src="./words.js" onerror="console.warn('words.js missing - activating fallback')"></script>
+</head>
+<body>
+
+    <div class="archive-container">
+        <div class="top-bar">
+            <a href="index.html" class="pill-btn">← LOBBY</a>
+        </div>
+
+        <div class="hub-logo-box">
+            <h1 class="hub-logo-red">11FL?</h1>
+            <p class="hub-logo-title">Eleventh Floor</p>
+            <p class="hub-logo-sub">YESTERDAY'S ANSWERS</p>
+        </div>
+
+        <!-- Game Switcher Tabs -->
+        <div class="game-tabs-scroll">
+            <button class="tab-btn active" data-game="ball" data-color="#84CC16" data-glow="rgba(132, 204, 22, 0.25)">Think You Know Ball?</button>
+            <button class="tab-btn" data-game="cluegram" data-color="#cc007e" data-glow="rgba(204, 0, 126, 0.25)">Cluegram</button>
+            <button class="tab-btn" data-game="questions" data-color="#D4AF37" data-glow="rgba(212, 175, 55, 0.25)">Questions</button>
+            <button class="tab-btn" data-game="wordclimb" data-color="#3B82F6" data-glow="rgba(59, 130, 246, 0.25)">Word Climb</button>
+            <button class="tab-btn" data-game="clusters" data-color="#ff751f" data-glow="rgba(255, 117, 31, 0.25)">Clusters</button>
+            <button class="tab-btn" data-game="parity" data-color="#ff9999" data-glow="rgba(255, 153, 153, 0.25)">Parity</button>
+        </div>
+
+        <!-- Set Metadata Box -->
+        <div class="set-meta-card">
+            <div class="set-title-text" id="meta-set-title">Think You Know Ball? — Set 30</div>
+            <div class="set-date-badge">YESTERDAY'S RECAP</div>
+        </div>
+
+        <!-- Answers Display Zone -->
+        <div class="answers-list" id="answers-list">
+            <!-- Dynamic Content Rendered Here -->
+        </div>
+
+        <div class="promo-affiliate-card">
+            <div class="affiliate-badge">OFFICIAL MATCHDAY PARTNER</div>
+            <div class="affiliate-title">WANT UNLIMITED ARCHIVE ACCESS?</div>
+            <div class="affiliate-desc">Play every past 10-floor climb, unlock custom daily quizzes, and remove single-attempt streak limits.</div>
+            <button class="affiliate-btn">UNLOCK FULL ARCHIVE — £20/YEAR</button>
+        </div>
+    </div>
+
+    <script>
+        const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th"];
+
+        /* Safe Async JSON Fetcher */
+        async function fetchJSON(filename) {
+            const paths = [`./${filename}`, `./data/${filename}`, `./archives/${filename}`, filename];
+            for (const path of paths) {
+                try {
+                    const res = await fetch(path);
+                    if (res.ok) return await res.json();
+                } catch (e) {}
+            }
+            return null;
+        }
+
+        /* SAFE RENDER ENGINE FOR ALL 6 GAMES */
+        async function renderGameAnswers(gameKey) {
+            const container = document.getElementById('answers-list');
+            const metaTitle = document.getElementById('meta-set-title');
+            if (!container || !metaTitle) return;
+
+            container.innerHTML = '';
+
+            try {
+                if (gameKey === 'ball') {
+                    const data = await fetchJSON('ball-questions.json');
+                    if (data && (data.questions || data.floors)) {
+                        metaTitle.innerText = data.title || "Think You Know Ball?";
+                        const list = data.questions || data.floors;
+                        list.forEach(q => {
+                            const floorOrd = ordinals[(q.floor || 1) - 1] || `${q.floor}th`;
+                            let optionsHTML = '';
+                            if (q.options) {
+                                q.options.forEach(opt => {
+                                    const isCorrect = (opt === q.answer);
+                                    optionsHTML += `<div class="opt-chip ${isCorrect ? 'correct-chip' : ''}">${opt}</div>`;
+                                });
+                            }
+                            container.innerHTML += `
+                                <div class="floor-card">
+                                    <div class="floor-card-header">
+                                        <div class="floor-number-badge">${floorOrd} Floor</div>
+                                        <div class="floor-type-tag">${q.type === 'boolean' ? 'TRUE / FALSE' : 'MULTIPLE CHOICE'}</div>
+                                    </div>
+                                    <div class="floor-card-body">
+                                        <div class="q-text">${q.question}</div>
+                                        <div class="options-list">${optionsHTML}</div>
+                                        <div class="fact-box">
+                                            <div class="fact-title">Terrace Breakdown & Match Context</div>
+                                            <div class="fact-text">
+                                                <strong>Key Answer: ${q.answer}</strong><br>
+                                                ${q.explanation || 'An essential fixture in top-flight football history.'}
+                                            </div>
+                                            ${q.anchorClues ? `<div class="anchor-tag">📌 Search Anchors: ${q.anchorClues}</div>` : ''}
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    } else {
+                        container.innerHTML = `<div class="floor-card" style="padding:16px; text-align:center; color:#888;">Fetching ball-questions.json set...</div>`;
+                    }
+                } 
+                else if (gameKey === 'questions') {
+                    const data = await fetchJSON('questions.json');
+                    if (data && (data.floors || data.questions)) {
+                        metaTitle.innerText = data.title || "11th Floor Questions";
+                        const list = data.floors || data.questions;
+                        list.forEach(q => {
+                            const floorOrd = ordinals[(q.floor || 1) - 1] || `${q.floor}th`;
+                            let optionsHTML = '';
+                            if (q.options) {
+                                q.options.forEach(opt => {
+                                    const isCorrect = (opt === q.answer);
+                                    optionsHTML += `<div class="opt-chip ${isCorrect ? 'correct-chip' : ''}">${opt}</div>`;
+                                });
+                            }
+
+                            const distractors = q.options ? q.options.filter(o => o !== q.answer).join(', ') : '';
+
+                            container.innerHTML += `
+                                <div class="floor-card">
+                                    <div class="floor-card-header">
+                                        <div class="floor-number-badge">${floorOrd} Floor</div>
+                                        <div class="floor-type-tag">MULTIPLE CHOICE</div>
+                                    </div>
+                                    <div class="floor-card-body">
+                                        <div class="q-text">${q.question}</div>
+                                        <div class="options-list">${optionsHTML}</div>
+                                        <div class="fact-box">
+                                            <div class="fact-title">Why Players Got Tripped Up</div>
+                                            <div class="fact-text">
+                                                <strong>Correct Answer: ${q.answer}</strong><br>
+                                                ${q.explanation ? q.explanation : `Distractors included <strong>${distractors}</strong>. This question tested precise recall where related choices frequently led players down false leads.`}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    } else {
+                        container.innerHTML = `<div class="floor-card" style="padding:16px; text-align:center; color:#888;">Fetching questions.json set...</div>`;
+                    }
+                } 
+                else if (gameKey === 'cluegram') {
+                    metaTitle.innerText = "11th Floor Cluegram — Daily Solutions";
+                    const list = window.CLUEGRAM_DAILY_SET || [
+                        { floor: 1, length: 5, domain: "Oceanography & Marine", scrambled: "LOCRA", target: "CORAL", clue: "A hard stony substance secreted by marine polyps for support and structure." },
+                        { floor: 2, length: 5, domain: "Physics & Optics", scrambled: "SIMPR", target: "PRISM", clue: "A transparent glass body that refracts light to break it into a rainbow spectrum." }
+                    ];
+
+                    list.forEach(item => {
+                        const floorOrd = ordinals[item.floor - 1] || `${item.floor}th`;
+                        container.innerHTML += `
+                            <div class="floor-card">
+                                <div class="floor-card-header">
+                                    <div class="floor-number-badge">${floorOrd} Floor</div>
+                                    <div class="floor-type-tag">${item.length || item.target.length} LETTERS</div>
+                                </div>
+                                <div class="floor-card-body">
+                                    <div class="q-text">Scrambled Anagram: <strong style="color: #cc007e; font-family: monospace; font-size: 0.9rem;">${item.scrambled}</strong></div>
+                                    <div class="opt-chip correct-chip" style="font-size: 0.75rem; letter-spacing: 1px;">TARGET SOLUTION: ${item.target}</div>
+                                    <div class="fact-box">
+                                        <div class="fact-title">Domain Definition & Clue</div>
+                                        <div class="fact-text">
+                                            <strong>Domain: ${item.domain || 'General'}</strong><br>
+                                            ${item.clue}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                } 
+                else if (gameKey === 'clusters') {
+                    const dataset = window.CLUSTERS_DATA || {};
+                    const dates = Object.keys(dataset);
+                    const latestKey = dates.length ? dates[dates.length - 1] : null;
+                    const puzzleObj = latestKey ? dataset[latestKey] : null;
+
+                    metaTitle.innerText = (puzzleObj && puzzleObj.title) ? puzzleObj.title : "11th Floor Clusters";
+
+                    if (puzzleObj && puzzleObj.floors) {
+                        Object.keys(puzzleObj.floors).forEach(floorNum => {
+                            const fData = puzzleObj.floors[floorNum];
+                            const floorOrd = ordinals[parseInt(floorNum, 10) - 1] || `${floorNum}th`;
+                            
+                            let groupsHTML = '';
+                            let matchedWords = [];
+                            fData.groups.forEach(g => {
+                                matchedWords.push(...g.words);
+                                const wordsList = g.words.map(w => `<span class="opt-chip correct-chip" style="padding: 4px 6px; font-size: 0.62rem;">${w}</span>`).join(' ');
+                                groupsHTML += `
+                                    <div class="cluster-group-box">
+                                        <div class="cluster-cat-title">✓ ${g.clue || g.category} (${g.category})</div>
+                                        <div class="cluster-words-row">${wordsList}</div>
+                                    </div>
+                                `;
+                            });
+
+                            const distractors = fData.tiles.filter(t => !matchedWords.includes(t));
+                            const distractorsHTML = distractors.map(d => `<span class="opt-chip trap-chip" style="padding: 4px 6px; font-size: 0.62rem;">${d}</span>`).join(' ');
+
+                            container.innerHTML += `
+                                <div class="floor-card">
+                                    <div class="floor-card-header">
+                                        <div class="floor-number-badge">${floorOrd} Floor</div>
+                                        <div class="floor-type-tag">CLUSTER WALL</div>
+                                    </div>
+                                    <div class="floor-card-body">
+                                        ${groupsHTML}
+                                        ${distractors.length ? `
+                                            <div class="cluster-group-box" style="border-color: rgba(239,68,68,0.2);">
+                                                <div class="cluster-cat-title" style="color: #ef4444;">✖ TRAP DISTRACTORS</div>
+                                                <div class="cluster-words-row">${distractorsHTML}</div>
+                                                <div class="fact-text" style="font-size: 0.62rem; color: #888888; margin-top: 2px;">
+                                                    These words were chosen to lure players into making false category connections.
+                                                </div>
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    } else {
+                        container.innerHTML = `<div class="floor-card" style="padding:16px; text-align:center; color:#888;">Clusters data array loading...</div>`;
+                    }
+                } 
+                else if (gameKey === 'wordclimb') {
+                    metaTitle.innerText = "11th Floor Word Climb — Master Board 'MAGNITUDE'";
+                    const masterWord = "MAGNITUDE";
+                    const wheelArr = ["M", "A", "G", "N", "I", "T", "U", "D", "E"];
+                    const wheelBubbles = wheelArr.map(l => `<div class="letter-bubble">${l}</div>`).join('');
+
+                    container.innerHTML += `
+                        <div class="cluster-group-box" style="border-color: var(--color-wordclimb); margin-bottom: 2px;">
+                            <div class="cluster-cat-title" style="color: var(--color-wordclimb); text-align: center;">DAILY MASTER WHEEL</div>
+                            <div class="wheel-letters-row">${wheelBubbles}</div>
+                            <div style="font-size: 0.65rem; color: #bbbbbb; text-align: center; margin-top: 4px;">Master 9-Letter Target: <strong style="color: #ffffff;">${masterWord}</strong></div>
+                        </div>
+
+                        <div class="blossom-stats-grid">
+                            <div><div class="blossom-stat-val">9</div><div class="blossom-stat-lbl">5-Letter</div></div>
+                            <div><div class="blossom-stat-val">6</div><div class="blossom-stat-lbl">6-Letter</div></div>
+                            <div><div class="blossom-stat-val">2</div><div class="blossom-stat-lbl">7-Letter</div></div>
+                            <div><div class="blossom-stat-val">1</div><div class="blossom-stat-lbl">8-Letter</div></div>
+                            <div><div class="blossom-stat-val">1</div><div class="blossom-stat-lbl">9-Letter</div></div>
+                        </div>
+                    `;
+
+                    const wordsByLen = {
+                        5: ["GIANT", "AGENT", "GUIDE", "IMAGE", "MEDIA", "AMEND", "UNITE", "MINED", "GAUNT"],
+                        6: ["UNITED", "DATING", "MAGNET", "GAINED", "TANDEM", "UNTIED"],
+                        7: ["UNTAMED", "GAUNTED"],
+                        8: ["UNTAMING"],
+                        9: ["MAGNITUDE"]
+                    };
+
+                    let accordionSections = '';
+                    [5, 6, 7, 8, 9].forEach(len => {
+                        const words = wordsByLen[len] || [];
+                        const wordChips = words.map(w => `<span class="opt-chip ${w === masterWord ? 'correct-chip' : ''}" style="padding: 4px 6px; font-size: 0.62rem;">${w}</span>`).join(' ');
+                        accordionSections += `
+                            <div class="cluster-group-box">
+                                <div class="cluster-cat-title">✓ ${len}-LETTER VALID WORDS (${words.length})</div>
+                                <div class="cluster-words-row">${wordChips}</div>
+                            </div>
+                        `;
+                    });
+
+                    container.innerHTML += `
+                        <div class="word-accordion-container">
+                            ${accordionSections}
+                        </div>
+                    `;
+                } 
+                else if (gameKey === 'parity') {
+                    metaTitle.innerText = "11th Floor Parity";
+                    container.innerHTML = `
+                        <div class="floor-card">
+                            <div class="floor-card-header">
+                                <div class="floor-number-badge">Parity</div>
+                                <div class="floor-type-tag">ANNOUNCEMENT</div>
+                            </div>
+                            <div class="floor-card-body">
+                                <div class="q-text" style="font-weight: 700; color: #ffffff; font-size: 0.85rem;">Nothing to see here! Never will be.</div>
+                                <div class="fact-box" style="border-left-color: var(--color-parity);">
+                                    <div class="fact-title" style="color: var(--color-parity);">Shameless Plug Ahead</div>
+                                    <div class="fact-text" style="line-height: 1.45;">
+                                        Parity is a dynamic visual pair-matching climb, so yesterday's solutions don't really apply. But since you entered, we are shamelessly using this space to plug our upcoming game...<br><br>
+                                        <strong style="color: #ffffff;">COMING SOON: TYKB "The Skyscraper"</strong> — A 51-floor Mega Quiz for true football fanatics!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            } catch (err) {
+                console.error('Render error avoided black screen:', err);
+                container.innerHTML = `<div class="floor-card" style="padding:16px; color:#ef4444; font-size:0.75rem;">Error loading set answers. Please refresh.</div>`;
+            }
+        }
+
+        /* TAB SWITCHER & ACCENT TINTING */
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const gameKey = btn.getAttribute('data-game');
+                const accentColor = btn.getAttribute('data-color');
+                const glowColor = btn.getAttribute('data-glow');
+
+                document.documentElement.style.setProperty('--current-accent', accentColor);
+                document.documentElement.style.setProperty('--current-glow', glowColor);
+
+                renderGameAnswers(gameKey);
+            });
+        });
+
+        // Safe Load Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGameAnswers('ball');
+        });
+    </script>
+</body>
+</html>
