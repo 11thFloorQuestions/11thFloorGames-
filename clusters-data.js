@@ -11,91 +11,91 @@
 window.CLUSTERS_DATA = {
   "2026-10-14": {
     date: "2026-10-14",
-    title: "Puzzle #08: Uncharted Territory",
+    title: "Puzzle #08: Clean Sweep",
     floors: {
-      // Floor 01: Freshwater Fish + Track & Field Events (Distractors: Kitchen Utensils)
+      // Floor 01: Marine Mammals + Field Athletics (Distractors: Kitchen Utensils)
       1: {
-        tiles: ["PERCH", "PIKE", "ROACH", "JAVELIN", "HURDLES", "SHOTPUT", "LADLE", "TONGS", "WHISK", "SIEVING", "SKIMMER", "MASHER"],
+        tiles: ["DOLPHIN", "PORPOISE", "NARWHAL", "JAVELIN", "SHOTPUT", "DISCUS", "LADLE", "TONGS", "WHISK", "SIEVING", "SKIMMER", "MASHER"],
         groups: [
-          { words: ["PERCH", "PIKE", "ROACH"], category: "British freshwater river fish species", clue: "Freshwater Fish" },
-          { words: ["JAVELIN", "HURDLES", "SHOTPUT"], category: "Track and field athletics events", clue: "Track Events" }
+          { words: ["DOLPHIN", "PORPOISE", "NARWHAL"], category: "Toothed marine mammals", clue: "Marine Mammals" },
+          { words: ["JAVELIN", "SHOTPUT", "DISCUS"], category: "Track and field throwing events", clue: "Throwing Events" }
         ]
       },
 
-      // Floor 02: Footwear Styles + Volcanic Products (Distractors: Pipe Fittings)
+      // Floor 02: Classical Composers + Volcanic Ejecta (Distractors: Plumbing Fittings)
       2: {
-        tiles: ["BROGUE", "LOAFER", "SANDAL", "TEPHRA", "PUMICE", "SCORIA", "ELBOW", "NIPPLE", "FLANGE", "COUPLING", "BUSHING", "ADAPTER"],
-        groups: [
-          { words: ["BROGUE", "LOAFER", "SANDAL"], category: "Footwear and shoe styles", clue: "Footwear Styles" },
-          { words: ["TEPHRA", "PUMICE", "SCORIA"], category: "Volcanic ejecta and rock products", clue: "Volcanic Products" }
-        ]
-      },
-
-      // Floor 03: Astronomical Moons + Board Games (Distractors: Office Supplies)
-      3: {
-        tiles: ["TITAN", "EUROPA", "CALLISTO", "CHESS", "RISK", "CATAN", "STAPLER", "LAMINATOR", "BINDER", "GUILLOTINE", "CLIPBOARD", "PUNCH"],
-        groups: [
-          { words: ["TITAN", "EUROPA", "CALLISTO"], category: "Moons of the Solar System", clue: "Solar Moons" },
-          { words: ["CHESS", "RISK", "CATAN"], category: "Strategy tabletop board games", clue: "Board Games" }
-        ]
-      },
-
-      // Floor 04: Currency Units + Precious Gemstones (Distractors: Gardening Tools)
-      4: {
-        tiles: ["PESO", "YEN", "DIRHAM", "SAPPHIRE", "EMERALD", "TOPAZ", "DIBBER", "HOE", "MATTOCK", "SECATEURS", "EDGER", "SHEARS"],
-        groups: [
-          { words: ["PESO", "YEN", "DIRHAM"], category: "International national currencies", clue: "World Currencies" },
-          { words: ["SAPPHIRE", "EMERALD", "TOPAZ"], category: "Precious gemstone varieties", clue: "Precious Gemstones" }
-        ]
-      },
-
-      // Floor 05: Classical Composers + Metric Prefixes + Woodland Birds (Distractors: Bakery Goods)
-      5: {
-        tiles: ["MOZART", "BEETHOVEN", "BACH", "KILO", "MEGA", "GIGA", "NUTHATCH", "SISKIN", "BULLFINCH", "BRIOCHE", "SCONE", "ECLAIR"],
+        tiles: ["MOZART", "BEETHOVEN", "BACH", "TEPHRA", "PUMICE", "SCORIA", "ELBOW", "NIPPLE", "FLANGE", "COUPLING", "BUSHING", "ADAPTER"],
         groups: [
           { words: ["MOZART", "BEETHOVEN", "BACH"], category: "Classical music composers", clue: "Classical Composers" },
-          { words: ["KILO", "MEGA", "GIGA"], category: "SI unit prefix multipliers", clue: "Metric Prefixes" },
-          { words: ["NUTHATCH", "SISKIN", "BULLFINCH"], category: "Woodland songbirds", clue: "Woodland Birds" }
+          { words: ["TEPHRA", "PUMICE", "SCORIA"], category: "Volcanic ejecta and pyroclastic products", clue: "Volcanic Products" }
         ]
       },
 
-      // Floor 06: Precious Transition Metals + Marine Mammals + Cave Formations (Distractors: Sewing Tools)
+      // Floor 03: Planetary Moons + Woodwind Instruments (Distractors: Office Supplies)
+      3: {
+        tiles: ["TITAN", "EUROPA", "CALLISTO", "FLUTE", "CLARINET", "BASSOON", "STAPLER", "LAMINATOR", "BINDER", "GUILLOTINE", "CLIPBOARD", "PUNCH"],
+        groups: [
+          { words: ["TITAN", "EUROPA", "CALLISTO"], category: "Natural satellites of Solar System planets", clue: "Planetary Moons" },
+          { words: ["FLUTE", "CLARINET", "BASSOON"], category: "Woodwind musical instruments", clue: "Woodwind Instruments" }
+        ]
+      },
+
+      // Floor 04: World Currencies + Weathering Processes (Distractors: Gardening Tools)
+      4: {
+        tiles: ["PESO", "YEN", "DIRHAM", "FREEZE", "OXIDATION", "HYDRATION", "DIBBER", "HOE", "MATTOCK", "SECATEURS", "EDGER", "SHEARS"],
+        groups: [
+          { words: ["PESO", "YEN", "DIRHAM"], category: "International sovereign currencies", clue: "World Currencies" },
+          { words: ["FREEZE", "OXIDATION", "HYDRATION"], category: "Geological rock weathering processes", clue: "Weathering Types" }
+        ]
+      },
+
+      // Floor 05: Fencing Weapons + Metric Prefixes + Woodland Songbirds (Distractors: Bakery Goods)
+      5: {
+        tiles: ["FOIL", "EPEE", "SABRE", "KILO", "MEGA", "GIGA", "NUTHATCH", "SISKIN", "BULLFINCH", "BRIOCHE", "SCONE", "ECLAIR"],
+        groups: [
+          { words: ["FOIL", "EPEE", "SABRE"], category: "Olympic fencing combat weapons", clue: "Fencing Weapons" },
+          { words: ["KILO", "MEGA", "GIGA"], category: "SI unit prefix multipliers", clue: "Metric Prefixes" },
+          { words: ["NUTHATCH", "SISKIN", "BULLFINCH"], category: "Woodland songbird species", clue: "Woodland Birds" }
+        ]
+      },
+
+      // Floor 06: Noble Transition Metals + Card Games + Cave Formations (Distractors: Sewing Tools)
       6: {
-        tiles: ["PLATINUM", "PALLADIUM", "RHODIUM", "DOLPHIN", "PORPOISE", "NARWHAL", "STALAGMITE", "FLOWSTONE", "HELICTITE", "BODKIN", "SHEARS", "THIMBLE"],
+        tiles: ["PLATINUM", "PALLADIUM", "RHODIUM", "CANASTA", "BRIDGE", "PATIENCE", "STALAGMITE", "FLOWSTONE", "HELICTITE", "BODKIN", "SHEARS", "THIMBLE"],
         groups: [
           { words: ["PLATINUM", "PALLADIUM", "RHODIUM"], category: "Precious noble transition metals", clue: "Precious Metals" },
-          { words: ["DOLPHIN", "PORPOISE", "NARWHAL"], category: "Toothed marine mammals", clue: "Marine Mammals" },
-          { words: ["STALAGMITE", "FLOWSTONE", "HELICTITE"], category: "Cave mineral formations", clue: "Cave Formations" }
+          { words: ["CANASTA", "BRIDGE", "PATIENCE"], category: "Classic traditional card games", clue: "Card Games" },
+          { words: ["STALAGMITE", "FLOWSTONE", "HELICTITE"], category: "Speleothem cave mineral deposits", clue: "Cave Formations" }
         ]
       },
 
-      // Floor 07: Weathering Processes + Nautical Knots + Literary Devices (Distractors: Carpentry Tools)
+      // Floor 07: Geological Eras + Nautical Knots + Figures of Speech (Distractors: Carpentry Tools)
       7: {
-        tiles: ["FREEZE", "OXIDATION", "HYDRATION", "BOWLINE", "CLOVE", "REEF", "METAPHOR", "HYPERBOLE", "ALLEGORY", "ROUTER", "RABBET", "CHAMFER"],
+        tiles: ["PALEOZOIC", "MESOZOIC", "CENOZOIC", "BOWLINE", "CLOVE", "REEF", "METAPHOR", "HYPERBOLE", "ALLEGORY", "ROUTER", "RABBET", "CHAMFER"],
         groups: [
-          { words: ["FREEZE", "OXIDATION", "HYDRATION"], category: "Geological weathering processes", clue: "Weathering Types" },
-          { words: ["BOWLINE", "CLOVE", "REEF"], category: "Standard nautical knots", clue: "Nautical Knots" },
+          { words: ["PALEOZOIC", "MESOZOIC", "CENOZOIC"], category: "Major geological eras", clue: "Geological Eras" },
+          { words: ["BOWLINE", "CLOVE", "REEF"], category: "Standard nautical rigging knots", clue: "Nautical Knots" },
           { words: ["METAPHOR", "HYPERBOLE", "ALLEGORY"], category: "Literary figures of speech", clue: "Literary Devices" }
         ]
       },
 
-      // Floor 08: Impressionist Painters + World Capitals + Sky Constellations (Distractors: Optics Terms)
+      // Floor 08: Impressionist Painters + National Capitals + Sky Constellations (Distractors: Optical Instruments)
       8: {
         tiles: ["MONET", "DEGAS", "RENOIR", "CANBERRA", "OTTAWA", "VALLETTA", "ORION", "CASSIOPEIA", "CYGNUS", "PRISM", "RETICLE", "DIOPTER"],
         groups: [
           { words: ["MONET", "DEGAS", "RENOIR"], category: "French Impressionist painters", clue: "Impressionist Painters" },
-          { words: ["CANBERRA", "OTTAWA", "VALLETTA"], category: "National capital cities", clue: "World Capitals" },
-          { words: ["ORION", "CASSIOPEIA", "CYGNUS"], category: "Astronomical constellations", clue: "Constellations" }
+          { words: ["CANBERRA", "OTTAWA", "VALLETTA"], category: "Sovereign national capital cities", clue: "World Capitals" },
+          { words: ["ORION", "CASSIOPEIA", "CYGNUS"], category: "Astronomical sky constellations", clue: "Constellations" }
         ]
       },
 
-      // Floor 09: Architectural Roof Styles + Joint Types + Double-Reed Instruments (Distractors: Font Styles)
+      // Floor 09: Architectural Roof Forms + Skeletal Joints + Double-Reed Instruments (Distractors: Type Weights)
       9: {
         tiles: ["MANSARD", "GABLE", "GAMBREL", "HINGE", "BALL", "PIVOT", "BASSOON", "OBOE", "CORANGLAIS", "CONDENSED", "LIGHT", "BOLD"],
         groups: [
           { words: ["MANSARD", "GABLE", "GAMBREL"], category: "Architectural roof styles", clue: "Roof Shapes" },
           { words: ["HINGE", "BALL", "PIVOT"], category: "Synovial bone joint types", clue: "Bone Joints" },
-          { words: ["BASSOON", "OBOE", "CORANGLAIS"], category: "Double-reed woodwind instruments", clue: "Woodwind Instruments" }
+          { words: ["BASSOON", "OBOE", "CORANGLAIS"], category: "Double-reed woodwind instruments", clue: "Double-Reed Winds" }
         ]
       },
 
