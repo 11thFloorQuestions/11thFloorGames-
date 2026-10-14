@@ -1,0 +1,126 @@
+{
+  "setId": "60",
+  "title": "11th Floor Questions - Set 60",
+  "floors": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "Which mammal, native to Australia and Tasmania, is famous for being one of only two egg-laying mammals (monotremes) in the world alongside the echidna?",
+      "options": [
+        "Platypus",
+        "Wombat",
+        "Koala",
+        "Tasmanian Devil"
+      ],
+      "answer": "Platypus"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "In painter Leonardo da Vinci's iconic 15th-century mural 'The Last Supper', which apostle is depicted clutching a small bag of silver coins?",
+      "options": [
+        "Judas Iscariot",
+        "Peter",
+        "John",
+        "Thomas"
+      ],
+      "answer": "Judas Iscariot"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "What is the official currency used in Japan?",
+      "options": [
+        "Yen",
+        "Won",
+        "Yuan",
+        "Baht"
+      ],
+      "answer": "Yen"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "Which English computer scientist and cryptanalyst played a pivotal role in cracking the Enigma machine code at Bletchley Park during World War II?",
+      "options": [
+        "Alan Turing",
+        "Charles Babbage",
+        "John von Neumann",
+        "Ada Lovelace"
+      ],
+      "answer": "Alan Turing"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "Which African country is completely encircled by South Africa, making it one of the world's few enclave nations?",
+      "options": [
+        "Lesotho",
+        "Eswatini",
+        "Botswana",
+        "Namibia"
+      ],
+      "answer": "Lesotho"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "In culinary terminology, what basic sauce—made from a white roux and milk—is considered one of the five 'mother sauces' of French cuisine?",
+      "options": [
+        "Béchamel",
+        "Hollandaise",
+        "Velouté",
+        "Espagnole"
+      ],
+      "answer": "Béchamel"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "Which fundamental chemical element has the symbol 'Fe' on the periodic table?",
+      "options": [
+        "Iron",
+        "Fluorine",
+        "Francium",
+        "Fermium"
+      ],
+      "answer": "Iron"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "Which American playwright authored the 1949 Pulitzer Prize-winning play 'Death of a Salesman'?",
+      "options": [
+        "Arthur Miller",
+        "Tennessee Williams",
+        "Eugene O'Neill",
+        "Thornton Wilder"
+      ],
+      "answer": "Arthur Miller"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "Which ancient civilization constructed the massive step-pyramid temple complex known as Chichén Itzá on the Yucatán Peninsula?",
+      "options": [
+        "Maya",
+        "Aztec",
+        "Inca",
+        "Olmec"
+      ],
+      "answer": "Maya"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "In classical music, how many completed symphonies were composed by Ludwig van Beethoven?",
+      "options": [
+        "9",
+        "5",
+        "7",
+        "12"
+      ],
+      "answer": "9"
+    }
+  ]
+}
