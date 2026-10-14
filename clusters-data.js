@@ -4,114 +4,114 @@
  * ============================================================================
  * Standard: Strict UK English spelling & terms.
  * Protocol: Strict Mutual Domain Isolation, Zero Overlap, Clean Distractors.
- * Set ID: Set 03 | Date: 2026-10-13
+ * Set ID: Set 04 | Date: 2026-10-14
  * ============================================================================
  */
 
 window.CLUSTERS_DATA = {
-  "2026-10-13": {
-    date: "2026-10-13",
-    title: "Puzzle #07: Horizon Realms",
+  "2026-10-14": {
+    date: "2026-10-14",
+    title: "Puzzle #08: Uncharted Territory",
     floors: {
-      // Floor 01: Pasta Shapes + Winter Sports (Distractors: Office Furniture)
+      // Floor 01: Freshwater Fish + Track & Field Events (Distractors: Kitchen Utensils)
       1: {
-        tiles: ["PENNE", "FUSILLI", "FARFALLE", "SKIING", "LUGE", "CURLING", "DESK", "CHAIR", "FILING", "CREDENZA", "PODIUM", "BENCH"],
+        tiles: ["PERCH", "PIKE", "ROACH", "JAVELIN", "HURDLES", "SHOTPUT", "LADLE", "TONGS", "WHISK", "SIEVING", "SKIMMER", "MASHER"],
         groups: [
-          { words: ["PENNE", "FUSILLI", "FARFALLE"], category: "Italian pasta shapes", clue: "Pasta Shapes" },
-          { words: ["SKIING", "LUGE", "CURLING"], category: "Winter Olympic disciplines", clue: "Winter Sports" }
+          { words: ["PERCH", "PIKE", "ROACH"], category: "British freshwater river fish species", clue: "Freshwater Fish" },
+          { words: ["JAVELIN", "HURDLES", "SHOTPUT"], category: "Track and field athletics events", clue: "Track Events" }
         ]
       },
 
-      // Floor 02: Desert Landforms + Brass Instruments (Distractors: Kitchen Spices)
+      // Floor 02: Footwear Styles + Volcanic Products (Distractors: Pipe Fittings)
       2: {
-        tiles: ["DUNE", "MESA", "BUTTE", "TRUMPET", "TROMBONE", "TUBA", "CUMIN", "PAPRIKA", "TURMERIC", "NUTMEG", "GINGER", "CLOVE"],
+        tiles: ["BROGUE", "LOAFER", "SANDAL", "TEPHRA", "PUMICE", "SCORIA", "ELBOW", "NIPPLE", "FLANGE", "COUPLING", "BUSHING", "ADAPTER"],
         groups: [
-          { words: ["DUNE", "MESA", "BUTTE"], category: "Arid desert geological formations", clue: "Desert Landforms" },
-          { words: ["TRUMPET", "TROMBONE", "TUBA"], category: "Brass musical instruments", clue: "Brass Instruments" }
+          { words: ["BROGUE", "LOAFER", "SANDAL"], category: "Footwear and shoe styles", clue: "Footwear Styles" },
+          { words: ["TEPHRA", "PUMICE", "SCORIA"], category: "Volcanic ejecta and rock products", clue: "Volcanic Products" }
         ]
       },
 
-      // Floor 03: Cloud Types + Cheese Varieties (Distractors: Hardware Fasteners)
+      // Floor 03: Astronomical Moons + Board Games (Distractors: Office Supplies)
       3: {
-        tiles: ["CIRRUS", "CUMULUS", "STRATUS", "CHEDDAR", "BRIE", "GOUDA", "RIVET", "ANCHOR", "DOWEL", "GROMMET", "STAPLE", "BRAD"],
+        tiles: ["TITAN", "EUROPA", "CALLISTO", "CHESS", "RISK", "CATAN", "STAPLER", "LAMINATOR", "BINDER", "GUILLOTINE", "CLIPBOARD", "PUNCH"],
         groups: [
-          { words: ["CIRRUS", "CUMULUS", "STRATUS"], category: "Primary cloud classification forms", clue: "Cloud Types" },
-          { words: ["CHEDDAR", "BRIE", "GOUDA"], category: "International cheese varieties", clue: "Cheese Varieties" }
+          { words: ["TITAN", "EUROPA", "CALLISTO"], category: "Moons of the Solar System", clue: "Solar Moons" },
+          { words: ["CHESS", "RISK", "CATAN"], category: "Strategy tabletop board games", clue: "Board Games" }
         ]
       },
 
-      // Floor 04: Volcano Types + Coffee Beverages (Distractors: Exercise Equipment)
+      // Floor 04: Currency Units + Precious Gemstones (Distractors: Gardening Tools)
       4: {
-        tiles: ["CALDERA", "SHIELD", "CINDER", "ESPRESSO", "LATTE", "MACCHIATO", "BARBELL", "KETTLEBELL", "DUMBBELL", "TREADMILL", "ROWER", "STEPPER"],
+        tiles: ["PESO", "YEN", "DIRHAM", "SAPPHIRE", "EMERALD", "TOPAZ", "DIBBER", "HOE", "MATTOCK", "SECATEURS", "EDGER", "SHEARS"],
         groups: [
-          { words: ["CALDERA", "SHIELD", "CINDER"], category: "Volcano structures and cones", clue: "Volcano Types" },
-          { words: ["ESPRESSO", "LATTE", "MACCHIATO"], category: "Espresso-based coffee drinks", clue: "Coffee Beverages" }
+          { words: ["PESO", "YEN", "DIRHAM"], category: "International national currencies", clue: "World Currencies" },
+          { words: ["SAPPHIRE", "EMERALD", "TOPAZ"], category: "Precious gemstone varieties", clue: "Precious Gemstones" }
         ]
       },
 
-      // Floor 05: Mythological Creatures + Metric Units + Broadleaf Trees (Distractors: Painting Tools)
+      // Floor 05: Classical Composers + Metric Prefixes + Woodland Birds (Distractors: Bakery Goods)
       5: {
-        tiles: ["GRIFFIN", "CENTAUR", "MINOTAUR", "METRE", "LITRE", "GRAM", "ELM", "ASH", "ALDER", "PALETTE", "EASEL", "SPATULA"],
+        tiles: ["MOZART", "BEETHOVEN", "BACH", "KILO", "MEGA", "GIGA", "NUTHATCH", "SISKIN", "BULLFINCH", "BRIOCHE", "SCONE", "ECLAIR"],
         groups: [
-          { words: ["GRIFFIN", "CENTAUR", "MINOTAUR"], category: "Classical mythological beasts", clue: "Mythological Beasts" },
-          { words: ["METRE", "LITRE", "GRAM"], category: "Base SI metric measure units", clue: "Metric Units" },
-          { words: ["ELM", "ASH", "ALDER"], category: "Deciduous broadleaf trees", clue: "Broadleaf Trees" }
+          { words: ["MOZART", "BEETHOVEN", "BACH"], category: "Classical music composers", clue: "Classical Composers" },
+          { words: ["KILO", "MEGA", "GIGA"], category: "SI unit prefix multipliers", clue: "Metric Prefixes" },
+          { words: ["NUTHATCH", "SISKIN", "BULLFINCH"], category: "Woodland songbirds", clue: "Woodland Birds" }
         ]
       },
 
-      // Floor 06: Noble Gases + Martial Arts + Ocean Trench Zones (Distractors: Sewing Notions)
+      // Floor 06: Precious Transition Metals + Marine Mammals + Cave Formations (Distractors: Sewing Tools)
       6: {
-        tiles: ["HELIUM", "NEON", "ARGON", "KARATE", "JUDO", "THAI", "HADAGAL", "ABYSSAL", "BATHYAL", "THIMBLE", "BOBBIN", "NEEDLE"],
+        tiles: ["PLATINUM", "PALLADIUM", "RHODIUM", "DOLPHIN", "PORPOISE", "NARWHAL", "STALAGMITE", "FLOWSTONE", "HELICTITE", "BODKIN", "SHEARS", "THIMBLE"],
         groups: [
-          { words: ["HELIUM", "NEON", "ARGON"], category: "Group 18 noble gases", clue: "Noble Gases" },
-          { words: ["KARATE", "JUDO", "THAI"], category: "Global martial arts systems", clue: "Martial Arts" },
-          { words: ["HADAGAL", "ABYSSAL", "BATHYAL"], category: "Deep oceanic depth zones", clue: "Oceanic Zones" }
+          { words: ["PLATINUM", "PALLADIUM", "RHODIUM"], category: "Precious noble transition metals", clue: "Precious Metals" },
+          { words: ["DOLPHIN", "PORPOISE", "NARWHAL"], category: "Toothed marine mammals", clue: "Marine Mammals" },
+          { words: ["STALAGMITE", "FLOWSTONE", "HELICTITE"], category: "Cave mineral formations", clue: "Cave Formations" }
         ]
       },
 
-      // Floor 07: Geological Epochs + Ship Rigging + Poetic Verse Metres (Distractors: Masonry Tools)
+      // Floor 07: Weathering Processes + Nautical Knots + Literary Devices (Distractors: Carpentry Tools)
       7: {
-        tiles: ["EOCENE", "MIOCENE", "PLIOCENE", "HALYARD", "SHROUD", "STAY", "IAMB", "TROCHEE", "ANAPEST", "TROWEL", "HAWK", "FLOAT"],
+        tiles: ["FREEZE", "OXIDATION", "HYDRATION", "BOWLINE", "CLOVE", "REEF", "METAPHOR", "HYPERBOLE", "ALLEGORY", "ROUTER", "RABBET", "CHAMFER"],
         groups: [
-          { words: ["EOCENE", "MIOCENE", "PLIOCENE"], category: "Cenozoic geological epochs", clue: "Geological Epochs" },
-          { words: ["HALYARD", "SHROUD", "STAY"], category: "Sailing vessel standing & running rigging", clue: "Ship Rigging" },
-          { words: ["IAMB", "TROCHEE", "ANAPEST"], category: "Poetic metrical feet", clue: "Poetic Metres" }
+          { words: ["FREEZE", "OXIDATION", "HYDRATION"], category: "Geological weathering processes", clue: "Weathering Types" },
+          { words: ["BOWLINE", "CLOVE", "REEF"], category: "Standard nautical knots", clue: "Nautical Knots" },
+          { words: ["METAPHOR", "HYPERBOLE", "ALLEGORY"], category: "Literary figures of speech", clue: "Literary Devices" }
         ]
       },
 
-      // Floor 08: Renaissance Painters + Major World Deserts + Constellation Stars (Distractors: Lab Glassware)
+      // Floor 08: Impressionist Painters + World Capitals + Sky Constellations (Distractors: Optics Terms)
       8: {
-        tiles: ["TITIAN", "GIOTTO", "RAPHAEL", "GOBI", "SAHARA", "NAMIB", "RIGEL", "VEGA", "DENEB", "BEAKER", "PIPETTE", "RETORT"],
+        tiles: ["MONET", "DEGAS", "RENOIR", "CANBERRA", "OTTAWA", "VALLETTA", "ORION", "CASSIOPEIA", "CYGNUS", "PRISM", "RETICLE", "DIOPTER"],
         groups: [
-          { words: ["TITIAN", "GIOTTO", "RAPHAEL"], category: "Italian Renaissance masters", clue: "Renaissance Painters" },
-          { words: ["GOBI", "SAHARA", "NAMIB"], category: "Major global land deserts", clue: "World Deserts" },
-          { words: ["RIGEL", "VEGA", "DENEB"], category: "Bright navigational stars", clue: "Bright Stars" }
+          { words: ["MONET", "DEGAS", "RENOIR"], category: "French Impressionist painters", clue: "Impressionist Painters" },
+          { words: ["CANBERRA", "OTTAWA", "VALLETTA"], category: "National capital cities", clue: "World Capitals" },
+          { words: ["ORION", "CASSIOPEIA", "CYGNUS"], category: "Astronomical constellations", clue: "Constellations" }
         ]
       },
 
-      // Floor 09: Logic Fallacies + Anatomical Bones + Wind Systems (Distractors: Printing Types)
+      // Floor 09: Architectural Roof Styles + Joint Types + Double-Reed Instruments (Distractors: Font Styles)
       9: {
-        tiles: ["STRAWMAN", "AD HOMINEM", "SLIPPERY", "FEMUR", "RADIUS", "TIBIA", "SIROCCO", "MISTRAL", "ZEPHYR", "GOTHIC", "BASKERVILLE", "CASLON"],
+        tiles: ["MANSARD", "GABLE", "GAMBREL", "HINGE", "BALL", "PIVOT", "BASSOON", "OBOE", "CORANGLAIS", "CONDENSED", "LIGHT", "BOLD"],
         groups: [
-          { words: ["STRAWMAN", "AD HOMINEM", "SLIPPERY"], category: "Classical informal logical fallacies", clue: "Logic Fallacies" },
-          { words: ["FEMUR", "RADIUS", "TIBIA"], category: "Human skeletal limb bones", clue: "Human Bones" },
-          { words: ["SIROCCO", "MISTRAL", "ZEPHYR"], category: "Named global wind patterns", clue: "Named Winds" }
+          { words: ["MANSARD", "GABLE", "GAMBREL"], category: "Architectural roof styles", clue: "Roof Shapes" },
+          { words: ["HINGE", "BALL", "PIVOT"], category: "Synovial bone joint types", clue: "Bone Joints" },
+          { words: ["BASSOON", "OBOE", "CORANGLAIS"], category: "Double-reed woodwind instruments", clue: "Woodwind Instruments" }
         ]
       },
 
       // Floor 10: Final 16-Tile Wall (4 Airtight Groups of 4)
       10: {
         tiles: [
-          "GRANITE", "BASALT", "OBSIDIAN", "PUMICE",
-          "DORIC", "IONIC", "CORINTHIAN", "TUSCAN",
-          "STRATOCUMULUS", "ALTOCUMULUS", "CIRROCUMULUS", "NIMBOSTRATUS",
-          "NORTH", "SOUTH", "EAST", "WEST"
+          "SLATE", "SCHIST", "GNEISS", "MARBLE",
+          "CORINTHIAN", "IONIC", "DORIC", "COMPOSITE",
+          "SPRING", "SUMMER", "AUTUMN", "WINTER",
+          "MERCURY", "VENUS", "JUPITER", "SATURN"
         ],
         groups: [
-          { words: ["GRANITE", "BASALT", "OBSIDIAN", "PUMICE"], category: "Igneous rock classifications", clue: "Igneous Rocks" },
-          { words: ["DORIC", "IONIC", "CORINTHIAN", "TUSCAN"], category: "Classical architectural column orders", clue: "Classical Columns" },
-          { words: ["STRATOCUMULUS", "ALTOCUMULUS", "CIRROCUMULUS", "NIMBOSTRATUS"], category: "Compound atmospheric cloud formations", clue: "Compound Clouds" },
-          { words: ["NORTH", "SOUTH", "EAST", "WEST"], category: "Cardinal compass directions", clue: "Cardinal Points" }
+          { words: ["SLATE", "SCHIST", "GNEISS", "MARBLE"], category: "Metamorphic rock classifications", clue: "Metamorphic Rocks" },
+          { words: ["CORINTHIAN", "IONIC", "DORIC", "COMPOSITE"], category: "Classical architectural column orders", clue: "Classical Columns" },
+          { words: ["SPRING", "SUMMER", "AUTUMN", "WINTER"], category: "Four annual calendar seasons", clue: "Annual Seasons" },
+          { words: ["MERCURY", "VENUS", "JUPITER", "SATURN"], category: "Solar System planets", clue: "Solar Planets" }
         ]
       }
     }
