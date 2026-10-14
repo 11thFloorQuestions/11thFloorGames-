@@ -1,763 +1,866 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Eleventh Floor Games — Yesterday's Answers</title>
-
-    <!-- Global Stylesheet -->
-    <link rel="stylesheet" href="style.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yesterday's Answers | Eleventh Floor Games</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #000000;
-            --surface: #0a0a0a;
-            --surface-card: #111111;
-            --surface-border: #1e1e1e;
-            --surface-border-light: #2a2a2a;
-            --accent-red: #ff1f2d;
-            --text-primary: #ffffff;
-            --text-muted: #888888;
-
-            /* Game Accent Palette */
-            --color-terrace: #84CC16;
-            --color-terrace-glow: rgba(132, 204, 22, 0.25);
-            --color-cluegram: #cc007e;
-            --color-cluegram-glow: rgba(204, 0, 126, 0.25);
-            --color-questions: #D4AF37;
-            --color-questions-glow: rgba(212, 175, 55, 0.25);
-            --color-wordclimb: #3B82F6;
-            --color-wordclimb-glow: rgba(59, 130, 246, 0.25);
-            --color-clusters: #ff751f;
-            --color-clusters-glow: rgba(255, 117, 31, 0.25);
-            --color-parity: #ff9999;
-            --color-parity-glow: rgba(255, 153, 153, 0.25);
-
-            --current-accent: var(--color-terrace);
-            --current-glow: var(--color-terrace-glow);
+            --bg-dark: #0A0D12;
+            --card-bg: #121824;
+            --card-border: #1E293B;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+            
+            /* Game Theme Accent Colours */
+            --color-tykb: #00F0FF;
+            --color-questions: #3B82F6;
+            --color-cluegram: #A855F7;
+            --color-clusters: #10B981;
+            --color-wordclimb: #FACC15;
+            --color-parity: #FF007F;
+            
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Direct visibility fallback to guarantee no black screen locks */
         body {
-            background-color: var(--bg-deep) !important;
+            background-color: var(--bg-dark);
             color: var(--text-primary);
-            font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 16px 12px 32px 12px;
-            opacity: 1 !important;
-            visibility: visible !important;
+            padding: 24px 16px 60px;
         }
 
-        .top-bar {
+        /* Header Navigation & Brand */
+        header {
             width: 100%;
-            max-width: 480px;
-            display: flex;
-            justify-content: flex-start;
-            margin-bottom: 8px;
-        }
-
-        .pill-btn {
-            background: var(--surface);
-            border: 1px solid var(--surface-border-light);
-            color: var(--text-primary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .pill-btn:hover {
-            border-color: var(--current-accent);
-            color: var(--current-accent);
-        }
-
-        .archive-container {
-            width: 100%;
-            max-width: 480px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        /* Header Branding */
-        .hub-logo-box {
+            max-width: 1000px;
+            margin-bottom: 32px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            margin-bottom: 2px;
         }
 
-        .hub-logo-red {
-            font-family: 'Anton', sans-serif;
-            font-size: 3.2rem;
-            font-weight: 400;
-            color: var(--accent-red);
-            line-height: 0.85;
-            letter-spacing: -1px;
-            text-shadow: 0 0 20px rgba(255, 31, 45, 0.3);
-            margin-bottom: 4px;
-            animation: logoColorCycle 8s ease-in-out infinite;
-        }
-
-        .hub-logo-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            font-weight: 300;
-            color: #ffffff;
-            letter-spacing: 1.5px;
-            margin-bottom: 2px;
-        }
-
-        .hub-logo-sub {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.6rem;
+        .back-link {
+            align-self: flex-start;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
             font-weight: 600;
-            color: var(--text-muted);
-            letter-spacing: 3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 16px;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--text-primary);
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
 
-        @keyframes logoColorCycle {
-            0%   { color: var(--accent-red); text-shadow: 0 0 20px rgba(255, 31, 45, 0.3); }
-            14%  { color: var(--color-terrace); text-shadow: 0 0 20px var(--color-terrace-glow); }
-            28%  { color: var(--color-cluegram); text-shadow: 0 0 20px var(--color-cluegram-glow); }
-            42%  { color: var(--color-questions); text-shadow: 0 0 20px var(--color-questions-glow); }
-            56%  { color: var(--color-wordclimb); text-shadow: 0 0 20px var(--color-wordclimb-glow); }
-            70%  { color: var(--color-clusters); text-shadow: 0 0 20px var(--color-clusters-glow); }
-            84%  { color: var(--color-parity); text-shadow: 0 0 20px var(--color-parity-glow); }
-            100% { color: var(--accent-red); text-shadow: 0 0 20px rgba(255, 31, 45, 0.3); }
+        .page-subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.5;
         }
 
-        /* Mobile First: Horizontal Scrollable Tabs */
-        .game-tabs-scroll {
+        /* Navigation Tabs */
+        .tabs-container {
             width: 100%;
-            overflow-x: auto;
+            max-width: 1000px;
             display: flex;
-            gap: 6px;
-            padding: 2px 0;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 32px;
             scrollbar-width: none;
         }
 
-        .game-tabs-scroll::-webkit-scrollbar { display: none; }
+        .tabs-container::-webkit-scrollbar {
+            display: none;
+        }
 
         .tab-btn {
-            background: var(--surface-card);
-            border: 1px solid var(--surface-border);
-            border-radius: 6px;
-            color: var(--text-muted);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.62rem;
-            font-weight: 600;
-            padding: 7px 11px;
-            white-space: nowrap;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
-            flex-shrink: 0;
-            text-align: center;
-        }
-
-        .tab-btn.active {
-            color: #ffffff;
-            border-color: var(--current-accent);
-            box-shadow: 0 0 10px var(--current-glow);
-            background: #141414;
-        }
-
-        /* Desktop Optimization: Wrap tabs cleanly into a 3-column grid */
-        @media (min-width: 600px) {
-            .game-tabs-scroll {
-                flex-wrap: wrap;
-                overflow-x: visible;
-                justify-content: center;
-            }
-
-            .tab-btn {
-                flex: 1 1 calc(33.333% - 6px);
-                max-width: calc(33.333% - 6px);
-            }
-        }
-
-        /* Set Metadata Box */
-        .set-meta-card {
-            background: var(--surface-card);
-            border: 1px solid var(--surface-border);
-            border-radius: 6px;
-            padding: 10px 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .set-title-text {
-            font-size: 0.78rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            padding: 12px 18px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
             font-weight: 700;
-            color: var(--current-accent);
-            text-transform: uppercase;
-        }
-
-        .set-date-badge {
-            font-size: 0.55rem;
-            font-weight: 600;
-            background: #181818;
-            border: 1px solid #282828;
-            padding: 3px 6px;
-            border-radius: 4px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        /* Dynamic Floor Stack */
-        .answers-list {
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
             display: flex;
-            flex-direction: column;
+            align-items: center;
             gap: 8px;
         }
 
+        .tab-btn:hover {
+            border-color: var(--text-muted);
+            color: var(--text-primary);
+        }
+
+        .tab-btn.active[data-game="tykb"] {
+            border-color: var(--color-tykb);
+            color: var(--color-tykb);
+            background: rgba(0, 240, 255, 0.08);
+        }
+
+        .tab-btn.active[data-game="questions"] {
+            border-color: var(--color-questions);
+            color: var(--color-questions);
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        .tab-btn.active[data-game="cluegram"] {
+            border-color: var(--color-cluegram);
+            color: var(--color-cluegram);
+            background: rgba(168, 85, 247, 0.08);
+        }
+
+        .tab-btn.active[data-game="clusters"] {
+            border-color: var(--color-clusters);
+            color: var(--color-clusters);
+            background: rgba(16, 185, 129, 0.08);
+        }
+
+        .tab-btn.active[data-game="wordclimb"] {
+            border-color: var(--color-wordclimb);
+            color: var(--color-wordclimb);
+            background: rgba(250, 204, 21, 0.08);
+        }
+
+        .tab-btn.active[data-game="parity"] {
+            border-color: var(--color-parity);
+            color: var(--color-parity);
+            background: rgba(255, 0, 127, 0.08);
+        }
+
+        /* Main Content Container */
+        main {
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .game-panel {
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .game-panel.active {
+            display: flex;
+        }
+
+        /* Meta Header Banner */
+        .meta-banner {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .meta-info h2 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .meta-info p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .read-time-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Item Floor Cards */
         .floor-card {
-            background: var(--surface-card);
-            border: 1px solid var(--surface-border);
-            border-radius: 6px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
             overflow: hidden;
         }
 
-        .floor-card-header {
-            padding: 8px 12px;
+        .floor-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #121212;
-            border-bottom: 1px solid #1a1a1a;
         }
 
-        .floor-number-badge {
-            font-family: 'Anton', sans-serif;
-            font-size: 1rem;
-            color: var(--current-accent);
-            letter-spacing: 0.5px;
-        }
-
-        .floor-type-tag {
-            font-size: 0.52rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            background: #000000;
-            border: 1px solid #222222;
-            padding: 2px 5px;
-            border-radius: 3px;
+        .floor-tag {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
         }
 
-        .floor-card-body {
-            padding: 10px 12px;
+        .question-text {
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: var(--text-primary);
+        }
+
+        .answer-box {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 4px solid var(--card-border);
+            padding: 14px 18px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .answer-label {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        .answer-value {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        /* Deep Dive & Fact Snippets */
+        .deep-dive-box {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px dashed var(--card-border);
+            border-radius: var(--radius-md);
+            padding: 16px;
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-        .q-text {
-            font-size: 0.74rem;
-            font-weight: 500;
-            line-height: 1.35;
-            color: #eeeeee;
-        }
-
-        .options-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5px;
-        }
-
-        .opt-chip {
-            font-size: 0.62rem;
-            font-weight: 600;
-            padding: 6px;
-            border-radius: 4px;
-            background: #080808;
-            border: 1px solid #1a1a1a;
-            color: var(--text-muted);
-            text-align: center;
-        }
-
-        .opt-chip.correct-chip {
-            background: rgba(34, 197, 94, 0.1);
-            border-color: #22c55e;
-            color: #86EFAC;
-        }
-
-        .opt-chip.trap-chip {
-            background: rgba(239, 68, 68, 0.1);
-            border-color: #ef4444;
-            color: #FCA5A5;
-        }
-
-        /* Blossom-Style Word Climb Layout */
-        .wheel-letters-row {
-            display: flex;
-            gap: 5px;
-            align-items: center;
-            justify-content: center;
-            margin: 2px 0;
-        }
-
-        .letter-bubble {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background: #141414;
-            border: 1px solid var(--surface-border-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: 0.75rem;
-            color: #ffffff;
-        }
-
-        .blossom-stats-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 4px;
-            margin: 4px 0;
-            background: #080808;
-            border: 1px solid #1a1a1a;
-            border-radius: 4px;
-            padding: 8px;
-            text-align: center;
-        }
-
-        .blossom-stat-val {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--color-wordclimb);
-        }
-
-        .blossom-stat-lbl {
-            font-size: 0.48rem;
-            color: var(--text-muted);
+        .deep-dive-title {
+            font-size: 12px;
+            font-weight: 800;
             text-transform: uppercase;
-        }
-
-        .word-accordion-container {
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
             display: flex;
-            flex-direction: column;
+            align-items: center;
             gap: 6px;
-            max-height: 220px;
-            overflow-y: auto;
-            padding-right: 4px;
-            scrollbar-width: thin;
         }
 
-        .cluster-group-box {
-            background: #080808;
-            border: 1px solid #1a1a1a;
-            border-radius: 4px;
-            padding: 7px 9px;
+        .deep-dive-body {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        .highlight-text {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Game Theme Accent Styling */
+        .panel-tykb .floor-card { border-left: 4px solid var(--color-tykb); }
+        .panel-tykb .answer-box { border-left-color: var(--color-tykb); }
+        .panel-tykb .answer-value { color: var(--color-tykb); }
+
+        .panel-questions .floor-card { border-left: 4px solid var(--color-questions); }
+        .panel-questions .answer-box { border-left-color: var(--color-questions); }
+        .panel-questions .answer-value { color: var(--color-questions); }
+
+        .panel-cluegram .floor-card { border-left: 4px solid var(--color-cluegram); }
+        .panel-cluegram .answer-box { border-left-color: var(--color-cluegram); }
+        .panel-cluegram .answer-value { color: var(--color-cluegram); }
+
+        .panel-clusters .floor-card { border-left: 4px solid var(--color-clusters); }
+        .panel-clusters .answer-box { border-left-color: var(--color-clusters); }
+        .panel-clusters .answer-value { color: var(--color-clusters); }
+
+        .panel-wordclimb .floor-card { border-left: 4px solid var(--color-wordclimb); }
+        .panel-wordclimb .answer-box { border-left-color: var(--color-wordclimb); }
+        .panel-wordclimb .answer-value { color: var(--color-wordclimb); }
+
+        /* Parity Honest Plug Banner */
+        .parity-promo-card {
+            background: linear-gradient(135deg, #121824 0%, #1A0B2E 100%);
+            border: 1px solid var(--color-parity);
+            border-radius: var(--radius-lg);
+            padding: 48px 32px;
+            text-align: center;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 10px 30px rgba(255, 0, 127, 0.1);
         }
 
-        .cluster-cat-title {
-            font-size: 0.58rem;
-            font-weight: 700;
-            color: var(--current-accent);
+        .parity-promo-title {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--text-primary);
             text-transform: uppercase;
+            letter-spacing: -0.01em;
         }
 
-        .cluster-words-row {
+        .parity-promo-text {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 620px;
+            line-height: 1.6;
+        }
+
+        .parity-plug-box {
+            background: rgba(255, 0, 127, 0.08);
+            border: 1px dashed var(--color-parity);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-top: 10px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .parity-plug-tag {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-parity);
+            margin-bottom: 8px;
+        }
+
+        .parity-plug-heading {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .parity-plug-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Clusters Tag Pill Grid */
+        .cluster-words-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 4px;
+            gap: 8px;
+            margin-top: 8px;
         }
 
-        /* Context / Fact Callout */
-        .fact-box {
-            background: #080808;
-            border-left: 2px solid var(--current-accent);
-            padding: 8px 10px;
-            border-radius: 0 4px 4px 0;
-        }
-
-        .fact-title {
-            font-size: 0.52rem;
+        .word-pill {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--color-clusters);
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 13px;
             font-weight: 700;
-            color: var(--current-accent);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 3px;
+            letter-spacing: 0.02em;
         }
 
-        .fact-text {
-            font-size: 0.65rem;
-            font-weight: 400;
-            color: #bbbbbb;
-            line-height: 1.3;
+        .distractor-pill {
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            color: #FCA5A5;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: line-through;
+            opacity: 0.7;
         }
 
-        .anchor-tag {
-            display: inline-block;
-            margin-top: 4px;
-            font-size: 0.52rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            background: #121212;
-            padding: 2px 5px;
-            border-radius: 3px;
-        }
-
-        /* Commercial Upgrade Banner */
-        .promo-affiliate-card {
-            background: linear-gradient(135deg, #121212 0%, #080808 100%);
-            border: 1px solid var(--current-accent);
-            border-radius: 6px;
-            padding: 12px;
+        /* Word Climb Wheel Display Box */
+        .wheel-display {
             display: flex;
-            flex-direction: column;
-            gap: 6px;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .wheel-letter-box {
+            background: #111111;
+            border: 1px solid var(--color-wordclimb);
+            color: var(--text-primary);
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 15px;
+            box-shadow: 0 0 6px rgba(250, 204, 21, 0.2);
+        }
+
+        /* Footer Made by Humans */
+        footer {
+            margin-top: 60px;
             text-align: center;
-            box-shadow: 0 0 12px var(--current-glow);
-            margin-top: 6px;
-        }
-
-        .affiliate-badge {
-            font-size: 0.48rem;
-            font-weight: 700;
-            letter-spacing: 1.2px;
-            color: var(--current-accent);
-            text-transform: uppercase;
-        }
-
-        .affiliate-title {
-            font-family: 'Anton', sans-serif;
-            font-size: 1rem;
-            color: #ffffff;
-            text-transform: uppercase;
-        }
-
-        .affiliate-desc {
-            font-size: 0.62rem;
+            font-size: 13px;
             color: var(--text-muted);
-            line-height: 1.3;
-            font-weight: 400;
+            font-weight: 600;
+            letter-spacing: 0.02em;
         }
 
-        .affiliate-btn {
-            background: var(--current-accent);
-            color: #000000;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
+        .human-badge {
+            color: var(--text-secondary);
             font-weight: 700;
-            padding: 8px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 2px;
+        }
+
+        @media (max-width: 640px) {
+            .page-title { font-size: 24px; }
+            .meta-banner { flex-direction: column; align-items: flex-start; }
+            .floor-card { padding: 18px; }
+            .parity-promo-card { padding: 32px 18px; }
         }
     </style>
+
+    <!-- Data Array Script Dependencies -->
+    <script src="./cluegram-data.js"></script>
+    <script src="./clusters-data.js"></script>
+    <script src="./parity-data.js"></script>
+    <script src="./words.js"></script>
 </head>
 <body>
 
-    <div class="archive-container">
-        <div class="top-bar">
-            <a href="index.html" class="pill-btn">← LOBBY</a>
-        </div>
+    <header>
+        <a href="./index.html" class="back-link">&larr; Back to Lobby</a>
+        <h1 class="page-title">Yesterday's Answers</h1>
+        <p class="page-subtitle">Full solutions, tactical breakdowns, historical context, and deep-dive trivia snippets for yesterday's puzzles.</p>
+    </header>
 
-        <div class="hub-logo-box">
-            <h1 class="hub-logo-red">11FL?</h1>
-            <p class="hub-logo-title">Eleventh Floor</p>
-            <p class="hub-logo-sub">YESTERDAY'S ANSWERS</p>
-        </div>
+    <nav class="tabs-container" id="tabs-nav">
+        <button class="tab-btn active" data-game="tykb">Think You Know Ball?</button>
+        <button class="tab-btn" data-game="questions">11th Floor Questions</button>
+        <button class="tab-btn" data-game="cluegram">Cluegram</button>
+        <button class="tab-btn" data-game="clusters">Clusters</button>
+        <button class="tab-btn" data-game="wordclimb">Word Climb</button>
+        <button class="tab-btn" data-game="parity">Parity</button>
+    </nav>
 
-        <!-- Game Switcher Tabs -->
-        <div class="game-tabs-scroll">
-            <button class="tab-btn active" data-game="ball" data-color="#84CC16" data-glow="rgba(132, 204, 22, 0.25)">Think You Know Ball?</button>
-            <button class="tab-btn" data-game="cluegram" data-color="#cc007e" data-glow="rgba(204, 0, 126, 0.25)">Cluegram</button>
-            <button class="tab-btn" data-game="questions" data-color="#D4AF37" data-glow="rgba(212, 175, 55, 0.25)">Questions</button>
-            <button class="tab-btn" data-game="wordclimb" data-color="#3B82F6" data-glow="rgba(59, 130, 246, 0.25)">Word Climb</button>
-            <button class="tab-btn" data-game="clusters" data-color="#ff751f" data-glow="rgba(255, 117, 31, 0.25)">Clusters</button>
-            <button class="tab-btn" data-game="parity" data-color="#ff9999" data-glow="rgba(255, 153, 153, 0.25)">Parity</button>
-        </div>
+    <main>
+        <!-- 1. THINK YOU KNOW BALL? PANEL -->
+        <section class="game-panel panel-tykb active" id="panel-tykb">
+            <div class="meta-banner">
+                <div class="meta-info">
+                    <h2 id="tykb-set-title">Think You Know Ball? — Set Review</h2>
+                    <p>Premier League tactics, player histories, and daily football trivia breakdown.</p>
+                </div>
+                <div class="read-time-badge">4 min deep dive</div>
+            </div>
+            <div id="tykb-cards-container"></div>
+        </section>
 
-        <!-- Set Metadata Box -->
-        <div class="set-meta-card">
-            <div class="set-title-text" id="meta-set-title">Think You Know Ball? — Set 18</div>
-            <div class="set-date-badge">YESTERDAY'S RECAP</div>
-        </div>
+        <!-- 2. 11TH FLOOR QUESTIONS PANEL -->
+        <section class="game-panel panel-questions" id="panel-questions">
+            <div class="meta-banner">
+                <div class="meta-info">
+                    <h2 id="questions-set-title">11th Floor Questions — Set Review</h2>
+                    <p>General knowledge deep dive, tricky curveballs, and behind-the-facts context.</p>
+                </div>
+                <div class="read-time-badge">5 min deep dive</div>
+            </div>
+            <div id="questions-cards-container"></div>
+        </section>
 
-        <!-- Answers Display Zone -->
-        <div class="answers-list" id="answers-list">
-            <!-- Dynamic Content Rendered Here -->
-        </div>
+        <!-- 3. CLUEGRAM PANEL -->
+        <section class="game-panel panel-cluegram" id="panel-cluegram">
+            <div class="meta-banner">
+                <div class="meta-info">
+                    <h2>Cluegram — Solutions & Domain Origins</h2>
+                    <p>Target anagram solutions, definitions, and domain trivia highlights.</p>
+                </div>
+                <div class="read-time-badge">3 min read</div>
+            </div>
+            <div id="cluegram-cards-container"></div>
+        </section>
 
-        <div class="promo-affiliate-card">
-            <div class="affiliate-badge">OFFICIAL MATCHDAY PARTNER</div>
-            <div class="affiliate-title">WANT UNLIMITED ARCHIVE ACCESS?</div>
-            <div class="affiliate-desc">Play every past 10-floor climb, unlock custom daily quizzes, and remove single-attempt streak limits.</div>
-            <button class="affiliate-btn">UNLOCK FULL ARCHIVE — £20/YEAR</button>
-        </div>
-    </div>
+        <!-- 4. CLUSTERS PANEL -->
+        <section class="game-panel panel-clusters" id="panel-clusters">
+            <div class="meta-banner">
+                <div class="meta-info">
+                    <h2 id="clusters-set-title">Clusters — Category & Distractor Breakdown</h2>
+                    <p>Floor-by-floor categories, group solutions, and intentional trap words revealed.</p>
+                </div>
+                <div class="read-time-badge">4 min read</div>
+            </div>
+            <div id="clusters-cards-container"></div>
+        </section>
+
+        <!-- 5. WORD CLIMB PANEL -->
+        <section class="game-panel panel-wordclimb" id="panel-wordclimb">
+            <div class="meta-banner">
+                <div class="meta-info">
+                    <h2>Word Climb — Master Word Ladder Breakdown</h2>
+                    <p>Target word lengths, wheel distribution, and valid vocabulary ladders.</p>
+                </div>
+                <div class="read-time-badge">2 min read</div>
+            </div>
+            <div id="wordclimb-cards-container"></div>
+        </section>
+
+        <!-- 6. PARITY PANEL (HONEST HUMOR & PLUG) -->
+        <section class="game-panel panel-parity" id="panel-parity">
+            <div class="parity-promo-card">
+                <h2 class="parity-promo-title">Nothing To See Here</h2>
+                <p class="parity-promo-text">
+                    Let us be entirely honest with you: there are no yesterday's answers for Parity, and there never will be. It is a visual pair-matching memory floor—once you clear the icons, you move on!
+                </p>
+                
+                <div class="parity-plug-box">
+                    <div class="parity-plug-tag">Shameless Plug Alert</div>
+                    <h3 class="parity-plug-heading">Coming Soon: TYKB "The Skyscraper"</h3>
+                    <p class="parity-plug-desc">
+                        Since you are here looking for extra football knowledge, we are shamelessly using this space to announce our upcoming <strong>51-Floor Mega Quiz</strong> built specifically for relentless football fanatics. Prepare to test your terrace knowledge across half a century of English football history.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="human-badge">Made by Humans!</p>
+    </footer>
 
     <script>
-        /* ==========================================================================
-           FULL DATASETS FOR ALL 6 GAMES
-           ========================================================================== */
-        const gameDataStore = {
-            ball: {
-                title: "Think You Know Ball? - Set 18",
-                type: "ball",
-                questions: [
-                    { floor: 1, type: "multiple_choice", question: "Which manager guided West Ham United to a 7th-place finish and the FA Cup final in the 2005–06 season?", options: ["Alan Pardew", "Glenn Roeder", "Harry Redknapp", "Gianfranco Zola"], answer: "Alan Pardew", explanation: "Pardew led West Ham back to the Premier League and into Europe in his first full top-flight season.", anchorClues: "Alan Pardew / West Ham United 2005–06" },
-                    { floor: 2, type: "boolean", question: "True or False: Sunderland's Stadium of Light hosted England for a Euro 2004 qualifier in April 2003.", options: ["True", "False"], answer: "True", explanation: "England defeated Turkey 2–0 at the Stadium of Light with goals from Vassell and Beckham.", anchorClues: "Stadium of Light / England vs Turkey 2003" },
-                    { floor: 3, type: "multiple_choice", question: "Which club ended Pep Guardiola's Manchester City 22-match unbeaten run in January 2018?", options: ["Liverpool", "Manchester United", "Tottenham Hotspur", "Chelsea"], answer: "Liverpool", explanation: "Klopp's Liverpool claimed a thrilling 4–3 victory at Anfield to inflict City's first league defeat.", anchorClues: "Liverpool beat City 4–3 / Jan 2018" },
-                    { floor: 4, type: "multiple_choice", question: "Which ground served as Derby County's home stadium for 102 years before moving to Pride Park in 1997?", options: ["Baseball Ground", "Victoria Ground", "County Ground", "Ayresome Park"], answer: "Baseball Ground", explanation: "Derby played at the Baseball Ground from 1895 until May 1997.", anchorClues: "Baseball Ground / Derby County" },
-                    { floor: 5, type: "boolean", question: "True or False: Chelsea went through their entire 2004–05 title-winning campaign unbeaten at Stamford Bridge.", options: ["True", "False"], answer: "True", explanation: "José Mourinho recorded 14 wins and 5 draws at home, conceding just 6 league goals at SW6.", anchorClues: "Chelsea unbeaten home record 2004–05" },
-                    { floor: 6, type: "multiple_choice", question: "Which club spent 128 days at the top of the Premier League in 2013–14 before finishing 4th?", options: ["Arsenal", "Liverpool", "Chelsea", "Manchester City"], answer: "Arsenal", explanation: "Arsène Wenger's side led the league for 128 days before late-season injuries caused a slide.", anchorClues: "Arsenal 128 days top 2013–14" },
-                    { floor: 7, type: "multiple_choice", question: "Which shirt number did N'Golo Kanté wear throughout his seven seasons at Chelsea?", options: ["7", "6", "14", "8"], answer: "7", explanation: "Kanté wore number 7 from 2016 to 2023, winning the Premier League, UCL, and FA Cup.", anchorClues: "N'Golo Kanté #7 / Chelsea" },
-                    { floor: 8, type: "multiple_choice", question: "Which team ended Chelsea's record 86-game unbeaten home league run in October 2008?", options: ["Liverpool", "Manchester United", "Arsenal", "Tottenham Hotspur"], answer: "Liverpool", explanation: "Xabi Alonso's deflected strike secured a 1–0 win to snap Chelsea's four-year unbeaten streak.", anchorClues: "Liverpool snap Chelsea 86 home streak 2008" },
-                    { floor: 9, type: "multiple_choice", question: "Which manager took charge of Southampton in January 2013 and led them to an 8th-place finish?", options: ["Mauricio Pochettino", "Ronald Koeman", "Claude Puel", "Ralph Hasenhüttl"], answer: "Mauricio Pochettino", explanation: "Pochettino transformed Saints' pressing style before leaving for Tottenham in May 2014.", anchorClues: "Pochettino / Southampton 2013–14" },
-                    { floor: 10, type: "multiple_choice", question: "Which player holds the Premier League record for scoring in 9 consecutive away matches in 2010–11?", options: ["Robin van Persie", "Ruud van Nistelrooy", "Jimmy Floyd Hasselbaink", "Dennis Bergkamp"], answer: "Robin van Persie", explanation: "Van Persie scored in nine straight away league appearances for Arsenal between Jan and May 2011.", anchorClues: "Van Persie 9 away games record 2010–11" }
-                ]
-            },
-            cluegram: {
-                title: "11th Floor Cluegram — Daily Set 04",
-                type: "cluegram",
-                floors: [
-                    { floor: 1, scrambled: "LANGE", target: "ANGEL", clue: "A spiritual celestial creature typically depicted in white robes with wings." },
-                    { floor: 2, scrambled: "PELAM", target: "MAPLE", clue: "A hardwood tree famous for its distinctive lobed leaves and sweet syrup." },
-                    { floor: 3, scrambled: "TLANEM", target: "MANTLE", clue: "An ornamental structure surrounding a fireplace, or a cloak of authority." },
-                    { floor: 4, scrambled: "CANLOF", target: "FALCON", clue: "A predatory bird known for incredible diving speed while hunting prey." },
-                    { floor: 5, scrambled: "XINOEHP", target: "PHOENIX", clue: "A mythical bird that periodically combusts and regenerates from its own ashes." },
-                    { floor: 6, scrambled: "TREAHTE", target: "THEATRE", clue: "A venue designed for live dramatic performances, plays, or music." },
-                    { floor: 7, scrambled: "TARCCATA", target: "CATARACT", clue: "A large, powerful waterfall, or a clouding of the lens in the eye." },
-                    { floor: 8, scrambled: "DLASAPIE", target: "PALISADE", clue: "A defensive fence made from tall wooden stakes driven firmly into the ground." },
-                    { floor: 9, scrambled: "NNOACSIES", target: "ASCENSION", clue: "The act of rising to a higher position, rank, or spiritual realm." },
-                    { floor: 10, scrambled: "LAUCOGETA", target: "CATALOGUE", clue: "A systematically arranged publication detailing an entire collection or inventory." }
-                ]
-            },
-            questions: {
-                title: "11th Floor Questions — High-Brow Trivia Set 12",
-                type: "questions",
-                questions: [
-                    { floor: 1, type: "multiple_choice", question: "Which element on the periodic table has the chemical symbol 'Hg'?", options: ["Mercury", "Silver", "Hydragyrum", "Lead"], answer: "Mercury", explanation: "Hg comes from 'Hydrargyrum', Latinized Greek for 'water-silver'.", anchorClues: "Element Hg / Mercury" },
-                    { floor: 2, type: "multiple_choice", question: "In classical mythology, who was the Roman equivalent of the Greek god Hermes?", options: ["Mercury", "Apollo", "Vulcan", "Mars"], answer: "Mercury", explanation: "Mercury was the Roman god of financial gain, commerce, and messages.", anchorClues: "Roman Hermes / Mercury" },
-                    { floor: 3, type: "multiple_choice", question: "Which composer wrote the 'Enigma Variations' in 1899?", options: ["Edward Elgar", "Ralph Vaughan Williams", "Gustav Holst", "Benjamin Britten"], answer: "Edward Elgar", explanation: "Elgar dedicated each variation to a person in his social circle.", anchorClues: "Elgar / Enigma Variations" },
-                    { floor: 4, type: "multiple_choice", question: "What is the capital city of Australia?", options: ["Canberra", "Sydney", "Melbourne", "Brisbane"], answer: "Canberra", explanation: "Canberra was chosen as a compromise location between Sydney and Melbourne in 1908.", anchorClues: "Australian Capital / Canberra" },
-                    { floor: 5, type: "multiple_choice", question: "Which novel begins with the famous line 'It was the best of times, it was the worst of times'?", options: ["A Tale of Two Cities", "Great Expectations", "Bleak House", "Oliver Twist"], answer: "A Tale of Two Cities", explanation: "Charles Dickens published the historical novel set in London and Paris in 1859.", anchorClues: "Dickens / A Tale of Two Cities" },
-                    { floor: 6, type: "multiple_choice", question: "Which physical constant is denoted by the letter 'c'?", options: ["Speed of light", "Planck's constant", "Gravitational constant", "Boltzmann constant"], answer: "Speed of light", explanation: "c stands for 'celeritas', Latin for swiftness, equal to 299,792,458 m/s.", anchorClues: "Physics Constant c / Speed of Light" },
-                    { floor: 7, type: "multiple_choice", question: "Who painted 'The Girl with a Pearl Earring' around 1665?", options: ["Johannes Vermeer", "Rembrandt", "Frans Hals", "Jan Steen"], answer: "Johannes Vermeer", explanation: "The masterpiece resides in the Mauritshuis museum in The Hague.", anchorClues: "Vermeer / Girl with Pearl Earring" },
-                    { floor: 8, type: "multiple_choice", question: "Which strait separates Great Britain from continental Europe?", options: ["Strait of Dover", "Strait of Gibraltar", "Kattegat", "Bosporus"], answer: "Strait of Dover", explanation: "The narrowest part of the English Channel measures just 20.7 miles.", anchorClues: "Strait of Dover / English Channel" },
-                    { floor: 9, type: "multiple_choice", question: "Which treaty signed in 1648 ended the Thirty Years' War in Europe?", options: ["Peace of Westphalia", "Treaty of Utrecht", "Treaty of Versailles", "Congress of Vienna"], answer: "Peace of Westphalia", explanation: "It established the precedent of national sovereignty across modern European statecraft.", anchorClues: "Peace of Westphalia 1648" },
-                    { floor: 10, type: "multiple_choice", question: "In organic chemistry, what suffix denotes an alkane hydrocarbon chain?", options: ["-ane", "-ene", "-yne", "-ol"], answer: "-ane", explanation: "Alkanes contain single carbon-carbon bonds (e.g. Methane, Ethane, Propane).", anchorClues: "Organic Chemistry / Alkane -ane" }
-                ]
-            },
-            wordclimb: {
-                title: "11th Floor Word Climb — Master Board 'COMPLAINT'",
-                type: "wordclimb",
-                masterWord: "COMPLAINT",
-                wheelLetters: ["C", "O", "M", "P", "L", "A", "I", "N", "T"],
-                counts: { len5: 42, len6: 28, len7: 14, len8: 5, len9: 1 },
-                wordsByLength: {
-                    5: ["CLAIM", "CLAMP", "COMPT", "PLAIN", "PLANT", "POINT", "ACTION", "PANIC", "LIPOMA", "TAMPO"],
-                    6: ["ACTION", "COMPACT", "IMPACT", "PATROL", "PORTAL", "LAMENT", "MENTAL", "CAPTON"],
-                    7: ["COMPACT", "CAPTAIN", "COMPLAIN", "OPTIMAL", "PATROL"],
-                    8: ["COMPLAIN", "COMPLAINT", "OPTIMAL"],
-                    9: ["COMPLAINT"]
-                }
-            },
-            clusters: {
-                title: "11th Floor Clusters — Puzzle #01: Global Alignment",
-                type: "clusters",
-                floors: {
-                    1: { type: "distractor-12", tiles: ["LONDON", "PARIS", "TOKYO", "NILE", "AMAZON", "YANGTZE", "PIANO", "GUITAR", "VIOLIN", "DRUM", "FLUTE", "TRUMPET"], groups: [{ words: ["LONDON", "PARIS", "TOKYO"], category: "Major global capital cities" }, { words: ["NILE", "AMAZON", "YANGTZE"], category: "Major world rivers" }] },
-                    2: { type: "distractor-12", tiles: ["GOLD", "SILVER", "BRONZE", "DIAMOND", "RUBY", "EMERALD", "SQUARE", "CIRCLE", "TRIANGLE", "RECTANGLE", "OVAL", "PENTAGON"], groups: [{ words: ["GOLD", "SILVER", "BRONZE"], category: "Precious metals / podium medals" }, { words: ["DIAMOND", "RUBY", "EMERALD"], category: "Precious gemstones" }] },
-                    3: { type: "distractor-12", tiles: ["MARS", "VENUS", "JUPITER", "LION", "TIGER", "LEOPARD", "EAGLE", "HAWK", "FALCON", "OWL", "CROW", "SWAN"], groups: [{ words: ["MARS", "VENUS", "JUPITER"], category: "Planets of the solar system" }, { words: ["LION", "TIGER", "LEOPARD"], category: "Large wild cats" }] },
-                    4: { type: "distractor-12", tiles: ["RED", "BLUE", "GREEN", "OAK", "PINE", "MAPLE", "APPLE", "BANANA", "ORANGE", "GRAPE", "MANGO", "PEACH"], groups: [{ words: ["RED", "BLUE", "GREEN"], category: "Primary colors" }, { words: ["OAK", "PINE", "MAPLE"], category: "Common tree species" }] },
-                    5: { type: "distractor-12-three", tiles: ["FOOTBALL", "TENNIS", "CRICKET", "CHESS", "POKER", "BRIDGE", "VIOLIN", "CELLO", "FLUTE", "PYTHON", "VIPER", "COBRA"], groups: [{ words: ["FOOTBALL", "TENNIS", "CRICKET"], category: "Popular global ball sports" }, { words: ["CHESS", "POKER", "BRIDGE"], category: "Strategic tabletop games" }, { words: ["VIOLIN", "CELLO", "FLUTE"], category: "Orchestral instruments" }] },
-                    6: { type: "distractor-12-three", tiles: ["IRON", "COPPER", "TIN", "WHEAT", "RICE", "MAIZE", "MILK", "WATER", "JUICE", "SOFA", "TABLE", "CHAIR"], groups: [{ words: ["IRON", "COPPER", "TIN"], category: "Industrial base metals" }, { words: ["WHEAT", "RICE", "MAIZE"], category: "Staple grains" }, { words: ["MILK", "WATER", "JUICE"], category: "Common beverages" }] },
-                    7: { type: "distractor-12-three", tiles: ["PLATO", "ARISTOTLE", "SOCRATES", "BACH", "MOZART", "BEETHOVEN", "NEWTON", "EINSTEIN", "DARWIN", "SHAKESPEARE", "DANTE", "HOMER"], groups: [{ words: ["PLATO", "ARISTOTLE", "SOCRATES"], category: "Ancient Greek philosophers" }, { words: ["BACH", "MOZART", "BEETHOVEN"], category: "Classical composers" }, { words: ["NEWTON", "EINSTEIN", "DARWIN"], category: "Revolutionary scientists" }] },
-                    8: { type: "distractor-12-three", tiles: ["PACIFIC", "ATLANTIC", "INDIAN", "EVEREST", "K2", "KILIMANJARO", "SAHARA", "GOBI", "KALAHARI", "LYON", "MARSEILLE", "NICE"], groups: [{ words: ["PACIFIC", "ATLANTIC", "INDIAN"], category: "Major world oceans" }, { words: ["EVEREST", "K2", "KILIMANJARO"], category: "Mountain peaks" }, { words: ["SAHARA", "GOBI", "KALAHARI"], category: "Deserts" }] },
-                    9: { type: "distractor-12-three", tiles: ["TUDOR", "STUART", "WINDSOR", "SPRING", "SUMMER", "AUTUMN", "NORTH", "SOUTH", "EAST", "RAIN", "SNOW", "WIND"], groups: [{ words: ["TUDOR", "STUART", "WINDSOR"], category: "Historic royal houses" }, { words: ["SPRING", "SUMMER", "AUTUMN"], category: "Seasons" }, { words: ["NORTH", "SOUTH", "EAST"], category: "Cardinal directions" }] },
-                    10: { type: "wall-16", tiles: ["THAMES", "SEVERN", "TRENT", "CLYDE", "GOLD", "SILVER", "BRONZE", "PLATINUM", "MARBLE", "GRANITE", "SLATE", "CHALK", "OXFORD", "BOND", "FLEET", "LOMBARD"], groups: [{ words: ["THAMES", "SEVERN", "TRENT", "CLYDE"], category: "Regional river systems" }, { words: ["GOLD", "SILVER", "BRONZE", "PLATINUM"], category: "Precious metals" }, { words: ["MARBLE", "GRANITE", "SLATE", "CHALK"], category: "Geological stone" }, { words: ["OXFORD", "BOND", "FLEET", "LOMBARD"], category: "Historic thoroughfares" }] }
-                }
-            },
-            parity: {
-                title: "11th Floor Parity — Guess Who? Retro Avatars",
-                type: "parity",
-                floors: [
-                    { floor: 1, pairs: 1, timeLimit: 12, icons: ["detective"] },
-                    { floor: 2, pairs: 2, timeLimit: 16, icons: ["detective", "chef"] },
-                    { floor: 3, pairs: 3, timeLimit: 22, icons: ["detective", "chef", "pirate"] },
-                    { floor: 4, pairs: 4, timeLimit: 28, icons: ["detective", "chef", "pirate", "spectacles"] },
-                    { floor: 5, pairs: 5, timeLimit: 34, icons: ["detective", "chef", "pirate", "spectacles", "beanie"] },
-                    { floor: 6, pairs: 6, timeLimit: 40, icons: ["detective", "chef", "pirate", "spectacles", "beanie", "monocle"] },
-                    { floor: 7, pairs: 7, timeLimit: 46, icons: ["detective", "chef", "pirate", "spectacles", "beanie", "monocle", "dj"] },
-                    { floor: 8, pairs: 8, timeLimit: 52, icons: ["detective", "chef", "pirate", "spectacles", "beanie", "monocle", "dj", "astronaut"] },
-                    { floor: 9, pairs: 9, timeLimit: 58, icons: ["detective", "chef", "pirate", "spectacles", "beanie", "monocle", "dj", "astronaut", "beret"] },
-                    { floor: 10, pairs: 10, timeLimit: 64, icons: ["detective", "chef", "pirate", "spectacles", "beanie", "monocle", "dj", "astronaut", "beret", "disguise"] }
-                ]
-            }
-        };
+        document.addEventListener('DOMContentLoaded', () => {
+            initTabsNavigation();
+            loadTYKBData();
+            loadQuestionsData();
+            loadCluegramData();
+            loadClustersData();
+            loadWordClimbData();
+        });
 
-        const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th"];
+        /* Tab Switcher Engine */
+        function initTabsNavigation() {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const panels = document.querySelectorAll('.game-panel');
 
-        /* ==========================================================================
-           RENDER ENGINE
-           ========================================================================== */
-        function renderGameAnswers(gameKey) {
-            const data = gameDataStore[gameKey] || gameDataStore.ball;
-            const metaTitle = document.getElementById('meta-set-title');
-            if (metaTitle) {
-                metaTitle.innerText = data.title;
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetGame = tab.getAttribute('data-game');
+
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('active'));
+
+                    tab.classList.add('active');
+                    const activePanel = document.getElementById(`panel-${targetGame}`);
+                    if (activePanel) activePanel.classList.add('active');
+                });
+            });
+        }
+
+        /* Helper to fetch local JSON with multiple search fallback paths */
+        async function fetchJSONFile(filename) {
+            const paths = [`./${filename}`, `./data/${filename}`, `./archives/${filename}`, filename];
+            for (const path of paths) {
+                try {
+                    const res = await fetch(path);
+                    if (res.ok) return await res.json();
+                } catch (e) {}
             }
-            const container = document.getElementById('answers-list');
+            return null;
+        }
+
+        /* 1. TYKB DATA LOADER */
+        async function loadTYKBData() {
+            const data = await fetchJSONFile('ball-questions.json');
+            const container = document.getElementById('tykb-cards-container');
+            const titleElem = document.getElementById('tykb-set-title');
             if (!container) return;
+
+            if (!data || !data.questions) {
+                container.innerHTML = `<div class="floor-card"><p class="deep-dive-body">Yesterday's football dataset is currently archiving. Check back shortly!</p></div>`;
+                return;
+            }
+
+            if (data.title && titleElem) titleElem.textContent = `${data.title} — Full Review`;
             container.innerHTML = '';
 
-            if (data.type === 'ball' || data.type === 'questions') {
-                data.questions.forEach(q => {
-                    const floorOrd = ordinals[q.floor - 1] || `${q.floor}th`;
-                    let optionsHTML = '';
-                    q.options.forEach(opt => {
-                        const isCorrect = (opt === q.answer);
-                        optionsHTML += `<div class="opt-chip ${isCorrect ? 'correct-chip' : ''}">${opt}</div>`;
-                    });
-
-                    container.innerHTML += `
-                        <div class="floor-card">
-                            <div class="floor-card-header">
-                                <div class="floor-number-badge">${floorOrd} Floor</div>
-                                <div class="floor-type-tag">${q.type === 'boolean' ? 'TRUE / FALSE' : 'MULTIPLE CHOICE'}</div>
-                            </div>
-                            <div class="floor-card-body">
-                                <div class="q-text">${q.question}</div>
-                                <div class="options-list">${optionsHTML}</div>
-                                <div class="fact-box">
-                                    <div class="fact-title">Context & Fact</div>
-                                    <div class="fact-text">${q.explanation}</div>
-                                    ${q.anchorClues ? `<div class="anchor-tag">📌 ${q.anchorClues}</div>` : ''}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-            } else if (data.type === 'cluegram') {
-                data.floors.forEach(item => {
-                    const floorOrd = ordinals[item.floor - 1] || `${item.floor}th`;
-                    container.innerHTML += `
-                        <div class="floor-card">
-                            <div class="floor-card-header">
-                                <div class="floor-number-badge">${floorOrd} Floor</div>
-                                <div class="floor-type-tag">${item.target.length} LETTERS</div>
-                            </div>
-                            <div class="floor-card-body">
-                                <div class="q-text">Scrambled: <strong style="color: #3B82F6; font-family: monospace;">${item.scrambled}</strong></div>
-                                <div class="opt-chip correct-chip" style="font-size: 0.7rem; letter-spacing: 1px;">TARGET: ${item.target}</div>
-                                <div class="fact-box">
-                                    <div class="fact-title">Clue Definition</div>
-                                    <div class="fact-text">${item.clue}</div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-            } else if (data.type === 'wordclimb') {
-                const wheelBubbles = data.wheelLetters.map(l => `<div class="letter-bubble">${l}</div>`).join('');
-                
-                container.innerHTML += `
-                    <div class="cluster-group-box" style="border-color: var(--color-wordclimb); margin-bottom: 2px;">
-                        <div class="cluster-cat-title" style="color: var(--color-wordclimb); text-align: center;">DAILY MASTER WHEEL</div>
-                        <div class="wheel-letters-row">${wheelBubbles}</div>
-                        <div style="font-size: 0.58rem; color: var(--text-muted); text-align: center; margin-top: 2px;">Master 9-Letter Target: <strong style="color: #ffffff;">${data.masterWord}</strong></div>
+            data.questions.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'floor-card';
+                card.innerHTML = `
+                    <div class="floor-header">
+                        <span class="floor-tag">${item.floor ? 'Floor ' + item.floor : 'Question'}</span>
                     </div>
+                    <div class="question-text">${item.question}</div>
+                    <div class="answer-box">
+                        <span class="answer-label">Correct Answer</span>
+                        <div class="answer-value">${item.answer}</div>
+                    </div>
+                    <div class="deep-dive-box">
+                        <div class="deep-dive-title">Terrace Context & Tactical Breakdown</div>
+                        <div class="deep-dive-body">${item.explanation || 'An essential fixture in Premier League history.'}</div>
+                    </div>
+                    ${item.anchorClues ? `
+                    <div class="deep-dive-box">
+                        <div class="deep-dive-title">Key Search Anchors & Historical Indicators</div>
+                        <div class="deep-dive-body"><span class="highlight-text">Anchors:</span> ${item.anchorClues}</div>
+                    </div>` : ''}
+                `;
+                container.appendChild(card);
+            });
+        }
 
-                    <div class="blossom-stats-grid">
-                        <div><div class="blossom-stat-val">${data.counts.len5}</div><div class="blossom-stat-lbl">5-Letter</div></div>
-                        <div><div class="blossom-stat-val">${data.counts.len6}</div><div class="blossom-stat-lbl">6-Letter</div></div>
-                        <div><div class="blossom-stat-val">${data.counts.len7}</div><div class="blossom-stat-lbl">7-Letter</div></div>
-                        <div><div class="blossom-stat-val">${data.counts.len8}</div><div class="blossom-stat-lbl">8-Letter</div></div>
-                        <div><div class="blossom-stat-val">${data.counts.len9}</div><div class="blossom-stat-lbl">9-Letter</div></div>
+        /* 2. QUESTIONS DATA LOADER */
+        async function loadQuestionsData() {
+            const data = await fetchJSONFile('questions.json');
+            const container = document.getElementById('questions-cards-container');
+            const titleElem = document.getElementById('questions-set-title');
+            if (!container) return;
+
+            if (!data || !data.floors) {
+                container.innerHTML = `<div class="floor-card"><p class="deep-dive-body">General knowledge set archive loading...</p></div>`;
+                return;
+            }
+
+            if (data.title && titleElem) titleElem.textContent = `${data.title} — Full Breakdown`;
+            container.innerHTML = '';
+
+            data.floors.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'floor-card';
+                card.innerHTML = `
+                    <div class="floor-header">
+                        <span class="floor-tag">Floor ${item.floor}</span>
+                    </div>
+                    <div class="question-text">${item.question}</div>
+                    <div class="answer-box">
+                        <span class="answer-label">Official Answer</span>
+                        <div class="answer-value">${item.answer}</div>
+                    </div>
+                    <div class="deep-dive-box">
+                        <div class="deep-dive-title">Why Players Got Tripped Up (Curveball Breakdown)</div>
+                        <div class="deep-dive-body">
+                            Multiple choice distractors included <span class="highlight-text">${item.options ? item.options.filter(o => o !== item.answer).join(', ') : 'other key options'}</span>. Precision was required to isolate the correct factual match.
+                        </div>
                     </div>
                 `;
+                container.appendChild(card);
+            });
+        }
 
-                let accordionSections = '';
-                [5, 6, 7, 8, 9].forEach(len => {
-                    const words = data.wordsByLength[len] || [];
-                    if (words.length > 0) {
-                        const wordChips = words.map(w => `<span class="opt-chip ${w === data.masterWord ? 'correct-chip' : ''}" style="padding: 3px 6px; font-size: 0.58rem;">${w}</span>`).join(' ');
-                        accordionSections += `
-                            <div class="cluster-group-box">
-                                <div class="cluster-cat-title">✓ ${len}-LETTER VALID WORDS (${words.length})</div>
-                                <div class="cluster-words-row">${wordChips}</div>
-                            </div>
-                        `;
-                    }
-                });
+        /* 3. CLUEGRAM DATA LOADER */
+        function loadCluegramData() {
+            const container = document.getElementById('cluegram-cards-container');
+            if (!container) return;
 
-                container.innerHTML += `
-                    <div class="word-accordion-container">
-                        ${accordionSections}
+            const dataset = window.CLUEGRAM_DAILY_SET;
+            if (!dataset || !Array.isArray(dataset)) {
+                container.innerHTML = `<div class="floor-card"><p class="deep-dive-body">Cluegram set data unavailable.</p></div>`;
+                return;
+            }
+
+            container.innerHTML = '';
+            dataset.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'floor-card';
+                card.innerHTML = `
+                    <div class="floor-header">
+                        <span class="floor-tag">Floor ${item.floor} • ${item.length} Letters</span>
+                        <span class="floor-tag" style="color: var(--color-cluegram);">${item.domain}</span>
+                    </div>
+                    <div class="question-text">Clue: "${item.clue}"</div>
+                    <div class="answer-box">
+                        <span class="answer-label">Target Word Solution (Scrambled: ${item.scrambled})</span>
+                        <div class="answer-value">${item.target}</div>
+                    </div>
+                    <div class="deep-dive-box">
+                        <div class="deep-dive-title">Etymology & Domain Origin Snippet</div>
+                        <div class="deep-dive-body">
+                            In <span class="highlight-text">${item.domain}</span>, <span class="highlight-text">${item.target}</span> represents a core structural concept. The anagram rearranges from scrambled sequence <em>${item.scrambled}</em>.
+                        </div>
                     </div>
                 `;
-            } else if (data.type === 'clusters') {
-                Object.keys(data.floors).forEach(floorNum => {
-                    const fData = data.floors[floorNum];
-                    const floorOrd = ordinals[parseInt(floorNum, 10) - 1] || `${floorNum}th`;
-                    
-                    let groupsHTML = '';
-                    let matchedWords = [];
-                    fData.groups.forEach(g => {
-                        matchedWords.push(...g.words);
-                        const wordsList = g.words.map(w => `<span class="opt-chip correct-chip" style="padding: 3px 5px; font-size: 0.58rem;">${w}</span>`).join(' ');
-                        groupsHTML += `
-                            <div class="cluster-group-box">
-                                <div class="cluster-cat-title">✓ ${g.category}</div>
-                                <div class="cluster-words-row">${wordsList}</div>
-                            </div>
-                        `;
-                    });
+                container.appendChild(card);
+            });
+        }
 
-                    const distractors = fData.tiles.filter(t => !matchedWords.includes(t));
-                    const distractorsHTML = distractors.map(d => `<span class="opt-chip trap-chip" style="padding: 3px 5px; font-size: 0.58rem;">${d}</span>`).join(' ');
+        /* 4. CLUSTERS DATA LOADER */
+        function loadClustersData() {
+            const container = document.getElementById('clusters-cards-container');
+            const titleElem = document.getElementById('clusters-set-title');
+            if (!container) return;
 
-                    container.innerHTML += `
-                        <div class="floor-card">
-                            <div class="floor-card-header">
-                                <div class="floor-number-badge">${floorOrd} Floor</div>
-                                <div class="floor-type-tag">${fData.type.toUpperCase()}</div>
-                            </div>
-                            <div class="floor-card-body">
-                                ${groupsHTML}
-                                ${distractors.length ? `
-                                    <div class="cluster-group-box" style="border-color: rgba(239,68,68,0.2);">
-                                        <div class="cluster-cat-title" style="color: #ef4444;">✖ TRAP DISTRACTORS</div>
-                                        <div class="cluster-words-row">${distractorsHTML}</div>
-                                    </div>
-                                ` : ''}
+            const dataset = window.CLUSTERS_DATA;
+            if (!dataset) {
+                container.innerHTML = `<div class="floor-card"><p class="deep-dive-body">Clusters set data unavailable.</p></div>`;
+                return;
+            }
+
+            const dates = Object.keys(dataset);
+            const latestKey = dates[dates.length - 1];
+            const puzzleObj = dataset[latestKey];
+
+            if (!puzzleObj || !puzzleObj.floors) {
+                container.innerHTML = `<div class="floor-card"><p class="deep-dive-body">No cluster floor data located.</p></div>`;
+                return;
+            }
+
+            if (puzzleObj.title && titleElem) titleElem.textContent = `${puzzleObj.title} — Category Breakdown`;
+            container.innerHTML = '';
+
+            Object.keys(puzzleObj.floors).forEach(floorNum => {
+                const floorData = puzzleObj.floors[floorNum];
+                const card = document.createElement('div');
+                card.className = 'floor-card';
+
+                let groupsHTML = '';
+                let groupedWords = new Set();
+
+                floorData.groups.forEach(group => {
+                    group.words.forEach(w => groupedWords.add(w));
+                    groupsHTML += `
+                        <div class="answer-box" style="margin-bottom: 12px;">
+                            <span class="answer-label">Group Category: ${group.clue} (${group.category})</span>
+                            <div class="cluster-words-grid" style="margin-top: 6px;">
+                                ${group.words.map(w => `<span class="word-pill">${w}</span>`).join('')}
                             </div>
                         </div>
                     `;
                 });
-            } else if (data.
+
+                const distractors = floorData.tiles.filter(t => !groupedWords.has(t));
+                let distractorsHTML = '';
+                if (distractors.length > 0) {
+                    distractorsHTML = `
+                        <div class="deep-dive-box">
+                            <div class="deep-dive-title">Floor Distractor Trap Words</div>
+                            <div class="cluster-words-grid">
+                                ${distractors.map(d => `<span class="distractor-pill">${d}</span>`).join('')}
+                            </div>
+                            <div class="deep-dive-body" style="margin-top: 6px;">
+                                These distractor words were placed specifically to lure players into false thematic overlap.
+                            </div>
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div class="floor-header">
+                        <span class="floor-tag">Floor ${floorNum}</span>
+                    </div>
+                    <div>${groupsHTML}</div>
+                    ${distractorsHTML}
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        /* 5. WORD CLIMB DATA LOADER */
+        function loadWordClimbData() {
+            const container = document.getElementById('wordclimb-cards-container');
+            if (!container) return;
+
+            const masterWord = "MAGNITUDE";
+            const wheelArr = ["M", "A", "G", "N", "I", "T", "U", "D", "E"];
+
+            const ladderStructure = [
+                { floor: "1-3", length: 5, example: "AGENT, GIANT, GUIDE, IMAGE, MEDIA, AMEND" },
+                { floor: "4-6", length: 6, example: "UNITED, DATING, MAGNET, GAINED, TANDEM" },
+                { floor: "7-8", length: 7, example: "UNTAMED, GAUNTED" },
+                { floor: 9, length: 8, example: "UNTAMING" },
+                { floor: 10, length: 9, example: "MAGNITUDE" }
+            ];
+
+            container.innerHTML = '';
+
+            const masterCard = document.createElement('div');
+            masterCard.className = 'floor-card';
+            masterCard.innerHTML = `
+                <div class="floor-header">
+                    <span class="floor-tag">Active Daily Wheel</span>
+                    <span class="floor-tag" style="color: var(--color-wordclimb);">9-Letter Target</span>
+                </div>
+                <div class="question-text">Master Word Solution: ${masterWord}</div>
+                <div class="answer-box">
+                    <span class="answer-label">Wheel Distribution</span>
+                    <div class="wheel-display">
+                        ${wheelArr.map(l => `<div class="wheel-letter-box">${l}</div>`).join('')}
+                    </div>
+                </div>
+            `;
+            container.appendChild(masterCard);
+
+            ladderStructure.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'floor-card';
+                card.innerHTML = `
+                    <div class="floor-header">
+                        <span class="floor-tag">Floors ${item.floor}</span>
+                        <span class="floor-tag">${item.length} Letters Required</span>
+                    </div>
+                    <div class="answer-box">
+                        <span class="answer-label">Primary Valid Climb Words</span>
+                        <div class="answer-value">${item.example}</div>
+                    </div>
+                    <div class="deep-dive-box">
+                        <div class="deep-dive-title">Vocabulary & Anagram Mechanics</div>
+                        <div class="deep-dive-body">
+                            All target submissions must be valid English words formed strictly using letters from the wheel set.
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
