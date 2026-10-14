@@ -636,7 +636,7 @@ function handleAnswerSelect(isCorrect, buttonEl) {
 }
 
 function handleGameOver(reason) {
-    stopSessionTimer();
+    // Session stopwatch timer continues running during game over modals until victory
     gameState.stats.played++;
     gameState.stats.streak = 0;
     saveStats();
@@ -708,4 +708,3 @@ function generateFallbackQuestions() {
         { question: "What gas do plants absorb during photosynthesis?", options: ["Carbon Dioxide", "Oxygen", "Nitrogen", "Hydrogen"], answer: "Carbon Dioxide" }
     ];
 }
-// END OF FILE: script.js / questions.js
