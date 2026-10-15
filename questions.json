@@ -5,7 +5,7 @@
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Which iconic musician had the stage name Sting before going solo?",
+      "question": "Which iconic musician was known by the stage name Sting before pursuing a solo career?",
       "options": [
         "Gordon Sumner",
         "Reginald Dwight",
@@ -17,7 +17,7 @@
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which country is the original home of Gouda cheese?",
+      "question": "Which European country is famous for being the home of Gouda cheese?",
       "options": [
         "The Netherlands",
         "Switzerland",
@@ -29,6 +29,18 @@
     {
       "floor": 3,
       "type": "multiple_choice",
+      "question": "In the play 'Othello', who is the main villain and antagonist?",
+      "options": [
+        "Iago",
+        "Cassio",
+        "Roderigo",
+        "Brabantio"
+      ],
+      "answer": "Iago"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
       "question": "How many human players are on the field for one team in a polo match?",
       "options": [
         "4",
@@ -39,9 +51,9 @@
       "answer": "4"
     },
     {
-      "floor": 4,
+      "floor": 5,
       "type": "multiple_choice",
-      "question": "Which James Bond author surprisingly wrote the children's story 'Chitty-Chitty-Bang-Bang'?",
+      "question": "Which author, famous for James Bond, wrote the children's story 'Chitty-Chitty-Bang-Bang'?",
       "options": [
         "Ian Fleming",
         "Roald Dahl",
@@ -51,7 +63,7 @@
       "answer": "Ian Fleming"
     },
     {
-      "floor": 5,
+      "floor": 6,
       "type": "multiple_choice",
       "question": "What is the English translation of the Latin word 'Tempus'?",
       "options": [
@@ -63,7 +75,7 @@
       "answer": "Time"
     },
     {
-      "floor": 6,
+      "floor": 7,
       "type": "multiple_choice",
       "question": "Which country has the most miles of motorway in the world?",
       "options": [
@@ -75,21 +87,9 @@
       "answer": "China"
     },
     {
-      "floor": 7,
-      "type": "multiple_choice",
-      "question": "How many total keys are on a standard full-size piano?",
-      "options": [
-        "88",
-        "76",
-        "92",
-        "84"
-      ],
-      "answer": "88"
-    },
-    {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Which medical scan uses magnetic fields and radio waves to take pictures inside the body?",
+      "question": "Which technology uses magnetic fields and radio waves to take detailed images of the inside of the body?",
       "options": [
         "MRI",
         "CT Scan",
@@ -101,26 +101,26 @@
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "A 'glossectomy' is a surgical procedure to remove all or part of which organ?",
+      "question": "How many keys are on a standard piano?",
       "options": [
-        "Tongue",
-        "Gallbladder",
-        "Tonsils",
-        "Appendix"
+        "88",
+        "76",
+        "92",
+        "84"
       ],
-      "answer": "Tongue"
+      "answer": "88"
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Which hip-hop artist released the landmark debut album 'The College Dropout' in 2004?",
+      "question": "A 'glossectomy' is the surgical removal of all or part of which body part?",
       "options": [
-        "Kanye West",
-        "Jay-Z",
-        "50 Cent",
-        "Ludacris"
+        "The Tongue",
+        "Gallbladder",
+        "Tonsils",
+        "Appendix"
       ],
-      "answer": "Kanye West"
+      "answer": "The Tongue"
     }
   ]
 }
