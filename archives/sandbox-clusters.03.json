@@ -1,0 +1,89 @@
+{
+  "id": "03",
+  "date": "2026-10-14",
+  "title": "Puzzle #08: Clean Sweep",
+  "floors": {
+    "1": {
+      "tiles": ["DOLPHIN", "PORPOISE", "NARWHAL", "JAVELIN", "SHOTPUT", "DISCUS", "LADLE", "TONGS", "WHISK", "SIEVING", "SKIMMER", "MASHER"],
+      "groups": [
+        { "words": ["DOLPHIN", "PORPOISE", "NARWHAL"], "category": "Toothed marine mammals", "clue": "Marine Mammals" },
+        { "words": ["JAVELIN", "SHOTPUT", "DISCUS"], "category": "Track and field throwing events", "clue": "Throwing Events" }
+      ]
+    },
+    "2": {
+      "tiles": ["MOZART", "BEETHOVEN", "BACH", "TEPHRA", "PUMICE", "SCORIA", "ELBOW", "NIPPLE", "FLANGE", "COUPLING", "BUSHING", "ADAPTER"],
+      "groups": [
+        { "words": ["MOZART", "BEETHOVEN", "BACH"], "category": "Classical music composers", "clue": "Classical Composers" },
+        { "words": ["TEPHRA", "PUMICE", "SCORIA"], "category": "Volcanic ejecta and pyroclastic products", "clue": "Volcanic Products" }
+      ]
+    },
+    "3": {
+      "tiles": ["TITAN", "EUROPA", "CALLISTO", "FLUTE", "CLARINET", "BASSOON", "STAPLER", "LAMINATOR", "BINDER", "GUILLOTINE", "CLIPBOARD", "PUNCH"],
+      "groups": [
+        { "words": ["TITAN", "EUROPA", "CALLISTO"], "category": "Natural satellites of Solar System planets", "clue": "Planetary Moons" },
+        { "words": ["FLUTE", "CLARINET", "BASSOON"], "category": "Woodwind musical instruments", "clue": "Woodwind Instruments" }
+      ]
+    },
+    "4": {
+      "tiles": ["PESO", "YEN", "DIRHAM", "FREEZE", "OXIDATION", "HYDRATION", "DIBBER", "HOE", "MATTOCK", "SECATEURS", "EDGER", "SHEARS"],
+      "groups": [
+        { "words": ["PESO", "YEN", "DIRHAM"], "category": "International sovereign currencies", "clue": "World Currencies" },
+        { "words": ["FREEZE", "OXIDATION", "HYDRATION"], "category": "Geological rock weathering processes", "clue": "Weathering Types" }
+      ]
+    },
+    "5": {
+      "tiles": ["FOIL", "EPEE", "SABRE", "KILO", "MEGA", "GIGA", "NUTHATCH", "SISKIN", "BULLFINCH", "BRIOCHE", "SCONE", "ECLAIR"],
+      "groups": [
+        { "words": ["FOIL", "EPEE", "SABRE"], "category": "Olympic fencing combat weapons", "clue": "Fencing Weapons" },
+        { "words": ["KILO", "MEGA", "GIGA"], "category": "SI unit prefix multipliers", "clue": "Metric Prefixes" },
+        { "words": ["NUTHATCH", "SISKIN", "BULLFINCH"], "category": "Woodland songbird species", "clue": "Woodland Birds" }
+      ]
+    },
+    "6": {
+      "tiles": ["PLATINUM", "PALLADIUM", "RHODIUM", "CANASTA", "BRIDGE", "PATIENCE", "STALAGMITE", "FLOWSTONE", "HELICTITE", "BODKIN", "SHEARS", "THIMBLE"],
+      "groups": [
+        { "words": ["PLATINUM", "PALLADIUM", "RHODIUM"], "category": "Precious noble transition metals", "clue": "Precious Metals" },
+        { "words": ["CANASTA", "BRIDGE", "PATIENCE"], "category": "Classic traditional card games", "clue": "Card Games" },
+        { "words": ["STALAGMITE", "FLOWSTONE", "HELICTITE"], "category": "Speleothem cave mineral deposits", "clue": "Cave Formations" }
+      ]
+    },
+    "7": {
+      "tiles": ["PALEOZOIC", "MESOZOIC", "CENOZOIC", "BOWLINE", "CLOVE", "REEF", "METAPHOR", "HYPERBOLE", "ALLEGORY", "ROUTER", "RABBET", "CHAMFER"],
+      "groups": [
+        { "words": ["PALEOZOIC", "MESOZOIC", "CENOZOIC"], "category": "Major geological eras", "clue": "Geological Eras" },
+        { "words": ["BOWLINE", "CLOVE", "REEF"], "category": "Standard nautical rigging knots", "clue": "Nautical Knots" },
+        { "words": ["METAPHOR", "HYPERBOLE", "ALLEGORY"], "category": "Literary figures of speech", "clue": "Literary Devices" }
+      ]
+    },
+    "8": {
+      "tiles": ["MONET", "DEGAS", "RENOIR", "CANBERRA", "OTTAWA", "VALLETTA", "ORION", "CASSIOPEIA", "CYGNUS", "PRISM", "RETICLE", "DIOPTER"],
+      "groups": [
+        { "words": ["MONET", "DEGAS", "RENOIR"], "category": "French Impressionist painters", "clue": "Impressionist Painters" },
+        { "words": ["CANBERRA", "OTTAWA", "VALLETTA"], "category": "Sovereign national capital cities", "clue": "World Capitals" },
+        { "words": ["ORION", "CASSIOPEIA", "CYGNUS"], "category": "Astronomical sky constellations", "clue": "Constellations" }
+      ]
+    },
+    "9": {
+      "tiles": ["MANSARD", "GABLE", "GAMBREL", "HINGE", "BALL", "PIVOT", "BASSOON", "OBOE", "CORANGLAIS", "CONDENSED", "LIGHT", "BOLD"],
+      "groups": [
+        { "words": ["MANSARD", "GABLE", "GAMBREL"], "category": "Architectural roof styles", "clue": "Roof Shapes" },
+        { "words": ["HINGE", "BALL", "PIVOT"], "category": "Synovial bone joint types", "clue": "Bone Joints" },
+        { "words": ["BASSOON", "OBOE", "CORANGLAIS"], "category": "Double-reed woodwind instruments", "clue": "Double-Reed Winds" }
+      ]
+    },
+    "10": {
+      "tiles": [
+        "SLATE", "SCHIST", "GNEISS", "MARBLE",
+        "CORINTHIAN", "IONIC", "DORIC", "COMPOSITE",
+        "SPRING", "SUMMER", "AUTUMN", "WINTER",
+        "MERCURY", "VENUS", "JUPITER", "SATURN"
+      ],
+      "groups": [
+        { "words": ["SLATE", "SCHIST", "GNEISS", "MARBLE"], "category": "Metamorphic rock classifications", "clue": "Metamorphic Rocks" },
+        { "words": ["CORINTHIAN", "IONIC", "DORIC", "COMPOSITE"], "category": "Classical architectural column orders", "clue": "Classical Columns" },
+        { "words": ["SPRING", "SUMMER", "AUTUMN", "WINTER"], "category": "Four annual calendar seasons", "clue": "Annual Seasons" },
+        { "words": ["MERCURY", "VENUS", "JUPITER", "SATURN"], "category": "Solar System planets", "clue": "Solar Planets" }
+      ]
+    }
+  }
+}
