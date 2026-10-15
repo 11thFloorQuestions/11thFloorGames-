@@ -73,7 +73,7 @@
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "Who are top of the Champions League today?",
+      "question": "Who are top of the Champions League today (Thursday)?",
       "options": [
         "PSG",
         "Barcelona",
@@ -87,7 +87,7 @@
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Which squad number was Nigel Clough given during the Premier League's inaugural year?",
+      "question": "Which squad number was Nigel Clough given during 1993 the Premier League's inaugural year?",
       "options": [
         "7",
         "6",
