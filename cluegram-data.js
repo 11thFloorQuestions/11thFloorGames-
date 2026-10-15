@@ -9,7 +9,7 @@ window.CLUEGRAM_DAILY_SET = [
     floor: 1,
     length: 5,
     domain: "Geology & Earth Sciences",
-    scrambled: "AMOMA",
+    scrambled: "AMGMA",
     target: "MAGMA",
     clue: "Molten rock beneath the Earth's surface that forms igneous rock upon cooling."
   },
