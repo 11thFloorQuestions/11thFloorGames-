@@ -1,126 +1,126 @@
 {
-  "setId": "61",
-  "title": "11th Floor Questions - Set 61",
+  "setId": "62",
+  "title": "11th Floor Questions - Set 62",
   "floors": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Which iconic European capital city is built across a cluster of 14 islands linked by more than 50 bridges?",
+      "question": "Which iconic musician had the stage name Sting before going solo?",
       "options": [
-        "Stockholm",
-        "Amsterdam",
-        "Copenhagen",
-        "Venice"
+        "Gordon Sumner",
+        "Reginald Dwight",
+        "Paul Hewson",
+        "Declan MacManus"
       ],
-      "answer": "Stockholm"
+      "answer": "Gordon Sumner"
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "In 1911, which famous masterpiece was stolen from the Louvre by an Italian handyman, making it an overnight global sensation?",
+      "question": "Which country is the original home of Gouda cheese?",
       "options": [
-        "Mona Lisa",
-        "The Starry Night",
-        "Girl with a Pearl Earring",
-        "The Scream"
+        "The Netherlands",
+        "Switzerland",
+        "Belgium",
+        "Germany"
       ],
-      "answer": "Mona Lisa"
+      "answer": "The Netherlands"
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Which fundamental force of nature keeps planets in orbit around the Sun and holds galaxies together?",
+      "question": "How many human players are on the field for one team in a polo match?",
       "options": [
-        "Gravity",
-        "Electromagnetism",
-        "Strong Nuclear Force",
-        "Weak Nuclear Force"
+        "4",
+        "5",
+        "6",
+        "7"
       ],
-      "answer": "Gravity"
+      "answer": "4"
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Which 19th-century classic novel features the relentless police Inspector Javert hunting down the fugitive Jean Valjean?",
+      "question": "Which James Bond author surprisingly wrote the children's story 'Chitty-Chitty-Bang-Bang'?",
       "options": [
-        "Les Misérables",
-        "The Count of Monte Cristo",
-        "Great Expectations",
-        "The Hunchback of Notre-Dame"
+        "Ian Fleming",
+        "Roald Dahl",
+        "C.S. Lewis",
+        "A.A. Milne"
       ],
-      "answer": "Les Misérables"
+      "answer": "Ian Fleming"
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Which modern Asian nation was formerly known on the world stage as Siam until its name was officially changed in 1939?",
+      "question": "What is the English translation of the Latin word 'Tempus'?",
       "options": [
-        "Thailand",
-        "Myanmar",
-        "Vietnam",
-        "Cambodia"
+        "Time",
+        "Earth",
+        "Mind",
+        "Truth"
       ],
-      "answer": "Thailand"
+      "answer": "Time"
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "Which British rock band famously recorded their groundbreaking 1969 album cover while crossing a zebra pedestrian path outside EMI Studios?",
+      "question": "Which country has the most miles of motorway in the world?",
       "options": [
-        "The Beatles",
-        "The Rolling Stones",
-        "The Who",
-        "Led Zeppelin"
+        "China",
+        "USA",
+        "Germany",
+        "Canada"
       ],
-      "answer": "The Beatles"
+      "answer": "China"
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "What is the hardest naturally occurring substance known on Earth?",
+      "question": "How many total keys are on a standard full-size piano?",
       "options": [
-        "Diamond",
-        "Quartz",
-        "Titanium",
-        "Corundum"
+        "88",
+        "76",
+        "92",
+        "84"
       ],
-      "answer": "Diamond"
+      "answer": "88"
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "In the original 1977 'Star Wars' film (Episode IV: A New Hope), who directed the movie?",
+      "question": "Which medical scan uses magnetic fields and radio waves to take pictures inside the body?",
       "options": [
-        "George Lucas",
-        "Steven Spielberg",
-        "Ridley Scott",
-        "James Cameron"
+        "MRI",
+        "CT Scan",
+        "X-Ray",
+        "Ultrasound"
       ],
-      "answer": "George Lucas"
+      "answer": "MRI"
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "Which historic civilisations built the famous lost citadel of Machu Picchu high in the Andes Mountains?",
+      "question": "A 'glossectomy' is a surgical procedure to remove all or part of which organ?",
       "options": [
-        "Inca",
-        "Aztec",
-        "Maya",
-        "Toltec"
+        "Tongue",
+        "Gallbladder",
+        "Tonsils",
+        "Appendix"
       ],
-      "answer": "Inca"
+      "answer": "Tongue"
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Which organ in the human body consumes roughly 20% of the body's total oxygen and energy supply despite making up only 2% of its weight?",
+      "question": "Which hip-hop artist released the landmark debut album 'The College Dropout' in 2004?",
       "options": [
-        "Brain",
-        "Heart",
-        "Liver",
-        "Lungs"
+        "Kanye West",
+        "Jay-Z",
+        "50 Cent",
+        "Ludacris"
       ],
-      "answer": "Brain"
+      "answer": "Kanye West"
     }
   ]
 }
