@@ -5,87 +5,89 @@
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Michael Carrick's Manchester United team has won how many games this season in all competitions?",
+      "question": "Why did Manchester City block their manager from speaking to the radio after the Liverpool match?",
       "options": [
-        "2",
-        "3",
-        "4",
-        "7"
+        "Worried about 114 financial charges being mentioned",
+        "Enzo Maresca would accidentally leak the tactical room's Wi-Fi password",
+        "Maresca was about to burst into song",
+        "The club offered no explanation, breaking Premier League administrative Rule K.207"
       ],
-      "answer": "2",
-      "explanation": "Michael Carrick's Manchester United side has recorded 2 wins across all competitions so far this season.",
-      "anchorClues": "Michael Carrick Manchester United wins season"
+      "answer": "The club offered no explanation, breaking Premier League administrative Rule K.207",
+      "explanation": "Manchester City refused to let Enzo Maresca do post-match radio interviews following the Liverpool game and gave no explanation, breaching Premier League administrative rules.",
+      "anchorClues": "Manchester City Enzo Maresca radio interview Liverpool Rule K207"
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which former Southampton legend celebrates his birthday today?",
+      "question": "Which former Manchester United and Newcastle legend celebrates his birthday today?",
       "options": [
-        "Matthew Le Tissier",
-        "Peter Crouch",
-        "Theo Walcott",
-        "Virgil van Dijk"
+        "Andrew Cole",
+        "Steve Bruce"
       ],
-      "answer": "Matthew Le Tissier",
-      "explanation": "Matthew Le Tissier was born on 14 October 1968.",
-      "anchorClues": "Matthew Le Tissier Southampton birthday October 14"
+      "answer": "Andrew Cole",
+      "explanation": "Andrew Cole was born on 15 October 1971 and played as a prolific striker for both Newcastle United and Manchester United.",
+      "anchorClues": "Andrew Cole Manchester United Newcastle birthday October 15"
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Continuing their poor start to the season, Manchester United suffered a 2–0 defeat in the Champions League last night (Tuesday) to whom?",
+      "question": "Manchester City were beaten 2–4 last night (Wednesday) in the Champions League by whom?",
       "options": [
-        "Atlético Madrid",
-        "Real Madrid"
+        "PSG",
+        "Real Madrid",
+        "Bayern Munich",
+        "Inter Milan"
       ],
-      "answer": "Atlético Madrid",
-      "explanation": "Manchester United fell to a 2–0 Champions League defeat against Atlético Madrid.",
-      "anchorClues": "Manchester United Champions League loss Atletico Madrid"
+      "answer": "PSG",
+      "explanation": "Paris Saint-Germain came out top in a 4–2 thriller against Manchester City in the Champions League.",
+      "anchorClues": "Manchester City Champions League loss PSG 4-2"
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Who scored Arsenal's third goal against Lille last night (Tuesday) in the Champions League?",
+      "question": "In the Champions League last night, Liverpool bagged 6 against Austrian team LASK. Who got a hat-trick?",
       "options": [
-        "Bukayo Saka",
-        "Gabriel Martinelli",
-        "Kai Havertz",
-        "Declan Rice"
+        "Bradley Barcola",
+        "Cody Gakpo",
+        "Darwin Núñez",
+        "Mohamed Salah"
       ],
-      "answer": "Bukayo Saka",
-      "explanation": "Bukayo Saka sealed Arsenal's victory by netting their third goal against Lille.",
-      "anchorClues": "Bukayo Saka Arsenal Lille Champions League 3rd goal"
+      "answer": "Bradley Barcola",
+      "explanation": "Bradley Barcola led the charge, claiming a spectacular hat-trick in Liverpool's 6-goal performance against LASK.",
+      "anchorClues": "Liverpool LASK Champions League Barcola hat-trick"
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "According to Paddy Power today (Wednesday), who are the favourites to win the Premier League this season?",
+      "question": "Which other team (not Liverpool) also netted 6 last night in Europe?",
       "options": [
-        "Arsenal",
-        "Manchester City"
+        "Aston Villa",
+        "Real Madrid",
+        "PSG",
+        "Barcelona"
       ],
-      "answer": "Arsenal",
-      "explanation": "Arsenal are currently listed as top favourites to lift the Premier League title.",
-      "anchorClues": "Arsenal Paddy Power Premier League favourites"
+      "answer": "Aston Villa",
+      "explanation": "Aston Villa matched Liverpool's scoring feats across Europe by putting 6 goals past their opponents.",
+      "anchorClues": "Aston Villa European match 6 goals scored"
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "Which Premier League stadium is the largest by seating capacity?",
+      "question": "Who are top of the Champions League today?",
       "options": [
-        "Old Trafford",
-        "Tottenham Hotspur Stadium",
-        "Anfield",
-        "London Stadium"
+        "PSG",
+        "Barcelona",
+        "Liverpool",
+        "Arsenal"
       ],
-      "answer": "Old Trafford",
-      "explanation": "Manchester United's Old Trafford holds the largest seating capacity of any Premier League stadium, seating over 74,000 fans.",
-      "anchorClues": "Old Trafford largest Premier League stadium capacity"
+      "answer": "PSG",
+      "explanation": "Following their impressive victory, PSG sit right at the top of the Champions League group table.",
+      "anchorClues": "PSG top Champions League table"
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Which squad number did birthday boy Matthew Le Tissier wear during his career at Southampton?",
+      "question": "Which squad number was Nigel Clough given during the Premier League's inaugural year?",
       "options": [
         "7",
         "6",
@@ -93,50 +95,50 @@
         "11"
       ],
       "answer": "7",
-      "explanation": "Matthew Le Tissier famously wore the number 7 shirt for Southampton.",
-      "anchorClues": "Matthew Le Tissier Southampton squad number 7"
+      "explanation": "Nigel Clough wore the famous number 7 shirt when official squad numbers were introduced in the Premier League era.",
+      "anchorClues": "Nigel Clough squad number 7 Premier League"
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Which player holds the Premier League record for scoring the most goals exclusively from outside the penalty box?",
+      "question": "Which team has the smallest capacity ground in the Premier League?",
       "options": [
-        "Frank Lampard",
-        "Peter Crouch",
-        "David Beckham",
-        "Steven Gerrard"
+        "Bournemouth",
+        "Coventry",
+        "Ipswich",
+        "Hull"
       ],
-      "answer": "Frank Lampard",
-      "explanation": "Frank Lampard holds the record for the most Premier League goals scored from outside the 18-yard box, with 41 goals.",
-      "anchorClues": "Frank Lampard most goals outside penalty box Premier League record"
+      "answer": "Bournemouth",
+      "explanation": "Bournemouth's Vitality Stadium (Dean Court) holds around 11,300 fans, making it the smallest stadium in the top flight.",
+      "anchorClues": "Bournemouth smallest stadium capacity Premier League Vitality"
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "Who is the only player to have won the Premier League Golden Boot while playing for a club that finished outside the top six?",
+      "question": "Excluding goalkeepers, who is officially the tallest outfield player to play in the Premier League?",
       "options": [
-        "Kevin Phillips",
-        "Jamie Vardy",
-        "Darren Bent",
-        "Harry Kane"
+        "Lacina Traoré",
+        "Peter Crouch",
+        "Dan Burn",
+        "Per Mertesacker"
       ],
-      "answer": "Kevin Phillips",
-      "explanation": "Kevin Phillips won the Golden Boot in 1999/2000 after scoring 30 goals for Sunderland, who finished 7th that season.",
-      "anchorClues": "Kevin Phillips Golden Boot outside top six Sunderland"
+      "answer": "Lacina Traoré",
+      "explanation": "Standing at 6ft 8in (2.03m), striker Lacina Traoré edges out Peter Crouch and Dan Burn as the tallest outfield player in Premier League history.",
+      "anchorClues": "Lacina Traore tallest outfield player Premier League height"
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Which referee holds the record for issuing the most red cards in the history of the Premier League?",
+      "question": "Who scored the fastest goal in Premier League history?",
       "options": [
-        "Mike Dean",
-        "Martin Atkinson",
-        "Anthony Taylor",
-        "Howard Webb"
+        "Shane Long",
+        "Ledley King",
+        "Philip Billing",
+        "Alan Shearer"
       ],
-      "answer": "Mike Dean",
-      "explanation": "Mike Dean handed out a record 114 red cards during his Premier League refereeing career.",
-      "anchorClues": "Mike Dean most red cards referee record Premier League"
+      "answer": "Shane Long",
+      "explanation": "Shane Long scored for Southampton against Watford in just 7.69 seconds back in April 2019.",
+      "anchorClues": "Shane Long fastest goal Premier League history 7 seconds"
     }
   ]
 }
