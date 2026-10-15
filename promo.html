@@ -11,7 +11,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
     <!-- HTML2CANVAS LIBRARY FOR RECEIPT SCREENSHOT CAPTURE -->
@@ -220,7 +220,7 @@
         .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 6px; flex-shrink: 0; }
         .floor-info-box { flex-grow: 1; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
 
-        .play-card { width: 100%; max-width: 600px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 14px 10px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 12px; flex-grow: 1; margin-bottom: 6px; overflow: hidden; min-height: 0; position: relative; }
+        .play-card { width: 100%; max-width: 600px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 14px 10px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 10px; flex-grow: 1; margin-bottom: 6px; overflow: hidden; min-height: 0; position: relative; }
         
         .question-box { width: 100%; background: #111111; border: 1px solid var(--surface-border); border-radius: 6px; padding: 14px; text-align: center; }
         
@@ -230,17 +230,40 @@
             border: 1px dashed var(--genre-pitch);
         }
 
-        /* GAFFER BANTER FACT BOX */
+        /* REFACTORED GAFFER REVEAL & FACT BOX */
+        .btn-reveal-fact {
+            background: transparent;
+            border: 1px dashed var(--genre-pitch);
+            color: var(--genre-pitch);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 14px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
         .gaffer-fact-box {
             width: 100%;
-            background: rgba(34, 197, 94, 0.08);
-            border: 1px solid var(--genre-pitch);
+            background: rgba(34, 197, 94, 0.05);
+            border: 1px solid var(--surface-border-light);
             border-radius: 6px;
-            padding: 10px 12px;
-            font-size: 0.75rem;
-            color: var(--genre-pitch);
+            padding: 8px 12px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
             text-align: left;
             display: none;
+        }
+
+        .gaffer-fact-text {
+            font-style: italic;
+            color: #cccccc;
+            margin-top: 2px;
+            font-weight: 400;
+            line-height: 1.3;
         }
 
         /* ERROR FEEDBACK BANNER */
@@ -264,7 +287,7 @@
             40%, 80% { transform: translateX(6px); }
         }
 
-        .options-grid { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+        .options-grid { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 2px; }
         .btn-option { width: 100%; background: #111111; border: 1px solid var(--surface-border-light); border-radius: 8px; padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-primary); text-align: left; cursor: pointer; transition: background-color 0.2s ease, border-color 0.2s ease; }
         .btn-option.selected-correct { background: rgba(34, 197, 94, 0.2); border-color: var(--genre-pitch); color: var(--genre-pitch); }
         .btn-option.selected-wrong { background: rgba(239, 68, 68, 0.2); border-color: var(--state-error); color: var(--state-error); }
@@ -329,8 +352,9 @@
     </style>
 
     <script>
-        // FULL 50-FLOOR DATASET DECLARED IN HEAD TO ENSURE INSTANT INITIALISATION
+        // FULL 45-FLOOR DATASET (EXACTLY 45 FLOORS)
         const fullQuestions = [
+            // FLOORS 1-10: SET 31 DAILY QUESTIONS
             {
                 floor: 1,
                 question: "Why did Manchester City block their manager from speaking to the radio after the Liverpool match?",
@@ -401,6 +425,8 @@
                 answer: "Shane Long",
                 explanation: "Shane Long scored for Southampton against Watford in just 7.69 seconds back in April 2019."
             },
+
+            // FLOORS 11-45: TRIVIA FLOORS
             {
                 floor: 11,
                 question: "Which player holds the record for most assists in Premier League history?",
@@ -645,41 +671,6 @@
                 options: ["Arsenal", "Manchester United", "Chelsea", "Liverpool"],
                 answer: "Arsenal",
                 explanation: "Arsenal hold the record with 14 FA Cup triumphs."
-            },
-            {
-                floor: 46,
-                question: "Who scored England's third goal in the 1966 World Cup Final victory over West Germany?",
-                options: ["Geoff Hurst", "Martin Peters", "Bobby Charlton", "Roger Hunt"],
-                answer: "Geoff Hurst",
-                explanation: "Geoff Hurst scored a famous hat-trick, with Martin Peters netting England's second."
-            },
-            {
-                floor: 47,
-                question: "Which Dutch defender was named PFA Players' Player of the Year in 2018–19?",
-                options: ["Virgil van Dijk", "Nathan Aké", "Jaap Stam", "Ruud Krol"],
-                answer: "Virgil van Dijk",
-                explanation: "Virgil van Dijk became the first defender in 14 years to win the PFA award."
-            },
-            {
-                floor: 48,
-                question: "Who is the highest-scoring defender in Premier League history?",
-                options: ["John Terry", "David Unsworth", "Ian Harte", "Sami Hyypiä"],
-                answer: "John Terry",
-                explanation: "Former Chelsea captain John Terry netted 41 Premier League goals."
-            },
-            {
-                floor: 49,
-                question: "Which club was the first to record 100 top-flight league victories against Manchester United?",
-                options: ["Arsenal", "Liverpool", "Everton", "Manchester City"],
-                answer: "Arsenal",
-                explanation: "Arsenal reached historic 100 victory milestones across top-flight history against Manchester United."
-            },
-            {
-                floor: 50,
-                question: "Who won the FIFA Ballon d'Or in 2001 while playing for Liverpool?",
-                options: ["Michael Owen", "Steven Gerrard", "Robbie Fowler", "Sami Hyypiä"],
-                answer: "Michael Owen",
-                explanation: "Michael Owen won the prestigious Ballon d'Or in 2001 after Liverpool's cup treble season."
             }
         ];
 
@@ -783,6 +774,18 @@
             renderFloor();
         }
 
+        function toggleGafferFact() {
+            const box = document.getElementById('gaffer-fact-box');
+            const btn = document.getElementById('btn-reveal-fact');
+            if (box.style.display === 'block') {
+                box.style.display = 'none';
+                btn.textContent = '💡 REVEAL GAFFA FACT';
+            } else {
+                box.style.display = 'block';
+                btn.textContent = '🙈 HIDE GAFFA FACT';
+            }
+        }
+
         function renderFloor() {
             document.getElementById('error-banner').style.display = 'none';
 
@@ -796,22 +799,27 @@
             const qText = document.getElementById('question-text');
             const gafferBox = document.getElementById('gaffer-fact-box');
             const gafferText = document.getElementById('gaffer-fact-text');
+            const revealBtn = document.getElementById('btn-reveal-fact');
             
-            document.getElementById('card-floor-text').innerHTML = `<span style="color: var(--genre-pitch);">Floor ${q.floor}</span> / 50`;
+            document.getElementById('card-floor-text').innerHTML = `<span style="color: var(--genre-pitch);">Floor ${q.floor}</span> / 45`;
             document.getElementById('mode-badge-text').textContent = `MODE: ${selectedMode.toUpperCase()}`;
 
             if (selectedMode === 'group') {
                 qBox.classList.add('masked');
                 qText.innerHTML = `<span style="color: var(--genre-pitch); font-style: italic;">🔒 QUESTION MASKED<br><small style="color: var(--text-muted); font-size: 0.65rem;">LISTEN TO YOUR GAFFA READ ALOUD</small></span>`;
+                revealBtn.style.display = 'none';
                 gafferBox.style.display = 'none';
             } else if (selectedMode === 'gaffa') {
                 qBox.classList.remove('masked');
                 qText.textContent = q.question;
-                gafferBox.style.display = 'block';
+                revealBtn.style.display = 'block';
+                revealBtn.textContent = '💡 REVEAL GAFFA FACT';
+                gafferBox.style.display = 'none';
                 gafferText.textContent = q.explanation;
             } else {
                 qBox.classList.remove('masked');
                 qText.textContent = q.question;
+                revealBtn.style.display = 'none';
                 gafferBox.style.display = 'none';
             }
 
@@ -858,6 +866,7 @@
             document.getElementById('victory-time-display').textContent = formattedTime;
             document.getElementById('victory-time-row-display').textContent = `${formattedTime}s`;
             document.getElementById('victory-mode-badge').textContent = `${selectedMode.toUpperCase()} MASTER`;
+            document.getElementById('accuracy-text').textContent = '100% (45/45)';
         }
 
         function resetAndPlayAgain() {
@@ -881,12 +890,12 @@
             <div class="game-logo-box">
                 <h1 class="game-logo-pitch">SKYSCRAPER</h1>
                 <p class="game-logo-title">Eleventh Floor Special</p>
-                <p class="game-logo-sub">50-FLOOR MATCHDAY DROP</p>
+                <p class="game-logo-sub">45-FLOOR MATCHDAY DROP</p>
             </div>
 
             <div class="landing-container">
                 <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
-                    <strong>50 FLOORS OF MATCHDAY LORE</strong><br><br>
+                    <strong>45 FLOORS OF MATCHDAY LORE</strong><br><br>
                     No per-question timer bar. Play solo, host as Gaffa, or play in Group Play mode.
                 </div>
 
@@ -896,7 +905,7 @@
                     
                     <button class="mode-option-btn active" onclick="selectMode('solo', this)">
                         <span>1. SOLO CLIMB</span>
-                        <span class="mode-desc">Standard 50 Floors</span>
+                        <span class="mode-desc">Standard 45 Floors</span>
                     </button>
                     
                     <button class="mode-option-btn" onclick="selectMode('gaffa', this)">
@@ -910,7 +919,7 @@
                     </button>
                 </div>
 
-                <button id="btn-start-skyscraper" class="btn-start" onclick="startSkyscraperGame()">Start 50-Floor Climb</button>
+                <button id="btn-start-skyscraper" class="btn-start" onclick="startSkyscraperGame()">Start 45-Floor Climb</button>
                 <button id="btn-resume-skyscraper" class="pill-btn" onclick="resumeSkyscraperGame()" style="display: none; background: rgba(34, 197, 94, 0.1); border-color: var(--genre-pitch); color: var(--genre-pitch); width: 100%; margin-top: 4px; padding: 10px; font-weight: 800;">RESUME PREVIOUS SESSION</button>
             </div>
         </div>
@@ -926,7 +935,7 @@
             <div class="floor-info-box">
                 <div style="display: flex; flex-direction: column; gap: 4px;">
                     <div id="card-floor-text" style="font-size: 1.1rem; font-weight: 800;">
-                        <span style="color: var(--genre-pitch);">Floor 1</span> / 50
+                        <span style="color: var(--genre-pitch);">Floor 1</span> / 45
                     </div>
                     <div id="mode-badge-text" style="font-size: 0.65rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">MODE: SOLO</div>
                 </div>
@@ -943,10 +952,11 @@
                 <div id="question-text" style="font-size: 0.9rem; font-weight: 600; color: #ffffff;">Loading matchday lore...</div>
             </div>
 
-            <!-- GAFFER BANTER FACT BOX -->
+            <!-- GAFFER REVEAL BUTTON & BANTER FACT BOX -->
+            <button id="btn-reveal-fact" class="btn-reveal-fact" onclick="toggleGafferFact()" style="display: none;">💡 REVEAL GAFFA FACT</button>
             <div class="gaffer-fact-box" id="gaffer-fact-box">
-                <strong>💡 GAFFER BANTER FACT:</strong>
-                <div id="gaffer-fact-text" style="margin-top: 4px; color: #ffffff; font-weight: 500;">...</div>
+                <span style="font-weight: 700; color: var(--genre-pitch);">GAFFA FACT:</span>
+                <div class="gaffer-fact-text" id="gaffer-fact-text">...</div>
             </div>
 
             <!-- ERROR FEEDBACK BANNER -->
@@ -983,7 +993,7 @@
                         <span class="brand-white">Think You Know Ball?</span>
                     </div>
                     <div class="flex-status-label">
-                        <span class="brand-green">50 Floors</span> <span class="brand-white">Cleared</span>
+                        <span class="brand-green">45 Floors</span> <span class="brand-white">Cleared</span>
                     </div>
                     <div class="hero-time-display"><span id="victory-time-display">00:00</span><span class="hero-time-unit">s</span></div>
                     <div class="flex-tier-badge" id="victory-mode-badge">SOLO MASTER</div>
@@ -996,32 +1006,4 @@
                     </div>
                     <div class="receipt-row">
                         <span class="row-label">MATCH TIME</span>
-                        <span id="victory-time-row-display" class="row-val active">00:00s</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="row-label">ACCURACY</span>
-                        <span class="row-val success">100% (50/50)</span>
-                    </div>
-                </div>
-
-                <div class="card-footer-cta">
-                    MATCHDAY DROP COMPLETE!
-                </div>
-            </div>
-
-            <!-- ACTION CONTROL BUTTONS -->
-            <div class="controls-group">
-                <button class="btn-flex-action" id="share-btn">SHARE SCREENSHOT</button>
-                <button class="btn-secondary-action" onclick="resetAndPlayAgain()">PLAY AGAIN</button>
-            </div>
-        </div>
-
-        <footer id="footer-text" style="font-size: 0.6rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-top: 12px; margin-bottom: 8px;">
-            11TH FLOOR GAMES • MADE BY HUMANS!
-        </footer>
-    </div>
-
-    <!-- Toast Notification -->
-    <div id="toast-msg">SCREENSHOT GENERATED</div>
-</body>
-</html>
+                        <span id="
