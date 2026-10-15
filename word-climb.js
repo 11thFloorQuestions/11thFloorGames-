@@ -621,3 +621,58 @@ function recordGameResult(isWin, peakFloor) {
         stats.wins++;
         stats.streak++;
         if (stats.bestTimeSeconds === null || timeElapsedSeconds < stats.bestTimeSeconds) {
+            stats.bestTimeSeconds = timeElapsedSeconds;
+        }
+    } else {
+        stats.streak = 0;
+    }
+
+    if (peakFloor > stats.bestFloor) {
+        stats.bestFloor = peakFloor;
+    }
+
+    try {
+        localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+    } catch (e) {
+        console.warn("LocalStorage save blocked.");
+    }
+    updateStatsDisplay();
+    return stats;
+}
+
+function getStats() {
+    try {
+        const raw = localStorage.getItem(STATS_KEY);
+        if (!raw) {
+            return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
+        }
+        return JSON.parse(raw);
+    } catch (e) {
+        return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
+    }
+}
+
+function updateStatsDisplay() {
+    const stats = getStats();
+    const playedElem = document.getElementById("stat-played");
+    const winsElem = document.getElementById("stat-wins");
+    const winrateElem = document.getElementById("stat-winrate");
+    const streakElem = document.getElementById("stat-streak");
+    const bestfloorElem = document.getElementById("stat-bestfloor");
+    const besttimeElem = document.getElementById("stat-besttime");
+
+    if (playedElem) playedElem.textContent = stats.played;
+    if (winsElem) winsElem.textContent = stats.wins;
+    
+    const winRate = stats.played > 0 ? Math.round((stats.wins / stats.played) * 100) : 0;
+    if (winrateElem) winrateElem.textContent = `${winRate}%`;
+    if (streakElem) streakElem.textContent = stats.streak;
+    
+    if (bestfloorElem) {
+        bestfloorElem.innerHTML = getOrdinalFloorHTML(stats.bestFloor);
+    }
+
+    if (besttimeElem) {
+        besttimeElem.textContent = formatTime(stats.bestTimeSeconds);
+    }
+}
