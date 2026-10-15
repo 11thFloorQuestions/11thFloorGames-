@@ -162,7 +162,6 @@
             margin-top: 6px;
         }
 
-        /* MODE SELECTOR CARD */
         .mode-selector-box {
             width: 100%;
             display: flex;
@@ -227,13 +226,11 @@
         
         .question-box { width: 100%; background: #111111; border: 1px solid var(--surface-border); border-radius: 6px; padding: 14px; text-align: center; }
         
-        /* MASKED QUESTION STATE (GROUP PLAY) */
         .question-box.masked {
             background: repeating-linear-gradient(45deg, #0a0a0a, #0a0a0a 10px, #111111 10px, #111111 20px);
             border: 1px dashed var(--genre-pitch);
         }
 
-        /* GAFFER REVEAL & FACT BOX */
         .btn-reveal-fact {
             background: transparent;
             border: 1px dashed var(--genre-pitch);
@@ -269,7 +266,6 @@
             line-height: 1.3;
         }
 
-        /* ERROR FEEDBACK BANNER */
         .error-banner {
             width: 100%;
             background: rgba(239, 68, 68, 0.15);
@@ -295,7 +291,6 @@
         .btn-option.selected-correct { background: rgba(34, 197, 94, 0.2); border-color: var(--genre-pitch); color: var(--genre-pitch); }
         .btn-option.selected-wrong { background: rgba(239, 68, 68, 0.2); border-color: var(--state-error); color: var(--state-error); }
 
-        /* IN-GAME VICTORY RECEIPT CARD */
         .victory-receipt-card {
             width: 100%;
             max-width: 340px;
@@ -333,4 +328,133 @@
         .brand-white { color: #ffffff; }
 
         .hero-time-display { font-family: 'Anton', sans-serif; font-size: 3.4rem; line-height: 0.9; color: #ffffff; letter-spacing: 2px; margin: 8px 0; }
-        .hero-time-unit { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 800; color: #888888; letter-spacing: 1px; margin-left: 2
+        .hero-time-unit { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 800; color: #888888; letter-spacing: 1px; margin-left: 2px; text-transform: lowercase; }
+
+        .flex-tier-badge { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; color: var(--genre-pitch); letter-spacing: 2px; text-transform: uppercase; background: rgba(34, 197, 94, 0.1); border: 1px solid var(--genre-pitch); padding: 6px 16px; border-radius: 12px; margin-top: 6px; }
+
+        .receipt-details { border-top: 1px solid #333333; padding-top: 14px; margin-bottom: 16px; }
+        .receipt-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .receipt-row:last-child { margin-bottom: 0; }
+        .row-label { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: #888888; text-transform: uppercase; letter-spacing: 1px; }
+        .row-val { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
+        .row-val.success { color: var(--genre-pitch); }
+        .row-val.active { color: var(--state-active); }
+
+        .card-footer-cta { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 800; color: #888888; letter-spacing: 1.5px; border-top: 1px dashed #333333; padding-top: 10px; text-transform: uppercase; }
+
+        .controls-group { width: 100%; max-width: 340px; display: flex; flex-direction: column; align-items: center; }
+        .btn-flex-action { width: 100%; background-color: var(--genre-pitch); border: 1px solid var(--genre-pitch); color: #000000; padding: 14px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border-radius: 24px; cursor: pointer; box-shadow: 0 0 15px var(--genre-pitch-glow); margin-bottom: 10px; display: block; }
+        .btn-secondary-action { width: 100%; background-color: #111111; border: 1px solid #333333; color: #ffffff; padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 24px; cursor: pointer; display: block; }
+
+        #toast-msg { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--genre-pitch); color: #000000; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.75rem; padding: 8px 16px; border-radius: 20px; display: none; z-index: 1000; letter-spacing: 1px; text-transform: uppercase; }
+    </style>
+
+    <script>
+        const fullQuestions = [
+            {
+                floor: 1,
+                question: "Why did Manchester City block their manager from speaking to the radio after the Liverpool match?",
+                options: ["Worried about 114 financial charges being mentioned", "Enzo Maresca would accidentally leak the tactical room's Wi-Fi password", "Maresca was about to burst into song", "The club offered no explanation, breaking Premier League administrative Rule K.207"],
+                answer: "The club offered no explanation, breaking Premier League administrative Rule K.207",
+                explanation: "Manchester City refused to let Enzo Maresca do post-match radio interviews following the Liverpool game and gave no explanation, breaching Premier League administrative rules."
+            },
+            {
+                floor: 2,
+                question: "Which former Manchester United and Newcastle legend celebrates his birthday today?",
+                options: ["Andrew Cole", "Steve Bruce"],
+                answer: "Andrew Cole",
+                explanation: "Andrew Cole was born on 15 October 1971 and played as a prolific striker for both Newcastle United and Manchester United."
+            },
+            {
+                floor: 3,
+                question: "Manchester City were beaten 2–4 last night (Wednesday) in the Champions League by whom?",
+                options: ["PSG", "Real Madrid", "Bayern Munich", "Inter Milan"],
+                answer: "PSG",
+                explanation: "Paris Saint-Germain came out top in a 4–2 thriller against Manchester City in the Champions League."
+            },
+            {
+                floor: 4,
+                question: "In the Champions League last night, Liverpool bagged 6 against Austrian team LASK. Who got a hat-trick?",
+                options: ["Bradley Barcola", "Cody Gakpo", "Darwin Núñez", "Mohamed Salah"],
+                answer: "Bradley Barcola",
+                explanation: "Bradley Barcola led the charge, claiming a spectacular hat-trick in Liverpool's 6-goal performance against LASK."
+            },
+            {
+                floor: 5,
+                question: "Which other team (not Liverpool) also netted 6 last night in Europe?",
+                options: ["Aston Villa", "Real Madrid", "PSG", "Barcelona"],
+                answer: "Aston Villa",
+                explanation: "Aston Villa matched Liverpool's scoring feats across Europe by putting 6 goals past their opponents."
+            },
+            {
+                floor: 6,
+                question: "Who are top of the Champions League today?",
+                options: ["PSG", "Barcelona", "Liverpool", "Arsenal"],
+                answer: "PSG",
+                explanation: "Following their impressive victory, PSG sit right at the top of the Champions League group table."
+            },
+            {
+                floor: 7,
+                question: "Which squad number was Nigel Clough given during the Premier League's inaugural year?",
+                options: ["7", "6", "8", "11"],
+                answer: "7",
+                explanation: "Nigel Clough wore the famous number 7 shirt when official squad numbers were introduced in the Premier League era."
+            },
+            {
+                floor: 8,
+                question: "Which team has the smallest capacity ground in the Premier League?",
+                options: ["Bournemouth", "Coventry", "Ipswich", "Hull"],
+                answer: "Bournemouth",
+                explanation: "Bournemouth's Vitality Stadium (Dean Court) holds around 11,300 fans, making it the smallest stadium in the top flight."
+            },
+            {
+                floor: 9,
+                question: "Excluding goalkeepers, who is officially the tallest outfield player to play in the Premier League?",
+                options: ["Lacina Traoré", "Peter Crouch", "Dan Burn", "Per Mertesacker"],
+                answer: "Lacina Traoré",
+                explanation: "Standing at 6ft 8in (2.03m), striker Lacina Traoré edges out Peter Crouch and Dan Burn as the tallest outfield player in Premier League history."
+            },
+            {
+                floor: 10,
+                question: "Who scored the fastest goal in Premier League history?",
+                options: ["Shane Long", "Ledley King", "Philip Billing", "Alan Shearer"],
+                answer: "Shane Long",
+                explanation: "Shane Long scored for Southampton against Watford in just 7.69 seconds back in April 2019."
+            }
+        ];
+
+        let currentFloor = 0;
+        let selectedMode = 'solo';
+        let startTime = 0;
+        let timerInterval = null;
+        let timeElapsedSeconds = 0;
+        let soundEnabled = true;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedState = localStorage.getItem('skyscraper_progress');
+            if (savedState) {
+                document.getElementById('btn-resume-skyscraper').style.display = 'block';
+            }
+
+            document.getElementById('share-btn').addEventListener('click', async () => {
+                const victoryCard = document.getElementById('victory-card');
+                const toast = document.getElementById('toast-msg');
+                
+                toast.innerText = 'CAPTURING SCREENSHOT...';
+                toast.style.display = 'block';
+
+                const canvas = await html2canvas(victoryCard, { backgroundColor: '#111111', scale: 2 });
+                canvas.toBlob(async (blob) => {
+                    toast.style.display = 'none';
+                    if (!blob) return;
+                    const file = new File([blob], 'tykball-545-victory.png', { type: 'image/png' });
+
+                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                        try {
+                            await navigator.share({ title: 'TYKB 5.45 Special Victory Card', files: [file] });
+                        } catch (e) {}
+                    } else {
+                        const a = document.createElement('a');
+                        a.href = URL.createObjectURL(file);
+                        a.download = 'tykball-545-victory.png';
+                        a.click();
