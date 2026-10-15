@@ -162,7 +162,6 @@
             margin-top: 6px;
         }
 
-        /* MODE SELECTOR CARD */
         .mode-selector-box {
             width: 100%;
             display: flex;
@@ -227,13 +226,11 @@
         
         .question-box { width: 100%; background: #111111; border: 1px solid var(--surface-border); border-radius: 6px; padding: 14px; text-align: center; }
         
-        /* MASKED QUESTION STATE (GROUP PLAY) */
         .question-box.masked {
             background: repeating-linear-gradient(45deg, #0a0a0a, #0a0a0a 10px, #111111 10px, #111111 20px);
             border: 1px dashed var(--genre-pitch);
         }
 
-        /* REFACTORED GAFFER REVEAL & FACT BOX */
         .btn-reveal-fact {
             background: transparent;
             border: 1px dashed var(--genre-pitch);
@@ -269,7 +266,6 @@
             line-height: 1.3;
         }
 
-        /* ERROR FEEDBACK BANNER */
         .error-banner {
             width: 100%;
             background: rgba(239, 68, 68, 0.15);
@@ -295,7 +291,6 @@
         .btn-option.selected-correct { background: rgba(34, 197, 94, 0.2); border-color: var(--genre-pitch); color: var(--genre-pitch); }
         .btn-option.selected-wrong { background: rgba(239, 68, 68, 0.2); border-color: var(--state-error); color: var(--state-error); }
 
-        /* IN-GAME VICTORY RECEIPT CARD */
         .victory-receipt-card {
             width: 100%;
             max-width: 340px;
@@ -683,45 +678,54 @@
         window.addEventListener('DOMContentLoaded', () => {
             const savedState = localStorage.getItem('skyscraper_progress');
             if (savedState) {
-                document.getElementById('btn-resume-skyscraper').style.display = 'block';
+                const btnResume = document.getElementById('btn-resume-skyscraper');
+                if (btnResume) btnResume.style.display = 'block';
             }
 
-            document.getElementById('share-btn').addEventListener('click', async () => {
-                const victoryCard = document.getElementById('victory-card');
-                const toast = document.getElementById('toast-msg');
-                
-                toast.innerText = 'CAPTURING SCREENSHOT...';
-                toast.style.display = 'block';
-
-                const canvas = await html2canvas(victoryCard, { backgroundColor: '#111111', scale: 2 });
-                canvas.toBlob(async (blob) => {
-                    toast.style.display = 'none';
-                    if (!blob) return;
-                    const file = new File([blob], 'tykball-545-victory.png', { type: 'image/png' });
-
-                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                        try {
-                            await navigator.share({ title: 'TYKB 5.45 Special Victory Card', files: [file] });
-                        } catch (e) {}
-                    } else {
-                        const a = document.createElement('a');
-                        a.href = URL.createObjectURL(file);
-                        a.download = 'tykball-545-victory.png';
-                        a.click();
+            const shareBtn = document.getElementById('share-btn');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', async () => {
+                    const victoryCard = document.getElementById('victory-card');
+                    const toast = document.getElementById('toast-msg');
+                    
+                    if (toast) {
+                        toast.innerText = 'CAPTURING SCREENSHOT...';
+                        toast.style.display = 'block';
                     }
-                }, 'image/png');
-            });
+
+                    if (victoryCard) {
+                        const canvas = await html2canvas(victoryCard, { backgroundColor: '#111111', scale: 2 });
+                        canvas.toBlob(async (blob) => {
+                            if (toast) toast.style.display = 'none';
+                            if (!blob) return;
+                            const file = new File([blob], 'tykball-545-victory.png', { type: 'image/png' });
+
+                            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                                try {
+                                    await navigator.share({ title: 'TYKB 5.45 Special Victory Card', files: [file] });
+                                } catch (e) {}
+                            } else {
+                                const a = document.createElement('a');
+                                a.href = URL.createObjectURL(file);
+                                a.download = 'tykball-545-victory.png';
+                                a.click();
+                            }
+                        }, 'image/png');
+                    }
+                });
+            }
         });
 
         function toggleSound() {
             soundEnabled = !soundEnabled;
-            document.getElementById('btn-sound-toggle').innerText = `SOUND: ${soundEnabled ? 'ON' : 'OFF'}`;
+            const btn = document.getElementById('btn-sound-toggle');
+            if (btn) btn.innerText = `SOUND: ${soundEnabled ? 'ON' : 'OFF'}`;
         }
 
         function selectMode(mode, btnEl) {
             selectedMode = mode;
             document.querySelectorAll('.mode-option-btn').forEach(b => b.classList.remove('active'));
-            btnEl.classList.add('active');
+            if (btnEl) btnEl.classList.add('active');
         }
 
         function startSkyscraperGame() {
@@ -745,10 +749,15 @@
         }
 
         function initGameSession(isResume = false) {
-            document.getElementById('landing-screen').style.display = 'none';
-            document.getElementById('gameplay-header').style.display = 'flex';
-            document.getElementById('floor-hud-container').style.display = 'flex';
-            document.getElementById('game-workspace').style.display = 'flex';
+            const landing = document.getElementById('landing-screen');
+            const header = document.getElementById('gameplay-header');
+            const hud = document.getElementById('floor-hud-container');
+            const workspace = document.getElementById('game-workspace');
+
+            if (landing) landing.style.display = 'none';
+            if (header) header.style.display = 'flex';
+            if (hud) hud.style.display = 'flex';
+            if (workspace) workspace.style.display = 'flex';
 
             if (!isResume) {
                 timeElapsedSeconds = 0;
@@ -761,7 +770,9 @@
                 timeElapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
                 const m = Math.floor(timeElapsedSeconds / 60).toString().padStart(2, '0');
                 const s = (timeElapsedSeconds % 60).toString().padStart(2, '0');
-                document.getElementById('active-game-timer').textContent = `${m}:${s}`;
+                
+                const activeTimer = document.getElementById('active-game-timer');
+                if (activeTimer) activeTimer.textContent = `${m}:${s}`;
                 
                 localStorage.setItem('skyscraper_progress', JSON.stringify({
                     floor: currentFloor,
@@ -776,17 +787,20 @@
         function toggleGafferFact() {
             const box = document.getElementById('gaffer-fact-box');
             const btn = document.getElementById('btn-reveal-fact');
-            if (box.style.display === 'block') {
-                box.style.display = 'none';
-                btn.textContent = '💡 REVEAL GAFFA FACT';
-            } else {
-                box.style.display = 'block';
-                btn.textContent = '🙈 HIDE GAFFA FACT';
+            if (box && btn) {
+                if (box.style.display === 'block') {
+                    box.style.display = 'none';
+                    btn.textContent = '💡 REVEAL GAFFA FACT';
+                } else {
+                    box.style.display = 'block';
+                    btn.textContent = '🙈 HIDE GAFFA FACT';
+                }
             }
         }
 
         function renderFloor() {
-            document.getElementById('error-banner').style.display = 'none';
+            const errorBanner = document.getElementById('error-banner');
+            if (errorBanner) errorBanner.style.display = 'none';
 
             if (currentFloor >= fullQuestions.length) {
                 handleVictory();
@@ -799,52 +813,59 @@
             const gafferBox = document.getElementById('gaffer-fact-box');
             const gafferText = document.getElementById('gaffer-fact-text');
             const revealBtn = document.getElementById('btn-reveal-fact');
+            const floorText = document.getElementById('card-floor-text');
+            const modeBadge = document.getElementById('mode-badge-text');
             
-            document.getElementById('card-floor-text').innerHTML = `<span style="color: var(--genre-pitch);">Q${q.floor}</span> / ${fullQuestions.length}`;
-            document.getElementById('mode-badge-text').textContent = `MODE: ${selectedMode.toUpperCase()}`;
+            if (floorText) floorText.innerHTML = `<span style="color: var(--genre-pitch);">Q${q.floor}</span> / ${fullQuestions.length}`;
+            if (modeBadge) modeBadge.textContent = `MODE: ${selectedMode.toUpperCase()}`;
 
             if (selectedMode === 'group') {
-                qBox.classList.add('masked');
-                qText.innerHTML = `<span style="color: var(--genre-pitch); font-style: italic;">🔒 QUESTION MASKED<br><small style="color: var(--text-muted); font-size: 0.65rem;">LISTEN TO YOUR GAFFA READ ALOUD</small></span>`;
-                revealBtn.style.display = 'none';
-                gafferBox.style.display = 'none';
+                if (qBox) qBox.classList.add('masked');
+                if (qText) qText.innerHTML = `<span style="color: var(--genre-pitch); font-style: italic;">🔒 QUESTION MASKED<br><small style="color: var(--text-muted); font-size: 0.65rem;">LISTEN TO YOUR GAFFA READ ALOUD</small></span>`;
+                if (revealBtn) revealBtn.style.display = 'none';
+                if (gafferBox) gafferBox.style.display = 'none';
             } else if (selectedMode === 'gaffa') {
-                qBox.classList.remove('masked');
-                qText.textContent = q.question;
-                revealBtn.style.display = 'block';
-                revealBtn.textContent = '💡 REVEAL GAFFA FACT';
-                gafferBox.style.display = 'none';
-                gafferText.textContent = q.explanation;
+                if (qBox) qBox.classList.remove('masked');
+                if (qText) qText.textContent = q.question;
+                if (revealBtn) {
+                    revealBtn.style.display = 'block';
+                    revealBtn.textContent = '💡 REVEAL GAFFA FACT';
+                }
+                if (gafferBox) gafferBox.style.display = 'none';
+                if (gafferText) gafferText.textContent = q.explanation;
             } else {
-                qBox.classList.remove('masked');
-                qText.textContent = q.question;
-                revealBtn.style.display = 'none';
-                gafferBox.style.display = 'none';
+                if (qBox) qBox.classList.remove('masked');
+                if (qText) qText.textContent = q.question;
+                if (revealBtn) revealBtn.style.display = 'none';
+                if (gafferBox) gafferBox.style.display = 'none';
             }
 
             const grid = document.getElementById('options-grid');
-            grid.innerHTML = '';
-            q.options.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = 'btn-option';
-                btn.textContent = opt;
-                btn.onclick = () => selectAnswer(opt === q.answer, btn);
-                grid.appendChild(btn);
-            });
+            if (grid) {
+                grid.innerHTML = '';
+                q.options.forEach(opt => {
+                    const btn = document.createElement('button');
+                    btn.className = 'btn-option';
+                    btn.textContent = opt;
+                    btn.onclick = () => selectAnswer(opt === q.answer, btn);
+                    grid.appendChild(btn);
+                });
+            }
         }
 
         function selectAnswer(isCorrect, btnEl) {
             if (isCorrect) {
-                btnEl.classList.add('selected-correct');
+                if (btnEl) btnEl.classList.add('selected-correct');
                 setTimeout(() => {
                     currentFloor++;
                     renderFloor();
                 }, 600);
             } else {
-                btnEl.classList.add('selected-wrong');
-                document.getElementById('error-banner').style.display = 'block';
+                if (btnEl) btnEl.classList.add('selected-wrong');
+                const errorBanner = document.getElementById('error-banner');
+                if (errorBanner) errorBanner.style.display = 'block';
                 setTimeout(() => {
-                    btnEl.classList.remove('selected-wrong');
+                    if (btnEl) btnEl.classList.remove('selected-wrong');
                 }, 800);
             }
         }
@@ -853,19 +874,29 @@
             clearInterval(timerInterval);
             localStorage.removeItem('skyscraper_progress');
 
-            document.getElementById('game-workspace').style.display = 'none';
-            document.getElementById('floor-hud-container').style.display = 'none';
-            document.getElementById('gameplay-header').style.display = 'none';
-            document.getElementById('victory-screen').style.display = 'flex';
+            const workspace = document.getElementById('game-workspace');
+            const hud = document.getElementById('floor-hud-container');
+            const header = document.getElementById('gameplay-header');
+            const victory = document.getElementById('victory-screen');
+
+            if (workspace) workspace.style.display = 'none';
+            if (hud) hud.style.display = 'none';
+            if (header) header.style.display = 'none';
+            if (victory) victory.style.display = 'flex';
 
             const m = Math.floor(timeElapsedSeconds / 60).toString().padStart(2, '0');
             const s = (timeElapsedSeconds % 60).toString().padStart(2, '0');
             const formattedTime = `${m}:${s}`;
 
-            document.getElementById('victory-time-display').textContent = formattedTime;
-            document.getElementById('victory-time-row-display').textContent = `${formattedTime}s`;
-            document.getElementById('victory-mode-badge').textContent = `${selectedMode.toUpperCase()} MASTER`;
-            document.getElementById('accuracy-text').textContent = `100% (${fullQuestions.length}/${fullQuestions.length})`;
+            const timeDisplay = document.getElementById('victory-time-display');
+            const timeRowDisplay = document.getElementById('victory-time-row-display');
+            const modeBadge = document.getElementById('victory-mode-badge');
+            const accuracyText = document.getElementById('accuracy-text');
+
+            if (timeDisplay) timeDisplay.textContent = formattedTime;
+            if (timeRowDisplay) timeRowDisplay.textContent = `${formattedTime}s`;
+            if (modeBadge) modeBadge.textContent = `${selectedMode.toUpperCase()} MASTER`;
+            if (accuracyText) accuracyText.textContent = `100% (${fullQuestions.length}/${fullQuestions.length})`;
         }
 
         function resetAndPlayAgain() {
@@ -953,4 +984,79 @@
 
             <!-- GAFFER REVEAL BUTTON & BANTER FACT BOX -->
             <button id="btn-reveal-fact" class="btn-reveal-fact" onclick="toggleGafferFact()" style="display: none;">💡 REVEAL GAFFA FACT</button>
-            <div class="gaffer-fact-box" id="
+            <div class="gaffer-fact-box" id="gaffer-fact-box">
+                <span style="font-weight: 700; color: var(--genre-pitch);">GAFFA FACT:</span>
+                <div class="gaffer-fact-text" id="gaffer-fact-text">...</div>
+            </div>
+
+            <!-- ERROR FEEDBACK BANNER -->
+            <div class="error-banner" id="error-banner">
+                ❌ WRONG ANSWER! HAVE ANOTHER GO.
+            </div>
+
+            <!-- OPTIONS GRID -->
+            <div class="options-grid" id="options-grid">
+                <button class="btn-option"></button>
+                <button class="btn-option"></button>
+                <button class="btn-option"></button>
+                <button class="btn-option"></button>
+            </div>
+        </div>
+
+        <!-- FINAL ECOSYSTEM VICTORY SCREEN LAYOUT -->
+        <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
+            
+            <div class="victory-receipt-card" id="victory-card">
+                <div class="receipt-header">
+                    <div class="brand-lockup-container">
+                        <div class="brand-mark-left">11FL?</div>
+                        <div class="brand-text-stacked">
+                            <span class="brand-title-top">ELEVENTH FLOOR</span>
+                            <span class="brand-title-bottom">5.45 SPECIAL</span>
+                        </div>
+                    </div>
+                    <div class="badge-slot-reserved">VERIFIED</div>
+                </div>
+
+                <div class="hero-flex-box">
+                    <div class="game-title-header">
+                        <span class="brand-white">Think You Know Ball?</span>
+                    </div>
+                    <div class="flex-status-label">
+                        <span class="brand-green">5.45 SPECIAL</span> <span class="brand-white">CLEARED</span>
+                    </div>
+                    <div class="hero-time-display"><span id="victory-time-display">00:00</span><span class="hero-time-unit">s</span></div>
+                    <div class="flex-tier-badge" id="victory-mode-badge">SOLO MASTER</div>
+                </div>
+
+                <div class="receipt-details">
+                    <div class="receipt-row">
+                        <span class="row-label">MATCHDAY SPECIAL</span>
+                        <span class="row-val">5.45 PM</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">MATCH TIME</span>
+                        <span class="row-val active" id="victory-time-row-display">00:00s</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">ACCURACY</span>
+                        <span class="row-val success" id="accuracy-text">100%</span>
+                    </div>
+                </div>
+
+                <div class="card-footer-cta">
+                    MADE BY HUMANS! • ELEVENTH FLOOR GAMES
+                </div>
+            </div>
+
+            <div class="controls-group">
+                <button class="btn-flex-action" id="share-btn">📸 SHARE VICTORY RECEIPT</button>
+                <button class="btn-secondary-action" onclick="resetAndPlayAgain()">🔄 PLAY AGAIN</button>
+            </div>
+        </div>
+
+        <div id="toast-msg">CAPTURING SCREENSHOT...</div>
+    </div>
+
+</body>
+</html>
