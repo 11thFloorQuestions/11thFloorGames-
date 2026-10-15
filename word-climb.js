@@ -1,6 +1,6 @@
 // ==========================================================================
 // 11th Floor Word Climb - Main Daily Game Engine
-// Active Master Word: MAGNITUDE (Set 57)
+// Active Master Word: RETAINERS (Set 58)
 // ==========================================================================
 
 let currentFloor = 1;
@@ -10,13 +10,13 @@ let masterNineLetterWord = "";
 let initialDailyWheel = [];
 let wheelLetters = [];
 
-// HARDENED FALLBACK DICTIONARY - Full Coverage for Set 57 (MAGNITUDE)
+// HARDENED FALLBACK DICTIONARY - Clean, Common Words for Set 58 (RETAINERS)
 const INTERNAL_FALLBACK_WORDS = new Set([
-    "GIANT", "AGENT", "GUIDE", "IMAGE", "MEDIA", "AMEND", "UNITE", "MINED", "GAUNT",
-    "UNITED", "DATING", "MAGNET", "GAINED", "TANDEM", "UNTIED",
-    "UNTAMED", "GAUNTED",
-    "UNTAMING",
-    "MAGNITUDE"
+    "TRAIN", "STARE", "TEARS", "ENTER", "RAISE", "STERN", "SATIN", "REIN", "STAIN", "SIREN",
+    "RETAIN", "STRAIN", "RETINA", "ENTER", "RASTER", "REAR", "SERRATED",
+    "RETAINS", "RETINAS", "STAINER", "TERRAIN", "ENTRUST",
+    "RETAINER", "RESTRAIN", "TERRAINS",
+    "RETAINERS"
 ]);
 
 let validWordSet = INTERNAL_FALLBACK_WORDS;
@@ -307,10 +307,10 @@ function resetToStartScreen() {
     if (startScreen) startScreen.style.display = "flex";
 }
 
-// DAILY PUZZLE INITIALIZATION - MAGNITUDE (Set 57)
+// DAILY PUZZLE INITIALIZATION - RETAINERS (Set 58)
 function initDailyPuzzle() {
-    masterNineLetterWord = "MAGNITUDE";
-    const initialArr = ["M", "A", "G", "N", "I", "T", "U", "D", "E"];
+    masterNineLetterWord = "RETAINERS";
+    const initialArr = ["R", "E", "T", "A", "I", "N", "E", "R", "S"];
     initialDailyWheel = shuffleAndVerifyWheel(initialArr, masterNineLetterWord);
     wheelLetters = [...initialDailyWheel];
 }
@@ -621,58 +621,3 @@ function recordGameResult(isWin, peakFloor) {
         stats.wins++;
         stats.streak++;
         if (stats.bestTimeSeconds === null || timeElapsedSeconds < stats.bestTimeSeconds) {
-            stats.bestTimeSeconds = timeElapsedSeconds;
-        }
-    } else {
-        stats.streak = 0;
-    }
-
-    if (peakFloor > stats.bestFloor) {
-        stats.bestFloor = peakFloor;
-    }
-
-    try {
-        localStorage.setItem(STATS_KEY, JSON.stringify(stats));
-    } catch (e) {
-        console.warn("LocalStorage save blocked.");
-    }
-    updateStatsDisplay();
-    return stats;
-}
-
-function getStats() {
-    try {
-        const raw = localStorage.getItem(STATS_KEY);
-        if (!raw) {
-            return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
-        }
-        return JSON.parse(raw);
-    } catch (e) {
-        return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
-    }
-}
-
-function updateStatsDisplay() {
-    const stats = getStats();
-    const playedElem = document.getElementById("stat-played");
-    const winsElem = document.getElementById("stat-wins");
-    const winrateElem = document.getElementById("stat-winrate");
-    const streakElem = document.getElementById("stat-streak");
-    const bestfloorElem = document.getElementById("stat-bestfloor");
-    const besttimeElem = document.getElementById("stat-besttime");
-
-    if (playedElem) playedElem.textContent = stats.played;
-    if (winsElem) winsElem.textContent = stats.wins;
-    
-    const winRate = stats.played > 0 ? Math.round((stats.wins / stats.played) * 100) : 0;
-    if (winrateElem) winrateElem.textContent = `${winRate}%`;
-    if (streakElem) streakElem.textContent = stats.streak;
-    
-    if (bestfloorElem) {
-        bestfloorElem.innerHTML = getOrdinalFloorHTML(stats.bestFloor);
-    }
-
-    if (besttimeElem) {
-        besttimeElem.textContent = formatTime(stats.bestTimeSeconds);
-    }
-}
