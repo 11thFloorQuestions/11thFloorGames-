@@ -1,409 +1,275 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>11th Floor Games — Speedrun Promo</title>
-  <style>
-    :root {
-      --bg-dark: #0B0E14;
-      --card-bg: #161B22;
-      --border-color: #21262D;
-      --text-main: #F0F6FC;
-      --text-muted: #8B949E;
-      --accent-gold: #D29922;
-      --active-accent: #58A6FF;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Think You Know Ball? — Skyscraper Matchday Drop</title>
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+    <link rel="apple-touch-icon" href="/favicon.svg?v=2">
 
-    body {
-      background-color: #010409;
-      color: var(--text-main);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      overflow: hidden;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 
-    /* 9:16 Vertical Screen Frame */
-    .phone-container {
-      width: 100vw;
-      max-width: 414px;
-      height: 100vh;
-      max-height: 896px;
-      background-color: var(--bg-dark);
-      border: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      box-shadow: 0 0 40px rgba(0,0,0,0.8);
-      overflow: hidden;
-    }
+    <!-- HTML2CANVAS LIBRARY FOR RECEIPT SCREENSHOT CAPTURE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-    /* Persistent Speedrun HUD */
-    .promo-hud {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px;
-      background: rgba(22, 27, 34, 0.95);
-      border-bottom: 2px solid var(--active-accent);
-      z-index: 10;
-      transition: border-color 0.3s ease;
-    }
-
-    .hud-badge {
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 4px 8px;
-      border-radius: 4px;
-      background: var(--border-color);
-      color: var(--text-main);
-    }
-
-    .hud-timer {
-      font-family: monospace;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--accent-gold);
-    }
-
-    /* Controls Bar for Recording Setup */
-    .rec-bar {
-      position: absolute;
-      top: 60px;
-      right: 12px;
-      z-index: 100;
-      display: flex;
-      gap: 6px;
-    }
-
-    .rec-btn {
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.2);
-      font-size: 10px;
-      padding: 4px 8px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    /* Game Stage Display */
-    .game-stage {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      text-align: center;
-      position: relative;
-    }
-
-    .game-title {
-      font-size: 14px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
-    }
-
-    .game-prompt {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 24px;
-      line-height: 1.3;
-    }
-
-    /* Grid Options / Taps */
-    .options-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      width: 100%;
-    }
-
-    .opt-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .opt-card.correct-flash {
-      background: rgba(46, 160, 67, 0.3) !important;
-      border-color: #3fb950 !important;
-      color: #3fb950 !important;
-      transform: scale(0.98);
-    }
-
-    /* Victory Screen Overlay */
-    .victory-screen {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      padding: 24px;
-      background: radial-gradient(circle at center, #1C1917 0%, #0B0E14 100%);
-      animation: fadeIn 0.5s ease forwards;
-    }
-
-    .victory-title {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--accent-gold);
-      margin-bottom: 8px;
-    }
-
-    .victory-time-box {
-      background: var(--card-bg);
-      border: 1px solid var(--accent-gold);
-      padding: 16px 32px;
-      border-radius: 12px;
-      margin: 16px 0;
-      text-align: center;
-    }
-
-    .victory-time-box h3 {
-      font-size: 12px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-    }
-
-    .victory-time-box div {
-      font-family: monospace;
-      font-size: 32px;
-      color: #FFF;
-      font-weight: bold;
-    }
-
-    .copy-brag-btn {
-      width: 100%;
-      padding: 14px;
-      background: var(--accent-gold);
-      color: #000;
-      border: none;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 15px;
-      margin-top: 16px;
-      cursor: pointer;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-</head>
-<body>
-
-<div class="phone-container">
-  <!-- Dynamic HUD -->
-  <div class="promo-hud" id="hud">
-    <div>
-      <span class="hud-badge" id="hudGame">Questions</span>
-      <span style="font-size: 12px; margin-left: 6px; color: var(--text-muted);" id="hudFloor">FLOOR 1/11</span>
-    </div>
-    <div class="hud-timer" id="hudTimer">00:00.00</div>
-  </div>
-
-  <!-- Manual Screen Record Control Bar -->
-  <div class="rec-bar">
-    <button class="rec-btn" onclick="startAutoRun()">▶ Run Demo</button>
-    <button class="rec-btn" onclick="resetDemo()">↻ Reset</button>
-  </div>
-
-  <!-- Interactive Demo Stage -->
-  <div class="game-stage" id="stage">
-    <div class="game-title" id="stageGameTitle">11th Floor Questions</div>
-    <div class="game-prompt" id="stagePrompt">Which chemical element has the symbol 'Fe'?</div>
-    
-    <div class="options-grid" id="stageOptions">
-      <div class="opt-card" onclick="triggerCorrect(this, 0)">Iron</div>
-      <div class="opt-card">Copper</div>
-      <div class="opt-card">Lead</div>
-      <div class="opt-card">Silver</div>
-    </div>
-  </div>
-
-  <!-- Final Brag Screen Overlay -->
-  <div class="victory-screen" id="victoryScreen">
-    <div style="font-size: 40px; margin-bottom: 8px;">🏆</div>
-    <div class="victory-title">11th Floor Reached!</div>
-    <p style="color: var(--text-muted); font-size: 14px;">All 6 Daily Micro-Games Cleared</p>
-    
-    <div class="victory-time-box">
-      <h3>Official Clear Time</h3>
-      <div id="finalTimeDisplay">00:48.32</div>
-    </div>
-
-    <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
-      🟢 Questions | 🔴 Ball | 🟣 Word Climb<br>🟢 Parity | 🟠 Clusters | 🟡 Cluegram
-    </div>
-
-    <button class="copy-brag-btn" id="bragBtn" onclick="copyBragText()">📋 Copy Brag Stats</button>
-  </div>
-</div>
-
-<script>
-  let startTime = null;
-  let timerInterval = null;
-  let currentStep = 0;
-
-  const demoSteps = [
-    {
-      game: "Questions",
-      accent: "#58A6FF",
-      floor: "FLOOR 1/11",
-      title: "11th Floor Questions",
-      prompt: "Which element has the symbol 'Fe'?",
-      options: ["Iron", "Copper", "Lead", "Silver"],
-      correctIndex: 0
-    },
-    {
-      game: "Think You Know Ball?",
-      accent: "#DA3633",
-      floor: "FLOOR 3/11",
-      title: "Think You Know Ball?",
-      prompt: "Who won the Premier League Golden Boot in 2022/23?",
-      options: ["Erling Haaland", "Harry Kane", "Mohamed Salah", "Marcus Rashford"],
-      correctIndex: 0
-    },
-    {
-      game: "Word Climb",
-      accent: "#A371F7",
-      floor: "FLOOR 5/11",
-      title: "11th Floor Word Climb",
-      prompt: "Target Length: 9 Letters",
-      options: ["ELEVATION", "ELEVATOR", "VALENTINE", "VERTICAL"],
-      correctIndex: 0
-    },
-    {
-      game: "Parity",
-      accent: "#3FB950",
-      floor: "FLOOR 7/11",
-      title: "11th Floor Parity",
-      prompt: "Find the odd pattern out:",
-      options: ["Pattern A", "Pattern B (Odd)", "Pattern C", "Pattern D"],
-      correctIndex: 1
-    },
-    {
-      game: "Clusters",
-      accent: "#F0883E",
-      floor: "FLOOR 9/11",
-      title: "11th Floor Clusters",
-      prompt: "Group 4: British Game Shows",
-      options: ["Only Connect", "Wordle", "Chess", "Scrabble"],
-      correctIndex: 0
-    },
-    {
-      game: "Cluegram",
-      accent: "#D29922",
-      floor: "FLOOR 11/11",
-      title: "11th Floor Cluegram",
-      prompt: "Final Cryptic Clue: 'Top Floor Victory'",
-      options: ["SKYSCRAPER", "ELEVATOR", "PENTHOUSE", "VICTORY"],
-      correctIndex: 0
-    }
-  ];
-
-  function startTimer() {
-    if (timerInterval) clearInterval(timerInterval);
-    startTime = performance.now();
-    timerInterval = setInterval(() => {
-      const elapsed = performance.now() - startTime;
-      const secs = Math.floor(elapsed / 1000);
-      const ms = Math.floor((elapsed % 1000) / 10);
-      const formatted = String(secs).padStart(2, '0') + ':' + String(ms).padStart(2, '0');
-      document.getElementById('hudTimer').innerText = '00:' + formatted;
-    }, 10);
-  }
-
-  function loadStep(index) {
-    if (index >= demoSteps.length) {
-      finishRun();
-      return;
-    }
-
-    const step = demoSteps[index];
-    document.getElementById('hudGame').innerText = step.game;
-    document.getElementById('hudFloor').innerText = step.floor;
-    document.getElementById('hud').style.borderColor = step.accent;
-    
-    document.getElementById('stageGameTitle').innerText = step.title;
-    document.getElementById('stagePrompt').innerText = step.prompt;
-
-    const optGrid = document.getElementById('stageOptions');
-    optGrid.innerHTML = '';
-
-    step.options.forEach((optText, idx) => {
-      const div = document.createElement('div');
-      div.className = 'opt-card';
-      div.innerText = optText;
-      div.onclick = () => triggerCorrect(div, idx === step.correctIndex);
-      optGrid.appendChild(div);
-    });
-  }
-
-  function triggerCorrect(element, isCorrect) {
-    element.classList.add('correct-flash');
-    setTimeout(() => {
-      currentStep++;
-      loadStep(currentStep);
-    }, 400);
-  }
-
-  function startAutoRun() {
-    resetDemo();
-    startTimer();
-
-    let delay = 300;
-    demoSteps.forEach((_, idx) => {
-      setTimeout(() => {
-        const opts = document.querySelectorAll('.opt-card');
-        const correctIdx = demoSteps[idx].correctIndex;
-        if (opts[correctIdx]) {
-          triggerCorrect(opts[correctIdx], true);
+    <style>
+        :root {
+            --bg-deep: #000000;
+            --surface: #0a0a0a;
+            --surface-border: #222222;
+            --surface-border-light: #333333;
+            --text-primary: #ffffff;
+            --text-muted: #888888;
+            --genre-pitch: #22c55e;
+            --genre-pitch-glow: rgba(34, 197, 94, 0.35);
+            --brand-red: #cc0000;
+            --brand-red-glow: rgba(204, 0, 0, 0.35);
+            --state-active: #facc15;
+            --state-success: #22c55e;
+            --state-error: #ef4444;
+            --state-error-glow: rgba(239, 68, 68, 0.3);
         }
-      }, delay);
-      delay += 1400; // Step through every 1.4 seconds for crisp speedrun pacing
-    });
-  }
 
-  function finishRun() {
-    clearInterval(timerInterval);
-    const finalTime = document.getElementById('hudTimer').innerText;
-    document.getElementById('finalTimeDisplay').innerText = finalTime;
-    document.getElementById('stage').style.display = 'none';
-    document.getElementById('victoryScreen').style.display = 'flex';
-  }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-  function copyBragText() {
-    const btn = document.getElementById('bragBtn');
-    btn.innerText = "✓ Copied to Clipboard!";
-    btn.style.background = "#3FB950";
-    btn.style.color = "#FFF";
-  }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 10px;
+            overflow-x: hidden;
+        }
 
-  function resetDemo() {
-    clearInterval(timerInterval);
-    currentStep = 0;
-    document.getElementById('hudTimer').innerText = '00:00.00';
-    document.getElementById('stage').style.display = 'flex';
-    document.getElementById('victoryScreen').style.display = 'none';
-    loadStep(0);
-  }
+        .top-bar {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
 
-  loadStep(0);
-</script>
-</body>
-</html>
+        .pill-btn {
+            background: var(--surface);
+            border: 1px solid var(--surface-border-light);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .pill-btn:hover {
+            border-color: var(--genre-pitch);
+            color: var(--genre-pitch);
+        }
+
+        .header-timer {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--state-active);
+            letter-spacing: 1px;
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            padding: 4px 12px;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .game-logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 8px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .gameplay-header-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 6px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .game-logo-pitch {
+            font-family: 'Anton', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: var(--genre-pitch);
+            line-height: 0.85;
+            letter-spacing: -1px;
+            text-shadow: 0 0 20px var(--genre-pitch-glow);
+            margin-bottom: 4px;
+        }
+
+        .game-logo-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            margin-bottom: 2px;
+        }
+
+        .game-logo-sub {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--genre-pitch);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .landing-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+            padding: 20px 16px;
+            width: 100%;
+            max-width: 600px;
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            border-radius: 8px;
+            margin-top: 6px;
+        }
+
+        /* MODE SELECTOR CARD */
+        .mode-selector-box {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: var(--bg-deep);
+            border: 1px solid var(--surface-border);
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .mode-option-btn {
+            width: 100%;
+            background: #111111;
+            border: 1px solid var(--surface-border-light);
+            color: var(--text-primary);
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .mode-option-btn.active {
+            border-color: var(--genre-pitch);
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--genre-pitch);
+        }
+
+        .mode-desc {
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .btn-start {
+            background-color: var(--surface);
+            border: 1px solid var(--genre-pitch);
+            color: var(--genre-pitch);
+            padding: 12px 28px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 24px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--genre-pitch-glow);
+            transition: border-color 0.2s ease;
+        }
+
+        .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 6px; flex-shrink: 0; }
+        .floor-info-box { flex-grow: 1; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
+
+        .play-card { width: 100%; max-width: 600px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 14px 10px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 12px; flex-grow: 1; margin-bottom: 6px; overflow: hidden; min-height: 0; }
+        
+        .question-box { width: 100%; background: #111111; border: 1px solid var(--surface-border); border-radius: 6px; padding: 14px; text-align: center; }
+        
+        /* MASKED QUESTION STATE (GROUP PLAY) */
+        .question-box.masked {
+            background: repeating-linear-gradient(45deg, #0a0a0a, #0a0a0a 10px, #111111 10px, #111111 20px);
+            border: 1px dashed var(--genre-pitch);
+        }
+
+        /* GAFFER FACT BANTER BOX */
+        .gaffer-fact-box {
+            width: 100%;
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid var(--genre-pitch);
+            border-radius: 6px;
+            padding: 10px 12px;
+            font-size: 0.75rem;
+            color: var(--genre-pitch);
+            text-align: left;
+            display: none;
+        }
+
+        .options-grid { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+        .btn-option { width: 100%; background: #111111; border: 1px solid var(--surface-border-light); border-radius: 8px; padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-primary); text-align: left; cursor: pointer; }
+        .btn-option.selected-correct { background: rgba(34, 197, 94, 0.2); border-color: var(--genre-pitch); color: var(--genre-pitch); }
+        .btn-option.selected-wrong { background: rgba(239, 68, 68, 0.2); border-color: var(--state-error); color: var(--state-error); }
+
+        /* IN-GAME VICTORY RECEIPT CARD */
+        .victory-receipt-card {
+            width: 100%;
+            max-width: 340px;
+            background-color: #111111;
+            border: 1px solid var(--genre-pitch);
+            border-radius: 14px;
+            padding: 22px 20px;
+            box-shadow: 0 0 25px var(--genre-pitch-glow);
+            margin-bottom: 16px;
+            text-align: left;
+            display: block;
+        }
+
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .brand-lockup-container { display: flex; align-items: center; gap: 8px; }
+        .brand-mark-left { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: var(--brand-red); line-height: 0.85; letter-
