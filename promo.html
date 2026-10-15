@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -52,7 +52,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             padding: 12px 10px;
             overflow-x: hidden;
         }
@@ -63,7 +63,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .pill-btn {
@@ -94,7 +94,7 @@
             border: 1px solid var(--surface-border);
             padding: 4px 12px;
             border-radius: 12px;
-            display: none;
+            display: block;
         }
 
         .game-logo-box {
@@ -230,7 +230,7 @@
             border: 1px dashed var(--genre-pitch);
         }
 
-        /* GAFFER FACT BANTER BOX */
+        /* GAFFER BANTER FACT BOX */
         .gaffer-fact-box {
             width: 100%;
             background: rgba(34, 197, 94, 0.08);
@@ -272,4 +272,358 @@
         }
 
         .brand-lockup-container { display: flex; align-items: center; gap: 8px; }
-        .brand-mark-left { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: var(--brand-red); line-height: 0.85; letter-
+        .brand-mark-left { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: var(--brand-red); line-height: 0.85; letter-spacing: -0.5px; text-shadow: 0 0 10px var(--brand-red-glow); }
+        .brand-text-stacked { display: flex; flex-direction: column; justify-content: center; text-align: left; }
+        .brand-title-top { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 300; color: #ffffff; letter-spacing: 0.5px; line-height: 1.1; }
+        .brand-title-bottom { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: #ffffff; letter-spacing: 2px; text-transform: uppercase; line-height: 1.1; }
+        .badge-slot-reserved { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; color: #888888; letter-spacing: 1px; text-transform: uppercase; }
+
+        .hero-flex-box { text-align: center; padding: 4px 0; margin-bottom: 16px; }
+        .game-title-header { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 6px; }
+        .flex-status-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+
+        .brand-green { color: var(--genre-pitch); }
+        .brand-white { color: #ffffff; }
+
+        .hero-time-display { font-family: 'Anton', sans-serif; font-size: 3.4rem; line-height: 0.9; color: #ffffff; letter-spacing: 2px; margin: 8px 0; }
+        .hero-time-unit { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 800; color: #888888; letter-spacing: 1px; margin-left: 2px; text-transform: lowercase; }
+
+        .flex-tier-badge { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; color: var(--genre-pitch); letter-spacing: 2px; text-transform: uppercase; background: rgba(34, 197, 94, 0.1); border: 1px solid var(--genre-pitch); padding: 6px 16px; border-radius: 12px; margin-top: 6px; }
+
+        .receipt-details { border-top: 1px solid #333333; padding-top: 14px; margin-bottom: 16px; }
+        .receipt-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .receipt-row:last-child { margin-bottom: 0; }
+        .row-label { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: #888888; text-transform: uppercase; letter-spacing: 1px; }
+        .row-val { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
+        .row-val.success { color: var(--genre-pitch); }
+        .row-val.active { color: var(--state-active); }
+
+        .card-footer-cta { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 800; color: #888888; letter-spacing: 1.5px; border-top: 1px dashed #333333; padding-top: 10px; text-transform: uppercase; }
+
+        .controls-group { width: 100%; max-width: 340px; display: flex; flex-direction: column; align-items: center; }
+        .btn-flex-action { width: 100%; background-color: var(--genre-pitch); border: 1px solid var(--genre-pitch); color: #000000; padding: 14px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border-radius: 24px; cursor: pointer; box-shadow: 0 0 15px var(--genre-pitch-glow); margin-bottom: 10px; display: block; }
+        .btn-secondary-action { width: 100%; background-color: #111111; border: 1px solid #333333; color: #ffffff; padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 24px; cursor: pointer; display: block; }
+
+        #toast-msg { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--genre-pitch); color: #000000; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.75rem; padding: 8px 16px; border-radius: 20px; display: none; z-index: 1000; letter-spacing: 1px; text-transform: uppercase; }
+    </style>
+</head>
+<body class="game-ball">
+
+    <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; min-height: 100vh; min-height: 100dvh;">
+        
+        <!-- TOP BAR -->
+        <div class="top-bar">
+            <a href="index.html" class="pill-btn">← LOBBY</a>
+            <button class="pill-btn" id="btn-sound-toggle" onclick="toggleSound()">SOUND: ON</button>
+        </div>
+
+        <!-- LANDING SCREEN (DEFAULT VISIBLE) -->
+        <div id="landing-screen" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <div class="game-logo-box">
+                <h1 class="game-logo-pitch">SKYSCRAPER</h1>
+                <p class="game-logo-title">Eleventh Floor Special</p>
+                <p class="game-logo-sub">50-FLOOR MATCHDAY DROP</p>
+            </div>
+
+            <div class="landing-container">
+                <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+                    <strong>50 FLOORS OF MATCHDAY LORE</strong><br><br>
+                    No per-question timer bar. Play solo, host as Gaffa, or play in Group Play mode.
+                </div>
+
+                <!-- MODE SELECTOR -->
+                <div class="mode-selector-box">
+                    <div style="font-size: 0.65rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">CHOOSE PLAY MODE</div>
+                    
+                    <button class="mode-option-btn active" onclick="selectMode('solo', this)">
+                        <span>1. SOLO CLIMB</span>
+                        <span class="mode-desc">Standard 50 Floors</span>
+                    </button>
+                    
+                    <button class="mode-option-btn" onclick="selectMode('gaffa', this)">
+                        <span>2. GAFFA MODE</span>
+                        <span class="mode-desc">Quiz Master + Banter Facts</span>
+                    </button>
+                    
+                    <button class="mode-option-btn" onclick="selectMode('group', this)">
+                        <span>3. GROUP PLAY</span>
+                        <span class="mode-desc">Question Masked</span>
+                    </button>
+                </div>
+
+                <button id="btn-start-skyscraper" class="btn-start" onclick="startSkyscraperGame()">Start 50-Floor Climb</button>
+            </div>
+        </div>
+
+        <!-- GAMEPLAY HEADER -->
+        <div id="gameplay-header" class="gameplay-header-box" style="display: none;">
+            <p class="game-logo-title">Skyscraper Special</p>
+            <p class="game-logo-sub">THINK YOU KNOW BALL?</p>
+        </div>
+
+        <!-- Gameplay HUD Header -->
+        <div class="hud-sidebar-container" id="floor-hud-container" style="display: none;">
+            <div class="floor-info-box">
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <div id="card-floor-text" style="font-size: 1.1rem; font-weight: 800;">
+                        <span style="color: var(--genre-pitch);">Floor 1</span> / 50
+                    </div>
+                    <div id="mode-badge-text" style="font-size: 0.65rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">MODE: SOLO</div>
+                </div>
+                <!-- SESSION STOPWATCH TIMER (STAYS ACTIVE) -->
+                <div id="active-game-timer" class="header-timer">00:00</div>
+            </div>
+        </div>
+
+        <!-- Main Play Card Workspace -->
+        <div id="game-workspace" class="play-card" style="display: none;">
+            
+            <!-- QUESTION BOX (PER-QUESTION TIMER BAR REMOVED) -->
+            <div class="question-box" id="question-box">
+                <div id="question-text" style="font-size: 0.9rem; font-weight: 600; color: #ffffff;">Loading matchday lore...</div>
+            </div>
+
+            <!-- GAFFER BANTER FACT BOX -->
+            <div class="gaffer-fact-box" id="gaffer-fact-box">
+                <strong>💡 GAFFER BANTER FACT:</strong>
+                <div id="gaffer-fact-text" style="margin-top: 4px; color: #ffffff; font-weight: 500;">...</div>
+            </div>
+
+            <!-- OPTIONS GRID -->
+            <div class="options-grid" id="options-grid">
+                <button class="btn-option"></button>
+                <button class="btn-option"></button>
+                <button class="btn-option"></button>
+                <button class="btn-option"></button>
+            </div>
+        </div>
+
+        <!-- FINAL ECOSYSTEM VICTORY SCREEN LAYOUT -->
+        <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
+            
+            <div class="victory-receipt-card" id="victory-card">
+                <div class="receipt-header">
+                    <div class="brand-lockup-container">
+                        <div class="brand-mark-left">11FL?</div>
+                        <div class="brand-text-stacked">
+                            <span class="brand-title-top">ELEVENTH FLOOR</span>
+                            <span class="brand-title-bottom">SKYSCRAPER</span>
+                        </div>
+                    </div>
+                    <div class="badge-slot-reserved">VERIFIED</div>
+                </div>
+
+                <div class="hero-flex-box">
+                    <div class="game-title-header">
+                        <span class="brand-white">Think You Know Ball?</span>
+                    </div>
+                    <div class="flex-status-label">
+                        <span class="brand-green">50 Floors</span> <span class="brand-white">Cleared</span>
+                    </div>
+                    <div class="hero-time-display"><span id="victory-time-display">00:00</span><span class="hero-time-unit">s</span></div>
+                    <div class="flex-tier-badge" id="victory-mode-badge">SOLO MASTER</div>
+                </div>
+
+                <div class="receipt-details">
+                    <div class="receipt-row">
+                        <span class="row-label">SKYSCRAPER SPECIAL</span>
+                        <span class="row-val">#545</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">MATCH TIME</span>
+                        <span id="victory-time-row-display" class="row-val active">00:00s</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">ACCURACY</span>
+                        <span class="row-val success">100% (50/50)</span>
+                    </div>
+                </div>
+
+                <div class="card-footer-cta">
+                    SATURDAY MATCHDAY DROP!
+                </div>
+            </div>
+
+            <!-- ACTION CONTROL BUTTONS -->
+            <div class="controls-group">
+                <button class="btn-flex-action" id="share-btn">SHARE SCREENSHOT</button>
+                <button class="btn-secondary-action" onclick="location.reload()">PLAY AGAIN</button>
+            </div>
+        </div>
+
+        <footer id="footer-text" style="font-size: 0.6rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-top: 12px; margin-bottom: 8px;">
+            11TH FLOOR GAMES • MADE BY HUMANS!
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-msg">SCREENSHOT GENERATED</div>
+
+    <script>
+        // MOCK DATA: 3 SAMPLE FLOORS OUT OF THE 50-FLOOR SET
+        const mockQuestions = [
+            {
+                floor: 1,
+                question: "Which Premier League club holds the record for the most points in a single 38-game season?",
+                options: ["Arsenal", "Manchester City", "Chelsea", "Liverpool"],
+                answer: "Manchester City",
+                explanation: "Centurions season 2017/18. Gabriel Jesus scored in the 94th minute on the final day against Southampton to reach 100 points!"
+            },
+            {
+                floor: 2,
+                question: "Who scored the fastest goal in Premier League history (7.69 seconds)?",
+                options: ["Alan Shearer", "Ledley King", "Shane Long", "Philip Billing"],
+                answer: "Shane Long",
+                explanation: "Shane Long scored for Southampton vs Watford in April 2019 straight from Watford's kick-off!"
+            },
+            {
+                floor: 3,
+                question: "Which referee holds the record for issuing the most red cards in Premier League history?",
+                options: ["Mike Dean", "Martin Atkinson", "Anthony Taylor", "Howard Webb"],
+                answer: "Mike Dean",
+                explanation: "Mike Dean handed out a record 114 red cards during his Premier League refereeing career."
+            }
+        ];
+
+        let currentFloor = 0;
+        let selectedMode = 'solo'; // 'solo', 'gaffa', 'group'
+        let startTime = 0;
+        let timerInterval = null;
+        let timeElapsedSeconds = 0;
+        let soundEnabled = true;
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('btn-sound-toggle').innerText = `SOUND: ${soundEnabled ? 'ON' : 'OFF'}`;
+        }
+
+        function selectMode(mode, btnEl) {
+            selectedMode = mode;
+            document.querySelectorAll('.mode-option-btn').forEach(b => b.classList.remove('active'));
+            btnEl.classList.add('active');
+        }
+
+        function startSkyscraperGame() {
+            document.getElementById('landing-screen').style.display = 'none';
+            document.getElementById('gameplay-header').style.display = 'flex';
+            document.getElementById('floor-hud-container').style.display = 'flex';
+            document.getElementById('game-workspace').style.display = 'flex';
+
+            // Start Session Stopwatch
+            timeElapsedSeconds = 0;
+            startTime = Date.now();
+            timerInterval = setInterval(() => {
+                timeElapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+                const m = Math.floor(timeElapsedSeconds / 60).toString().padStart(2, '0');
+                const s = (timeElapsedSeconds % 60).toString().padStart(2, '0');
+                document.getElementById('active-game-timer').textContent = `${m}:${s}`;
+            }, 1000);
+
+            renderFloor();
+        }
+
+        function renderFloor() {
+            if (currentFloor >= mockQuestions.length) {
+                handleVictory();
+                return;
+            }
+
+            const q = mockQuestions[currentFloor];
+            const qBox = document.getElementById('question-box');
+            const qText = document.getElementById('question-text');
+            const gafferBox = document.getElementById('gaffer-fact-box');
+            const gafferText = document.getElementById('gaffer-fact-text');
+            
+            document.getElementById('card-floor-text').innerHTML = `<span style="color: var(--genre-pitch);">Floor ${q.floor}</span> / 50`;
+            document.getElementById('mode-badge-text').textContent = `MODE: ${selectedMode.toUpperCase()}`;
+
+            // Mode Logic
+            if (selectedMode === 'group') {
+                qBox.classList.add('masked');
+                qText.innerHTML = `<span style="color: var(--genre-pitch); font-style: italic;">🔒 QUESTION MASKED<br><small style="color: var(--text-muted); font-size: 0.65rem;">LISTEN TO YOUR GAFFA READ ALOUD</small></span>`;
+                gafferBox.style.display = 'none';
+            } else if (selectedMode === 'gaffa') {
+                qBox.classList.remove('masked');
+                qText.textContent = q.question;
+                gafferBox.style.display = 'block';
+                gafferText.textContent = q.explanation;
+            } else {
+                // Solo Mode
+                qBox.classList.remove('masked');
+                qText.textContent = q.question;
+                gafferBox.style.display = 'none';
+            }
+
+            // Options Grid
+            const grid = document.getElementById('options-grid');
+            grid.innerHTML = '';
+            q.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'btn-option';
+                btn.textContent = opt;
+                btn.onclick = () => selectAnswer(opt === q.answer, btn);
+                grid.appendChild(btn);
+            });
+        }
+
+        function selectAnswer(isCorrect, btnEl) {
+            if (isCorrect) {
+                btnEl.classList.add('selected-correct');
+                setTimeout(() => {
+                    currentFloor++;
+                    renderFloor();
+                }, 800);
+            } else {
+                btnEl.classList.add('selected-wrong');
+                setTimeout(() => {
+                    alert("Incorrect! Re-try the floor.");
+                    btnEl.classList.remove('selected-wrong');
+                }, 800);
+            }
+        }
+
+        function handleVictory() {
+            clearInterval(timerInterval);
+            document.getElementById('game-workspace').style.display = 'none';
+            document.getElementById('floor-hud-container').style.display = 'none';
+            document.getElementById('gameplay-header').style.display = 'none';
+            document.getElementById('victory-screen').style.display = 'flex';
+
+            const m = Math.floor(timeElapsedSeconds / 60).toString().padStart(2, '0');
+            const s = (timeElapsedSeconds % 60).toString().padStart(2, '0');
+            const formattedTime = `${m}:${s}`;
+
+            document.getElementById('victory-time-display').textContent = formattedTime;
+            document.getElementById('victory-time-row-display').textContent = `${formattedTime}s`;
+            document.getElementById('victory-mode-badge').textContent = `${selectedMode.toUpperCase()} MODE`;
+        }
+
+        // SCREENSHOT GENERATOR
+        document.getElementById('share-btn').addEventListener('click', async () => {
+            const victoryCard = document.getElementById('victory-card');
+            const toast = document.getElementById('toast-msg');
+            
+            toast.innerText = 'CAPTURING SCREENSHOT...';
+            toast.style.display = 'block';
+
+            const canvas = await html2canvas(victoryCard, { backgroundColor: '#111111', scale: 2 });
+            canvas.toBlob(async (blob) => {
+                toast.style.display = 'none';
+                if (!blob) return;
+                const file = new File([blob], 'skyscraper-victory.png', { type: 'image/png' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    try {
+                        await navigator.share({ title: 'Skyscraper Victory Card', files: [file] });
+                    } catch (e) {}
+                } else {
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(file);
+                    a.download = 'skyscraper-victory.png';
+                    a.click();
+                }
+            }, 'image/png');
+        });
+    </script>
+</body>
+</html>
