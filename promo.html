@@ -243,7 +243,7 @@
             display: none;
         }
 
-        /* ERROR FEEDBACK BANNER (REPLACES ALERT) */
+        /* ERROR FEEDBACK BANNER */
         .error-banner {
             width: 100%;
             background: rgba(239, 68, 68, 0.15);
@@ -266,4 +266,111 @@
 
         .options-grid { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
         .btn-option { width: 100%; background: #111111; border: 1px solid var(--surface-border-light); border-radius: 8px; padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-primary); text-align: left; cursor: pointer; transition: background-color 0.2s ease, border-color 0.2s ease; }
-        .btn-option.selected-correct { background: rgba(34
+        .btn-option.selected-correct { background: rgba(34, 197, 94, 0.2); border-color: var(--genre-pitch); color: var(--genre-pitch); }
+        .btn-option.selected-wrong { background: rgba(239, 68, 68, 0.2); border-color: var(--state-error); color: var(--state-error); }
+
+        /* IN-GAME VICTORY RECEIPT CARD */
+        .victory-receipt-card {
+            width: 100%;
+            max-width: 340px;
+            background-color: #111111;
+            border: 1px solid var(--genre-pitch);
+            border-radius: 14px;
+            padding: 22px 20px;
+            box-shadow: 0 0 25px var(--genre-pitch-glow);
+            margin-bottom: 16px;
+            text-align: left;
+            display: block;
+        }
+
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .brand-lockup-container { display: flex; align-items: center; gap: 8px; }
+        .brand-mark-left { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: var(--brand-red); line-height: 0.85; letter-spacing: -0.5px; text-shadow: 0 0 10px var(--brand-red-glow); }
+        .brand-text-stacked { display: flex; flex-direction: column; justify-content: center; text-align: left; }
+        .brand-title-top { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 300; color: #ffffff; letter-spacing: 0.5px; line-height: 1.1; }
+        .brand-title-bottom { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: #ffffff; letter-spacing: 2px; text-transform: uppercase; line-height: 1.1; }
+        .badge-slot-reserved { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; color: #888888; letter-spacing: 1px; text-transform: uppercase; }
+
+        .hero-flex-box { text-align: center; padding: 4px 0; margin-bottom: 16px; }
+        .game-title-header { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 6px; }
+        .flex-status-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+
+        .brand-green { color: var(--genre-pitch); }
+        .brand-white { color: #ffffff; }
+
+        .hero-time-display { font-family: 'Anton', sans-serif; font-size: 3.4rem; line-height: 0.9; color: #ffffff; letter-spacing: 2px; margin: 8px 0; }
+        .hero-time-unit { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 800; color: #888888; letter-spacing: 1px; margin-left: 2px; text-transform: lowercase; }
+
+        .flex-tier-badge { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; color: var(--genre-pitch); letter-spacing: 2px; text-transform: uppercase; background: rgba(34, 197, 94, 0.1); border: 1px solid var(--genre-pitch); padding: 6px 16px; border-radius: 12px; margin-top: 6px; }
+
+        .receipt-details { border-top: 1px solid #333333; padding-top: 14px; margin-bottom: 16px; }
+        .receipt-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .receipt-row:last-child { margin-bottom: 0; }
+        .row-label { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: #888888; text-transform: uppercase; letter-spacing: 1px; }
+        .row-val { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
+        .row-val.success { color: var(--genre-pitch); }
+        .row-val.active { color: var(--state-active); }
+
+        .card-footer-cta { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 800; color: #888888; letter-spacing: 1.5px; border-top: 1px dashed #333333; padding-top: 10px; text-transform: uppercase; }
+
+        .controls-group { width: 100%; max-width: 340px; display: flex; flex-direction: column; align-items: center; }
+        .btn-flex-action { width: 100%; background-color: var(--genre-pitch); border: 1px solid var(--genre-pitch); color: #000000; padding: 14px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border-radius: 24px; cursor: pointer; box-shadow: 0 0 15px var(--genre-pitch-glow); margin-bottom: 10px; display: block; }
+        .btn-secondary-action { width: 100%; background-color: #111111; border: 1px solid #333333; color: #ffffff; padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 24px; cursor: pointer; display: block; }
+
+        #toast-msg { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--genre-pitch); color: #000000; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.75rem; padding: 8px 16px; border-radius: 20px; display: none; z-index: 1000; letter-spacing: 1px; text-transform: uppercase; }
+    </style>
+</head>
+<body class="game-ball">
+
+    <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; min-height: 100vh; min-height: 100dvh;">
+        
+        <!-- TOP BAR -->
+        <div class="top-bar">
+            <a href="index.html" class="pill-btn">← LOBBY</a>
+            <button class="pill-btn" id="btn-sound-toggle" onclick="toggleSound()">SOUND: ON</button>
+        </div>
+
+        <!-- LANDING SCREEN (DEFAULT VISIBLE) -->
+        <div id="landing-screen" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <div class="game-logo-box">
+                <h1 class="game-logo-pitch">SKYSCRAPER</h1>
+                <p class="game-logo-title">Eleventh Floor Special</p>
+                <p class="game-logo-sub">50-FLOOR MATCHDAY DROP</p>
+            </div>
+
+            <div class="landing-container">
+                <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+                    <strong>50 FLOORS OF MATCHDAY LORE</strong><br><br>
+                    No per-question timer bar. Play solo, host as Gaffa, or play in Group Play mode.
+                </div>
+
+                <!-- MODE SELECTOR -->
+                <div class="mode-selector-box">
+                    <div style="font-size: 0.65rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">CHOOSE PLAY MODE</div>
+                    
+                    <button class="mode-option-btn active" onclick="selectMode('solo', this)">
+                        <span>1. SOLO CLIMB</span>
+                        <span class="mode-desc">Standard 50 Floors</span>
+                    </button>
+                    
+                    <button class="mode-option-btn" onclick="selectMode('gaffa', this)">
+                        <span>2. GAFFA MODE</span>
+                        <span class="mode-desc">Quiz Master + Banter Facts</span>
+                    </button>
+                    
+                    <button class="mode-option-btn" onclick="selectMode('group', this)">
+                        <span>3. GROUP PLAY</span>
+                        <span class="mode-desc">Question Masked</span>
+                    </button>
+                </div>
+
+                <button id="btn-start-skyscraper" class="btn-start" onclick="startSkyscraperGame()">Start 50-Floor Climb</button>
+                <button id="btn-resume-skyscraper"
