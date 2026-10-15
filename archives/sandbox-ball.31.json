@@ -1,0 +1,142 @@
+{
+  "setId": "31",
+  "title": "Think You Know Ball? - Set 31",
+  "questions": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "Michael Carrick's Manchester United team has won how many games this season in all competitions?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "7"
+      ],
+      "answer": "2",
+      "explanation": "Michael Carrick's Manchester United side has recorded 2 wins across all competitions so far this season.",
+      "anchorClues": "Michael Carrick Manchester United wins season"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "Which former Southampton legend celebrates his birthday today?",
+      "options": [
+        "Matthew Le Tissier",
+        "Peter Crouch",
+        "Theo Walcott",
+        "Virgil van Dijk"
+      ],
+      "answer": "Matthew Le Tissier",
+      "explanation": "Matthew Le Tissier was born on 14 October 1968.",
+      "anchorClues": "Matthew Le Tissier Southampton birthday October 14"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "Continuing their poor start to the season, Manchester United suffered a 2–0 defeat in the Champions League last night (Tuesday) to whom?",
+      "options": [
+        "Atlético Madrid",
+        "Real Madrid"
+      ],
+      "answer": "Atlético Madrid",
+      "explanation": "Manchester United fell to a 2–0 Champions League defeat against Atlético Madrid.",
+      "anchorClues": "Manchester United Champions League loss Atletico Madrid"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "Who scored Arsenal's third goal against Lille last night (Tuesday) in the Champions League?",
+      "options": [
+        "Bukayo Saka",
+        "Gabriel Martinelli",
+        "Kai Havertz",
+        "Declan Rice"
+      ],
+      "answer": "Bukayo Saka",
+      "explanation": "Bukayo Saka sealed Arsenal's victory by netting their third goal against Lille.",
+      "anchorClues": "Bukayo Saka Arsenal Lille Champions League 3rd goal"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "According to Paddy Power today (Wednesday), who are the favourites to win the Premier League this season?",
+      "options": [
+        "Arsenal",
+        "Manchester City"
+      ],
+      "answer": "Arsenal",
+      "explanation": "Arsenal are currently listed as top favourites to lift the Premier League title.",
+      "anchorClues": "Arsenal Paddy Power Premier League favourites"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "Which Premier League stadium is the largest by seating capacity?",
+      "options": [
+        "Old Trafford",
+        "Tottenham Hotspur Stadium",
+        "Anfield",
+        "London Stadium"
+      ],
+      "answer": "Old Trafford",
+      "explanation": "Manchester United's Old Trafford holds the largest seating capacity of any Premier League stadium, seating over 74,000 fans.",
+      "anchorClues": "Old Trafford largest Premier League stadium capacity"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "Which squad number did birthday boy Matthew Le Tissier wear during his career at Southampton?",
+      "options": [
+        "7",
+        "6",
+        "8",
+        "11"
+      ],
+      "answer": "7",
+      "explanation": "Matthew Le Tissier famously wore the number 7 shirt for Southampton.",
+      "anchorClues": "Matthew Le Tissier Southampton squad number 7"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "Which player holds the Premier League record for scoring the most goals exclusively from outside the penalty box?",
+      "options": [
+        "Frank Lampard",
+        "Peter Crouch",
+        "David Beckham",
+        "Steven Gerrard"
+      ],
+      "answer": "Frank Lampard",
+      "explanation": "Frank Lampard holds the record for the most Premier League goals scored from outside the 18-yard box, with 41 goals.",
+      "anchorClues": "Frank Lampard most goals outside penalty box Premier League record"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "Who is the only player to have won the Premier League Golden Boot while playing for a club that finished outside the top six?",
+      "options": [
+        "Kevin Phillips",
+        "Jamie Vardy",
+        "Darren Bent",
+        "Harry Kane"
+      ],
+      "answer": "Kevin Phillips",
+      "explanation": "Kevin Phillips won the Golden Boot in 1999/2000 after scoring 30 goals for Sunderland, who finished 7th that season.",
+      "anchorClues": "Kevin Phillips Golden Boot outside top six Sunderland"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "Which referee holds the record for issuing the most red cards in the history of the Premier League?",
+      "options": [
+        "Mike Dean",
+        "Martin Atkinson",
+        "Anthony Taylor",
+        "Howard Webb"
+      ],
+      "answer": "Mike Dean",
+      "explanation": "Mike Dean handed out a record 114 red cards during his Premier League refereeing career.",
+      "anchorClues": "Mike Dean most red cards referee record Premier League"
+    }
+  ]
+}
