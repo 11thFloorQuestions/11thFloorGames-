@@ -269,4 +269,764 @@
         /* ERROR FEEDBACK BANNER */
         .error-banner {
             width: 100%;
-            background: rgba(239, 68,
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid var(--state-error);
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--state-error);
+            text-align: center;
+            display: none;
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .options-grid { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 2px; }
+        .btn-option { width: 100%; background: #111111; border: 1px solid var(--surface-border-light); border-radius: 8px; padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-primary); text-align: left; cursor: pointer; transition: background-color 0.2s ease, border-color 0.2s ease; }
+        .btn-option.selected-correct { background: rgba(34, 197, 94, 0.2); border-color: var(--genre-pitch); color: var(--genre-pitch); }
+        .btn-option.selected-wrong { background: rgba(239, 68, 68, 0.2); border-color: var(--state-error); color: var(--state-error); }
+
+        /* IN-GAME VICTORY RECEIPT CARD */
+        .victory-receipt-card {
+            width: 100%;
+            max-width: 340px;
+            background-color: #111111;
+            border: 1px solid var(--genre-pitch);
+            border-radius: 14px;
+            padding: 22px 20px;
+            box-shadow: 0 0 25px var(--genre-pitch-glow);
+            margin-bottom: 16px;
+            text-align: left;
+            display: block;
+        }
+
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .brand-lockup-container { display: flex; align-items: center; gap: 8px; }
+        .brand-mark-left { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: var(--brand-red); line-height: 0.85; letter-spacing: -0.5px; text-shadow: 0 0 10px var(--brand-red-glow); }
+        .brand-text-stacked { display: flex; flex-direction: column; justify-content: center; text-align: left; }
+        .brand-title-top { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 300; color: #ffffff; letter-spacing: 0.5px; line-height: 1.1; }
+        .brand-title-bottom { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: #ffffff; letter-spacing: 2px; text-transform: uppercase; line-height: 1.1; }
+        .badge-slot-reserved { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; color: #888888; letter-spacing: 1px; text-transform: uppercase; }
+
+        .hero-flex-box { text-align: center; padding: 4px 0; margin-bottom: 16px; }
+        .game-title-header { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 6px; }
+        .flex-status-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+
+        .brand-green { color: var(--genre-pitch); }
+        .brand-white { color: #ffffff; }
+
+        .hero-time-display { font-family: 'Anton', sans-serif; font-size: 3.4rem; line-height: 0.9; color: #ffffff; letter-spacing: 2px; margin: 8px 0; }
+        .hero-time-unit { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 800; color: #888888; letter-spacing: 1px; margin-left: 2px; text-transform: lowercase; }
+
+        .flex-tier-badge { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; color: var(--genre-pitch); letter-spacing: 2px; text-transform: uppercase; background: rgba(34, 197, 94, 0.1); border: 1px solid var(--genre-pitch); padding: 6px 16px; border-radius: 12px; margin-top: 6px; }
+
+        .receipt-details { border-top: 1px solid #333333; padding-top: 14px; margin-bottom: 16px; }
+        .receipt-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .receipt-row:last-child { margin-bottom: 0; }
+        .row-label { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: #888888; text-transform: uppercase; letter-spacing: 1px; }
+        .row-val { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
+        .row-val.success { color: var(--genre-pitch); }
+        .row-val.active { color: var(--state-active); }
+
+        .card-footer-cta { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 800; color: #888888; letter-spacing: 1.5px; border-top: 1px dashed #333333; padding-top: 10px; text-transform: uppercase; }
+
+        .controls-group { width: 100%; max-width: 340px; display: flex; flex-direction: column; align-items: center; }
+        .btn-flex-action { width: 100%; background-color: var(--genre-pitch); border: 1px solid var(--genre-pitch); color: #000000; padding: 14px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border-radius: 24px; cursor: pointer; box-shadow: 0 0 15px var(--genre-pitch-glow); margin-bottom: 10px; display: block; }
+        .btn-secondary-action { width: 100%; background-color: #111111; border: 1px solid #333333; color: #ffffff; padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 24px; cursor: pointer; display: block; }
+
+        #toast-msg { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--genre-pitch); color: #000000; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.75rem; padding: 8px 16px; border-radius: 20px; display: none; z-index: 1000; letter-spacing: 1px; text-transform: uppercase; }
+    </style>
+
+    <script>
+        // FULL 45-FLOOR DATASET (EXACTLY 45 FLOORS)
+        const fullQuestions = [
+            // FLOORS 1-10: SET 31 DAILY QUESTIONS
+            {
+                floor: 1,
+                question: "Why did Manchester City block their manager from speaking to the radio after the Liverpool match?",
+                options: ["Worried about 114 financial charges being mentioned", "Enzo Maresca would accidentally leak the tactical room's Wi-Fi password", "Maresca was about to burst into song", "The club offered no explanation, breaking Premier League administrative Rule K.207"],
+                answer: "The club offered no explanation, breaking Premier League administrative Rule K.207",
+                explanation: "Manchester City refused to let Enzo Maresca do post-match radio interviews following the Liverpool game and gave no explanation, breaching Premier League administrative rules."
+            },
+            {
+                floor: 2,
+                question: "Which former Manchester United and Newcastle legend celebrates his birthday today?",
+                options: ["Andrew Cole", "Steve Bruce"],
+                answer: "Andrew Cole",
+                explanation: "Andrew Cole was born on 15 October 1971 and played as a prolific striker for both Newcastle United and Manchester United."
+            },
+            {
+                floor: 3,
+                question: "Manchester City were beaten 2–4 last night (Wednesday) in the Champions League by whom?",
+                options: ["PSG", "Real Madrid", "Bayern Munich", "Inter Milan"],
+                answer: "PSG",
+                explanation: "Paris Saint-Germain came out top in a 4–2 thriller against Manchester City in the Champions League."
+            },
+            {
+                floor: 4,
+                question: "In the Champions League last night, Liverpool bagged 6 against Austrian team LASK. Who got a hat-trick?",
+                options: ["Bradley Barcola", "Cody Gakpo", "Darwin Núñez", "Mohamed Salah"],
+                answer: "Bradley Barcola",
+                explanation: "Bradley Barcola led the charge, claiming a spectacular hat-trick in Liverpool's 6-goal performance against LASK."
+            },
+            {
+                floor: 5,
+                question: "Which other team (not Liverpool) also netted 6 last night in Europe?",
+                options: ["Aston Villa", "Real Madrid", "PSG", "Barcelona"],
+                answer: "Aston Villa",
+                explanation: "Aston Villa matched Liverpool's scoring feats across Europe by putting 6 goals past their opponents."
+            },
+            {
+                floor: 6,
+                question: "Who are top of the Champions League today?",
+                options: ["PSG", "Barcelona", "Liverpool", "Arsenal"],
+                answer: "PSG",
+                explanation: "Following their impressive victory, PSG sit right at the top of the Champions League group table."
+            },
+            {
+                floor: 7,
+                question: "Which squad number was Nigel Clough given during the Premier League's inaugural year?",
+                options: ["7", "6", "8", "11"],
+                answer: "7",
+                explanation: "Nigel Clough wore the famous number 7 shirt when official squad numbers were introduced in the Premier League era."
+            },
+            {
+                floor: 8,
+                question: "Which team has the smallest capacity ground in the Premier League?",
+                options: ["Bournemouth", "Coventry", "Ipswich", "Hull"],
+                answer: "Bournemouth",
+                explanation: "Bournemouth's Vitality Stadium (Dean Court) holds around 11,300 fans, making it the smallest stadium in the top flight."
+            },
+            {
+                floor: 9,
+                question: "Excluding goalkeepers, who is officially the tallest outfield player to play in the Premier League?",
+                options: ["Lacina Traoré", "Peter Crouch", "Dan Burn", "Per Mertesacker"],
+                answer: "Lacina Traoré",
+                explanation: "Standing at 6ft 8in (2.03m), striker Lacina Traoré edges out Peter Crouch and Dan Burn as the tallest outfield player in Premier League history."
+            },
+            {
+                floor: 10,
+                question: "Who scored the fastest goal in Premier League history?",
+                options: ["Shane Long", "Ledley King", "Philip Billing", "Alan Shearer"],
+                answer: "Shane Long",
+                explanation: "Shane Long scored for Southampton against Watford in just 7.69 seconds back in April 2019."
+            },
+
+            // FLOORS 11-45: TRIVIA FLOORS
+            {
+                floor: 11,
+                question: "Which player holds the record for most assists in Premier League history?",
+                options: ["Ryan Giggs", "Cesc Fàbregas", "Kevin De Bruyne", "Wayne Rooney"],
+                answer: "Ryan Giggs",
+                explanation: "Ryan Giggs leads the all-time assist chart with an astonishing 162 Premier League assists."
+            },
+            {
+                floor: 12,
+                question: "Who is the all-time leading goalscorer in Premier League history?",
+                options: ["Alan Shearer", "Harry Kane", "Wayne Rooney", "Andrew Cole"],
+                answer: "Alan Shearer",
+                explanation: "Alan Shearer holds the record with 260 Premier League goals scored for Blackburn Rovers and Newcastle United."
+            },
+            {
+                floor: 13,
+                question: "Which goalkeeper holds the record for the most clean sheets in Premier League history?",
+                options: ["Petr Čech", "David James", "Mark Schwarzer", "David de Gea"],
+                answer: "Petr Čech",
+                explanation: "Petr Čech kept 202 clean sheets across his career at Chelsea and Arsenal."
+            },
+            {
+                floor: 14,
+                question: "Which club won the inaugural Premier League season in 1992–93?",
+                options: ["Manchester United", "Blackburn Rovers", "Aston Villa", "Arsenal"],
+                answer: "Manchester United",
+                explanation: "Manchester United ended a 26-year league title drought by winning the inaugural Premier League campaign."
+            },
+            {
+                floor: 15,
+                question: "Who scored the famous 'Kun Agüero' title-winning goal for Manchester City in May 2012 against QPR?",
+                options: ["Sergio Agüero", "Edin Džeko", "Mario Balotelli", "David Silva"],
+                answer: "Sergio Agüero",
+                explanation: "Sergio Agüero struck at 93:20 to snatch the Premier League title from Manchester United in sensational fashion."
+            },
+            {
+                floor: 16,
+                question: "Which manager famously guided Leicester City to their miraculous 5000-1 Premier League title in 2015–16?",
+                options: ["Claudio Ranieri", "Nigel Pearson", "Brendan Rodgers", "Craig Shakespeare"],
+                answer: "Claudio Ranieri",
+                explanation: "Claudio Ranieri managed Leicester City to one of the greatest sporting upsets in history."
+            },
+            {
+                floor: 17,
+                question: "Who was the first player to score 100 Premier League goals for two different clubs?",
+                options: ["Alan Shearer", "Wayne Rooney", "Harry Kane", "Teddy Sheringham"],
+                answer: "Alan Shearer",
+                explanation: "Shearer passed 100 goals for both Blackburn Rovers and Newcastle United."
+            },
+            {
+                floor: 18,
+                question: "Which club completed the unbeaten 'Invincibles' Premier League season in 2003–04?",
+                options: ["Arsenal", "Chelsea", "Manchester United", "Liverpool"],
+                answer: "Arsenal",
+                explanation: "Arsène Wenger's Arsenal went 38 league games undefeated (26 wins, 12 draws)."
+            },
+            {
+                floor: 19,
+                question: "Who scored the fastest hat-trick in Premier League history (3 minutes 56 seconds)?",
+                options: ["Sadio Mané", "Robbie Fowler", "Jermain Defoe", "Gabriel Agbonlahor"],
+                answer: "Sadio Mané",
+                explanation: "Sadio Mané netted three times in 176 seconds for Southampton against Aston Villa in May 2015."
+            },
+            {
+                floor: 20,
+                question: "Which player has made the most appearances in Premier League history?",
+                options: ["Gareth Barry", "Ryan Giggs", "James Milner", "Frank Lampard"],
+                answer: "Gareth Barry",
+                explanation: "Gareth Barry leads the all-time appearances chart with 653 Premier League matches played."
+            },
+            {
+                floor: 21,
+                question: "Which English manager was the last to win the top-flight English league title?",
+                options: ["Howard Wilkinson", "Sir Bobby Robson", "Harry Redknapp", "Roy Hodgson"],
+                answer: "Howard Wilkinson",
+                explanation: "Howard Wilkinson won the First Division title with Leeds United in 1991–92, the final season before the Premier League launch."
+            },
+            {
+                floor: 22,
+                question: "Who scored the header that won Manchester United the 1999 Champions League final in Barcelona?",
+                options: ["Ole Gunnar Solskjær", "Teddy Sheringham", "Dwight Yorke", "Andy Cole"],
+                answer: "Ole Gunnar Solskjær",
+                explanation: "Solskjær poked home in the 93rd minute following Sheringham's equalizer to seal the Treble."
+            },
+            {
+                floor: 23,
+                question: "Which Scottish club went undefeated through an entire 38-game league season in 2016–17 under Brendan Rodgers?",
+                options: ["Celtic", "Rangers", "Aberdeen", "Hearts"],
+                answer: "Celtic",
+                explanation: "Celtic earned the 'Invincibles' moniker in Scotland by going undefeated across all domestic competitions."
+            },
+            {
+                floor: 24,
+                question: "Who is the only goalkeeper to score a Premier League goal from inside his own penalty area?",
+                options: ["Asmir Begović", "Tim Howard", "Paul Robinson", "Peter Schmeichel"],
+                answer: "Asmir Begović",
+                explanation: "Begović scored for Stoke against Southampton after just 13 seconds with a wind-assisted kick."
+            },
+            {
+                floor: 25,
+                question: "Which player has received the most yellow cards in Premier League history?",
+                options: ["Gareth Barry", "Wayne Rooney", "Lee Bowyer", "Paul Scholes"],
+                answer: "Gareth Barry",
+                explanation: "Gareth Barry accumulated 123 yellow cards during his top-flight career."
+            },
+            {
+                floor: 26,
+                question: "Who was the manager of Chelsea when they conceded just 15 goals in a single Premier League season (2004–05)?",
+                options: ["José Mourinho", "Carlo Ancelotti", "Guus Hiddink", "Claudio Ranieri"],
+                answer: "José Mourinho",
+                explanation: "Mourinho's Chelsea set the record for fewest goals conceded (15) and most clean sheets (25) in 2004–05."
+            },
+            {
+                floor: 27,
+                question: "Which ground was known as 'The Theatre of Dreams'?",
+                options: ["Old Trafford", "Anfield", "Highbury", "St James' Park"],
+                answer: "Old Trafford",
+                explanation: "Sir Bobby Charlton famously coined the nickname 'The Theatre of Dreams' for Old Trafford."
+            },
+            {
+                floor: 28,
+                question: "Who scored Liverpool's opening goal in the 2005 Champions League final 'Miracle of Istanbul'?",
+                options: ["Steven Gerrard", "Xabi Alonso", "Vladimir Šmicer", "Hernán Crespo"],
+                answer: "Steven Gerrard",
+                explanation: "Steven Gerrard sparked Liverpool's 3-goal comeback with a soaring header in the 54th minute."
+            },
+            {
+                floor: 29,
+                question: "Which player won Premier League titles with both Blackburn Rovers and Chelsea?",
+                options: ["Chris Sutton", "Graeme Le Saux", "Mark Hughes", "Damien Duff"],
+                answer: "Chris Sutton",
+                explanation: "Sutton won the title with Blackburn in 1995 and later played for Chelsea."
+            },
+            {
+                floor: 30,
+                question: "Who was the first African player to reach 100 Premier League goals?",
+                options: ["Didier Drogba", "Mohamed Salah", "Sadio Mané", "Emmanuel Adebayor"],
+                answer: "Didier Drogba",
+                explanation: "Didier Drogba reached the milestone in March 2012 playing for Chelsea."
+            },
+            {
+                floor: 31,
+                question: "Which stadium hosted the FA Cup Finals while Wembley Stadium was being rebuilt between 2001 and 2006?",
+                options: ["Millennium Stadium", "Old Trafford", "Villa Park", "Hampden Park"],
+                answer: "Millennium Stadium",
+                explanation: "Cardiff's Millennium Stadium hosted six FA Cup finals during Wembley's redevelopment."
+            },
+            {
+                floor: 32,
+                question: "Who scored the winning penalty for England against Colombia in the 2018 World Cup shootout?",
+                options: ["Eric Dier", "Harry Kane", "Kieran Trippier", "Marcus Rashford"],
+                answer: "Eric Dier",
+                explanation: "Eric Dier stepped up to score the decisive kick, earning England's first-ever World Cup penalty shootout victory."
+            },
+            {
+                floor: 33,
+                question: "Which team scored 101 Premier League goals in 2013–14 but still finished second in the table?",
+                options: ["Liverpool", "Manchester City", "Chelsea", "Arsenal"],
+                answer: "Liverpool",
+                explanation: "Brendan Rodgers' Liverpool netted 101 goals but finished two points behind Manchester City."
+            },
+            {
+                floor: 34,
+                question: "Who holds the record for scoring in 11 consecutive Premier League matches?",
+                options: ["Jamie Vardy", "Ruud van Nistelrooy", "Daniel Sturridge", "Erling Haaland"],
+                answer: "Jamie Vardy",
+                explanation: "Vardy broke Ruud van Nistelrooy's record by scoring in 11 straight games during Leicester's 2015–16 title run."
+            },
+            {
+                floor: 35,
+                question: "Which club was original host to 'The Famous Spion Kop' grandstand before the name spread across football?",
+                options: ["Arsenal", "Liverpool", "Birmingham City", "Sheffield Wednesday"],
+                answer: "Liverpool",
+                explanation: "Liverpool's Spion Kop terrace was named in 1906 following the battle of Spion Kop in South Africa."
+            },
+            {
+                floor: 36,
+                question: "Who was the first teenager to score 50 Premier League goals?",
+                options: ["Michael Owen", "Wayne Rooney", "Robbie Fowler", "Cesc Fàbregas"],
+                answer: "Michael Owen",
+                explanation: "Michael Owen burst onto the scene for Liverpool, reaching 50 goals faster than any other youngster."
+            },
+            {
+                floor: 37,
+                question: "Which side won the European Cup twice under manager Brian Clough?",
+                options: ["Nottingham Forest", "Derby County", "Leeds United", "Aston Villa"],
+                answer: "Nottingham Forest",
+                explanation: "Brian Clough led Nottingham Forest to back-to-back European Cup triumphs in 1979 and 1980."
+            },
+            {
+                floor: 38,
+                question: "Who is the only player to have scored in the Merseyside, Manchester, and North London derbies?",
+                options: ["Emmanuel Adebayor", "Nicolas Anelka", "Craig Bellamy", "Les Ferdinand"],
+                answer: "Emmanuel Adebayor",
+                explanation: "Adebayor scored for Arsenal and Spurs in North London, Man City in Manchester, and Real Madrid elsewhere."
+            },
+            {
+                floor: 39,
+                question: "Which Premier League club's nickname is 'The Cottagers'?",
+                options: ["Fulham", "Burnley", "Crystal Palace", "Luton Town"],
+                answer: "Fulham",
+                explanation: "Fulham earned their nickname 'The Cottagers' from their historic Craven Cottage home ground."
+            },
+            {
+                floor: 40,
+                question: "Who was named Player of the Tournament at Euro 2020?",
+                options: ["Gianluigi Donnarumma", "Raheem Sterling", "Jorginho", "Pedri"],
+                answer: "Gianluigi Donnarumma",
+                explanation: "Italy's goalkeeper Gianluigi Donnarumma took the award after penalty shootout heroics in the final."
+            },
+            {
+                floor: 41,
+                question: "Which English player won the FIFA World Cup Golden Boot in 1986?",
+                options: ["Gary Lineker", "Alan Shearer", "Geoff Hurst", "Bobby Charlton"],
+                answer: "Gary Lineker",
+                explanation: "Gary Lineker scored 6 goals in Mexico to win the 1986 Golden Boot."
+            },
+            {
+                floor: 42,
+                question: "Who was the first manager to be sacked in the Premier League era?",
+                options: ["Ian Porterfield", "Peter Reid", "Howard Wilkinson", "Brian Clough"],
+                answer: "Ian Porterfield",
+                explanation: "Chelsea manager Ian Porterfield was dismissed in February 1993, becoming the first PL managerial casualty."
+            },
+            {
+                floor: 43,
+                question: "Which player famously executed the 'Cruyff Turn' on his international debut against Sweden in 1974?",
+                options: ["Johan Cruyff", "George Best", "Bobby Moore", "Kevin Keegan"],
+                answer: "Johan Cruyff",
+                explanation: "Johan Cruyff unveiled his iconic turn against Swedish defender Jan Olsson at the 1974 World Cup."
+            },
+            {
+                floor: 44,
+                question: "Who scored a famous overhead kick for Manchester United in the Manchester derby in February 2011?",
+                options: ["Wayne Rooney", "Sergio Agüero", "Yaya Touré", "Mario Balotelli"],
+                answer: "Wayne Rooney",
+                explanation: "Wayne Rooney scored for Manchester United against City with an unforgettable bicycle kick!"
+            },
+            {
+                floor: 45,
+                question: "Which club holds the record for most FA Cup final wins?",
+                options: ["Arsenal", "Manchester United", "Chelsea", "Liverpool"],
+                answer: "Arsenal",
+                explanation: "Arsenal hold the record with 14 FA Cup triumphs."
+            }
+        ];
+
+        let currentFloor = 0;
+        let selectedMode = 'solo'; // 'solo', 'gaffa', 'group'
+        let startTime = 0;
+        let timerInterval = null;
+        let timeElapsedSeconds = 0;
+        let soundEnabled = true;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedState = localStorage.getItem('skyscraper_progress');
+            if (savedState) {
+                document.getElementById('btn-resume-skyscraper').style.display = 'block';
+            }
+
+            document.getElementById('share-btn').addEventListener('click', async () => {
+                const victoryCard = document.getElementById('victory-card');
+                const toast = document.getElementById('toast-msg');
+                
+                toast.innerText = 'CAPTURING SCREENSHOT...';
+                toast.style.display = 'block';
+
+                const canvas = await html2canvas(victoryCard, { backgroundColor: '#111111', scale: 2 });
+                canvas.toBlob(async (blob) => {
+                    toast.style.display = 'none';
+                    if (!blob) return;
+                    const file = new File([blob], 'skyscraper-victory.png', { type: 'image/png' });
+
+                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                        try {
+                            await navigator.share({ title: 'Skyscraper Victory Card', files: [file] });
+                        } catch (e) {}
+                    } else {
+                        const a = document.createElement('a');
+                        a.href = URL.createObjectURL(file);
+                        a.download = 'skyscraper-victory.png';
+                        a.click();
+                    }
+                }, 'image/png');
+            });
+        });
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('btn-sound-toggle').innerText = `SOUND: ${soundEnabled ? 'ON' : 'OFF'}`;
+        }
+
+        function selectMode(mode, btnEl) {
+            selectedMode = mode;
+            document.querySelectorAll('.mode-option-btn').forEach(b => b.classList.remove('active'));
+            btnEl.classList.add('active');
+        }
+
+        function startSkyscraperGame() {
+            localStorage.removeItem('skyscraper_progress');
+            currentFloor = 0;
+            timeElapsedSeconds = 0;
+            initGameSession();
+        }
+
+        function resumeSkyscraperGame() {
+            const savedState = localStorage.getItem('skyscraper_progress');
+            if (savedState) {
+                const data = JSON.parse(savedState);
+                currentFloor = data.floor || 0;
+                timeElapsedSeconds = data.time || 0;
+                selectedMode = data.mode || 'solo';
+                initGameSession(true);
+            } else {
+                startSkyscraperGame();
+            }
+        }
+
+        function initGameSession(isResume = false) {
+            document.getElementById('landing-screen').style.display = 'none';
+            document.getElementById('gameplay-header').style.display = 'flex';
+            document.getElementById('floor-hud-container').style.display = 'flex';
+            document.getElementById('game-workspace').style.display = 'flex';
+
+            if (!isResume) {
+                timeElapsedSeconds = 0;
+            }
+            
+            startTime = Date.now() - (timeElapsedSeconds * 1000);
+            
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timeElapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+                const m = Math.floor(timeElapsedSeconds / 60).toString().padStart(2, '0');
+                const s = (timeElapsedSeconds % 60).toString().padStart(2, '0');
+                document.getElementById('active-game-timer').textContent = `${m}:${s}`;
+                
+                localStorage.setItem('skyscraper_progress', JSON.stringify({
+                    floor: currentFloor,
+                    time: timeElapsedSeconds,
+                    mode: selectedMode
+                }));
+            }, 1000);
+
+            renderFloor();
+        }
+
+        function toggleGafferFact() {
+            const box = document.getElementById('gaffer-fact-box');
+            const btn = document.getElementById('btn-reveal-fact');
+            if (box.style.display === 'block') {
+                box.style.display = 'none';
+                btn.textContent = '💡 REVEAL GAFFA FACT';
+            } else {
+                box.style.display = 'block';
+                btn.textContent = '🙈 HIDE GAFFA FACT';
+            }
+        }
+
+        function renderFloor() {
+            document.getElementById('error-banner').style.display = 'none';
+
+            if (currentFloor >= fullQuestions.length) {
+                handleVictory();
+                return;
+            }
+
+            const q = fullQuestions[currentFloor];
+            const qBox = document.getElementById('question-box');
+            const qText = document.getElementById('question-text');
+            const gafferBox = document.getElementById('gaffer-fact-box');
+            const gafferText = document.getElementById('gaffer-fact-text');
+            const revealBtn = document.getElementById('btn-reveal-fact');
+            
+            document.getElementById('card-floor-text').innerHTML = `<span style="color: var(--genre-pitch);">Floor ${q.floor}</span> / 45`;
+            document.getElementById('mode-badge-text').textContent = `MODE: ${selectedMode.toUpperCase()}`;
+
+            if (selectedMode === 'group') {
+                qBox.classList.add('masked');
+                qText.innerHTML = `<span style="color: var(--genre-pitch); font-style: italic;">🔒 QUESTION MASKED<br><small style="color: var(--text-muted); font-size: 0.65rem;">LISTEN TO YOUR GAFFA READ ALOUD</small></span>`;
+                revealBtn.style.display = 'none';
+                gafferBox.style.display = 'none';
+            } else if (selectedMode === 'gaffa') {
+                qBox.classList.remove('masked');
+                qText.textContent = q.question;
+                revealBtn.style.display = 'block';
+                revealBtn.textContent = '💡 REVEAL GAFFA FACT';
+                gafferBox.style.display = 'none';
+                gafferText.textContent = q.explanation;
+            } else {
+                qBox.classList.remove('masked');
+                qText.textContent = q.question;
+                revealBtn.style.display = 'none';
+                gafferBox.style.display = 'none';
+            }
+
+            const grid = document.getElementById('options-grid');
+            grid.innerHTML = '';
+            q.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'btn-option';
+                btn.textContent = opt;
+                btn.onclick = () => selectAnswer(opt === q.answer, btn);
+                grid.appendChild(btn);
+            });
+        }
+
+        function selectAnswer(isCorrect, btnEl) {
+            if (isCorrect) {
+                btnEl.classList.add('selected-correct');
+                setTimeout(() => {
+                    currentFloor++;
+                    renderFloor();
+                }, 600);
+            } else {
+                btnEl.classList.add('selected-wrong');
+                document.getElementById('error-banner').style.display = 'block';
+                setTimeout(() => {
+                    btnEl.classList.remove('selected-wrong');
+                }, 800);
+            }
+        }
+
+        function handleVictory() {
+            clearInterval(timerInterval);
+            localStorage.removeItem('skyscraper_progress');
+
+            document.getElementById('game-workspace').style.display = 'none';
+            document.getElementById('floor-hud-container').style.display = 'none';
+            document.getElementById('gameplay-header').style.display = 'none';
+            document.getElementById('victory-screen').style.display = 'flex';
+
+            const m = Math.floor(timeElapsedSeconds / 60).toString().padStart(2, '0');
+            const s = (timeElapsedSeconds % 60).toString().padStart(2, '0');
+            const formattedTime = `${m}:${s}`;
+
+            document.getElementById('victory-time-display').textContent = formattedTime;
+            document.getElementById('victory-time-row-display').textContent = `${formattedTime}s`;
+            document.getElementById('victory-mode-badge').textContent = `${selectedMode.toUpperCase()} MASTER`;
+            document.getElementById('accuracy-text').textContent = '100% (45/45)';
+        }
+
+        function resetAndPlayAgain() {
+            localStorage.removeItem('skyscraper_progress');
+            location.reload();
+        }
+    </script>
+</head>
+<body class="game-ball">
+
+    <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; min-height: 100vh; min-height: 100dvh;">
+        
+        <!-- TOP BAR -->
+        <div class="top-bar">
+            <a href="index.html" class="pill-btn">← LOBBY</a>
+            <button class="pill-btn" id="btn-sound-toggle" onclick="toggleSound()">SOUND: ON</button>
+        </div>
+
+        <!-- LANDING SCREEN (DEFAULT VISIBLE) -->
+        <div id="landing-screen" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <div class="game-logo-box">
+                <h1 class="game-logo-pitch">SKYSCRAPER</h1>
+                <p class="game-logo-title">Eleventh Floor Special</p>
+                <p class="game-logo-sub">45-FLOOR MATCHDAY DROP</p>
+            </div>
+
+            <div class="landing-container">
+                <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+                    <strong>45 FLOORS OF MATCHDAY LORE</strong><br><br>
+                    No per-question timer bar. Play solo, host as Gaffa, or play in Group Play mode.
+                </div>
+
+                <!-- MODE SELECTOR -->
+                <div class="mode-selector-box">
+                    <div style="font-size: 0.65rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">CHOOSE PLAY MODE</div>
+                    
+                    <button class="mode-option-btn active" onclick="selectMode('solo', this)">
+                        <span>1. SOLO CLIMB</span>
+                        <span class="mode-desc">Standard 45 Floors</span>
+                    </button>
+                    
+                    <button class="mode-option-btn" onclick="selectMode('gaffa', this)">
+                        <span>2. GAFFA MODE</span>
+                        <span class="mode-desc">Quiz Master + Banter Facts</span>
+                    </button>
+                    
+                    <button class="mode-option-btn" onclick="selectMode('group', this)">
+                        <span>3. GROUP PLAY</span>
+                        <span class="mode-desc">Question Masked</span>
+                    </button>
+                </div>
+
+                <button id="btn-start-skyscraper" class="btn-start" onclick="startSkyscraperGame()">Start 45-Floor Climb</button>
+                <button id="btn-resume-skyscraper" class="pill-btn" onclick="resumeSkyscraperGame()" style="display: none; background: rgba(34, 197, 94, 0.1); border-color: var(--genre-pitch); color: var(--genre-pitch); width: 100%; margin-top: 4px; padding: 10px; font-weight: 800;">RESUME PREVIOUS SESSION</button>
+            </div>
+        </div>
+
+        <!-- GAMEPLAY HEADER -->
+        <div id="gameplay-header" class="gameplay-header-box" style="display: none;">
+            <p class="game-logo-title">Skyscraper Special</p>
+            <p class="game-logo-sub">THINK YOU KNOW BALL?</p>
+        </div>
+
+        <!-- Gameplay HUD Header -->
+        <div class="hud-sidebar-container" id="floor-hud-container" style="display: none;">
+            <div class="floor-info-box">
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <div id="card-floor-text" style="font-size: 1.1rem; font-weight: 800;">
+                        <span style="color: var(--genre-pitch);">Floor 1</span> / 45
+                    </div>
+                    <div id="mode-badge-text" style="font-size: 0.65rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">MODE: SOLO</div>
+                </div>
+                <!-- SESSION STOPWATCH TIMER (STAYS ACTIVE) -->
+                <div id="active-game-timer" class="header-timer">00:00</div>
+            </div>
+        </div>
+
+        <!-- Main Play Card Workspace -->
+        <div id="game-workspace" class="play-card" style="display: none;">
+            
+            <!-- QUESTION BOX -->
+            <div class="question-box" id="question-box">
+                <div id="question-text" style="font-size: 0.9rem; font-weight: 600; color: #ffffff;">Loading matchday lore...</div>
+            </div>
+
+            <!-- GAFFER REVEAL BUTTON & BANTER FACT BOX -->
+            <button id="btn-reveal-fact" class="btn-reveal-fact" onclick="toggleGafferFact()" style="display: none;">💡 REVEAL GAFFA FACT</button>
+            <div class="gaffer-fact-box" id="gaffer-fact-box">
+                <span style="font-weight: 700; color: var(--genre-pitch);">GAFFA FACT:</span>
+                <div class="gaffer-fact-text" id="gaffer-fact-text">...</div>
+            </div>
+
+            <!-- ERROR FEEDBACK BANNER -->
+            <div class="error-banner" id="error-banner">
+                ❌ WRONG ANSWER! HAVE ANOTHER GO.
+            </div>
+
+            <!-- OPTIONS GRID -->
+            <div class="options-grid" id="options-grid">
+                <button class="btn-option"></button>
+                <button class="btn-option"></button>
+                <button class="btn-option"></button>
+                <button class="btn-option"></button>
+            </div>
+        </div>
+
+        <!-- FINAL ECOSYSTEM VICTORY SCREEN LAYOUT -->
+        <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
+            
+            <div class="victory-receipt-card" id="victory-card">
+                <div class="receipt-header">
+                    <div class="brand-lockup-container">
+                        <div class="brand-mark-left">11FL?</div>
+                        <div class="brand-text-stacked">
+                            <span class="brand-title-top">ELEVENTH FLOOR</span>
+                            <span class="brand-title-bottom">SKYSCRAPER</span>
+                        </div>
+                    </div>
+                    <div class="badge-slot-reserved">VERIFIED</div>
+                </div>
+
+                <div class="hero-flex-box">
+                    <div class="game-title-header">
+                        <span class="brand-white">Think You Know Ball?</span>
+                    </div>
+                    <div class="flex-status-label">
+                        <span class="brand-green">45 Floors</span> <span class="brand-white">Cleared</span>
+                    </div>
+                    <div class="hero-time-display"><span id="victory-time-display">00:00</span><span class="hero-time-unit">s</span></div>
+                    <div class="flex-tier-badge" id="victory-mode-badge">SOLO MASTER</div>
+                </div>
+
+                <div class="receipt-details">
+                    <div class="receipt-row">
+                        <span class="row-label">SKYSCRAPER SPECIAL</span>
+                        <span class="row-val">#31</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">MATCH TIME</span>
+                        <span class="row-val active" id="victory-time-row-display">00:00s</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">ACCURACY</span>
+                        <span class="row-val success" id="accuracy-text">100% (45/45)</span>
+                    </div>
+                </div>
+
+                <div class="card-footer-cta">
+                    MADE BY HUMANS! • ELEVENTH FLOOR GAMES
+                </div>
+            </div>
+
+            <div class="controls-group">
+                <button class="btn-flex-action" id="share-btn">📸 SHARE VICTORY RECEIPT</button>
+                <button class="btn-secondary-action" onclick="resetAndPlayAgain()">🔄 PLAY AGAIN</button>
+            </div>
+        </div>
+
+        <div id="toast-msg">CAPTURING SCREENSHOT...</div>
+    </div>
+
+</body>
+</html>
