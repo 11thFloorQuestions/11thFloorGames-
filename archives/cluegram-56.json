@@ -1,0 +1,82 @@
+[
+  {
+    "floor": 1,
+    "length": 5,
+    "domain": "Oceanography & Marine",
+    "scrambled": "LOCRA",
+    "target": "CORAL",
+    "clue": "A hard stony substance secreted by marine polyps for support and structure."
+  },
+  {
+    "floor": 2,
+    "length": 5,
+    "domain": "Physics & Optics",
+    "scrambled": "SIMPR",
+    "target": "PRISM",
+    "clue": "A transparent glass body that refracts light to break it into a rainbow spectrum."
+  },
+  {
+    "floor": 3,
+    "length": 6,
+    "domain": "Zoology & Animals",
+    "scrambled": "ONALFC",
+    "target": "FALCON",
+    "clue": "A bird of prey known for its high-speed diving capability while hunting."
+  },
+  {
+    "floor": 4,
+    "length": 6,
+    "domain": "Architecture & Design",
+    "scrambled": "CUMOLN",
+    "target": "COLUMN",
+    "clue": "A tall vertical cylindrical pillar supporting a building structure or arch."
+  },
+  {
+    "floor": 5,
+    "length": 7,
+    "domain": "Literature & Theatre",
+    "scrambled": "DRAGETY",
+    "target": "TRAGEDY",
+    "clue": "A genre of drama featuring serious events and typically an unhappy ending."
+  },
+  {
+    "floor": 6,
+    "length": 6,
+    "domain": "Technology & Computing",
+    "scrambled": "TOCINA",
+    "target": "ACTION",
+    "clue": "A process of doing something or performing a specific command in software."
+  },
+  {
+    "floor": 7,
+    "length": 7,
+    "domain": "Medicine & Health",
+    "scrambled": "CICEVAN",
+    "target": "VACCINE",
+    "clue": "A biological preparation that provides active acquired immunity to a specific disease."
+  },
+  {
+    "floor": 8,
+    "length": 7,
+    "domain": "Botany & Nature",
+    "scrambled": "DHCROIS",
+    "target": "ORCHIDS",
+    "clue": "Exotic flowering plants prized globally for their colorful and intricate blooms."
+  },
+  {
+    "floor": 9,
+    "length": 9,
+    "domain": "Geometry & Math",
+    "scrambled": "RETNAGLCE",
+    "target": "RECTANGLE",
+    "clue": "A four-sided plane figure with four right angles and opposite sides equal."
+  },
+  {
+    "floor": 10,
+    "length": 9,
+    "domain": "Nautical & Maritime",
+    "scrambled": "WRESHPIKC",
+    "target": "SHIPWRECK",
+    "clue": "The destroyed remains of a vessel sunken at sea or washed ashore."
+  }
+]
