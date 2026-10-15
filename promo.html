@@ -387,4 +387,167 @@
         .receipt-details { border-top: 1px solid #333333; padding-top: 14px; margin-bottom: 16px; }
         .receipt-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .receipt-row:last-child { margin-bottom: 0; }
-        .row-label { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: #888888; text-transform: uppercase; letter-spacing:
+        .row-label { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: #888888; text-transform: uppercase; letter-spacing: 1px; }
+        .row-val { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
+        .row-val.success { color: var(--genre-pitch); }
+        .row-val.active { color: var(--state-active); }
+
+        .card-footer-cta { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 800; color: #888888; letter-spacing: 1.5px; border-top: 1px dashed #333333; padding-top: 10px; text-transform: uppercase; }
+
+        .controls-group { width: 100%; max-width: 340px; display: flex; flex-direction: column; align-items: center; }
+        .btn-flex-action { width: 100%; background-color: var(--genre-pitch); border: 1px solid var(--genre-pitch); color: #000000; padding: 14px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border-radius: 24px; cursor: pointer; box-shadow: 0 0 15px var(--genre-pitch-glow); margin-bottom: 10px; display: block; }
+        .btn-secondary-action { width: 100%; background-color: #111111; border: 1px solid #333333; color: #ffffff; padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 24px; cursor: pointer; display: block; }
+
+        #toast-msg { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--genre-pitch); color: #000000; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.75rem; padding: 8px 16px; border-radius: 20px; display: none; z-index: 1000; letter-spacing: 1px; text-transform: uppercase; }
+    </style>
+
+    <script>
+        // FULL 45-FLOOR DATASET WRAPPED IN BACKTICKS TO PREVENT STRING ESCAPE FAILURES
+        const fullQuestions = [
+            {
+                floor: 1,
+                question: `Why did Manchester City block their manager from speaking to the radio after the Liverpool match?`,
+                options: [`Worried about 114 financial charges being mentioned`, `Enzo Maresca would accidentally leak the tactical room's Wi-Fi password`, `Maresca was about to burst into song`, `The club offered no explanation, breaking Premier League administrative Rule K.207`],
+                answer: `The club offered no explanation, breaking Premier League administrative Rule K.207`,
+                clue: `It involves Premier League administrative regulations and post-match duties.`,
+                explanation: `Manchester City refused to let Enzo Maresca do post-match radio interviews following the Liverpool game and gave no explanation, breaching Premier League administrative rules.`
+            },
+            {
+                floor: 2,
+                question: `Which former Manchester United and Newcastle legend celebrates his birthday today?`,
+                options: [`Andrew Cole`, `Steve Bruce`],
+                answer: `Andrew Cole`,
+                clue: `He famously scored 187 Premier League goals without a single penalty.`,
+                explanation: `Andrew Cole was born on 15 October 1971 and played as a prolific striker for both Newcastle United and Manchester United.`
+            },
+            {
+                floor: 3,
+                question: `Manchester City were beaten 2–4 last night (Wednesday) in the Champions League by whom?`,
+                options: [`PSG`, `Real Madrid`, `Bayern Munich`, `Inter Milan`],
+                answer: `PSG`,
+                clue: `French champions who put on a European goalfest.`,
+                explanation: `Paris Saint-Germain came out top in a 4–2 thriller against Manchester City in the Champions League.`
+            },
+            {
+                floor: 4,
+                question: `In the Champions League last night, Liverpool bagged 6 against Austrian team LASK. Who got a hat-trick?`,
+                options: [`Bradley Barcola`, `Cody Gakpo`, `Darwin Núñez`, `Mohamed Salah`],
+                answer: `Bradley Barcola`,
+                clue: `A prolific French forward leading the charge.`,
+                explanation: `Bradley Barcola led the charge, claiming a spectacular hat-trick in Liverpool's 6-goal performance against LASK.`
+            },
+            {
+                floor: 5,
+                question: `Which other team (not Liverpool) also netted 6 last night in Europe?`,
+                options: [`Aston Villa`, `Real Madrid`, `PSG`, `Barcelona`],
+                answer: `Aston Villa`,
+                clue: `Unai Emery's side matched the six-goal spree.`,
+                explanation: `Aston Villa matched Liverpool's scoring feats across Europe by putting 6 goals past their opponents.`
+            },
+            {
+                floor: 6,
+                question: `Who are top of the Champions League today?`,
+                options: [`PSG`, `Barcelona`, `Liverpool`, `Arsenal`],
+                answer: `PSG`,
+                clue: `Fresh off their 4-2 win against Manchester City.`,
+                explanation: `Following their impressive victory, PSG sit right at the top of the Champions League group table.`
+            },
+            {
+                floor: 7,
+                question: `Which squad number was Nigel Clough given during the Premier League's inaugural year?`,
+                options: [`7`, `6`, `8`, `11`],
+                answer: `7`,
+                clue: `The famous wide/attacking midfielder shirt number.`,
+                explanation: `Nigel Clough wore the famous number 7 shirt when official squad numbers were introduced in the Premier League era.`
+            },
+            {
+                floor: 8,
+                question: `Which team has the smallest capacity ground in the Premier League?`,
+                options: [`Bournemouth`, `Coventry`, `Ipswich`, `Hull`],
+                answer: `Bournemouth`,
+                clue: `Vitality Stadium holds just over 11,000 fans.`,
+                explanation: `Bournemouth's Vitality Stadium (Dean Court) holds around 11,300 fans, making it the smallest stadium in the top flight.`
+            },
+            {
+                floor: 9,
+                question: `Excluding goalkeepers, who is officially the tallest outfield player to play in the Premier League?`,
+                options: [`Lacina Traoré`, `Peter Crouch`, `Dan Burn`, `Per Mertesacker`],
+                answer: `Lacina Traoré`,
+                clue: `Stands at 6ft 8in (2.03m) and played for Everton.`,
+                explanation: `Standing at 6ft 8in (2.03m), striker Lacina Traoré edges out Peter Crouch and Dan Burn as the tallest outfield player in Premier League history.`
+            },
+            {
+                floor: 10,
+                question: `Who scored the fastest goal in Premier League history?`,
+                options: [`Shane Long`, `Ledley King`, `Philip Billing`, `Alan Shearer`],
+                answer: `Shane Long`,
+                clue: `Scored in 7.69 seconds for Southampton against Watford.`,
+                explanation: `Shane Long scored for Southampton against Watford in just 7.69 seconds back in April 2019.`
+            },
+            {
+                floor: 11,
+                question: `Which player holds the record for most assists in Premier League history?`,
+                options: [`Ryan Giggs`, `Cesc Fàbregas`, `Kevin De Bruyne`, `Wayne Rooney`],
+                answer: `Ryan Giggs`,
+                clue: `Welsh winger who played over two decades at Old Trafford.`,
+                explanation: `Ryan Giggs leads the all-time assist chart with an astonishing 162 Premier League assists.`
+            },
+            {
+                floor: 12,
+                question: `Who is the all-time leading goalscorer in Premier League history?`,
+                options: [`Alan Shearer`, `Harry Kane`, `Wayne Rooney`, `Andrew Cole`],
+                answer: `Alan Shearer`,
+                clue: `260 top-flight goals for Blackburn and Newcastle.`,
+                explanation: `Alan Shearer holds the record with 260 Premier League goals scored for Blackburn Rovers and Newcastle United.`
+            },
+            {
+                floor: 13,
+                question: `Which goalkeeper holds the record for the most clean sheets in Premier League history?`,
+                options: [`Petr Čech`, `David James`, `Mark Schwarzer`, `David de Gea`],
+                answer: `Petr Čech`,
+                clue: `Famous headguard-wearing Chelsea and Arsenal icon.`,
+                explanation: `Petr Čech kept 202 clean sheets across his career at Chelsea and Arsenal.`
+            },
+            {
+                floor: 14,
+                question: `Which club won the inaugural Premier League season in 1992–93?`,
+                options: [`Manchester United`, `Blackburn Rovers`, `Aston Villa`, `Arsenal`],
+                answer: `Manchester United`,
+                clue: `Ended a 26-year title drought under Alex Ferguson.`,
+                explanation: `Manchester United ended a 26-year league title drought by winning the inaugural Premier League campaign.`
+            },
+            {
+                floor: 15,
+                question: `Who scored the famous 'Kun Agüero' title-winning goal for Manchester City in May 2012 against QPR?`,
+                options: [`Sergio Agüero`, `Edin Džeko`, `Mario Balotelli`, `David Silva`],
+                answer: `Sergio Agüero`,
+                clue: `93:20 moment that sealed their first Premier League title.`,
+                explanation: `Sergio Agüero struck at 93:20 to snatch the Premier League title from Manchester United in sensational fashion.`
+            },
+            {
+                floor: 16,
+                question: `Which manager famously guided Leicester City to their miraculous 5000-1 Premier League title in 2015–16?`,
+                options: [`Claudio Ranieri`, `Nigel Pearson`, `Brendan Rodgers`, `Craig Shakespeare`],
+                answer: `Claudio Ranieri`,
+                clue: `Italian manager famous for his 'Dilly Ding, Dilly Dong' catchphrase.`,
+                explanation: `Claudio Ranieri managed Leicester City to one of the greatest sporting upsets in history.`
+            },
+            {
+                floor: 17,
+                question: `Who was the first player to score 100 Premier League goals for two different clubs?`,
+                options: [`Alan Shearer`, `Wayne Rooney`, `Harry Kane`, `Teddy Sheringham`],
+                answer: `Alan Shearer`,
+                clue: `Blackburn Rovers and Newcastle United legend.`,
+                explanation: `Shearer passed 100 goals for both Blackburn Rovers and Newcastle United.`
+            },
+            {
+                floor: 18,
+                question: `Which club completed the unbeaten 'Invincibles' Premier League season in 2003–04?`,
+                options: [`Arsenal`, `Chelsea`, `Manchester United`, `Liverpool`],
+                answer: `Arsenal`,
+                clue: `Managed by Arsène Wenger with Thierry Henry upfront.`,
+                explanation: `Arsène Wenger's Arsenal went 38 league games undefeated (26 wins, 12 draws).`
+            },
+            {
+                floor: 19,
+                question
