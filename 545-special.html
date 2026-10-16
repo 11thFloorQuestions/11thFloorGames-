@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=5.45.10">
+    <link rel="stylesheet" href="style.css?v=5.45.11">
 
     <!-- HTML2CANVAS LIBRARY FOR RECEIPT SCREENSHOT CAPTURE -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -227,7 +227,7 @@
         .btn-start {
             background-color: var(--surface);
             border: 1px solid var(--genre-pitch);
-            color: var(--genre-pitch);
+            color: #ffffff; /* UPDATED TO WHITE AS REQUESTED */
             padding: 10px 24px;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.8rem;
@@ -292,7 +292,7 @@
         .modal-title {
             font-family: 'Anton', sans-serif;
             font-size: 1.4rem;
-            color: var(--genre-pitch);
+            color: #ffffff; /* UPDATED TO WHITE AS REQUESTED */
             letter-spacing: 1px;
             text-transform: uppercase;
             border-bottom: 1px solid var(--surface-border-light);
@@ -429,176 +429,4 @@
         .row-val.active { color: var(--state-active); }
 
         .controls-group { width: 100%; max-width: 340px; display: flex; flex-direction: column; align-items: center; }
-        .btn-flex-action { width: 100%; background-color: var(--genre-pitch); border: 1px solid var(--genre-pitch); color: #000000; padding: 14px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border-radius: 24px; cursor: pointer; box-shadow: 0 0 15px var(--genre-pitch-glow); margin-bottom: 10px; display: block; }
-        .btn-secondary-action { width: 100%; background-color: #111111; border: 1px solid #333333; color: #ffffff; padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 24px; cursor: pointer; display: block; }
-
-        #toast-msg { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--genre-pitch); color: #000000; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.75rem; padding: 8px 16px; border-radius: 20px; display: none; z-index: 1000; letter-spacing: 1px; text-transform: uppercase; }
-    </style>
-</head>
-<body class="game-ball">
-
-    <div class="main-wrapper" style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 100vh; min-height: 100dvh;">
-        
-        <!-- TOP BAR -->
-        <div class="top-bar">
-            <a href="index.html" class="pill-btn">LOBBY</a>
-            <button class="pill-btn" id="btn-sound-toggle" onclick="toggleSound()">SOUND: ON</button>
-        </div>
-
-        <!-- LANDING SCREEN -->
-        <div id="landing-screen" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-            <div class="game-logo-box">
-                <h1 class="game-logo-pitch">
-                    <span class="highlight-green">5.45</span> <span class="highlight-white">SPECIAL</span>
-                </h1>
-                <p class="game-logo-title">THINK YOU KNOW <span class="highlight-ball">BALL?</span></p>
-                <p class="game-logo-sub">The 5.45pm (UK) Saturday Football Quiz</p>
-            </div>
-
-            <div class="landing-container">
-                <div class="landing-copy">
-                    <p>Play Solo or in Gaffer Mode as Quiz Master with your Friends/Followers in Group Play Mode.</p>
-                    <p class="share-cta">Share Your Score!</p>
-                </div>
-
-                <button class="rules-pill-btn" onclick="openRulesModal()">HOW TO PLAY RULES</button>
-
-                <!-- MODE SELECTOR -->
-                <div class="mode-selector-box">
-                    <div style="font-size: 0.65rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">CHOOSE PLAY MODE</div>
-                    
-                    <button class="mode-option-btn active" onclick="selectMode('solo', this)">
-                        <span>SOLO PLAY</span>
-                        <span class="mode-desc">45 Questions</span>
-                    </button>
-                    
-                    <button class="mode-option-btn" onclick="selectMode('gaffer', this)">
-                        <span>GAFFER MODE</span>
-                        <span class="mode-desc">Host - Clues - Facts</span>
-                    </button>
-                    
-                    <button class="mode-option-btn" onclick="selectMode('group', this)">
-                        <span>GROUP PLAY (Unlimited)</span>
-                        <span class="mode-desc">Questions Masked</span>
-                    </button>
-                </div>
-
-                <button id="btn-start-skyscraper" class="btn-start" onclick="startSkyscraperGame()">Start 5.45 Special</button>
-                <button id="btn-resume-skyscraper" class="pill-btn" onclick="resumeSkyscraperGame()" style="display: none; background: rgba(34, 197, 94, 0.1); border-color: var(--genre-pitch); color: var(--genre-pitch); width: 100%; margin-top: 2px; padding: 8px; font-weight: 800;">RESUME PREVIOUS SESSION</button>
-            </div>
-        </div>
-
-        <!-- HOW TO PLAY RULES MODAL -->
-        <div id="rules-modal" class="modal-overlay">
-            <div class="modal-card">
-                <div class="modal-title">HOW TO PLAY</div>
-                <div class="modal-body">
-                    <p><strong>1. SOLO PLAY:</strong> Answer all 45 matchday questions solo. One attempt per question—pick the right option to score points against the clock.</p>
-                    <p><strong>2. GAFFER MODE:</strong> You are the Quiz Master! Read questions aloud to your group/stream. Tap "REVEAL GAFFER FACT" for hints and banter facts.</p>
-                    <p><strong>3. GROUP PLAY:</strong> For friends and followers joining the quiz! Question text is masked on screen—listen to your Gaffer read the question aloud and lock in your choice!</p>
-                </div>
-                <button class="modal-close-btn" onclick="closeRulesModal()">GOT IT</button>
-            </div>
-        </div>
-
-        <!-- GAMEPLAY HEADER -->
-        <div id="gameplay-header" class="gameplay-header-box" style="display: none;">
-            <p class="game-logo-title"><span style="color: var(--genre-pitch);">5.45</span> Special</p>
-            <p class="game-logo-sub">THINK YOU KNOW BALL?</p>
-        </div>
-
-        <!-- Gameplay HUD Header -->
-        <div class="hud-sidebar-container" id="floor-hud-container" style="display: none;">
-            <div class="floor-info-box">
-                <div style="display: flex; flex-direction: column; gap: 4px;">
-                    <div id="card-floor-text" style="font-size: 1.1rem; font-weight: 800;">
-                        <span style="color: var(--genre-pitch);">Q1</span> / 45
-                    </div>
-                    <div id="mode-badge-text" style="font-size: 0.65rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">MODE: SOLO</div>
-                </div>
-                <div id="active-game-timer" class="header-timer">00:00</div>
-            </div>
-        </div>
-
-        <!-- Main Play Card Workspace -->
-        <div id="game-workspace" class="play-card" style="display: none;">
-            <div class="question-box" id="question-box">
-                <div id="question-text" style="font-size: 0.9rem; font-weight: 600; color: #ffffff;">Loading matchday lore...</div>
-            </div>
-
-            <button id="btn-reveal-fact" class="btn-reveal-fact" onclick="toggleGafferFact()" style="display: none;">REVEAL GAFFER FACT</button>
-            <div class="gaffer-fact-box" id="gaffer-fact-box">
-                <span style="font-weight: 700; color: var(--genre-pitch);">GAFFER FACT:</span>
-                <div class="gaffer-fact-text" id="gaffer-fact-text">...</div>
-            </div>
-
-            <div class="options-grid" id="options-grid">
-                <button class="btn-option"></button>
-                <button class="btn-option"></button>
-                <button class="btn-option"></button>
-                <button class="btn-option"></button>
-            </div>
-        </div>
-
-        <!-- FINAL VICTORY RECEIPT SCREEN -->
-        <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
-            
-            <div class="victory-receipt-card" id="victory-card">
-                <div class="receipt-header">
-                    <div class="brand-lockup-container">
-                        <div class="brand-mark-left">11FL?</div>
-                        <div class="brand-text-stacked">
-                            <span class="brand-title-top">ELEVENTH FLOOR</span>
-                            <span class="brand-title-bottom">GAMES</span>
-                        </div>
-                    </div>
-                    <div class="badge-slot-reserved">VERIFIED</div>
-                </div>
-
-                <div class="hero-flex-box">
-                    <div class="game-title-header">
-                        <span class="brand-white">Think You Know Ball?</span>
-                    </div>
-                    <div class="flex-status-label">
-                        <span class="brand-green">5.45 SPECIAL</span> <span class="brand-white">CLEARED</span>
-                    </div>
-                    <div class="hero-time-display"><span id="victory-time-display">00:00</span><span class="hero-time-unit">s</span></div>
-                    <div class="flex-tier-badge" id="victory-mode-badge">GROUP PLAYER</div>
-                </div>
-
-                <div class="receipt-details">
-                    <div class="receipt-row">
-                        <span class="row-label" style="color: #ffffff;">5.45 Special</span>
-                        <span class="row-val" style="color: #ffffff;">#001</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="row-label">MATCH TIME</span>
-                        <span class="row-val active" id="victory-time-row-display">00:00s</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="row-label">SCORE</span>
-                        <span class="row-val success" id="accuracy-text">45/45</span>
-                    </div>
-                    <div class="receipt-row" id="attempts-notice-row">
-                        <span class="row-label">ATTEMPTS</span>
-                        <span class="row-val active" id="attempts-notice-val">1</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="controls-group">
-                <button class="btn-flex-action" id="share-btn">SHARE VICTORY RECEIPT</button>
-                <button class="btn-secondary-action" onclick="resetAndPlayAgain()">PLAY AGAIN</button>
-            </div>
-        </div>
-
-        <div id="toast-msg">CAPTURING SCREENSHOT...</div>
-    </div>
-
-    <!-- SCRIPT LOADS WITH BUMPED CACHE BUSTER -->
-    <script src="545-special-data.js?v=5.45.10"></script>
-    <script src="545-special.js?v=5.45.10"></script>
-
-</body>
-</html>
-<!-- END OF FILE: 545-special.html -->
+        .btn-flex-action { width: 100%; background-color: var(--genre-pitch); border: 1px solid var(--genre-pitch); color: #000000; padding: 14px; font-family: 'Montserrat', sans-serif; font-size: 0.8
