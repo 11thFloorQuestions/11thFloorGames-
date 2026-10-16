@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=5.45.5">
+    <link rel="stylesheet" href="style.css?v=5.45.6">
 
     <!-- HTML2CANVAS LIBRARY FOR RECEIPT SCREENSHOT CAPTURE -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -299,26 +299,6 @@
             line-height: 1.3;
         }
 
-        .error-banner {
-            width: 100%;
-            background: rgba(239, 68, 68, 0.15);
-            border: 1px solid var(--state-error);
-            border-radius: 6px;
-            padding: 8px 12px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--state-error);
-            text-align: center;
-            display: none;
-            animation: shake 0.3s ease-in-out;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-6px); }
-            40%, 80% { transform: translateX(6px); }
-        }
-
         .options-grid { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 2px; }
         .btn-option { width: 100%; background: #111111; border: 1px solid var(--surface-border-light); border-radius: 8px; padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-primary); text-align: left; cursor: pointer; transition: background-color 0.2s ease, border-color 0.2s ease; }
         .btn-option.selected-correct { background: rgba(34, 197, 94, 0.2); border-color: var(--genre-pitch); color: var(--genre-pitch); }
@@ -330,9 +310,9 @@
             background-color: #111111;
             border: 1px solid var(--genre-pitch);
             border-radius: 14px;
-            padding: 22px 20px;
+            padding: 20px 18px;
             box-shadow: 0 0 25px var(--genre-pitch-glow);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             text-align: left;
             display: block;
         }
@@ -342,8 +322,8 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #333333;
-            padding-bottom: 12px;
-            margin-bottom: 16px;
+            padding-bottom: 10px;
+            margin-bottom: 14px;
         }
 
         .brand-lockup-container { display: flex; align-items: center; gap: 8px; }
@@ -353,27 +333,25 @@
         .brand-title-bottom { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: #ffffff; letter-spacing: 2px; text-transform: uppercase; line-height: 1.1; }
         .badge-slot-reserved { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; color: #888888; letter-spacing: 1px; text-transform: uppercase; }
 
-        .hero-flex-box { text-align: center; padding: 4px 0; margin-bottom: 16px; }
-        .game-title-header { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 6px; }
-        .flex-status-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+        .hero-flex-box { text-align: center; padding: 2px 0; margin-bottom: 14px; }
+        .game-title-header { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 4px; }
+        .flex-status-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
 
         .brand-green { color: var(--genre-pitch); }
         .brand-white { color: #ffffff; }
 
-        .hero-time-display { font-family: 'Anton', sans-serif; font-size: 3.4rem; line-height: 0.9; color: #ffffff; letter-spacing: 2px; margin: 8px 0; }
-        .hero-time-unit { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 800; color: #888888; letter-spacing: 1px; margin-left: 2px; text-transform: lowercase; }
+        .hero-time-display { font-family: 'Anton', sans-serif; font-size: 3.2rem; line-height: 0.9; color: #ffffff; letter-spacing: 2px; margin: 6px 0; }
+        .hero-time-unit { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 800; color: #888888; letter-spacing: 1px; margin-left: 2px; text-transform: lowercase; }
 
-        .flex-tier-badge { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; color: var(--genre-pitch); letter-spacing: 2px; text-transform: uppercase; background: rgba(34, 197, 94, 0.1); border: 1px solid var(--genre-pitch); padding: 6px 16px; border-radius: 12px; margin-top: 6px; }
+        .flex-tier-badge { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; color: var(--genre-pitch); letter-spacing: 2px; text-transform: uppercase; background: rgba(34, 197, 94, 0.1); border: 1px solid var(--genre-pitch); padding: 5px 14px; border-radius: 12px; margin-top: 4px; }
 
-        .receipt-details { border-top: 1px solid #333333; padding-top: 14px; margin-bottom: 16px; }
-        .receipt-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .receipt-details { border-top: 1px solid #333333; padding-top: 12px; }
+        .receipt-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
         .receipt-row:last-child { margin-bottom: 0; }
         .row-label { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: #888888; text-transform: uppercase; letter-spacing: 1px; }
         .row-val { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
         .row-val.success { color: var(--genre-pitch); }
         .row-val.active { color: var(--state-active); }
-
-        .card-footer-cta { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 800; color: #888888; letter-spacing: 1.5px; border-top: 1px dashed #333333; padding-top: 10px; text-transform: uppercase; }
 
         .controls-group { width: 100%; max-width: 340px; display: flex; flex-direction: column; align-items: center; }
         .btn-flex-action { width: 100%; background-color: var(--genre-pitch); border: 1px solid var(--genre-pitch); color: #000000; padding: 14px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border-radius: 24px; cursor: pointer; box-shadow: 0 0 15px var(--genre-pitch-glow); margin-bottom: 10px; display: block; }
@@ -392,7 +370,7 @@
             <button class="pill-btn" id="btn-sound-toggle" onclick="toggleSound()">SOUND: ON</button>
         </div>
 
-        <!-- LANDING SCREEN (DEFAULT VISIBLE) -->
+        <!-- LANDING SCREEN -->
         <div id="landing-screen" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
             <div class="game-logo-box">
                 <h1 class="game-logo-pitch">
@@ -448,32 +426,22 @@
                     </div>
                     <div id="mode-badge-text" style="font-size: 0.65rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">MODE: SOLO</div>
                 </div>
-                <!-- SESSION STOPWATCH TIMER (STAYS ACTIVE) -->
                 <div id="active-game-timer" class="header-timer">00:00</div>
             </div>
         </div>
 
         <!-- Main Play Card Workspace -->
         <div id="game-workspace" class="play-card" style="display: none;">
-            
-            <!-- QUESTION BOX -->
             <div class="question-box" id="question-box">
                 <div id="question-text" style="font-size: 0.9rem; font-weight: 600; color: #ffffff;">Loading matchday lore...</div>
             </div>
 
-            <!-- GAFFER REVEAL BUTTON & BANTER FACT BOX -->
             <button id="btn-reveal-fact" class="btn-reveal-fact" onclick="toggleGafferFact()" style="display: none;">REVEAL GAFFA FACT</button>
             <div class="gaffer-fact-box" id="gaffer-fact-box">
                 <span style="font-weight: 700; color: var(--genre-pitch);">GAFFA FACT:</span>
                 <div class="gaffer-fact-text" id="gaffer-fact-text">...</div>
             </div>
 
-            <!-- ERROR FEEDBACK BANNER -->
-            <div class="error-banner" id="error-banner">
-                WRONG ANSWER! HAVE ANOTHER GO.
-            </div>
-
-            <!-- OPTIONS GRID -->
             <div class="options-grid" id="options-grid">
                 <button class="btn-option"></button>
                 <button class="btn-option"></button>
@@ -482,7 +450,7 @@
             </div>
         </div>
 
-        <!-- FINAL ECOSYSTEM VICTORY SCREEN LAYOUT -->
+        <!-- FINAL VICTORY RECEIPT SCREEN -->
         <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
             
             <div class="victory-receipt-card" id="victory-card">
@@ -505,13 +473,13 @@
                         <span class="brand-green">5.45 SPECIAL</span> <span class="brand-white">CLEARED</span>
                     </div>
                     <div class="hero-time-display"><span id="victory-time-display">00:00</span><span class="hero-time-unit">s</span></div>
-                    <div class="flex-tier-badge" id="victory-mode-badge">SOLO MASTER</div>
+                    <div class="flex-tier-badge" id="victory-mode-badge">GROUP PLAYER</div>
                 </div>
 
                 <div class="receipt-details">
                     <div class="receipt-row">
-                        <span class="row-label">MATCHDAY SPECIAL</span>
-                        <span class="row-val">5.45 PM</span>
+                        <span class="row-label" style="color: #ffffff;">5.45 Special</span>
+                        <span class="row-val" style="color: #ffffff;">#001</span>
                     </div>
                     <div class="receipt-row">
                         <span class="row-label">MATCH TIME</span>
@@ -521,14 +489,10 @@
                         <span class="row-label">SCORE</span>
                         <span class="row-val success" id="accuracy-text">45/45</span>
                     </div>
-                    <div class="receipt-row" id="attempts-notice-row" style="display: none;">
-                        <span class="row-label">5.45 SPECIAL #001 ATTEMPTS THAT DAY</span>
+                    <div class="receipt-row" id="attempts-notice-row">
+                        <span class="row-label">ATTEMPTS</span>
                         <span class="row-val active" id="attempts-notice-val">1</span>
                     </div>
-                </div>
-
-                <div class="card-footer-cta">
-                    MADE BY HUMANS! • ELEVENTH FLOOR GAMES
                 </div>
             </div>
 
@@ -541,10 +505,10 @@
         <div id="toast-msg">CAPTURING SCREENSHOT...</div>
     </div>
 
-    <!-- SEPARATE DATA AND LOGIC SCRIPTS -->
-    <script src="545-special-data.js?v=5.45.5"></script>
-    <script src="545-special.js?v=5.45.5"></script>
+    <!-- SCRIPT LOADS -->
+    <script src="545-special-data.js?v=5.45.6"></script>
+    <script src="545-special.js?v=5.45.6"></script>
 
 </body>
 </html>
-<!-- END OF FILE: promo.html -->
+<!-- END OF FILE: 545-special.html -->
