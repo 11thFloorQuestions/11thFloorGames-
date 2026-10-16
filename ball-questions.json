@@ -1,144 +1,142 @@
 {
-  "setId": "31",
-  "title": "Think You Know Ball? - Set 31",
+  "setId": "32",
+  "title": "Think You Know Ball? - Set 32",
   "questions": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Why did Manchester City block their manager from speaking to the radio after the Liverpool match?",
+      "question": "Which Manchester United player had to issue an apology this week for criticising Jason Wilcox the Sporting Director?",
       "options": [
-        "Worried about 114 financial charges being mentioned",
-        "Enzo Maresca would accidentally leak the tactical room's Wi-Fi password",
-        "Maresca was about to burst into song",
-        "The club offered no explanation, breaking Premier League administrative Rule K.207"
+        "Lisandro Martínez",
+        "Harry Maguire"
       ],
-      "answer": "The club offered no explanation, breaking Premier League administrative Rule K.207",
-      "explanation": "Manchester City refused to let Enzo Maresca do post-match radio interviews following the Liverpool game and gave no explanation, breaching Premier League administrative rules.",
-      "anchorClues": "Manchester City Enzo Maresca radio interview Liverpool Rule K207"
+      "answer": "Lisandro Martínez",
+      "explanation": "Lisandro Martínez issued an apology following his post-match remarks regarding technical director Jason Wilcox.",
+      "anchorClues": "Manchester United Lisandro Martinez apology Jason Wilcox Sporting Director"
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which former Manchester United and Newcastle legend celebrates his birthday today?",
+      "question": "Which current Everton player celebrates his birthday today?",
       "options": [
-        "Andrew Cole",
-        "Steve Bruce"
+        "Nathan Patterson",
+        "James Tarkowski",
+        "Vitalii Mykolenko"
       ],
-      "answer": "Andrew Cole",
-      "explanation": "Andrew Cole was born on 15 October 1971 and played as a prolific striker for both Newcastle United and Manchester United.",
-      "anchorClues": "Andrew Cole Manchester United Newcastle birthday October 15"
+      "answer": "Nathan Patterson",
+      "explanation": "Nathan Patterson celebrates his birthday today.",
+      "anchorClues": "Everton Nathan Patterson birthday today"
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Manchester City were beaten 2–4 last night (Wednesday) in the Champions League by whom?",
+      "question": "Brighton beat Lithuanian side Kauno Žalgiris last night (Thursday) in the UEFA Conference League, what was the score?",
       "options": [
-        "PSG",
-        "Real Madrid",
-        "Bayern Munich",
-        "Inter Milan"
+        "4–0",
+        "2–0",
+        "3–1",
+        "5–0"
       ],
-      "answer": "PSG",
-      "explanation": "Paris Saint-Germain came out top in a 4–2 thriller against Manchester City in the Champions League.",
-      "anchorClues": "Manchester City Champions League loss PSG 4-2"
+      "answer": "4–0",
+      "explanation": "Brighton secured a comfortable 4–0 victory over Kauno Žalgiris in the UEFA Conference League.",
+      "anchorClues": "Brighton Kauno Zalgiris UEFA Conference League 4-0 score"
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "In the Champions League last night, Liverpool bagged 6 against Austrian team LASK. Who got a hat-trick?",
+      "question": "A 93rd-minute winner helped Sunderland continue their perfect record in Europe with a come-from-behind victory at Torreense. Who scored it?",
       "options": [
-        "Bradley Barcola",
-        "Cody Gakpo",
-        "Darwin Núñez",
-        "Mohamed Salah"
+        "Noah Sadiki",
+        "Jobe Bellingham",
+        "Wilson Isidor",
+        "Romaine Mundle"
       ],
-      "answer": "Bradley Barcola",
-      "explanation": "Bradley Barcola led the charge, claiming a spectacular hat-trick in Liverpool's 6-goal performance against LASK.",
-      "anchorClues": "Liverpool LASK Champions League Barcola hat-trick"
+      "answer": "Noah Sadiki",
+      "explanation": "Noah Sadiki scored the dramatic late winner to secure victory for Sunderland.",
+      "anchorClues": "Sunderland Torreense Noah Sadiki 93rd minute winner"
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Which other team (not Liverpool) also netted 6 last night in Europe?",
+      "question": "Crystal Palace were also in action last night in the UEFA Europa League against Olympique Lyonnais. What was the score?",
       "options": [
-        "Aston Villa",
-        "Real Madrid",
-        "PSG",
-        "Barcelona"
+        "1–2 loss",
+        "1–1 draw",
+        "2–0 win",
+        "3–2 loss"
       ],
-      "answer": "Aston Villa",
-      "explanation": "Aston Villa matched Liverpool's scoring feats across Europe by putting 6 goals past their opponents.",
-      "anchorClues": "Aston Villa European match 6 goals scored"
+      "answer": "1–2 loss",
+      "explanation": "Crystal Palace fell to a 1–2 defeat against Lyon in the Europa League.",
+      "anchorClues": "Crystal Palace Olympique Lyonnais Europa League 1-2 loss"
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "Who are top of the Champions League today (Thursday)?",
+      "question": "How many London clubs are in this season's Premier League?",
       "options": [
-        "PSG",
-        "Barcelona",
-        "Liverpool",
-        "Arsenal"
+        "4",
+        "6",
+        "7",
+        "5"
       ],
-      "answer": "PSG",
-      "explanation": "Following their impressive victory, PSG sit right at the top of the Champions League group table.",
-      "anchorClues": "PSG top Champions League table"
+      "answer": "6",
+      "explanation": "There are 6 London clubs competing in the Premier League this season.",
+      "anchorClues": "London clubs Premier League count 6"
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Which squad number was Nigel Clough given during 1993 the Premier League's inaugural year?",
+      "question": "Joelinton wears which squad number for Newcastle this season?",
       "options": [
+        "14",
+        "21",
         "7",
-        "6",
-        "8",
         "11"
       ],
       "answer": "7",
-      "explanation": "Nigel Clough wore the famous number 7 shirt when official squad numbers were introduced in the Premier League era.",
-      "anchorClues": "Nigel Clough squad number 7 Premier League"
+      "explanation": "Joelinton wears the number 7 shirt for Newcastle United.",
+      "anchorClues": "Joelinton Newcastle United squad number 7"
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Which team has the smallest capacity ground in the Premier League?",
+      "question": "Which team is the most easterly team in the Premier League?",
       "options": [
-        "Bournemouth",
-        "Coventry",
         "Ipswich",
-        "Hull"
+        "Sunderland",
+        "Newcastle"
       ],
-      "answer": "Bournemouth",
-      "explanation": "Bournemouth's Vitality Stadium (Dean Court) holds around 11,300 fans, making it the smallest stadium in the top flight.",
-      "anchorClues": "Bournemouth smallest stadium capacity Premier League Vitality"
+      "answer": "Ipswich",
+      "explanation": "Ipswich Town hold the geographical status of being the most easterly club in the top flight.",
+      "anchorClues": "Ipswich most easterly team Premier League"
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "Excluding goalkeepers, who is officially the tallest outfield player to play in the Premier League?",
+      "question": "How many Premier League titles has José Mourinho won?",
       "options": [
-        "Lacina Traoré",
-        "Peter Crouch",
-        "Dan Burn",
-        "Per Mertesacker"
+        "2",
+        "3",
+        "4",
+        "5"
       ],
-      "answer": "Lacina Traoré",
-      "explanation": "Standing at 6ft 8in (2.03m), striker Lacina Traoré edges out Peter Crouch and Dan Burn as the tallest outfield player in Premier League history.",
-      "anchorClues": "Lacina Traore tallest outfield player Premier League height"
+      "answer": "3",
+      "explanation": "José Mourinho won 3 Premier League titles during his spells at Chelsea.",
+      "anchorClues": "Jose Mourinho Premier League titles won 3"
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Who scored the fastest goal in Premier League history?",
+      "question": "Which Everton player has had the most Premier League starts?",
       "options": [
-        "Shane Long",
-        "Ledley King",
-        "Philip Billing",
-        "Alan Shearer"
+        "Tim Howard",
+        "Séamus Coleman",
+        "Leon Osman",
+        "Leighton Baines"
       ],
-      "answer": "Shane Long",
-      "explanation": "Shane Long scored for Southampton against Watford in just 7.69 seconds back in April 2019.",
-      "anchorClues": "Shane Long fastest goal Premier League history 7 seconds"
+      "answer": "Tim Howard",
+      "explanation": "Tim Howard holds the record for the most Premier League starts for Everton.",
+      "anchorClues": "Everton most Premier League starts Tim Howard"
     }
   ]
 }
