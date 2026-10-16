@@ -8,7 +8,6 @@ let correctCount = 0;
 let dailyAttempts = 1;
 
 window.addEventListener('DOMContentLoaded', () => {
-    // Session / Login persistent attempt counter for anti-cheat tracking
     try {
         const storedAttempts = localStorage.getItem('tyk_545_attempts_count');
         if (storedAttempts) {
@@ -91,7 +90,6 @@ function startSkyscraperGame() {
     timeElapsedSeconds = 0;
     correctCount = 0;
 
-    // Increment daily session attempt count
     dailyAttempts++;
     try {
         localStorage.setItem('tyk_545_attempts_count', dailyAttempts.toString());
@@ -227,7 +225,6 @@ function renderFloor() {
 }
 
 function selectAnswer(isCorrect, btnEl) {
-    // Disable all options immediately to prevent double clicks
     document.querySelectorAll('.btn-option').forEach(b => b.disabled = true);
 
     if (isCorrect) {
@@ -237,7 +234,6 @@ function selectAnswer(isCorrect, btnEl) {
         if (btnEl) btnEl.classList.add('selected-wrong');
     }
 
-    // Single attempt rule: advance immediately to next floor
     setTimeout(() => {
         currentFloor++;
         renderFloor();
@@ -287,3 +283,4 @@ function resetAndPlayAgain() {
     localStorage.removeItem('skyscraper_progress');
     location.reload();
 }
+<!-- END OF FILE: 545-special.js -->
