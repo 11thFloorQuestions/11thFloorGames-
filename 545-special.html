@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=5.45.7">
+    <link rel="stylesheet" href="style.css?v=5.45.8">
 
     <!-- HTML2CANVAS LIBRARY FOR RECEIPT SCREENSHOT CAPTURE -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -240,6 +240,93 @@
             transition: border-color 0.2s ease;
         }
 
+        .rules-pill-btn {
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px dashed var(--genre-pitch);
+            color: var(--genre-pitch);
+            padding: 4px 12px;
+            border-radius: 14px;
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .rules-pill-btn:hover {
+            background: var(--genre-pitch);
+            color: #000000;
+        }
+
+        /* RULES MODAL OVERLAY */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 16px;
+        }
+
+        .modal-card {
+            width: 100%;
+            max-width: 420px;
+            background: #111111;
+            border: 1px solid var(--genre-pitch);
+            border-radius: 12px;
+            padding: 18px 16px;
+            box-shadow: 0 0 25px var(--genre-pitch-glow);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .modal-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.4rem;
+            color: var(--genre-pitch);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--surface-border-light);
+            padding-bottom: 8px;
+        }
+
+        .modal-body {
+            font-size: 0.72rem;
+            color: #cccccc;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .modal-body strong {
+            color: #ffffff;
+        }
+
+        .modal-close-btn {
+            background: var(--genre-pitch);
+            color: #000000;
+            border: none;
+            padding: 10px;
+            border-radius: 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            margin-top: 4px;
+        }
+
         .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 6px; flex-shrink: 0; }
         .floor-info-box { flex-grow: 1; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
 
@@ -374,22 +461,24 @@
                     <p class="share-cta">Share Your Score!</p>
                 </div>
 
+                <button class="rules-pill-btn" onclick="openRulesModal()">HOW TO PLAY RULES</button>
+
                 <!-- MODE SELECTOR -->
                 <div class="mode-selector-box">
                     <div style="font-size: 0.65rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">CHOOSE PLAY MODE</div>
                     
                     <button class="mode-option-btn active" onclick="selectMode('solo', this)">
-                        <span>1. SOLO PLAY</span>
+                        <span>SOLO PLAY</span>
                         <span class="mode-desc">45 Questions</span>
                     </button>
                     
                     <button class="mode-option-btn" onclick="selectMode('gaffer', this)">
-                        <span>2. GAFFER MODE</span>
+                        <span>GAFFER MODE</span>
                         <span class="mode-desc">Host - Clues - Facts</span>
                     </button>
                     
                     <button class="mode-option-btn" onclick="selectMode('group', this)">
-                        <span>3. GROUP PLAY (Unlimited Players)</span>
+                        <span>GROUP PLAY (Unlimited)</span>
                         <span class="mode-desc">Questions Masked</span>
                     </button>
                 </div>
@@ -399,9 +488,22 @@
             </div>
         </div>
 
+        <!-- HOW TO PLAY RULES MODAL -->
+        <div id="rules-modal" class="modal-overlay">
+            <div class="modal-card">
+                <div class="modal-title">HOW TO PLAY</div>
+                <div class="modal-body">
+                    <p><strong>1. SOLO PLAY:</strong> Answer all 45 matchday questions solo. One attempt per question—pick the right option to score points against the clock.</p>
+                    <p><strong>2. GAFFER MODE:</strong> You are the Quiz Master! Read questions aloud to your group/stream. Tap "REVEAL GAFFER FACT" for hints and banter facts.</p>
+                    <p><strong>3. GROUP PLAY:</strong> For friends and followers joining the quiz! Question text is masked on screen—listen to your Gaffer read the question aloud and lock in your choice!</p>
+                </div>
+                <button class="modal-close-btn" onclick="closeRulesModal()">GOT IT</button>
+            </div>
+        </div>
+
         <!-- GAMEPLAY HEADER -->
         <div id="gameplay-header" class="gameplay-header-box" style="display: none;">
-            <p class="game-logo-title">5.45 Special</p>
+            <p class="game-logo-title"><span style="color: var(--genre-pitch);">5.45</span> Special</p>
             <p class="game-logo-sub">THINK YOU KNOW BALL?</p>
         </div>
 
@@ -494,8 +596,8 @@
     </div>
 
     <!-- SCRIPT LOADS -->
-    <script src="545-special-data.js?v=5.45.7"></script>
-    <script src="545-special.js?v=5.45.7"></script>
+    <script src="545-special-data.js?v=5.45.8"></script>
+    <script src="545-special.js?v=5.45.8"></script>
 
 </body>
 </html>
