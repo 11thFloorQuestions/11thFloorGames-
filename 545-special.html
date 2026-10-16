@@ -278,4 +278,135 @@
         .modal-card {
             width: 100%;
             max-width: 420px;
-            background: #11
+            background: #111111;
+            border: 1px solid var(--genre-pitch);
+            border-radius: 12px;
+            padding: 18px 16px;
+            box-shadow: 0 0 25px var(--genre-pitch-glow);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .modal-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.4rem;
+            color: var(--genre-pitch);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--surface-border-light);
+            padding-bottom: 8px;
+        }
+
+        .modal-body {
+            font-size: 0.72rem;
+            color: #cccccc;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .modal-body strong {
+            color: #ffffff;
+        }
+
+        .modal-close-btn {
+            background: var(--genre-pitch);
+            color: #000000;
+            border: none;
+            padding: 10px;
+            border-radius: 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            margin-top: 4px;
+        }
+
+        .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 6px; flex-shrink: 0; }
+        .floor-info-box { flex-grow: 1; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
+
+        .play-card { width: 100%; max-width: 600px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 14px 10px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 10px; flex-grow: 1; margin-bottom: 6px; overflow: hidden; min-height: 0; position: relative; }
+        
+        .question-box { width: 100%; background: #111111; border: 1px solid var(--surface-border); border-radius: 6px; padding: 14px; text-align: center; }
+        
+        .question-box.masked {
+            background: repeating-linear-gradient(45deg, #0a0a0a, #0a0a0a 10px, #111111 10px, #111111 20px);
+            border: 1px dashed var(--genre-pitch);
+        }
+
+        .btn-reveal-fact {
+            background: transparent;
+            border: 1px dashed var(--genre-pitch);
+            color: var(--genre-pitch);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 14px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .gaffer-fact-box {
+            width: 100%;
+            background: rgba(34, 197, 94, 0.05);
+            border: 1px solid var(--surface-border-light);
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-align: left;
+            display: none;
+        }
+
+        .gaffer-fact-text {
+            font-style: italic;
+            color: #cccccc;
+            margin-top: 2px;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .options-grid { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 2px; }
+        .btn-option { width: 100%; background: #111111; border: 1px solid var(--surface-border-light); border-radius: 8px; padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-primary); text-align: left; cursor: pointer; transition: background-color 0.2s ease, border-color 0.2s ease; }
+        .btn-option.selected-correct { background: rgba(34, 197, 94, 0.2); border-color: var(--genre-pitch); color: var(--genre-pitch); }
+        .btn-option.selected-wrong { background: rgba(239, 68, 68, 0.2); border-color: var(--state-error); color: var(--state-error); }
+
+        .victory-receipt-card {
+            width: 100%;
+            max-width: 340px;
+            background-color: #111111;
+            border: 1px solid var(--genre-pitch);
+            border-radius: 14px;
+            padding: 20px 18px;
+            box-shadow: 0 0 25px var(--genre-pitch-glow);
+            margin-bottom: 12px;
+            text-align: left;
+            display: block;
+        }
+
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 10px;
+            margin-bottom: 14px;
+        }
+
+        .brand-lockup-container { display: flex; align-items: center; gap: 8px; }
+        .brand-mark-left { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: var(--brand-red); line-height: 0.85; letter-spacing: -0.5px; text-shadow: 0 0 10px var(--brand-red-glow); }
+        .brand-text-stacked { display: flex; flex-direction: column; justify-content: center; text-align: left; }
+        .brand-title-top { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 300; color: #ffffff; letter-spacing: 0.5px; line-height: 1.1; }
+        .brand-title-bottom { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: #ffffff; letter-spacing: 2px; text-transform: uppercase; line-height: 1.1; }
+        .badge-slot-reserved { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; color: #888888; letter-spacing: 1px; text-transform: uppercase; }
+
+        .hero-flex-box { text-align: center; padding: 2px 0; margin-bottom: 14px; }
+        .game-title-header { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 4px; }
