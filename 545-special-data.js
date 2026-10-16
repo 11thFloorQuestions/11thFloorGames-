@@ -5,319 +5,328 @@
  */
 
 const fullQuestions = [
+    // Floors 1–10: Modern Lore & Recent Highlights
     {
         floor: 1,
-        question: "Erling Haaland reached 100 Manchester City goals in how many matches?",
-        options: ["98", "105", "112", "120"],
-        answer: "105",
-        explanation: "Haaland matched Cristiano Ronaldo's record for the fastest 100 goals for a single European club."
-    },
-    {
-        floor: 2,
-        question: "Which player opened the scoring for Arsenal in their 2–0 Champions League victory over Paris Saint-Germain in October 2024?",
+        question: "Which Arsenal player scored the opening goal with a header in their 2–0 Champions League win over Paris Saint-Germain at the Emirates?",
         options: ["Kai Havertz", "Bukayo Saka", "Gabriel Martinelli", "Leandro Trossard"],
         answer: "Kai Havertz",
         explanation: "Kai Havertz headed home Leandro Trossard's cross in the 20th minute."
     },
     {
+        floor: 2,
+        question: "Cole Palmer became the first player in Premier League history to score four goals in the first half of a match against which club?",
+        options: ["Brighton & Hove Albion", "Everton", "Wolverhampton Wanderers", "Leicester City"],
+        answer: "Brighton & Hove Albion",
+        explanation: "Palmer scored all four goals within 20 first-half minutes at Stamford Bridge."
+    },
+    {
         floor: 3,
-        question: "Which manager was appointed as England head coach to succeed Gareth Southgate starting in 2025?",
-        options: ["Thomas Tuchel", "Lee Carsley", "Eddie Howe", "Graham Potter"],
-        answer: "Thomas Tuchel",
-        explanation: "Thomas Tuchel signed an 18-month contract with the FA taking him through to the 2026 World Cup."
+        question: "Which striker joined Tottenham Hotspur from Bournemouth for a club-record fee of up to £65 million?",
+        options: ["Dominic Solanke", "Evanilson", "Richarlison", "Brennan Johnson"],
+        answer: "Dominic Solanke",
+        explanation: "Spurs secured Solanke following his 19-goal Premier League campaign for Bournemouth."
     },
     {
         floor: 4,
-        question: "Which club did Arne Slot manage immediately before replacing Jürgen Klopp at Liverpool in 2024?",
-        options: ["Feyenoord", "PSV Eindhoven", "AZ Alkmaar", "Ajax"],
-        answer: "Feyenoord",
-        explanation: "Slot led Feyenoord to the Eredivisie title in 2023 and the KNVB Cup in 2024 before moving to Anfield."
+        question: "Which manager steered Aston Villa to 4th place to secure Champions League football for the club for the first time in 41 years?",
+        options: ["Unai Emery", "Steven Gerrard", "Dean Smith", "Julen Lopetegui"],
+        answer: "Unai Emery",
+        explanation: "Unai Emery guided Villa back to Europe's elite competition after taking over in October 2022."
     },
     {
         floor: 5,
-        question: "Cole Palmer scored four first-half goals in a single Premier League match against which opponent in September 2024?",
-        options: ["Brighton", "Everton", "Wolverhampton Wanderers", "Leicester City"],
-        answer: "Brighton",
-        explanation: "Palmer became the first player in Premier League history to score four goals in the first half of a match."
+        question: "Which Aston Villa player scored a memorable late lob over Manuel Neuer to beat Bayern Munich 1–0 at Villa Park?",
+        options: ["Jhon Durán", "Ollie Watkins", "Leon Bailey", "Morgan Rogers"],
+        answer: "Jhon Durán",
+        explanation: "Jhon Durán came off the bench to loft the ball over Neuer in the 79th minute."
     },
     {
         floor: 6,
-        question: "Which team ended Bayer Leverkusen's 51-game unbeaten run in the 2024 UEFA Europa League final?",
+        question: "Ademola Lookman scored a hat-trick in the 2024 UEFA Europa League final to end Bayer Leverkusen's 51-game unbeaten run playing for which club?",
         options: ["Atalanta", "Roma", "Benfica", "Sporting CP"],
         answer: "Atalanta",
-        explanation: "Ademola Lookman scored a historic hat-trick as Atalanta won 3–0 in Dublin."
+        explanation: "Lookman scored all three goals in a clinical 3–0 victory in Dublin."
     },
     {
         floor: 7,
         question: "Which squad number does Declan Rice wear for Arsenal?",
-        options: ["4", "8", "41", "6"],
+        options: ["41", "4", "8", "6"],
         answer: "41",
-        explanation: "Rice kept his trademark number 41 shirt following his £105m move from West Ham."
+        explanation: "Declan Rice retained his familiar number 41 shirt following his transfer from West Ham."
     },
     {
         floor: 8,
-        question: "Who is the all-time leading goalscorer in UEFA Champions League history?",
-        options: ["Lionel Messi", "Cristiano Ronaldo", "Robert Lewandowski", "Karim Benzema"],
-        answer: "Cristiano Ronaldo",
-        explanation: "Cristiano Ronaldo leads the all-time charts with 140 Champions League goals."
+        question: "Who scored Manchester United's opening goal in their 2–1 FA Cup final victory over Manchester City at Wembley?",
+        options: ["Alejandro Garnacho", "Kobbie Mainoo", "Bruno Fernandes", "Marcus Rashford"],
+        answer: "Alejandro Garnacho",
+        explanation: "Garnacho capitalised on a mix-up between Stefan Ortega and Joško Gvardiol to open the scoring."
     },
     {
         floor: 9,
-        question: "Who was the first Premier League manager sacked during the 2023–24 season?",
-        options: ["Paul Heckingbottom", "Steve Cooper", "Roy Hodgson", "Erik ten Hag"],
-        answer: "Paul Heckingbottom",
-        explanation: "Sheffield United parted ways with Heckingbottom in December 2023 following a 5–0 defeat to Burnley."
+        question: "Which German coach became the youngest permanent manager in Premier League history at age 31 when appointed by Brighton?",
+        options: ["Fabian Hürzeler", "Kieran McKenna", "Russell Martin", "Danny Röhl"],
+        answer: "Fabian Hürzeler",
+        explanation: "Hürzeler took over at Brighton after guiding St Pauli to Bundesliga promotion."
     },
     {
         floor: 10,
-        question: "Which club did Aston Villa defeat 1–0 at Villa Park in October 2024, echoing their 1982 European Cup final triumph?",
-        options: ["Bayern Munich", "Real Madrid", "Juventus", "Barcelona"],
-        answer: "Bayern Munich",
-        explanation: "Jhon Durán scored a late lob over Manuel Neuer to seal a memorable Champions League victory."
+        question: "Who scored Manchester City's 98th-minute equaliser in a dramatic 2–2 draw with 10-man Arsenal at the Etihad?",
+        options: ["John Stones", "Erling Haaland", "Bernardo Silva", "Rúben Dias"],
+        answer: "John Stones",
+        explanation: "John Stones poked home from close range after Arsenal defended deep following Leandro Trossard's red card."
     },
+
+    // Floors 11–20: Deeper PL Detail & Ground Lore
     {
         floor: 11,
-        question: "Which club won the 2023–24 UEFA Champions League final at Wembley Stadium?",
-        options: ["Real Madrid", "Borussia Dortmund", "Paris Saint-Germain", "Bayern Munich"],
-        answer: "Real Madrid",
-        explanation: "Real Madrid secured their 15th European Cup title with a 2–0 victory over Borussia Dortmund."
+        question: "Shane Long scored the fastest goal in Premier League history in 7.69 seconds. Which Watford defender's clearance did he block straight from kick-off?",
+        options: ["Craig Cathcart", "Christian Kabasele", "Adrian Mariappa", "José Holebas"],
+        answer: "Craig Cathcart",
+        explanation: "Long charged down Cathcart's clearance right from the opening whistle at Vicarage Road."
     },
     {
         floor: 12,
-        question: "Who scored Real Madrid's opening goal in the 2024 UEFA Champions League final?",
-        options: ["Dani Carvajal", "Vinícius Júnior", "Jude Bellingham", "Rodrygo"],
-        answer: "Dani Carvajal",
-        explanation: "Carvajal headed home Toni Kroos' corner in the 74th minute before Vinícius Júnior added a second."
+        question: "Which opposition club visited Highbury for its final competitive match in May 2006, where Thierry Henry scored a hat-trick?",
+        options: ["Wigan Athletic", "West Ham United", "Charlton Athletic", "Tottenham Hotspur"],
+        answer: "Wigan Athletic",
+        explanation: "Arsenal beat Wigan 4–2 to secure 4th place before kissing the Highbury turf goodbye."
     },
     {
         floor: 13,
-        question: "How many yellow cards trigger an automatic one-match ban if accumulated before Matchweek 19 in the Premier League?",
-        options: ["3", "5", "7", "10"],
-        answer: "5",
-        explanation: "Players picking up five yellow cards in their team's first 19 Premier League fixtures serve a one-game suspension."
+        question: "Manchester United famously abandoned their grey kit at half-time at The Dell in 1996. Which strip did they change into for the second half?",
+        options: ["Blue and white striped away kit", "Solid white third kit", "Red home kit", "All-black third kit"],
+        answer: "Blue and white striped away kit",
+        explanation: "Sir Alex Ferguson ordered his players to swap into their blue and white striped kit at half-time."
     },
     {
         floor: 14,
-        question: "Which current Premier League stadium has the smallest official seating capacity?",
-        options: ["Bournemouth", "Brentford", "Luton Town", "Ipswich Town"],
-        answer: "Bournemouth",
-        explanation: "Bournemouth's Vitality Stadium holds just over 11,300 supporters."
+        question: "Richard Dunne shares the all-time record for most Premier League red cards (8) with Patrick Vieira and which former Everton striker?",
+        options: ["Duncan Ferguson", "Roy Keane", "Vinnie Jones", "Lee Cattermole"],
+        answer: "Duncan Ferguson",
+        explanation: "Duncan Ferguson picked up 8 red cards during his fiery top-flight career."
     },
     {
         floor: 15,
-        question: "Who was named Premier League Player of the Season for the 2023–24 campaign?",
-        options: ["Phil Foden", "Cole Palmer", "Rodri", "Erling Haaland"],
-        answer: "Phil Foden",
-        explanation: "Phil Foden scored 19 goals and provided 8 assists as Manchester City won a fourth straight title."
+        question: "Which player provided four assists in a single match on the opening weekend of the 2021–22 season against Leeds United?",
+        options: ["Paul Pogba", "Bruno Fernandes", "Kevin De Bruyne", "Harry Kane"],
+        answer: "Paul Pogba",
+        explanation: "Paul Pogba set up four goals in Manchester United's 5–1 victory over Leeds at Old Trafford."
     },
     {
         floor: 16,
-        question: "Which country hosted the UEFA Euro 2024 tournament?",
-        options: ["Germany", "France", "Spain", "England"],
-        answer: "Germany",
-        explanation: "Germany hosted the 24-team tournament across ten host cities in June and July 2024."
+        question: "Which ground featured a famous pavilion cottage built into the corner of the stands between the Johnny Haynes Stand and the river end?",
+        options: ["Craven Cottage", "Selhurst Park", "Gtech Community Stadium", "Kenilworth Road"],
+        answer: "Craven Cottage",
+        explanation: "The historic cottage pavilion sits in the corner of Fulham's riverside ground."
     },
     {
         floor: 17,
-        question: "Who scored Spain's winning goal in the 86th minute of the UEFA Euro 2024 final against England?",
-        options: ["Mikel Oyarzabal", "Nico Williams", "Lamine Yamal", "Dani Olmo"],
-        answer: "Mikel Oyarzabal",
-        explanation: "Oyarzabal slid home Marc Cucurella's cross to seal a 2–1 victory for Spain."
+        question: "Which shirt sponsor featured on Newcastle United's chest during their 1995–96 'Entertainers' title charge under Kevin Keegan?",
+        options: ["Newcastle Brown Ale", "McEwan's Lager", "Greenall's", "NTL"],
+        answer: "Newcastle Brown Ale",
+        explanation: "The iconic blue star logo of Newcastle Brown Ale adorned Newcastle's classic kits."
     },
     {
         floor: 18,
-        question: "Which Premier League club plays their home matches at Craven Cottage?",
-        options: ["Fulham", "Brentford", "Crystal Palace", "West Ham United"],
-        answer: "Fulham",
-        explanation: "Fulham have played at the historic riverbank ground in West London since 1896."
+        question: "Which manager led Chelsea to a then-record 95 points in his debut 2004–05 season, conceding just 15 league goals?",
+        options: ["José Mourinho", "Carlo Ancelotti", "Claudio Ranieri", "Guus Hiddink"],
+        answer: "José Mourinho",
+        explanation: "Mourinho's side lost only one match all season, setting an all-time defensive record."
     },
     {
         floor: 19,
-        question: "Who won the PFA Young Player of the Year award for the 2023–24 season?",
-        options: ["Cole Palmer", "Bukayo Saka", "Kobbie Mainoo", "Phil Foden"],
-        answer: "Cole Palmer",
-        explanation: "Palmer bagged 22 Premier League goals and 11 assists in his debut season at Chelsea."
+        question: "Which opposition team did Tottenham Hotspur crush 9–1 at White Hart Lane in 2009, featuring five goals from Jermain Defoe?",
+        options: ["Wigan Athletic", "Derby County", "Ipswich Town", "Hull City"],
+        answer: "Wigan Athletic",
+        explanation: "Spurs scored eight goals in the second half to record their biggest top-flight victory."
     },
     {
         floor: 20,
-        question: "Which Slovenian referee officiated the 2024 UEFA Champions League final at Wembley?",
-        options: ["Slavko Vinčić", "Szymon Marciniak", "Anthony Taylor", "Daniele Orsato"],
-        answer: "Slavko Vinčić",
-        explanation: "Vinčić took charge of his second European club final following the 2022 Europa League final."
+        question: "Which club played at 'The Nest' before moving to their current home at Selhurst Park in 1924?",
+        options: ["Crystal Palace", "Millwall", "Charlton Athletic", "Brentford"],
+        answer: "Crystal Palace",
+        explanation: "Crystal Palace played at a converted brickworks known as The Nest before constructing Selhurst Park."
     },
+
+    // Floors 21–30: Classic European Nights & Cup Lore
     {
         floor: 21,
-        question: "Which manager led Atalanta to their first-ever European trophy by winning the 2024 UEFA Europa League?",
-        options: ["Gian Piero Gasperini", "Xabi Alonso", "Simone Inzaghi", "Unai Emery"],
-        answer: "Gian Piero Gasperini",
-        explanation: "Gasperini crowned his long tenure at Bergamo with a resounding 3–0 win over Leverkusen."
+        question: "Who scored Liverpool's stoppage-time 4–3 winner against Newcastle United in 1996, causing Kevin Keegan to slump over the advertising boards?",
+        options: ["Stan Collymore", "Robbie Fowler", "Ian Rush", "John Barnes"],
+        answer: "Stan Collymore",
+        explanation: "Collymore struck in the 92nd minute to settle one of the Premier League's greatest ever matches."
     },
     {
         floor: 22,
-        question: "Who scored Manchester United's opening goal in their 2–1 victory over Manchester City in the 2024 FA Cup final?",
-        options: ["Alejandro Garnacho", "Kobbie Mainoo", "Bruno Fernandes", "Marcus Rashford"],
-        answer: "Alejandro Garnacho",
-        explanation: "Garnacho pounced on a defensive mix-up between Stefan Ortega and Joško Gvardiol to score the opener."
+        question: "Who scored Manchester United's opening header against Chelsea in the 2008 UEFA Champions League final in Moscow?",
+        options: ["Cristiano Ronaldo", "Wayne Rooney", "Carlos Tevez", "Rio Ferdinand"],
+        answer: "Cristiano Ronaldo",
+        explanation: "Ronaldo met Wes Brown's cross in the 26th minute to open the scoring."
     },
     {
         floor: 23,
-        question: "Which striker joined Tottenham Hotspur from Bournemouth in August 2024 for a club-record fee?",
-        options: ["Dominic Solanke", "Evanilson", "Richarlison", "Brennan Johnson"],
-        answer: "Dominic Solanke",
-        explanation: "Spurs secured Solanke in a deal worth up to £65 million following his 19-goal season for Bournemouth."
+        question: "Which Spanish club did Liverpool beat 5–4 via an extra-time golden goal in the 2001 UEFA Cup final in Dortmund?",
+        options: ["Alavés", "Valencia", "Deportivo La Coruña", "Espanyol"],
+        answer: "Alavés",
+        explanation: "Delfí Geli scored an own goal in extra time to seal Liverpool's thrilling cup treble."
     },
     {
         floor: 24,
-        question: "How many total points were deducted from Everton across the 2023–24 Premier League season following appeals?",
-        options: ["6", "8", "10", "12"],
-        answer: "8",
-        explanation: "Everton suffered two separate deductions of 6 points (reduced from 10) and 2 points for PSR breaches."
+        question: "Which goalkeeper famously went up for a 94th-minute corner and scored the header that saved Carlisle United from Football League relegation in 1999?",
+        options: ["Jimmy Glass", "Neville Southall", "David Seaman", "Shaka Hislop"],
+        answer: "Jimmy Glass",
+        explanation: "On-loan goalkeeper Jimmy Glass volleyed home on the final day of the season to preserve Carlisle's league status."
     },
     {
         floor: 25,
-        question: "Which club won the 2023–24 EFL Championship title to earn direct promotion back to the Premier League?",
-        options: ["Leicester City", "Ipswich Town", "Southampton", "Leeds United"],
-        answer: "Leicester City",
-        explanation: "Enzo Maresca's Leicester finished top with 97 points, one point ahead of Ipswich Town."
+        question: "Who scored the 40-yard lobbed volley over Peter Schmeichel to cap off Newcastle's iconic 5–0 win over Manchester United in 1996?",
+        options: ["Philippe Albert", "David Ginola", "Les Ferdinand", "Rob Lee"],
+        answer: "Philippe Albert",
+        explanation: "Belgian centre-back Philippe Albert delicately chipped Schmeichel from 25 yards out."
     },
     {
         floor: 26,
-        question: "How many assists did Thierry Henry record in 2002–03, holding the joint single-season Premier League record?",
-        options: ["18", "20", "22", "24"],
-        answer: "20",
-        explanation: "Henry set the 20-assist record, later matched by Kevin De Bruyne in the 2019–20 campaign."
+        question: "Olivier Giroud scored an iconic scorpion kick off the crossbar for Arsenal against Crystal Palace on New Year's Day 2017. Who provided the cross?",
+        options: ["Alexis Sánchez", "Mesut Özil", "Alexandre Lacazette", "Hector Bellerin"],
+        answer: "Alexis Sánchez",
+        explanation: "Alexis Sánchez crossed from the left wing after a lightning counter-attack."
     },
     {
         floor: 27,
-        question: "Which squad number does Bukayo Saka wear for Arsenal?",
-        options: ["7", "10", "11", "20"],
-        answer: "7",
-        explanation: "Saka took on the iconic number 7 shirt ahead of the 2020–21 season."
+        question: "Kevin Phillips won the European Golden Shoe in 2000 after scoring 30 Premier League goals. Who was his regular strike partner at Sunderland?",
+        options: ["Niall Quinn", "Don Hutchison", "Alex Rae", "Kevin Kilbane"],
+        answer: "Niall Quinn",
+        explanation: "Phillips formed a legendary 'little and large' strike partnership with Niall Quinn."
     },
     {
         floor: 28,
-        question: "Who scored Chelsea's winning goal in their 1–0 victory over Manchester City in the 2021 UEFA Champions League final?",
-        options: ["Kai Havertz", "Timo Werner", "Mason Mount", "N'Golo Kanté"],
-        answer: "Kai Havertz",
-        explanation: "Havertz latched onto Mason Mount's pass and rounded Ederson to score before half-time."
+        question: "Which manager famously sprinted down the Old Trafford touchline after Costinha scored a late equaliser for Porto in 2004?",
+        options: ["José Mourinho", "Pep Guardiola", "Arsène Wenger", "Carlo Ancelotti"],
+        answer: "José Mourinho",
+        explanation: "Mourinho celebrated Costinha's 90th-minute strike that knocked Manchester United out of the Champions League."
     },
     {
         floor: 29,
-        question: "Which stadium is home to Wolverhampton Wanderers?",
-        options: ["Molineux Stadium", "Villa Park", "Ewood Park", "Bramall Lane"],
-        answer: "Molineux Stadium",
-        explanation: "Wolves have played their home fixtures at Molineux since 1889."
+        question: "Who scored the first-ever Premier League goal broadcast live on Sky Sports in August 1992 for Sheffield United against Manchester United?",
+        options: ["Brian Deane", "Teddy Sheringham", "Alan Shearer", "Ian Wright"],
+        answer: "Brian Deane",
+        explanation: "Brian Deane scored after five minutes at Bramall Lane in a 2–1 victory over Alex Ferguson's side."
     },
     {
         floor: 30,
-        question: "Who scored the fastest goal in Premier League history after just 7.69 seconds for Southampton against Watford?",
-        options: ["Shane Long", "Ledley King", "Philip Billing", "Alan Shearer"],
-        answer: "Shane Long",
-        explanation: "Long charged down Craig Cathcart's clearance right from kick-off in April 2019."
+        question: "Which club were nicknamed 'The Crazy Gang' when they beat Liverpool to win the 1988 FA Cup Final?",
+        options: ["Wimbledon", "Millwall", "Leeds United", "Queens Park Rangers"],
+        answer: "Wimbledon",
+        explanation: "Wimbledon earned the moniker due to their physical direct play, club culture, and dressing room pranks."
     },
+
+    // Floors 31–40: Touchline Chaos, Cult Managers & Quirks
     {
         floor: 31,
-        question: "Who was top joint goalscorer in the 2023–24 UEFA Champions League alongside Harry Kane with 8 goals?",
-        options: ["Kylian Mbappé", "Vinícius Júnior", "Antoine Griezmann", "Erling Haaland"],
-        answer: "Kylian Mbappé",
-        explanation: "Mbappé scored 8 goals for Paris Saint-Germain during their run to the semi-finals."
+        question: "Which manager brought a folder of written notes to a press conference to read out a list of 'facts' about Sir Alex Ferguson in 2009?",
+        options: ["Rafa Benítez", "Kevin Keegan", "José Mourinho", "Arsène Wenger"],
+        answer: "Rafa Benítez",
+        explanation: "Rafa Benítez produced his sheet of notes during Liverpool's tense title race run-in."
     },
     {
         floor: 32,
-        question: "Which Premier League club appointed Julen Lopetegui as head coach ahead of the 2024–25 season?",
-        options: ["West Ham United", "Brighton", "Wolverhampton Wanderers", "Leicester City"],
-        answer: "West Ham United",
-        explanation: "Lopetegui replaced David Moyes following the conclusion of the 2023–24 campaign."
+        question: "Which referee mistakenly showed Croatian defender Josip Šimunić three yellow cards before sending him off at the 2006 World Cup?",
+        options: ["Graham Poll", "Mike Dean", "Howard Webb", "Mark Clattenburg"],
+        answer: "Graham Poll",
+        explanation: "English referee Graham Poll failed to send off Šimunić after his second caution against Australia."
     },
     {
         floor: 33,
-        question: "What is the maximum number of substitutions allowed per team in a standard 90-minute Premier League match?",
-        options: ["3", "4", "5", "6"],
-        answer: "5",
-        explanation: "Teams can make up to 5 substitutions across 3 stoppage opportunities during regulation time."
+        question: "Who scored the winning goal for Greece in the UEFA Euro 2004 final against hosts Portugal with a 57th-minute header?",
+        options: ["Angelos Charisteas", "Theodoros Zagorakis", "Giorgos Karagounis", "Dimitrios Papadopoulos"],
+        answer: "Angelos Charisteas",
+        explanation: "Charisteas headed home from a corner to complete one of international football's greatest ever shocks."
     },
     {
         floor: 34,
-        question: "Which English club did Jude Bellingham represent before transferring to Borussia Dortmund in 2020?",
-        options: ["Birmingham City", "Coventry City", "Derby County", "Sunderland"],
-        answer: "Birmingham City",
-        explanation: "Birmingham City retired Bellingham's number 22 shirt following his departure as a 17-year-old."
+        question: "Which manager led Blackpool to the Premier League in 2010 and became famous for his colourful, rant-filled press conferences?",
+        options: ["Ian Holloway", "Neil Warnock", "Harry Redknapp", "Sam Allardyce"],
+        answer: "Ian Holloway",
+        explanation: "Ian Holloway entertained fans throughout Blackpool's top-flight campaign with classic quotes."
     },
     {
         floor: 35,
-        question: "Who scored a dramatic 100th-minute winner for Coventry City to eliminate Wolves in the 2024 FA Cup quarter-finals?",
-        options: ["Haji Wright", "Ellis Simms", "Callum O'Hare", "Milan van Ewijk"],
-        answer: "Haji Wright",
-        explanation: "Wright curled home in the 10th minute of stoppage time following Ellis Simms' 97th-minute equaliser."
+        question: "Manchester City won the title in 2012 with Agüero's 93:20 winner against QPR. Who poked the ball through to assist Agüero's goal?",
+        options: ["Mario Balotelli", "David Silva", "Yaya Touré", "Edin Džeko"],
+        answer: "Mario Balotelli",
+        explanation: "Mario Balotelli slipped while sliding on the turf to poke the ball into Agüero's path."
     },
     {
         floor: 36,
-        question: "Which club plays their home fixtures at the Gtech Community Stadium?",
-        options: ["Brentford", "Fulham", "Crystal Palace", "Bournemouth"],
-        answer: "Brentford",
-        explanation: "Brentford moved into the 17,250-capacity venue in September 2020."
+        question: "Which venue served as Manchester City's home stadium for 80 years before their relocation in 2003?",
+        options: ["Maine Road", "Ewood Park", "Ayresome Park", "Burnden Park"],
+        answer: "Maine Road",
+        explanation: "Manchester City played at Maine Road in Moss Side from 1923 until moving to the City of Manchester Stadium."
     },
     {
         floor: 37,
-        question: "Who scored England's equalising goal from outside the box in the UEFA Euro 2024 final against Spain?",
-        options: ["Cole Palmer", "Jude Bellingham", "Harry Kane", "Bukayo Saka"],
-        answer: "Cole Palmer",
-        explanation: "Palmer scored three minutes after coming off the bench before Spain scored a late winner."
+        question: "Which goalkeeper was caught holding the ball for over six seconds against Sheffield Wednesday, conceding a rare indirect free-kick goal?",
+        options: ["Mark Bosnich", "David Seaman", "Shaka Hislop", "Tim Flowers"],
+        answer: "Mark Bosnich",
+        explanation: "Bosnich held onto the ball too long inside his penalty area, resulting in an indirect free-kick goal."
     },
     {
         floor: 38,
-        question: "Which French club did Kylian Mbappé depart on a free transfer to join Real Madrid in July 2024?",
-        options: ["Paris Saint-Germain", "Monaco", "Lille", "Lyon"],
-        answer: "Paris Saint-Germain",
-        explanation: "Mbappé spent seven seasons at PSG, becoming the club's all-time leading scorer with 256 goals."
+        question: "Which club famously wore a clean, sponsorless retro kit during their rise from Non-League to the Premier League?",
+        options: ["Luton Town", "Ipswich Town", "Sheffield United", "Coventry City"],
+        answer: "Luton Town",
+        explanation: "Luton Town won over shirt purists by wearing sponsorless kit designs during their climb up the divisions."
     },
     {
         floor: 39,
-        question: "Who was appointed Liverpool club captain following Jordan Henderson's exit in the summer of 2023?",
-        options: ["Virgil van Dijk", "Trent Alexander-Arnold", "Andy Robertson", "Mohamed Salah"],
-        answer: "Virgil van Dijk",
-        explanation: "Van Dijk was named captain with Trent Alexander-Arnold serving as vice-captain."
+        question: "Who scored a hat-trick of headers for Everton against West Ham in 2000, legendary for his physical aerial dominance?",
+        options: ["Duncan Ferguson", "Kevin Campbell", "Francis Jeffers", "Paul Rideout"],
+        answer: "Duncan Ferguson",
+        explanation: "Duncan Ferguson dominated the West Ham defence to score three headers at Goodison Park."
     },
     {
         floor: 40,
-        question: "Which national team does Manchester City midfielder Rodri represent at international level?",
-        options: ["Spain", "Portugal", "Brazil", "Argentina"],
-        answer: "Spain",
-        explanation: "Rodri anchored Spain's midfield during their victorious UEFA Nations League 2023 and Euro 2024 campaigns."
+        question: "Which video game console brand had their Dreamcast logo emblazoned on Arsenal's home kit around the turn of the millennium?",
+        options: ["SEGA", "PlayStation", "Nintendo", "Xbox"],
+        answer: "SEGA",
+        explanation: "Arsenal wore SEGA on their away shirt and Dreamcast on their home shirt between 1999 and 2002."
     },
+
+    // Floors 41–45: Oooh Tricky Finishers
     {
         floor: 41,
-        question: "Who holds the record for the most clean sheets in Premier League history with 202 shutout matches?",
-        options: ["Petr Čech", "David de Gea", "David Seaman", "Pepe Reina"],
-        answer: "Petr Čech",
-        explanation: "Čech recorded 202 clean sheets across spells with Chelsea and Arsenal."
+        question: "Which Spanish midfielder provided four assists in a single match during Arsenal's 7–3 demolition of Newcastle United in 2012?",
+        options: ["Santi Cazorla", "Mikel Arteta", "Cesc Fàbregas", "José Antonio Reyes"],
+        answer: "Santi Cazorla",
+        explanation: "Santi Cazorla ran the show at the Emirates, setting up four goals in a ten-goal thriller."
     },
     {
         floor: 42,
-        question: "Which German coach became the youngest permanent manager in Premier League history when hired by Brighton in 2024?",
-        options: ["Fabian Hürzeler", "Kieran McKenna", "Russell Martin", "Andoni Iraola"],
-        answer: "Fabian Hürzeler",
-        explanation: "Hürzeler took charge of Brighton at 31 years of age after guiding St Pauli to Bundesliga promotion."
+        question: "Which goalkeeper saved a John Aldridge penalty in the 1988 FA Cup Final to become the first goalkeeper to captain an FA Cup-winning side?",
+        options: ["Dave Beasant", "Bruce Grobbelaar", "Neville Southall", "Ray Clemence"],
+        answer: "Dave Beasant",
+        explanation: "Dave Beasant captained Wimbledon and saved Aldridge's penalty to secure a famous 1–0 win."
     },
     {
         floor: 43,
-        question: "Who scored a hat-trick for Aston Villa in their 7–2 victory against reigning champions Liverpool in October 2020?",
-        options: ["Ollie Watkins", "Jack Grealish", "John McGinn", "Ross Barkley"],
-        answer: "Ollie Watkins",
-        explanation: "Watkins scored a perfect first-half hat-trick in Villa's famous win at Villa Park."
+        question: "Who scored the 90th-minute cross-shot for West Ham United in the 2006 FA Cup Final before Steven Gerrard's famous long-range equaliser?",
+        options: ["Paul Konchesky", "Dean Ashton", "Marlon Harewood", "Yossi Benayoun"],
+        answer: "Paul Konchesky",
+        explanation: "Paul Konchesky's looping cross floated over Pepe Reina into the far corner to make it 3–2 to West Ham."
     },
     {
         floor: 44,
-        question: "Which Premier League club features a seagull on its official crest?",
-        options: ["Brighton & Hove Albion", "Crystal Palace", "Norwich City", "Sheffield Wednesday"],
-        answer: "Brighton & Hove Albion",
-        explanation: "Brighton adopted the Seagulls nickname and crest emblem in the late 1970s."
+        question: "Which manager brought a London Underground travelcard to his opening press conference at White Hart Lane in 1997, calling it 'the ticket of his dreams'?",
+        options: ["Christian Gross", "Jacques Santini", "Juande Ramos", "Gerry Francis"],
+        answer: "Christian Gross",
+        explanation: "Swiss manager Christian Gross famously held up his tube ticket upon arriving at Tottenham."
     },
     {
         floor: 45,
-        question: "Who scored Manchester City's 98th-minute equaliser in their dramatic 2–2 draw with 10-man Arsenal in September 2024?",
-        options: ["John Stones", "Erling Haaland", "Bernardo Silva", "Rúben Dias"],
-        answer: "John Stones",
-        explanation: "Stones poked home from close range after Arsenal defended deep following Leandro Trossard's red card."
+        question: "In 1999, Ole Gunnar Solskjær famously scored four goals as a substitute against Nottingham Forest. How many minutes was he on the pitch before completing his four-goal haul?",
+        options: ["12 minutes", "18 minutes", "24 minutes", "30 minutes"],
+        answer: "12 minutes",
+        explanation: "Solskjær came on in the 72nd minute and scored in the 80th, 88th, 91st, and 92nd minutes in United's 8–1 win."
     }
 ];
