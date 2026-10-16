@@ -13,13 +13,19 @@ let correctCount = 0;
 let dailyAttempts = 1;
 let isAnswering = false;
 
-// Question dataset fallback
+// Fallback question array to guarantee the game never crashes or shows a black screen
 const fallbackQuestions = [
     {
         question: "Which club won the inaugural English Premier League title in 1992-93?",
         options: ["Manchester United", "Aston Villa", "Blackburn Rovers", "Norwich City"],
         correct: 0,
         fact: "Manchester United won by 10 clear points ahead of Aston Villa."
+    },
+    {
+        question: "Who holds the record for the most Premier League goals scored in a single 38-game season?",
+        options: ["Alan Shearer", "Erling Haaland", "Mohamed Salah", "Cristiano Ronaldo"],
+        correct: 1,
+        fact: "Erling Haaland scored 36 goals in his debut 2022-23 Premier League season."
     }
 ];
 
@@ -29,6 +35,9 @@ function getQuestions() {
     }
     if (typeof fullQuestions !== 'undefined' && Array.isArray(fullQuestions) && fullQuestions.length > 0) {
         return fullQuestions;
+    }
+    if (typeof questions !== 'undefined' && Array.isArray(questions) && questions.length > 0) {
+        return questions;
     }
     return fallbackQuestions;
 }
@@ -324,3 +333,4 @@ function finishGame() {
 window.resetAndPlayAgain = function() {
     location.reload();
 };
+// END OF FILE: 545-special.js
