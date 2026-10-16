@@ -236,7 +236,6 @@ function renderCurrentQuestion() {
         }
     }
 
-    // Resolve correct answer index whether specified by string (q.answer) or number (q.correct / q.correctIndex)
     let correctIndex = -1;
     if (typeof q.correct === 'number') {
         correctIndex = q.correct;
@@ -247,7 +246,6 @@ function renderCurrentQuestion() {
     } else if (typeof q.answer === 'string' && Array.isArray(q.options)) {
         correctIndex = q.options.findIndex(opt => opt.trim().toLowerCase() === q.answer.trim().toLowerCase());
     }
-    if (correctIndex === -1) correctIndex = 0;
 
     const grid = document.getElementById('options-grid');
     if (grid) {
@@ -275,16 +273,11 @@ function handleAnswer(selectedIndex, correctIndex, btnElement) {
     if (isAnswering) return;
     isAnswering = true;
 
-    const allButtons = document.querySelectorAll('.btn-option');
-
     if (selectedIndex === correctIndex) {
         btnElement.classList.add('selected-correct');
         correctCount++;
     } else {
         btnElement.classList.add('selected-wrong');
-        if (allButtons[correctIndex]) {
-            allButtons[correctIndex].classList.add('selected-correct');
-        }
     }
 
     setTimeout(() => {
