@@ -4,9 +4,20 @@ let startTime = 0;
 let timerInterval = null;
 let timeElapsedSeconds = 0;
 let soundEnabled = true;
-let totalAttempts = 0;
+let correctCount = 0;
+let dailyAttempts = 1;
 
 window.addEventListener('DOMContentLoaded', () => {
+    // Session / Login persistent attempt counter for anti-cheat tracking
+    try {
+        const storedAttempts = localStorage.getItem('tyk_545_attempts_count');
+        if (storedAttempts) {
+            dailyAttempts = parseInt(storedAttempts, 10) || 1;
+        }
+    } catch (e) {
+        dailyAttempts = 1;
+    }
+
     try {
         const savedState = localStorage.getItem('skyscraper_progress');
         if (savedState) {
@@ -78,7 +89,14 @@ function startSkyscraperGame() {
     localStorage.removeItem('skyscraper_progress');
     currentFloor = 0;
     timeElapsedSeconds = 0;
-    totalAttempts = 0;
+    correctCount = 0;
+
+    // Increment daily session attempt count
+    dailyAttempts++;
+    try {
+        localStorage.setItem('tyk_545_attempts_count', dailyAttempts.toString());
+    } catch (e) {}
+
     initGameSession();
 }
 
@@ -90,7 +108,7 @@ function resumeSkyscraperGame() {
             currentFloor = data.floor || 0;
             timeElapsedSeconds = data.time || 0;
             selectedMode = data.mode || 'solo';
-            totalAttempts = data.attempts || currentFloor;
+            correctCount = data.score || 0;
             initGameSession(true);
         } else {
             startSkyscraperGame();
@@ -132,7 +150,7 @@ function initGameSession(isResume = false) {
                 floor: currentFloor,
                 time: timeElapsedSeconds,
                 mode: selectedMode,
-                attempts: totalAttempts
+                score: correctCount
             }));
         } catch (e) {
             console.warn('LocalStorage write failed:', e);
@@ -157,9 +175,6 @@ function toggleGafferFact() {
 }
 
 function renderFloor() {
-    const errorBanner = document.getElementById('error-banner');
-    if (errorBanner) errorBanner.style.display = 'none';
-
     if (currentFloor >= fullQuestions.length) {
         handleVictory();
         return;
@@ -212,21 +227,21 @@ function renderFloor() {
 }
 
 function selectAnswer(isCorrect, btnEl) {
-    totalAttempts++;
+    // Disable all options immediately to prevent double clicks
+    document.querySelectorAll('.btn-option').forEach(b => b.disabled = true);
+
     if (isCorrect) {
+        correctCount++;
         if (btnEl) btnEl.classList.add('selected-correct');
-        setTimeout(() => {
-            currentFloor++;
-            renderFloor();
-        }, 600);
     } else {
         if (btnEl) btnEl.classList.add('selected-wrong');
-        const errorBanner = document.getElementById('error-banner');
-        if (errorBanner) errorBanner.style.display = 'block';
-        setTimeout(() => {
-            if (btnEl) btnEl.classList.remove('selected-wrong');
-        }, 800);
     }
+
+    // Single attempt rule: advance immediately to next floor
+    setTimeout(() => {
+        currentFloor++;
+        renderFloor();
+    }, 400);
 }
 
 function handleVictory() {
@@ -251,7 +266,6 @@ function handleVictory() {
     const timeRowDisplay = document.getElementById('victory-time-row-display');
     const modeBadge = document.getElementById('victory-mode-badge');
     const scoreText = document.getElementById('accuracy-text');
-    const attemptsNoticeRow = document.getElementById('attempts-notice-row');
     const attemptsNoticeVal = document.getElementById('attempts-notice-val');
 
     if (timeDisplay) timeDisplay.textContent = formattedTime;
@@ -259,17 +273,14 @@ function handleVictory() {
     
     if (selectedMode === 'group') {
         if (modeBadge) modeBadge.textContent = 'GROUP PLAYER';
-        if (attemptsNoticeRow) attemptsNoticeRow.style.display = 'flex';
-        if (attemptsNoticeVal) attemptsNoticeVal.textContent = totalAttempts;
     } else if (selectedMode === 'gaffa') {
         if (modeBadge) modeBadge.textContent = 'GAFFA MASTER';
-        if (attemptsNoticeRow) attemptsNoticeRow.style.display = 'none';
     } else {
         if (modeBadge) modeBadge.textContent = 'SOLO MASTER';
-        if (attemptsNoticeRow) attemptsNoticeRow.style.display = 'none';
     }
 
-    if (scoreText) scoreText.textContent = `${fullQuestions.length}/${fullQuestions.length}`;
+    if (attemptsNoticeVal) attemptsNoticeVal.textContent = dailyAttempts;
+    if (scoreText) scoreText.textContent = `${correctCount}/${fullQuestions.length}`;
 }
 
 function resetAndPlayAgain() {
