@@ -609,6 +609,8 @@ function startQuestionTimer() {
 function handleAnswerSelect(isCorrect, buttonEl) {
     clearInterval(gameState.timer);
     
+    const currentQ = gameState.questions[gameState.currentQuestionIndex];
+
     document.querySelectorAll('#options-grid .btn-option').forEach(btn => {
         btn.onclick = null;
         btn.onpointerdown = null;
@@ -637,6 +639,16 @@ function handleAnswerSelect(isCorrect, buttonEl) {
         }, 800);
     } else {
         if (buttonEl) buttonEl.classList.add('selected-wrong');
+        
+        // Highlight the correct answer button in pitch green
+        if (currentQ) {
+            document.querySelectorAll('#options-grid .btn-option').forEach(btn => {
+                if (btn.textContent === currentQ.answer) {
+                    btn.classList.add('selected-correct');
+                }
+            });
+        }
+
         triggerHaptic([80, 50, 120]);
         
         const activeBlock = document.querySelector(`.tower-floor[data-floor="${gameState.currentFloor}"]`);
