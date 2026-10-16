@@ -333,4 +333,3 @@ function finishGame() {
 window.resetAndPlayAgain = function() {
     location.reload();
 };
-// END OF FILE: 545-special.js
