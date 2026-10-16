@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=5.45.8">
+    <link rel="stylesheet" href="style.css?v=5.45.9">
 
     <!-- HTML2CANVAS LIBRARY FOR RECEIPT SCREENSHOT CAPTURE -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -244,4 +244,190 @@
             background: rgba(34, 197, 94, 0.08);
             border: 1px dashed var(--genre-pitch);
             color: var(--genre-pitch);
-            padding: 4px
+            padding: 4px 12px;
+            border-radius: 14px;
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .rules-pill-btn:hover {
+            background: var(--genre-pitch);
+            color: #000000;
+        }
+
+        /* RULES MODAL OVERLAY */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 16px;
+        }
+
+        .modal-card {
+            width: 100%;
+            max-width: 420px;
+            background: #111111;
+            border: 1px solid var(--genre-pitch);
+            border-radius: 12px;
+            padding: 18px 16px;
+            box-shadow: 0 0 25px var(--genre-pitch-glow);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .modal-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.4rem;
+            color: var(--genre-pitch);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--surface-border-light);
+            padding-bottom: 8px;
+        }
+
+        .modal-body {
+            font-size: 0.72rem;
+            color: #cccccc;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .modal-body strong {
+            color: #ffffff;
+        }
+
+        .modal-close-btn {
+            background: var(--genre-pitch);
+            color: #000000;
+            border: none;
+            padding: 10px;
+            border-radius: 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            margin-top: 4px;
+        }
+
+        .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 6px; flex-shrink: 0; }
+        .floor-info-box { flex-grow: 1; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
+
+        .play-card { width: 100%; max-width: 600px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 14px 10px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 10px; flex-grow: 1; margin-bottom: 6px; overflow: hidden; min-height: 0; position: relative; }
+        
+        .question-box { width: 100%; background: #111111; border: 1px solid var(--surface-border); border-radius: 6px; padding: 14px; text-align: center; }
+        
+        .question-box.masked {
+            background: repeating-linear-gradient(45deg, #0a0a0a, #0a0a0a 10px, #111111 10px, #111111 20px);
+            border: 1px dashed var(--genre-pitch);
+        }
+
+        .btn-reveal-fact {
+            background: transparent;
+            border: 1px dashed var(--genre-pitch);
+            color: var(--genre-pitch);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 14px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .gaffer-fact-box {
+            width: 100%;
+            background: rgba(34, 197, 94, 0.05);
+            border: 1px solid var(--surface-border-light);
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-align: left;
+            display: none;
+        }
+
+        .gaffer-fact-text {
+            font-style: italic;
+            color: #cccccc;
+            margin-top: 2px;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .options-grid { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 2px; }
+        .btn-option { width: 100%; background: #111111; border: 1px solid var(--surface-border-light); border-radius: 8px; padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-primary); text-align: left; cursor: pointer; transition: background-color 0.2s ease, border-color 0.2s ease; }
+        .btn-option.selected-correct { background: rgba(34, 197, 94, 0.2); border-color: var(--genre-pitch); color: var(--genre-pitch); }
+        .btn-option.selected-wrong { background: rgba(239, 68, 68, 0.2); border-color: var(--state-error); color: var(--state-error); }
+
+        .victory-receipt-card {
+            width: 100%;
+            max-width: 340px;
+            background-color: #111111;
+            border: 1px solid var(--genre-pitch);
+            border-radius: 14px;
+            padding: 20px 18px;
+            box-shadow: 0 0 25px var(--genre-pitch-glow);
+            margin-bottom: 12px;
+            text-align: left;
+            display: block;
+        }
+
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 10px;
+            margin-bottom: 14px;
+        }
+
+        .brand-lockup-container { display: flex; align-items: center; gap: 8px; }
+        .brand-mark-left { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: var(--brand-red); line-height: 0.85; letter-spacing: -0.5px; text-shadow: 0 0 10px var(--brand-red-glow); }
+        .brand-text-stacked { display: flex; flex-direction: column; justify-content: center; text-align: left; }
+        .brand-title-top { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 300; color: #ffffff; letter-spacing: 0.5px; line-height: 1.1; }
+        .brand-title-bottom { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: #ffffff; letter-spacing: 2px; text-transform: uppercase; line-height: 1.1; }
+        .badge-slot-reserved { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; color: #888888; letter-spacing: 1px; text-transform: uppercase; }
+
+        .hero-flex-box { text-align: center; padding: 2px 0; margin-bottom: 14px; }
+        .game-title-header { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 4px; }
+        .flex-status-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+
+        .brand-green { color: var(--genre-pitch); }
+        .brand-white { color: #ffffff; }
+
+        .hero-time-display { font-family: 'Anton', sans-serif; font-size: 3.2rem; line-height: 0.9; color: #ffffff; letter-spacing: 2px; margin: 6px 0; }
+        .hero-time-unit { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 800; color: #888888; letter-spacing: 1px; margin-left: 2px; text-transform: lowercase; }
+
+        .flex-tier-badge { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800; color: var(--genre-pitch); letter-spacing: 2px; text-transform: uppercase; background: rgba(34, 197, 94, 0.1); border: 1px solid var(--genre-pitch); padding: 5px 14px; border-radius: 12px; margin-top: 4px; }
+
+        .receipt-details { border-top: 1px solid #333333; padding-top: 12px; }
+        .receipt-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .receipt-row:last-child { margin-bottom: 0; }
+        .row-label { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: #888888; text-transform: uppercase; letter-spacing: 1px; }
+        .row-val { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
+        .row-val.success { color: var(--genre-pitch); }
+        .row-val.active { color: var(--state-active); }
+
+        .controls-group { width: 100%; max-width: 340px; display: flex; flex-direction: column; align-items: center; }
+        .btn-flex-action { width: 100%; background-color: var(--genre-pitch); border: 1px solid var(--genre-pitch); color: #000000; padding: 14px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border-radius: 24px; cursor: pointer; box-shadow: 0 0 15px var(--genre-pitch-glow); margin-bottom: 10px; display: block; }
+        .btn-secondary-action { width: 100%; background-color: #111111; border: 1px solid #333333; color: #ffffff; padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.
