@@ -640,7 +640,7 @@ function handleAnswerSelect(isCorrect, buttonEl) {
     } else {
         if (buttonEl) buttonEl.classList.add('selected-wrong');
         
-        // Highlight the correct answer button in pitch green
+        // Highlight the correct answer button border & glow in pitch green
         if (currentQ) {
             document.querySelectorAll('#options-grid .btn-option').forEach(btn => {
                 if (btn.textContent === currentQ.answer) {
