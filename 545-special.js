@@ -4,7 +4,7 @@
  */
 
 let currentFloor = 0;
-let selectedMode = 'solo'; // 'solo', 'gaffer', 'group'
+let selectedMode = 'solo';
 let startTime = 0;
 let timerInterval = null;
 let timeElapsedSeconds = 0;
@@ -13,7 +13,6 @@ let correctCount = 0;
 let dailyAttempts = 1;
 let isAnswering = false;
 
-// Fallback question array to guarantee the game never crashes or shows a black screen
 const fallbackQuestions = [
     {
         question: "Which club won the inaugural English Premier League title in 1992-93?",
@@ -56,8 +55,8 @@ window.addEventListener('DOMContentLoaded', () => {
         const savedState = localStorage.getItem('skyscraper_progress');
         if (savedState) {
             const data = JSON.parse(savedState);
-            const questions = getQuestions();
-            if (typeof data.floor === 'number' && data.floor < questions.length) {
+            const questionsList = getQuestions();
+            if (typeof data.floor === 'number' && data.floor < questionsList.length) {
                 const btnResume = document.getElementById('btn-resume-skyscraper');
                 if (btnResume) btnResume.style.display = 'block';
             } else {
@@ -199,15 +198,15 @@ function startTimer() {
 }
 
 function renderCurrentQuestion() {
-    const questions = getQuestions();
+    const questionsList = getQuestions();
     
-    if (currentFloor >= questions.length) {
+    if (currentFloor >= questionsList.length) {
         finishGame();
         return;
     }
 
     isAnswering = false;
-    const q = questions[currentFloor];
+    const q = questionsList[currentFloor];
     const qTextElem = document.getElementById('question-text');
     const qBoxElem = document.getElementById('question-box');
     const floorTextElem = document.getElementById('card-floor-text');
@@ -216,7 +215,7 @@ function renderCurrentQuestion() {
     const factText = document.getElementById('gaffer-fact-text');
 
     if (floorTextElem) {
-        floorTextElem.innerHTML = `<span style="color: var(--genre-pitch);">Q${currentFloor + 1}</span> / ${questions.length}`;
+        floorTextElem.innerHTML = `<span style="color: var(--genre-pitch);">Q${currentFloor + 1}</span> / ${questionsList.length}`;
     }
 
     if (factBox) factBox.style.display = 'none';
@@ -312,7 +311,7 @@ function finishGame() {
     if (workspace) workspace.style.display = 'none';
     if (victory) victory.style.display = 'flex';
 
-    const questions = getQuestions();
+    const questionsList = getQuestions();
     const mins = String(Math.floor(timeElapsedSeconds / 60)).padStart(2, '0');
     const secs = String(timeElapsedSeconds % 60).padStart(2, '0');
     const formattedTime = `${mins}:${secs}`;
@@ -325,7 +324,7 @@ function finishGame() {
 
     if (vTimeDisp) vTimeDisp.innerText = formattedTime;
     if (vTimeRow) vTimeRow.innerText = `${formattedTime}s`;
-    if (accText) accText.innerText = `${correctCount}/${questions.length}`;
+    if (accText) accText.innerText = `${correctCount}/${questionsList.length}`;
     if (vModeBadge) vModeBadge.innerText = `${selectedMode.toUpperCase()} PLAYER`;
     if (attemptsVal) attemptsVal.innerText = dailyAttempts;
 }
