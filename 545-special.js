@@ -17,14 +17,14 @@ const fallbackQuestions = [
     {
         question: "Which club won the inaugural English Premier League title in 1992-93?",
         options: ["Manchester United", "Aston Villa", "Blackburn Rovers", "Norwich City"],
-        correct: 0,
-        fact: "Manchester United won by 10 clear points ahead of Aston Villa."
+        answer: "Manchester United",
+        explanation: "Manchester United won by 10 clear points ahead of Aston Villa."
     },
     {
         question: "Who holds the record for the most Premier League goals scored in a single 38-game season?",
         options: ["Alan Shearer", "Erling Haaland", "Mohamed Salah", "Cristiano Ronaldo"],
-        correct: 1,
-        fact: "Erling Haaland scored 36 goals in his debut 2022-23 Premier League season."
+        answer: "Erling Haaland",
+        explanation: "Erling Haaland scored 36 goals in his debut 2022-23 Premier League season."
     }
 ];
 
@@ -236,6 +236,19 @@ function renderCurrentQuestion() {
         }
     }
 
+    // Resolve correct answer index whether specified by string (q.answer) or number (q.correct / q.correctIndex)
+    let correctIndex = -1;
+    if (typeof q.correct === 'number') {
+        correctIndex = q.correct;
+    } else if (typeof q.correctIndex === 'number') {
+        correctIndex = q.correctIndex;
+    } else if (typeof q.answer === 'number') {
+        correctIndex = q.answer;
+    } else if (typeof q.answer === 'string' && Array.isArray(q.options)) {
+        correctIndex = q.options.findIndex(opt => opt.trim().toLowerCase() === q.answer.trim().toLowerCase());
+    }
+    if (correctIndex === -1) correctIndex = 0;
+
     const grid = document.getElementById('options-grid');
     if (grid) {
         grid.innerHTML = '';
@@ -243,7 +256,7 @@ function renderCurrentQuestion() {
             const btn = document.createElement('button');
             btn.className = 'btn-option';
             btn.innerText = opt;
-            btn.onclick = () => handleAnswer(idx, q.correct, btn);
+            btn.onclick = () => handleAnswer(idx, correctIndex, btn);
             grid.appendChild(btn);
         });
     }
