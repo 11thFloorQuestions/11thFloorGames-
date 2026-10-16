@@ -1,5 +1,5 @@
 let currentFloor = 0;
-let selectedMode = 'solo'; // 'solo', 'gaffa', 'group'
+let selectedMode = 'solo'; // 'solo', 'gaffer', 'group'
 let startTime = 0;
 let timerInterval = null;
 let timeElapsedSeconds = 0;
@@ -89,6 +89,7 @@ function startSkyscraperGame() {
     currentFloor = 0;
     timeElapsedSeconds = 0;
     correctCount = 0;
+    startTime = Date.now();
 
     dailyAttempts++;
     try {
@@ -104,9 +105,15 @@ function resumeSkyscraperGame() {
         if (savedState) {
             const data = JSON.parse(savedState);
             currentFloor = data.floor || 0;
-            timeElapsedSeconds = data.time || 0;
             selectedMode = data.mode || 'solo';
             correctCount = data.score || 0;
+            // Anti-cheat: compute true elapsed real time from initial session start timestamp
+            if (data.startTime) {
+                startTime = data.startTime;
+                timeElapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+            } else {
+                startTime = Date.now() - ((data.time || 0) * 1000);
+            }
             initGameSession(true);
         } else {
             startSkyscraperGame();
@@ -129,13 +136,13 @@ function initGameSession(isResume = false) {
     if (workspace) workspace.style.display = 'flex';
 
     if (!isResume) {
+        startTime = Date.now();
         timeElapsedSeconds = 0;
     }
     
-    startTime = Date.now() - (timeElapsedSeconds * 1000);
-    
     clearInterval(timerInterval);
     timerInterval = setInterval(() => {
+        // Continuous real-time calculation prevents clock freezing on tab out / close
         timeElapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
         const m = Math.floor(timeElapsedSeconds / 60).toString().padStart(2, '0');
         const s = (timeElapsedSeconds % 60).toString().padStart(2, '0');
@@ -147,6 +154,7 @@ function initGameSession(isResume = false) {
             localStorage.setItem('skyscraper_progress', JSON.stringify({
                 floor: currentFloor,
                 time: timeElapsedSeconds,
+                startTime: startTime,
                 mode: selectedMode,
                 score: correctCount
             }));
@@ -164,10 +172,10 @@ function toggleGafferFact() {
     if (box && btn) {
         if (box.style.display === 'block') {
             box.style.display = 'none';
-            btn.textContent = 'REVEAL GAFFA FACT';
+            btn.textContent = 'REVEAL GAFFER FACT';
         } else {
             box.style.display = 'block';
-            btn.textContent = 'HIDE GAFFA FACT';
+            btn.textContent = 'HIDE GAFFER FACT';
         }
     }
 }
@@ -192,15 +200,15 @@ function renderFloor() {
 
     if (selectedMode === 'group') {
         if (qBox) qBox.classList.add('masked');
-        if (qText) qText.innerHTML = `<span style="color: var(--genre-pitch); font-style: italic;">QUESTION MASKED<br><small style="color: var(--text-muted); font-size: 0.65rem;">LISTEN TO YOUR GAFFA READ ALOUD</small></span>`;
+        if (qText) qText.innerHTML = `<span style="color: var(--genre-pitch); font-style: italic;">QUESTION MASKED<br><small style="color: var(--text-muted); font-size: 0.65rem;">LISTEN TO YOUR GAFFER READ ALOUD</small></span>`;
         if (revealBtn) revealBtn.style.display = 'none';
         if (gafferBox) gafferBox.style.display = 'none';
-    } else if (selectedMode === 'gaffa') {
+    } else if (selectedMode === 'gaffer') {
         if (qBox) qBox.classList.remove('masked');
         if (qText) qText.textContent = q.question;
         if (revealBtn) {
             revealBtn.style.display = 'block';
-            revealBtn.textContent = 'REVEAL GAFFA FACT';
+            revealBtn.textContent = 'REVEAL GAFFER FACT';
         }
         if (gafferBox) gafferBox.style.display = 'none';
         if (gafferText) gafferText.textContent = q.explanation;
@@ -269,8 +277,8 @@ function handleVictory() {
     
     if (selectedMode === 'group') {
         if (modeBadge) modeBadge.textContent = 'GROUP PLAYER';
-    } else if (selectedMode === 'gaffa') {
-        if (modeBadge) modeBadge.textContent = 'GAFFA MASTER';
+    } else if (selectedMode === 'gaffer') {
+        if (modeBadge) modeBadge.textContent = 'GAFFER MASTER';
     } else {
         if (modeBadge) modeBadge.textContent = 'SOLO MASTER';
     }
@@ -283,4 +291,3 @@ function resetAndPlayAgain() {
     localStorage.removeItem('skyscraper_progress');
     location.reload();
 }
-<!-- END OF FILE: 545-special.js -->
