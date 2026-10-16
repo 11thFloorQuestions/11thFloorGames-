@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=5.45.6">
+    <link rel="stylesheet" href="style.css?v=5.45.7">
 
     <!-- HTML2CANVAS LIBRARY FOR RECEIPT SCREENSHOT CAPTURE -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -53,7 +53,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding: 12px 10px;
+            padding: 6px 10px;
             overflow-x: hidden;
         }
 
@@ -63,14 +63,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 6px;
         }
 
         .pill-btn {
             background: var(--surface);
             border: 1px solid var(--surface-border-light);
             color: var(--text-primary);
-            padding: 6px 12px;
+            padding: 5px 10px;
             border-radius: 20px;
             font-size: 0.7rem;
             font-weight: 700;
@@ -101,7 +101,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             text-align: center;
             flex-shrink: 0;
         }
@@ -117,44 +117,37 @@
 
         .game-logo-pitch {
             font-family: 'Anton', sans-serif;
-            font-size: 2.8rem;
+            font-size: 2.4rem;
             font-weight: 400;
             line-height: 0.9;
             letter-spacing: -0.5px;
             text-shadow: 0 0 20px var(--genre-pitch-glow);
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             text-transform: uppercase;
         }
 
-        .game-logo-pitch .highlight-green {
-            color: var(--genre-pitch);
-        }
-
-        .game-logo-pitch .highlight-white {
-            color: #ffffff;
-        }
+        .game-logo-pitch .highlight-green { color: var(--genre-pitch); }
+        .game-logo-pitch .highlight-white { color: #ffffff; }
 
         .game-logo-title {
             font-family: 'Anton', sans-serif;
-            font-size: 2.2rem;
+            font-size: 1.9rem;
             font-weight: 400;
             color: #ffffff;
             letter-spacing: 1px;
             line-height: 0.95;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             text-transform: uppercase;
         }
 
-        .game-logo-title .highlight-ball {
-            color: var(--genre-pitch);
-        }
+        .game-logo-title .highlight-ball { color: var(--genre-pitch); }
 
         .game-logo-sub {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 700;
             color: var(--text-muted);
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
@@ -163,28 +156,23 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 16px;
-            padding: 20px 16px;
+            gap: 10px;
+            padding: 12px 14px;
             width: 100%;
             max-width: 600px;
             background: var(--surface);
             border: 1px solid var(--surface-border);
             border-radius: 8px;
-            margin-top: 6px;
+            margin-top: 4px;
         }
 
         .landing-copy {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             color: #cccccc;
-            line-height: 1.5;
+            line-height: 1.4;
             display: flex;
             flex-direction: column;
-            gap: 8px;
-        }
-
-        .landing-copy strong {
-            color: #ffffff;
-            font-weight: 800;
+            gap: 4px;
         }
 
         .landing-copy .share-cta {
@@ -192,18 +180,18 @@
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
         }
 
         .mode-selector-box {
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
             background: var(--bg-deep);
             border: 1px solid var(--surface-border);
             border-radius: 8px;
-            padding: 12px;
+            padding: 10px;
         }
 
         .mode-option-btn {
@@ -211,10 +199,10 @@
             background: #111111;
             border: 1px solid var(--surface-border-light);
             color: var(--text-primary);
-            padding: 10px 12px;
+            padding: 8px 10px;
             border-radius: 6px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 700;
             cursor: pointer;
             display: flex;
@@ -230,7 +218,7 @@
         }
 
         .mode-desc {
-            font-size: 0.6rem;
+            font-size: 0.58rem;
             font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -240,15 +228,15 @@
             background-color: var(--surface);
             border: 1px solid var(--genre-pitch);
             color: var(--genre-pitch);
-            padding: 12px 28px;
+            padding: 10px 24px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 24px;
+            letter-spacing: 1.5px;
+            border-radius: 20px;
             cursor: pointer;
-            box-shadow: 0 0 15px var(--genre-pitch-glow);
+            box-shadow: 0 0 12px var(--genre-pitch-glow);
             transition: border-color 0.2s ease;
         }
 
@@ -362,7 +350,7 @@
 </head>
 <body class="game-ball">
 
-    <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; min-height: 100vh; min-height: 100dvh;">
+    <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 100vh; min-height: 100dvh;">
         
         <!-- TOP BAR -->
         <div class="top-bar">
@@ -392,22 +380,22 @@
                     
                     <button class="mode-option-btn active" onclick="selectMode('solo', this)">
                         <span>1. SOLO PLAY</span>
-                        <span class="mode-desc">Standard Challenge</span>
+                        <span class="mode-desc">45 Questions</span>
                     </button>
                     
-                    <button class="mode-option-btn" onclick="selectMode('gaffa', this)">
-                        <span>2. GAFFA MODE</span>
-                        <span class="mode-desc">Quiz Master Clues Fun Facts</span>
+                    <button class="mode-option-btn" onclick="selectMode('gaffer', this)">
+                        <span>2. GAFFER MODE</span>
+                        <span class="mode-desc">Host - Clues - Facts</span>
                     </button>
                     
                     <button class="mode-option-btn" onclick="selectMode('group', this)">
-                        <span>3. GROUP PLAY (2 to Unlimited Players)</span>
+                        <span>3. GROUP PLAY (Unlimited Players)</span>
                         <span class="mode-desc">Questions Masked</span>
                     </button>
                 </div>
 
                 <button id="btn-start-skyscraper" class="btn-start" onclick="startSkyscraperGame()">Start 5.45 Special</button>
-                <button id="btn-resume-skyscraper" class="pill-btn" onclick="resumeSkyscraperGame()" style="display: none; background: rgba(34, 197, 94, 0.1); border-color: var(--genre-pitch); color: var(--genre-pitch); width: 100%; margin-top: 4px; padding: 10px; font-weight: 800;">RESUME PREVIOUS SESSION</button>
+                <button id="btn-resume-skyscraper" class="pill-btn" onclick="resumeSkyscraperGame()" style="display: none; background: rgba(34, 197, 94, 0.1); border-color: var(--genre-pitch); color: var(--genre-pitch); width: 100%; margin-top: 2px; padding: 8px; font-weight: 800;">RESUME PREVIOUS SESSION</button>
             </div>
         </div>
 
@@ -436,9 +424,9 @@
                 <div id="question-text" style="font-size: 0.9rem; font-weight: 600; color: #ffffff;">Loading matchday lore...</div>
             </div>
 
-            <button id="btn-reveal-fact" class="btn-reveal-fact" onclick="toggleGafferFact()" style="display: none;">REVEAL GAFFA FACT</button>
+            <button id="btn-reveal-fact" class="btn-reveal-fact" onclick="toggleGafferFact()" style="display: none;">REVEAL GAFFER FACT</button>
             <div class="gaffer-fact-box" id="gaffer-fact-box">
-                <span style="font-weight: 700; color: var(--genre-pitch);">GAFFA FACT:</span>
+                <span style="font-weight: 700; color: var(--genre-pitch);">GAFFER FACT:</span>
                 <div class="gaffer-fact-text" id="gaffer-fact-text">...</div>
             </div>
 
@@ -506,8 +494,8 @@
     </div>
 
     <!-- SCRIPT LOADS -->
-    <script src="545-special-data.js?v=5.45.6"></script>
-    <script src="545-special.js?v=5.45.6"></script>
+    <script src="545-special-data.js?v=5.45.7"></script>
+    <script src="545-special.js?v=5.45.7"></script>
 
 </body>
 </html>
