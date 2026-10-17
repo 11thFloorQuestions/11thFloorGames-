@@ -178,7 +178,6 @@
             border-radius: 2px;
         }
 
-        /* Moving Shaft Graphic Keyframe Animations (Green Theme) */
         .landing-shaft-graphic .landing-shaft-box { animation: sweepMiddle 1.2s ease-in-out forwards; }
         .landing-shaft-graphic .landing-shaft-box:nth-child(11) { animation: sweepBottomSettle 2.6s ease-in-out forwards; animation-delay: 0.05s; }
         .landing-shaft-graphic .landing-shaft-box:nth-child(10) { animation-delay: 0.15s; }
@@ -242,7 +241,6 @@
         .options-grid { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
         .btn-option { width: 100%; background: #111111; border: 1px solid var(--surface-border-light); border-radius: 8px; padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-primary); text-align: left; cursor: pointer; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
 
-        /* ANSWER FEEDBACK BORDER & GLOW STATES */
         .btn-option.selected-correct {
             border-color: var(--genre-pitch) !important;
             box-shadow: 0 0 12px var(--genre-pitch-glow) !important;
@@ -323,12 +321,13 @@
 
         .game-title-header {
             font-family: 'Anton', sans-serif;
-            font-size: 1.7rem;
-            color: #ffffff;
+            font-size: 1.8rem;
+            color: var(--genre-pitch);
             letter-spacing: 1px;
             text-transform: uppercase;
             line-height: 1;
             margin-bottom: 6px;
+            text-shadow: 0 0 12px var(--genre-pitch-glow);
         }
 
         .flex-status-label {
@@ -344,35 +343,6 @@
         .brand-gold { color: var(--state-active); }
         .brand-white { color: #ffffff; }
 
-        .time-header-sub {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.6rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 4px;
-        }
-
-        .hero-time-display {
-            font-family: 'Anton', sans-serif;
-            font-size: 2.2rem;
-            line-height: 1;
-            color: #ffffff;
-            letter-spacing: 1px;
-            margin: 2px 0 8px 0;
-        }
-
-        .hero-time-unit {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            font-weight: 800;
-            color: #888888;
-            letter-spacing: 1px;
-            margin-left: 2px;
-            text-transform: lowercase;
-        }
-
         .flex-tier-badge {
             display: inline-block;
             font-family: 'Montserrat', sans-serif;
@@ -385,6 +355,7 @@
             border: 1px solid var(--genre-pitch);
             padding: 5px 14px;
             border-radius: 12px;
+            margin-top: 4px;
         }
 
         .receipt-details {
@@ -433,7 +404,7 @@
             letter-spacing: 1.5px;
             border-top: 1px dashed #333333;
             padding-top: 8px;
-            text-transform: uppercase;
+            text-transform: lowercase;
         }
 
         .controls-group {
@@ -603,35 +574,35 @@
 
                 <div class="hero-flex-box">
                     <div class="game-title-header">
-                        <span class="brand-white">Think You Know Ball?</span>
+                        Think You Know Ball?
                     </div>
                     <div class="flex-status-label">
                         <span class="brand-green">11th</span> <span class="brand-white">Floor Cleared</span>
                     </div>
-
-                    <div class="time-header-sub">TODAY'S TIME</div>
-                    <div class="hero-time-display"><span id="victory-time-display">00:00</span><span class="hero-time-unit">s</span></div>
-                    
-                    <div class="flex-tier-badge" id="receipt-badge-display">1ST TRY PERFECT</div>
+                    <div class="flex-tier-badge" id="receipt-badge-display">1st Try</div>
                 </div>
 
                 <div class="receipt-details">
                     <div class="receipt-row">
-                        <span class="row-label">DAILY GAME</span>
-                        <span class="row-val">#042</span>
+                        <span class="row-label">TODAY'S GAME</span>
+                        <span class="row-val">#001</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">TODAY'S TIME</span>
+                        <span id="victory-time-display" class="row-val active">1:12</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">TODAY'S ATTEMPTS</span>
+                        <span id="victory-attempts-display" class="row-val active">1</span>
                     </div>
                     <div class="receipt-row">
                         <span class="row-label">RUN SUMMARY</span>
-                        <span id="victory-run-summary-display" class="row-val">10/10 (First Try)</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="row-label">CURRENT STREAK</span>
-                        <span id="victory-streak-display" class="row-val active">0 Days</span>
+                        <span id="victory-run-summary-display" class="row-val"><span style="color: var(--genre-pitch);">10</span><span style="color: var(--text-muted);">/</span><span style="color: var(--genre-pitch);">10</span></span>
                     </div>
                 </div>
 
                 <div class="card-footer-cta">
-                    made by humans! — 11thfloor.games/ball
+                    powered by Eleventh Floor Games
                 </div>
             </div>
 
@@ -662,79 +633,3 @@
                 <div class="stat-item"><span id="stat-streak" class="stat-value active">0</span><span class="stat-label">Streak</span></div>
                 <div class="stat-item"><span id="stat-bestfloor" class="stat-value pitch">1st</span><span class="stat-label">Highest Floor</span></div>
                 <div class="stat-item"><span id="stat-besttime" class="stat-value active">--:--</span><span class="stat-label">Best Time</span></div>
-            </div>
-            <div id="vault-list" class="vault-grid"></div>
-            <button id="btn-close-vault" class="btn-modal">CLOSE</button>
-        </div>
-    </div>
-
-    <div id="modal-game-over" class="modal-overlay hidden">
-        <div class="modal-card">
-            <h2 id="game-over-title">ELEVATOR STOPPED</h2>
-            <p id="game-over-message"></p>
-            <p id="final-floor-reached"></p>
-            <button id="btn-try-again" class="btn-modal" style="background: var(--genre-pitch); color: #000000;">TRY AGAIN</button>
-            <button id="btn-back-vault" class="btn-modal">VAULT</button>
-        </div>
-    </div>
-
-    <!-- LINK TO SEPARATE BALL.JS SCRIPT FILE -->
-    <script src="ball.js"></script>
-
-    <!-- REAL SCREENSHOT GENERATOR & SHARE ENGINE -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const shareBtn = document.getElementById('share-btn');
-            const victoryCard = document.getElementById('victory-card');
-            const toast = document.getElementById('toast-msg');
-
-            function showToast(text) {
-                if (!toast) return;
-                toast.innerText = text;
-                toast.style.display = 'block';
-                setTimeout(() => {
-                    toast.style.display = 'none';
-                }, 2000);
-            }
-
-            if (shareBtn && victoryCard) {
-                shareBtn.addEventListener('click', async () => {
-                    try {
-                        showToast('CAPTURING SCREENSHOT...');
-                        const canvas = await html2canvas(victoryCard, {
-                            backgroundColor: '#111111',
-                            scale: 2,
-                            useCORS: true
-                        });
-
-                        canvas.toBlob(async (blob) => {
-                            if (!blob) return;
-                            const file = new File([blob], '11th-floor-tykb-victory.png', { type: 'image/png' });
-
-                            if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                                try {
-                                    await navigator.share({
-                                        title: 'Think You Know Ball? Victory Card',
-                                        files: [file]
-                                    });
-                                } catch (e) {
-                                    console.log('Share prompt dismissed');
-                                }
-                            } else {
-                                const downloadLink = document.createElement('a');
-                                downloadLink.href = URL.createObjectURL(file);
-                                downloadLink.download = '11th-floor-tykb-victory.png';
-                                downloadLink.click();
-                                showToast('SCREENSHOT SAVED TO DEVICE');
-                            }
-                        }, 'image/png');
-                    } catch (err) {
-                        console.error('Screenshot capture error:', err);
-                        showToast('ERROR GENERATING SCREENSHOT');
-                    }
-                });
-            }
-        });
-    </script>
-</body>
-</html>
