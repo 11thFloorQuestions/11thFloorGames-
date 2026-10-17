@@ -1,142 +1,144 @@
 {
-  "setId": "32",
-  "title": "Think You Know Ball? - Set 32",
+  "setId": "33",
+  "title": "Think You Know Ball? - Set 33",
   "questions": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Which Manchester United player had to issue an apology this week for criticising Jason Wilcox the Sporting Director?",
+      "question": "Which club sits top of the Premier League table today, Saturday 17th October 2026?",
       "options": [
-        "Lisandro Martínez",
-        "Harry Maguire"
+        "Manchester City",
+        "Tottenham Hotspur",
+        "Ipswich Town",
+        "Arsenal"
       ],
-      "answer": "Lisandro Martínez",
-      "explanation": "Lisandro Martínez issued an apology following his post-match remarks regarding technical director Jason Wilcox.",
-      "anchorClues": "Manchester United Lisandro Martinez apology Jason Wilcox Sporting Director"
+      "answer": "Manchester City",
+      "explanation": "Manchester City currently hold top spot in the Premier League table.",
+      "anchorClues": "Premier League top of table Saturday 17th October 2026 Manchester City"
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which current Everton player celebrates his birthday today?",
+      "question": "Which former Blackburn Rovers and Chelsea left-back celebrates his birthday today?",
       "options": [
-        "Nathan Patterson",
-        "James Tarkowski",
-        "Vitalii Mykolenko"
+        "Graeme Le Saux",
+        "Wayne Bridge",
+        "Celestine Babayaro"
       ],
-      "answer": "Nathan Patterson",
-      "explanation": "Nathan Patterson celebrates his birthday today.",
-      "anchorClues": "Everton Nathan Patterson birthday today"
+      "answer": "Graeme Le Saux",
+      "explanation": "Former England, Blackburn Rovers, and Chelsea left-back Graeme Le Saux celebrates his birthday today.",
+      "anchorClues": "Blackburn Chelsea Graeme Le Saux birthday today"
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Brighton beat Lithuanian side Kauno Žalgiris last night (Thursday) in the UEFA Conference League, what was the score?",
+      "question": "Who is the current manager of Tottenham Hotspur?",
       "options": [
-        "4–0",
-        "2–0",
-        "3–1",
-        "5–0"
+        "De Zerbi",
+        "De Matteo",
+        "De La Soul",
+        "De Champs"
       ],
-      "answer": "4–0",
-      "explanation": "Brighton secured a comfortable 4–0 victory over Kauno Žalgiris in the UEFA Conference League.",
-      "anchorClues": "Brighton Kauno Zalgiris UEFA Conference League 4-0 score"
+      "answer": "De Zerbi",
+      "explanation": "Roberto De Zerbi is the manager in charge at Tottenham Hotspur.",
+      "anchorClues": "Tottenham Hotspur manager De Zerbi"
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "A 93rd-minute winner helped Sunderland continue their perfect record in Europe with a come-from-behind victory at Torreense. Who scored it?",
+      "question": "Who is Chelsea's current first-choice goalkeeper this season in the Premier League?",
       "options": [
-        "Noah Sadiki",
-        "Jobe Bellingham",
-        "Wilson Isidor",
-        "Romaine Mundle"
+        "Emiliano Martínez",
+        "Robert Sánchez",
+        "Filip Jörgensen",
+        "Djordje Petrović"
       ],
-      "answer": "Noah Sadiki",
-      "explanation": "Noah Sadiki scored the dramatic late winner to secure victory for Sunderland.",
-      "anchorClues": "Sunderland Torreense Noah Sadiki 93rd minute winner"
+      "answer": "Emiliano Martínez",
+      "explanation": "Emiliano Martínez serves as Chelsea's primary goalkeeper this season.",
+      "anchorClues": "Chelsea first choice goalkeeper Martinez Premier League"
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Crystal Palace were also in action last night in the UEFA Europa League against Olympique Lyonnais. What was the score?",
+      "question": "Cole Palmer became the first player in Premier League history to score four goals in the first half of a match against which club?",
       "options": [
-        "1–2 loss",
-        "1–1 draw",
-        "2–0 win",
-        "3–2 loss"
+        "Brighton & Hove Albion",
+        "Everton",
+        "Wolverhampton Wanderers",
+        "Leicester City"
       ],
-      "answer": "1–2 loss",
-      "explanation": "Crystal Palace fell to a 1–2 defeat against Lyon in the Europa League.",
-      "anchorClues": "Crystal Palace Olympique Lyonnais Europa League 1-2 loss"
+      "answer": "Brighton & Hove Albion",
+      "explanation": "Palmer scored all four goals within 20 first-half minutes at Stamford Bridge.",
+      "anchorClues": "Cole Palmer four goals first half Brighton Stamford Bridge"
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "How many London clubs are in this season's Premier League?",
+      "question": "Which German coach became the youngest permanent manager in Premier League history at age 31?",
       "options": [
-        "4",
-        "6",
-        "7",
-        "5"
+        "Fabian Hürzeler",
+        "Kieran McKenna",
+        "Russell Martin",
+        "Danny Röhl"
       ],
-      "answer": "6",
-      "explanation": "There are 6 London clubs competing in the Premier League this season.",
-      "anchorClues": "London clubs Premier League count 6"
+      "answer": "Fabian Hürzeler",
+      "explanation": "Fabian Hürzeler took over at Brighton after guiding St Pauli to Bundesliga promotion.",
+      "anchorClues": "Fabian Hurzeler youngest Premier League manager Brighton"
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Joelinton wears which squad number for Newcastle this season?",
+      "question": "Xavi Simons wears which squad number for Tottenham Hotspur this season?",
       "options": [
-        "14",
-        "21",
         "7",
+        "9",
+        "10",
         "11"
       ],
       "answer": "7",
-      "explanation": "Joelinton wears the number 7 shirt for Newcastle United.",
-      "anchorClues": "Joelinton Newcastle United squad number 7"
+      "explanation": "Xavi Simons wears the number 7 shirt for Tottenham Hotspur this season.",
+      "anchorClues": "Xavi Simons Tottenham Hotspur squad number 7"
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Which team is the most easterly team in the Premier League?",
+      "question": "Which is the oldest football club currently in the Premier League?",
       "options": [
-        "Ipswich",
-        "Sunderland",
-        "Newcastle"
+        "Nottingham Forest",
+        "Aston Villa",
+        "Everton",
+        "Manchester United"
       ],
-      "answer": "Ipswich",
-      "explanation": "Ipswich Town hold the geographical status of being the most easterly club in the top flight.",
-      "anchorClues": "Ipswich most easterly team Premier League"
+      "answer": "Nottingham Forest",
+      "explanation": "Founded in 1865, Nottingham Forest is the oldest club currently competing in the Premier League.",
+      "anchorClues": "Oldest football club Premier League Nottingham Forest 1865"
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "How many Premier League titles has José Mourinho won?",
+      "question": "How many Premier League titles has Pep Guardiola won?",
       "options": [
-        "2",
-        "3",
-        "4",
-        "5"
+        "5",
+        "6",
+        "7"
       ],
-      "answer": "3",
-      "explanation": "José Mourinho won 3 Premier League titles during his spells at Chelsea.",
-      "anchorClues": "Jose Mourinho Premier League titles won 3"
+      "answer": "6",
+      "explanation": "Pep Guardiola has guided Manchester City to 6 Premier League titles.",
+      "anchorClues": "Pep Guardiola Premier League titles won 6 Manchester City"
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Which Everton player has had the most Premier League starts?",
+      "question": "In 1999, Ole Gunnar Solskjær scored four goals as a substitute against Nottingham Forest. How many minutes was he on the pitch before completing this feat?",
       "options": [
-        "Tim Howard",
-        "Séamus Coleman",
-        "Leon Osman",
-        "Leighton Baines"
+        "12 minutes",
+        "18 minutes",
+        "24 minutes",
+        "30 minutes"
       ],
-      "answer": "Tim Howard",
-      "explanation": "Tim Howard holds the record for the most Premier League starts for Everton.",
-      "anchorClues": "Everton most Premier League starts Tim Howard"
+      "answer": "12 minutes",
+      "explanation": "Solskjær came on in the 72nd minute and scored in the 80th, 88th, 91st, and 92nd minutes in United's 8–1 win.",
+      "anchorClues": "Ole Gunnar Solskjaer four goals substitute Nottingham Forest 12 minutes"
     }
   ]
 }
