@@ -511,53 +511,56 @@
             </div>
         </div>
 
-        <!-- GAMEPLAY HEADER -->
-        <div id="gameplay-header" class="gameplay-header-box" style="display: none;">
-            <p class="game-logo-title">Eleventh Floor</p>
-            <p class="game-logo-sub">THINK YOU KNOW BALL?</p>
-        </div>
-
-        <!-- Gameplay HUD Header -->
-        <div class="hud-sidebar-container" id="floor-hud-container" style="display: none;">
-            <div class="tower-stack" id="tower-stack">
-                <div class="tower-floor floor-block" data-floor="11"></div>
-                <div class="tower-floor floor-block" data-floor="10"></div>
-                <div class="tower-floor floor-block" data-floor="9"></div>
-                <div class="tower-floor floor-block" data-floor="8"></div>
-                <div class="tower-floor floor-block" data-floor="7"></div>
-                <div class="tower-floor floor-block" data-floor="6"></div>
-                <div class="tower-floor floor-block" data-floor="5"></div>
-                <div class="tower-floor floor-block" data-floor="4"></div>
-                <div class="tower-floor floor-block" data-floor="3"></div>
-                <div class="tower-floor floor-block" data-floor="2"></div>
-                <div class="tower-floor floor-block" data-floor="1"></div>
+        <!-- MASTER GAME SCREEN WRAPPER FOR ACTIVE GAMEPLAY -->
+        <div id="game-screen" style="width: 100%; display: none; flex-direction: column; align-items: center;">
+            <!-- GAMEPLAY HEADER -->
+            <div id="gameplay-header" class="gameplay-header-box">
+                <p class="game-logo-title">Eleventh Floor</p>
+                <p class="game-logo-sub">THINK YOU KNOW BALL?</p>
             </div>
 
-            <div class="floor-info-box">
-                <div style="display: flex; flex-direction: column; gap: 4px;">
-                    <div id="card-floor-text" style="font-size: 1.1rem; font-weight: 800;"><span style="color: var(--genre-pitch);">1st</span> Floor</div>
-                    <div id="floor-rule-text" style="font-size: 0.65rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">No mistakes!</div>
+            <!-- Gameplay HUD Header -->
+            <div class="hud-sidebar-container" id="floor-hud-container">
+                <div class="tower-stack" id="tower-stack">
+                    <div class="tower-floor floor-block" data-floor="11"></div>
+                    <div class="tower-floor floor-block" data-floor="10"></div>
+                    <div class="tower-floor floor-block" data-floor="9"></div>
+                    <div class="tower-floor floor-block" data-floor="8"></div>
+                    <div class="tower-floor floor-block" data-floor="7"></div>
+                    <div class="tower-floor floor-block" data-floor="6"></div>
+                    <div class="tower-floor floor-block" data-floor="5"></div>
+                    <div class="tower-floor floor-block" data-floor="4"></div>
+                    <div class="tower-floor floor-block" data-floor="3"></div>
+                    <div class="tower-floor floor-block" data-floor="2"></div>
+                    <div class="tower-floor floor-block" data-floor="1"></div>
                 </div>
-                <!-- ACTIVE GAME TIMER LOCATED INSIDE HUD INFO BOX -->
-                <div id="active-game-timer" class="header-timer">00:00</div>
-            </div>
-        </div>
 
-        <!-- Main Play Card Workspace -->
-        <div id="game-workspace" class="play-card" style="display: none;">
-            <div class="timer-bar-container">
-                <div id="timer-bar" class="timer-bar"></div>
-            </div>
-
-            <div class="question-box">
-                <div id="question-text" style="font-size: 0.9rem; font-weight: 600; color: #ffffff;">Loading trivia...</div>
+                <div class="floor-info-box">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <div id="card-floor-text" style="font-size: 1.1rem; font-weight: 800;"><span style="color: var(--genre-pitch);">1st</span> Floor</div>
+                        <div id="floor-rule-text" style="font-size: 0.65rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">No mistakes!</div>
+                    </div>
+                    <!-- ACTIVE GAME TIMER LOCATED INSIDE HUD INFO BOX -->
+                    <div id="active-game-timer" class="header-timer">00:00</div>
+                </div>
             </div>
 
-            <div class="options-grid" id="options-grid">
-                <button class="btn-option"></button>
-                <button class="btn-option"></button>
-                <button class="btn-option"></button>
-                <button class="btn-option"></button>
+            <!-- Main Play Card Workspace -->
+            <div id="game-workspace" class="play-card">
+                <div class="timer-bar-container">
+                    <div id="timer-bar" class="timer-bar"></div>
+                </div>
+
+                <div class="question-box">
+                    <div id="question-text" style="font-size: 0.9rem; font-weight: 600; color: #ffffff;">Loading trivia...</div>
+                </div>
+
+                <div class="options-grid" id="options-grid">
+                    <button class="btn-option"></button>
+                    <button class="btn-option"></button>
+                    <button class="btn-option"></button>
+                    <button class="btn-option"></button>
+                </div>
             </div>
         </div>
 
@@ -633,3 +636,79 @@
                 <div class="stat-item"><span id="stat-streak" class="stat-value active">0</span><span class="stat-label">Streak</span></div>
                 <div class="stat-item"><span id="stat-bestfloor" class="stat-value pitch">1st</span><span class="stat-label">Highest Floor</span></div>
                 <div class="stat-item"><span id="stat-besttime" class="stat-value active">--:--</span><span class="stat-label">Best Time</span></div>
+            </div>
+            <div id="vault-list" class="vault-grid"></div>
+            <button id="btn-close-vault" class="btn-modal">CLOSE</button>
+        </div>
+    </div>
+
+    <div id="modal-game-over" class="modal-overlay hidden">
+        <div class="modal-card">
+            <h2 id="game-over-title">ELEVATOR STOPPED</h2>
+            <p id="game-over-message"></p>
+            <p id="final-floor-reached"></p>
+            <button id="btn-try-again" class="btn-modal" style="background: var(--genre-pitch); color: #000000;">TRY AGAIN</button>
+            <button id="btn-back-vault" class="btn-modal">VAULT</button>
+        </div>
+    </div>
+
+    <!-- LINK TO SEPARATE BALL.JS SCRIPT FILE -->
+    <script src="ball.js"></script>
+
+    <!-- REAL SCREENSHOT GENERATOR & SHARE ENGINE -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const shareBtn = document.getElementById('share-btn');
+            const victoryCard = document.getElementById('victory-card');
+            const toast = document.getElementById('toast-msg');
+
+            function showToast(text) {
+                if (!toast) return;
+                toast.innerText = text;
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2000);
+            }
+
+            if (shareBtn && victoryCard) {
+                shareBtn.addEventListener('click', async () => {
+                    try {
+                        showToast('CAPTURING SCREENSHOT...');
+                        const canvas = await html2canvas(victoryCard, {
+                            backgroundColor: '#111111',
+                            scale: 2,
+                            useCORS: true
+                        });
+
+                        canvas.toBlob(async (blob) => {
+                            if (!blob) return;
+                            const file = new File([blob], '11th-floor-tykb-victory.png', { type: 'image/png' });
+
+                            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                                try {
+                                    await navigator.share({
+                                        title: 'Think You Know Ball? Victory Card',
+                                        files: [file]
+                                    });
+                                } catch (e) {
+                                    console.log('Share prompt dismissed');
+                                }
+                            } else {
+                                const downloadLink = document.createElement('a');
+                                downloadLink.href = URL.createObjectURL(file);
+                                downloadLink.download = '11th-floor-tykb-victory.png';
+                                downloadLink.click();
+                                showToast('SCREENSHOT SAVED TO DEVICE');
+                            }
+                        }, 'image/png');
+                    } catch (err) {
+                        console.error('Screenshot capture error:', err);
+                        showToast('ERROR GENERATING SCREENSHOT');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
