@@ -5,7 +5,7 @@
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Which club sits top of the Premier League table today, Saturday 17th October 2026?",
+      "question": "Which club sits top of the Premier League table today, Sat 17th Oct 2026?",
       "options": [
         "Manchester City",
         "Tottenham Hotspur",
@@ -32,7 +32,7 @@
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Who is the current manager of Tottenham Hotspur?",
+      "question": "Who is De current manager of Tottenham Hotspur?",
       "options": [
         "De Zerbi",
         "De Matteo",
@@ -60,7 +60,7 @@
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Cole Palmer became the first player in Premier League history to score four goals in the first half of a match against which club?",
+      "question": "Cole Palmer became the first player in Premier League history to score four goals in the first half of a match, against which club?",
       "options": [
         "Brighton & Hove Albion",
         "Everton",
