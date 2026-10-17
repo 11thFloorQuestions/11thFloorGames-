@@ -94,7 +94,7 @@
             border: 1px solid var(--surface-border);
             padding: 4px 12px;
             border-radius: 12px;
-            display: none;
+            display: block;
         }
 
         .game-logo-box {
@@ -272,7 +272,7 @@
         .vault-item-btn:hover { border-color: #ffffff; }
         .btn-modal { width: 100%; background-color: #111111; border: 1px solid var(--surface-border-light); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
 
-        /* IN-GAME VICTORY RECEIPT CARD STYLING — RESTRUCTURED & STREAMLINED */
+        /* IN-GAME VICTORY RECEIPT CARD STYLING */
         .victory-receipt-card {
             width: 100%;
             max-width: 340px;
@@ -356,7 +356,7 @@
 
         .hero-time-display {
             font-family: 'Anton', sans-serif;
-            font-size: 2.2rem; /* Scaled down from 3.4rem for receipt balance */
+            font-size: 2.2rem;
             line-height: 1;
             color: #ffffff;
             letter-spacing: 1px;
@@ -567,7 +567,7 @@
                     <div id="card-floor-text" style="font-size: 1.1rem; font-weight: 800;"><span style="color: var(--genre-pitch);">1st</span> Floor</div>
                     <div id="floor-rule-text" style="font-size: 0.65rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">No mistakes!</div>
                 </div>
-                <!-- Timer Relocated inside HUD Info Box -->
+                <!-- ACTIVE GAME TIMER LOCATED INSIDE HUD INFO BOX -->
                 <div id="active-game-timer" class="header-timer">00:00</div>
             </div>
         </div>
