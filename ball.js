@@ -181,7 +181,7 @@ function updateSessionTimerDisplay() {
 
 function formatTime(totalSeconds) {
     if (totalSeconds === null || totalSeconds === undefined) return "--:--";
-    const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+    const m = Math.floor(totalSeconds / 60);
     const s = (totalSeconds % 60).toString().padStart(2, '0');
     return `${m}:${s}`;
 }
@@ -559,7 +559,6 @@ function updateFloorUI() {
 }
 
 function loadNextQuestion() {
-    // Clear any residual glowing borders immediately on load
     document.querySelectorAll('#options-grid .btn-option').forEach(btn => {
         btn.classList.remove('selected-correct', 'selected-wrong');
     });
@@ -658,11 +657,10 @@ function handleAnswerSelect(isCorrect, buttonEl) {
                 updateFloorUI();
                 loadNextQuestion();
             }
-        }, 400); // 400ms delay for crisp transition
+        }, 400);
     } else {
         if (buttonEl) buttonEl.classList.add('selected-wrong');
         
-        // Highlight the correct answer button border & glow in pitch green
         if (currentQ) {
             document.querySelectorAll('#options-grid .btn-option').forEach(btn => {
                 if (btn.textContent === currentQ.answer) {
@@ -682,7 +680,7 @@ function handleAnswerSelect(isCorrect, buttonEl) {
 
         setTimeout(() => {
             handleGameOver('INCORRECT ANSWER');
-        }, 400); // 400ms delay for crisp transition
+        }, 400);
     }
 }
 
@@ -725,8 +723,8 @@ function handleVictory() {
     const dateDisplay = document.getElementById('receipt-date-display');
     const victoryTimeDisplay = document.getElementById('victory-time-display');
     const badgeDisplay = document.getElementById('receipt-badge-display');
+    const attemptsDisplay = document.getElementById('victory-attempts-display');
     const runSummaryDisplay = document.getElementById('victory-run-summary-display');
-    const victoryStreakDisplay = document.getElementById('victory-streak-display');
     
     const hudContainer = document.getElementById('floor-hud-container');
     const gameWorkspace = document.getElementById('game-workspace');
@@ -742,26 +740,24 @@ function handleVictory() {
     const formattedTime = formatTime(gameState.timeElapsedSeconds);
     if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
 
+    if (attemptsDisplay) {
+        attemptsDisplay.textContent = gameState.attemptsToday;
+    }
+
     if (badgeDisplay) {
-        if (gameState.attemptsToday === 1) {
-            badgeDisplay.textContent = "1ST TRY PERFECT";
-        } else {
-            const ords = ["1st", "2nd", "3rd", "4th", "5th"];
-            const ordText = ords[gameState.attemptsToday - 1] || `${gameState.attemptsToday}th`;
-            badgeDisplay.textContent = `ATTEMPT #${gameState.attemptsToday} CLEARED`;
-        }
+        const ords = ["1st", "2nd", "3rd", "4th", "5th"];
+        const ordText = ords[gameState.attemptsToday - 1] || `${gameState.attemptsToday}th`;
+        badgeDisplay.textContent = `${ordText} Try`;
     }
 
     if (runSummaryDisplay) {
         if (gameState.attemptsToday === 1) {
-            runSummaryDisplay.innerHTML = `<span style="color: var(--genre-pitch);">10/10</span> (First Try)`;
+            runSummaryDisplay.innerHTML = `<span style="color: var(--genre-pitch);">10</span><span style="color: var(--text-muted);">/</span><span style="color: var(--genre-pitch);">10</span>`;
         } else {
             const failFloor = gameState.firstTryCollapseFloor || 3;
-            runSummaryDisplay.innerHTML = `<span style="color: var(--state-error);">${failFloor}</span><span style="color: var(--text-muted);">/</span><span style="color: var(--genre-pitch);">10</span> (${gameState.attemptsToday}${gameState.attemptsToday === 2 ? 'nd' : 'rd'} Attempt)`;
+            runSummaryDisplay.innerHTML = `<span style="color: var(--state-error);">${failFloor}</span><span style="color: var(--text-muted);">/</span><span style="color: var(--genre-pitch);">10</span>`;
         }
     }
-
-    if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${gameState.stats.streak} Days`;
 
     if (hudContainer) hudContainer.style.display = 'none';
     if (gameWorkspace) gameWorkspace.style.display = 'none';
