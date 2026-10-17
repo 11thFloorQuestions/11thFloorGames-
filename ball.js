@@ -268,13 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function resetToLandingScreen() {
     stopSessionTimer();
-    const screens = ['victory-screen', 'game-screen', 'floor-hud-container', 'gameplay-header', 'active-game-timer', 'footer-text'];
-    screens.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.style.display = 'none';
-    });
-    const landing = document.getElementById('landing-screen');
-    if (landing) landing.style.display = 'flex';
+    showScreen('landing-screen');
 }
 
 function showScreen(screenId) {
@@ -503,20 +497,6 @@ function loadVaultSet(paddedId, data) {
 }
 
 function launchGameUI() {
-    const landing = document.getElementById('landing-screen');
-    const victory = document.getElementById('victory-screen');
-    const hud = document.getElementById('floor-hud-container');
-    const workspace = document.getElementById('game-workspace');
-    const header = document.getElementById('gameplay-header');
-    const footer = document.getElementById('footer-text');
-
-    if (landing) landing.style.display = 'none';
-    if (victory) victory.style.display = 'none';
-    if (hud) hud.style.display = 'flex';
-    if (workspace) workspace.style.display = 'flex';
-    if (header) header.style.display = 'flex';
-    if (footer) footer.style.display = 'block';
-
     startSessionTimer();
     startGame();
 }
@@ -530,11 +510,6 @@ function startGame() {
     gameState.currentQuestionIndex = 0;
     showScreen('game-screen');
     
-    const hud = document.getElementById('floor-hud-container');
-    const header = document.getElementById('gameplay-header');
-    if (hud) hud.style.display = 'flex';
-    if (header) header.style.display = 'flex';
-
     updateFloorUI();
     loadNextQuestion();
 }
@@ -726,10 +701,7 @@ function handleVictory() {
     const attemptsDisplay = document.getElementById('victory-attempts-display');
     const runSummaryDisplay = document.getElementById('victory-run-summary-display');
     
-    const hudContainer = document.getElementById('floor-hud-container');
-    const gameWorkspace = document.getElementById('game-workspace');
-    const gameplayHeader = document.getElementById('gameplay-header');
-    const activeGameTimer = document.getElementById('active-game-timer');
+    const gameScreen = document.getElementById('game-screen');
     const victoryScreen = document.getElementById('victory-screen');
     const footerText = document.getElementById('footer-text');
 
@@ -759,11 +731,7 @@ function handleVictory() {
         }
     }
 
-    if (hudContainer) hudContainer.style.display = 'none';
-    if (gameWorkspace) gameWorkspace.style.display = 'none';
-    if (gameplayHeader) gameplayHeader.style.display = 'none';
-    if (activeGameTimer) activeGameTimer.style.display = 'none';
+    if (gameScreen) gameScreen.style.display = 'none';
     if (footerText) footerText.style.display = 'none';
-
     if (victoryScreen) victoryScreen.style.display = 'flex';
 }
