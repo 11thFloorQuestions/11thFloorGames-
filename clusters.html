@@ -11,7 +11,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/glacial-indifference" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
@@ -252,7 +252,7 @@
         .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 8px; flex-shrink: 0; }
         .tower-stack { display: flex; flex-direction: column-reverse; gap: 2px; width: 52px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 6px; justify-content: space-between; flex-shrink: 0; }
         .tower-floor { height: 7px; border: 1px solid var(--surface-border); background: #111111; transition: all 0.2s ease; border-radius: 2px; }
-        .tower-floor.active, .tower-floor.active-floor { border-color: var(--state-active); background: var(--state-active); box-shadow: 0 0 8px var(--state-active-glow); }
+        .tower-floor.active, .tower-floor.active-floor { border-color: var(--genre-orange); background: rgba(255, 117, 31, 0.3); box-shadow: 0 0 6px var(--genre-orange-glow); }
         .tower-floor.completed { border-color: var(--state-success); background: var(--state-success); }
         .tower-floor.failed { border-color: var(--state-error); background: var(--state-error); }
         
@@ -260,7 +260,7 @@
         .current-floor-display { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; color: var(--genre-orange); }
 
         .timer-bar-container { width: 100%; max-width: 600px; height: 4px; background: #111111; border-radius: 2px; overflow: hidden; margin-bottom: 8px; flex-shrink: 0; }
-        .timer-bar { width: 100%; height: 100%; background: var(--state-active); transition: width 0.05s linear; }
+        .timer-bar { width: 100%; height: 100%; background: var(--genre-orange); transition: width 0.05s linear; }
 
         .clue-banner {
             width: 100%;
@@ -441,18 +441,23 @@
         .brand-green { color: var(--state-success); }
         .brand-white { color: #ffffff; }
 
-        /* HERO TIME: the centrepiece of the receipt */
-        .hero-time {
-            font-family: 'Space Mono', monospace;
-            font-size: 3.6rem;
-            font-weight: 700;
+        .hero-time-display {
+            font-family: 'Anton', sans-serif;
+            font-size: 3.4rem;
+            line-height: 0.9;
             color: #ffffff;
-            line-height: 1;
-            letter-spacing: -2px;
-            font-variant-numeric: tabular-nums;
-            white-space: nowrap;
-            text-shadow: 0 0 18px var(--genre-orange-glow);
-            margin: 8px 0 4px 0;
+            letter-spacing: 2px;
+            margin: 8px 0;
+        }
+
+        .hero-time-unit {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #888888;
+            letter-spacing: 1px;
+            margin-left: 2px;
+            text-transform: lowercase;
         }
 
         .flex-tier-badge {
@@ -578,12 +583,6 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
-
-/*LIFT_CSS*/
-
-        /* Clusters has no single play card, so the ride sits over the puzzle area */
-        #game-main-content { position: relative; }
-        #game-main-content .lift-overlay { overflow: hidden; border: 1px solid var(--surface-border-light); border-radius: 8px; }
     </style>
 </head>
 <body class="game-clusters">
@@ -660,7 +659,6 @@
         </div>
 
         <main id="game-main-content" style="display: none;">
-<!--LIFT_MARKUP-->
             <div class="puzzle-prompt" id="puzzle-prompt"></div>
             <div id="solved-groups-container"></div>
             <div class="tile-grid grid-col-3" id="tile-grid"></div>
@@ -691,13 +689,18 @@
                     <div class="flex-status-label">
                         <span class="brand-orange">11th</span> <span class="brand-white">Floor Cleared</span>
                     </div>
-                    <div id="victory-time-display" class="hero-time">0:00</div>
+                    <div class="hero-time-display"><span id="victory-time-display">00:00</span><span class="hero-time-unit">s</span></div>
+                    <div class="flex-tier-badge">PERFECT</div>
                 </div>
 
                 <div class="receipt-details">
                     <div class="receipt-row">
                         <span class="row-label">ELEVENTH FLOOR CLUSTERS</span>
                         <span class="row-val">#042</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="row-label">TODAY'S TIME</span>
+                        <span id="victory-time-row-display" class="row-val active">00:00s</span>
                     </div>
                     <div class="receipt-row">
                         <span class="row-label">ACCURACY</span>
@@ -782,9 +785,6 @@
                 shareBtn.addEventListener('click', async () => {
                     try {
                         showToast('CAPTURING SCREENSHOT...');
-                        if (document.fonts && document.fonts.ready) {
-                            await document.fonts.ready;
-                        }
                         const canvas = await html2canvas(victoryCard, {
                             backgroundColor: '#111111',
                             scale: 2,
