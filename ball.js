@@ -635,14 +635,6 @@ function handleAnswerSelect(isCorrect, buttonEl) {
         }, 400);
     } else {
         if (buttonEl) buttonEl.classList.add('selected-wrong');
-        
-        if (currentQ) {
-            document.querySelectorAll('#options-grid .btn-option').forEach(btn => {
-                if (btn.textContent === currentQ.answer) {
-                    btn.classList.add('selected-correct');
-                }
-            });
-        }
 
         triggerHaptic([80, 50, 120]);
         
