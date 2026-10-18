@@ -634,7 +634,7 @@ function startQuestionTimer() {
     
     if (timerBar) {
         timerBar.style.width = '100%';
-        timerBar.style.backgroundColor = 'var(--genre-pitch)';
+        timerBar.style.backgroundColor = 'var(--state-active)';
     }
 
     gameState.timer = setInterval(() => {
@@ -647,7 +647,7 @@ function startQuestionTimer() {
             if (remaining <= totalDuration / 2) {
                 timerBar.style.backgroundColor = 'var(--state-error)';
             } else {
-                timerBar.style.backgroundColor = 'var(--genre-pitch)';
+                timerBar.style.backgroundColor = 'var(--state-active)';
             }
         }
 
