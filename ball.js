@@ -506,10 +506,11 @@ function launchGameUI() {
 
 const LIFT_OPENING_MS = 1400;
 const LIFT_RISE_MS = 1000;
+const LIFT_VICTORY_MS = 2000;
 let liftRideToken = 0;
 let liftFirstRideDone = false;
 
-function playLiftRide(durationMs, onArrive) {
+function playLiftRide(durationMs, onArrive, options) {
     const overlay = document.getElementById('lift-overlay');
     const graphic = document.getElementById('lift-graphic');
 
@@ -535,6 +536,7 @@ function playLiftRide(durationMs, onArrive) {
 
     graphic.classList.remove('rising');
     graphic.style.setProperty('--lift-ms', `${durationMs}ms`);
+    overlay.classList.toggle('victory', !!(options && options.victory));
     overlay.classList.remove('hidden');
     void graphic.offsetWidth;
     graphic.classList.add('rising');
@@ -676,7 +678,7 @@ function handleAnswerSelect(isCorrect, buttonEl) {
         
         setTimeout(() => {
             if (gameState.currentFloor >= gameState.maxFloors) {
-                handleVictory();
+                playLiftRide(LIFT_VICTORY_MS, handleVictory, { victory: true });
             } else {
                 playLiftRide(LIFT_RISE_MS, () => {
                     gameState.currentFloor++;
