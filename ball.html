@@ -11,7 +11,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
     <!-- HTML2CANVAS LIBRARY FOR RECEIPT SCREENSHOT CAPTURE -->
@@ -339,6 +339,20 @@
             margin-bottom: 8px;
         }
 
+        /* HERO TIME: the centrepiece of the receipt */
+        .hero-time {
+            font-family: 'Space Mono', monospace;
+            font-size: 3.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+            letter-spacing: -2px;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+            text-shadow: 0 0 18px var(--genre-pitch-glow);
+            margin: 8px 0 12px 0;
+        }
+
         .brand-green { color: var(--genre-pitch); }
         .brand-gold { color: var(--state-active); }
         .brand-white { color: #ffffff; }
@@ -582,6 +596,7 @@
                     <div class="flex-status-label">
                         <span class="brand-green">11th</span> <span class="brand-white">Floor Cleared</span>
                     </div>
+                    <div id="victory-time-display" class="hero-time">1:12</div>
                     <div class="flex-tier-badge" id="receipt-badge-display">1st Try</div>
                 </div>
 
@@ -589,10 +604,6 @@
                     <div class="receipt-row">
                         <span class="row-label">TODAY'S GAME</span>
                         <span class="row-val">#001</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="row-label">TODAY'S TIME</span>
-                        <span id="victory-time-display" class="row-val active">1:12</span>
                     </div>
                     <div class="receipt-row">
                         <span class="row-label">TODAY'S ATTEMPTS</span>
@@ -675,6 +686,9 @@
                 shareBtn.addEventListener('click', async () => {
                     try {
                         showToast('CAPTURING SCREENSHOT...');
+                        if (document.fonts && document.fonts.ready) {
+                            await document.fonts.ready;
+                        }
                         const canvas = await html2canvas(victoryCard, {
                             backgroundColor: '#111111',
                             scale: 2,
