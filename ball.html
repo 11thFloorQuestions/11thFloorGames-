@@ -229,14 +229,14 @@
         .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 6px; flex-shrink: 0; }
         .tower-stack { display: flex; flex-direction: column; gap: 2px; width: 52px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 6px; justify-content: space-between; flex-shrink: 0; }
         .tower-floor { height: 7px; border: 1px solid var(--surface-border); background: #111111; transition: background 0.2s ease, border-color 0.2s ease; border-radius: 2px; }
-        .tower-floor.active, .tower-floor.active-floor { border-color: var(--genre-pitch); background: var(--genre-pitch); box-shadow: 0 0 8px var(--genre-pitch-glow); }
+        .tower-floor.active, .tower-floor.active-floor { border-color: var(--state-active); background: var(--state-active); box-shadow: 0 0 8px rgba(250, 204, 21, 0.3); }
         .tower-floor.completed { border-color: var(--state-success); background: var(--state-success); }
         .tower-floor.failed { border-color: var(--state-error); background: var(--state-error); }
         .floor-info-box { flex-grow: 1; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
 
         .play-card { width: 100%; max-width: 600px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 14px 10px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 12px; flex-grow: 1; margin-bottom: 6px; overflow: hidden; min-height: 0; }
         .timer-bar-container { width: 100%; height: 4px; background: #111111; border-radius: 2px; overflow: hidden; }
-        .timer-bar { width: 100%; height: 100%; background: var(--genre-pitch); }
+        .timer-bar { width: 100%; height: 100%; background: var(--state-active); }
         .question-box { width: 100%; background: #111111; border: 1px solid var(--surface-border); border-radius: 6px; padding: 12px 14px; text-align: center; }
         .options-grid { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
         .btn-option { width: 100%; background: #111111; border: 1px solid var(--surface-border-light); border-radius: 8px; padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-primary); text-align: left; cursor: pointer; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
