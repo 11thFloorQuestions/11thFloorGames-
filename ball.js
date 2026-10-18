@@ -1,728 +1,729 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>11th Floor — Think You Know Ball?</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
-    <link rel="apple-touch-icon" href="/favicon.svg?v=2">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-
-    <!-- HTML2CANVAS LIBRARY FOR RECEIPT SCREENSHOT CAPTURE -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
-    <style>
-        :root {
-            --bg-deep: #000000;
-            --surface: #0a0a0a;
-            --surface-border: #222222;
-            --surface-border-light: #333333;
-            --text-primary: #ffffff;
-            --text-muted: #888888;
-            --genre-pitch: #22c55e;
-            --genre-pitch-glow: rgba(34, 197, 94, 0.35);
-            --brand-red: #cc0000;
-            --brand-red-glow: rgba(204, 0, 0, 0.35);
-            --state-active: #facc15;
-            --state-success: #22c55e;
-            --state-error: #ef4444;
-            --state-error-glow: rgba(239, 68, 68, 0.3);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--bg-deep);
-            color: var(--text-primary);
-            font-family: 'Montserrat', sans-serif;
-            min-height: 100vh;
-            min-height: 100dvh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 10px;
-            overflow-x: hidden;
-        }
-
-        .top-bar {
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .pill-btn {
-            background: var(--surface);
-            border: 1px solid var(--surface-border-light);
-            color: var(--text-primary);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-decoration: none;
-            cursor: pointer;
-            transition: border-color 0.2s ease, color 0.2s ease;
-        }
-
-        .pill-btn:hover {
-            border-color: var(--genre-pitch);
-            color: var(--genre-pitch);
-        }
-
-        .header-timer {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 800;
-            color: var(--state-active);
-            letter-spacing: 1px;
-            background: var(--surface);
-            border: 1px solid var(--surface-border);
-            padding: 4px 12px;
-            border-radius: 12px;
-            display: block;
-        }
-
-        .game-logo-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 8px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .gameplay-header-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 6px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .game-logo-pitch {
-            font-family: 'Anton', sans-serif;
-            font-size: 3.2rem;
-            font-weight: 400;
-            color: var(--genre-pitch);
-            line-height: 0.85;
-            letter-spacing: -1px;
-            text-shadow: 0 0 20px var(--genre-pitch-glow);
-            margin-bottom: 4px;
-        }
-
-        .game-logo-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 300;
-            color: #ffffff;
-            letter-spacing: 1.5px;
-            margin-bottom: 2px;
-        }
-
-        .game-logo-sub {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.6rem;
-            font-weight: 700;
-            color: var(--genre-pitch);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-
-        .landing-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 16px;
-            padding: 20px 16px;
-            width: 100%;
-            max-width: 600px;
-            background: var(--surface);
-            border: 1px solid var(--surface-border);
-            border-radius: 8px;
-            margin-top: 6px;
-        }
-
-        .landing-shaft-graphic {
-            display: flex;
-            flex-direction: column;
-            width: 52px;
-            height: 150px;
-            border: 1px solid var(--surface-border);
-            border-radius: 8px;
-            padding: 6px;
-            gap: 3px;
-            background-color: var(--surface);
-        }
-
-        .landing-shaft-box {
-            flex: 1;
-            background-color: #111111;
-            border: 1px solid var(--surface-border);
-            border-radius: 2px;
-        }
-
-        .landing-shaft-graphic .landing-shaft-box { animation: sweepMiddle 1.2s ease-in-out forwards; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(11) { animation: sweepBottomSettle 2.6s ease-in-out forwards; animation-delay: 0.05s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(10) { animation-delay: 0.15s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(9)  { animation-delay: 0.25s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(8)  { animation-delay: 0.35s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(7)  { animation-delay: 0.45s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(6)  { animation-delay: 0.55s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(5)  { animation-delay: 0.65s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(4)  { animation-delay: 0.75s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(3)  { animation-delay: 0.85s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(2)  { animation-delay: 0.95s; }
-        .landing-shaft-graphic .landing-shaft-box:nth-child(1)  { animation: sweepTopGreen 1.6s ease-in-out forwards; animation-delay: 1.05s; }
-
-        @keyframes sweepMiddle {
-            0% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
-            30% { background-color: var(--genre-pitch); border-color: var(--genre-pitch); box-shadow: 0 0 10px var(--genre-pitch-glow); }
-            60%, 100% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
-        }
-
-        @keyframes sweepTopGreen {
-            0% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
-            20%, 70% { background-color: var(--state-success); border-color: var(--state-success); box-shadow: 0 0 16px var(--genre-pitch-glow); }
-            100% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
-        }
-
-        @keyframes sweepBottomSettle {
-            0% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
-            15% { background-color: var(--genre-pitch); border-color: var(--genre-pitch); box-shadow: 0 0 10px var(--genre-pitch-glow); }
-            30%, 80% { background-color: #080808; border-color: var(--surface-border); box-shadow: none; }
-            95%, 100% { background-color: var(--genre-pitch); border-color: var(--genre-pitch); box-shadow: 0 0 8px var(--genre-pitch-glow); }
-        }
-
-        .btn-start {
-            background-color: var(--surface);
-            border: 1px solid var(--genre-pitch);
-            color: var(--genre-pitch);
-            padding: 12px 28px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 24px;
-            cursor: pointer;
-            box-shadow: 0 0 15px var(--genre-pitch-glow);
-            transition: border-color 0.2s ease;
-        }
-
-        .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 6px; flex-shrink: 0; }
-        .tower-stack { display: flex; flex-direction: column; gap: 2px; width: 52px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 6px; justify-content: space-between; flex-shrink: 0; }
-        .tower-floor { height: 7px; border: 1px solid var(--surface-border); background: #111111; transition: background 0.2s ease, border-color 0.2s ease; border-radius: 2px; }
-        .tower-floor.active, .tower-floor.active-floor { border-color: var(--genre-pitch); background: var(--genre-pitch); box-shadow: 0 0 8px var(--genre-pitch-glow); }
-        .tower-floor.completed { border-color: var(--state-success); background: var(--state-success); }
-        .tower-floor.failed { border-color: var(--state-error); background: var(--state-error); }
-        .floor-info-box { flex-grow: 1; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
-
-        .play-card { width: 100%; max-width: 600px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 14px 10px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 12px; flex-grow: 1; margin-bottom: 6px; overflow: hidden; min-height: 0; }
-        .timer-bar-container { width: 100%; height: 4px; background: #111111; border-radius: 2px; overflow: hidden; }
-        .timer-bar { width: 100%; height: 100%; background: var(--genre-pitch); }
-        .question-box { width: 100%; background: #111111; border: 1px solid var(--surface-border); border-radius: 6px; padding: 12px 14px; text-align: center; }
-        .options-grid { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
-        .btn-option { width: 100%; background: #111111; border: 1px solid var(--surface-border-light); border-radius: 8px; padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-primary); text-align: left; cursor: pointer; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
-
-        .btn-option.selected-correct {
-            border-color: var(--genre-pitch) !important;
-            box-shadow: 0 0 12px var(--genre-pitch-glow) !important;
-        }
-
-        .btn-option.selected-wrong {
-            border-color: var(--state-error) !important;
-            box-shadow: 0 0 12px var(--state-error-glow) !important;
-        }
-
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.92); display: flex; align-items: center; justify-content: center; z-index: 100; }
-        .modal-overlay.hidden { display: none !important; }
-        .modal-card { background-color: var(--surface); border: 1px solid var(--genre-pitch); box-shadow: 0 0 20px var(--genre-pitch-glow); padding: 24px 20px; border-radius: 14px; width: 92%; max-width: 380px; text-align: center; }
-        
-        .modal-sub-header { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 800; color: var(--genre-pitch); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
-        .modal-main-title { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 14px; }
-
-        .stats-summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 12px 0 16px 0; background: var(--bg-deep); border: 1px solid var(--surface-border); border-radius: 10px; padding: 12px 8px; }
-        .stat-item { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .stat-value { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 800; color: #ffffff; }
-        .stat-value.active { color: var(--state-active); }
-        .stat-value.pitch { color: var(--genre-pitch); }
-        .stat-label { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
-
-        .vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 8px; max-height: 200px; overflow-y: auto; margin: 12px 0; padding-right: 2px; }
-        .vault-item-btn { background-color: #111111; border: 1px solid var(--genre-pitch); color: var(--text-primary); padding: 10px 6px; border-radius: 8px; cursor: pointer; text-align: center; box-shadow: 0 0 8px var(--genre-pitch-glow); transition: transform 0.1s ease, border-color 0.2s ease; }
-        .vault-item-btn:hover { border-color: #ffffff; }
-        .btn-modal { width: 100%; background-color: #111111; border: 1px solid var(--surface-border-light); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
-
-        /* IN-GAME VICTORY RECEIPT CARD STYLING */
-        .victory-receipt-card {
-            width: 100%;
-            max-width: 340px;
-            background-color: #111111;
-            border: 1px solid var(--genre-pitch);
-            border-radius: 14px;
-            padding: 20px 18px;
-            box-shadow: 0 0 25px var(--genre-pitch-glow);
-            margin-bottom: 16px;
-            text-align: left;
-            display: block;
-        }
-
-        .receipt-top-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #222222;
-            padding-bottom: 10px;
-            margin-bottom: 12px;
-        }
-
-        .club-crest-slot {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 800;
-            color: var(--genre-pitch);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .receipt-date-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-        }
-
-        .hero-flex-box {
-            text-align: center;
-            padding: 2px 0;
-            margin-bottom: 12px;
-        }
-
-        .game-title-header {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.8rem;
-            color: var(--genre-pitch);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            line-height: 1;
-            margin-bottom: 6px;
-            text-shadow: 0 0 12px var(--genre-pitch-glow);
-        }
-
-        .flex-status-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        /* HERO TIME: the centrepiece of the receipt */
-        .hero-time {
-            font-family: 'Space Mono', monospace;
-            font-size: 3.6rem;
-            font-weight: 700;
-            color: #ffffff;
-            line-height: 1;
-            letter-spacing: -2px;
-            font-variant-numeric: tabular-nums;
-            white-space: nowrap;
-            text-shadow: 0 0 18px var(--genre-pitch-glow);
-            margin: 8px 0 12px 0;
-        }
-
-        .brand-green { color: var(--genre-pitch); }
-        .brand-gold { color: var(--state-active); }
-        .brand-white { color: #ffffff; }
-
-        .flex-tier-badge {
-            display: inline-block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: var(--genre-pitch);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid var(--genre-pitch);
-            padding: 5px 14px;
-            border-radius: 12px;
-            margin-top: 4px;
-        }
-
-        .receipt-details {
-            border-top: 1px solid #222222;
-            padding-top: 12px;
-            margin-bottom: 12px;
-        }
-
-        .receipt-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .receipt-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .row-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: #888888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .row-val {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-        }
-
-        .row-val.success { color: var(--genre-pitch); }
-        .row-val.active { color: var(--state-active); }
-
-        .card-footer-cta {
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.58rem;
-            font-weight: 800;
-            color: #888888;
-            letter-spacing: 1.5px;
-            border-top: 1px dashed #333333;
-            padding-top: 8px;
-            text-transform: lowercase;
-        }
-
-        .controls-group {
-            width: 100%;
-            max-width: 340px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .btn-flex-action {
-            width: 100%;
-            background-color: var(--genre-pitch);
-            border: 1px solid var(--genre-pitch);
-            color: #000000;
-            padding: 14px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 24px;
-            cursor: pointer;
-            box-shadow: 0 0 15px var(--genre-pitch-glow);
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .btn-secondary-action {
-            width: 100%;
-            background-color: #111111;
-            border: 1px solid #333333;
-            color: #ffffff;
-            padding: 12px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-radius: 24px;
-            cursor: pointer;
-            display: block;
-        }
-
-        #toast-msg {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--genre-pitch);
-            color: #000000;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 0.75rem;
-            padding: 8px 16px;
-            border-radius: 20px;
-            display: none;
-            z-index: 1000;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-    </style>
-</head>
-<body class="game-ball">
-
-    <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 100%;">
-        <div class="top-bar">
-            <a href="index.html" class="pill-btn">← LOBBY</a>
-            <button class="pill-btn" id="btn-sound-toggle">SOUND: ON</button>
-        </div>
-
-        <!-- LANDING SCREEN (DEFAULT VISIBLE) -->
-        <div id="landing-screen" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-            <div class="game-logo-box">
-                <h1 class="game-logo-pitch">11FL?</h1>
-                <p class="game-logo-title">Eleventh Floor</p>
-                <p class="game-logo-sub">THINK YOU KNOW BALL?</p>
-            </div>
-
-            <div class="landing-container">
-                <div class="landing-shaft-graphic">
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                    <div class="landing-shaft-box"></div>
-                </div>
-
-                <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
-                    <strong>CAN YOU REACH THE 11TH FLOOR?</strong><br><br>
-                    Answer expert Premier League trivia to climb through 10 floors. One mistake and you drop back to Ground Floor.
-                </div>
-
-                <div style="display: flex; gap: 8px; margin-top: 4px;">
-                    <button id="btn-landing-stats" class="pill-btn" style="padding: 10px 18px; border-radius: 24px;">STATS / ARCHIVE</button>
-                    <button id="btn-start-climb" class="btn-start">Start Climb</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- MASTER GAME SCREEN WRAPPER FOR ACTIVE GAMEPLAY -->
-        <div id="game-screen" style="width: 100%; display: none; flex-direction: column; align-items: center;">
-            <!-- GAMEPLAY HEADER -->
-            <div id="gameplay-header" class="gameplay-header-box">
-                <p class="game-logo-title">Eleventh Floor</p>
-                <p class="game-logo-sub">THINK YOU KNOW BALL?</p>
-            </div>
-
-            <!-- Gameplay HUD Header -->
-            <div class="hud-sidebar-container" id="floor-hud-container">
-                <div class="tower-stack" id="tower-stack">
-                    <div class="tower-floor floor-block" data-floor="11"></div>
-                    <div class="tower-floor floor-block" data-floor="10"></div>
-                    <div class="tower-floor floor-block" data-floor="9"></div>
-                    <div class="tower-floor floor-block" data-floor="8"></div>
-                    <div class="tower-floor floor-block" data-floor="7"></div>
-                    <div class="tower-floor floor-block" data-floor="6"></div>
-                    <div class="tower-floor floor-block" data-floor="5"></div>
-                    <div class="tower-floor floor-block" data-floor="4"></div>
-                    <div class="tower-floor floor-block" data-floor="3"></div>
-                    <div class="tower-floor floor-block" data-floor="2"></div>
-                    <div class="tower-floor floor-block" data-floor="1"></div>
-                </div>
-
-                <div class="floor-info-box">
-                    <div style="display: flex; flex-direction: column; gap: 4px;">
-                        <div id="card-floor-text" style="font-size: 1.1rem; font-weight: 800;"><span style="color: var(--genre-pitch);">1st</span> Floor</div>
-                        <div id="floor-rule-text" style="font-size: 0.65rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">No mistakes!</div>
-                    </div>
-                    <!-- ACTIVE GAME TIMER LOCATED INSIDE HUD INFO BOX -->
-                    <div id="active-game-timer" class="header-timer">00:00</div>
-                </div>
-            </div>
-
-            <!-- Main Play Card Workspace -->
-            <div id="game-workspace" class="play-card">
-                <div class="timer-bar-container">
-                    <div id="timer-bar" class="timer-bar"></div>
-                </div>
-
-                <div class="question-box">
-                    <div id="question-text" style="font-size: 0.9rem; font-weight: 600; color: #ffffff;">Loading trivia...</div>
-                </div>
-
-                <div class="options-grid" id="options-grid">
-                    <button class="btn-option"></button>
-                    <button class="btn-option"></button>
-                    <button class="btn-option"></button>
-                    <button class="btn-option"></button>
-                </div>
-            </div>
-        </div>
-
-        <!-- STREAMLINED VICTORY RECEIPT CARD SCREEN -->
-        <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
-            
-            <div class="victory-receipt-card" id="victory-card">
-                <div class="receipt-top-row">
-                    <div class="club-crest-slot" id="receipt-club-slot">
-                        <span>VERIFIED</span>
-                    </div>
-                    <div class="receipt-date-label" id="receipt-date-display">Sat 17th Oct 2026</div>
-                </div>
-
-                <div class="hero-flex-box">
-                    <div class="game-title-header">
-                        Think You Know Ball?
-                    </div>
-                    <div class="flex-status-label">
-                        <span class="brand-green">11th</span> <span class="brand-white">Floor Cleared</span>
-                    </div>
-                    <div id="victory-time-display" class="hero-time">1:12</div>
-                    <div class="flex-tier-badge" id="receipt-badge-display">1st Try</div>
-                </div>
-
-                <div class="receipt-details">
-                    <div class="receipt-row">
-                        <span class="row-label">TODAY'S GAME</span>
-                        <span class="row-val">#001</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="row-label">TODAY'S ATTEMPTS</span>
-                        <span id="victory-attempts-display" class="row-val active">1</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="row-label">RUN SUMMARY</span>
-                        <span id="victory-run-summary-display" class="row-val"><span style="color: var(--genre-pitch);">10</span><span style="color: var(--text-muted);">/</span><span style="color: var(--genre-pitch);">10</span></span>
-                    </div>
-                </div>
-
-                <div class="card-footer-cta">
-                    powered by Eleventh Floor Games
-                </div>
-            </div>
-
-            <!-- ACTION CONTROL BUTTONS -->
-            <div class="controls-group">
-                <button class="btn-flex-action" id="share-btn">SHARE SCREENSHOT</button>
-                <button class="btn-secondary-action" id="btn-victory-stats">STATS & ARCHIVES</button>
-            </div>
-        </div>
-
-        <footer id="footer-text" style="font-size: 0.6rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-top: 4px;">
-            ONE MISTAKE RESETS THE CLIMB TO GROUND FLOOR.
-        </footer>
-    </div>
-
-    <!-- Toast Notification -->
-    <div id="toast-msg">SCREENSHOT GENERATED</div>
-
-    <!-- Modals -->
-    <div id="modal-vault" class="modal-overlay hidden">
-        <div class="modal-card">
-            <div class="modal-sub-header">THINK YOU KNOW BALL?</div>
-            <div class="modal-main-title">STATS & ARCHIVES</div>
-            <div class="stats-summary-grid">
-                <div class="stat-item"><span id="stat-played" class="stat-value">0</span><span class="stat-label">Played</span></div>
-                <div class="stat-item"><span id="stat-wins" class="stat-value pitch">0</span><span class="stat-label">Wins</span></div>
-                <div class="stat-item"><span id="stat-winrate" class="stat-value">0%</span><span class="stat-label">Win %</span></div>
-                <div class="stat-item"><span id="stat-streak" class="stat-value active">0</span><span class="stat-label">Streak</span></div>
-                <div class="stat-item"><span id="stat-bestfloor" class="stat-value pitch">1st</span><span class="stat-label">Highest Floor</span></div>
-                <div class="stat-item"><span id="stat-besttime" class="stat-value active">--:--</span><span class="stat-label">Best Time</span></div>
-            </div>
-            <div id="vault-list" class="vault-grid"></div>
-            <button id="btn-close-vault" class="btn-modal">CLOSE</button>
-        </div>
-    </div>
-
-    <div id="modal-game-over" class="modal-overlay hidden">
-        <div class="modal-card">
-            <h2 id="game-over-title">ELEVATOR STOPPED</h2>
-            <p id="game-over-message"></p>
-            <p id="final-floor-reached"></p>
-            <button id="btn-try-again" class="btn-modal" style="background: var(--genre-pitch); color: #000000;">TRY AGAIN</button>
-            <button id="btn-back-vault" class="btn-modal">VAULT</button>
-        </div>
-    </div>
-
-    <!-- LINK TO SEPARATE BALL.JS SCRIPT FILE -->
-    <script src="ball.js"></script>
-
-    <!-- REAL SCREENSHOT GENERATOR & SHARE ENGINE -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const shareBtn = document.getElementById('share-btn');
-            const victoryCard = document.getElementById('victory-card');
-            const toast = document.getElementById('toast-msg');
-
-            function showToast(text) {
-                if (!toast) return;
-                toast.innerText = text;
-                toast.style.display = 'block';
-                setTimeout(() => {
-                    toast.style.display = 'none';
-                }, 2000);
-            }
-
-            if (shareBtn && victoryCard) {
-                shareBtn.addEventListener('click', async () => {
-                    try {
-                        showToast('CAPTURING SCREENSHOT...');
-                        if (document.fonts && document.fonts.ready) {
-                            await document.fonts.ready;
-                        }
-                        const canvas = await html2canvas(victoryCard, {
-                            backgroundColor: '#111111',
-                            scale: 2,
-                            useCORS: true
-                        });
-
-                        canvas.toBlob(async (blob) => {
-                            if (!blob) return;
-                            const file = new File([blob], '11th-floor-tykb-victory.png', { type: 'image/png' });
-
-                            if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                                try {
-                                    await navigator.share({
-                                        title: 'Think You Know Ball? Victory Card',
-                                        files: [file]
-                                    });
-                                } catch (e) {
-                                    console.log('Share prompt dismissed');
-                                }
-                            } else {
-                                const downloadLink = document.createElement('a');
-                                downloadLink.href = URL.createObjectURL(file);
-                                downloadLink.download = '11th-floor-tykb-victory.png';
-                                downloadLink.click();
-                                showToast('SCREENSHOT SAVED TO DEVICE');
-                            }
-                        }, 'image/png');
-                    } catch (err) {
-                        console.error('Screenshot capture error:', err);
-                        showToast('ERROR GENERATING SCREENSHOT');
-                    }
-                });
-            }
+// ==========================================================================
+// 11th Floor TYKB (Think You Know Ball?) — Core Game Engine
+// ==========================================================================
+
+function safeAddListener(id, event, handler) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.addEventListener('pointerdown', () => {
+            triggerHaptic(15);
+            unlockAudioContext();
         });
-    </script>
-</body>
-</html>
+        el.addEventListener(event, (e) => {
+            handler(e);
+        });
+    }
+}
+
+function safeSetText(id, text) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.textContent = text;
+    }
+}
+
+function safeToggleClass(id, className, force) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.classList.toggle(className, force);
+    }
+}
+
+function shuffleArray(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+function getOrdinalFloorHTML(floorNum) {
+    const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
+    const ord = ordinals[floorNum - 1] || `${floorNum}th`;
+    return `<span style="color: var(--genre-pitch, #22c55e); font-weight: 800;">${ord}</span>`;
+}
+
+function getFailedOrdinalFloorHTML(floorNum) {
+    const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
+    const ord = ordinals[floorNum - 1] || `${floorNum}th`;
+    return `<span style="color: var(--state-error, #EF4444); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
+}
+
+function getFormattedDateString() {
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const now = new Date();
+    const dayName = days[now.getDay()];
+    const dayNum = now.getDate();
+    const monthName = months[now.getMonth()];
+    const year = now.getFullYear();
+
+    let suffix = "th";
+    if (dayNum === 1 || dayNum === 21 || dayNum === 31) suffix = "st";
+    else if (dayNum === 2 || dayNum === 22) suffix = "nd";
+    else if (dayNum === 3 || dayNum === 23) suffix = "rd";
+
+    return `${dayName} ${dayNum}${suffix} ${monthName} ${year}`;
+}
+
+// ==========================================
+// HAPTIC FEEDBACK ENGINE
+// ==========================================
+
+function triggerHaptic(pattern) {
+    if ('vibrate' in navigator) {
+        try {
+            navigator.vibrate(pattern);
+        } catch (e) {}
+    }
+}
+
+// ==========================================
+// STATE MANAGEMENT & PERSISTENCE
+// ==========================================
+
+const gameState = {
+    currentFloor: 1,
+    maxFloors: 10,
+    soundEnabled: true,
+    timer: null,
+    timeLeft: 20,
+    questions: [],
+    currentQuestionIndex: 0,
+    batchIndex: 0,
+    startTime: 0,
+    timerInterval: null,
+    timeElapsedSeconds: 0,
+    attemptsToday: 1,
+    firstTryCollapseFloor: null,
+    stats: {
+        played: 0,
+        wins: 0,
+        streak: 0,
+        bestFloor: 1,
+        bestTimeSeconds: null
+    }
+};
+
+let isStartClimbLoading = false;
+let audioUnlocked = false;
+
+const STATS_KEY = '11th_floor_tykb_stats';
+
+const floorMessageBatches = [
+    [
+        "KEEP CLIMBING",
+        "STAY SHARP",
+        "WELL DONE",
+        "FLOOR CLEARED",
+        "HALFWAY THERE",
+        "PURE PRECISION",
+        "KEEP GOING",
+        "SO CLOSE",
+        "NEARLY THERE",
+        "FINAL STEP"
+    ]
+];
+
+function loadSavedStats() {
+    try {
+        const saved = localStorage.getItem(STATS_KEY);
+        if (saved) {
+            gameState.stats = { ...gameState.stats, ...JSON.parse(saved) };
+        }
+    } catch (e) {
+        console.warn('Could not load stats from localStorage.');
+    }
+}
+
+function saveStats() {
+    try {
+        localStorage.setItem(STATS_KEY, JSON.stringify(gameState.stats));
+    } catch (e) {
+        console.warn('Could not save stats to localStorage.');
+    }
+}
+
+loadSavedStats();
+
+// ==========================================
+// GAMEPLAY SESSION STOPWATCH TIMER
+// ==========================================
+
+function startSessionTimer() {
+    if (!gameState.timerInterval) {
+        gameState.timeElapsedSeconds = 0;
+        gameState.startTime = Date.now();
+        const activeGameTimer = document.getElementById("active-game-timer");
+        if (activeGameTimer) {
+            activeGameTimer.style.display = "block";
+            activeGameTimer.textContent = "00:00";
+        }
+        gameState.timerInterval = setInterval(updateSessionTimerDisplay, 1000);
+    }
+}
+
+function stopSessionTimer() {
+    if (gameState.timerInterval) {
+        clearInterval(gameState.timerInterval);
+        gameState.timerInterval = null;
+    }
+}
+
+function updateSessionTimerDisplay() {
+    gameState.timeElapsedSeconds = Math.floor((Date.now() - gameState.startTime) / 1000);
+    const activeGameTimer = document.getElementById("active-game-timer");
+    if (activeGameTimer) {
+        activeGameTimer.textContent = formatTime(gameState.timeElapsedSeconds);
+    }
+}
+
+function formatTime(totalSeconds) {
+    if (totalSeconds === null || totalSeconds === undefined) return "--:--";
+    const m = Math.floor(totalSeconds / 60);
+    const s = (totalSeconds % 60).toString().padStart(2, '0');
+    return `${m}:${s}`;
+}
+
+// ==========================================
+// AUDIO ENGINE & IN-APP BROWSER UNLOCK
+// ==========================================
+
+const elevatorDingAudio = new Audio();
+elevatorDingAudio.src = 'ding.mp3';
+
+function unlockAudioContext() {
+    if (audioUnlocked) return;
+    try {
+        elevatorDingAudio.play().then(() => {
+            elevatorDingAudio.pause();
+            elevatorDingAudio.currentTime = 0;
+            audioUnlocked = true;
+        }).catch(() => {});
+    } catch (e) {}
+}
+
+function playElevatorDing() {
+    if (!gameState.soundEnabled) return;
+    try {
+        elevatorDingAudio.currentTime = 0;
+        elevatorDingAudio.play().catch(e => {
+            elevatorDingAudio.src = 'assets/audio/ding.mp3';
+            elevatorDingAudio.play().catch(() => {});
+        });
+    } catch (e) {
+        console.warn('Audio playback error:', e);
+    }
+}
+
+function triggerLandingPageDing() {
+    setTimeout(() => {
+        playElevatorDing();
+    }, 1370);
+}
+
+// ==========================================
+// NAVIGATION & CONTROLS
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    safeAddListener('btn-start-climb', 'click', () => {
+        startDailyClimb();
+    });
+
+    safeAddListener('btn-landing-stats', 'click', () => openVault());
+    
+    safeAddListener('btn-victory-stats', 'click', () => {
+        openVault();
+    });
+
+    safeAddListener('btn-back-vault', 'click', () => {
+        closeModal('modal-game-over');
+        openVault();
+    });
+
+    safeAddListener('btn-close-vault', 'click', () => {
+        closeModal('modal-vault');
+        const victoryScreen = document.getElementById('victory-screen');
+        if (victoryScreen && victoryScreen.style.display !== 'none') {
+            resetToLandingScreen();
+        }
+    });
+
+    safeAddListener('btn-try-again', 'click', () => {
+        closeModal('modal-game-over');
+        gameState.attemptsToday++;
+        if (gameState.questions && gameState.questions.length > 0) {
+            startGame();
+        } else {
+            startDailyClimb();
+        }
+    });
+
+    safeAddListener('btn-sound-toggle', 'click', toggleSound);
+
+    updateSoundUI();
+});
+
+function resetToLandingScreen() {
+    stopSessionTimer();
+    showScreen('landing-screen');
+}
+
+function showScreen(screenId) {
+    const victoryScreen = document.getElementById('victory-screen');
+    if (victoryScreen) victoryScreen.style.display = 'none';
+
+    const screens = ['landing-screen', 'game-screen'];
+    screens.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.style.display = (id === screenId) ? 'flex' : 'none';
+        }
+    });
+    if (screenId === 'landing-screen') {
+        triggerLandingPageDing();
+    }
+}
+
+function updateSoundUI() {
+    const label = `SOUND: ${gameState.soundEnabled ? 'ON' : 'OFF'}`;
+    safeSetText('btn-sound-toggle', label);
+}
+
+function toggleSound() {
+    gameState.soundEnabled = !gameState.soundEnabled;
+    if (gameState.soundEnabled) {
+        playElevatorDing();
+    }
+    updateSoundUI();
+}
+
+// ==========================================
+// MODAL & HIGH-SPEED VAULT CONTROLS
+// ==========================================
+
+function openModal(modalId) {
+    safeToggleClass(modalId, 'hidden', false);
+}
+
+function closeModal(modalId) {
+    safeToggleClass(modalId, 'hidden', true);
+}
+
+function openVault() {
+    renderStatsUI();
+    populateVault();
+    openModal('modal-vault');
+}
+
+function renderStatsUI() {
+    const winRate = gameState.stats.played > 0 
+        ? Math.round((gameState.stats.wins / gameState.stats.played) * 100) 
+        : 0;
+
+    safeSetText('stat-played', gameState.stats.played);
+    safeSetText('stat-wins', gameState.stats.wins);
+    safeSetText('stat-winrate', `${winRate}%`);
+    safeSetText('stat-streak', gameState.stats.streak);
+
+    const bestEl = document.getElementById('stat-bestfloor');
+    if (bestEl) {
+        bestEl.innerHTML = getOrdinalFloorHTML(gameState.stats.bestFloor);
+    }
+
+    const bestTimeEl = document.getElementById('stat-besttime');
+    if (bestTimeEl) {
+        bestTimeEl.textContent = formatTime(gameState.stats.bestTimeSeconds);
+    }
+}
+
+async function populateVault() {
+    const vaultList = document.getElementById('vault-list');
+    if (!vaultList) return;
+    
+    vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
+    
+    const BATCH_SIZE = 5;
+    const MAX_ARCHIVES = 50;
+    const buttons = [];
+    let currentId = 1;
+
+    while (currentId <= MAX_ARCHIVES) {
+        const batchPromises = [];
+        for (let i = 0; i < BATCH_SIZE && (currentId + i) <= MAX_ARCHIVES; i++) {
+            const idNum = currentId + i;
+            const paddedId = String(idNum).padStart(2, '0');
+            
+            batchPromises.push(
+                (async () => {
+                    let data = await fetchFileWithFallbacks(`sandbox-ball.${paddedId}.json`);
+                    if (!data) {
+                        data = await fetchFileWithFallbacks(`ball.${String(idNum).padStart(3, '0')}.json`);
+                    }
+                    return { id: paddedId, idNum, data };
+                })()
+            );
+        }
+
+        const batchResults = await Promise.all(batchPromises);
+
+        for (const res of batchResults) {
+            if (res.data) {
+                const btn = document.createElement('button');
+                btn.className = 'vault-item-btn';
+                btn.innerHTML = `<strong>Archive ${res.id}</strong>`;
+                btn.onpointerdown = () => triggerHaptic(15);
+                btn.onclick = () => {
+                    loadVaultSet(res.id, res.data);
+                };
+                buttons.push(btn);
+            }
+        }
+
+        currentId += BATCH_SIZE;
+    }
+
+    vaultList.innerHTML = '';
+    if (buttons.length === 0) {
+        vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">No archives found.</div>';
+    } else {
+        buttons.forEach(btn => vaultList.appendChild(btn));
+    }
+}
+
+// ==========================================
+// DATA LOADING & NORMALIZATION
+// ==========================================
+
+function normalizeQuestions(data) {
+    let rawList = [];
+    if (!data) return [];
+    
+    if (Array.isArray(data)) rawList = data;
+    else if (Array.isArray(data.floors)) rawList = data.floors;
+    else if (Array.isArray(data.questions)) rawList = data.questions;
+
+    return rawList.map(q => {
+        const options = Array.isArray(q.options) ? [...q.options] : ["Option A", "Option B", "Option C", "Option D"];
+        
+        let answerText = "";
+        if (typeof q.answer === 'string') answerText = q.answer;
+        else if (typeof q.correct === 'string') answerText = q.correct;
+        else if (typeof q.correctAnswer === 'string') answerText = q.correctAnswer;
+        else if (typeof q.correct_answer === 'string') answerText = q.correct_answer;
+        else if (typeof q.answerIndex === 'number' && options[q.answerIndex]) answerText = options[q.answerIndex];
+        else if (typeof q.correctIndex === 'number' && options[q.correctIndex]) answerText = options[q.correctIndex];
+        else if (typeof q.correct === 'number' && options[q.correct]) answerText = options[0];
+        else answerText = options[0];
+
+        return {
+            question: q.question || "Question missing",
+            options: options,
+            answer: answerText
+        };
+    });
+}
+
+async function fetchFileWithFallbacks(filename) {
+    const candidatePaths = [
+        `./archives/${filename}`,
+        `./${filename}`,
+        `./assets/data/floors/${filename}`,
+        `./data/${filename}`,
+        filename
+    ];
+
+    const fetchSingle = async (path) => {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 1500);
+        try {
+            const res = await fetch(path, { signal: controller.signal });
+            clearTimeout(timeoutId);
+            if (res.ok) {
+                return await res.json();
+            }
+        } catch (e) {
+            clearTimeout(timeoutId);
+        }
+        throw new Error('Fetch failed');
+    };
+
+    try {
+        return await Promise.any(candidatePaths.map(path => fetchSingle(path)));
+    } catch (e) {
+        return null;
+    }
+}
+
+async function startDailyClimb() {
+    if (isStartClimbLoading) return;
+    isStartClimbLoading = true;
+
+    const startBtn = document.getElementById('btn-start-climb');
+    if (startBtn) {
+        startBtn.textContent = "LOADING...";
+        startBtn.style.opacity = "0.7";
+    }
+
+    try {
+        let data = await fetchFileWithFallbacks('ball-questions.json');
+        if (!data) data = await fetchFileWithFallbacks('sandbox-ball.32.json');
+        if (!data) data = await fetchFileWithFallbacks('sandbox-ball.23.json');
+
+        if (data) {
+            gameState.questions = normalizeQuestions(data);
+        }
+    } catch (err) {
+        console.error('Error fetching climb questions:', err);
+    } finally {
+        isStartClimbLoading = false;
+        if (startBtn) {
+            startBtn.textContent = "Start Climb";
+            startBtn.style.opacity = "1.0";
+        }
+    }
+
+    launchGameUI();
+}
+
+function loadVaultSet(paddedId, data) {
+    if (data) {
+        gameState.questions = normalizeQuestions(data);
+        closeModal('modal-vault');
+        launchGameUI();
+    }
+}
+
+function launchGameUI() {
+    startSessionTimer();
+    startGame();
+}
+
+// ==========================================
+// GAME LOOP & ELEVATOR PROGRESSION
+// ==========================================
+
+function startGame() {
+    gameState.currentFloor = 1;
+    gameState.currentQuestionIndex = 0;
+    showScreen('game-screen');
+    
+    updateFloorUI();
+    loadNextQuestion();
+}
+
+function updateFloorUI() {
+    const cardFloorEl = document.getElementById('card-floor-text');
+    if (cardFloorEl) {
+        cardFloorEl.innerHTML = getOrdinalFloorHTML(gameState.currentFloor) + ' <span style="color: #ffffff;">Floor</span>';
+    }
+    
+    const activeBatch = floorMessageBatches[0];
+    const ruleMsg = activeBatch[gameState.currentFloor - 1] || "No mistakes!";
+    safeSetText('floor-rule-text', ruleMsg);
+
+    document.querySelectorAll('.tower-floor, .floor-block').forEach(block => {
+        const floorNum = parseInt(block.getAttribute('data-floor'), 10);
+        block.classList.toggle('active', floorNum === gameState.currentFloor);
+        block.classList.toggle('active-floor', floorNum === gameState.currentFloor);
+        block.classList.toggle('completed', floorNum < gameState.currentFloor);
+        block.classList.remove('failed');
+    });
+}
+
+function loadNextQuestion() {
+    document.querySelectorAll('#options-grid .btn-option').forEach(btn => {
+        btn.classList.remove('selected-correct', 'selected-wrong');
+    });
+
+    startQuestionTimer();
+    
+    const currentQ = gameState.questions[gameState.currentQuestionIndex];
+    if (!currentQ) return;
+
+    safeSetText('question-text', currentQ.question);
+    
+    const shuffledOptions = shuffleArray(currentQ.options);
+    
+    const optionButtons = document.querySelectorAll('#options-grid .btn-option');
+    optionButtons.forEach((btn, idx) => {
+        btn.className = 'btn-option';
+        btn.classList.remove('selected-correct', 'selected-wrong');
+        
+        if (typeof btn.blur === 'function') {
+            btn.blur();
+        }
+        
+        const optionVal = shuffledOptions[idx] || null;
+        btn.textContent = optionVal || '';
+        btn.style.display = optionVal ? 'block' : 'none';
+        
+        const isCorrect = (optionVal === currentQ.answer);
+        
+        btn.onpointerdown = () => {
+            triggerHaptic(15);
+        };
+        btn.onclick = () => handleAnswerSelect(isCorrect, btn); 
+    });
+}
+
+function startQuestionTimer() {
+    clearInterval(gameState.timer);
+    const totalDuration = 20000;
+    const startTime = Date.now();
+    gameState.timeLeft = 20;
+    const timerBar = document.getElementById('timer-bar');
+    
+    if (timerBar) {
+        timerBar.style.width = '100%';
+        timerBar.style.backgroundColor = 'var(--genre-pitch)';
+    }
+
+    gameState.timer = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const remaining = Math.max(0, totalDuration - elapsed);
+        gameState.timeLeft = Math.ceil(remaining / 1000);
+
+        if (timerBar) {
+            timerBar.style.width = `${(remaining / totalDuration) * 100}%`;
+            if (remaining <= totalDuration / 2) {
+                timerBar.style.backgroundColor = 'var(--state-error)';
+            } else {
+                timerBar.style.backgroundColor = 'var(--genre-pitch)';
+            }
+        }
+
+        if (remaining <= 0) {
+            clearInterval(gameState.timer);
+            handleGameOver('TIME EXPIRED');
+        }
+    }, 50);
+}
+
+function handleAnswerSelect(isCorrect, buttonEl) {
+    clearInterval(gameState.timer);
+    
+    const currentQ = gameState.questions[gameState.currentQuestionIndex];
+
+    document.querySelectorAll('#options-grid .btn-option').forEach(btn => {
+        btn.onclick = null;
+        btn.onpointerdown = null;
+        if (typeof btn.blur === 'function') {
+            btn.blur();
+        }
+    });
+    
+    if (isCorrect) {
+        if (buttonEl) buttonEl.classList.add('selected-correct');
+        playElevatorDing();
+        triggerHaptic([35, 40, 35]);
+        
+        setTimeout(() => {
+            if (gameState.currentFloor >= gameState.maxFloors) {
+                handleVictory();
+            } else {
+                gameState.currentFloor++;
+                gameState.currentQuestionIndex++;
+                if (gameState.currentFloor > gameState.stats.bestFloor) {
+                    gameState.stats.bestFloor = gameState.currentFloor;
+                }
+                updateFloorUI();
+                loadNextQuestion();
+            }
+        }, 400);
+    } else {
+        if (buttonEl) buttonEl.classList.add('selected-wrong');
+
+        triggerHaptic([80, 50, 120]);
+        
+        const activeBlock = document.querySelector(`.tower-floor[data-floor="${gameState.currentFloor}"]`);
+        if (activeBlock) activeBlock.classList.add('failed');
+
+        if (gameState.attemptsToday === 1 && gameState.firstTryCollapseFloor === null) {
+            gameState.firstTryCollapseFloor = gameState.currentFloor;
+        }
+
+        setTimeout(() => {
+            handleGameOver('INCORRECT ANSWER');
+        }, 400);
+    }
+}
+
+function handleGameOver(reason) {
+    gameState.stats.played++;
+    gameState.stats.streak = 0;
+    saveStats();
+    
+    safeSetText('game-over-title', 'ELEVATOR STOPPED');
+    safeSetText('game-over-message', reason);
+    
+    const finalEl = document.getElementById('final-floor-reached');
+    if (finalEl) {
+        finalEl.innerHTML = `Stopped at ${getFailedOrdinalFloorHTML(gameState.currentFloor)}`;
+    }
+    
+    openModal('modal-game-over');
+}
+
+function handleVictory() {
+    stopSessionTimer();
+    gameState.currentFloor = 11;
+    gameState.stats.played++;
+    gameState.stats.wins++;
+    
+    if (gameState.attemptsToday === 1) {
+        gameState.stats.streak++;
+    }
+    
+    gameState.stats.bestFloor = 11;
+
+    if (gameState.stats.bestTimeSeconds === null || gameState.timeElapsedSeconds < gameState.stats.bestTimeSeconds) {
+        gameState.stats.bestTimeSeconds = gameState.timeElapsedSeconds;
+    }
+
+    saveStats();
+    
+    triggerHaptic([50, 50, 50, 50, 100]);
+    
+    const dateDisplay = document.getElementById('receipt-date-display');
+    const victoryTimeDisplay = document.getElementById('victory-time-display');
+    const badgeDisplay = document.getElementById('receipt-badge-display');
+    const attemptsDisplay = document.getElementById('victory-attempts-display');
+    const runSummaryDisplay = document.getElementById('victory-run-summary-display');
+    
+    const gameScreen = document.getElementById('game-screen');
+    const victoryScreen = document.getElementById('victory-screen');
+    const footerText = document.getElementById('footer-text');
+
+    if (dateDisplay) {
+        dateDisplay.textContent = getFormattedDateString();
+    }
+
+    const formattedTime = formatTime(gameState.timeElapsedSeconds);
+    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
+
+    if (attemptsDisplay) {
+        attemptsDisplay.textContent = gameState.attemptsToday;
+    }
+
+    if (badgeDisplay) {
+        const ords = ["1st", "2nd", "3rd", "4th", "5th"];
+        const ordText = ords[gameState.attemptsToday - 1] || `${gameState.attemptsToday}th`;
+        badgeDisplay.textContent = `${ordText} Try`;
+    }
+
+    if (runSummaryDisplay) {
+        if (gameState.attemptsToday === 1) {
+            runSummaryDisplay.innerHTML = `<span style="color: var(--genre-pitch);">10</span><span style="color: var(--text-muted);">/</span><span style="color: var(--genre-pitch);">10</span>`;
+        } else {
+            const failFloor = gameState.firstTryCollapseFloor || 3;
+            runSummaryDisplay.innerHTML = `<span style="color: var(--state-error);">${failFloor}</span><span style="color: var(--text-muted);">/</span><span style="color: var(--genre-pitch);">10</span>`;
+        }
+    }
+
+    if (gameScreen) gameScreen.style.display = 'none';
+    if (footerText) footerText.style.display = 'none';
+    if (victoryScreen) victoryScreen.style.display = 'flex';
+}
