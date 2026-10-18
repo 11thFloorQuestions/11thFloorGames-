@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const victoryScreen = document.getElementById('victory-screen');
     const victoryStatsBtn = document.getElementById('btn-victory-stats');
     const victoryTimeDisplay = document.getElementById('victory-time-display');
-    const victoryTimeRowDisplay = document.getElementById('victory-time-row-display');
     const victoryStreakDisplay = document.getElementById('victory-streak-display');
     const activeGameTimer = document.getElementById('active-game-timer');
     const footerText = document.getElementById('footer-text');
@@ -57,6 +56,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const vaultList = document.getElementById('vault-list');
 
     const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
+
+// ==========================================
+// LIFT RIDE (opening ride and rise between floors)
+// ==========================================
+
+const LIFT_OPENING_MS = 1400;
+const LIFT_RISE_MS = 1000;
+const LIFT_VICTORY_MS = 2000;
+let liftRideToken = 0;
+let liftFirstRideDone = false;
+
+function playLiftRide(durationMs, onArrive, options) {
+    const overlay = document.getElementById('lift-overlay');
+    const graphic = document.getElementById('lift-graphic');
+
+    // If the overlay markup is missing, never block the game.
+    if (!overlay || !graphic) {
+        onArrive();
+        return;
+    }
+
+    const myToken = ++liftRideToken;
+    let finished = false;
+    let arriveTimeout = null;
+
+    const finish = () => {
+        if (finished || myToken !== liftRideToken) return;
+        finished = true;
+        clearTimeout(arriveTimeout);
+        overlay.onclick = null;
+        onArrive();
+        overlay.classList.add('hidden');
+        graphic.classList.remove('rising');
+    };
+
+    graphic.classList.remove('rising');
+    graphic.style.setProperty('--lift-ms', `${durationMs}ms`);
+    overlay.classList.toggle('victory', !!(options && options.victory));
+    overlay.classList.remove('hidden');
+    void graphic.offsetWidth;
+    graphic.classList.add('rising');
+
+    arriveTimeout = setTimeout(finish, durationMs);
+
+    // Tap to skip. Short delay so the tap that started the ride cannot skip it.
+    setTimeout(() => {
+        if (!finished && myToken === liftRideToken) {
+            overlay.onclick = finish;
+        }
+    }, 250);
+}
 
     // Initialize Game Engine
     init();
@@ -166,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function formatTime(totalSeconds) {
         if (totalSeconds === null || totalSeconds === undefined) return "--:--";
-        const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+        const m = Math.floor(totalSeconds / 60);
         const s = (totalSeconds % 60).toString().padStart(2, '0');
         return `${m}:${s}`;
     }
@@ -181,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (timerBar) {
             timerBar.style.width = '100%';
-            timerBar.style.backgroundColor = 'var(--genre-magenta)';
+            timerBar.style.backgroundColor = 'var(--state-active)';
         }
 
         questionTimer = setInterval(() => {
@@ -194,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (remaining <= totalDuration / 2) {
                     timerBar.style.backgroundColor = 'var(--state-error)';
                 } else {
-                    timerBar.style.backgroundColor = 'var(--genre-magenta)';
+                    timerBar.style.backgroundColor = 'var(--state-active)';
                 }
             }
 
@@ -227,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
             currentFloorIndex = 0;
-            loadFloor(0);
+            rideToFirstFloor();
         }, 1500);
     }
 
@@ -311,8 +361,30 @@ document.addEventListener('DOMContentLoaded', () => {
         if (footerText) footerText.style.display = 'block';
 
         currentFloorIndex = 0;
-        startTimer();
-        loadFloor(currentFloorIndex);
+        rideToFirstFloor();
+    }
+
+    // Lobby to the 1st floor: the opening ride, and the ride back after every fall.
+    // The session clock starts (or keeps running) when floor 1 appears.
+    function rideToFirstFloor() {
+        isProcessing = true;
+        prepareFloorOneHud();
+
+        const rideMs = liftFirstRideDone ? LIFT_RISE_MS : LIFT_OPENING_MS;
+        liftFirstRideDone = true;
+        playLiftRide(rideMs, () => {
+            startTimer();
+            loadFloor(0);
+        });
+    }
+
+    function prepareFloorOneHud() {
+        updateTowerStack(1);
+        if (floorNumberVal) floorNumberVal.innerHTML = getOrdinalFloorHTML(1);
+        const firstFloor = activeGameData && activeGameData[0];
+        if (floorRuleText && firstFloor) {
+            floorRuleText.textContent = `${firstFloor.target.length}-letter Anagram • No mistakes!`;
+        }
     }
 
     function resetToStartScreen() {
@@ -455,26 +527,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setTimeout(() => {
                 if (currentFloorIndex + 1 >= activeGameData.length) {
-                    stopTimer();
-                    const newStats = recordGameResult(true, 11);
-                    
-                    const formattedTime = formatTime(timeElapsedSeconds);
-                    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
-                    if (victoryTimeRowDisplay) victoryTimeRowDisplay.textContent = `${formattedTime}s`;
-                    if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${newStats.streak} Days`;
-                    
-                    if (hudContainer) hudContainer.style.display = 'none';
-                    if (gameWorkspace) gameWorkspace.style.display = 'none';
-                    if (gameControls) gameControls.style.display = 'none';
-                    if (gameplayHeader) gameplayHeader.style.display = 'none';
-                    if (activeGameTimer) activeGameTimer.style.display = 'none';
-                    if (footerText) footerText.style.display = 'none';
-                    
-                    if (victoryScreen) victoryScreen.style.display = 'flex';
-                    
+                    playLiftRide(LIFT_VICTORY_MS, showVictoryReceipt, { victory: true });
                 } else {
-                    currentFloorIndex++;
-                    loadFloor(currentFloorIndex);
+                    playLiftRide(LIFT_RISE_MS, () => {
+                        currentFloorIndex++;
+                        loadFloor(currentFloorIndex);
+                    });
                 }
             }, 800);
         } else {
@@ -491,9 +549,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setTimeout(() => {
                 currentFloorIndex = 0;
-                loadFloor(0);
+                rideToFirstFloor();
             }, 1500);
         }
+    }
+
+    function showVictoryReceipt() {
+        stopTimer();
+        const newStats = recordGameResult(true, 11);
+
+        const formattedTime = formatTime(timeElapsedSeconds);
+        if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
+        if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${newStats.streak} Days`;
+
+        if (hudContainer) hudContainer.style.display = 'none';
+        if (gameWorkspace) gameWorkspace.style.display = 'none';
+        if (gameControls) gameControls.style.display = 'none';
+        if (gameplayHeader) gameplayHeader.style.display = 'none';
+        if (activeGameTimer) activeGameTimer.style.display = 'none';
+        if (footerText) footerText.style.display = 'none';
+
+        if (victoryScreen) victoryScreen.style.display = 'flex';
     }
 
     function updateTowerStack(activeFloorNum) {
