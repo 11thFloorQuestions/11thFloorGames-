@@ -5,90 +5,91 @@
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Which club sits top of the Premier League table today, Sat 17th Oct 2026?",
+      "question": "Which club sits bottom of the Premier League table Today Sun 18th Oct 2026?",
       "options": [
-        "Manchester City",
-        "Tottenham Hotspur",
-        "Ipswich Town",
-        "Arsenal"
+        "Spurs",
+        "Ipswich",
+        "Arsenal",
+        "Hull City"
       ],
-      "answer": "Manchester City",
-      "explanation": "Manchester City currently hold top spot in the Premier League table.",
-      "anchorClues": "Premier League top of table Saturday 17th October 2026 Manchester City"
+      "answer": "Spurs",
+      "explanation": "Spurs sit at the bottom of the Premier League table today, Sunday 18th October 2026.",
+      "anchorClues": "Premier League bottom table Sunday 18th October 2026 Spurs"
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which former Blackburn Rovers and Chelsea left-back celebrates his birthday today?",
+      "question": "Which former Leicester City, Birmingham City, and Blackburn Rovers player celebrates his birthday today?",
       "options": [
-        "Graeme Le Saux",
-        "Wayne Bridge",
-        "Celestine Babayaro"
+        "Robbie Savage",
+        "Robbie Fowler",
+        "Robbie Williams",
+        "Robbie Keane"
       ],
-      "answer": "Graeme Le Saux",
-      "explanation": "Former England, Blackburn Rovers, and Chelsea left-back Graeme Le Saux celebrates his birthday today.",
-      "anchorClues": "Blackburn Chelsea Graeme Le Saux birthday today"
+      "answer": "Robbie Savage",
+      "explanation": "Former Leicester City, Birmingham City, and Blackburn Rovers midfielder Robbie Savage celebrates his birthday today.",
+      "anchorClues": "Leicester City Birmingham Blackburn Robbie Savage birthday today"
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Who is De current manager of Tottenham Hotspur?",
+      "question": "Who is the current manager of Chelsea?",
       "options": [
-        "De Zerbi",
-        "De Matteo",
-        "De La Soul",
-        "De Champs"
+        "Xabi Alonso",
+        "Fernando Alonso",
+        "Cesc Fàbregas",
+        "Enzo Maresca"
       ],
-      "answer": "De Zerbi",
-      "explanation": "Roberto De Zerbi is the manager in charge at Tottenham Hotspur.",
-      "anchorClues": "Tottenham Hotspur manager De Zerbi"
+      "answer": "Xabi Alonso",
+      "explanation": "Xabi Alonso is the current manager in charge at Chelsea.",
+      "anchorClues": "Chelsea current manager Xabi Alonso"
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Who is Chelsea's current first-choice goalkeeper this season in the Premier League?",
+      "question": "Liverpool beat Brentford yesterday (Saturday) 2–1. Who scored Liverpool's winner?",
       "options": [
-        "Emiliano Martínez",
-        "Robert Sánchez",
-        "Filip Jörgensen",
-        "Djordje Petrović"
+        "Alexander Isak",
+        "Mohamed Salah",
+        "Cody Gakpo",
+        "Darwin Núñez"
       ],
-      "answer": "Emiliano Martínez",
-      "explanation": "Emiliano Martínez serves as Chelsea's primary goalkeeper this season.",
-      "anchorClues": "Chelsea first choice goalkeeper Martinez Premier League"
+      "answer": "Alexander Isak",
+      "explanation": "Alexander Isak scored the winning goal for Liverpool in their 2–1 victory over Brentford.",
+      "anchorClues": "Liverpool Brentford 2 1 Saturday Alexander Isak winner"
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Cole Palmer became the first player in Premier League history to score four goals in the first half of a match, against which club?",
+      "question": "Fulham beat Hull City yesterday (Saturday). What was the score?",
       "options": [
-        "Brighton & Hove Albion",
-        "Everton",
-        "Wolverhampton Wanderers",
-        "Leicester City"
+        "1–0",
+        "2–1",
+        "2–0",
+        "3–1"
       ],
-      "answer": "Brighton & Hove Albion",
-      "explanation": "Palmer scored all four goals within 20 first-half minutes at Stamford Bridge.",
-      "anchorClues": "Cole Palmer four goals first half Brighton Stamford Bridge"
+      "answer": "1–0",
+      "explanation": "Fulham secured a 1–0 victory over Hull City yesterday.",
+      "anchorClues": "Fulham beat Hull City Saturday score 1 0"
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "Which German coach became the youngest permanent manager in Premier League history at age 31?",
+      "question": "On this day in history (2002), a 16-year-old Wayne Rooney announced himself to the world by scoring a sensational 90th-minute winner for Everton against which team?",
       "options": [
-        "Fabian Hürzeler",
-        "Kieran McKenna",
-        "Russell Martin",
-        "Danny Röhl"
+        "Arsenal",
+        "Manchester United",
+        "Liverpool",
+        "Chelsea"
       ],
-      "answer": "Fabian Hürzeler",
-      "explanation": "Fabian Hürzeler took over at Brighton after guiding St Pauli to Bundesliga promotion.",
-      "anchorClues": "Fabian Hurzeler youngest Premier League manager Brighton"
+      "answer": "Arsenal",
+      "explanation": "Wayne Rooney scored a memorable late winner against Arsenal at Goodison Park in 2002.",
+      "anchorClues": "Wayne Rooney Everton winner Arsenal 2002 90th minute"
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Xavi Simons wears which squad number for Tottenham Hotspur this season?",
+      "question": "Kaoru Mitoma wears which squad number for Brighton & Hove Albion this season?",
       "options": [
         "7",
         "9",
@@ -96,49 +97,50 @@
         "11"
       ],
       "answer": "7",
-      "explanation": "Xavi Simons wears the number 7 shirt for Tottenham Hotspur this season.",
-      "anchorClues": "Xavi Simons Tottenham Hotspur squad number 7"
+      "explanation": "Kaoru Mitoma wears the number 7 shirt for Brighton & Hove Albion.",
+      "anchorClues": "Kaoru Mitoma Brighton squad number 7"
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Which is the oldest football club currently in the Premier League?",
+      "question": "Out of the 20 football clubs currently in the Premier League, which was most recently formed (in 1919)?",
       "options": [
-        "Nottingham Forest",
-        "Aston Villa",
-        "Everton",
-        "Manchester United"
+        "Leeds United",
+        "Coventry City",
+        "Ipswich Town",
+        "Chelsea"
       ],
-      "answer": "Nottingham Forest",
-      "explanation": "Founded in 1865, Nottingham Forest is the oldest club currently competing in the Premier League.",
-      "anchorClues": "Oldest football club Premier League Nottingham Forest 1865"
+      "answer": "Leeds United",
+      "explanation": "Founded in 1919 following the disbanding of Leeds City, Leeds United is the most recently formed club of the group.",
+      "anchorClues": "Most recently formed Premier League club 1919 Leeds United"
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "How many Premier League titles has Pep Guardiola won?",
+      "question": "How many Premier League titles has Arsenal won?",
       "options": [
-        "5",
-        "6",
-        "7"
+        "2",
+        "3",
+        "4",
+        "5"
       ],
-      "answer": "6",
-      "explanation": "Pep Guardiola has guided Manchester City to 6 Premier League titles.",
-      "anchorClues": "Pep Guardiola Premier League titles won 6 Manchester City"
+      "answer": "4",
+      "explanation": "Arsenal has won 4 Premier League titles.",
+      "anchorClues": "Arsenal Premier League titles won 4"
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "In 1999, Ole Gunnar Solskjær scored four goals as a substitute against Nottingham Forest. How many minutes was he on the pitch before completing this feat?",
+      "question": "Who scored the lobbed chip over Peter Schmeichel to cap off Newcastle's iconic 5–0 win over Manchester United in 1996?",
       "options": [
-        "12 minutes",
-        "18 minutes",
-        "24 minutes",
-        "30 minutes"
+        "Philippe Albert",
+        "David Ginola",
+        "Les Ferdinand",
+        "Rob Lee"
       ],
-      "answer": "12 minutes",
-      "explanation": "Solskjær came on in the 72nd minute and scored in the 80th, 88th, 91st, and 92nd minutes in United's 8–1 win.",
-      "anchorClues": "Ole Gunnar Solskjaer four goals substitute Nottingham Forest 12 minutes"
+      "answer": "Philippe Albert",
+      "explanation": "Belgian defender Philippe Albert delicately chipped Peter Schmeichel to complete Newcastle's famous 5–0 victory.",
+      "anchorClues": "Philippe Albert Newcastle Manchester United 5 0 chip Schmeichel 1996"
     }
   ]
 }
