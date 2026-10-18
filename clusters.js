@@ -55,7 +55,6 @@
 
     const victoryScreen = document.getElementById('victory-screen');
     const victoryTimeDisplay = document.getElementById('victory-time-display');
-    const victoryTimeRowDisplay = document.getElementById('victory-time-row-display');
     const victoryStreakDisplay = document.getElementById('victory-streak-display');
     const footerText = document.getElementById('footer-text');
 
@@ -67,6 +66,73 @@
     const btnTryAgain = document.getElementById('btn-try-again');
     const btnBackVault = document.getElementById('btn-back-vault');
     const vaultList = document.getElementById('vault-list');
+
+// ==========================================
+// LIFT RIDE (opening ride and rise between floors)
+// ==========================================
+
+const LIFT_OPENING_MS = 1400;
+const LIFT_RISE_MS = 1000;
+const LIFT_VICTORY_MS = 2000;
+let liftRideToken = 0;
+let liftFirstRideDone = false;
+
+function playLiftRide(durationMs, onArrive, options) {
+    const overlay = document.getElementById('lift-overlay');
+    const graphic = document.getElementById('lift-graphic');
+
+    // If the overlay markup is missing, never block the game.
+    if (!overlay || !graphic) {
+        onArrive();
+        return;
+    }
+
+    const myToken = ++liftRideToken;
+    let finished = false;
+    let arriveTimeout = null;
+
+    const finish = () => {
+        if (finished || myToken !== liftRideToken) return;
+        finished = true;
+        clearTimeout(arriveTimeout);
+        overlay.onclick = null;
+        onArrive();
+        overlay.classList.add('hidden');
+        graphic.classList.remove('rising');
+    };
+
+    graphic.classList.remove('rising');
+    graphic.style.setProperty('--lift-ms', `${durationMs}ms`);
+    overlay.classList.toggle('victory', !!(options && options.victory));
+    overlay.classList.remove('hidden');
+    void graphic.offsetWidth;
+    graphic.classList.add('rising');
+
+    arriveTimeout = setTimeout(finish, durationMs);
+
+    // Tap to skip. Short delay so the tap that started the ride cannot skip it.
+    setTimeout(() => {
+        if (!finished && myToken === liftRideToken) {
+            overlay.onclick = finish;
+        }
+    }, 250);
+}
+
+    // The timer bar and clue banner sit outside the puzzle area, so they are hidden
+    // while the lift is showing and restored when it arrives.
+    function setRideChrome(hidden) {
+        const v = hidden ? 'hidden' : 'visible';
+        if (timerBarWrapper) timerBarWrapper.style.visibility = v;
+        if (clueBanner) clueBanner.style.visibility = v;
+    }
+
+    function rideThen(durationMs, onArrive, options) {
+        setRideChrome(true);
+        playLiftRide(durationMs, () => {
+            setRideChrome(false);
+            onArrive();
+        }, options);
+    }
 
     // ==========================================
     // HAPTIC FEEDBACK ENGINE
@@ -108,7 +174,7 @@
 
     function formatTime(totalSeconds) {
         if (totalSeconds === null || totalSeconds === undefined) return "--:--";
-        const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+        const m = Math.floor(totalSeconds / 60);
         const s = (totalSeconds % 60).toString().padStart(2, '0');
         return `${m}:${s}`;
     }
@@ -126,7 +192,7 @@
         if (timerBarWrapper) timerBarWrapper.style.display = 'block';
         if (timerBar) {
             timerBar.style.width = '100%';
-            timerBar.style.backgroundColor = 'var(--genre-orange)';
+            timerBar.style.backgroundColor = 'var(--state-active)';
         }
 
         stageTimer = setInterval(() => {
@@ -139,7 +205,7 @@
                 if (remaining <= totalDuration / 2) {
                     timerBar.style.backgroundColor = 'var(--state-error)';
                 } else {
-                    timerBar.style.backgroundColor = 'var(--genre-orange)';
+                    timerBar.style.backgroundColor = 'var(--state-active)';
                 }
             }
 
@@ -309,8 +375,16 @@
         if (footerText) footerText.style.display = 'block';
 
         currentFloor = 1;
-        startSessionTimer();
-        loadFloor(currentFloor);
+
+        // Show floor 1 in the HUD, ride up from the lobby, then start the clock and load the floor.
+        if (floorNumVal) floorNumVal.innerHTML = getOrdinalFloorHTML(1);
+        renderTowerStack(1);
+        const rideMs = liftFirstRideDone ? LIFT_RISE_MS : LIFT_OPENING_MS;
+        liftFirstRideDone = true;
+        rideThen(rideMs, () => {
+            startSessionTimer();
+            loadFloor(currentFloor);
+        });
     }
 
     function loadFloor(floorNum) {
@@ -452,11 +526,15 @@
                     if (currentFloor < 10) {
                         const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
                         if (statusMessage) statusMessage.textContent = `${ordinals[currentFloor - 1].toUpperCase()} FLOOR CLEARED. ADVANCING...`;
-                        setTimeout(() => loadFloor(currentFloor + 1), 900);
+                        setTimeout(() => {
+                            rideThen(LIFT_RISE_MS, () => loadFloor(currentFloor + 1));
+                        }, 900);
                     } else {
-                        stopSessionTimer();
-                        recordGameResult(true, 11);
-                        renderVictory();
+                        rideThen(LIFT_VICTORY_MS, () => {
+                            stopSessionTimer();
+                            recordGameResult(true, 11);
+                            renderVictory();
+                        }, { victory: true });
                     }
                 } else {
                     setupNextStageClue();
@@ -518,7 +596,6 @@
         const stats = getStats();
 
         if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
-        if (victoryTimeRowDisplay) victoryTimeRowDisplay.textContent = `${formattedTime}s`;
         if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${stats.streak} Days`;
 
         if (victoryScreen) victoryScreen.style.display = 'flex';
