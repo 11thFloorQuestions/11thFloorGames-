@@ -497,8 +497,56 @@ function loadVaultSet(paddedId, data) {
 }
 
 function launchGameUI() {
-    startSessionTimer();
     startGame();
+}
+
+// ==========================================
+// LIFT RIDE (opening ride and rise between floors)
+// ==========================================
+
+const LIFT_OPENING_MS = 1400;
+const LIFT_RISE_MS = 1000;
+let liftRideToken = 0;
+let liftFirstRideDone = false;
+
+function playLiftRide(durationMs, onArrive) {
+    const overlay = document.getElementById('lift-overlay');
+    const graphic = document.getElementById('lift-graphic');
+
+    // If the overlay markup is missing, never block the game.
+    if (!overlay || !graphic) {
+        onArrive();
+        return;
+    }
+
+    const myToken = ++liftRideToken;
+    let finished = false;
+    let arriveTimeout = null;
+
+    const finish = () => {
+        if (finished || myToken !== liftRideToken) return;
+        finished = true;
+        clearTimeout(arriveTimeout);
+        overlay.onclick = null;
+        onArrive();
+        overlay.classList.add('hidden');
+        graphic.classList.remove('rising');
+    };
+
+    graphic.classList.remove('rising');
+    graphic.style.setProperty('--lift-ms', `${durationMs}ms`);
+    overlay.classList.remove('hidden');
+    void graphic.offsetWidth;
+    graphic.classList.add('rising');
+
+    arriveTimeout = setTimeout(finish, durationMs);
+
+    // Tap to skip. Short delay so the tap that started the ride cannot skip it.
+    setTimeout(() => {
+        if (!finished && myToken === liftRideToken) {
+            overlay.onclick = finish;
+        }
+    }, 250);
 }
 
 // ==========================================
@@ -511,7 +559,13 @@ function startGame() {
     showScreen('game-screen');
     
     updateFloorUI();
-    loadNextQuestion();
+
+    const openingMs = liftFirstRideDone ? LIFT_RISE_MS : LIFT_OPENING_MS;
+    liftFirstRideDone = true;
+    playLiftRide(openingMs, () => {
+        startSessionTimer();
+        loadNextQuestion();
+    });
 }
 
 function updateFloorUI() {
@@ -624,13 +678,15 @@ function handleAnswerSelect(isCorrect, buttonEl) {
             if (gameState.currentFloor >= gameState.maxFloors) {
                 handleVictory();
             } else {
-                gameState.currentFloor++;
-                gameState.currentQuestionIndex++;
-                if (gameState.currentFloor > gameState.stats.bestFloor) {
-                    gameState.stats.bestFloor = gameState.currentFloor;
-                }
-                updateFloorUI();
-                loadNextQuestion();
+                playLiftRide(LIFT_RISE_MS, () => {
+                    gameState.currentFloor++;
+                    gameState.currentQuestionIndex++;
+                    if (gameState.currentFloor > gameState.stats.bestFloor) {
+                        gameState.stats.bestFloor = gameState.currentFloor;
+                    }
+                    updateFloorUI();
+                    loadNextQuestion();
+                });
             }
         }, 400);
     } else {
