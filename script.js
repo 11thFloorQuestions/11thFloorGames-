@@ -71,6 +71,7 @@ const gameState = {
     startTime: 0,
     timerInterval: null,
     timeElapsedSeconds: 0,
+    attemptsToday: 1,
     stats: {
         played: 0,
         wins: 0,
@@ -161,7 +162,10 @@ function startSessionTimer() {
 }
 
 function stopSessionTimer() {
-    if (gameState.timerInterval) clearInterval(gameState.timerInterval);
+    if (gameState.timerInterval) {
+        clearInterval(gameState.timerInterval);
+        gameState.timerInterval = null;
+    }
 }
 
 function updateSessionTimerDisplay() {
@@ -174,7 +178,7 @@ function updateSessionTimerDisplay() {
 
 function formatTime(totalSeconds) {
     if (totalSeconds === null || totalSeconds === undefined) return "--:--";
-    const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+    const m = Math.floor(totalSeconds / 60);
     const s = (totalSeconds % 60).toString().padStart(2, '0');
     return `${m}:${s}`;
 }
@@ -237,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     safeAddListener('btn-try-again', 'click', () => {
         closeModal('modal-game-over');
+        gameState.attemptsToday++;
         if (gameState.questions && gameState.questions.length > 0) {
             startGame();
         } else {
@@ -486,8 +491,61 @@ function launchGameUI() {
     if (header) header.style.display = 'flex';
     if (footer) footer.style.display = 'block';
 
-    startSessionTimer();
+    // A fresh launch resets the clock. It starts again when question 1 appears.
+    stopSessionTimer();
     startGame();
+}
+
+
+// ==========================================
+// LIFT RIDE (opening ride and rise between floors)
+// ==========================================
+
+const LIFT_OPENING_MS = 1400;
+const LIFT_RISE_MS = 1000;
+const LIFT_VICTORY_MS = 2000;
+let liftRideToken = 0;
+let liftFirstRideDone = false;
+
+function playLiftRide(durationMs, onArrive, options) {
+    const overlay = document.getElementById('lift-overlay');
+    const graphic = document.getElementById('lift-graphic');
+
+    // If the overlay markup is missing, never block the game.
+    if (!overlay || !graphic) {
+        onArrive();
+        return;
+    }
+
+    const myToken = ++liftRideToken;
+    let finished = false;
+    let arriveTimeout = null;
+
+    const finish = () => {
+        if (finished || myToken !== liftRideToken) return;
+        finished = true;
+        clearTimeout(arriveTimeout);
+        overlay.onclick = null;
+        onArrive();
+        overlay.classList.add('hidden');
+        graphic.classList.remove('rising');
+    };
+
+    graphic.classList.remove('rising');
+    graphic.style.setProperty('--lift-ms', `${durationMs}ms`);
+    overlay.classList.toggle('victory', !!(options && options.victory));
+    overlay.classList.remove('hidden');
+    void graphic.offsetWidth;
+    graphic.classList.add('rising');
+
+    arriveTimeout = setTimeout(finish, durationMs);
+
+    // Tap to skip. Short delay so the tap that started the ride cannot skip it.
+    setTimeout(() => {
+        if (!finished && myToken === liftRideToken) {
+            overlay.onclick = finish;
+        }
+    }, 250);
 }
 
 
@@ -509,7 +567,13 @@ function startGame() {
     if (header) header.style.display = 'flex';
 
     updateFloorUI();
-    loadNextQuestion();
+
+    const openingMs = liftFirstRideDone ? LIFT_RISE_MS : LIFT_OPENING_MS;
+    liftFirstRideDone = true;
+    playLiftRide(openingMs, () => {
+        if (!gameState.timerInterval) startSessionTimer();
+        loadNextQuestion();
+    });
 }
 
 function resetGame() {
@@ -570,7 +634,7 @@ function startQuestionTimer() {
     
     if (timerBar) {
         timerBar.style.width = '100%';
-        timerBar.style.backgroundColor = 'var(--genre-gold)';
+        timerBar.style.backgroundColor = 'var(--state-active)';
     }
 
     gameState.timer = setInterval(() => {
@@ -583,7 +647,7 @@ function startQuestionTimer() {
             if (remaining <= totalDuration / 2) {
                 timerBar.style.backgroundColor = 'var(--state-error)';
             } else {
-                timerBar.style.backgroundColor = 'var(--genre-gold)';
+                timerBar.style.backgroundColor = 'var(--state-active)';
             }
         }
 
@@ -611,15 +675,17 @@ function handleAnswerSelect(isCorrect, buttonEl) {
         
         setTimeout(() => {
             if (gameState.currentFloor >= gameState.maxFloors) {
-                handleVictory();
+                playLiftRide(LIFT_VICTORY_MS, handleVictory, { victory: true });
             } else {
-                gameState.currentFloor++;
-                gameState.currentQuestionIndex++;
-                if (gameState.currentFloor > gameState.stats.bestFloor) {
-                    gameState.stats.bestFloor = gameState.currentFloor;
-                }
-                updateFloorUI();
-                loadNextQuestion();
+                playLiftRide(LIFT_RISE_MS, () => {
+                    gameState.currentFloor++;
+                    gameState.currentQuestionIndex++;
+                    if (gameState.currentFloor > gameState.stats.bestFloor) {
+                        gameState.stats.bestFloor = gameState.currentFloor;
+                    }
+                    updateFloorUI();
+                    loadNextQuestion();
+                });
             }
         }, 800);
     } else {
@@ -671,8 +737,8 @@ function handleVictory() {
     triggerHaptic([50, 50, 50, 50, 100]);
     
     const victoryTimeDisplay = document.getElementById('victory-time-display');
-    const victoryTimeRowDisplay = document.getElementById('victory-time-row-display');
     const victoryStreakDisplay = document.getElementById('victory-streak-display');
+    const badgeDisplay = document.getElementById('receipt-badge-display');
     const hudContainer = document.getElementById('floor-hud-container');
     const gameWorkspace = document.getElementById('game-workspace');
     const gameplayHeader = document.getElementById('gameplay-header');
@@ -682,8 +748,13 @@ function handleVictory() {
 
     const formattedTime = formatTime(gameState.timeElapsedSeconds);
     if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
-    if (victoryTimeRowDisplay) victoryTimeRowDisplay.textContent = `${formattedTime}s`;
     if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${gameState.stats.streak} Days`;
+
+    if (badgeDisplay) {
+        const ords = ["1st", "2nd", "3rd", "4th", "5th"];
+        const ordText = ords[gameState.attemptsToday - 1] || `${gameState.attemptsToday}th`;
+        badgeDisplay.textContent = `${ordText} Try`;
+    }
 
     if (hudContainer) hudContainer.style.display = 'none';
     if (gameWorkspace) gameWorkspace.style.display = 'none';
