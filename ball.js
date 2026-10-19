@@ -1,5 +1,12 @@
 // ==========================================================================
 // 11th Floor TYKB (Think You Know Ball?) — Core Game Engine
+// v0.5 changes (marked "v0.5"):
+//  - Option buttons are rebuilt fresh each floor (fixes green bleed)
+//  - First wrong answer of the day recorded (wrong answer only, never a timeout)
+//  - Every fall logged in stats (floor + wrong/timeout)
+//  - Hardcoded fall to floor 3 removed
+//  - Receipt attempt line reads "on 1st attempt"
+//  - Debug switch: ball.html?debug=win&attempt=3&fail=4&time=92
 // ==========================================================================
 
 function safeAddListener(id, event, handler) {
@@ -36,6 +43,17 @@ function shuffleArray(array) {
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     return arr;
+}
+
+// v0.5: general ordinal helper (1st, 2nd, 3rd, 4th ... 11th, 21st)
+function ordinal(n) {
+    const mod100 = n % 100;
+    if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
+    const mod10 = n % 10;
+    if (mod10 === 1) return `${n}st`;
+    if (mod10 === 2) return `${n}nd`;
+    if (mod10 === 3) return `${n}rd`;
+    return `${n}th`;
 }
 
 function getOrdinalFloorHTML(floorNum) {
@@ -96,18 +114,25 @@ const gameState = {
     timerInterval: null,
     timeElapsedSeconds: 0,
     attemptsToday: 1,
-    firstTryCollapseFloor: null,
+    // v0.5: floor of the first WRONG ANSWER this session (any attempt).
+    // A timeout never sets this. null = no wrong answer yet = green 10/10.
+    firstWrongFloor: null,
     stats: {
         played: 0,
         wins: 0,
         streak: 0,
         bestFloor: 1,
-        bestTimeSeconds: null
+        bestTimeSeconds: null,
+        // v0.5: quiet record for the stats window.
+        // fallsByFloor: { "4": { wrong: 2, timeout: 1 }, ... }
+        fallsByFloor: {},
+        totalFalls: 0
     }
 };
 
 let isStartClimbLoading = false;
 let audioUnlocked = false;
+let debugMode = false;
 
 const STATS_KEY = '11th_floor_tykb_stats';
 
@@ -138,11 +163,25 @@ function loadSavedStats() {
 }
 
 function saveStats() {
+    if (debugMode) return; // v0.5: debug never touches real stats
     try {
         localStorage.setItem(STATS_KEY, JSON.stringify(gameState.stats));
     } catch (e) {
         console.warn('Could not save stats to localStorage.');
     }
+}
+
+// v0.5: log one fall. type is 'wrong' or 'timeout'.
+function recordFall(floor, type) {
+    const key = String(floor);
+    if (!gameState.stats.fallsByFloor || typeof gameState.stats.fallsByFloor !== 'object') {
+        gameState.stats.fallsByFloor = {};
+    }
+    if (!gameState.stats.fallsByFloor[key]) {
+        gameState.stats.fallsByFloor[key] = { wrong: 0, timeout: 0 };
+    }
+    gameState.stats.fallsByFloor[key][type === 'timeout' ? 'timeout' : 'wrong']++;
+    gameState.stats.totalFalls = (gameState.stats.totalFalls || 0) + 1;
 }
 
 loadSavedStats();
@@ -264,7 +303,35 @@ document.addEventListener('DOMContentLoaded', () => {
     safeAddListener('btn-sound-toggle', 'click', toggleSound);
 
     updateSoundUI();
+
+    runDebugSwitch();
 });
+
+// v0.5: jump straight to the victory screen for testing.
+// Example: ball.html?debug=win&attempt=3&fail=4&time=92
+// attempt = which attempt it was, fail = floor of first wrong answer (omit for clean run),
+// time = seconds. Nothing is saved to real stats. REMOVE OR LOCK BEFORE LAUNCH.
+function runDebugSwitch() {
+    let params;
+    try {
+        params = new URLSearchParams(window.location.search);
+    } catch (e) {
+        return;
+    }
+    if (params.get('debug') !== 'win') return;
+
+    debugMode = true;
+    const attempt = parseInt(params.get('attempt'), 10);
+    const fail = parseInt(params.get('fail'), 10);
+    const time = parseInt(params.get('time'), 10);
+
+    gameState.attemptsToday = attempt > 0 ? attempt : 1;
+    gameState.firstWrongFloor = fail >= 1 && fail <= 10 ? fail : null;
+    gameState.timeElapsedSeconds = time >= 0 ? time : 92;
+
+    showScreen('game-screen');
+    handleVictory(true);
+}
 
 function resetToLandingScreen() {
     stopSessionTimer();
@@ -589,10 +656,28 @@ function updateFloorUI() {
     });
 }
 
-function loadNextQuestion() {
-    document.querySelectorAll('#options-grid .btn-option').forEach(btn => {
-        btn.classList.remove('selected-correct', 'selected-wrong');
+// v0.5: replace every option button with a brand-new element. A new element has
+// no leftover colour, focus, hover or transition, so the green from the last
+// floor cannot carry over to the same position on the next floor.
+function rebuildOptionButtons() {
+    const oldButtons = document.querySelectorAll('#options-grid .btn-option');
+    oldButtons.forEach(oldBtn => {
+        const fresh = oldBtn.cloneNode(false); // keeps id/attributes, drops text and listeners
+        fresh.className = 'btn-option';
+        fresh.style.transition = 'none';
+        if (oldBtn.parentNode) oldBtn.parentNode.replaceChild(fresh, oldBtn);
+        // Re-enable transitions after the first paint so normal feedback still works.
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            fresh.style.transition = '';
+        }));
     });
+    if (document.activeElement && typeof document.activeElement.blur === 'function') {
+        document.activeElement.blur();
+    }
+}
+
+function loadNextQuestion() {
+    rebuildOptionButtons();
 
     startQuestionTimer();
     
@@ -605,13 +690,6 @@ function loadNextQuestion() {
     
     const optionButtons = document.querySelectorAll('#options-grid .btn-option');
     optionButtons.forEach((btn, idx) => {
-        btn.className = 'btn-option';
-        btn.classList.remove('selected-correct', 'selected-wrong');
-        
-        if (typeof btn.blur === 'function') {
-            btn.blur();
-        }
-        
         const optionVal = shuffledOptions[idx] || null;
         btn.textContent = optionVal || '';
         btn.style.display = optionVal ? 'block' : 'none';
@@ -653,7 +731,7 @@ function startQuestionTimer() {
 
         if (remaining <= 0) {
             clearInterval(gameState.timer);
-            handleGameOver('TIME EXPIRED');
+            handleGameOver('TIME EXPIRED', 'timeout');
         }
     }, 50);
 }
@@ -699,19 +777,21 @@ function handleAnswerSelect(isCorrect, buttonEl) {
         const activeBlock = document.querySelector(`.tower-floor[data-floor="${gameState.currentFloor}"]`);
         if (activeBlock) activeBlock.classList.add('failed');
 
-        if (gameState.attemptsToday === 1 && gameState.firstTryCollapseFloor === null) {
-            gameState.firstTryCollapseFloor = gameState.currentFloor;
+        // v0.5: first wrong answer of the session, on any attempt. Timeouts never set this.
+        if (gameState.firstWrongFloor === null) {
+            gameState.firstWrongFloor = gameState.currentFloor;
         }
 
         setTimeout(() => {
-            handleGameOver('INCORRECT ANSWER');
+            handleGameOver('INCORRECT ANSWER', 'wrong');
         }, 400);
     }
 }
 
-function handleGameOver(reason) {
+function handleGameOver(reason, type) {
     gameState.stats.played++;
     gameState.stats.streak = 0;
+    recordFall(gameState.currentFloor, type); // v0.5
     saveStats();
     
     safeSetText('game-over-title', 'ELEVATOR STOPPED');
@@ -725,7 +805,7 @@ function handleGameOver(reason) {
     openModal('modal-game-over');
 }
 
-function handleVictory() {
+function handleVictory(fromDebug) {
     stopSessionTimer();
     gameState.currentFloor = 11;
     gameState.stats.played++;
@@ -766,18 +846,18 @@ function handleVictory() {
         attemptsDisplay.textContent = gameState.attemptsToday;
     }
 
+    // v0.5: attempt line reads "on 1st attempt", "on 2nd attempt", ...
     if (badgeDisplay) {
-        const ords = ["1st", "2nd", "3rd", "4th", "5th"];
-        const ordText = ords[gameState.attemptsToday - 1] || `${gameState.attemptsToday}th`;
-        badgeDisplay.textContent = `${ordText} Try`;
+        badgeDisplay.textContent = `on ${ordinal(gameState.attemptsToday)} attempt`;
     }
 
+    // v0.5: Accuracy. Green 10/10 = no wrong answer all session.
+    // Otherwise red = floor of the first wrong answer, green 10.
     if (runSummaryDisplay) {
-        if (gameState.attemptsToday === 1) {
+        if (gameState.firstWrongFloor === null) {
             runSummaryDisplay.innerHTML = `<span style="color: var(--genre-pitch);">10</span><span style="color: var(--text-muted);">/</span><span style="color: var(--genre-pitch);">10</span>`;
         } else {
-            const failFloor = gameState.firstTryCollapseFloor || 3;
-            runSummaryDisplay.innerHTML = `<span style="color: var(--state-error);">${failFloor}</span><span style="color: var(--text-muted);">/</span><span style="color: var(--genre-pitch);">10</span>`;
+            runSummaryDisplay.innerHTML = `<span style="color: var(--state-error);">${gameState.firstWrongFloor}</span><span style="color: var(--text-muted);">/</span><span style="color: var(--genre-pitch);">10</span>`;
         }
     }
 
