@@ -1,0 +1,146 @@
+{
+  "setId": "33",
+  "title": "Think You Know Ball? - Set 33",
+  "questions": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "Which club sits bottom of the Premier League table Today Sun 18th Oct 2026?",
+      "options": [
+        "Spurs",
+        "Ipswich",
+        "Arsenal",
+        "Hull City"
+      ],
+      "answer": "Spurs",
+      "explanation": "Spurs sit at the bottom of the Premier League table today, Sunday 18th October 2026.",
+      "anchorClues": "Premier League bottom table Sunday 18th October 2026 Spurs"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "Which former Leicester City, Birmingham City, and Blackburn Rovers player celebrates his birthday today?",
+      "options": [
+        "Robbie Savage",
+        "Robbie Fowler",
+        "Robbie Williams",
+        "Robbie Keane"
+      ],
+      "answer": "Robbie Savage",
+      "explanation": "Former Leicester City, Birmingham City, and Blackburn Rovers midfielder Robbie Savage celebrates his birthday today.",
+      "anchorClues": "Leicester City Birmingham Blackburn Robbie Savage birthday today"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "Who is the current manager of Chelsea?",
+      "options": [
+        "Xabi Alonso",
+        "Fernando Alonso",
+        "Cesc Fàbregas",
+        "Enzo Maresca"
+      ],
+      "answer": "Xabi Alonso",
+      "explanation": "Xabi Alonso is the current manager in charge at Chelsea.",
+      "anchorClues": "Chelsea current manager Xabi Alonso"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "Liverpool beat Brentford yesterday (Saturday) 2–1. Who scored Liverpool's winner?",
+      "options": [
+        "Alexander Isak",
+        "Peter Crouch",
+        "Cody Gakpo",
+        "Darwin Núñez"
+      ],
+      "answer": "Alexander Isak",
+      "explanation": "Alexander Isak scored the winning goal for Liverpool in their 2–1 victory over Brentford.",
+      "anchorClues": "Liverpool Brentford 2 1 Saturday Alexander Isak winner"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "Fulham beat Hull City yesterday (Saturday). What was the score?",
+      "options": [
+        "1–0 Win",
+        "2–1 Win",
+        "2–0 Win",
+        "3–1 Win"
+      ],
+      "answer": "1–0 Win",
+      "explanation": "Fulham secured a 1–0 victory over Hull City yesterday.",
+      "anchorClues": "Fulham beat Hull City Saturday score 1 0"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "On this day in history (2002), a 16-year-old Wayne Rooney announced himself to the world by scoring a sensational 90th-minute winner for Everton against which team?",
+      "options": [
+        "Arsenal",
+        "Manchester United",
+        "Liverpool",
+        "Chelsea"
+      ],
+      "answer": "Arsenal",
+      "explanation": "Wayne Rooney scored a memorable late winner against Arsenal at Goodison Park in 2002.",
+      "anchorClues": "Wayne Rooney Everton winner Arsenal 2002 90th minute"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "Kaoru Mitoma wears which squad number for Brighton & Hove Albion this season?",
+      "options": [
+        "7",
+        "9",
+        "10",
+        "11"
+      ],
+      "answer": "7",
+      "explanation": "Kaoru Mitoma wears the number 7 shirt for Brighton & Hove Albion.",
+      "anchorClues": "Kaoru Mitoma Brighton squad number 7"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "Out of the 20 football clubs currently in the Premier League, which was most recently formed (in 1919)?",
+      "options": [
+        "Leeds United",
+        "Coventry City",
+        "Ipswich Town",
+        "Chelsea"
+      ],
+      "answer": "Leeds United",
+      "explanation": "Founded in 1919 following the disbanding of Leeds City, Leeds United is the most recently formed club of the group.",
+      "anchorClues": "Most recently formed Premier League club 1919 Leeds United"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "How many Premier League titles has Arsenal won?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answer": "4",
+      "explanation": "Arsenal has won 4 Premier League titles.",
+      "anchorClues": "Arsenal Premier League titles won 4"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "Who scored the lobbed chip over Peter Schmeichel to cap off Newcastle's iconic 5–0 win over Manchester United in 1996?",
+      "options": [
+        "Philippe Albert",
+        "David Ginola",
+        "Les Ferdinand",
+        "Rob Lee"
+      ],
+      "answer": "Philippe Albert",
+      "explanation": "Belgian defender Philippe Albert delicately chipped Peter Schmeichel to complete Newcastle's famous 5–0 victory.",
+      "anchorClues": "Philippe Albert Newcastle Manchester United 5 0 chip Schmeichel 1996"
+    }
+  ]
+}
