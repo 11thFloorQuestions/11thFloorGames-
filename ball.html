@@ -239,7 +239,7 @@
         .timer-bar { width: 100%; height: 100%; background: var(--state-active); }
         .question-box { width: 100%; background: #111111; border: 1px solid var(--surface-border); border-radius: 6px; padding: 12px 14px; text-align: center; }
         .options-grid { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
-        .btn-option { width: 100%; background: #111111; border: 1px solid var(--surface-border-light); border-radius: 8px; padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-primary); text-align: left; cursor: pointer; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+        .btn-option { width: 100%; background: #111111; border: 1px solid var(--surface-border-light); border-radius: 8px; padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-primary); text-align: left; cursor: pointer; transition: border-color 0.2s ease, box-shadow 0.2s ease; outline: none; }
 
         .btn-option.selected-correct {
             border-color: var(--genre-pitch) !important;
@@ -253,7 +253,7 @@
 
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.92); display: flex; align-items: center; justify-content: center; z-index: 100; }
         .modal-overlay.hidden { display: none !important; }
-        .modal-card { background-color: var(--surface); border: 1px solid var(--genre-pitch); box-shadow: 0 0 20px var(--genre-pitch-glow); padding: 24px 20px; border-radius: 14px; width: 92%; max-width: 380px; text-align: center; }
+        .modal-card { background-color: var(--surface); border: 1px solid var(--genre-pitch); box-shadow: 0 0 20px var(--genre-pitch-glow); padding: 24px 20px; border-radius: 14px; width: 92%; max-width: 380px; text-align: center; max-height: 94vh; overflow-y: auto; }
         
         .modal-sub-header { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 800; color: var(--genre-pitch); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
         .modal-main-title { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 14px; }
@@ -265,58 +265,35 @@
         .stat-value.pitch { color: var(--genre-pitch); }
         .stat-label { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
+        /* Falls by floor (stats window) */
+        .falls-box { display: none; text-align: left; background: var(--bg-deep); border: 1px solid var(--surface-border); border-radius: 10px; padding: 10px 12px; margin: 0 0 14px 0; }
+        .falls-title { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .falls-row { display: flex; justify-content: space-between; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700; color: #ffffff; padding: 2px 0; }
+        .falls-row span:last-child { color: var(--state-error); }
+
         .vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 8px; max-height: 200px; overflow-y: auto; margin: 12px 0; padding-right: 2px; }
         .vault-item-btn { background-color: #111111; border: 1px solid var(--genre-pitch); color: var(--text-primary); padding: 10px 6px; border-radius: 8px; cursor: pointer; text-align: center; box-shadow: 0 0 8px var(--genre-pitch-glow); transition: transform 0.1s ease, border-color 0.2s ease; }
         .vault-item-btn:hover { border-color: #ffffff; }
         .btn-modal { width: 100%; background-color: #111111; border: 1px solid var(--surface-border-light); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
 
-        /* IN-GAME VICTORY RECEIPT CARD STYLING */
+        /* IN-GAME VICTORY RECEIPT CARD STYLING (v0.5: minimal, same shape in every game) */
         .victory-receipt-card {
             width: 100%;
             max-width: 340px;
             background-color: #111111;
             border: 1px solid var(--genre-pitch);
             border-radius: 14px;
-            padding: 20px 18px;
+            padding: 22px 18px 16px 18px;
             box-shadow: 0 0 25px var(--genre-pitch-glow);
             margin-bottom: 16px;
             text-align: left;
             display: block;
         }
 
-        .receipt-top-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #222222;
-            padding-bottom: 10px;
-            margin-bottom: 12px;
-        }
-
-        .club-crest-slot {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 800;
-            color: var(--genre-pitch);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .receipt-date-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-        }
-
         .hero-flex-box {
             text-align: center;
             padding: 2px 0;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .game-title-header {
@@ -326,7 +303,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             line-height: 1;
-            margin-bottom: 6px;
+            margin-bottom: 14px;
             text-shadow: 0 0 12px var(--genre-pitch-glow);
         }
 
@@ -336,7 +313,7 @@
             font-weight: 800;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
         /* HERO TIME: the centrepiece of the receipt */
@@ -350,26 +327,23 @@
             font-variant-numeric: tabular-nums;
             white-space: nowrap;
             text-shadow: 0 0 18px var(--genre-pitch-glow);
-            margin: 8px 0 12px 0;
+            margin: 8px 0 10px 0;
         }
 
         .brand-green { color: var(--genre-pitch); }
         .brand-gold { color: var(--state-active); }
         .brand-white { color: #ffffff; }
 
+        /* Attempt line: plain text under the time, e.g. "on 1st attempt" */
         .flex-tier-badge {
-            display: inline-block;
+            display: block;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 800;
-            color: var(--genre-pitch);
+            color: #ffffff;
             letter-spacing: 1.5px;
-            text-transform: uppercase;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid var(--genre-pitch);
-            padding: 5px 14px;
-            border-radius: 12px;
-            margin-top: 4px;
+            text-transform: none;
+            margin-top: 2px;
         }
 
         .receipt-details {
@@ -418,7 +392,7 @@
             letter-spacing: 1.5px;
             border-top: 1px dashed #333333;
             padding-top: 8px;
-            text-transform: lowercase;
+            text-transform: none;
         }
 
         .controls-group {
@@ -617,45 +591,34 @@
             </div>
         </div>
 
-        <!-- STREAMLINED VICTORY RECEIPT CARD SCREEN -->
+        <!-- VICTORY RECEIPT (v0.5: title, label, time, attempt line, date, accuracy, footer) -->
         <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
             
             <div class="victory-receipt-card" id="victory-card">
-                <div class="receipt-top-row">
-                    <div class="club-crest-slot" id="receipt-club-slot">
-                        <span>VERIFIED</span>
-                    </div>
-                    <div class="receipt-date-label" id="receipt-date-display">Sat 17th Oct 2026</div>
-                </div>
-
                 <div class="hero-flex-box">
                     <div class="game-title-header">
                         <span style="color: #ffffff;">Think You Know</span> Ball?
                     </div>
                     <div class="flex-status-label">
-                        <span class="brand-green">11th</span> <span class="brand-white">Floor Cleared</span>
+                        <span class="brand-green">11th</span> <span class="brand-white">Floor Reached in</span>
                     </div>
                     <div id="victory-time-display" class="hero-time">1:12</div>
-                    <div class="flex-tier-badge" id="receipt-badge-display">1st Try</div>
+                    <div class="flex-tier-badge" id="receipt-badge-display">on 1st attempt</div>
                 </div>
 
                 <div class="receipt-details">
                     <div class="receipt-row">
-                        <span class="row-label">TODAY'S GAME</span>
-                        <span class="row-val">#001</span>
+                        <span class="row-label">DATE</span>
+                        <span class="row-val" id="receipt-date-display">Sat 17th Oct 2026</span>
                     </div>
                     <div class="receipt-row">
-                        <span class="row-label">TODAY'S ATTEMPTS</span>
-                        <span id="victory-attempts-display" class="row-val active">1</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="row-label">RUN SUMMARY</span>
+                        <span class="row-label">ACCURACY</span>
                         <span id="victory-run-summary-display" class="row-val"><span style="color: var(--genre-pitch);">10</span><span style="color: var(--text-muted);">/</span><span style="color: var(--genre-pitch);">10</span></span>
                     </div>
                 </div>
 
                 <div class="card-footer-cta">
-                    powered by Eleventh Floor Games
+                    Powered by Eleventh Floor
                 </div>
             </div>
 
@@ -687,6 +650,7 @@
                 <div class="stat-item"><span id="stat-bestfloor" class="stat-value pitch">1st</span><span class="stat-label">Highest Floor</span></div>
                 <div class="stat-item"><span id="stat-besttime" class="stat-value active">--:--</span><span class="stat-label">Best Time</span></div>
             </div>
+            <div id="stat-falls" class="falls-box"></div>
             <div id="vault-list" class="vault-grid"></div>
             <button id="btn-close-vault" class="btn-modal">CLOSE</button>
         </div>
