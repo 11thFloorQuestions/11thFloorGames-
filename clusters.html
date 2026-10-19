@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>11th Floor Clusters — Daily Puzzle</title>
 
     <!-- Favicon -->
@@ -46,24 +46,42 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        /* v0.5 FIT FIX: style.css locks html and body to the screen height with no scrolling.
+           Clusters can be taller than a laptop window, so this page lets itself scroll and
+           keeps clear space at the bottom. On a tall screen nothing changes. */
         html {
             background-color: var(--bg-deep);
-            height: 100%;
+            height: auto;
+            min-height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         body {
             background-color: var(--bg-deep);
             color: var(--text-primary);
             font-family: 'Montserrat', sans-serif;
+            height: auto;
             min-height: 100vh;
             min-height: 100dvh;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
+            padding: 8px 10px calc(20px + env(safe-area-inset-bottom, 0px)) 10px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: space-between;
-            padding: 8px 10px;
-            overflow: hidden;
+            flex: 1 0 auto;
         }
 
         .top-bar {
@@ -303,7 +321,9 @@
         .grid-col-3 { grid-template-columns: repeat(3, 1fr); }
         .grid-col-4 { grid-template-columns: repeat(4, 1fr); }
         .cluster-tile { background-color: #0f0f0f; border: 1px solid var(--surface-border); color: var(--text-primary); font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; padding: 14px 6px; text-align: center; cursor: pointer; transition: all 0.15s ease; display: flex; align-items: center; justify-content: center; min-height: 52px; border-radius: 8px; }
-        .cluster-tile:hover { background-color: #1a1a1a; border-color: var(--genre-orange); }
+        @media (hover: hover) {
+            .cluster-tile:hover { background-color: #1a1a1a; border-color: var(--genre-orange); }
+        }
         .cluster-tile.selected { background-color: var(--genre-orange); color: #000000; border-color: var(--genre-orange); box-shadow: 0 0 15px var(--genre-orange-glow); }
         .cluster-tile.success { background-color: var(--state-success) !important; color: #000000 !important; border-color: var(--state-success) !important; box-shadow: 0 0 20px var(--state-success-glow) !important; }
 
@@ -315,14 +335,38 @@
         .btn-primary:hover { background: transparent; color: var(--genre-orange); box-shadow: 0 0 20px var(--genre-orange-glow); }
         .btn:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none !important; }
 
+        /* Short windows (laptops, small phones in landscape): tighten the layout so more fits */
+        @media (max-height: 820px) {
+            .top-bar { margin-bottom: 4px; }
+            .gameplay-header-box { margin-bottom: 2px; }
+            .gameplay-header-box .game-logo-title { font-size: 0.8rem; }
+            .hud-sidebar-container { margin-bottom: 4px; }
+            .floor-info-box { padding: 6px 14px; }
+            .timer-bar-container { margin-bottom: 4px; }
+            .clue-banner { padding: 6px 12px; margin-bottom: 6px; }
+            .puzzle-prompt { margin-bottom: 6px; }
+            #solved-groups-container { gap: 5px; margin-bottom: 8px; }
+            .solved-group-card { padding: 5px 10px; }
+            .tile-grid { gap: 6px; margin-bottom: 10px; }
+            .cluster-tile { padding: 8px 6px; min-height: 42px; }
+            .btn { padding: 10px 18px; }
+        }
+        @media (max-height: 680px) {
+            .gameplay-header-box { display: none !important; }
+            .cluster-tile { min-height: 38px; font-size: 0.75rem; }
+        }
+
         #penalty-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255, 117, 31, 0.2); pointer-events: none; opacity: 0; transition: opacity 0.2s ease; z-index: 999; }
         #penalty-overlay.flash { opacity: 1; }
-        #status-message { min-height: 20px; color: var(--genre-orange); font-weight: 700; margin-bottom: 4px; text-align: center; }
+        #status-message { min-height: 20px; color: var(--genre-orange); font-weight: 700; margin-bottom: 4px; text-align: center; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; }
+
+        footer { width: 100%; max-width: 600px; text-align: center; flex-shrink: 0; padding-top: 6px; }
+        #footer-text { font-size: 0.6rem; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
 
         /* Modal Styles */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.92); display: flex; align-items: center; justify-content: center; z-index: 100; }
         .modal-overlay.hidden { display: none !important; }
-        .modal-card { background-color: var(--surface); border: 1px solid var(--genre-orange); box-shadow: 0 0 20px var(--genre-orange-glow); padding: 24px 20px; border-radius: 14px; width: 92%; max-width: 380px; text-align: center; }
+        .modal-card { background-color: var(--surface); border: 1px solid var(--genre-orange); box-shadow: 0 0 20px var(--genre-orange-glow); padding: 24px 20px; border-radius: 14px; width: 92%; max-width: 380px; text-align: center; max-height: 94vh; overflow-y: auto; }
 
         .modal-sub-header { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 800; color: var(--genre-orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
         .modal-main-title { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 14px; }
@@ -334,88 +378,40 @@
         .stat-value.orange { color: var(--genre-orange); }
         .stat-label { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
+        /* Falls by floor (stats window) */
+        .falls-box { display: none; text-align: left; background: var(--bg-deep); border: 1px solid var(--surface-border); border-radius: 10px; padding: 10px 12px; margin: 0 0 14px 0; }
+        .falls-title { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .falls-row { display: flex; justify-content: space-between; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700; color: #ffffff; padding: 2px 0; }
+        .falls-row span:last-child { color: var(--state-error); }
+
+        /* Rules pop-up */
+        .rules-body { text-align: left; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 600; line-height: 1.5; color: #d4d4d4; margin-bottom: 4px; }
+        .rules-body p { margin-bottom: 10px; }
+        .rules-body strong { color: #ffffff; font-weight: 800; }
+
         .vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 8px; max-height: 200px; overflow-y: auto; margin: 12px 0; padding-right: 2px; }
         .vault-item-btn { background-color: #111111; border: 1px solid var(--genre-orange); color: var(--text-primary); padding: 10px 6px; border-radius: 8px; cursor: pointer; text-align: center; box-shadow: 0 0 8px var(--genre-orange-glow); transition: transform 0.1s ease, border-color 0.2s ease; }
         .vault-item-btn:hover { border-color: #ffffff; }
         .btn-modal { width: 100%; background-color: #111111; border: 1px solid var(--surface-border-light); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
 
-        /* IN-GAME VICTORY RECEIPT CARD SPECIFICATIONS */
+        /* VICTORY RECEIPT (minimal, same shape in every game) */
         .victory-receipt-card {
             width: 100%;
             max-width: 340px;
             background-color: #111111;
             border: 1px solid var(--genre-orange);
             border-radius: 14px;
-            padding: 22px 20px;
+            padding: 22px 20px 16px 20px;
             box-shadow: 0 0 25px var(--genre-orange-glow);
             margin-bottom: 16px;
             text-align: left;
             display: block;
         }
 
-        .receipt-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #333333;
-            padding-bottom: 12px;
-            margin-bottom: 16px;
-        }
-
-        .brand-lockup-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .brand-mark-left {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.8rem;
-            color: var(--brand-red);
-            line-height: 0.85;
-            letter-spacing: -0.5px;
-            text-shadow: 0 0 10px var(--brand-red-glow);
-        }
-
-        .brand-text-stacked {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: left;
-        }
-
-        .brand-title-top {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 300;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-            line-height: 1.1;
-        }
-
-        .brand-title-bottom {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.55rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            line-height: 1.1;
-        }
-
-        .badge-slot-reserved {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: #888888;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
         .hero-flex-box {
             text-align: center;
             padding: 4px 0;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .game-title-header {
@@ -425,20 +421,19 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             line-height: 1;
-            margin-bottom: 6px;
+            margin-bottom: 14px;
         }
 
         .flex-status-label {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 800;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .brand-orange { color: var(--genre-orange); }
-        .brand-green { color: var(--state-success); }
         .brand-white { color: #ffffff; }
 
         /* HERO TIME: the centrepiece of the receipt */
@@ -452,28 +447,25 @@
             font-variant-numeric: tabular-nums;
             white-space: nowrap;
             text-shadow: 0 0 18px var(--genre-orange-glow);
-            margin: 8px 0 4px 0;
+            margin: 8px 0 10px 0;
         }
 
+        /* Attempt line: plain text under the time, e.g. "on 1st attempt" */
         .flex-tier-badge {
-            display: inline-block;
+            display: block;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.8rem;
             font-weight: 800;
-            color: var(--genre-orange);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: rgba(255, 117, 31, 0.1);
-            border: 1px solid var(--genre-orange);
-            padding: 6px 16px;
-            border-radius: 12px;
-            margin-top: 6px;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            text-transform: none;
+            margin-top: 2px;
         }
 
         .receipt-details {
             border-top: 1px solid #333333;
             padding-top: 14px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .receipt-row {
@@ -504,9 +496,6 @@
             letter-spacing: 0.5px;
         }
 
-        .row-val.success { color: var(--state-success); }
-        .row-val.active { color: var(--genre-orange); }
-
         .card-footer-cta {
             text-align: center;
             font-family: 'Montserrat', sans-serif;
@@ -516,7 +505,7 @@
             letter-spacing: 1.5px;
             border-top: 1px dashed #333333;
             padding-top: 10px;
-            text-transform: uppercase;
+            text-transform: none;
         }
 
         .controls-group {
@@ -620,9 +609,10 @@
 
     <div id="penalty-overlay"></div>
 
-    <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 100%;">
+    <div class="main-wrapper">
         <div class="top-bar">
             <a href="index.html" class="pill-btn">← LOBBY</a>
+            <button class="pill-btn" id="btn-rules" aria-label="How to play">?</button>
             <button class="pill-btn" id="btn-sound">SOUND: OFF</button>
         </div>
 
@@ -651,7 +641,7 @@
             <div class="landing-challenge-text">
                 <strong>CAN YOU REACH THE 11TH FLOOR?</strong><br><br>
                 Match clue targets to group tiles into categories and ascend.<br><br>
-                One mistake or expired timer resets the climb to 1st floor.
+                One mistake or expired timer drops you to Ground Floor.
             </div>
 
             <div style="display: flex; gap: 8px; margin-top: 4px;">
@@ -705,47 +695,33 @@
             </div>
         </main>
 
-        <!-- INTEGRATED VICTORY SCREEN RECEIPT CARD -->
+        <!-- VICTORY RECEIPT (title, label, time, attempt line, date, accuracy, footer) -->
         <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
             <div class="victory-receipt-card" id="victory-card">
-                <div class="receipt-header">
-                    <div class="brand-lockup-container">
-                        <div class="brand-mark-left">11FL?</div>
-                        <div class="brand-text-stacked">
-                            <span class="brand-title-top">ELEVENTH FLOOR</span>
-                            <span class="brand-title-bottom">GAMES</span>
-                        </div>
-                    </div>
-                    <div class="badge-slot-reserved">VERIFIED</div>
-                </div>
-
                 <div class="hero-flex-box">
                     <div class="game-title-header">
-                        <span class="brand-orange">11th</span> <span class="brand-white">Floor Clusters</span>
+                        <span class="brand-orange">CLUSTERS</span>
                     </div>
                     <div class="flex-status-label">
-                        <span class="brand-orange">11th</span> <span class="brand-white">Floor Cleared</span>
+                        <span class="brand-orange">11th</span> <span class="brand-white">Floor Reached in</span>
                     </div>
                     <div id="victory-time-display" class="hero-time">0:00</div>
+                    <div class="flex-tier-badge" id="receipt-badge-display">on 1st attempt</div>
                 </div>
 
                 <div class="receipt-details">
                     <div class="receipt-row">
-                        <span class="row-label">ELEVENTH FLOOR CLUSTERS</span>
-                        <span class="row-val">#042</span>
+                        <span class="row-label">DATE</span>
+                        <span class="row-val" id="receipt-date-display">Sat 17th Oct 2026</span>
                     </div>
                     <div class="receipt-row">
                         <span class="row-label">ACCURACY</span>
-                        <span class="row-val success">100% (10/10)</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="row-label">CURRENT STREAK</span>
-                        <span id="victory-streak-display" class="row-val active">0 Days</span>
+                        <span id="victory-run-summary-display" class="row-val"><span style="color: var(--state-success);">10</span><span style="color: var(--text-muted);">/</span><span style="color: var(--state-success);">10</span></span>
                     </div>
                 </div>
 
                 <div class="card-footer-cta">
-                    NEW GAME DAILY!
+                    Powered by Eleventh Floor
                 </div>
             </div>
 
@@ -758,17 +734,17 @@
 
         <footer>
             <div id="status-message"></div>
-            <div id="footer-text">ONE MISTAKE RESETS THE CLIMB TO 1ST FLOOR.</div>
+            <div id="footer-text">ONE MISTAKE RESETS THE CLIMB TO GROUND FLOOR.</div>
         </footer>
     </div>
 
     <!-- Toast Notification -->
     <div id="toast-msg">SCREENSHOT GENERATED</div>
 
-    <!-- Stats & Archive Vault Modal -->
+    <!-- Stats & Archive Modal -->
     <div id="modal-vault" class="modal-overlay hidden">
         <div class="modal-card">
-            <div class="modal-sub-header">11TH FLOOR CLUSTERS</div>
+            <div class="modal-sub-header">CLUSTERS</div>
             <div class="modal-main-title">STATS & ARCHIVES</div>
             <div class="stats-summary-grid">
                 <div class="stat-item"><span id="stat-played" class="stat-value">0</span><span class="stat-label">Played</span></div>
@@ -778,19 +754,25 @@
                 <div class="stat-item"><span id="stat-bestfloor" class="stat-value orange">1st</span><span class="stat-label">Highest Floor</span></div>
                 <div class="stat-item"><span id="stat-besttime" class="stat-value active">--:--</span><span class="stat-label">Best Time</span></div>
             </div>
+            <div id="stat-falls" class="falls-box"></div>
             <div id="vault-list" class="vault-grid"></div>
             <button id="btn-close-vault" class="btn-modal">CLOSE</button>
         </div>
     </div>
 
-    <!-- Game Over Modal -->
-    <div id="modal-game-over" class="modal-overlay hidden">
+    <!-- Rules Modal -->
+    <div id="modal-rules" class="modal-overlay hidden">
         <div class="modal-card">
-            <h2 id="game-over-title" style="font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;">ELEVATOR STOPPED</h2>
-            <p id="game-over-message" style="font-size: 0.8rem; color: var(--genre-orange); font-weight: 700; margin-bottom: 8px; text-transform: uppercase;"></p>
-            <p id="final-floor-reached" style="font-size: 0.85rem; color: var(--text-primary); margin-bottom: 16px;"></p>
-            <button id="btn-try-again" class="btn-modal" style="background: var(--genre-orange); color: #000000; border-color: var(--genre-orange);">TRY AGAIN</button>
-            <button id="btn-back-vault" class="btn-modal">VAULT</button>
+            <div class="modal-sub-header">CLUSTERS</div>
+            <div class="modal-main-title">HOW TO PLAY</div>
+            <div class="rules-body">
+                <p>Clear 10 floors to climb from the <strong>1st floor</strong> to the <strong>11th</strong>. Each floor shows a target cluster. Pick the tiles that belong to it and submit. You get 15 seconds for each cluster.</p>
+                <p>A wrong selection or running out of time drops you to <strong>Ground Floor</strong>. Then you try again.</p>
+                <p><strong>The clock</strong> starts at your first cluster and never stops, retries included.</p>
+                <p><strong>Accuracy:</strong> a green 10/10 means you never made a wrong selection. If you did, the red number is the floor you first got wrong. Running out of time isn't a wrong selection.</p>
+                <p><strong>Stats</strong> are saved on this device only.</p>
+            </div>
+            <button id="btn-close-rules" class="btn-modal">GOT IT</button>
         </div>
     </div>
 
@@ -823,8 +805,7 @@
                         const canvas = await html2canvas(victoryCard, {
                             backgroundColor: '#111111',
                             scale: 2,
-                            useCORS: true,
-                            allowTaint: true
+                            useCORS: true
                         });
 
                         canvas.toBlob(async (blob) => {
@@ -834,7 +815,7 @@
                             if (navigator.canShare && navigator.canShare({ files: [file] })) {
                                 try {
                                     await navigator.share({
-                                        title: '11th Floor Clusters Victory Card',
+                                        title: 'Clusters Victory Card',
                                         files: [file]
                                     });
                                 } catch (e) {
