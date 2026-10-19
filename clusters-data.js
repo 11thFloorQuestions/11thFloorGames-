@@ -3,10 +3,15 @@
  * 11TH FLOOR CLUSTERS - DAILY PUZZLE DATA (clusters-data.js)
  * ============================================================================
  * Standard: Strict UK English spelling & terms.
- * Protocol: Strict Mutual Domain Isolation, Zero Overlap with Sets 01-04.
  * Set ID: Set 05 | Date: 2026-10-15
- * v0.5 edits: floor 3 distractors AUGER and CUTTER replaced (both are real
- * woodworking tools, so they made the floor unfair); floor 5 SESTET -> SEXTET.
+ *
+ * v0.5 REVISION (draft): every word is now an everyday word and every category
+ * is something people name in conversation. Writing rules used:
+ *   1. Everyday words only. If a spell-checker underlines it, it is out.
+ *   2. Tiles with two words are written with a space (EARL GREY, TOP HAT).
+ *   3. Categories are things people say out loud, not trade or technical terms.
+ *   4. No distractor may also fit a target group (the old AUGER / CUTTER problem).
+ * NOTE: not checked against Sets 01-04 for overlap (those files were not seen).
  * ============================================================================
  */
 
@@ -15,105 +20,105 @@ window.CLUSTERS_DATA = {
     date: "2026-10-15",
     title: "Puzzle #09: Fresh Horizons",
     floors: {
-      // Floor 01: Types of Tea + Common Board Games (Distractors: Outdoor Waterproof Coats)
+      // Floor 01: Tea + Board Games (Distractors: Waterproof Coats)
       1: {
-        tiles: ["EARLGREY", "MATCHA", "ASSAM", "MONOPOLY", "SCRABBLE", "CLUEDO", "ANORAK", "PARKA", "PONCHO", "GAITER", "FLEECE", "MAC"],
+        tiles: ["EARL GREY", "MATCHA", "ASSAM", "MONOPOLY", "SCRABBLE", "CLUEDO", "ANORAK", "PARKA", "PONCHO", "CAGOULE", "FLEECE", "MAC"],
         groups: [
-          { words: ["EARLGREY", "MATCHA", "ASSAM"], category: "Varieties of tea", clue: "Tea Varieties" },
+          { words: ["EARL GREY", "MATCHA", "ASSAM"], category: "Varieties of tea", clue: "Tea Varieties" },
           { words: ["MONOPOLY", "SCRABBLE", "CLUEDO"], category: "Classic board games", clue: "Board Games" }
         ]
       },
 
-      // Floor 02: UK National Parks + Web Browsers (Distractors: Monopoly Board Game Tokens)
+      // Floor 02: UK National Parks + Web Browsers (Distractors: Monopoly Tokens)
       2: {
-        tiles: ["SNOWDONIA", "DARTMOOR", "EXMOOR", "SAFARI", "CHROME", "FIREFOX", "THIMBLE", "TOPHAT", "IRON", "BOOT", "CAR", "SHIP"],
+        tiles: ["SNOWDONIA", "DARTMOOR", "EXMOOR", "SAFARI", "CHROME", "FIREFOX", "THIMBLE", "TOP HAT", "IRON", "BOOT", "CAR", "SHIP"],
         groups: [
           { words: ["SNOWDONIA", "DARTMOOR", "EXMOOR"], category: "UK National Parks", clue: "UK National Parks" },
           { words: ["SAFARI", "CHROME", "FIREFOX"], category: "Web browsers", clue: "Web Browsers" }
         ]
       },
 
-      // Floor 03: Astronomical Events + Handheld Woodworking Tools (Distractors: Plumbing Repair Tools)
+      // Floor 03: Space Events + Woodworking Tools (Distractors: Plumbing Bits)
       3: {
-        tiles: ["ECLIPSE", "SUPERNOVA", "AURORA", "CHISEL", "MALLET", "FILE", "PLUNGER", "WRENCH", "SNAKE", "CRIMP", "SOLDER", "FLUX"],
+        tiles: ["ECLIPSE", "SUPERNOVA", "AURORA", "CHISEL", "MALLET", "FILE", "PLUNGER", "WRENCH", "SOLDER", "PIPE", "VALVE", "WASHER"],
         groups: [
           { words: ["ECLIPSE", "SUPERNOVA", "AURORA"], category: "Astronomical events and phenomena", clue: "Space Phenomena" },
           { words: ["CHISEL", "MALLET", "FILE"], category: "Handheld woodworking tools", clue: "Woodworking Tools" }
         ]
       },
 
-      // Floor 04: Victorian Authors + Cloud Formations (Distractors: Office Furniture)
+      // Floor 04: Classic Novelists + Clouds (Distractors: Furniture)
       4: {
-        tiles: ["DICKENS", "AUSTEN", "HARDY", "CIRRUS", "STRATUS", "CUMULUS", "CREDENZA", "DESK", "CABINET", "BOOKSHELF", "CHAIR", "TABLE"],
+        tiles: ["DICKENS", "AUSTEN", "HARDY", "CIRRUS", "STRATUS", "CUMULUS", "SOFA", "DESK", "CABINET", "BOOKSHELF", "CHAIR", "TABLE"],
         groups: [
           { words: ["DICKENS", "AUSTEN", "HARDY"], category: "19th-century British authors", clue: "Classic Novelists" },
           { words: ["CIRRUS", "STRATUS", "CUMULUS"], category: "Main cloud formations", clue: "Cloud Types" }
         ]
       },
 
-      // Floor 05: Musical Ensembles + Structural Bridge Types + Espresso Drinks (Distractors: Garden Plants)
+      // Floor 05: Musical Groups + Pasta + Coffee (Distractors: Garden Plants)
       5: {
-        tiles: ["QUARTET", "SEXTET", "OCTET", "SUSPENSION", "ARCH", "CANTILEVER", "ESPRESSO", "LATTE", "CAPPUCCINO", "FERN", "HOSTA", "IVY"],
+        tiles: ["TRIO", "QUARTET", "QUINTET", "SPAGHETTI", "PENNE", "FUSILLI", "ESPRESSO", "LATTE", "CAPPUCCINO", "FERN", "IVY", "ROSE"],
         groups: [
-          { words: ["QUARTET", "SEXTET", "OCTET"], category: "Musical group sizes", clue: "Musical Ensembles" },
-          { words: ["SUSPENSION", "ARCH", "CANTILEVER"], category: "Structural bridge designs", clue: "Bridge Types" },
+          { words: ["TRIO", "QUARTET", "QUINTET"], category: "Musical group sizes", clue: "Musical Groups" },
+          { words: ["SPAGHETTI", "PENNE", "FUSILLI"], category: "Pasta shapes", clue: "Pasta Shapes" },
           { words: ["ESPRESSO", "LATTE", "CAPPUCCINO"], category: "Espresso-based coffee drinks", clue: "Coffee Drinks" }
         ]
       },
 
-      // Floor 06: Grain Flours + Historical Sailing Ships + Winter Olympic Sports (Distractors: Baking Fats)
+      // Floor 06: Breads + Sailing Ships + Winter Sports (Distractors: Baking Ingredients)
       6: {
-        tiles: ["SEMOLINA", "RICE", "SPELT", "SCHOONER", "GALLEY", "FRIGATE", "BOBSLEIGH", "SKELETON", "CURLING", "YEAST", "LARD", "PECTIN"],
+        tiles: ["BAGUETTE", "CIABATTA", "SOURDOUGH", "GALLEON", "SCHOONER", "FRIGATE", "BOBSLEIGH", "LUGE", "CURLING", "YEAST", "FLOUR", "SUGAR"],
         groups: [
-          { words: ["SEMOLINA", "RICE", "SPELT"], category: "Types of grain flour", clue: "Grain Flours" },
-          { words: ["SCHOONER", "GALLEY", "FRIGATE"], category: "Historical sailing vessels", clue: "Sailing Ships" },
-          { words: ["BOBSLEIGH", "SKELETON", "CURLING"], category: "Winter Olympic sports", clue: "Winter Sports" }
+          { words: ["BAGUETTE", "CIABATTA", "SOURDOUGH"], category: "Types of bread", clue: "Breads" },
+          { words: ["GALLEON", "SCHOONER", "FRIGATE"], category: "Historical sailing vessels", clue: "Sailing Ships" },
+          { words: ["BOBSLEIGH", "LUGE", "CURLING"], category: "Winter Olympic sports", clue: "Winter Sports" }
         ]
       },
 
-      // Floor 07: Geological Faults + Industrial Printing Methods + Ballroom Dances (Distractors: Tailoring Stitch Terms)
+      // Floor 07: Dances + Cheeses + UK Rivers (Distractors: Parts of a Shirt)
       7: {
-        tiles: ["NORMAL", "REVERSE", "STRIKESLIP", "LITHOGRAPHY", "FLEXO", "GRAVURE", "WALTZ", "TANGO", "BOLERO", "PLEAT", "DART", "HEM"],
+        tiles: ["WALTZ", "TANGO", "SAMBA", "CHEDDAR", "BRIE", "STILTON", "THAMES", "SEVERN", "TRENT", "COLLAR", "CUFF", "SLEEVE"],
         groups: [
-          { words: ["NORMAL", "REVERSE", "STRIKESLIP"], category: "Geological fault types", clue: "Geological Faults" },
-          { words: ["LITHOGRAPHY", "FLEXO", "GRAVURE"], category: "Industrial printing processes", clue: "Printing Methods" },
-          { words: ["WALTZ", "TANGO", "BOLERO"], category: "Ballroom and classical dances", clue: "Classical Dances" }
+          { words: ["WALTZ", "TANGO", "SAMBA"], category: "Ballroom and Latin dances", clue: "Dances" },
+          { words: ["CHEDDAR", "BRIE", "STILTON"], category: "Types of cheese", clue: "Cheeses" },
+          { words: ["THAMES", "SEVERN", "TRENT"], category: "Rivers of Britain", clue: "British Rivers" }
         ]
       },
 
-      // Floor 08: Rope Knots + Ancient Historical Empires + Dessert Pies (Distractors: Foreign Currency Symbols)
+      // Floor 08: Detectives + Shakespeare Plays + Dessert Pies (Distractors: Currencies)
       8: {
-        tiles: ["FIGUREEIGHT", "SHEETBEND", "GRANNY", "ROMAN", "PERSIAN", "OTTONIAN", "PECAN", "RHUBARB", "BANOFFEE", "EURO", "POUND", "YEN"],
+        tiles: ["POIROT", "MARPLE", "HOLMES", "HAMLET", "MACBETH", "OTHELLO", "PECAN", "RHUBARB", "BANOFFEE", "EURO", "POUND", "YEN"],
         groups: [
-          { words: ["FIGUREEIGHT", "SHEETBEND", "GRANNY"], category: "Common rope knots", clue: "Rope Knots" },
-          { words: ["ROMAN", "PERSIAN", "OTTONIAN"], category: "Historical empires", clue: "Ancient Empires" },
+          { words: ["POIROT", "MARPLE", "HOLMES"], category: "Famous fictional detectives", clue: "Fictional Detectives" },
+          { words: ["HAMLET", "MACBETH", "OTHELLO"], category: "Shakespeare plays", clue: "Shakespeare Plays" },
           { words: ["PECAN", "RHUBARB", "BANOFFEE"], category: "Traditional dessert pies", clue: "Dessert Pies" }
         ]
       },
 
-      // Floor 09: Window Styles + Marine Crustaceans + Brass/Wind Instruments (Distractors: Geological Minerals)
+      // Floor 09: Windows + Shellfish + Brass Instruments (Distractors: Rocks)
       9: {
-        tiles: ["DORMER", "BAY", "CASEMENT", "LOBSTER", "BARNACLE", "PRAWN", "PICCOLO", "CORNET", "TUBA", "QUARTZ", "FELDSPAR", "MICA"],
+        tiles: ["DORMER", "BAY", "SASH", "CRAB", "LOBSTER", "PRAWN", "TRUMPET", "TROMBONE", "TUBA", "GRANITE", "SLATE", "MARBLE"],
         groups: [
-          { words: ["DORMER", "BAY", "CASEMENT"], category: "Architectural window styles", clue: "Window Styles" },
-          { words: ["LOBSTER", "BARNACLE", "PRAWN"], category: "Marine crustaceans", clue: "Crustaceans" },
-          { words: ["PICCOLO", "CORNET", "TUBA"], category: "Brass and wind instruments", clue: "Wind Instruments" }
+          { words: ["DORMER", "BAY", "SASH"], category: "Types of window", clue: "Window Styles" },
+          { words: ["CRAB", "LOBSTER", "PRAWN"], category: "Shellfish", clue: "Shellfish" },
+          { words: ["TRUMPET", "TROMBONE", "TUBA"], category: "Brass instruments", clue: "Brass Instruments" }
         ]
       },
 
-      // Floor 10: Final 16-Tile Wall (4 Brand New Groups of 4)
+      // Floor 10: Final 16-Tile Wall (4 Groups of 4)
       10: {
         tiles: [
           "OXYGEN", "HYDROGEN", "NITROGEN", "HELIUM",
           "LONDON", "EDINBURGH", "CARDIFF", "BELFAST",
           "SOUP", "SALAD", "MAIN", "DESSERT",
-          "SOVIET", "BYZANTINE", "OTTOMAN", "MONGOL"
+          "ROMAN", "BRITISH", "OTTOMAN", "MONGOL"
         ],
         groups: [
           { words: ["OXYGEN", "HYDROGEN", "NITROGEN", "HELIUM"], category: "Gaseous chemical elements", clue: "Gaseous Elements" },
           { words: ["LONDON", "EDINBURGH", "CARDIFF", "BELFAST"], category: "Capital cities of the UK nations", clue: "UK Capitals" },
           { words: ["SOUP", "SALAD", "MAIN", "DESSERT"], category: "Standard restaurant meal courses", clue: "Meal Courses" },
-          { words: ["SOVIET", "BYZANTINE", "OTTOMAN", "MONGOL"], category: "Major historical empires", clue: "Historic Empires" }
+          { words: ["ROMAN", "BRITISH", "OTTOMAN", "MONGOL"], category: "Major historical empires", clue: "Historic Empires" }
         ]
       }
     }
