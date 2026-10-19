@@ -1,4 +1,16 @@
 // ==========================================
+// 11th Floor Questions — Core Game Engine
+// v0.5 changes (marked "v0.5"), same as TYKB:
+//  - Option buttons rebuilt fresh each floor (no colour carry-over)
+//  - First wrong answer of the session recorded (a timeout never counts)
+//  - Every fall logged in stats (floor + wrong/timeout)
+//  - Flash after an answer is 0.4s (was 0.8s)
+//  - Receipt: "on Nth attempt", date, Accuracy (x/10)
+//  - "?" rules pop-up, landing screen only
+//  - Debug switch: questions.html?debug=win&attempt=3&fail=4&time=92
+// ==========================================
+
+// ==========================================
 // 1. HELPER FUNCTIONS & UTILITIES
 // ==========================================
 
@@ -35,10 +47,29 @@ function shuffleArray(array) {
     return arr;
 }
 
+// v0.5: general ordinal helper (1st, 2nd, 3rd, 4th ... 11th, 21st)
+function ordinal(n) {
+    const mod100 = n % 100;
+    if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
+    const mod10 = n % 10;
+    if (mod10 === 1) return `${n}st`;
+    if (mod10 === 2) return `${n}nd`;
+    if (mod10 === 3) return `${n}rd`;
+    return `${n}th`;
+}
+
 function getOrdinalFloorHTML(floorNum) {
     const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
     const ord = ordinals[floorNum - 1] || `${floorNum}th`;
     return `<span style="color: var(--genre-gold, #facc15); font-weight: 800;">${ord}</span>`;
+}
+
+// v0.5: same date format as TYKB, e.g. "Mon 19th Oct 2026"
+function getFormattedDateString() {
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const now = new Date();
+    return `${days[now.getDay()]} ${ordinal(now.getDate())} ${months[now.getMonth()]} ${now.getFullYear()}`;
 }
 
 
@@ -72,14 +103,23 @@ const gameState = {
     timerInterval: null,
     timeElapsedSeconds: 0,
     attemptsToday: 1,
+    // v0.5: floor of the first WRONG ANSWER this session (any attempt).
+    // A timeout never sets this. null = no wrong answer = green 10/10.
+    firstWrongFloor: null,
     stats: {
         played: 0,
         wins: 0,
         streak: 0,
         bestFloor: 1,
-        bestTimeSeconds: null
+        bestTimeSeconds: null,
+        // v0.5: quiet record for the stats window.
+        // fallsByFloor: { "4": { wrong: 2, timeout: 1 }, ... }
+        fallsByFloor: {},
+        totalFalls: 0
     }
 };
+
+let debugMode = false;
 
 const floorMessageBatches = [
     // Batch 1: Classic Climb
@@ -135,11 +175,25 @@ function loadSavedStats() {
 }
 
 function saveStats() {
+    if (debugMode) return; // v0.5: debug never touches real stats
     try {
         localStorage.setItem('11fl_stats', JSON.stringify(gameState.stats));
     } catch (e) {
         console.warn('Could not save stats to localStorage.');
     }
+}
+
+// v0.5: log one fall. type is 'wrong' or 'timeout'.
+function recordFall(floor, type) {
+    const key = String(floor);
+    if (!gameState.stats.fallsByFloor || typeof gameState.stats.fallsByFloor !== 'object') {
+        gameState.stats.fallsByFloor = {};
+    }
+    if (!gameState.stats.fallsByFloor[key]) {
+        gameState.stats.fallsByFloor[key] = { wrong: 0, timeout: 0 };
+    }
+    gameState.stats.fallsByFloor[key][type === 'timeout' ? 'timeout' : 'wrong']++;
+    gameState.stats.totalFalls = (gameState.stats.totalFalls || 0) + 1;
 }
 
 loadSavedStats();
@@ -251,8 +305,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     safeAddListener('btn-sound-toggle', 'click', toggleSound);
 
+    // v0.5: rules pop-up (the ? button only shows on the landing screen, so it can never cost a player time mid-climb)
+    safeAddListener('btn-rules', 'click', () => openModal('modal-rules'));
+    safeAddListener('btn-close-rules', 'click', () => closeModal('modal-rules'));
+
     updateSoundUI();
+
+    runDebugSwitch();
 });
+
+// v0.5: jump straight to the victory screen for testing.
+// Example: questions.html?debug=win&attempt=3&fail=4&time=92
+// attempt = which attempt it was, fail = floor of first wrong answer (omit for clean run),
+// time = seconds. Nothing is saved to real stats. REMOVE OR LOCK BEFORE LAUNCH.
+function runDebugSwitch() {
+    let params;
+    try {
+        params = new URLSearchParams(window.location.search);
+    } catch (e) {
+        return;
+    }
+    if (params.get('debug') !== 'win') return;
+
+    debugMode = true;
+    const attempt = parseInt(params.get('attempt'), 10);
+    const fail = parseInt(params.get('fail'), 10);
+    const time = parseInt(params.get('time'), 10);
+
+    gameState.attemptsToday = attempt > 0 ? attempt : 1;
+    gameState.firstWrongFloor = fail >= 1 && fail <= 10 ? fail : null;
+    gameState.timeElapsedSeconds = time >= 0 ? time : 92;
+
+    setRulesButtonVisible(false);
+    const landing = document.getElementById('landing-screen');
+    if (landing) landing.style.display = 'none';
+    handleVictory();
+}
+
+function setRulesButtonVisible(visible) {
+    const rulesBtn = document.getElementById('btn-rules');
+    if (rulesBtn) rulesBtn.style.display = visible ? '' : 'none';
+}
 
 function resetToLandingScreen() {
     stopSessionTimer();
@@ -263,6 +356,7 @@ function resetToLandingScreen() {
     });
     const landing = document.getElementById('landing-screen');
     if (landing) landing.style.display = 'flex';
+    setRulesButtonVisible(true);
 }
 
 function showScreen(screenId) {
@@ -336,6 +430,26 @@ function renderStatsUI() {
     const bestTimeEl = document.getElementById('stat-besttime');
     if (bestTimeEl) {
         bestTimeEl.textContent = formatTime(gameState.stats.bestTimeSeconds);
+    }
+
+    // v0.5: falls by floor (wrong answer or timeout)
+    const fallsEl = document.getElementById('stat-falls');
+    if (fallsEl) {
+        const by = gameState.stats.fallsByFloor || {};
+        const floors = Object.keys(by).map(Number).sort((a, b) => a - b);
+        if (floors.length === 0) {
+            fallsEl.innerHTML = '';
+            fallsEl.style.display = 'none';
+        } else {
+            fallsEl.style.display = 'block';
+            fallsEl.innerHTML = '<div class="falls-title">Falls by floor</div>' + floors.map(f => {
+                const rec = by[f] || {};
+                const parts = [];
+                if (rec.wrong) parts.push(`${rec.wrong} wrong`);
+                if (rec.timeout) parts.push(`${rec.timeout} timeout`);
+                return `<div class="falls-row"><span>${ordinal(f)} Floor</span><span>${parts.join(' · ')}</span></div>`;
+            }).join('');
+        }
     }
 }
 
@@ -491,6 +605,8 @@ function launchGameUI() {
     if (header) header.style.display = 'flex';
     if (footer) footer.style.display = 'block';
 
+    setRulesButtonVisible(false); // v0.5
+
     // A fresh launch resets the clock. It starts again when question 1 appears.
     stopSessionTimer();
     startGame();
@@ -504,6 +620,7 @@ function launchGameUI() {
 const LIFT_OPENING_MS = 1400;
 const LIFT_RISE_MS = 1000;
 const LIFT_VICTORY_MS = 2000;
+const ANSWER_FLASH_MS = 400; // v0.5: was 800
 let liftRideToken = 0;
 let liftFirstRideDone = false;
 
@@ -600,7 +717,26 @@ function updateFloorUI() {
     });
 }
 
+// v0.5: replace every option button with a brand-new element so no colour,
+// focus, hover or transition can carry over to the same position next floor.
+function rebuildOptionButtons() {
+    const oldButtons = document.querySelectorAll('#options-grid .btn-option');
+    oldButtons.forEach(oldBtn => {
+        const fresh = oldBtn.cloneNode(false);
+        fresh.className = 'btn-option';
+        fresh.style.transition = 'none';
+        if (oldBtn.parentNode) oldBtn.parentNode.replaceChild(fresh, oldBtn);
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            fresh.style.transition = '';
+        }));
+    });
+    if (document.activeElement && typeof document.activeElement.blur === 'function') {
+        document.activeElement.blur();
+    }
+}
+
 function loadNextQuestion() {
+    rebuildOptionButtons();
     startQuestionTimer();
     
     const currentQ = gameState.questions[gameState.currentQuestionIndex];
@@ -612,10 +748,6 @@ function loadNextQuestion() {
     
     const optionButtons = document.querySelectorAll('#options-grid .btn-option');
     optionButtons.forEach((btn, idx) => {
-        btn.className = 'btn-option';
-        if (typeof btn.blur === 'function') {
-            btn.blur();
-        }
         const optionVal = shuffledOptions[idx] || null;
         btn.textContent = optionVal || '';
         btn.style.display = optionVal ? 'block' : 'none';
@@ -653,7 +785,7 @@ function startQuestionTimer() {
 
         if (remaining <= 0) {
             clearInterval(gameState.timer);
-            handleGameOver('TIME EXPIRED');
+            handleGameOver('TIME EXPIRED', 'timeout');
         }
     }, 50);
 }
@@ -687,7 +819,7 @@ function handleAnswerSelect(isCorrect, buttonEl) {
                     loadNextQuestion();
                 });
             }
-        }, 800);
+        }, ANSWER_FLASH_MS);
     } else {
         if (buttonEl) buttonEl.classList.add('selected-wrong');
         triggerHaptic([80, 50, 120]);
@@ -695,23 +827,28 @@ function handleAnswerSelect(isCorrect, buttonEl) {
         const activeBlock = document.querySelector(`.tower-floor[data-floor="${gameState.currentFloor}"]`);
         if (activeBlock) activeBlock.classList.add('failed');
 
+        // v0.5: first wrong answer of the session, on any attempt. Timeouts never set this.
+        if (gameState.firstWrongFloor === null) {
+            gameState.firstWrongFloor = gameState.currentFloor;
+        }
+
         setTimeout(() => {
-            handleGameOver('INCORRECT ANSWER');
-        }, 800);
+            handleGameOver('INCORRECT ANSWER', 'wrong');
+        }, ANSWER_FLASH_MS);
     }
 }
 
-function handleGameOver(reason) {
+function handleGameOver(reason, type) {
     // Session stopwatch timer continues running during game over modals until victory
     gameState.stats.played++;
     gameState.stats.streak = 0;
+    recordFall(gameState.currentFloor, type); // v0.5
     saveStats();
     
     safeSetText('game-over-title', 'ELEVATOR STOPPED');
     safeSetText('game-over-message', reason);
     
-    const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
-    const ord = ordinals[gameState.currentFloor - 1] || `${gameState.currentFloor}th`;
+    const ord = ordinal(gameState.currentFloor);
     const finalEl = document.getElementById('final-floor-reached');
     if (finalEl) {
         finalEl.innerHTML = `Stopped at <span style="color: var(--state-error, #EF4444); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
@@ -737,8 +874,9 @@ function handleVictory() {
     triggerHaptic([50, 50, 50, 50, 100]);
     
     const victoryTimeDisplay = document.getElementById('victory-time-display');
-    const victoryStreakDisplay = document.getElementById('victory-streak-display');
     const badgeDisplay = document.getElementById('receipt-badge-display');
+    const dateDisplay = document.getElementById('receipt-date-display');
+    const runSummaryDisplay = document.getElementById('victory-run-summary-display');
     const hudContainer = document.getElementById('floor-hud-container');
     const gameWorkspace = document.getElementById('game-workspace');
     const gameplayHeader = document.getElementById('gameplay-header');
@@ -746,14 +884,21 @@ function handleVictory() {
     const victoryScreen = document.getElementById('victory-screen');
     const footerText = document.getElementById('footer-text');
 
-    const formattedTime = formatTime(gameState.timeElapsedSeconds);
-    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
-    if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${gameState.stats.streak} Days`;
+    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formatTime(gameState.timeElapsedSeconds);
+    if (dateDisplay) dateDisplay.textContent = getFormattedDateString();
 
+    // v0.5: attempt line reads "on 1st attempt", "on 2nd attempt", ...
     if (badgeDisplay) {
-        const ords = ["1st", "2nd", "3rd", "4th", "5th"];
-        const ordText = ords[gameState.attemptsToday - 1] || `${gameState.attemptsToday}th`;
-        badgeDisplay.textContent = `${ordText} Try`;
+        badgeDisplay.textContent = `on ${ordinal(gameState.attemptsToday)} attempt`;
+    }
+
+    // v0.5: Accuracy. Green 10/10 = no wrong answer all session.
+    // Otherwise red = floor of the first wrong answer, green 10.
+    if (runSummaryDisplay) {
+        const red = gameState.firstWrongFloor;
+        const left = red === null ? '10' : String(red);
+        const leftColour = red === null ? 'var(--state-success)' : 'var(--state-error)';
+        runSummaryDisplay.innerHTML = `<span style="color: ${leftColour};">${left}</span><span style="color: var(--text-muted);">/</span><span style="color: var(--state-success);">10</span>`;
     }
 
     if (hudContainer) hudContainer.style.display = 'none';
