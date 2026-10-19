@@ -1,5 +1,14 @@
 // ==========================================================================
 // 11th Floor Cluegram — Core Interactive Game Engine & Archive Integration
+// v0.5 changes (marked "v0.5"), same rules as TYKB and Questions:
+//  - First wrong answer of the session recorded (a timeout never counts)
+//  - Every fall logged in stats (floor + wrong/timeout)
+//  - Attempt counter, receipt reads "on Nth attempt", date, Accuracy (x/10)
+//  - Falls say "Ground Floor", never "1st floor"
+//  - Flash after a correct answer is 0.4s (was 0.8s)
+//  - Archive list loads in batches of 5 instead of 100 requests at once
+//  - "?" rules pop-up, landing screen only
+//  - Debug switch: cluegram.html?debug=win&attempt=3&fail=4&time=92
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,6 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let isProcessing = false;
     let soundEnabled = true;
     let activeGameData = [];
+
+    // v0.5: attempt and accuracy tracking
+    let attemptsToday = 1;
+    let firstWrongFloor = null; // floor of first WRONG ANSWER (timeouts never count)
+    let debugMode = false;
     
     // Timer Variables
     let startTime = 0;
@@ -34,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const victoryScreen = document.getElementById('victory-screen');
     const victoryStatsBtn = document.getElementById('btn-victory-stats');
     const victoryTimeDisplay = document.getElementById('victory-time-display');
-    const victoryStreakDisplay = document.getElementById('victory-streak-display');
     const activeGameTimer = document.getElementById('active-game-timer');
     const footerText = document.getElementById('footer-text');
     
@@ -54,8 +67,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeVaultBtn = document.getElementById('btn-close-vault');
     const soundBtn = document.getElementById('btn-sound');
     const vaultList = document.getElementById('vault-list');
+    const rulesBtn = document.getElementById('btn-rules');
+    const closeRulesBtn = document.getElementById('btn-close-rules');
+    const rulesModal = document.getElementById('modal-rules');
 
     const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
+    const CORRECT_FLASH_MS = 400; // v0.5: was 800
+
+    // v0.5: general ordinal helper (1st, 2nd, 3rd, 4th ... 11th, 21st)
+    function ordinal(n) {
+        const mod100 = n % 100;
+        if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
+        const mod10 = n % 10;
+        if (mod10 === 1) return `${n}st`;
+        if (mod10 === 2) return `${n}nd`;
+        if (mod10 === 3) return `${n}rd`;
+        return `${n}th`;
+    }
+
+    // v0.5: same date format as the other games, e.g. "Mon 19th Oct 2026"
+    function getFormattedDateString() {
+        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const now = new Date();
+        return `${days[now.getDay()]} ${ordinal(now.getDate())} ${months[now.getMonth()]} ${now.getFullYear()}`;
+    }
 
 // ==========================================
 // LIFT RIDE (opening ride and rise between floors)
@@ -135,6 +171,38 @@ function playLiftRide(durationMs, onArrive, options) {
         activeGameData = getDailyDataset();
         bindEvents();
         updateStatsDisplay();
+        runDebugSwitch();
+    }
+
+    // v0.5: jump straight to the victory screen for testing.
+    // Example: cluegram.html?debug=win&attempt=3&fail=4&time=92
+    // attempt = which attempt it was, fail = floor of first wrong answer (omit for clean run),
+    // time = seconds. Nothing is saved to real stats. REMOVE OR LOCK BEFORE LAUNCH.
+    function runDebugSwitch() {
+        let params;
+        try {
+            params = new URLSearchParams(window.location.search);
+        } catch (e) {
+            return;
+        }
+        if (params.get('debug') !== 'win') return;
+
+        debugMode = true;
+        const attempt = parseInt(params.get('attempt'), 10);
+        const fail = parseInt(params.get('fail'), 10);
+        const time = parseInt(params.get('time'), 10);
+
+        attemptsToday = attempt > 0 ? attempt : 1;
+        firstWrongFloor = fail >= 1 && fail <= 10 ? fail : null;
+        timeElapsedSeconds = time >= 0 ? time : 92;
+
+        setRulesButtonVisible(false);
+        if (startScreen) startScreen.style.display = 'none';
+        showVictoryReceipt();
+    }
+
+    function setRulesButtonVisible(visible) {
+        if (rulesBtn) rulesBtn.style.display = visible ? '' : 'none';
     }
 
     function bindEvents() {
@@ -145,6 +213,7 @@ function playLiftRide(durationMs, onArrive, options) {
 
         if (statsBtn) {
             statsBtn.addEventListener('click', () => {
+                updateStatsDisplay();
                 if (statsModal) statsModal.classList.remove('hidden');
                 populateVault();
             });
@@ -152,6 +221,7 @@ function playLiftRide(durationMs, onArrive, options) {
 
         if (victoryStatsBtn) {
             victoryStatsBtn.addEventListener('click', () => {
+                updateStatsDisplay();
                 if (statsModal) statsModal.classList.remove('hidden');
                 populateVault();
             });
@@ -165,6 +235,10 @@ function playLiftRide(durationMs, onArrive, options) {
                 }
             });
         }
+
+        // v0.5: rules pop-up
+        if (rulesBtn) rulesBtn.addEventListener('click', () => { if (rulesModal) rulesModal.classList.remove('hidden'); });
+        if (closeRulesBtn) closeRulesBtn.addEventListener('click', () => { if (rulesModal) rulesModal.classList.add('hidden'); });
 
         if (soundBtn) {
             soundBtn.addEventListener('click', () => {
@@ -265,7 +339,7 @@ function playLiftRide(durationMs, onArrive, options) {
 
         const slots = targetSlotsContainer ? targetSlotsContainer.querySelectorAll('.target-slot') : [];
         slots.forEach(slot => slot.classList.add('state-error'));
-        showMessage('TIME EXPIRED — DROPPED TO 1ST FLOOR', false);
+        showMessage('TIME EXPIRED — DROPPED TO GROUND FLOOR', false);
 
         const towerFloors = document.querySelectorAll('.tower-floor');
         const activeTowerFloor = Array.from(towerFloors).find(
@@ -273,7 +347,9 @@ function playLiftRide(durationMs, onArrive, options) {
         );
         if (activeTowerFloor) activeTowerFloor.classList.add('failed');
 
-        recordGameResult(false, currentFloorIndex + 1);
+        // v0.5: a timeout is logged as a fall but never sets the first wrong answer
+        recordGameResult(false, currentFloorIndex + 1, 'timeout');
+        attemptsToday++;
 
         setTimeout(() => {
             currentFloorIndex = 0;
@@ -295,28 +371,43 @@ function playLiftRide(durationMs, onArrive, options) {
         });
     }
 
+    // v0.5: batches of 5, stops at the first batch with a missing file
     async function populateVault() {
         if (!vaultList) return;
         vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
         
-        const fetchPromises = [];
-        for (let i = 1; i <= 100; i++) {
-            const paddedId = String(i).padStart(2, '0');
-            fetchPromises.push(fetchFileWithFallbacks(`cluegram-${paddedId}.json`).then(data => ({ id: paddedId, data })));
-        }
-
-        const results = await Promise.all(fetchPromises);
+        const BATCH_SIZE = 5;
+        const MAX_ARCHIVES = 100;
         const buttons = [];
+        let currentId = 1;
 
-        results.forEach(({ id, data }) => {
-            if (data) {
-                const btn = document.createElement('button');
-                btn.className = 'vault-item-btn';
-                btn.innerHTML = `<strong>Archive ${id}</strong>`;
-                btn.onclick = () => loadVaultArchive(id);
-                buttons.push(btn);
+        while (currentId <= MAX_ARCHIVES) {
+            const batchPromises = [];
+            for (let i = 0; i < BATCH_SIZE && (currentId + i) <= MAX_ARCHIVES; i++) {
+                const paddedId = String(currentId + i).padStart(2, '0');
+                batchPromises.push(
+                    fetchFileWithFallbacks(`cluegram-${paddedId}.json`).then(data => ({ id: paddedId, data }))
+                );
             }
-        });
+
+            const batchResults = await Promise.all(batchPromises);
+            let missingFound = false;
+
+            batchResults.forEach(({ id, data }) => {
+                if (data) {
+                    const btn = document.createElement('button');
+                    btn.className = 'vault-item-btn';
+                    btn.innerHTML = `<strong>Archive ${id}</strong>`;
+                    btn.onclick = () => loadVaultArchive(id);
+                    buttons.push(btn);
+                } else {
+                    missingFound = true;
+                }
+            });
+
+            if (missingFound) break;
+            currentId += BATCH_SIZE;
+        }
 
         vaultList.innerHTML = '';
         if (buttons.length === 0) {
@@ -360,6 +451,8 @@ function playLiftRide(durationMs, onArrive, options) {
         if (gameplayHeader) gameplayHeader.style.display = 'flex';
         if (footerText) footerText.style.display = 'block';
 
+        setRulesButtonVisible(false); // v0.5
+
         currentFloorIndex = 0;
         rideToFirstFloor();
     }
@@ -397,6 +490,7 @@ function playLiftRide(durationMs, onArrive, options) {
         if (gameplayHeader) gameplayHeader.style.display = 'none';
         if (activeGameTimer) activeGameTimer.style.display = 'none';
         if (startScreen) startScreen.style.display = 'flex';
+        setRulesButtonVisible(true); // v0.5
     }
 
     // --- Core Logic ---
@@ -534,10 +628,10 @@ function playLiftRide(durationMs, onArrive, options) {
                         loadFloor(currentFloorIndex);
                     });
                 }
-            }, 800);
+            }, CORRECT_FLASH_MS);
         } else {
             slots.forEach(slot => slot.classList.add('state-error'));
-            showMessage('INCORRECT — DROPPED TO 1ST FLOOR', false);
+            showMessage('INCORRECT — DROPPED TO GROUND FLOOR', false);
 
             const towerFloors = document.querySelectorAll('.tower-floor');
             const activeTowerFloor = Array.from(towerFloors).find(
@@ -545,7 +639,12 @@ function playLiftRide(durationMs, onArrive, options) {
             );
             if (activeTowerFloor) activeTowerFloor.classList.add('failed');
 
-            recordGameResult(false, currentFloorIndex + 1);
+            // v0.5: first wrong answer of the session, on any attempt
+            if (firstWrongFloor === null) {
+                firstWrongFloor = currentFloorIndex + 1;
+            }
+            recordGameResult(false, currentFloorIndex + 1, 'wrong');
+            attemptsToday++;
 
             setTimeout(() => {
                 currentFloorIndex = 0;
@@ -556,11 +655,25 @@ function playLiftRide(durationMs, onArrive, options) {
 
     function showVictoryReceipt() {
         stopTimer();
-        const newStats = recordGameResult(true, 11);
+        recordGameResult(true, 11);
 
-        const formattedTime = formatTime(timeElapsedSeconds);
-        if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
-        if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${newStats.streak} Days`;
+        const badgeDisplay = document.getElementById('receipt-badge-display');
+        const dateDisplay = document.getElementById('receipt-date-display');
+        const runSummaryDisplay = document.getElementById('victory-run-summary-display');
+
+        if (victoryTimeDisplay) victoryTimeDisplay.textContent = formatTime(timeElapsedSeconds);
+        if (dateDisplay) dateDisplay.textContent = getFormattedDateString();
+
+        // v0.5: attempt line reads "on 1st attempt", "on 2nd attempt", ...
+        if (badgeDisplay) badgeDisplay.textContent = `on ${ordinal(attemptsToday)} attempt`;
+
+        // v0.5: Accuracy. Green 10/10 = no wrong answer all session.
+        // Otherwise red = floor of the first wrong answer, green 10.
+        if (runSummaryDisplay) {
+            const left = firstWrongFloor === null ? '10' : String(firstWrongFloor);
+            const leftColour = firstWrongFloor === null ? 'var(--state-success)' : 'var(--state-error)';
+            runSummaryDisplay.innerHTML = `<span style="color: ${leftColour};">${left}</span><span style="color: var(--text-muted);">/</span><span style="color: var(--state-success);">10</span>`;
+        }
 
         if (hudContainer) hudContainer.style.display = 'none';
         if (gameWorkspace) gameWorkspace.style.display = 'none';
@@ -592,7 +705,8 @@ function playLiftRide(durationMs, onArrive, options) {
         messageBox.style.color = isSuccess ? 'var(--state-success)' : 'var(--state-error)';
     }
 
-    function recordGameResult(isWin, peakFloor) {
+    // v0.5: failType is 'wrong' or 'timeout' for falls, ignored for wins
+    function recordGameResult(isWin, peakFloor, failType) {
         const stats = getStats();
         stats.played++;
         if (isWin) {
@@ -603,30 +717,40 @@ function playLiftRide(durationMs, onArrive, options) {
             }
         } else {
             stats.streak = 0;
+            const key = String(peakFloor);
+            if (!stats.fallsByFloor[key]) stats.fallsByFloor[key] = { wrong: 0, timeout: 0 };
+            stats.fallsByFloor[key][failType === 'timeout' ? 'timeout' : 'wrong']++;
+            stats.totalFalls = (stats.totalFalls || 0) + 1;
         }
 
         if (peakFloor > stats.bestFloor) {
             stats.bestFloor = peakFloor;
         }
 
-        try {
-            localStorage.setItem(STATS_KEY, JSON.stringify(stats));
-        } catch (e) {
-            console.warn('LocalStorage save blocked.');
+        if (!debugMode) { // v0.5: debug never touches real stats
+            try {
+                localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+            } catch (e) {
+                console.warn('LocalStorage save blocked.');
+            }
         }
         updateStatsDisplay();
         return stats;
     }
 
+    function defaultStats() {
+        return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null, fallsByFloor: {}, totalFalls: 0 };
+    }
+
     function getStats() {
         try {
             const raw = localStorage.getItem(STATS_KEY);
-            if (!raw) {
-                return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
-            }
-            return JSON.parse(raw);
+            if (!raw) return defaultStats();
+            const merged = { ...defaultStats(), ...JSON.parse(raw) };
+            if (!merged.fallsByFloor || typeof merged.fallsByFloor !== 'object') merged.fallsByFloor = {};
+            return merged;
         } catch (e) {
-            return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
+            return defaultStats();
         }
     }
 
@@ -638,6 +762,7 @@ function playLiftRide(durationMs, onArrive, options) {
         const streakElem = document.getElementById('stat-streak');
         const bestfloorElem = document.getElementById('stat-bestfloor');
         const besttimeElem = document.getElementById('stat-besttime');
+        const fallsElem = document.getElementById('stat-falls');
 
         if (playedElem) playedElem.textContent = stats.played;
         if (winsElem) winsElem.textContent = stats.wins;
@@ -652,6 +777,25 @@ function playLiftRide(durationMs, onArrive, options) {
 
         if (besttimeElem) {
             besttimeElem.textContent = formatTime(stats.bestTimeSeconds);
+        }
+
+        // v0.5: falls by floor (wrong answer or timeout)
+        if (fallsElem) {
+            const by = stats.fallsByFloor || {};
+            const floors = Object.keys(by).map(Number).sort((a, b) => a - b);
+            if (floors.length === 0) {
+                fallsElem.innerHTML = '';
+                fallsElem.style.display = 'none';
+            } else {
+                fallsElem.style.display = 'block';
+                fallsElem.innerHTML = '<div class="falls-title">Falls by floor</div>' + floors.map(f => {
+                    const rec = by[f] || {};
+                    const parts = [];
+                    if (rec.wrong) parts.push(`${rec.wrong} wrong`);
+                    if (rec.timeout) parts.push(`${rec.timeout} timeout`);
+                    return `<div class="falls-row"><span>${ordinal(f)} Floor</span><span>${parts.join(' · ')}</span></div>`;
+                }).join('');
+            }
         }
     }
 });
