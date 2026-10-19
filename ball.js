@@ -302,6 +302,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     safeAddListener('btn-sound-toggle', 'click', toggleSound);
 
+    // v0.5: rules pop-up (the ? button only shows on the landing screen, so it can never cost a player time mid-climb)
+    safeAddListener('btn-rules', 'click', () => openModal('modal-rules'));
+    safeAddListener('btn-close-rules', 'click', () => closeModal('modal-rules'));
+
     updateSoundUI();
 
     runDebugSwitch();
@@ -349,6 +353,8 @@ function showScreen(screenId) {
             el.style.display = (id === screenId) ? 'flex' : 'none';
         }
     });
+    const rulesBtn = document.getElementById('btn-rules');
+    if (rulesBtn) rulesBtn.style.display = (screenId === 'landing-screen') ? '' : 'none';
     if (screenId === 'landing-screen') {
         triggerLandingPageDing();
     }
@@ -403,6 +409,26 @@ function renderStatsUI() {
     const bestTimeEl = document.getElementById('stat-besttime');
     if (bestTimeEl) {
         bestTimeEl.textContent = formatTime(gameState.stats.bestTimeSeconds);
+    }
+
+    // v0.5: falls by floor (wrong answer or timeout)
+    const fallsEl = document.getElementById('stat-falls');
+    if (fallsEl) {
+        const by = gameState.stats.fallsByFloor || {};
+        const floors = Object.keys(by).map(Number).sort((a, b) => a - b);
+        if (floors.length === 0) {
+            fallsEl.innerHTML = '';
+            fallsEl.style.display = 'none';
+        } else {
+            fallsEl.style.display = 'block';
+            fallsEl.innerHTML = '<div class="falls-title">Falls by floor</div>' + floors.map(f => {
+                const rec = by[f] || {};
+                const parts = [];
+                if (rec.wrong) parts.push(`${rec.wrong} wrong`);
+                if (rec.timeout) parts.push(`${rec.timeout} timeout`);
+                return `<div class="falls-row"><span>${ordinal(f)} Floor</span><span>${parts.join(' · ')}</span></div>`;
+            }).join('');
+        }
     }
 }
 
