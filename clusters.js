@@ -4,6 +4,18 @@
  * ============================================================================
  * Sequential Clue Target Engine, 15s Stage Countdown Timer, Global Session Timer,
  * Single Mistake Game-Over Reset, 10 Playable Floors leading to 11th Floor.
+ *
+ * v0.5 changes (marked "v0.5"), same rules as the other games:
+ *  - Session clock never stops or restarts at a fall (it starts when floor 1 first appears)
+ *  - A fall drops to Ground Floor through the lift ride with no pop-up (like Cluegram)
+ *  - Tower has 11 blocks
+ *  - First wrong selection of the session recorded (a timeout never counts)
+ *  - Every fall logged in stats (floor + wrong/timeout)
+ *  - Attempt counter, receipt reads "on Nth attempt", date, Accuracy (x/10)
+ *  - Flash after a correct cluster is 0.4s (was 0.6s)
+ *  - Archive list loads in batches of 5 instead of 100 requests at once
+ *  - "?" rules pop-up, landing screen only
+ *  - Debug switch: clusters.html?debug=win&attempt=3&fail=4&time=92
  * ============================================================================
  */
 
@@ -18,6 +30,11 @@
     let remainingGroups = [];
     let currentTargetGroup = null;
 
+    // v0.5: attempt and accuracy tracking
+    let attemptsToday = 1;
+    let firstWrongFloor = null; // floor of first WRONG SELECTION (timeouts never count)
+    let debugMode = false;
+
     // Session Stopwatch Timer State Variables
     let startTime = 0;
     let timerInterval = null;
@@ -30,6 +47,9 @@
     // Local Storage Player Stats Key
     const STATS_KEY = '11th_floor_clusters_stats';
 
+    const CORRECT_FLASH_MS = 400; // v0.5: was 600
+    const FALL_PAUSE_MS = 1500;
+
     const floorNumVal = document.getElementById('floor-number-val');
     const floorRuleText = document.getElementById('floor-rule-text');
     const puzzlePrompt = document.getElementById('puzzle-prompt');
@@ -38,7 +58,6 @@
     const btnShuffle = document.getElementById('btn-shuffle');
     const btnSubmit = document.getElementById('btn-submit');
     const statusMessage = document.getElementById('status-message');
-    const penaltyOverlay = document.getElementById('penalty-overlay');
     const actionPanelContainer = document.getElementById('action-panel-container');
     const towerStack = document.getElementById('tower-stack');
     const btnSound = document.getElementById('btn-sound');
@@ -55,17 +74,16 @@
 
     const victoryScreen = document.getElementById('victory-screen');
     const victoryTimeDisplay = document.getElementById('victory-time-display');
-    const victoryStreakDisplay = document.getElementById('victory-streak-display');
     const footerText = document.getElementById('footer-text');
 
     const statsModal = document.getElementById('modal-vault');
-    const gameOverModal = document.getElementById('modal-game-over');
     const statsBtnLanding = document.getElementById('btn-landing-stats');
     const victoryStatsBtn = document.getElementById('btn-victory-stats');
     const closeVaultBtn = document.getElementById('btn-close-vault');
-    const btnTryAgain = document.getElementById('btn-try-again');
-    const btnBackVault = document.getElementById('btn-back-vault');
     const vaultList = document.getElementById('vault-list');
+    const rulesBtn = document.getElementById('btn-rules');
+    const closeRulesBtn = document.getElementById('btn-close-rules');
+    const rulesModal = document.getElementById('modal-rules');
 
 // ==========================================
 // LIFT RIDE (opening ride and rise between floors)
@@ -135,7 +153,7 @@ function playLiftRide(durationMs, onArrive, options) {
     }
 
     // ==========================================
-    // HAPTIC FEEDBACK ENGINE
+    // HELPERS
     // ==========================================
 
     function triggerHaptic(pattern) {
@@ -144,6 +162,25 @@ function playLiftRide(durationMs, onArrive, options) {
                 navigator.vibrate(pattern);
             } catch (e) {}
         }
+    }
+
+    // v0.5: general ordinal helper (1st, 2nd, 3rd, 4th ... 11th, 21st)
+    function ordinal(n) {
+        const mod100 = n % 100;
+        if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
+        const mod10 = n % 10;
+        if (mod10 === 1) return `${n}st`;
+        if (mod10 === 2) return `${n}nd`;
+        if (mod10 === 3) return `${n}rd`;
+        return `${n}th`;
+    }
+
+    // v0.5: same date format as the other games, e.g. "Mon 19th Oct 2026"
+    function getFormattedDateString() {
+        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const now = new Date();
+        return `${days[now.getDay()]} ${ordinal(now.getDate())} ${months[now.getMonth()]} ${now.getFullYear()}`;
     }
 
     // ==========================================
@@ -162,7 +199,10 @@ function playLiftRide(durationMs, onArrive, options) {
     }
 
     function stopSessionTimer() {
-        if (timerInterval) clearInterval(timerInterval);
+        if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null; // v0.5: so "is the clock running?" is a real question
+        }
     }
 
     function updateSessionTimerDisplay() {
@@ -217,25 +257,20 @@ function playLiftRide(durationMs, onArrive, options) {
     }
 
     function stopStageTimer() {
-        if (stageTimer) clearInterval(stageTimer);
+        if (stageTimer) {
+            clearInterval(stageTimer);
+            stageTimer = null;
+        }
     }
 
     function handleTimeExpired() {
-        triggerHaptic([80, 50, 120]);
-        recordGameResult(false, currentFloor);
-        handleGameOver('TIME EXPIRED');
+        if (gameState !== 'playing') return;
+        handleFall('timeout', 'TIME EXPIRED — DROPPED TO GROUND FLOOR');
     }
 
     function getOrdinalFloorHTML(floorNum) {
-        const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
-        const ord = ordinals[floorNum - 1] || `${floorNum}th`;
+        const ord = ordinal(floorNum);
         return `<span style="color: var(--genre-orange); font-size: 1.1rem; font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
-    }
-
-    function getFailedOrdinalFloorHTML(floorNum) {
-        const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
-        const ord = ordinals[floorNum - 1] || `${floorNum}th`;
-        return `<span style="color: var(--state-error); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
     }
 
     function init() {
@@ -251,6 +286,38 @@ function playLiftRide(durationMs, onArrive, options) {
         }
 
         renderTowerStack(0);
+        runDebugSwitch();
+    }
+
+    // v0.5: jump straight to the victory screen for testing.
+    // Example: clusters.html?debug=win&attempt=3&fail=4&time=92
+    // attempt = which attempt it was, fail = floor of first wrong selection (omit for clean run),
+    // time = seconds. Nothing is saved to real stats. REMOVE OR LOCK BEFORE LAUNCH.
+    function runDebugSwitch() {
+        let params;
+        try {
+            params = new URLSearchParams(window.location.search);
+        } catch (e) {
+            return;
+        }
+        if (params.get('debug') !== 'win') return;
+
+        debugMode = true;
+        const attempt = parseInt(params.get('attempt'), 10);
+        const fail = parseInt(params.get('fail'), 10);
+        const time = parseInt(params.get('time'), 10);
+
+        attemptsToday = attempt > 0 ? attempt : 1;
+        firstWrongFloor = fail >= 1 && fail <= 10 ? fail : null;
+        timeElapsedSeconds = time >= 0 ? time : 92;
+
+        setRulesButtonVisible(false);
+        if (startScreen) startScreen.style.display = 'none';
+        renderVictory();
+    }
+
+    function setRulesButtonVisible(visible) {
+        if (rulesBtn) rulesBtn.style.display = visible ? '' : 'none';
     }
 
     function bindEvents() {
@@ -279,6 +346,7 @@ function playLiftRide(durationMs, onArrive, options) {
         if (statsBtnLanding) {
             statsBtnLanding.addEventListener('pointerdown', () => triggerHaptic(15));
             statsBtnLanding.addEventListener('click', () => {
+                updateStatsDisplay();
                 if (statsModal) statsModal.classList.remove('hidden');
                 populateVault();
             });
@@ -287,6 +355,7 @@ function playLiftRide(durationMs, onArrive, options) {
         if (victoryStatsBtn) {
             victoryStatsBtn.addEventListener('pointerdown', () => triggerHaptic(15));
             victoryStatsBtn.addEventListener('click', () => {
+                updateStatsDisplay();
                 if (statsModal) statsModal.classList.remove('hidden');
                 populateVault();
             });
@@ -302,22 +371,9 @@ function playLiftRide(durationMs, onArrive, options) {
             });
         }
 
-        if (btnTryAgain) {
-            btnTryAgain.addEventListener('pointerdown', () => triggerHaptic(15));
-            btnTryAgain.addEventListener('click', () => {
-                if (gameOverModal) gameOverModal.classList.add('hidden');
-                startClimb();
-            });
-        }
-
-        if (btnBackVault) {
-            btnBackVault.addEventListener('pointerdown', () => triggerHaptic(15));
-            btnBackVault.addEventListener('click', () => {
-                if (gameOverModal) gameOverModal.classList.add('hidden');
-                if (statsModal) statsModal.classList.remove('hidden');
-                populateVault();
-            });
-        }
+        // v0.5: rules pop-up
+        if (rulesBtn) rulesBtn.addEventListener('click', () => { if (rulesModal) rulesModal.classList.remove('hidden'); });
+        if (closeRulesBtn) closeRulesBtn.addEventListener('click', () => { if (rulesModal) rulesModal.classList.add('hidden'); });
     }
 
     function resetToStartScreen() {
@@ -331,16 +387,23 @@ function playLiftRide(durationMs, onArrive, options) {
         if (timerBarWrapper) timerBarWrapper.style.display = 'none';
         if (clueBanner) clueBanner.style.display = 'none';
         if (activeGameTimer) activeGameTimer.style.display = 'none';
+        if (statusMessage) statusMessage.textContent = '';
         if (startScreen) startScreen.style.display = 'flex';
+        setRulesButtonVisible(true); // v0.5
     }
 
-    function renderTowerStack(activeFloor) {
+    // v0.5: 11 blocks, floor 11 is the top block and is never active during play.
+    // The stack is drawn bottom-to-top, so block 1 is the 1st floor.
+    function renderTowerStack(activeFloor, failedFloor) {
         if (!towerStack) return;
         towerStack.innerHTML = '';
-        for (let i = 1; i <= 10; i++) {
+        for (let i = 1; i <= 11; i++) {
             const floorBar = document.createElement('div');
             floorBar.className = 'tower-floor';
-            if (i === activeFloor) {
+            floorBar.dataset.floor = i;
+            if (failedFloor && i === failedFloor) {
+                floorBar.classList.add('failed');
+            } else if (i === activeFloor) {
                 floorBar.classList.add('active');
             } else if (i < activeFloor) {
                 floorBar.classList.add('completed');
@@ -349,6 +412,7 @@ function playLiftRide(durationMs, onArrive, options) {
         }
     }
 
+    // Fresh climb from the landing screen or an archive. Resets the session.
     function startClimb() {
         if (!puzzleData && window.CLUSTERS_DATA) {
             const availableDates = Object.keys(window.CLUSTERS_DATA).sort();
@@ -362,7 +426,11 @@ function playLiftRide(durationMs, onArrive, options) {
             return;
         }
 
-        gameState = 'playing';
+        // v0.5: a new climb is a new session
+        stopSessionTimer();
+        stopStageTimer();
+        attemptsToday = 1;
+        firstWrongFloor = null;
 
         if (startScreen) startScreen.style.display = 'none';
         if (victoryScreen) victoryScreen.style.display = 'none';
@@ -373,22 +441,32 @@ function playLiftRide(durationMs, onArrive, options) {
         if (mainContent) mainContent.style.display = 'flex';
         if (actionPanelContainer) actionPanelContainer.style.display = 'flex';
         if (footerText) footerText.style.display = 'block';
+        setRulesButtonVisible(false);
 
+        rideToFloorOne();
+    }
+
+    // Lobby to the 1st floor: the opening ride, and the ride back after every fall.
+    // The session clock starts when floor 1 first appears and then keeps running.
+    function rideToFloorOne() {
+        gameState = 'animating';
         currentFloor = 1;
-
-        // Show floor 1 in the HUD, ride up from the lobby, then start the clock and load the floor.
+        selectedTiles = [];
+        if (statusMessage) statusMessage.textContent = '';
         if (floorNumVal) floorNumVal.innerHTML = getOrdinalFloorHTML(1);
         renderTowerStack(1);
+
         const rideMs = liftFirstRideDone ? LIFT_RISE_MS : LIFT_OPENING_MS;
         liftFirstRideDone = true;
         rideThen(rideMs, () => {
-            startSessionTimer();
-            loadFloor(currentFloor);
+            if (!timerInterval) startSessionTimer();
+            loadFloor(1);
         });
     }
 
     function loadFloor(floorNum) {
         currentFloor = floorNum;
+        gameState = 'playing';
         if (floorNumVal) {
             floorNumVal.innerHTML = getOrdinalFloorHTML(currentFloor);
         }
@@ -411,12 +489,10 @@ function playLiftRide(durationMs, onArrive, options) {
         remainingGroups = floorConfig.groups.map(g => ({ ...g }));
 
         if (puzzlePrompt) {
-            if (currentFloor <= 4) {
-                puzzlePrompt.textContent = "Select 3 tiles matching the active target cluster.";
-            } else if (currentFloor >= 5 && currentFloor <= 9) {
-                puzzlePrompt.textContent = "Select 3 tiles matching the active target cluster.";
-            } else if (currentFloor === 10) {
+            if (currentFloor === 10) {
                 puzzlePrompt.textContent = "Select 4 tiles matching the active target cluster.";
+            } else {
+                puzzlePrompt.textContent = "Select 3 tiles matching the active target cluster.";
             }
         }
 
@@ -524,12 +600,13 @@ function playLiftRide(durationMs, onArrive, options) {
 
                 if (remainingGroups.length === 0) {
                     if (currentFloor < 10) {
-                        const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
-                        if (statusMessage) statusMessage.textContent = `${ordinals[currentFloor - 1].toUpperCase()} FLOOR CLEARED. ADVANCING...`;
+                        if (statusMessage) statusMessage.textContent = `${ordinal(currentFloor).toUpperCase()} FLOOR CLEARED. ADVANCING...`;
+                        gameState = 'animating';
                         setTimeout(() => {
                             rideThen(LIFT_RISE_MS, () => loadFloor(currentFloor + 1));
                         }, 900);
                     } else {
+                        gameState = 'animating';
                         rideThen(LIFT_VICTORY_MS, () => {
                             stopSessionTimer();
                             recordGameResult(true, 11);
@@ -540,14 +617,34 @@ function playLiftRide(durationMs, onArrive, options) {
                     setupNextStageClue();
                     renderGrid();
                 }
-            }, 600);
+            }, CORRECT_FLASH_MS);
 
         } else {
-            triggerHaptic([80, 50, 120]);
-            stopSessionTimer();
-            recordGameResult(false, currentFloor);
-            handleGameOver('INCORRECT SELECTION');
+            // v0.5: first wrong selection of the session, on any attempt
+            if (firstWrongFloor === null) {
+                firstWrongFloor = currentFloor;
+            }
+            handleFall('wrong', 'INCORRECT — DROPPED TO GROUND FLOOR');
         }
+    }
+
+    // v0.5: a fall. No pop-up: show the message, mark the floor red, then ride back to the
+    // 1st floor. The session clock keeps running. type is 'wrong' or 'timeout'.
+    function handleFall(type, message) {
+        stopStageTimer();
+        gameState = 'penalty';
+        triggerHaptic([80, 50, 120]);
+        if (btnSubmit) btnSubmit.disabled = true;
+
+        renderTowerStack(0, currentFloor);
+        if (statusMessage) statusMessage.textContent = message;
+
+        recordGameResult(false, currentFloor, type);
+        attemptsToday++;
+
+        setTimeout(() => {
+            rideToFloorOne();
+        }, FALL_PAUSE_MS);
     }
 
     function appendSolvedCard(group) {
@@ -561,22 +658,6 @@ function playLiftRide(durationMs, onArrive, options) {
         solvedGroupsContainer.appendChild(card);
     }
 
-    function handleGameOver(reason) {
-        stopSessionTimer();
-        stopStageTimer();
-        gameState = 'penalty';
-
-        const gameOverTitle = document.getElementById('game-over-title');
-        const gameOverMsg = document.getElementById('game-over-message');
-        const finalFloor = document.getElementById('final-floor-reached');
-
-        if (gameOverTitle) gameOverTitle.textContent = "ELEVATOR STOPPED";
-        if (gameOverMsg) gameOverMsg.textContent = reason;
-        if (finalFloor) finalFloor.innerHTML = `Stopped at ${getFailedOrdinalFloorHTML(currentFloor)}`;
-
-        if (gameOverModal) gameOverModal.classList.remove('hidden');
-    }
-
     function renderVictory() {
         stopSessionTimer();
         stopStageTimer();
@@ -588,15 +669,29 @@ function playLiftRide(durationMs, onArrive, options) {
         if (clueBanner) clueBanner.style.display = 'none';
         if (mainContent) mainContent.style.display = 'none';
         if (actionPanelContainer) actionPanelContainer.style.display = 'none';
+        if (activeGameTimer) activeGameTimer.style.display = 'none';
         if (footerText) footerText.style.display = 'none';
+        if (statusMessage) statusMessage.textContent = '';
 
         triggerHaptic([50, 50, 50, 50, 100]);
 
-        const formattedTime = formatTime(timeElapsedSeconds);
-        const stats = getStats();
+        const badgeDisplay = document.getElementById('receipt-badge-display');
+        const dateDisplay = document.getElementById('receipt-date-display');
+        const runSummaryDisplay = document.getElementById('victory-run-summary-display');
 
-        if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
-        if (victoryStreakDisplay) victoryStreakDisplay.textContent = `${stats.streak} Days`;
+        if (victoryTimeDisplay) victoryTimeDisplay.textContent = formatTime(timeElapsedSeconds);
+        if (dateDisplay) dateDisplay.textContent = getFormattedDateString();
+
+        // v0.5: attempt line reads "on 1st attempt", "on 2nd attempt", ...
+        if (badgeDisplay) badgeDisplay.textContent = `on ${ordinal(attemptsToday)} attempt`;
+
+        // v0.5: Accuracy. Green 10/10 = no wrong selection all session.
+        // Otherwise red = floor of the first wrong selection, green 10.
+        if (runSummaryDisplay) {
+            const left = firstWrongFloor === null ? '10' : String(firstWrongFloor);
+            const leftColour = firstWrongFloor === null ? 'var(--state-success)' : 'var(--state-error)';
+            runSummaryDisplay.innerHTML = `<span style="color: ${leftColour};">${left}</span><span style="color: var(--text-muted);">/</span><span style="color: var(--state-success);">10</span>`;
+        }
 
         if (victoryScreen) victoryScreen.style.display = 'flex';
     }
@@ -614,29 +709,44 @@ function playLiftRide(durationMs, onArrive, options) {
         });
     }
 
+    // v0.5: batches of 5, stops at the first batch with a missing file
     async function populateVault() {
         if (!vaultList) return;
         vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
-        
-        const fetchPromises = [];
-        for (let i = 1; i <= 100; i++) {
-            const paddedId = String(i).padStart(2, '0');
-            fetchPromises.push(fetchFileWithFallbacks(`clusters-${paddedId}.json`).then(data => ({ id: paddedId, data })));
-        }
 
-        const results = await Promise.all(fetchPromises);
+        const BATCH_SIZE = 5;
+        const MAX_ARCHIVES = 100;
         const buttons = [];
+        let currentId = 1;
 
-        results.forEach(({ id, data }) => {
-            if (data) {
-                const btn = document.createElement('button');
-                btn.className = 'vault-item-btn';
-                btn.innerHTML = `<strong>Archive ${id}</strong>`;
-                btn.onpointerdown = () => triggerHaptic(15);
-                btn.onclick = () => loadVaultArchive(id, data);
-                buttons.push(btn);
+        while (currentId <= MAX_ARCHIVES) {
+            const batchPromises = [];
+            for (let i = 0; i < BATCH_SIZE && (currentId + i) <= MAX_ARCHIVES; i++) {
+                const paddedId = String(currentId + i).padStart(2, '0');
+                batchPromises.push(
+                    fetchFileWithFallbacks(`clusters-${paddedId}.json`).then(data => ({ id: paddedId, data }))
+                );
             }
-        });
+
+            const batchResults = await Promise.all(batchPromises);
+            let missingFound = false;
+
+            batchResults.forEach(({ id, data }) => {
+                if (data) {
+                    const btn = document.createElement('button');
+                    btn.className = 'vault-item-btn';
+                    btn.innerHTML = `<strong>Archive ${id}</strong>`;
+                    btn.onpointerdown = () => triggerHaptic(15);
+                    btn.onclick = () => loadVaultArchive(id, data);
+                    buttons.push(btn);
+                } else {
+                    missingFound = true;
+                }
+            });
+
+            if (missingFound) break;
+            currentId += BATCH_SIZE;
+        }
 
         vaultList.innerHTML = '';
         if (buttons.length === 0) {
@@ -654,7 +764,8 @@ function playLiftRide(durationMs, onArrive, options) {
         }
     }
 
-    function recordGameResult(isWin, peakFloor) {
+    // v0.5: failType is 'wrong' or 'timeout' for falls, ignored for wins
+    function recordGameResult(isWin, peakFloor, failType) {
         const stats = getStats();
         stats.played++;
         if (isWin) {
@@ -665,30 +776,40 @@ function playLiftRide(durationMs, onArrive, options) {
             }
         } else {
             stats.streak = 0;
+            const key = String(peakFloor);
+            if (!stats.fallsByFloor[key]) stats.fallsByFloor[key] = { wrong: 0, timeout: 0 };
+            stats.fallsByFloor[key][failType === 'timeout' ? 'timeout' : 'wrong']++;
+            stats.totalFalls = (stats.totalFalls || 0) + 1;
         }
 
         if (peakFloor > stats.bestFloor) {
             stats.bestFloor = peakFloor;
         }
 
-        try {
-            localStorage.setItem(STATS_KEY, JSON.stringify(stats));
-        } catch (e) {
-            console.warn("LocalStorage save blocked.");
+        if (!debugMode) { // v0.5: debug never touches real stats
+            try {
+                localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+            } catch (e) {
+                console.warn("LocalStorage save blocked.");
+            }
         }
         updateStatsDisplay();
         return stats;
     }
 
+    function defaultStats() {
+        return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null, fallsByFloor: {}, totalFalls: 0 };
+    }
+
     function getStats() {
         try {
             const raw = localStorage.getItem(STATS_KEY);
-            if (!raw) {
-                return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
-            }
-            return JSON.parse(raw);
+            if (!raw) return defaultStats();
+            const merged = { ...defaultStats(), ...JSON.parse(raw) };
+            if (!merged.fallsByFloor || typeof merged.fallsByFloor !== 'object') merged.fallsByFloor = {};
+            return merged;
         } catch (e) {
-            return { played: 0, wins: 0, streak: 0, bestFloor: 1, bestTimeSeconds: null };
+            return defaultStats();
         }
     }
 
@@ -700,20 +821,40 @@ function playLiftRide(durationMs, onArrive, options) {
         const streakElem = document.getElementById('stat-streak');
         const bestfloorElem = document.getElementById('stat-bestfloor');
         const besttimeElem = document.getElementById('stat-besttime');
+        const fallsElem = document.getElementById('stat-falls');
 
         if (playedElem) playedElem.textContent = stats.played;
         if (winsElem) winsElem.textContent = stats.wins;
-        
+
         const winRate = stats.played > 0 ? Math.round((stats.wins / stats.played) * 100) : 0;
         if (winrateElem) winrateElem.textContent = `${winRate}%`;
         if (streakElem) streakElem.textContent = stats.streak;
-        
+
         if (bestfloorElem) {
             bestfloorElem.innerHTML = getOrdinalFloorHTML(stats.bestFloor);
         }
 
         if (besttimeElem) {
             besttimeElem.textContent = formatTime(stats.bestTimeSeconds);
+        }
+
+        // v0.5: falls by floor (wrong selection or timeout)
+        if (fallsElem) {
+            const by = stats.fallsByFloor || {};
+            const floors = Object.keys(by).map(Number).sort((a, b) => a - b);
+            if (floors.length === 0) {
+                fallsElem.innerHTML = '';
+                fallsElem.style.display = 'none';
+            } else {
+                fallsElem.style.display = 'block';
+                fallsElem.innerHTML = '<div class="falls-title">Falls by floor</div>' + floors.map(f => {
+                    const rec = by[f] || {};
+                    const parts = [];
+                    if (rec.wrong) parts.push(`${rec.wrong} wrong`);
+                    if (rec.timeout) parts.push(`${rec.timeout} timeout`);
+                    return `<div class="falls-row"><span>${ordinal(f)} Floor</span><span>${parts.join(' · ')}</span></div>`;
+                }).join('');
+            }
         }
     }
 
