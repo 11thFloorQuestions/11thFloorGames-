@@ -15,7 +15,7 @@
  *  - Flash after a correct cluster is 0.4s (was 0.6s)
  *  - Archive list loads in batches of 5 instead of 100 requests at once
  *  - "?" rules pop-up, landing screen only
- *  - Debug switch: clusters.html?debug=win&attempt=3&fail=4&time=92
+ *  - Debug switches: ?debug=win, ?debug=ride, ?debug=floor&n=3 (see runDebugSwitch)
  * ============================================================================
  */
 
@@ -289,10 +289,12 @@ function playLiftRide(durationMs, onArrive, options) {
         runDebugSwitch();
     }
 
-    // v0.5: jump straight to the victory screen for testing.
-    // Example: clusters.html?debug=win&attempt=3&fail=4&time=92
+    // v0.5: test shortcuts. Nothing is saved to real stats. REMOVE OR LOCK BEFORE LAUNCH.
+    //   clusters.html?debug=win&attempt=3&fail=4&time=92   victory screen straight away
+    //   clusters.html?debug=ride&attempt=1&time=92         the victory lift ride, then the receipt
+    //   clusters.html?debug=floor&n=3                      start on floor 3 (no lift, clock running)
     // attempt = which attempt it was, fail = floor of first wrong selection (omit for clean run),
-    // time = seconds. Nothing is saved to real stats. REMOVE OR LOCK BEFORE LAUNCH.
+    // time = seconds, n = floor number 1 to 10.
     function runDebugSwitch() {
         let params;
         try {
@@ -300,12 +302,14 @@ function playLiftRide(durationMs, onArrive, options) {
         } catch (e) {
             return;
         }
-        if (params.get('debug') !== 'win') return;
+        const mode = params.get('debug');
+        if (mode !== 'win' && mode !== 'ride' && mode !== 'floor') return;
 
         debugMode = true;
         const attempt = parseInt(params.get('attempt'), 10);
         const fail = parseInt(params.get('fail'), 10);
         const time = parseInt(params.get('time'), 10);
+        const n = parseInt(params.get('n'), 10);
 
         attemptsToday = attempt > 0 ? attempt : 1;
         firstWrongFloor = fail >= 1 && fail <= 10 ? fail : null;
@@ -313,7 +317,31 @@ function playLiftRide(durationMs, onArrive, options) {
 
         setRulesButtonVisible(false);
         if (startScreen) startScreen.style.display = 'none';
-        renderVictory();
+
+        if (mode === 'win') {
+            renderVictory();
+        } else if (mode === 'ride') {
+            showGameChrome();
+            rideThen(LIFT_VICTORY_MS, () => renderVictory(), { victory: true });
+        } else {
+            showGameChrome();
+            startSessionTimer();
+            loadFloor(n >= 1 && n <= 10 ? n : 1);
+        }
+    }
+
+    // Shows the in-game screen (HUD, clue banner, puzzle area, buttons).
+    function showGameChrome() {
+        if (startScreen) startScreen.style.display = 'none';
+        if (victoryScreen) victoryScreen.style.display = 'none';
+        if (floorHudContainer) floorHudContainer.style.display = 'flex';
+        if (gameplayHeader) gameplayHeader.style.display = 'flex';
+        if (timerBarWrapper) timerBarWrapper.style.display = 'block';
+        if (clueBanner) clueBanner.style.display = 'block';
+        if (mainContent) mainContent.style.display = 'flex';
+        if (actionPanelContainer) actionPanelContainer.style.display = 'flex';
+        if (footerText) footerText.style.display = 'block';
+        setRulesButtonVisible(false);
     }
 
     function setRulesButtonVisible(visible) {
@@ -432,16 +460,7 @@ function playLiftRide(durationMs, onArrive, options) {
         attemptsToday = 1;
         firstWrongFloor = null;
 
-        if (startScreen) startScreen.style.display = 'none';
-        if (victoryScreen) victoryScreen.style.display = 'none';
-        if (floorHudContainer) floorHudContainer.style.display = 'flex';
-        if (gameplayHeader) gameplayHeader.style.display = 'flex';
-        if (timerBarWrapper) timerBarWrapper.style.display = 'block';
-        if (clueBanner) clueBanner.style.display = 'block';
-        if (mainContent) mainContent.style.display = 'flex';
-        if (actionPanelContainer) actionPanelContainer.style.display = 'flex';
-        if (footerText) footerText.style.display = 'block';
-        setRulesButtonVisible(false);
+        showGameChrome();
 
         rideToFloorOne();
     }
