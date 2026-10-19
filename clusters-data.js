@@ -5,6 +5,8 @@
  * Standard: Strict UK English spelling & terms.
  * Protocol: Strict Mutual Domain Isolation, Zero Overlap with Sets 01-04.
  * Set ID: Set 05 | Date: 2026-10-15
+ * v0.5 edits: floor 3 distractors AUGER and CUTTER replaced (both are real
+ * woodworking tools, so they made the floor unfair); floor 5 SESTET -> SEXTET.
  * ============================================================================
  */
 
@@ -33,7 +35,7 @@ window.CLUSTERS_DATA = {
 
       // Floor 03: Astronomical Events + Handheld Woodworking Tools (Distractors: Plumbing Repair Tools)
       3: {
-        tiles: ["ECLIPSE", "SUPERNOVA", "AURORA", "CHISEL", "MALLET", "FILE", "PLUNGER", "WRENCH", "SNAKE", "CRIMP", "AUGER", "CUTTER"],
+        tiles: ["ECLIPSE", "SUPERNOVA", "AURORA", "CHISEL", "MALLET", "FILE", "PLUNGER", "WRENCH", "SNAKE", "CRIMP", "SOLDER", "FLUX"],
         groups: [
           { words: ["ECLIPSE", "SUPERNOVA", "AURORA"], category: "Astronomical events and phenomena", clue: "Space Phenomena" },
           { words: ["CHISEL", "MALLET", "FILE"], category: "Handheld woodworking tools", clue: "Woodworking Tools" }
@@ -51,9 +53,9 @@ window.CLUSTERS_DATA = {
 
       // Floor 05: Musical Ensembles + Structural Bridge Types + Espresso Drinks (Distractors: Garden Plants)
       5: {
-        tiles: ["QUARTET", "SESTET", "OCTET", "SUSPENSION", "ARCH", "CANTILEVER", "ESPRESSO", "LATTE", "CAPPUCCINO", "FERN", "HOSTA", "IVY"],
+        tiles: ["QUARTET", "SEXTET", "OCTET", "SUSPENSION", "ARCH", "CANTILEVER", "ESPRESSO", "LATTE", "CAPPUCCINO", "FERN", "HOSTA", "IVY"],
         groups: [
-          { words: ["QUARTET", "SESTET", "OCTET"], category: "Musical group sizes", clue: "Musical Ensembles" },
+          { words: ["QUARTET", "SEXTET", "OCTET"], category: "Musical group sizes", clue: "Musical Ensembles" },
           { words: ["SUSPENSION", "ARCH", "CANTILEVER"], category: "Structural bridge designs", clue: "Bridge Types" },
           { words: ["ESPRESSO", "LATTE", "CAPPUCCINO"], category: "Espresso-based coffee drinks", clue: "Coffee Drinks" }
         ]
