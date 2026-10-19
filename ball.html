@@ -276,6 +276,11 @@
         .vault-item-btn:hover { border-color: #ffffff; }
         .btn-modal { width: 100%; background-color: #111111; border: 1px solid var(--surface-border-light); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
 
+        /* Rules pop-up */
+        .rules-body { text-align: left; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 600; line-height: 1.5; color: #d4d4d4; margin-bottom: 4px; }
+        .rules-body p { margin-bottom: 10px; }
+        .rules-body strong { color: #ffffff; font-weight: 800; }
+
         /* IN-GAME VICTORY RECEIPT CARD STYLING (v0.5: minimal, same shape in every game) */
         .victory-receipt-card {
             width: 100%;
@@ -493,6 +498,7 @@
     <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 100%;">
         <div class="top-bar">
             <a href="index.html" class="pill-btn">← LOBBY</a>
+            <button class="pill-btn" id="btn-rules" aria-label="How to play">?</button>
             <button class="pill-btn" id="btn-sound-toggle">SOUND: ON</button>
         </div>
 
@@ -521,7 +527,7 @@
 
                 <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
                     <strong>CAN YOU REACH THE 11TH FLOOR?</strong><br><br>
-                    Answer expert Premier League trivia to climb through 10 floors. One mistake and you drop back to Ground Floor.
+                    Answer the Daily Football Quiz to climb through 10 floors. One mistake and you drop back to Ground Floor.
                 </div>
 
                 <div style="display: flex; gap: 8px; margin-top: 4px;">
@@ -656,13 +662,28 @@
         </div>
     </div>
 
+    <div id="modal-rules" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-sub-header"><span style="color: #ffffff;">THINK YOU KNOW</span> BALL?</div>
+            <div class="modal-main-title">HOW TO PLAY</div>
+            <div class="rules-body">
+                <p>Answer 10 questions to climb from the <strong>1st floor</strong> to the <strong>11th</strong>. You get 20 seconds for each.</p>
+                <p>A wrong answer or running out of time drops you to <strong>Ground Floor</strong>. Then you try again.</p>
+                <p><strong>The clock</strong> starts at your first question and never stops, retries included.</p>
+                <p><strong>Accuracy:</strong> a green 10/10 means you never gave a wrong answer. If you did, the red number is the floor you first got wrong. Running out of time isn't a wrong answer.</p>
+                <p><strong>Stats</strong> are saved on this device only.</p>
+            </div>
+            <button id="btn-close-rules" class="btn-modal">GOT IT</button>
+        </div>
+    </div>
+
     <div id="modal-game-over" class="modal-overlay hidden">
         <div class="modal-card">
             <h2 id="game-over-title">ELEVATOR STOPPED</h2>
             <p id="game-over-message"></p>
             <p id="final-floor-reached"></p>
             <button id="btn-try-again" class="btn-modal" style="background: var(--genre-pitch); color: #000000;">TRY AGAIN</button>
-            <button id="btn-back-vault" class="btn-modal">VAULT</button>
+            <button id="btn-back-vault" class="btn-modal">BASEMENT</button>
         </div>
     </div>
 
