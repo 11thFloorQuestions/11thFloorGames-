@@ -1,81 +1,79 @@
 {
-  "setId": "33",
-  "title": "Think You Know Ball? - Set 33",
+  "setId": "34",
+  "title": "Think You Know Ball? - Set 34",
   "questions": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Which club sits bottom of the Premier League table Today Sun 18th Oct 2026?",
+      "question": "Which club sits 3rd in the Premier League table today, Monday 19th October 2026?",
       "options": [
-        "Spurs",
-        "Ipswich",
-        "Arsenal",
-        "Hull City"
+        "Chelsea",
+        "Liverpool",
+        "Brighton"
       ],
-      "answer": "Spurs",
-      "explanation": "Spurs sit at the bottom of the Premier League table today, Sunday 18th October 2026.",
-      "anchorClues": "Premier League bottom table Sunday 18th October 2026 Spurs"
+      "answer": "Brighton",
+      "explanation": "Brighton sits 3rd in the Premier League table today, Monday 19th October 2026.",
+      "anchorClues": "Premier League 3rd place table Monday 19th October 2026 Brighton"
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which former Leicester City, Birmingham City, and Blackburn Rovers player celebrates his birthday today?",
+      "question": "Which former Bolton and England manager celebrates his 72nd birthday today?",
       "options": [
-        "Robbie Savage",
-        "Robbie Fowler",
-        "Robbie Williams",
-        "Robbie Keane"
+        "Sam Allardyce",
+        "Fabio Capello",
+        "Steve McClaren"
       ],
-      "answer": "Robbie Savage",
-      "explanation": "Former Leicester City, Birmingham City, and Blackburn Rovers midfielder Robbie Savage celebrates his birthday today.",
-      "anchorClues": "Leicester City Birmingham Blackburn Robbie Savage birthday today"
+      "answer": "Sam Allardyce",
+      "explanation": "Former Bolton Wanderers and England manager Sam Allardyce celebrates his 72nd birthday today.",
+      "anchorClues": "Bolton England manager 72nd birthday today Sam Allardyce"
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Who is the current manager of Chelsea?",
+      "question": "Who is the current manager of Coventry City?",
       "options": [
-        "Xabi Alonso",
-        "Fernando Alonso",
-        "Cesc Fàbregas",
+        "Frank Lampard",
+        "Thomas Frank",
+        "Unai Emery",
         "Enzo Maresca"
       ],
-      "answer": "Xabi Alonso",
-      "explanation": "Xabi Alonso is the current manager in charge at Chelsea.",
-      "anchorClues": "Chelsea current manager Xabi Alonso"
+      "answer": "Frank Lampard",
+      "explanation": "Frank Lampard is the current manager in charge at Coventry City.",
+      "anchorClues": "Coventry City current manager Frank Lampard"
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Liverpool beat Brentford yesterday (Saturday) 2–1. Who scored Liverpool's winner?",
+      "question": "Arsenal beat Nottingham Forest yesterday (Sunday). Who scored the only goal of the game?",
       "options": [
-        "Alexander Isak",
-        "Peter Crouch",
-        "Cody Gakpo",
-        "Darwin Núñez"
+        "Noni Madueke",
+        "Bukayo Saka",
+        "Gabriel Martinelli",
+        "Kai Havertz"
       ],
-      "answer": "Alexander Isak",
-      "explanation": "Alexander Isak scored the winning goal for Liverpool in their 2–1 victory over Brentford.",
-      "anchorClues": "Liverpool Brentford 2 1 Saturday Alexander Isak winner"
+      "answer": "Noni Madueke",
+      "explanation": "Noni Madueke scored the only goal of the game in Arsenal's 1–0 victory over Nottingham Forest.",
+      "anchorClues": "Arsenal Nottingham Forest winner Noni Madueke Sunday"
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Fulham beat Hull City yesterday (Saturday). What was the score?",
+      "question": "Brighton & Hove Albion thrashed a pitiful Crystal Palace yesterday (Sunday). What was the score?",
       "options": [
-        "1–0 Win",
-        "2–1 Win",
-        "2–0 Win",
-        "3–1 Win"
+        "5–0 Win",
+        "4–0 Win",
+        "6–0 Win",
+        "7–0 Win"
       ],
-      "answer": "1–0 Win",
-      "explanation": "Fulham secured a 1–0 victory over Hull City yesterday.",
-      "anchorClues": "Fulham beat Hull City Saturday score 1 0"
+      "answer": "5–0 Win",
+      "explanation": "Brighton secured a dominant 5–0 victory over Crystal Palace yesterday.",
+      "anchorClues": "Brighton thrash Crystal Palace Sunday score 5 0"
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "On this day in history (2002), a 16-year-old Wayne Rooney announced himself to the world by scoring a sensational 90th-minute winner for Everton against which team?",
+      "question": "On this day in history (19th October 2002), a 16-year-old Wayne Rooney announced himself to the world by scoring a sensational 90th-minute winner for Everton against which team?",
       "options": [
         "Arsenal",
         "Manchester United",
@@ -89,58 +87,58 @@
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Kaoru Mitoma wears which squad number for Brighton & Hove Albion this season?",
+      "question": "Ismaïla Sarr wears which squad number for Crystal Palace this season?",
       "options": [
         "7",
-        "9",
         "10",
+        "9",
         "11"
       ],
       "answer": "7",
-      "explanation": "Kaoru Mitoma wears the number 7 shirt for Brighton & Hove Albion.",
-      "anchorClues": "Kaoru Mitoma Brighton squad number 7"
+      "explanation": "Ismaïla Sarr wears the number 7 shirt for Crystal Palace.",
+      "anchorClues": "Ismaila Sarr Crystal Palace squad number 7"
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Out of the 20 football clubs currently in the Premier League, which was most recently formed (in 1919)?",
+      "question": "Out of the 20 football clubs currently in the Premier League, which was formed first (in 1865)?",
       "options": [
-        "Leeds United",
-        "Coventry City",
-        "Ipswich Town",
-        "Chelsea"
+        "Nottingham Forest",
+        "Arsenal",
+        "Aston Villa",
+        "Manchester United"
       ],
-      "answer": "Leeds United",
-      "explanation": "Founded in 1919 following the disbanding of Leeds City, Leeds United is the most recently formed club of the group.",
-      "anchorClues": "Most recently formed Premier League club 1919 Leeds United"
+      "answer": "Nottingham Forest",
+      "explanation": "Founded in 1865, Nottingham Forest is the oldest club of the group.",
+      "anchorClues": "Oldest Premier League club formed 1865 Nottingham Forest"
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "How many Premier League titles has Arsenal won?",
+      "question": "How many Premier League titles has Thierry Henry won?",
       "options": [
         "2",
         "3",
         "4",
-        "5"
+        "1"
       ],
-      "answer": "4",
-      "explanation": "Arsenal has won 4 Premier League titles.",
-      "anchorClues": "Arsenal Premier League titles won 4"
+      "answer": "2",
+      "explanation": "Thierry Henry won 2 Premier League titles with Arsenal (2001–02 and 2003–04).",
+      "anchorClues": "Thierry Henry Premier League titles won 2"
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Who scored the lobbed chip over Peter Schmeichel to cap off Newcastle's iconic 5–0 win over Manchester United in 1996?",
+      "question": "Olivier Giroud scored an iconic scorpion kick off the crossbar for Arsenal against Crystal Palace on New Year's Day 2017. Who provided the cross?",
       "options": [
-        "Philippe Albert",
-        "David Ginola",
-        "Les Ferdinand",
-        "Rob Lee"
+        "Alexis Sánchez",
+        "Mesut Özil",
+        "Alexandre Lacazette",
+        "Héctor Bellerín"
       ],
-      "answer": "Philippe Albert",
-      "explanation": "Belgian defender Philippe Albert delicately chipped Peter Schmeichel to complete Newcastle's famous 5–0 victory.",
-      "anchorClues": "Philippe Albert Newcastle Manchester United 5 0 chip Schmeichel 1996"
+      "answer": "Alexis Sánchez",
+      "explanation": "Alexis Sánchez delivered the cross that Olivier Giroud famously turned in with a scorpion kick.",
+      "anchorClues": "Olivier Giroud scorpion kick assist Alexis Sanchez Arsenal 2017"
     }
   ]
 }
