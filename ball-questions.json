@@ -1,93 +1,88 @@
 {
-  "setId": "34",
-  "title": "Think You Know Ball? - Set 34",
+  "setId": "35",
+  "title": "Think You Know Ball? - Set 35",
   "questions": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Which club sits 3rd in the Premier League table today, Monday 19th October 2026?",
+      "question": "Who are currently bottom of the Premier League table Today Tues 20th Oct 2026.",
       "options": [
-        "Chelsea",
-        "Liverpool",
-        "Brighton"
+        "Sunderland",
+        "Tottenham Hotspur",
+        "Coventry",
+        "Ipswich"
       ],
-      "answer": "Brighton",
-      "explanation": "Brighton sits 3rd in the Premier League table today, Monday 19th October 2026.",
-      "anchorClues": "Premier League 3rd place table Monday 19th October 2026 Brighton"
+      "answer": "Sunderland",
+      "explanation": "Sunderland's official nickname, 'The Black Cats,' was adopted in 2000 after a fan vote, referencing a famous gun battery at the River Wear named after a local legend. Sunderland's Stadium of Light features a giant Davy miner's lamp outside the entrance to honor the region's rich coal-mining heritage."
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which former Bolton and England manager celebrates his 72nd birthday today?",
+      "question": "Which former Premier League winning manager celebrates his Birthday today?",
       "options": [
-        "Sam Allardyce",
-        "Fabio Capello",
-        "Steve McClaren"
+        "Claudio Ranieri",
+        "Pep Guardiola",
+        "Jurgen Klopp",
+        "Piers Morgan"
       ],
-      "answer": "Sam Allardyce",
-      "explanation": "Former Bolton Wanderers and England manager Sam Allardyce celebrates his 72nd birthday today.",
-      "anchorClues": "Bolton England manager 72nd birthday today Sam Allardyce"
+      "answer": "Claudio Ranieri",
+      "explanation": "Claudio Ranieri earned the famous nickname 'The Tinkerman' during his time at Chelsea due to his frequent rotation of starting lineups and tactics. Ranieri famously led Leicester City to the Premier League title in the 2015–16 season, overcoming preseason betting odds of 5,000-to-1."
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Who is the current manager of Coventry City?",
+      "question": "Who is the current Manager of Newcastle",
       "options": [
-        "Frank Lampard",
-        "Thomas Frank",
-        "Unai Emery",
-        "Enzo Maresca"
+        "Matthias Jaissle",
+        "Eddie Howe",
+        "Ant McPartlin",
+        "Alan Shearer"
       ],
-      "answer": "Frank Lampard",
-      "explanation": "Frank Lampard is the current manager in charge at Coventry City.",
-      "anchorClues": "Coventry City current manager Frank Lampard"
+      "answer": "Matthias Jaissle",
+      "explanation": "Matthias Jaissle transitioned into coaching at a very young age after a severe knee injury forced him to retire as a professional player at just 26 years old. Before moving to top-flight management in Western Europe, Jaissle made his name by winning back-to-back Austrian Bundesliga titles with Red Bull Salzburg."
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Arsenal beat Nottingham Forest yesterday (Sunday). Who scored the only goal of the game?",
+      "question": "Tottenham Hotspur beat Coventry last night (Mon,) what was the final score?",
       "options": [
-        "Noni Madueke",
-        "Bukayo Saka",
-        "Gabriel Martinelli",
-        "Kai Havertz"
+        "3- 1 win",
+        "2-1 win",
+        "2-0 win",
+        "5-0 win"
       ],
-      "answer": "Noni Madueke",
-      "explanation": "Noni Madueke scored the only goal of the game in Arsenal's 1–0 victory over Nottingham Forest.",
-      "anchorClues": "Arsenal Nottingham Forest winner Noni Madueke Sunday"
+      "answer": "3- 1 win",
+      "explanation": "Matches between Tottenham and Coventry always evoke memories of the iconic 1987 FA Cup Final, where Coventry won 3–2 in one of Wembley's greatest-ever finals. Tottenham's victory over Coventry marked their first Premier League win of the 2026–27 campaign after a 148-day winless streak."
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Brighton & Hove Albion thrashed a pitiful Crystal Palace yesterday (Sunday). What was the score?",
+      "question": "and in that game yesterday which player scored the opening goal ?",
       "options": [
-        "5–0 Win",
-        "4–0 Win",
-        "6–0 Win",
-        "7–0 Win"
+        "James Maddison",
+        "Omar Marmoush",
+        "Dominic Solanke",
+        "Jack Rudoni"
       ],
-      "answer": "5–0 Win",
-      "explanation": "Brighton secured a dominant 5–0 victory over Crystal Palace yesterday.",
-      "anchorClues": "Brighton thrash Crystal Palace Sunday score 5 0"
+      "answer": "James Maddison",
+      "explanation": "James Maddison actually began his professional career in Coventry City's youth academy, making his senior debut for the Sky Blues back in 2014. Maddison is known for his signature goal celebration, where he mimics throwing a dart—a nod to his passion for professional darts."
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "On this day in history (19th October 2002), a 16-year-old Wayne Rooney announced himself to the world by scoring a sensational 90th-minute winner for Everton against which team?",
+      "question": "Raheem Sterling's First Senior Goal (2012): A 17-year-old Raheem Sterling scored a brilliant winner for Liverpool against which Team? becoming the second-youngest goalscorer in Liverpool's history behind Michael Owen..",
       "options": [
-        "Arsenal",
-        "Manchester United",
-        "Liverpool",
-        "Chelsea"
+        "Reading",
+        "Middlesborough",
+        "Millwall"
       ],
-      "answer": "Arsenal",
-      "explanation": "Wayne Rooney scored a memorable late winner against Arsenal at Goodison Park in 2002.",
-      "anchorClues": "Wayne Rooney Everton winner Arsenal 2002 90th minute"
+      "answer": "Reading",
+      "explanation": "Sterling's goal against Reading made him the second-youngest player to score for Liverpool in the Premier League, behind only Michael Owen. Sterling won the prestigious European 'Golden Boy' award in 2014, recognizing him as the best under-21 player in Europe."
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Ismaïla Sarr wears which squad number for Crystal Palace this season?",
+      "question": "Kevin Keegan was handed which squad number Newcastle United debut in 1982?",
       "options": [
         "7",
         "10",
@@ -95,50 +90,46 @@
         "11"
       ],
       "answer": "7",
-      "explanation": "Ismaïla Sarr wears the number 7 shirt for Crystal Palace.",
-      "anchorClues": "Ismaila Sarr Crystal Palace squad number 7"
+      "explanation": "Keegan scored the match-winning goal on his Newcastle debut against Queens Park Rangers in August 1982, sparking 'Keegan Mania' on Tyneside. Keegan is one of the few English players to win the prestigious Ballon d'Or, winning back-to-back awards in 1978 and 1979 while playing for Hamburg."
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Out of the 20 football clubs currently in the Premier League, which was formed first (in 1865)?",
+      "question": "Out of the 20 football clubs currently in Premier league which club has the cheapest season tickets?",
       "options": [
-        "Nottingham Forest",
-        "Arsenal",
-        "Aston Villa",
-        "Manchester United"
+        "Hull City",
+        "Manchester City",
+        "Ipswich Town",
+        "Brentford"
       ],
-      "answer": "Nottingham Forest",
-      "explanation": "Founded in 1865, Nottingham Forest is the oldest club of the group.",
-      "anchorClues": "Oldest Premier League club formed 1865 Nottingham Forest"
+      "answer": "Hull City",
+      "explanation": "Hull City pioneered an innovative monthly membership scheme that dramatically reduced season ticket prices compared to standard Premier League rates. Hull City are famous for their unique nickname 'The Tigers' and remain the only club in the top divisions of English football whose name contains no letters that can be colored in (like O, P, B, Q, R, A, or D)."
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "How many Premier League titles has Thierry Henry won?",
+      "question": "How many Premier League titles has James Milner won?",
       "options": [
-        "2",
         "3",
+        "2",
         "4",
         "1"
       ],
-      "answer": "2",
-      "explanation": "Thierry Henry won 2 Premier League titles with Arsenal (2001–02 and 2003–04).",
-      "anchorClues": "Thierry Henry Premier League titles won 2"
+      "answer": "3",
+      "explanation": "Milner won two Premier League titles with Manchester City (2011–12, 2013–14) and one with Liverpool (2019–20). Milner is second on the all-time list for most Premier League appearances, having made his debut for Leeds United in 2002 at just 16 years old."
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Olivier Giroud scored an iconic scorpion kick off the crossbar for Arsenal against Crystal Palace on New Year's Day 2017. Who provided the cross?",
+      "question": "Which opposition team did Tottenham Hotspur crush 9–1 at White Hart Lane in 2009, featuring five goals from Jermain Defoe?",
       "options": [
-        "Alexis Sánchez",
-        "Mesut Özil",
-        "Alexandre Lacazette",
-        "Héctor Bellerín"
+        "Wigan Athletic",
+        "Derby County",
+        "Wolverhampton Wanderers",
+        "Reading"
       ],
-      "answer": "Alexis Sánchez",
-      "explanation": "Alexis Sánchez delivered the cross that Olivier Giroud famously turned in with a scorpion kick.",
-      "anchorClues": "Olivier Giroud scorpion kick assist Alexis Sanchez Arsenal 2017"
+      "answer": "Wigan Athletic",
+      "explanation": "Spurs scored eight goals in the second half to record their biggest top-flight victory."
     }
   ]
 }
