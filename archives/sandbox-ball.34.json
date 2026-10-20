@@ -1,0 +1,144 @@
+{
+  "setId": "34",
+  "title": "Think You Know Ball? - Set 34",
+  "questions": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "Which club sits 3rd in the Premier League table today, Monday 19th October 2026?",
+      "options": [
+        "Chelsea",
+        "Liverpool",
+        "Brighton"
+      ],
+      "answer": "Brighton",
+      "explanation": "Brighton sits 3rd in the Premier League table today, Monday 19th October 2026.",
+      "anchorClues": "Premier League 3rd place table Monday 19th October 2026 Brighton"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "Which former Bolton and England manager celebrates his 72nd birthday today?",
+      "options": [
+        "Sam Allardyce",
+        "Fabio Capello",
+        "Steve McClaren"
+      ],
+      "answer": "Sam Allardyce",
+      "explanation": "Former Bolton Wanderers and England manager Sam Allardyce celebrates his 72nd birthday today.",
+      "anchorClues": "Bolton England manager 72nd birthday today Sam Allardyce"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "Who is the current manager of Coventry City?",
+      "options": [
+        "Frank Lampard",
+        "Thomas Frank",
+        "Unai Emery",
+        "Enzo Maresca"
+      ],
+      "answer": "Frank Lampard",
+      "explanation": "Frank Lampard is the current manager in charge at Coventry City.",
+      "anchorClues": "Coventry City current manager Frank Lampard"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "Arsenal beat Nottingham Forest yesterday (Sunday). Who scored the only goal of the game?",
+      "options": [
+        "Noni Madueke",
+        "Bukayo Saka",
+        "Gabriel Martinelli",
+        "Kai Havertz"
+      ],
+      "answer": "Noni Madueke",
+      "explanation": "Noni Madueke scored the only goal of the game in Arsenal's 1–0 victory over Nottingham Forest.",
+      "anchorClues": "Arsenal Nottingham Forest winner Noni Madueke Sunday"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "Brighton & Hove Albion thrashed a pitiful Crystal Palace yesterday (Sunday). What was the score?",
+      "options": [
+        "5–0 Win",
+        "4–0 Win",
+        "6–0 Win",
+        "7–0 Win"
+      ],
+      "answer": "5–0 Win",
+      "explanation": "Brighton secured a dominant 5–0 victory over Crystal Palace yesterday.",
+      "anchorClues": "Brighton thrash Crystal Palace Sunday score 5 0"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "On this day in history (19th October 2002), a 16-year-old Wayne Rooney announced himself to the world by scoring a sensational 90th-minute winner for Everton against which team?",
+      "options": [
+        "Arsenal",
+        "Manchester United",
+        "Liverpool",
+        "Chelsea"
+      ],
+      "answer": "Arsenal",
+      "explanation": "Wayne Rooney scored a memorable late winner against Arsenal at Goodison Park in 2002.",
+      "anchorClues": "Wayne Rooney Everton winner Arsenal 2002 90th minute"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "Ismaïla Sarr wears which squad number for Crystal Palace this season?",
+      "options": [
+        "7",
+        "10",
+        "9",
+        "11"
+      ],
+      "answer": "7",
+      "explanation": "Ismaïla Sarr wears the number 7 shirt for Crystal Palace.",
+      "anchorClues": "Ismaila Sarr Crystal Palace squad number 7"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "Out of the 20 football clubs currently in the Premier League, which was formed first (in 1865)?",
+      "options": [
+        "Nottingham Forest",
+        "Arsenal",
+        "Aston Villa",
+        "Manchester United"
+      ],
+      "answer": "Nottingham Forest",
+      "explanation": "Founded in 1865, Nottingham Forest is the oldest club of the group.",
+      "anchorClues": "Oldest Premier League club formed 1865 Nottingham Forest"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "How many Premier League titles has Thierry Henry won?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "1"
+      ],
+      "answer": "2",
+      "explanation": "Thierry Henry won 2 Premier League titles with Arsenal (2001–02 and 2003–04).",
+      "anchorClues": "Thierry Henry Premier League titles won 2"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "Olivier Giroud scored an iconic scorpion kick off the crossbar for Arsenal against Crystal Palace on New Year's Day 2017. Who provided the cross?",
+      "options": [
+        "Alexis Sánchez",
+        "Mesut Özil",
+        "Alexandre Lacazette",
+        "Héctor Bellerín"
+      ],
+      "answer": "Alexis Sánchez",
+      "explanation": "Alexis Sánchez delivered the cross that Olivier Giroud famously turned in with a scorpion kick.",
+      "anchorClues": "Olivier Giroud scorpion kick assist Alexis Sanchez Arsenal 2017"
+    }
+  ]
+}
