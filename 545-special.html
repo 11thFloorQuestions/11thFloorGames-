@@ -28,12 +28,11 @@ body{background:var(--bg-deep);color:var(--text-primary);font-family:'Montserrat
 .game-logo-sub{font-size:.6rem;font-weight:700;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase}
 
 /* LANDING: three separate entrances, sized to fit one phone screen */
-.entrances{width:100%;max-width:600px;display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.entrances{width:100%;max-width:600px;display:flex;flex-direction:column;gap:8px;margin-top:14px}
 .mode-card{background:var(--surface);border:1px solid var(--surface-border-light);border-radius:8px;overflow:hidden}
 .mode-card.gaffer{border-top:0}
-.mode-card.gaffer .role{background:var(--genre-pitch);color:#000;border-bottom:0}
 .mode-card.group{border:1px dashed var(--genre-pitch)}
-.role{padding:4px 12px;font-size:.6rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--genre-pitch);border-bottom:1px solid var(--surface-border)}
+.role{padding:4px 12px;font-size:.6rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;background:var(--genre-pitch);color:#000}
 .card-body{padding:8px 12px 10px;display:flex;flex-direction:column;gap:8px}
 .card-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .card-text{display:flex;flex-direction:column;gap:3px;min-width:0}
@@ -124,7 +123,7 @@ body{background:var(--bg-deep);color:var(--text-primary);font-family:'Montserrat
 
   <div class="entrances">
     <div class="mode-card solo">
-      <div class="role">One player</div>
+      <div class="role">Single player</div>
       <div class="card-body">
         <div class="card-top">
           <div class="card-text"><span class="card-name">Solo Play</span><span class="mode-desc">45 questions &middot; race the clock</span></div>
