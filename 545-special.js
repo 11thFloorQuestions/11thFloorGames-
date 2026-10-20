@@ -1,341 +1,302 @@
 /**
- * Think You Know Ball? 5.45 Special
- * Application Logic & Controller
+ * Think You Know Ball? 5.45 Special — controller
+ * Three entrances (solo / gaffer / group), per-mode receipts, per-question recording.
  */
 
-let currentFloor = 0;
+// ---- Config ---------------------------------------------------------------
+const SHUFFLE_OPTIONS = false;          // set true before public launch (correct answer is options[0] in the data file)
+const GAME_ID = 'tyk_545';
+
+// ---- State ----------------------------------------------------------------
+let currentIndex = 0;
 let selectedMode = 'solo';
 let startTime = 0;
 let timerInterval = null;
 let timeElapsedSeconds = 0;
 let soundEnabled = true;
 let correctCount = 0;
-let dailyAttempts = 1;
 let isAnswering = false;
+let answerLog = [];                      // { q, picked, correct, right, t }
+
+const MODE_LABELS = { solo: 'SOLO', gaffer: 'GAFFER', group: 'GROUP' };
+
+const RULES = {
+    solo: {
+        title: 'HOW SOLO WORKS',
+        body: [
+            '<strong>Race the clock.</strong> Answer all 45 questions. Your score is out of 45 and your time is the tie-break, so be right and be quick.',
+            'One attempt per question, no going back. Your Victory Receipt shows your score first, then your time.'
+        ]
+    },
+    gaffer: {
+        title: 'HOW GAFFER WORKS',
+        body: [
+            '<strong>You are the Quiz Master.</strong> Read each question aloud to your friends, group, stream or pub. Tap Reveal Gaffer Fact for hints and banter.',
+            'Play through all 45 questions. Your total run time is the host time, and it is the headline on your Victory Receipt.',
+            'Gather your players\u2019 scores and share your receipt.'
+        ]
+    },
+    group: {
+        title: 'HOW GROUP PLAY WORKS',
+        body: [
+            '<strong>Listen to your Gaffer.</strong> The question is masked on your screen but the four answers stay. Lock in your answer as the host reads each question.',
+            'Your Victory Receipt shows your score out of 45 and your own time.'
+        ]
+    }
+};
 
 const fallbackQuestions = [
-    {
-        question: "Which club won the inaugural English Premier League title in 1992-93?",
-        options: ["Manchester United", "Aston Villa", "Blackburn Rovers", "Norwich City"],
-        answer: "Manchester United",
-        explanation: "Manchester United won by 10 clear points ahead of Aston Villa."
-    },
-    {
-        question: "Who holds the record for the most Premier League goals scored in a single 38-game season?",
-        options: ["Alan Shearer", "Erling Haaland", "Mohamed Salah", "Cristiano Ronaldo"],
-        answer: "Erling Haaland",
-        explanation: "Erling Haaland scored 36 goals in his debut 2022-23 Premier League season."
-    }
+    { question: 'Which club won the inaugural Premier League title in 1992\u201393?', options: ['Manchester United', 'Aston Villa', 'Blackburn Rovers', 'Norwich City'], answer: 'Manchester United', explanation: 'Placeholder.' }
 ];
 
 function getQuestions() {
-    if (typeof window.specialQuizQuestions !== 'undefined' && Array.isArray(window.specialQuizQuestions) && window.specialQuizQuestions.length > 0) {
-        return window.specialQuizQuestions;
-    }
-    if (typeof fullQuestions !== 'undefined' && Array.isArray(fullQuestions) && fullQuestions.length > 0) {
-        return fullQuestions;
-    }
-    if (typeof questions !== 'undefined' && Array.isArray(questions) && questions.length > 0) {
-        return questions;
-    }
+    if (typeof window.specialQuizQuestions !== 'undefined' && Array.isArray(window.specialQuizQuestions) && window.specialQuizQuestions.length) return window.specialQuizQuestions;
+    if (typeof fullQuestions !== 'undefined' && Array.isArray(fullQuestions) && fullQuestions.length) return fullQuestions;
     return fallbackQuestions;
 }
 
+// ---- Edition label (date based, UK time) ------------------------------------
+function ukDateParts() {
+    const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', day: '2-digit', month: 'short', year: 'numeric' });
+    const p = {};
+    fmt.formatToParts(new Date()).forEach(x => { p[x.type] = x.value; });
+    return p;
+}
+function editionKey() { const p = ukDateParts(); return `${p.year}-${p.month}-${p.day}`; }   // e.g. 2026-Oct-20
+function editionLabel() { const p = ukDateParts(); return `${parseInt(p.day, 10)} ${p.month.toUpperCase()}`; } // e.g. 20 OCT
+
+let EDITION = editionKey();              // fixed when a game starts, so a midnight finish keeps its edition
+const progressKey = () => `${GAME_ID}_progress_${EDITION}`;
+const attemptsKey = () => `${GAME_ID}_attempts_${EDITION}`;
+const logKey = () => `${GAME_ID}_log`;
+
+// ---- Helpers ----------------------------------------------------------------
+const $ = id => document.getElementById(id);
+const fmtTime = s => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+function lsDel(k) { try { localStorage.removeItem(k); } catch (e) {} }
+
+// ---- Landing ----------------------------------------------------------------
 window.addEventListener('DOMContentLoaded', () => {
     try {
-        const storedAttempts = localStorage.getItem('tyk_545_attempts_count');
-        if (storedAttempts) {
-            dailyAttempts = parseInt(storedAttempts, 10) || 1;
+        const saved = JSON.parse(lsGet(progressKey()) || 'null');
+        if (saved && typeof saved.index === 'number' && saved.index < getQuestions().length && MODE_LABELS[saved.mode]) {
+            const btn = $('resume-' + saved.mode);          // resume appears only on the mode in progress
+            if (btn) btn.style.display = 'block';
+        } else if (saved) {
+            lsDel(progressKey());
         }
-    } catch (e) {
-        dailyAttempts = 1;
-    }
+    } catch (e) { lsDel(progressKey()); }
 
-    try {
-        const savedState = localStorage.getItem('skyscraper_progress');
-        if (savedState) {
-            const data = JSON.parse(savedState);
-            const questionsList = getQuestions();
-            if (typeof data.floor === 'number' && data.floor < questionsList.length) {
-                const btnResume = document.getElementById('btn-resume-skyscraper');
-                if (btnResume) btnResume.style.display = 'block';
-            } else {
-                localStorage.removeItem('skyscraper_progress');
-            }
-        }
-    } catch (e) {
-        console.warn('LocalStorage structure reset:', e);
-        localStorage.removeItem('skyscraper_progress');
-    }
-
-    const shareBtn = document.getElementById('share-btn');
-    if (shareBtn) {
-        shareBtn.addEventListener('click', async () => {
-            const victoryCard = document.getElementById('victory-card');
-            const toast = document.getElementById('toast-msg');
-            
-            if (toast) {
-                toast.innerText = 'CAPTURING SCREENSHOT...';
-                toast.style.display = 'block';
-            }
-
-            if (victoryCard && typeof html2canvas !== 'undefined') {
-                try {
-                    const canvas = await html2canvas(victoryCard, { backgroundColor: '#111111', scale: 2 });
-                    canvas.toBlob(async (blob) => {
-                        if (toast) toast.style.display = 'none';
-                        if (!blob) return;
-                        const file = new File([blob], 'tykball-545-victory.png', { type: 'image/png' });
-
-                        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                            try {
-                                await navigator.share({ title: 'TYKB 5.45 Special Victory Card', files: [file] });
-                            } catch (e) {}
-                        } else {
-                            const a = document.createElement('a');
-                            a.href = URL.createObjectURL(file);
-                            a.download = 'tykball-545-victory.png';
-                            a.click();
-                        }
-                    }, 'image/png');
-                } catch (err) {
-                    if (toast) toast.style.display = 'none';
-                    console.error('Screenshot failed:', err);
-                }
-            } else if (toast) {
-                toast.style.display = 'none';
-            }
-        });
-    }
+    $('share-btn').addEventListener('click', shareReceipt);
 });
 
-window.toggleSound = function() {
+window.toggleSound = function () {
     soundEnabled = !soundEnabled;
-    const btn = document.getElementById('btn-sound-toggle');
-    if (btn) {
-        btn.innerText = soundEnabled ? 'SOUND: ON' : 'SOUND: OFF';
-    }
+    $('btn-sound-toggle').innerText = soundEnabled ? 'SOUND: ON' : 'SOUND: OFF';
 };
 
-window.openRulesModal = function() {
-    const modal = document.getElementById('rules-modal');
-    if (modal) modal.style.display = 'flex';
+window.openRulesModal = function (mode) {
+    const r = RULES[mode] || RULES.solo;
+    $('rules-title').innerText = r.title;
+    $('rules-body').innerHTML = r.body.map(t => `<p>${t}</p>`).join('');
+    $('rules-modal').style.display = 'flex';
 };
+window.closeRulesModal = function () { $('rules-modal').style.display = 'none'; };
 
-window.closeRulesModal = function() {
-    const modal = document.getElementById('rules-modal');
-    if (modal) modal.style.display = 'none';
-};
-
-window.selectMode = function(mode, element) {
+// ---- Start / resume ---------------------------------------------------------
+window.startGame = function (mode) {
     selectedMode = mode;
-    const buttons = document.querySelectorAll('.mode-option-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    if (element) {
-        element.classList.add('active');
-    }
+    EDITION = editionKey();
+    currentIndex = 0; correctCount = 0; timeElapsedSeconds = 0; answerLog = [];
+    initWorkspace();
 };
 
-window.startSkyscraperGame = function() {
-    currentFloor = 0;
-    correctCount = 0;
-    timeElapsedSeconds = 0;
-    initGameWorkspace();
-};
-
-window.resumeSkyscraperGame = function() {
+window.resumeGame = function (mode) {
     try {
-        const savedState = localStorage.getItem('skyscraper_progress');
-        if (savedState) {
-            const data = JSON.parse(savedState);
-            currentFloor = data.floor || 0;
-            correctCount = data.correct || 0;
-            timeElapsedSeconds = data.time || 0;
-            selectedMode = data.mode || 'solo';
+        const d = JSON.parse(lsGet(progressKey()) || 'null');
+        if (d) {
+            selectedMode = d.mode || mode;
+            currentIndex = d.index || 0;
+            correctCount = d.correct || 0;
+            timeElapsedSeconds = d.time || 0;
+            answerLog = Array.isArray(d.log) ? d.log : [];
         }
-    } catch (e) {
-        currentFloor = 0;
-        correctCount = 0;
-        timeElapsedSeconds = 0;
-    }
-    initGameWorkspace();
+    } catch (e) { return window.startGame(mode); }
+    initWorkspace();
 };
 
-function initGameWorkspace() {
-    const landing = document.getElementById('landing-screen');
-    const header = document.getElementById('gameplay-header');
-    const floorHud = document.getElementById('floor-hud-container');
-    const workspace = document.getElementById('game-workspace');
-    const victory = document.getElementById('victory-screen');
-
-    if (landing) landing.style.display = 'none';
-    if (victory) victory.style.display = 'none';
-    if (header) header.style.display = 'flex';
-    if (floorHud) floorHud.style.display = 'flex';
-    if (workspace) workspace.style.display = 'flex';
-
-    const modeText = document.getElementById('mode-badge-text');
-    if (modeText) {
-        modeText.innerText = `MODE: ${selectedMode.toUpperCase()}`;
-    }
-
+function initWorkspace() {
+    $('landing-screen').style.display = 'none';
+    $('victory-screen').style.display = 'none';
+    $('gameplay-header').style.display = 'flex';
+    $('floor-hud-container').style.display = 'flex';
+    $('game-workspace').style.display = 'flex';
+    $('mode-badge-text').innerText = `MODE: ${MODE_LABELS[selectedMode]}`;
     startTimer();
-    renderCurrentQuestion();
+    renderQuestion();
 }
 
 function startTimer() {
     clearInterval(timerInterval);
-    startTime = Date.now() - (timeElapsedSeconds * 1000);
+    startTime = Date.now() - timeElapsedSeconds * 1000;
     timerInterval = setInterval(() => {
         timeElapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-        const timerElem = document.getElementById('active-game-timer');
-        if (timerElem) {
-            const mins = String(Math.floor(timeElapsedSeconds / 60)).padStart(2, '0');
-            const secs = String(timeElapsedSeconds % 60).padStart(2, '0');
-            timerElem.innerText = `${mins}:${secs}`;
-        }
+        $('active-game-timer').innerText = fmtTime(timeElapsedSeconds);
     }, 1000);
 }
 
-function renderCurrentQuestion() {
-    const questionsList = getQuestions();
-    
-    if (currentFloor >= questionsList.length) {
-        finishGame();
-        return;
-    }
+// ---- Questions --------------------------------------------------------------
+function shuffled(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    return a;
+}
+
+function renderQuestion() {
+    const list = getQuestions();
+    if (currentIndex >= list.length) { finishGame(); return; }
 
     isAnswering = false;
-    const q = questionsList[currentFloor];
-    const qTextElem = document.getElementById('question-text');
-    const qBoxElem = document.getElementById('question-box');
-    const floorTextElem = document.getElementById('card-floor-text');
-    const btnFact = document.getElementById('btn-reveal-fact');
-    const factBox = document.getElementById('gaffer-fact-box');
-    const factText = document.getElementById('gaffer-fact-text');
+    const q = list[currentIndex];
+    const qBox = $('question-box'), btnFact = $('btn-reveal-fact');
 
-    if (floorTextElem) {
-        floorTextElem.innerHTML = `<span style="color: var(--genre-pitch);">Q${currentFloor + 1}</span> / ${questionsList.length}`;
-    }
-
-    if (factBox) factBox.style.display = 'none';
+    $('card-floor-text').innerHTML = `<span style="color:var(--genre-pitch)">Q${currentIndex + 1}</span> / ${list.length}`;
+    $('gaffer-fact-box').style.display = 'none';
 
     if (selectedMode === 'group') {
-        if (qTextElem) qTextElem.innerText = 'QUESTION MASKED — LISTEN TO YOUR GAFFER!';
-        if (qBoxElem) qBoxElem.classList.add('masked');
-        if (btnFact) btnFact.style.display = 'none';
+        $('question-text').innerText = 'QUESTION MASKED \u2014 LISTEN TO YOUR GAFFER!';
+        qBox.classList.add('masked');
+        btnFact.style.display = 'none';
     } else {
-        if (qTextElem) qTextElem.innerText = q.question;
-        if (qBoxElem) qBoxElem.classList.remove('masked');
-
+        $('question-text').innerText = q.question;
+        qBox.classList.remove('masked');
         if (selectedMode === 'gaffer') {
-            if (btnFact) btnFact.style.display = 'block';
-            if (factText) factText.innerText = q.fact || q.explanation || 'No extra lore available for this question.';
+            btnFact.style.display = 'block';
+            $('gaffer-fact-text').innerText = q.fact || q.explanation || 'No extra lore for this question.';
         } else {
-            if (btnFact) btnFact.style.display = 'none';
+            btnFact.style.display = 'none';
         }
     }
 
-    let correctIndex = -1;
-    if (typeof q.correct === 'number') {
-        correctIndex = q.correct;
-    } else if (typeof q.correctIndex === 'number') {
-        correctIndex = q.correctIndex;
-    } else if (typeof q.answer === 'number') {
-        correctIndex = q.answer;
-    } else if (typeof q.answer === 'string' && Array.isArray(q.options)) {
-        correctIndex = q.options.findIndex(opt => opt.trim().toLowerCase() === q.answer.trim().toLowerCase());
-    }
+    // Work out the correct answer by text, then (optionally) shuffle the options
+    const correctText = typeof q.answer === 'string'
+        ? q.answer
+        : q.options[[q.correct, q.correctIndex, q.answer].find(n => typeof n === 'number')];
+    const opts = SHUFFLE_OPTIONS ? shuffled(q.options) : q.options.slice();
+    const correctIndex = opts.findIndex(o => o.trim().toLowerCase() === String(correctText).trim().toLowerCase());
 
-    const grid = document.getElementById('options-grid');
-    if (grid) {
-        grid.innerHTML = '';
-        q.options.forEach((opt, idx) => {
-            const btn = document.createElement('button');
-            btn.className = 'btn-option';
-            btn.innerText = opt;
-            btn.onclick = () => handleAnswer(idx, correctIndex, btn);
-            grid.appendChild(btn);
-        });
-    }
+    const grid = $('options-grid');
+    grid.innerHTML = '';
+    opts.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-option';
+        btn.innerText = opt;
+        btn.onclick = () => handleAnswer(idx, correctIndex, btn, opts, q);
+        grid.appendChild(btn);
+    });
 
     saveProgress();
 }
 
-window.toggleGafferFact = function() {
-    const factBox = document.getElementById('gaffer-fact-box');
-    if (factBox) {
-        factBox.style.display = (factBox.style.display === 'block') ? 'none' : 'block';
-    }
+window.toggleGafferFact = function () {
+    const b = $('gaffer-fact-box');
+    b.style.display = b.style.display === 'block' ? 'none' : 'block';
 };
 
-function handleAnswer(selectedIndex, correctIndex, btnElement) {
+function handleAnswer(selectedIndex, correctIndex, btn, opts, q) {
     if (isAnswering) return;
     isAnswering = true;
 
-    if (selectedIndex === correctIndex) {
-        btnElement.classList.add('selected-correct');
-        correctCount++;
-    } else {
-        btnElement.classList.add('selected-wrong');
-    }
+    const right = selectedIndex === correctIndex;
+    btn.classList.add(right ? 'selected-correct' : 'selected-wrong');
+    if (right) correctCount++;
 
-    setTimeout(() => {
-        currentFloor++;
-        renderCurrentQuestion();
-    }, 1200);
+    answerLog.push({ q: currentIndex + 1, picked: opts[selectedIndex], correct: opts[correctIndex], right, t: timeElapsedSeconds });
+
+    setTimeout(() => { currentIndex++; renderQuestion(); }, 1200);
 }
 
 function saveProgress() {
-    try {
-        const state = {
-            floor: currentFloor,
-            correct: correctCount,
-            time: timeElapsedSeconds,
-            mode: selectedMode
-        };
-        localStorage.setItem('skyscraper_progress', JSON.stringify(state));
-    } catch (e) {}
+    lsSet(progressKey(), JSON.stringify({ index: currentIndex, correct: correctCount, time: timeElapsedSeconds, mode: selectedMode, log: answerLog }));
 }
 
+// ---- Finish + receipts ------------------------------------------------------
 function finishGame() {
     clearInterval(timerInterval);
-    localStorage.removeItem('skyscraper_progress');
+    lsDel(progressKey());
 
-    dailyAttempts++;
+    const attempt = (parseInt(lsGet(attemptsKey()), 10) || 0) + 1;   // first completion = attempt 1
+    lsSet(attemptsKey(), String(attempt));
+
+    const total = getQuestions().length;
+    const time = fmtTime(timeElapsedSeconds);
+
+    // Record the run for the future stats window
     try {
-        localStorage.setItem('tyk_545_attempts_count', dailyAttempts.toString());
+        const log = JSON.parse(lsGet(logKey()) || '[]');
+        log.push({ edition: EDITION, mode: selectedMode, attempt, score: correctCount, total, seconds: timeElapsedSeconds, answers: answerLog });
+        lsSet(logKey(), JSON.stringify(log.slice(-50)));
     } catch (e) {}
 
-    const header = document.getElementById('gameplay-header');
-    const floorHud = document.getElementById('floor-hud-container');
-    const workspace = document.getElementById('game-workspace');
-    const victory = document.getElementById('victory-screen');
+    $('gameplay-header').style.display = 'none';
+    $('floor-hud-container').style.display = 'none';
+    $('game-workspace').style.display = 'none';
+    $('victory-screen').style.display = 'flex';
 
-    if (header) header.style.display = 'none';
-    if (floorHud) floorHud.style.display = 'none';
-    if (workspace) workspace.style.display = 'none';
-    if (victory) victory.style.display = 'flex';
+    $('receipt-edition').innerText = editionLabel();
+    $('victory-mode-badge').innerText = `${MODE_LABELS[selectedMode]} PLAYER`;
 
-    const questionsList = getQuestions();
-    const mins = String(Math.floor(timeElapsedSeconds / 60)).padStart(2, '0');
-    const secs = String(timeElapsedSeconds % 60).padStart(2, '0');
-    const formattedTime = `${mins}:${secs}`;
+    const score = `${correctCount}/${total}`;
+    const rows = [];
 
-    const vTimeDisp = document.getElementById('victory-time-display');
-    const vTimeRow = document.getElementById('victory-time-row-display');
-    const accText = document.getElementById('accuracy-text');
-    const vModeBadge = document.getElementById('victory-mode-badge');
-    const attemptsVal = document.getElementById('attempts-notice-val');
+    if (selectedMode === 'gaffer') {
+        // Host: run time is the hero
+        $('hero-label').innerText = 'HOST TIME';
+        $('hero-value').innerHTML = `${time}<small>s</small>`;
+        rows.push(['SCORE', score, 'success'], ['ATTEMPT', attempt, 'active']);
+    } else if (selectedMode === 'group') {
+        // Group: score is the hero, own time below
+        $('hero-label').innerText = 'YOUR SCORE';
+        $('hero-value').innerText = score;
+        rows.push(['TIME', `${time}s`, 'active'], ['ATTEMPT', attempt, 'active']);
+    } else {
+        // Solo: score is the hero, time breaks ties
+        $('hero-label').innerText = 'SCORE';
+        $('hero-value').innerText = score;
+        rows.push(['TIME', `${time}s`, 'active'], ['ATTEMPT', attempt, 'active']);
+    }
 
-    if (vTimeDisp) vTimeDisp.innerText = formattedTime;
-    if (vTimeRow) vTimeRow.innerText = `${formattedTime}s`;
-    if (accText) accText.innerText = `${correctCount}/${questionsList.length}`;
-    if (vModeBadge) vModeBadge.innerText = `${selectedMode.toUpperCase()} PLAYER`;
-    if (attemptsVal) attemptsVal.innerText = dailyAttempts;
+    $('receipt-rows').innerHTML = rows.map(r =>
+        `<div class="receipt-row"><span class="row-label">${r[0]}</span><span class="row-val ${r[2]}">${r[1]}</span></div>`).join('');
 }
 
-window.resetAndPlayAgain = function() {
-    location.reload();
-};
+async function shareReceipt() {
+    const card = $('victory-card'), toast = $('toast-msg');
+    toast.innerText = 'CAPTURING SCREENSHOT...';
+    toast.style.display = 'block';
+    if (!card || typeof html2canvas === 'undefined') { toast.style.display = 'none'; return; }
+    try {
+        const canvas = await html2canvas(card, { backgroundColor: '#111111', scale: 2 });
+        canvas.toBlob(async blob => {
+            toast.style.display = 'none';
+            if (!blob) return;
+            const file = new File([blob], 'tykball-545-victory.png', { type: 'image/png' });
+            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                try { await navigator.share({ title: 'TYKB 5.45 Special Victory Receipt', files: [file] }); } catch (e) {}
+            } else {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(file);
+                a.download = 'tykball-545-victory.png';
+                a.click();
+            }
+        }, 'image/png');
+    } catch (err) {
+        toast.style.display = 'none';
+        console.error('Screenshot failed:', err);
+    }
+}
+
+window.resetAndPlayAgain = function () { location.reload(); };
 // END OF FILE: 545-special.js
