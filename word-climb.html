@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>11th Floor Word Climb — Daily Puzzle</title>
 
     <!-- Favicon -->
@@ -11,7 +11,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&family=Montserrat:wght@300;400;600;700;800;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/glacial-indifference" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
@@ -46,24 +46,42 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        /* v0.5 FIT FIX: style.css locks html and body to the screen height with no scrolling.
+           This page lets itself scroll on a short window and keeps clear space at the bottom.
+           On a tall screen nothing changes. */
         html {
             background-color: var(--bg-deep);
-            height: 100%;
+            height: auto;
+            min-height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         body {
             background-color: var(--bg-deep);
             color: var(--text-primary);
             font-family: 'Montserrat', sans-serif;
+            height: auto;
             min-height: 100vh;
             min-height: 100dvh;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
+            padding: 8px 10px calc(20px + env(safe-area-inset-bottom, 0px)) 10px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: space-between;
-            padding: 8px 10px;
-            overflow: hidden;
+            flex: 1 0 auto;
         }
 
         .top-bar {
@@ -164,6 +182,8 @@
             box-shadow: 0 4px 25px var(--genre-blue-glow);
         }
 
+        #start-error { display: none; color: var(--state-error); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; max-width: 320px; line-height: 1.4; }
+
         /* Gameplay Area */
         .hud-sidebar-container { width: 100%; max-width: 600px; display: flex; align-items: stretch; gap: 12px; margin-bottom: 6px; flex-shrink: 0; }
         .tower-stack { display: flex; flex-direction: column; gap: 2px; width: 52px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 6px; justify-content: space-between; flex-shrink: 0; }
@@ -176,8 +196,12 @@
         .current-floor-display { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; }
         .floor-rule-text { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; }
 
-        .play-card { width: 100%; max-width: 600px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 2px; flex-grow: 1; margin-bottom: 6px; overflow: hidden; min-height: 0; }
-        #message-box { min-height: 16px; color: var(--state-error); font-weight: 700; font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; text-align: center; }
+        .play-card { width: 100%; max-width: 600px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 8px; flex: 1 0 auto; margin-bottom: 6px; overflow: hidden; min-height: 300px; position: relative; }
+
+        .timer-bar-container { width: 100%; height: 4px; background: #111111; border-radius: 2px; overflow: hidden; flex-shrink: 0; }
+        .timer-bar { width: 100%; height: 100%; background: var(--state-active); transition: width 0.05s linear; }
+
+        #message-box { min-height: 16px; color: var(--state-error); font-weight: 700; font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; text-align: center; flex-shrink: 0; }
         
         #target-word-slots { 
             display: flex; 
@@ -187,6 +211,7 @@
             width: 100%; 
             min-height: 38px; 
             flex-wrap: nowrap; 
+            flex-shrink: 0;
         }
         .target-slot { 
             width: clamp(26px, 8.5vw, 32px); 
@@ -209,8 +234,10 @@
         .target-slot.state-success { border-color: var(--state-success); color: var(--state-success); }
         .target-slot.state-error { border-color: var(--state-error); color: var(--state-error); }
 
-        #guess-display { display: flex; justify-content: center; gap: 4px; min-height: 28px; align-items: center; font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; color: var(--text-primary); margin-bottom: 2px; }
-        #wheel-container { width: min(295px, 36vh); height: min(295px, 36vh); max-width: 100%; position: relative; margin: 0 auto; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        #guess-display { display: flex; justify-content: center; gap: 4px; min-height: 30px; align-items: center; font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; color: var(--text-primary); flex-shrink: 0; }
+
+        /* v0.5: bigger wheel. The letter circles are sized in the script so neighbours touch edge to edge. */
+        #wheel-container { width: min(340px, 46vh); max-width: 100%; aspect-ratio: 1 / 1; position: relative; margin: 4px auto 0 auto; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 
         .action-panel { width: 100%; max-width: 600px; display: flex; gap: 12px; justify-content: center; flex-shrink: 0; margin-bottom: 4px; }
         .btn { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 12px 20px; cursor: pointer; border-radius: 8px; flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; }
@@ -218,9 +245,24 @@
         .btn-secondary:hover { color: var(--text-primary); border-color: var(--text-muted); background: #181818; }
         .btn-primary { background: #111111; color: var(--state-active, #facc15); border: 1px solid var(--state-active, #facc15); box-shadow: 0 0 10px var(--state-active-glow, rgba(250, 204, 21, 0.25)); }
 
+        footer { width: 100%; max-width: 600px; text-align: center; flex-shrink: 0; padding-top: 4px; }
+        #footer-text { font-size: 0.6rem; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+
+        /* Short windows: tighten the layout so the wheel and buttons fit */
+        @media (max-height: 760px) {
+            .gameplay-header-box { margin-bottom: 2px; }
+            .gameplay-header-box .game-logo-title { font-size: 0.8rem; }
+            .floor-info-box { padding: 6px 14px; }
+            .play-card { padding: 8px; gap: 6px; min-height: 260px; }
+            #wheel-container { width: min(340px, 42vh); }
+        }
+        @media (max-height: 640px) {
+            .gameplay-header-box { display: none !important; }
+        }
+
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.92); display: flex; align-items: center; justify-content: center; z-index: 100; }
         .modal-overlay.hidden { display: none !important; }
-        .modal-card { background-color: var(--surface); border: 1px solid var(--genre-blue); box-shadow: 0 0 20px var(--genre-blue-glow); padding: 24px 20px; border-radius: 14px; width: 92%; max-width: 380px; text-align: center; }
+        .modal-card { background-color: var(--surface); border: 1px solid var(--genre-blue); box-shadow: 0 0 20px var(--genre-blue-glow); padding: 24px 20px; border-radius: 14px; width: 92%; max-width: 380px; text-align: center; max-height: 94vh; overflow-y: auto; }
 
         .modal-sub-header { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 800; color: var(--genre-blue); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
         .modal-main-title { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; line-height: 1; margin-bottom: 14px; }
@@ -232,88 +274,40 @@
         .stat-value.blue { color: var(--genre-blue); }
         .stat-label { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
+        /* Falls by floor (stats window) */
+        .falls-box { display: none; text-align: left; background: var(--bg-deep); border: 1px solid var(--surface-border); border-radius: 10px; padding: 10px 12px; margin: 0 0 14px 0; }
+        .falls-title { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .falls-row { display: flex; justify-content: space-between; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700; color: #ffffff; padding: 2px 0; }
+        .falls-row span:last-child { color: var(--state-error); }
+
+        /* Rules pop-up */
+        .rules-body { text-align: left; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 600; line-height: 1.5; color: #d4d4d4; margin-bottom: 4px; }
+        .rules-body p { margin-bottom: 10px; }
+        .rules-body strong { color: #ffffff; font-weight: 800; }
+
         .vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 8px; max-height: 200px; overflow-y: auto; margin: 12px 0; padding-right: 2px; }
         .vault-item-btn { background-color: #111111; border: 1px solid var(--genre-blue); color: var(--text-primary); padding: 10px 6px; border-radius: 8px; cursor: pointer; text-align: center; box-shadow: 0 0 8px var(--genre-blue-glow); transition: transform 0.1s ease, border-color 0.2s ease; }
         .vault-item-btn:hover { border-color: #ffffff; }
         .btn-modal { width: 100%; background-color: #111111; border: 1px solid var(--surface-border-light); color: var(--text-primary); padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 24px; cursor: pointer; margin-top: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
 
-        /* IN-GAME VICTORY RECEIPT CARD SPECIFICATIONS */
+        /* VICTORY RECEIPT (minimal, same shape in every game) */
         .victory-receipt-card {
             width: 100%;
             max-width: 340px;
             background-color: #111111;
             border: 1px solid var(--genre-blue);
             border-radius: 14px;
-            padding: 22px 20px;
+            padding: 22px 20px 16px 20px;
             box-shadow: 0 0 25px var(--genre-blue-glow);
             margin-bottom: 16px;
             text-align: left;
             display: block;
         }
 
-        .receipt-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #333333;
-            padding-bottom: 12px;
-            margin-bottom: 16px;
-        }
-
-        .brand-lockup-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .brand-mark-left {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.8rem;
-            color: var(--brand-red);
-            line-height: 0.85;
-            letter-spacing: -0.5px;
-            text-shadow: 0 0 10px var(--brand-red-glow);
-        }
-
-        .brand-text-stacked {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: left;
-        }
-
-        .brand-title-top {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 300;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-            line-height: 1.1;
-        }
-
-        .brand-title-bottom {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.55rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            line-height: 1.1;
-        }
-
-        .badge-slot-reserved {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: #888888;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
         .hero-flex-box {
             text-align: center;
             padding: 4px 0;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .game-title-header {
@@ -323,60 +317,51 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             line-height: 1;
-            margin-bottom: 6px;
+            margin-bottom: 14px;
         }
 
         .flex-status-label {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 800;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .brand-blue { color: var(--genre-blue); }
-        .brand-green { color: var(--state-success); }
         .brand-white { color: #ffffff; }
 
-        .hero-time-display {
-            font-family: 'Anton', sans-serif;
-            font-size: 3.4rem;
-            line-height: 0.9;
+        /* HERO TIME: the centrepiece of the receipt */
+        .hero-time {
+            font-family: 'Space Mono', monospace;
+            font-size: 3.6rem;
+            font-weight: 700;
             color: #ffffff;
-            letter-spacing: 2px;
-            margin: 8px 0;
+            line-height: 1;
+            letter-spacing: -2px;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+            text-shadow: 0 0 18px var(--genre-blue-glow);
+            margin: 8px 0 10px 0;
         }
 
-        .hero-time-unit {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #888888;
-            letter-spacing: 1px;
-            margin-left: 2px;
-            text-transform: lowercase;
-        }
-
+        /* Attempt line: plain text under the time, e.g. "on 1st attempt" */
         .flex-tier-badge {
-            display: inline-block;
+            display: block;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.8rem;
             font-weight: 800;
-            color: var(--genre-blue);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid var(--genre-blue);
-            padding: 6px 16px;
-            border-radius: 12px;
-            margin-top: 6px;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            text-transform: none;
+            margin-top: 2px;
         }
 
         .receipt-details {
             border-top: 1px solid #333333;
             padding-top: 14px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .receipt-row {
@@ -407,9 +392,6 @@
             letter-spacing: 0.5px;
         }
 
-        .row-val.success { color: var(--state-success); }
-        .row-val.active { color: var(--genre-blue); }
-
         .card-footer-cta {
             text-align: center;
             font-family: 'Montserrat', sans-serif;
@@ -419,7 +401,7 @@
             letter-spacing: 1.5px;
             border-top: 1px dashed #333333;
             padding-top: 10px;
-            text-transform: uppercase;
+            text-transform: lowercase;
         }
 
         .controls-group {
@@ -479,13 +461,45 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
+
+        /* LIFT RIDE: arrives from the bottom of the play card and stops (tap to skip) */
+        .lift-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            cursor: pointer;
+        }
+        .lift-overlay.hidden { display: none !important; }
+        .lift-graphic { height: min(80%, 230px); aspect-ratio: 233 / 232; }
+        .lift-svg { width: 100%; height: 100%; display: block; }
+        .lift-overlay.victory .lift-frame { fill: var(--genre-blue); }
+        .lift-overlay.victory .lift-graphic.rising { animation-name: liftDepart; }
+        @keyframes liftDepart {
+            0%   { transform: translateY(0); }
+            25%  { transform: translateY(0); animation-timing-function: cubic-bezier(0.55, 0, 0.9, 0.6); }
+            100% { transform: translateY(-80vh); }
+        }
+        .lift-graphic.rising { animation: liftArrive var(--lift-ms, 1000ms) forwards; }
+        @keyframes liftArrive {
+            0%   { transform: translateY(80vh); animation-timing-function: cubic-bezier(0.22, 0.8, 0.3, 1); }
+            65%  { transform: translateY(0); }
+            100% { transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="game-wordclimb">
 
-    <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 100%;">
+    <div class="main-wrapper">
         <div class="top-bar">
             <a href="index.html" class="pill-btn">← LOBBY</a>
+            <button class="pill-btn" id="btn-rules" aria-label="How to play">?</button>
             <button class="pill-btn" id="btn-sound">SOUND: ON</button>
         </div>
 
@@ -494,7 +508,7 @@
             <div class="game-logo-box">
                 <h1 class="game-logo-blue">11FL?</h1>
                 <p class="game-logo-title">Eleventh Floor</p>
-                <p class="game-logo-sub" style="color: var(--genre-blue, #3B82F6);">WORD CLIMB</p>
+                <p class="game-logo-sub" style="color: var(--genre-blue, #3B82F6);">WORD<span style="color: #ffffff;">CLIMB</span></p>
             </div>
 
             <div class="landing-container">
@@ -514,8 +528,10 @@
 
                 <div class="landing-challenge-text">
                     <strong>CAN YOU REACH THE 11TH FLOOR?</strong><br><br>
-                    Find valid English words on every floor, from 5 to 9 letters. One mistake and you lose your streak and are sent back to Ground Floor.
+                    Find real English words on every floor, from 5 to 9 letters, before the timer runs out. A wrong word or an expired timer drops you to Ground Floor.
                 </div>
+
+                <div id="start-error"></div>
 
                 <div style="display: flex; gap: 8px; margin-top: 4px;">
                     <button id="btn-landing-stats" class="pill-btn" style="padding: 10px 18px; border-radius: 24px;">STATS / ARCHIVE</button>
@@ -527,7 +543,7 @@
         <!-- GAMEPLAY HEADER -->
         <div id="gameplay-header" class="gameplay-header-box" style="display: none;">
             <p class="game-logo-title">Eleventh Floor</p>
-            <p class="game-logo-sub" style="color: var(--genre-blue, #3B82F6);">WORD CLIMB</p>
+            <p class="game-logo-sub" style="color: var(--genre-blue, #3B82F6);">WORD<span style="color: #ffffff;">CLIMB</span></p>
         </div>
 
         <!-- Gameplay HUD Header -->
@@ -551,12 +567,21 @@
                     <div class="current-floor-display" id="floor-number-val"><span style="color: var(--genre-blue, #3B82F6); font-weight: 800;">1st</span> <span style="color: #ffffff;">Floor</span></div>
                     <div class="floor-rule-text" id="floor-rule-text">5-letter English word • No mistakes!</div>
                 </div>
-                <div id="active-game-timer" class="header-timer">00:00</div>
+                <div id="active-game-timer" class="header-timer">0:00</div>
             </div>
         </div>
 
         <!-- Main Play Card Workspace -->
         <div id="game-workspace" class="play-card" style="display: none;">
+                <!-- LIFT RIDE (sits inside the play card, tap to skip) -->
+                <div id="lift-overlay" class="lift-overlay hidden" aria-hidden="true">
+                    <div id="lift-graphic" class="lift-graphic">
+<svg xmlns="http://www.w3.org/2000/svg" class="lift-svg" viewBox="236 179 233 232" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><defs><g/><clipPath id="761721e8e1"><path d="M 0.59375 0 L 704.40625 0 L 704.40625 590 L 0.59375 590 Z M 0.59375 0 " clip-rule="nonzero"/></clipPath><clipPath id="50878e0bb8"><path d="M 0.96875 0.46875 L 231.886719 0.46875 L 231.886719 231.386719 L 0.96875 231.386719 Z M 0.96875 0.46875 " clip-rule="nonzero"/></clipPath><clipPath id="48340ab07a"><path d="M 189.617188 64.746094 L 211.015625 64.746094 L 211.015625 86.414062 L 189.617188 86.414062 Z M 189.617188 64.746094 " clip-rule="nonzero"/></clipPath><clipPath id="354a46f2f4"><path d="M 0.617188 0.746094 L 22.015625 0.746094 L 22.015625 22.414062 L 0.617188 22.414062 Z M 0.617188 0.746094 " clip-rule="nonzero"/></clipPath><clipPath id="0631f0c15d"><rect x="0" width="23" y="0" height="23"/></clipPath><clipPath id="f76fdc6c75"><rect x="0" width="233" y="0" height="232"/></clipPath></defs><g transform="matrix(1, 0, 0, 1, 236, 179)"><g clip-path="url(#f76fdc6c75)"><g clip-path="url(#50878e0bb8)"><path class="lift-frame" fill="#ffffff" d="M 232.03125 0.46875 L 0.96875 0.46875 L 0.96875 231.53125 L 232.03125 231.53125 Z M 51.800781 216.328125 L 51.800781 47.546875 L 115.34375 47.546875 L 115.34375 216.328125 Z M 216.828125 216.328125 L 183.507812 216.328125 L 183.507812 127.179688 C 182.730469 127.441406 181.960938 127.644531 181.195312 127.792969 L 181.195312 216.332031 L 117.652344 216.332031 L 117.652344 47.546875 L 181.195312 47.546875 L 181.195312 112.972656 C 181.8125 112.578125 182.582031 112.027344 183.507812 111.261719 L 183.507812 45.238281 L 49.492188 45.238281 L 49.492188 216.328125 L 16.167969 216.328125 L 16.167969 15.667969 L 216.828125 15.667969 Z M 216.828125 216.328125 " fill-opacity="1" fill-rule="nonzero"/></g><path fill="#ffffff" d="M 156.5 30.074219 L 76.496094 30.074219 L 76.496094 41.050781 L 156.5 41.050781 Z M 85.882812 37.679688 C 84.714844 37.679688 83.765625 36.730469 83.765625 35.5625 C 83.765625 34.390625 84.714844 33.445312 85.882812 33.445312 C 87.050781 33.445312 88 34.390625 88 35.5625 C 88 36.730469 87.050781 37.679688 85.882812 37.679688 Z M 101.191406 37.679688 C 100.019531 37.679688 99.074219 36.730469 99.074219 35.5625 C 99.074219 34.390625 100.019531 33.445312 101.191406 33.445312 C 102.359375 33.445312 103.308594 34.390625 103.308594 35.5625 C 103.308594 36.730469 102.359375 37.679688 101.191406 37.679688 Z M 116.5 37.679688 C 115.328125 37.679688 114.378906 36.730469 114.378906 35.5625 C 114.378906 34.390625 115.328125 33.445312 116.5 33.445312 C 117.667969 33.445312 118.617188 34.390625 118.617188 35.5625 C 118.617188 36.730469 117.667969 37.679688 116.5 37.679688 Z M 131.804688 37.679688 C 130.636719 37.679688 129.6875 36.730469 129.6875 35.5625 C 129.6875 34.390625 130.636719 33.445312 131.804688 33.445312 C 132.976562 33.445312 133.925781 34.390625 133.925781 35.5625 C 133.925781 36.730469 132.976562 37.679688 131.804688 37.679688 Z M 147.113281 37.679688 C 145.945312 37.679688 144.996094 36.730469 144.996094 35.5625 C 144.996094 34.390625 145.945312 33.445312 147.113281 33.445312 C 148.285156 33.445312 149.234375 34.390625 149.234375 35.5625 C 149.234375 36.730469 148.285156 37.679688 147.113281 37.679688 Z M 147.113281 37.679688 " fill-opacity="1" fill-rule="nonzero"/><path fill="#ffffff" d="M 196.683594 107.726562 L 198.144531 107.726562 L 198.144531 109.632812 C 199.179688 111.628906 199.183594 114.023438 198.144531 116.019531 L 198.144531 117.910156 L 196.707031 117.910156 C 194.148438 120.496094 191.765625 122.539062 189.480469 124.101562 L 189.480469 152.851562 L 211.046875 152.851562 L 211.046875 86.226562 L 189.480469 86.226562 L 189.480469 106.367188 C 190.273438 106.058594 191.121094 105.890625 191.996094 105.890625 C 193.75 105.890625 195.402344 106.542969 196.683594 107.726562 Z M 198.144531 138.070312 L 194.679688 138.070312 L 194.679688 134.605469 L 198.144531 134.605469 Z M 198.144531 131.351562 L 194.679688 131.351562 L 194.679688 127.886719 L 198.144531 127.886719 Z M 198.144531 124.632812 L 194.679688 124.632812 L 194.679688 121.164062 L 198.144531 121.164062 Z M 202.382812 101.003906 L 205.847656 101.003906 L 205.847656 104.472656 L 202.382812 104.472656 Z M 202.382812 107.726562 L 205.847656 107.726562 L 205.847656 111.191406 L 202.382812 111.191406 Z M 202.382812 114.445312 L 205.847656 114.445312 L 205.847656 117.910156 L 202.382812 117.910156 Z M 202.382812 121.164062 L 205.847656 121.164062 L 205.847656 124.632812 L 202.382812 124.632812 Z M 202.382812 127.886719 L 205.847656 127.886719 L 205.847656 131.351562 L 202.382812 131.351562 Z M 202.382812 134.605469 L 205.847656 134.605469 L 205.847656 138.070312 L 202.382812 138.070312 Z M 194.679688 101.003906 L 198.144531 101.003906 L 198.144531 104.472656 L 194.679688 104.472656 Z M 194.679688 101.003906 " fill-opacity="1" fill-rule="nonzero"/><path fill="#ffffff" d="M 195.296875 116.058594 C 197.082031 114.238281 197.054688 111.3125 195.234375 109.523438 C 193.410156 107.738281 190.484375 107.765625 188.699219 109.585938 C 185.859375 112.484375 183.539062 114.304688 181.792969 115.3125 C 180.035156 116.332031 178.949219 116.527344 178.316406 116.527344 C 177.613281 116.511719 177.164062 116.355469 176.320312 115.765625 C 175.078125 114.890625 173.542969 112.90625 171.664062 110.761719 C 170.699219 109.695312 169.613281 108.574219 168.148438 107.597656 C 166.882812 106.746094 165.21875 106.03125 163.355469 105.875 C 163.152344 105.847656 162.941406 105.828125 162.726562 105.828125 L 140.410156 105.828125 C 140.332031 105.828125 140.257812 105.835938 140.179688 105.839844 C 139.136719 105.851562 137.414062 106.082031 135.453125 107.070312 C 132.34375 108.609375 128.996094 111.980469 126.648438 117.953125 C 124.277344 123.949219 122.683594 132.617188 122.675781 145.707031 C 122.675781 149.089844 122.785156 152.769531 123.023438 156.773438 C 123.167969 159.230469 125.203125 161.125 127.632812 161.125 C 127.722656 161.125 127.8125 161.121094 127.90625 161.117188 C 130.453125 160.964844 132.398438 158.78125 132.25 156.230469 C 132.023438 152.390625 131.921875 148.890625 131.921875 145.707031 C 131.902344 131.714844 133.941406 123.859375 135.945312 119.757812 L 135.945312 206.410156 C 135.945312 210.355469 139.144531 213.550781 143.085938 213.550781 C 147.03125 213.550781 150.230469 210.355469 150.230469 206.410156 L 150.230469 154.261719 L 152.90625 154.261719 L 152.90625 206.410156 C 152.90625 210.355469 156.105469 213.550781 160.046875 213.550781 C 163.992188 213.550781 167.191406 210.355469 167.191406 206.410156 L 167.191406 119.726562 C 167.554688 120.136719 167.933594 120.558594 168.335938 120.984375 C 169.425781 122.105469 170.714844 123.265625 172.371094 124.199219 C 174.003906 125.121094 176.054688 125.773438 178.265625 125.773438 C 178.28125 125.773438 178.296875 125.773438 178.316406 125.773438 C 180.984375 125.773438 183.703125 124.898438 186.441406 123.300781 C 189.195312 121.695312 192.0625 119.351562 195.296875 116.058594 Z M 195.296875 116.058594 " fill-opacity="1" fill-rule="nonzero"/><path fill="#ffffff" d="M 164.566406 89.539062 C 164.566406 90.390625 164.480469 91.234375 164.316406 92.074219 C 164.148438 92.910156 163.902344 93.722656 163.574219 94.511719 C 163.25 95.300781 162.847656 96.046875 162.375 96.757812 C 161.902344 97.46875 161.363281 98.125 160.757812 98.726562 C 160.15625 99.332031 159.5 99.871094 158.789062 100.34375 C 158.078125 100.820312 157.332031 101.21875 156.542969 101.546875 C 155.753906 101.871094 154.941406 102.117188 154.105469 102.285156 C 153.265625 102.453125 152.421875 102.535156 151.566406 102.535156 C 150.714844 102.535156 149.871094 102.453125 149.03125 102.285156 C 148.195312 102.117188 147.382812 101.871094 146.59375 101.546875 C 145.804688 101.21875 145.058594 100.820312 144.347656 100.34375 C 143.636719 99.871094 142.980469 99.332031 142.378906 98.726562 C 141.773438 98.125 141.234375 97.46875 140.761719 96.757812 C 140.285156 96.046875 139.886719 95.300781 139.558594 94.511719 C 139.234375 93.722656 138.988281 92.910156 138.820312 92.074219 C 138.652344 91.234375 138.570312 90.390625 138.570312 89.539062 C 138.570312 88.683594 138.652344 87.839844 138.820312 87 C 138.988281 86.164062 139.234375 85.351562 139.558594 84.5625 C 139.886719 83.773438 140.285156 83.027344 140.761719 82.316406 C 141.234375 81.605469 141.773438 80.949219 142.378906 80.347656 C 142.980469 79.742188 143.636719 79.203125 144.347656 78.730469 C 145.058594 78.257812 145.804688 77.855469 146.59375 77.53125 C 147.382812 77.203125 148.195312 76.957031 149.03125 76.789062 C 149.871094 76.625 150.714844 76.539062 151.566406 76.539062 C 152.421875 76.539062 153.265625 76.625 154.105469 76.789062 C 154.941406 76.957031 155.753906 77.203125 156.542969 77.53125 C 157.332031 77.855469 158.078125 78.257812 158.789062 78.730469 C 159.5 79.203125 160.15625 79.742188 160.757812 80.347656 C 161.363281 80.949219 161.902344 81.605469 162.375 82.316406 C 162.847656 83.027344 163.25 83.773438 163.574219 84.5625 C 163.902344 85.351562 164.148438 86.164062 164.316406 87 C 164.480469 87.839844 164.566406 88.683594 164.566406 89.539062 Z M 164.566406 89.539062 " fill-opacity="1" fill-rule="nonzero"/><g clip-path="url(#48340ab07a)"><g transform="matrix(1, 0, 0, 1, 189, 64)"><g clip-path="url(#0631f0c15d)"><g clip-path="url(#354a46f2f4)"><path fill="#ffffff" d="M 0.617188 0.746094 L 22.015625 0.746094 L 22.015625 22.394531 L 0.617188 22.394531 Z M 0.617188 0.746094 " fill-opacity="1" fill-rule="nonzero"/></g></g></g></g><g fill="#e60909" fill-opacity="1"><g transform="translate(194.48235, 81.098763)"><g><path d="M 4.9375 -1.796875 L 4.9375 -1.53125 C 4.9375 -1.101562 4.789062 -0.738281 4.5 -0.4375 C 4.207031 -0.144531 3.84375 0 3.40625 0 L 3.140625 0 L 3.140625 -1.796875 Z M 3.140625 -2.25 L 3.140625 -4.03125 L 4.9375 -4.03125 L 4.9375 -2.25 Z M 3.140625 -4.484375 L 3.140625 -6.28125 L 4.9375 -6.28125 L 4.9375 -4.484375 Z M 3.140625 -6.734375 L 3.140625 -8.53125 L 4.9375 -8.53125 L 4.9375 -6.734375 Z M 0.890625 -8.96875 L 0.890625 -9.25 C 0.890625 -9.664062 1.039062 -10.019531 1.34375 -10.3125 C 1.644531 -10.613281 2.003906 -10.765625 2.421875 -10.765625 L 2.6875 -10.765625 L 2.6875 -8.96875 Z M 3.140625 -8.96875 L 3.140625 -10.765625 L 4.9375 -10.765625 L 4.9375 -8.96875 Z M 3.140625 -8.96875 "/></g></g></g><g fill="#e60909" fill-opacity="1"><g transform="translate(200.314596, 81.098763)"><g><path d="M 4.9375 -1.796875 L 4.9375 -1.53125 C 4.9375 -1.101562 4.789062 -0.738281 4.5 -0.4375 C 4.207031 -0.144531 3.84375 0 3.40625 0 L 3.140625 0 L 3.140625 -1.796875 Z M 3.140625 -2.25 L 3.140625 -4.03125 L 4.9375 -4.03125 L 4.9375 -2.25 Z M 3.140625 -4.484375 L 3.140625 -6.28125 L 4.9375 -6.28125 L 4.9375 -4.484375 Z M 3.140625 -6.734375 L 3.140625 -8.53125 L 4.9375 -8.53125 L 4.9375 -6.734375 Z M 0.890625 -8.96875 L 0.890625 -9.25 C 0.890625 -9.664062 1.039062 -10.019531 1.34375 -10.3125 C 1.644531 -10.613281 2.003906 -10.765625 2.421875 -10.765625 L 2.6875 -10.765625 L 2.6875 -8.96875 Z M 3.140625 -8.96875 L 3.140625 -10.765625 L 4.9375 -10.765625 L 4.9375 -8.96875 Z M 3.140625 -8.96875 "/></g></g></g></g></g></svg>
+                    </div>
+                </div>
+            <div class="timer-bar-container">
+                <div id="timer-bar" class="timer-bar"></div>
+            </div>
             <div id="message-box"></div>
             <div id="target-word-slots"></div>
             <div id="guess-display"></div>
@@ -569,53 +594,34 @@
             <button class="btn btn-primary" id="action-submit-btn">SUBMIT</button>
         </div>
 
-        <!-- INTEGRATED VICTORY SCREEN RECEIPT CARD -->
+        <!-- VICTORY RECEIPT (title, label, time, attempt line, date, accuracy, footer) -->
         <div id="victory-screen" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 16px; flex-grow: 1;">
             
             <div class="victory-receipt-card" id="victory-card">
-                <div class="receipt-header">
-                    <div class="brand-lockup-container">
-                        <div class="brand-mark-left">11FL?</div>
-                        <div class="brand-text-stacked">
-                            <span class="brand-title-top">ELEVENTH FLOOR</span>
-                            <span class="brand-title-bottom">GAMES</span>
-                        </div>
-                    </div>
-                    <div class="badge-slot-reserved">VERIFIED</div>
-                </div>
-
                 <div class="hero-flex-box">
                     <div class="game-title-header">
-                        <span class="brand-blue">11th</span> <span class="brand-white">Floor Word Climb</span>
+                        <span class="brand-blue">WORD</span><span class="brand-white">CLIMB</span>
                     </div>
                     <div class="flex-status-label">
-                        <span class="brand-blue">11th</span> <span class="brand-white">Floor Cleared</span>
+                        <span class="brand-blue">11th</span> <span class="brand-white">Floor Reached in</span>
                     </div>
-                    <div class="hero-time-display"><span id="victory-time-display">00:00</span><span class="hero-time-unit">s</span></div>
-                    <div class="flex-tier-badge">PERFECT</div>
+                    <div id="victory-time-display" class="hero-time">0:00</div>
+                    <div class="flex-tier-badge" id="receipt-badge-display">on 1st attempt</div>
                 </div>
 
                 <div class="receipt-details">
                     <div class="receipt-row">
-                        <span class="row-label">ELEVENTH FLOOR WORD CLIMB</span>
-                        <span class="row-val">#042</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="row-label">TODAY'S TIME</span>
-                        <span id="victory-time-row-display" class="row-val active">00:00s</span>
+                        <span class="row-label">DATE</span>
+                        <span class="row-val" id="receipt-date-display">Sat 17th Oct 2026</span>
                     </div>
                     <div class="receipt-row">
                         <span class="row-label">ACCURACY</span>
-                        <span class="row-val success">100% (10/10)</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="row-label">CURRENT STREAK</span>
-                        <span id="victory-streak-display" class="row-val active">0 Days</span>
+                        <span id="victory-run-summary-display" class="row-val"><span style="color: var(--state-success);">10</span><span style="color: var(--text-muted);">/</span><span style="color: var(--state-success);">10</span></span>
                     </div>
                 </div>
 
                 <div class="card-footer-cta">
-                    NEW GAME DAILY!
+                    powered by Eleventh Floor Games
                 </div>
             </div>
 
@@ -627,17 +633,17 @@
         </div>
 
         <footer>
-            <div id="footer-text">ONE MISTAKE RESETS THE CLIMB TO GROUND FLOOR.</div>
+            <div id="footer-text">A WRONG WORD OR AN EXPIRED TIMER DROPS YOU TO GROUND FLOOR.</div>
         </footer>
     </div>
 
     <!-- Toast Notification -->
     <div id="toast-msg">SCREENSHOT GENERATED</div>
 
-    <!-- Stats & Archive Vault Modal -->
+    <!-- Stats & Archive Modal -->
     <div id="modal-vault" class="modal-overlay hidden">
         <div class="modal-card">
-            <div class="modal-sub-header">11TH FLOOR WORD CLIMB</div>
+            <div class="modal-sub-header">WORD<span style="color: #ffffff;">CLIMB</span></div>
             <div class="modal-main-title">STATS & ARCHIVES</div>
             <div class="stats-summary-grid">
                 <div class="stat-item"><span id="stat-played" class="stat-value">0</span><span class="stat-label">Played</span></div>
@@ -647,8 +653,26 @@
                 <div class="stat-item"><span id="stat-bestfloor" class="stat-value blue">1st</span><span class="stat-label">Highest Floor</span></div>
                 <div class="stat-item"><span id="stat-besttime" class="stat-value active">--:--</span><span class="stat-label">Best Time</span></div>
             </div>
+            <div id="stat-falls" class="falls-box"></div>
             <div id="vault-list" class="vault-grid"></div>
             <button id="btn-close-vault" class="btn-modal">CLOSE</button>
+        </div>
+    </div>
+
+    <!-- Rules Modal -->
+    <div id="modal-rules" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-sub-header">WORD<span style="color: #ffffff;">CLIMB</span></div>
+            <div class="modal-main-title">HOW TO PLAY</div>
+            <div class="rules-body">
+                <p>Climb from the <strong>1st floor</strong> to the <strong>11th</strong> by spelling a real English word on each of 10 floors, using the letters on the wheel. Tap letters to build your word, then submit. Each letter can be used once, and you can't use the same word twice in a climb.</p>
+                <p>Words get longer as you climb: <strong>5 letters</strong> on floors 1 to 3, <strong>6</strong> on floors 4 to 6, <strong>7</strong> on floors 7 and 8, <strong>8</strong> on floor 9 and <strong>9</strong> on floor 10. Every floor has its own time limit, shown by the bar.</p>
+                <p>A wrong word or running out of time drops you to <strong>Ground Floor</strong>. Then you try again.</p>
+                <p><strong>The clock</strong> starts at your first floor and never stops, retries included.</p>
+                <p><strong>Accuracy:</strong> a green 10/10 means you never gave a wrong word. If you did, the red number is the floor you first got wrong. Running out of time isn't a wrong word.</p>
+                <p><strong>Stats</strong> are saved on this device only.</p>
+            </div>
+            <button id="btn-close-rules" class="btn-modal">GOT IT</button>
         </div>
     </div>
 
@@ -675,11 +699,13 @@
                 shareBtn.addEventListener('click', async () => {
                     try {
                         showToast('CAPTURING SCREENSHOT...');
+                        if (document.fonts && document.fonts.ready) {
+                            await document.fonts.ready;
+                        }
                         const canvas = await html2canvas(victoryCard, {
                             backgroundColor: '#111111',
                             scale: 2,
-                            useCORS: true,
-                            allowTaint: true
+                            useCORS: true
                         });
 
                         canvas.toBlob(async (blob) => {
@@ -689,7 +715,7 @@
                             if (navigator.canShare && navigator.canShare({ files: [file] })) {
                                 try {
                                     await navigator.share({
-                                        title: '11th Floor Word Climb Victory Card',
+                                        title: 'Wordclimb Victory Card',
                                         files: [file]
                                     });
                                 } catch (e) {
