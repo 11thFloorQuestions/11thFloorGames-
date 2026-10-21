@@ -5,84 +5,84 @@
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Who are currently bottom of the Premier League table Today Tues 20th Oct 2026.",
+      "question": "Who is currently sitting fourth in the Premier League table today, Wednesday, 21st Oct 2026?",
       "options": [
-        "Sunderland",
+        "Chelsea",
         "Tottenham Hotspur",
-        "Coventry",
-        "Ipswich"
+        "Arsenal",
+        "Liverpool"
       ],
-      "answer": "Sunderland",
-      "explanation": "Sunderland's official nickname, 'The Black Cats,' was adopted in 2000 after a fan vote, referencing a famous gun battery at the River Wear named after a local legend. Sunderland's Stadium of Light features a giant Davy miner's lamp outside the entrance to honor the region's rich coal-mining heritage."
+      "answer": "Chelsea",
+      "explanation": "Chelsea plays their home matches at Stamford Bridge, which opened way back in 1877. Chelsea is the only London club to have ever won the UEFA Champions League."
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which former Premier League winning manager celebrates his Birthday today?",
+      "question": "Which former Manchester United, Liverpool, and West Ham player and Premier League legend celebrates his birthday today?",
       "options": [
-        "Claudio Ranieri",
-        "Pep Guardiola",
-        "Jurgen Klopp",
-        "Piers Morgan"
+        "Paul Ince",
+        "Paul Jewell",
+        "Paul Gascoigne",
+        "Paul Chuckle"
       ],
-      "answer": "Claudio Ranieri",
-      "explanation": "Claudio Ranieri earned the famous nickname 'The Tinkerman' during his time at Chelsea due to his frequent rotation of starting lineups and tactics. Ranieri famously led Leicester City to the Premier League title in the 2015–16 season, overcoming preseason betting odds of 5,000-to-1."
+      "answer": "Paul Ince",
+      "explanation": "Paul Ince was nicknamed 'The Guv'nor' during his playing career. In 1993, he became the first Black player to captain the England national team."
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Who is the current Manager of Newcastle",
+      "question": "Who is the current manager of Leeds United?",
       "options": [
-        "Matthias Jaissle",
-        "Eddie Howe",
-        "Ant McPartlin",
-        "Alan Shearer"
+        "Daniel Farke",
+        "Marko Rose",
+        "Pierre Sage",
+        "Gary O’Neill"
       ],
-      "answer": "Matthias Jaissle",
-      "explanation": "Matthias Jaissle transitioned into coaching at a very young age after a severe knee injury forced him to retire as a professional player at just 26 years old. Before moving to top-flight management in Western Europe, Jaissle made his name by winning back-to-back Austrian Bundesliga titles with Red Bull Salzburg."
+      "answer": "Daniel Farke",
+      "explanation": "Daniel Farke won the Sky Bet Championship title twice during his time managing Norwich City. Before coaching in England, Farke spent several years managing Borussia Dortmund II."
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Tottenham Hotspur beat Coventry last night (Mon,) what was the final score?",
+      "question": "Liverpool beat Villarreal last night (Tuesday) what was the final score?",
       "options": [
-        "3- 1 win",
-        "2-1 win",
-        "2-0 win",
-        "5-0 win"
+        "4–3 win",
+        "3–1 win",
+        "4–1 win",
+        "5–1 win"
       ],
-      "answer": "3- 1 win",
-      "explanation": "Matches between Tottenham and Coventry always evoke memories of the iconic 1987 FA Cup Final, where Coventry won 3–2 in one of Wembley's greatest-ever finals. Tottenham's victory over Coventry marked their first Premier League win of the 2026–27 campaign after a 148-day winless streak."
+      "answer": "4–3 win",
+      "explanation": "Liverpool famously plays 'You'll Never Walk Alone' before every home match at Anfield. Anfield's famous Spion Kop stand was named after a battle in the Second Boer War."
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "and in that game yesterday which player scored the opening goal ?",
+      "question": "Manchester City were also winners last night (Tuesday) in the Champions League, beating AEK Athens 5–1; which City player bagged a hat-trick?",
       "options": [
-        "James Maddison",
-        "Omar Marmoush",
-        "Dominic Solanke",
-        "Jack Rudoni"
+        "Phil Foden",
+        "Erling Haaland",
+        "Elliot Anderson"
       ],
-      "answer": "James Maddison",
-      "explanation": "James Maddison actually began his professional career in Coventry City's youth academy, making his senior debut for the Sky Blues back in 2014. Maddison is known for his signature goal celebration, where he mimics throwing a dart—a nod to his passion for professional darts."
+      "answer": "Phil Foden",
+      "explanation": "Phil Foden scored his first senior Manchester City goal when he was just 17 years old. Foden won the Premier League Young Player of the Season award in back-to-back years (2021 and 2022)."
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "On this day 20th October: Raheem Sterling's First Senior Goal (2012): A 17-year-old Raheem Sterling scored a brilliant winner for Liverpool against which Team? becoming the second-youngest goalscorer in Liverpool's history behind Michael Owen..",
+      "question": "It's Paul Ince's birthday today, 21st Oct 2026; which Italian club did Ince sign for after leaving Manchester United?",
       "options": [
-        "Reading",
-        "Middlesborough",
-        "Millwall"
+        "Inter Milan",
+        "AC Milan",
+        "Sampdoria",
+        "Roma"
       ],
-      "answer": "Reading",
-      "explanation": "Sterling's goal against Reading made him the second-youngest player to score for Liverpool in the Premier League, behind only Michael Owen. Sterling won the prestigious European 'Golden Boy' award in 2014, recognizing him as the best under-21 player in Europe."
+      "answer": "Inter Milan",
+      "explanation": "During his time in Italy, Ince helped Inter Milan reach the 1997 UEFA Cup Final. He earned a passionate song from the Inter Milan fans who nicknamed him 'The Ince-inator.'"
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Kevin Keegan was handed which squad number Newcastle United debut in 1982?",
+      "question": "Ashley Young was handed which squad number at Aston Villa from 2007–2011?",
       "options": [
         "7",
         "10",
@@ -90,46 +90,46 @@
         "11"
       ],
       "answer": "7",
-      "explanation": "Keegan scored the match-winning goal on his Newcastle debut against Queens Park Rangers in August 1982, sparking 'Keegan Mania' on Tyneside. Keegan is one of the few English players to win the prestigious Ballon d'Or, winning back-to-back awards in 1978 and 1979 while playing for Hamburg."
+      "explanation": "Ashley Young started his professional career at Watford before moving to Aston Villa in 2007. He won the Premier League title later in his career during the 2012–13 season with Manchester United."
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Out of the 20 football clubs currently in Premier league which club has the cheapest season tickets?",
+      "question": "Out of the 20 football clubs currently in the Premier League, which club has the most expensive season tickets?",
       "options": [
-        "Hull City",
-        "Manchester City",
-        "Ipswich Town",
-        "Brentford"
+        "Fulham",
+        "Tottenham Hotspur",
+        "Arsenal",
+        "Manchester United"
       ],
-      "answer": "Hull City",
-      "explanation": "Hull City pioneered an innovative monthly membership scheme that dramatically reduced season ticket prices compared to standard Premier League rates. Hull City are famous for their unique nickname 'The Tigers' and remain the only club in the top divisions of English football whose name contains no letters that can be colored in (like O, P, B, Q, R, A, or D)."
+      "answer": "Fulham",
+      "explanation": "Fulham's home ground, Craven Cottage, sits right beside the River Thames in London. Craven Cottage features a red-brick Victorian pavilion that was built in 1905 by Scottish architect Archibald Leitch."
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "How many Premier League titles has James Milner won?",
+      "question": "How many Premier League titles has Jamie Carragher won?",
       "options": [
-        "3",
+        "0",
         "2",
-        "4",
+        "3",
         "1"
       ],
-      "answer": "3",
-      "explanation": "Milner won two Premier League titles with Manchester City (2011–12, 2013–14) and one with Liverpool (2019–20). Milner is second on the all-time list for most Premier League appearances, having made his debut for Leeds United in 2002 at just 16 years old."
+      "answer": "0",
+      "explanation": "Despite never winning the league, Jamie Carragher won the Champions League, FA Cup, and League Cup with Liverpool. Carragher made 737 total appearances for Liverpool, placing him second on the club's all-time appearance list."
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Which opposition team did Tottenham Hotspur crush 9–1 at White Hart Lane in 2009, featuring five goals from Jermain Defoe?",
+      "question": "How many Premier League appearances did Alan Shearer make?",
       "options": [
-        "Wigan Athletic",
-        "Derby County",
-        "Wolverhampton Wanderers",
-        "Reading"
+        "441",
+        "281",
+        "341",
+        "391"
       ],
-      "answer": "Wigan Athletic",
-      "explanation": "Spurs scored eight goals in the second half to record their biggest top-flight victory."
+      "answer": "441",
+      "explanation": "Alan Shearer is the all-time top goalscorer in Premier League history with 260 goals. He won his only Premier League title as a player with Blackburn Rovers in the 1994–95 season."
     }
   ]
 }
