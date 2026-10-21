@@ -1,11 +1,18 @@
 /**
  * Think You Know Ball? 5.45 Special — controller
  * Three entrances (solo / gaffer / group), per-mode receipts, per-question recording.
+ * Lift ride: same as TYKB. Plays after every answer, right or wrong. Final ride is green and leads to the receipt.
  */
 
 // ---- Config ---------------------------------------------------------------
 const SHUFFLE_OPTIONS = false;          // set true before public launch (correct answer is options[0] in the data file)
 const GAME_ID = 'tyk_545';
+
+// Lift ride timings (ms). Same values as TYKB.
+const LIFT_OPENING_MS = 1400;           // first ride, before question 1
+const LIFT_RISE_MS = 1000;              // ride between questions
+const LIFT_VICTORY_MS = 2000;           // final green ride to the receipt
+const LIFT_ANSWER_DELAY_MS = 400;       // pause after an answer before the ride starts
 
 // ---- State ----------------------------------------------------------------
 let currentIndex = 0;
@@ -134,8 +141,12 @@ function initWorkspace() {
     $('floor-hud-container').style.display = 'flex';
     $('game-workspace').style.display = 'flex';
     $('mode-badge-text').innerText = `MODE: ${MODE_LABELS[selectedMode]}`;
-    startTimer();
-    renderQuestion();
+
+    // Opening ride. The clock starts and question 1 appears when the lift arrives.
+    playLiftRide(LIFT_OPENING_MS, () => {
+        startTimer();
+        renderQuestion();
+    });
 }
 
 function startTimer() {
@@ -145,6 +156,50 @@ function startTimer() {
         timeElapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
         $('active-game-timer').innerText = fmtTime(timeElapsedSeconds);
     }, 1000);
+}
+
+// ---- Lift ride (same as TYKB) -----------------------------------------------
+let liftRideToken = 0;
+
+function playLiftRide(durationMs, onArrive, options) {
+    const overlay = $('lift-overlay');
+    const graphic = $('lift-graphic');
+
+    // If the overlay markup is missing, never block the game.
+    if (!overlay || !graphic) {
+        onArrive();
+        return;
+    }
+
+    const myToken = ++liftRideToken;
+    let finished = false;
+    let arriveTimeout = null;
+
+    const finish = () => {
+        if (finished || myToken !== liftRideToken) return;
+        finished = true;
+        clearTimeout(arriveTimeout);
+        overlay.onclick = null;
+        onArrive();
+        overlay.classList.add('hidden');
+        graphic.classList.remove('rising');
+    };
+
+    graphic.classList.remove('rising');
+    graphic.style.setProperty('--lift-ms', `${durationMs}ms`);
+    overlay.classList.toggle('victory', !!(options && options.victory));
+    overlay.classList.remove('hidden');
+    void graphic.offsetWidth;
+    graphic.classList.add('rising');
+
+    arriveTimeout = setTimeout(finish, durationMs);
+
+    // Tap to skip. Short delay so the tap that started the ride cannot skip it.
+    setTimeout(() => {
+        if (!finished && myToken === liftRideToken) {
+            overlay.onclick = finish;
+        }
+    }, 250);
 }
 
 // ---- Questions --------------------------------------------------------------
@@ -215,7 +270,14 @@ function handleAnswer(selectedIndex, correctIndex, btn, opts, q) {
 
     answerLog.push({ q: currentIndex + 1, picked: opts[selectedIndex], correct: opts[correctIndex], right, t: timeElapsedSeconds });
 
-    setTimeout(() => { currentIndex++; renderQuestion(); }, 1200);
+    // Right or wrong, the lift takes them on. The last question gets the green ride to the receipt.
+    const isLast = currentIndex >= getQuestions().length - 1;
+    setTimeout(() => {
+        playLiftRide(isLast ? LIFT_VICTORY_MS : LIFT_RISE_MS, () => {
+            currentIndex++;
+            renderQuestion();           // past the last question this calls finishGame()
+        }, { victory: isLast });
+    }, LIFT_ANSWER_DELAY_MS);
 }
 
 function saveProgress() {
