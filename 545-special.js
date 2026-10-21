@@ -142,10 +142,11 @@ function initWorkspace() {
     $('game-workspace').style.display = 'flex';
     $('mode-badge-text').innerText = `MODE: ${MODE_LABELS[selectedMode]}`;
 
-    // Opening ride. The clock starts and question 1 appears when the lift arrives.
+    // Build the first question now, hidden under the lift, so the game card is its full height
+    // and the lift is full size from the very first ride. The clock starts when the lift arrives.
+    renderQuestion();
     playLiftRide(LIFT_OPENING_MS, () => {
         startTimer();
-        renderQuestion();
     });
 }
 
