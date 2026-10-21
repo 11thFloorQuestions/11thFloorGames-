@@ -66,6 +66,7 @@
             text-align: center;
             padding: 12px 16px;
             overflow-x: hidden;
+            position: relative;
             opacity: 0;
             animation: fadeInBody 0.25s ease-in forwards;
         }
@@ -296,6 +297,117 @@
             color: var(--text-muted);
         }
 
+        /* "?" pill in the top corner (same pill style as the games) */
+        .about-pill {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: var(--surface);
+            border: 1px solid var(--surface-border-light);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .about-pill:hover {
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        /* About pop-up */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(14, 14, 14, 0.94);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            padding: 16px;
+        }
+
+        .modal-overlay.hidden { display: none !important; }
+
+        .modal-card {
+            background-color: var(--surface);
+            border: 1px solid var(--accent-red);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+            padding: 24px 20px;
+            border-radius: 14px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+
+        .modal-sub-header {
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--accent-red);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .modal-main-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.8rem;
+            color: #f0f0f0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+
+        .modal-body {
+            text-align: left;
+            font-size: 0.78rem;
+            font-weight: 600;
+            line-height: 1.5;
+            color: #d4d4d4;
+            margin-bottom: 14px;
+        }
+
+        .modal-body p { margin-bottom: 10px; }
+
+        .btn-cta {
+            width: 100%;
+            background-color: var(--accent-red);
+            border: 1px solid var(--accent-red);
+            color: #ffffff;
+            padding: 13px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 24px;
+            cursor: pointer;
+        }
+
+        .btn-modal {
+            width: 100%;
+            background-color: #181818;
+            border: 1px solid var(--surface-border-light);
+            color: var(--text-primary);
+            padding: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 24px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
         footer {
             margin-top: 16px;
             font-size: 0.6rem;
@@ -307,6 +419,22 @@
     </style>
 </head>
 <body>
+
+    <button class="about-pill" id="btn-about" aria-label="About Eleventh Floor Games">?</button>
+
+    <!-- About pop-up. DRAFT COPY: replace the text below with the real wording. -->
+    <div id="modal-about" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-sub-header">ELEVENTH FLOOR GAMES</div>
+            <div class="modal-main-title">WHO WE ARE</div>
+            <div class="modal-body">
+                <p>Eleventh Floor Games is a lobby of short daily games. Pick a game, answer, solve and climb to the 11th floor.</p>
+                <p>New games are added from time to time, and your stats stay on your own device.</p>
+            </div>
+            <button class="btn-cta" id="btn-about-share">Share the lobby with a friend</button>
+            <button class="btn-modal" id="btn-about-close">Got it</button>
+        </div>
+    </div>
 
     <div class="hub-logo-box">
         <h1 class="hub-logo-red">11FL?</h1>
@@ -505,6 +633,40 @@
                 playLobbyDing();
             }, 1370);
         });
+
+        // About pop-up
+        (function () {
+            const modal = document.getElementById('modal-about');
+            const openBtn = document.getElementById('btn-about');
+            const closeBtn = document.getElementById('btn-about-close');
+            const shareBtn = document.getElementById('btn-about-share');
+            if (!modal || !openBtn) return;
+
+            const open = () => { triggerLobbyHaptic(15); modal.classList.remove('hidden'); };
+            const close = () => { modal.classList.add('hidden'); };
+
+            openBtn.addEventListener('click', open);
+            if (closeBtn) closeBtn.addEventListener('click', close);
+            modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+
+            // Call to action: share the lobby link (the share sheet on phones, copy on desktop)
+            if (shareBtn) {
+                shareBtn.addEventListener('click', async () => {
+                    const url = window.location.origin + window.location.pathname;
+                    const data = { title: 'Eleventh Floor Games', text: 'Short daily games. Can you reach the 11th floor?', url: url };
+                    const label = shareBtn.textContent;
+                    try {
+                        if (navigator.share) {
+                            await navigator.share(data);
+                        } else if (navigator.clipboard && navigator.clipboard.writeText) {
+                            await navigator.clipboard.writeText(url);
+                            shareBtn.textContent = 'Link copied';
+                            setTimeout(() => { shareBtn.textContent = label; }, 2000);
+                        }
+                    } catch (e) { /* share sheet dismissed */ }
+                });
+            }
+        })();
     </script>
 </body>
 </html>
