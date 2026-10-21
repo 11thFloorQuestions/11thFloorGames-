@@ -5,7 +5,7 @@
  */
 
 // ---- Config ---------------------------------------------------------------
-const SHUFFLE_OPTIONS = false;          // set true before public launch (correct answer is options[0] in the data file)
+const SHUFFLE_OPTIONS = true;           // answer choices are shuffled on every question (correct answer is found by its text, so order does not matter)
 const GAME_ID = 'tyk_545';
 
 // Lift ride timings (ms). Same values as TYKB.
@@ -239,7 +239,7 @@ function renderQuestion() {
     // Work out the correct answer by text, then (optionally) shuffle the options
     const correctText = typeof q.answer === 'string'
         ? q.answer
-        : q.options[[q.correct, q.correctIndex, q.answer].find(n => typeof n === 'number')];
+        : (q.options[[q.correct, q.correctIndex, q.answer].find(n => typeof n === 'number')] ?? q.options[0]);
     const opts = SHUFFLE_OPTIONS ? shuffled(q.options) : q.options.slice();
     const correctIndex = opts.findIndex(o => o.trim().toLowerCase() === String(correctText).trim().toLowerCase());
 
