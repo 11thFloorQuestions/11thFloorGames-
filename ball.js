@@ -1,170 +1,611 @@
-/**
- * Think You Know Ball? 5.45 Special — controller
- * Three entrances (solo / gaffer / group), per-mode receipts, per-question recording.
- * Lift ride: same as TYKB. Plays after every answer, right or wrong. Final ride is green and leads to the receipt.
- */
+// ==========================================================================
+// 11th Floor TYKB (Think You Know Ball?) — Core Game Engine
+// v0.5 changes (marked "v0.5"):
+//  - Option buttons are rebuilt fresh each floor (fixes green bleed)
+//  - First wrong answer of the day recorded (wrong answer only, never a timeout)
+//  - Every fall logged in stats (floor + wrong/timeout)
+//  - Hardcoded fall to floor 3 removed
+//  - Receipt attempt line reads "on 1st attempt"
+//  - Debug switch: ball.html?debug=win&attempt=3&fail=4&time=92
+// ==========================================================================
 
-// ---- Config ---------------------------------------------------------------
-const SHUFFLE_OPTIONS = false;          // set true before public launch (correct answer is options[0] in the data file)
-const GAME_ID = 'tyk_545';
+function safeAddListener(id, event, handler) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.addEventListener('pointerdown', () => {
+            triggerHaptic(15);
+            unlockAudioContext();
+        });
+        el.addEventListener(event, (e) => {
+            handler(e);
+        });
+    }
+}
 
-// Lift ride timings (ms). Same values as TYKB.
-const LIFT_OPENING_MS = 1400;           // first ride, before question 1
-const LIFT_RISE_MS = 1000;              // ride between questions
-const LIFT_VICTORY_MS = 2000;           // final green ride to the receipt
-const LIFT_ANSWER_DELAY_MS = 400;       // pause after an answer before the ride starts
+function safeSetText(id, text) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.textContent = text;
+    }
+}
 
-// ---- State ----------------------------------------------------------------
-let currentIndex = 0;
-let selectedMode = 'solo';
-let startTime = 0;
-let timerInterval = null;
-let timeElapsedSeconds = 0;
-let soundEnabled = true;
-let correctCount = 0;
-let isAnswering = false;
-let answerLog = [];                      // { q, picked, correct, right, t }
+function safeToggleClass(id, className, force) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.classList.toggle(className, force);
+    }
+}
 
-const MODE_LABELS = { solo: 'SOLO', gaffer: 'GAFFER', group: 'GROUP' };
+function shuffleArray(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
 
-const RULES = {
-    solo: {
-        title: 'HOW SOLO WORKS',
-        body: [
-            '<strong>Race the clock.</strong> Answer all 45 questions. Your score is out of 45 and your time is the tie-break, so be right and be quick.',
-            'One attempt per question, no going back. Your Victory Receipt shows your score first, then your time.'
-        ]
-    },
-    gaffer: {
-        title: 'HOW GAFFER WORKS',
-        body: [
-            '<strong>You are the Quiz Master.</strong> Read each question aloud to your friends, group, stream or pub. Tap Reveal Gaffer Fact for hints and banter.',
-            'Play through all 45 questions. Your total run time is the host time, and it is the headline on your Victory Receipt.',
-            'Gather your players\u2019 scores and share your receipt.'
-        ]
-    },
-    group: {
-        title: 'HOW GROUP PLAY WORKS',
-        body: [
-            '<strong>Listen to your Gaffer.</strong> The question is masked on your screen but the four answers stay. Lock in your answer as the host reads each question.',
-            'Your Victory Receipt shows your score out of 45 and your own time.'
-        ]
+// v0.5: general ordinal helper (1st, 2nd, 3rd, 4th ... 11th, 21st)
+function ordinal(n) {
+    const mod100 = n % 100;
+    if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
+    const mod10 = n % 10;
+    if (mod10 === 1) return `${n}st`;
+    if (mod10 === 2) return `${n}nd`;
+    if (mod10 === 3) return `${n}rd`;
+    return `${n}th`;
+}
+
+function getOrdinalFloorHTML(floorNum) {
+    const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
+    const ord = ordinals[floorNum - 1] || `${floorNum}th`;
+    return `<span style="color: var(--genre-pitch, #22c55e); font-weight: 800;">${ord}</span>`;
+}
+
+function getFailedOrdinalFloorHTML(floorNum) {
+    const ordinals = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"];
+    const ord = ordinals[floorNum - 1] || `${floorNum}th`;
+    return `<span style="color: var(--state-error, #EF4444); font-weight: 800;">${ord}</span> <span style="color: #ffffff;">Floor</span>`;
+}
+
+function getFormattedDateString() {
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const now = new Date();
+    const dayName = days[now.getDay()];
+    const dayNum = now.getDate();
+    const monthName = months[now.getMonth()];
+    const year = now.getFullYear();
+
+    let suffix = "th";
+    if (dayNum === 1 || dayNum === 21 || dayNum === 31) suffix = "st";
+    else if (dayNum === 2 || dayNum === 22) suffix = "nd";
+    else if (dayNum === 3 || dayNum === 23) suffix = "rd";
+
+    return `${dayName} ${dayNum}${suffix} ${monthName} ${year}`;
+}
+
+// ==========================================
+// HAPTIC FEEDBACK ENGINE
+// ==========================================
+
+function triggerHaptic(pattern) {
+    if ('vibrate' in navigator) {
+        try {
+            navigator.vibrate(pattern);
+        } catch (e) {}
+    }
+}
+
+// ==========================================
+// STATE MANAGEMENT & PERSISTENCE
+// ==========================================
+
+const gameState = {
+    currentFloor: 1,
+    maxFloors: 10,
+    soundEnabled: true,
+    timer: null,
+    timeLeft: 20,
+    questions: [],
+    currentQuestionIndex: 0,
+    batchIndex: 0,
+    startTime: 0,
+    timerInterval: null,
+    timeElapsedSeconds: 0,
+    attemptsToday: 1,
+    // v0.5: floor of the first WRONG ANSWER this session (any attempt).
+    // A timeout never sets this. null = no wrong answer yet = green 10/10.
+    firstWrongFloor: null,
+    stats: {
+        played: 0,
+        wins: 0,
+        streak: 0,
+        bestFloor: 1,
+        bestTimeSeconds: null,
+        // v0.5: quiet record for the stats window.
+        // fallsByFloor: { "4": { wrong: 2, timeout: 1 }, ... }
+        fallsByFloor: {},
+        totalFalls: 0
     }
 };
 
-const fallbackQuestions = [
-    { question: 'Which club won the inaugural Premier League title in 1992\u201393?', options: ['Manchester United', 'Aston Villa', 'Blackburn Rovers', 'Norwich City'], answer: 'Manchester United', explanation: 'Placeholder.' }
+let isStartClimbLoading = false;
+let audioUnlocked = false;
+let debugMode = false;
+
+const STATS_KEY = '11th_floor_tykb_stats';
+
+const floorMessageBatches = [
+    [
+        "KEEP CLIMBING",
+        "STAY SHARP",
+        "WELL DONE",
+        "FLOOR CLEARED",
+        "HALFWAY THERE",
+        "PURE PRECISION",
+        "KEEP GOING",
+        "SO CLOSE",
+        "NEARLY THERE",
+        "FINAL STEP"
+    ]
 ];
 
-function getQuestions() {
-    if (typeof window.specialQuizQuestions !== 'undefined' && Array.isArray(window.specialQuizQuestions) && window.specialQuizQuestions.length) return window.specialQuizQuestions;
-    if (typeof fullQuestions !== 'undefined' && Array.isArray(fullQuestions) && fullQuestions.length) return fullQuestions;
-    return fallbackQuestions;
-}
-
-// ---- Edition label (date based, UK time) ------------------------------------
-function ukDateParts() {
-    const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', day: '2-digit', month: 'short', year: 'numeric' });
-    const p = {};
-    fmt.formatToParts(new Date()).forEach(x => { p[x.type] = x.value; });
-    return p;
-}
-function editionKey() { const p = ukDateParts(); return `${p.year}-${p.month}-${p.day}`; }   // e.g. 2026-Oct-20
-function editionLabel() { const p = ukDateParts(); return `${parseInt(p.day, 10)} ${p.month.toUpperCase()}`; } // e.g. 20 OCT
-
-let EDITION = editionKey();              // fixed when a game starts, so a midnight finish keeps its edition
-const progressKey = () => `${GAME_ID}_progress_${EDITION}`;
-const attemptsKey = () => `${GAME_ID}_attempts_${EDITION}`;
-const logKey = () => `${GAME_ID}_log`;
-
-// ---- Helpers ----------------------------------------------------------------
-const $ = id => document.getElementById(id);
-const fmtTime = s => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
-function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
-function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
-function lsDel(k) { try { localStorage.removeItem(k); } catch (e) {} }
-
-// ---- Landing ----------------------------------------------------------------
-window.addEventListener('DOMContentLoaded', () => {
+function loadSavedStats() {
     try {
-        const saved = JSON.parse(lsGet(progressKey()) || 'null');
-        if (saved && typeof saved.index === 'number' && saved.index < getQuestions().length && MODE_LABELS[saved.mode]) {
-            const btn = $('resume-' + saved.mode);          // resume appears only on the mode in progress
-            if (btn) btn.style.display = 'block';
-        } else if (saved) {
-            lsDel(progressKey());
+        const saved = localStorage.getItem(STATS_KEY);
+        if (saved) {
+            gameState.stats = { ...gameState.stats, ...JSON.parse(saved) };
         }
-    } catch (e) { lsDel(progressKey()); }
+    } catch (e) {
+        console.warn('Could not load stats from localStorage.');
+    }
+}
 
-    $('share-btn').addEventListener('click', shareReceipt);
+function saveStats() {
+    if (debugMode) return; // v0.5: debug never touches real stats
+    try {
+        localStorage.setItem(STATS_KEY, JSON.stringify(gameState.stats));
+    } catch (e) {
+        console.warn('Could not save stats to localStorage.');
+    }
+}
+
+// v0.5: log one fall. type is 'wrong' or 'timeout'.
+function recordFall(floor, type) {
+    const key = String(floor);
+    if (!gameState.stats.fallsByFloor || typeof gameState.stats.fallsByFloor !== 'object') {
+        gameState.stats.fallsByFloor = {};
+    }
+    if (!gameState.stats.fallsByFloor[key]) {
+        gameState.stats.fallsByFloor[key] = { wrong: 0, timeout: 0 };
+    }
+    gameState.stats.fallsByFloor[key][type === 'timeout' ? 'timeout' : 'wrong']++;
+    gameState.stats.totalFalls = (gameState.stats.totalFalls || 0) + 1;
+}
+
+loadSavedStats();
+
+// ==========================================
+// GAMEPLAY SESSION STOPWATCH TIMER
+// ==========================================
+
+function startSessionTimer() {
+    if (!gameState.timerInterval) {
+        gameState.timeElapsedSeconds = 0;
+        gameState.startTime = Date.now();
+        const activeGameTimer = document.getElementById("active-game-timer");
+        if (activeGameTimer) {
+            activeGameTimer.style.display = "block";
+            activeGameTimer.textContent = "00:00";
+        }
+        gameState.timerInterval = setInterval(updateSessionTimerDisplay, 1000);
+    }
+}
+
+function stopSessionTimer() {
+    if (gameState.timerInterval) {
+        clearInterval(gameState.timerInterval);
+        gameState.timerInterval = null;
+    }
+}
+
+function updateSessionTimerDisplay() {
+    gameState.timeElapsedSeconds = Math.floor((Date.now() - gameState.startTime) / 1000);
+    const activeGameTimer = document.getElementById("active-game-timer");
+    if (activeGameTimer) {
+        activeGameTimer.textContent = formatTime(gameState.timeElapsedSeconds);
+    }
+}
+
+function formatTime(totalSeconds) {
+    if (totalSeconds === null || totalSeconds === undefined) return "--:--";
+    const m = Math.floor(totalSeconds / 60);
+    const s = (totalSeconds % 60).toString().padStart(2, '0');
+    return `${m}:${s}`;
+}
+
+// ==========================================
+// AUDIO ENGINE & IN-APP BROWSER UNLOCK
+// ==========================================
+
+const elevatorDingAudio = new Audio();
+elevatorDingAudio.src = 'ding.mp3';
+
+function unlockAudioContext() {
+    if (audioUnlocked) return;
+    try {
+        elevatorDingAudio.play().then(() => {
+            elevatorDingAudio.pause();
+            elevatorDingAudio.currentTime = 0;
+            audioUnlocked = true;
+        }).catch(() => {});
+    } catch (e) {}
+}
+
+function playElevatorDing() {
+    if (!gameState.soundEnabled) return;
+    try {
+        elevatorDingAudio.currentTime = 0;
+        elevatorDingAudio.play().catch(e => {
+            elevatorDingAudio.src = 'assets/audio/ding.mp3';
+            elevatorDingAudio.play().catch(() => {});
+        });
+    } catch (e) {
+        console.warn('Audio playback error:', e);
+    }
+}
+
+function triggerLandingPageDing() {
+    setTimeout(() => {
+        playElevatorDing();
+    }, 1370);
+}
+
+// ==========================================
+// NAVIGATION & CONTROLS
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    safeAddListener('btn-start-climb', 'click', () => {
+        startDailyClimb();
+    });
+
+    safeAddListener('btn-landing-stats', 'click', () => openVault());
+    
+    safeAddListener('btn-victory-stats', 'click', () => {
+        openVault();
+    });
+
+    safeAddListener('btn-back-vault', 'click', () => {
+        closeModal('modal-game-over');
+        openVault();
+    });
+
+    safeAddListener('btn-close-vault', 'click', () => {
+        closeModal('modal-vault');
+        const victoryScreen = document.getElementById('victory-screen');
+        if (victoryScreen && victoryScreen.style.display !== 'none') {
+            resetToLandingScreen();
+        }
+    });
+
+    safeAddListener('btn-try-again', 'click', () => {
+        closeModal('modal-game-over');
+        gameState.attemptsToday++;
+        if (gameState.questions && gameState.questions.length > 0) {
+            startGame();
+        } else {
+            startDailyClimb();
+        }
+    });
+
+    safeAddListener('btn-sound-toggle', 'click', toggleSound);
+
+    // v0.5: rules pop-up (the ? button only shows on the landing screen, so it can never cost a player time mid-climb)
+    safeAddListener('btn-rules', 'click', () => openModal('modal-rules'));
+    safeAddListener('btn-close-rules', 'click', () => closeModal('modal-rules'));
+
+    updateSoundUI();
+
+    runDebugSwitch();
 });
 
-window.toggleSound = function () {
-    soundEnabled = !soundEnabled;
-    $('btn-sound-toggle').innerText = soundEnabled ? 'SOUND: ON' : 'SOUND: OFF';
-};
-
-window.openRulesModal = function (mode) {
-    const r = RULES[mode] || RULES.solo;
-    $('rules-title').innerText = r.title;
-    $('rules-body').innerHTML = r.body.map(t => `<p>${t}</p>`).join('');
-    $('rules-modal').style.display = 'flex';
-};
-window.closeRulesModal = function () { $('rules-modal').style.display = 'none'; };
-
-// ---- Start / resume ---------------------------------------------------------
-window.startGame = function (mode) {
-    selectedMode = mode;
-    EDITION = editionKey();
-    currentIndex = 0; correctCount = 0; timeElapsedSeconds = 0; answerLog = [];
-    initWorkspace();
-};
-
-window.resumeGame = function (mode) {
+// v0.5: jump straight to the victory screen for testing.
+// Example: ball.html?debug=win&attempt=3&fail=4&time=92
+// attempt = which attempt it was, fail = floor of first wrong answer (omit for clean run),
+// time = seconds. Nothing is saved to real stats. REMOVE OR LOCK BEFORE LAUNCH.
+function runDebugSwitch() {
+    let params;
     try {
-        const d = JSON.parse(lsGet(progressKey()) || 'null');
-        if (d) {
-            selectedMode = d.mode || mode;
-            currentIndex = d.index || 0;
-            correctCount = d.correct || 0;
-            timeElapsedSeconds = d.time || 0;
-            answerLog = Array.isArray(d.log) ? d.log : [];
+        params = new URLSearchParams(window.location.search);
+    } catch (e) {
+        return;
+    }
+    if (params.get('debug') !== 'win') return;
+
+    debugMode = true;
+    const attempt = parseInt(params.get('attempt'), 10);
+    const fail = parseInt(params.get('fail'), 10);
+    const time = parseInt(params.get('time'), 10);
+
+    gameState.attemptsToday = attempt > 0 ? attempt : 1;
+    gameState.firstWrongFloor = fail >= 1 && fail <= 10 ? fail : null;
+    gameState.timeElapsedSeconds = time >= 0 ? time : 92;
+
+    showScreen('game-screen');
+    handleVictory(true);
+}
+
+function resetToLandingScreen() {
+    stopSessionTimer();
+    showScreen('landing-screen');
+}
+
+function showScreen(screenId) {
+    const victoryScreen = document.getElementById('victory-screen');
+    if (victoryScreen) victoryScreen.style.display = 'none';
+
+    const screens = ['landing-screen', 'game-screen'];
+    screens.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.style.display = (id === screenId) ? 'flex' : 'none';
         }
-    } catch (e) { return window.startGame(mode); }
-    initWorkspace();
-};
+    });
+    const rulesBtn = document.getElementById('btn-rules');
+    if (rulesBtn) rulesBtn.style.display = (screenId === 'landing-screen') ? '' : 'none';
+    if (screenId === 'landing-screen') {
+        triggerLandingPageDing();
+    }
+}
 
-function initWorkspace() {
-    $('landing-screen').style.display = 'none';
-    $('victory-screen').style.display = 'none';
-    $('gameplay-header').style.display = 'flex';
-    $('floor-hud-container').style.display = 'flex';
-    $('game-workspace').style.display = 'flex';
-    $('mode-badge-text').innerText = `MODE: ${MODE_LABELS[selectedMode]}`;
+function updateSoundUI() {
+    const label = `SOUND: ${gameState.soundEnabled ? 'ON' : 'OFF'}`;
+    safeSetText('btn-sound-toggle', label);
+}
 
-    // Build the first question now, hidden under the lift, so the game card is its full height
-    // and the lift is full size from the very first ride. The clock starts when the lift arrives.
-    renderQuestion();
-    playLiftRide(LIFT_OPENING_MS, () => {
-        startTimer();
+function toggleSound() {
+    gameState.soundEnabled = !gameState.soundEnabled;
+    if (gameState.soundEnabled) {
+        playElevatorDing();
+    }
+    updateSoundUI();
+}
+
+// ==========================================
+// MODAL & HIGH-SPEED VAULT CONTROLS
+// ==========================================
+
+function openModal(modalId) {
+    safeToggleClass(modalId, 'hidden', false);
+}
+
+function closeModal(modalId) {
+    safeToggleClass(modalId, 'hidden', true);
+}
+
+function openVault() {
+    renderStatsUI();
+    populateVault();
+    openModal('modal-vault');
+}
+
+function renderStatsUI() {
+    const winRate = gameState.stats.played > 0 
+        ? Math.round((gameState.stats.wins / gameState.stats.played) * 100) 
+        : 0;
+
+    safeSetText('stat-played', gameState.stats.played);
+    safeSetText('stat-wins', gameState.stats.wins);
+    safeSetText('stat-winrate', `${winRate}%`);
+    safeSetText('stat-streak', gameState.stats.streak);
+
+    const bestEl = document.getElementById('stat-bestfloor');
+    if (bestEl) {
+        bestEl.innerHTML = getOrdinalFloorHTML(gameState.stats.bestFloor);
+    }
+
+    const bestTimeEl = document.getElementById('stat-besttime');
+    if (bestTimeEl) {
+        bestTimeEl.textContent = formatTime(gameState.stats.bestTimeSeconds);
+    }
+
+    // v0.5: falls by floor (wrong answer or timeout)
+    const fallsEl = document.getElementById('stat-falls');
+    if (fallsEl) {
+        const by = gameState.stats.fallsByFloor || {};
+        const floors = Object.keys(by).map(Number).sort((a, b) => a - b);
+        if (floors.length === 0) {
+            fallsEl.innerHTML = '';
+            fallsEl.style.display = 'none';
+        } else {
+            fallsEl.style.display = 'block';
+            fallsEl.innerHTML = '<div class="falls-title">Falls by floor</div>' + floors.map(f => {
+                const rec = by[f] || {};
+                const parts = [];
+                if (rec.wrong) parts.push(`${rec.wrong} wrong`);
+                if (rec.timeout) parts.push(`${rec.timeout} timeout`);
+                return `<div class="falls-row"><span>${ordinal(f)} Floor</span><span>${parts.join(' · ')}</span></div>`;
+            }).join('');
+        }
+    }
+}
+
+async function populateVault() {
+    const vaultList = document.getElementById('vault-list');
+    if (!vaultList) return;
+    
+    vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
+    
+    const BATCH_SIZE = 5;
+    const MAX_ARCHIVES = 50;
+    const buttons = [];
+    let currentId = 1;
+
+    while (currentId <= MAX_ARCHIVES) {
+        const batchPromises = [];
+        for (let i = 0; i < BATCH_SIZE && (currentId + i) <= MAX_ARCHIVES; i++) {
+            const idNum = currentId + i;
+            const paddedId = String(idNum).padStart(2, '0');
+            
+            batchPromises.push(
+                (async () => {
+                    let data = await fetchFileWithFallbacks(`sandbox-ball.${paddedId}.json`);
+                    if (!data) {
+                        data = await fetchFileWithFallbacks(`ball.${String(idNum).padStart(3, '0')}.json`);
+                    }
+                    return { id: paddedId, idNum, data };
+                })()
+            );
+        }
+
+        const batchResults = await Promise.all(batchPromises);
+
+        for (const res of batchResults) {
+            if (res.data) {
+                const btn = document.createElement('button');
+                btn.className = 'vault-item-btn';
+                btn.innerHTML = `<strong>Archive ${res.id}</strong>`;
+                btn.onpointerdown = () => triggerHaptic(15);
+                btn.onclick = () => {
+                    loadVaultSet(res.id, res.data);
+                };
+                buttons.push(btn);
+            }
+        }
+
+        currentId += BATCH_SIZE;
+    }
+
+    vaultList.innerHTML = '';
+    if (buttons.length === 0) {
+        vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">No archives found.</div>';
+    } else {
+        buttons.forEach(btn => vaultList.appendChild(btn));
+    }
+}
+
+// ==========================================
+// DATA LOADING & NORMALIZATION
+// ==========================================
+
+function normalizeQuestions(data) {
+    let rawList = [];
+    if (!data) return [];
+    
+    if (Array.isArray(data)) rawList = data;
+    else if (Array.isArray(data.floors)) rawList = data.floors;
+    else if (Array.isArray(data.questions)) rawList = data.questions;
+
+    return rawList.map(q => {
+        const options = Array.isArray(q.options) ? [...q.options] : ["Option A", "Option B", "Option C", "Option D"];
+        
+        let answerText = "";
+        if (typeof q.answer === 'string') answerText = q.answer;
+        else if (typeof q.correct === 'string') answerText = q.correct;
+        else if (typeof q.correctAnswer === 'string') answerText = q.correctAnswer;
+        else if (typeof q.correct_answer === 'string') answerText = q.correct_answer;
+        else if (typeof q.answerIndex === 'number' && options[q.answerIndex]) answerText = options[q.answerIndex];
+        else if (typeof q.correctIndex === 'number' && options[q.correctIndex]) answerText = options[q.correctIndex];
+        else if (typeof q.correct === 'number' && options[q.correct]) answerText = options[0];
+        else answerText = options[0];
+
+        return {
+            question: q.question || "Question missing",
+            options: options,
+            answer: answerText
+        };
     });
 }
 
-function startTimer() {
-    clearInterval(timerInterval);
-    startTime = Date.now() - timeElapsedSeconds * 1000;
-    timerInterval = setInterval(() => {
-        timeElapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-        $('active-game-timer').innerText = fmtTime(timeElapsedSeconds);
-    }, 1000);
+async function fetchFileWithFallbacks(filename) {
+    const candidatePaths = [
+        `./archives/${filename}`,
+        `./${filename}`,
+        `./assets/data/floors/${filename}`,
+        `./data/${filename}`,
+        filename
+    ];
+
+    const fetchSingle = async (path) => {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 1500);
+        try {
+            const res = await fetch(path, { signal: controller.signal });
+            clearTimeout(timeoutId);
+            if (res.ok) {
+                return await res.json();
+            }
+        } catch (e) {
+            clearTimeout(timeoutId);
+        }
+        throw new Error('Fetch failed');
+    };
+
+    try {
+        return await Promise.any(candidatePaths.map(path => fetchSingle(path)));
+    } catch (e) {
+        return null;
+    }
 }
 
-// ---- Lift ride (same as TYKB) -----------------------------------------------
+async function startDailyClimb() {
+    if (isStartClimbLoading) return;
+    isStartClimbLoading = true;
+
+    const startBtn = document.getElementById('btn-start-climb');
+    if (startBtn) {
+        startBtn.textContent = "LOADING...";
+        startBtn.style.opacity = "0.7";
+    }
+
+    try {
+        let data = await fetchFileWithFallbacks('ball-questions.json');
+        if (!data) data = await fetchFileWithFallbacks('sandbox-ball.32.json');
+        if (!data) data = await fetchFileWithFallbacks('sandbox-ball.23.json');
+
+        if (data) {
+            gameState.questions = normalizeQuestions(data);
+        }
+    } catch (err) {
+        console.error('Error fetching climb questions:', err);
+    } finally {
+        isStartClimbLoading = false;
+        if (startBtn) {
+            startBtn.textContent = "Start Climb";
+            startBtn.style.opacity = "1.0";
+        }
+    }
+
+    launchGameUI();
+}
+
+function loadVaultSet(paddedId, data) {
+    if (data) {
+        gameState.questions = normalizeQuestions(data);
+        closeModal('modal-vault');
+        launchGameUI();
+    }
+}
+
+function launchGameUI() {
+    startGame();
+}
+
+// ==========================================
+// LIFT RIDE (opening ride and rise between floors)
+// ==========================================
+
+const LIFT_OPENING_MS = 1400;
+const LIFT_RISE_MS = 1000;
+const LIFT_VICTORY_MS = 2000;
 let liftRideToken = 0;
+let liftFirstRideDone = false;
 
 function playLiftRide(durationMs, onArrive, options) {
-    const overlay = $('lift-overlay');
-    const graphic = $('lift-graphic');
+    const overlay = document.getElementById('lift-overlay');
+    const graphic = document.getElementById('lift-graphic');
 
     // If the overlay markup is missing, never block the game.
     if (!overlay || !graphic) {
@@ -203,163 +644,250 @@ function playLiftRide(durationMs, onArrive, options) {
     }, 250);
 }
 
-// ---- Questions --------------------------------------------------------------
-function shuffled(arr) {
-    const a = arr.slice();
-    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
-    return a;
+// ==========================================
+// GAME LOOP & ELEVATOR PROGRESSION
+// ==========================================
+
+function startGame() {
+    gameState.currentFloor = 1;
+    gameState.currentQuestionIndex = 0;
+    showScreen('game-screen');
+    
+    updateFloorUI();
+
+    const openingMs = liftFirstRideDone ? LIFT_RISE_MS : LIFT_OPENING_MS;
+    liftFirstRideDone = true;
+    playLiftRide(openingMs, () => {
+        startSessionTimer();
+        loadNextQuestion();
+    });
 }
 
-function renderQuestion() {
-    const list = getQuestions();
-    if (currentIndex >= list.length) { finishGame(); return; }
+function updateFloorUI() {
+    const cardFloorEl = document.getElementById('card-floor-text');
+    if (cardFloorEl) {
+        cardFloorEl.innerHTML = getOrdinalFloorHTML(gameState.currentFloor) + ' <span style="color: #ffffff;">Floor</span>';
+    }
+    
+    const activeBatch = floorMessageBatches[0];
+    const ruleMsg = activeBatch[gameState.currentFloor - 1] || "No mistakes!";
+    safeSetText('floor-rule-text', ruleMsg);
 
-    isAnswering = false;
-    const q = list[currentIndex];
-    const qBox = $('question-box'), btnFact = $('btn-reveal-fact');
+    document.querySelectorAll('.tower-floor, .floor-block').forEach(block => {
+        const floorNum = parseInt(block.getAttribute('data-floor'), 10);
+        block.classList.toggle('active', floorNum === gameState.currentFloor);
+        block.classList.toggle('active-floor', floorNum === gameState.currentFloor);
+        block.classList.toggle('completed', floorNum < gameState.currentFloor);
+        block.classList.remove('failed');
+    });
+}
 
-    $('card-floor-text').innerHTML = `<span style="color:var(--genre-pitch)">Q${currentIndex + 1}</span> / ${list.length}`;
-    $('gaffer-fact-box').style.display = 'none';
+// v0.5: replace every option button with a brand-new element. A new element has
+// no leftover colour, focus, hover or transition, so the green from the last
+// floor cannot carry over to the same position on the next floor.
+function rebuildOptionButtons() {
+    const oldButtons = document.querySelectorAll('#options-grid .btn-option');
+    oldButtons.forEach(oldBtn => {
+        const fresh = oldBtn.cloneNode(false); // keeps id/attributes, drops text and listeners
+        fresh.className = 'btn-option';
+        fresh.style.transition = 'none';
+        if (oldBtn.parentNode) oldBtn.parentNode.replaceChild(fresh, oldBtn);
+        // Re-enable transitions after the first paint so normal feedback still works.
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            fresh.style.transition = '';
+        }));
+    });
+    if (document.activeElement && typeof document.activeElement.blur === 'function') {
+        document.activeElement.blur();
+    }
+}
 
-    if (selectedMode === 'group') {
-        $('question-text').innerText = 'QUESTION MASKED \u2014 LISTEN TO YOUR GAFFER!';
-        qBox.classList.add('masked');
-        btnFact.style.display = 'none';
+function loadNextQuestion() {
+    rebuildOptionButtons();
+
+    startQuestionTimer();
+    
+    const currentQ = gameState.questions[gameState.currentQuestionIndex];
+    if (!currentQ) return;
+
+    safeSetText('question-text', currentQ.question);
+    
+    const shuffledOptions = shuffleArray(currentQ.options);
+    
+    const optionButtons = document.querySelectorAll('#options-grid .btn-option');
+    optionButtons.forEach((btn, idx) => {
+        const optionVal = shuffledOptions[idx] || null;
+        btn.textContent = optionVal || '';
+        btn.style.display = optionVal ? 'block' : 'none';
+        
+        const isCorrect = (optionVal === currentQ.answer);
+        
+        btn.onpointerdown = () => {
+            triggerHaptic(15);
+        };
+        btn.onclick = () => handleAnswerSelect(isCorrect, btn); 
+    });
+}
+
+function startQuestionTimer() {
+    clearInterval(gameState.timer);
+    const totalDuration = 20000;
+    const startTime = Date.now();
+    gameState.timeLeft = 20;
+    const timerBar = document.getElementById('timer-bar');
+    
+    if (timerBar) {
+        timerBar.style.width = '100%';
+        timerBar.style.backgroundColor = 'var(--state-active)';
+    }
+
+    gameState.timer = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const remaining = Math.max(0, totalDuration - elapsed);
+        gameState.timeLeft = Math.ceil(remaining / 1000);
+
+        if (timerBar) {
+            timerBar.style.width = `${(remaining / totalDuration) * 100}%`;
+            if (remaining <= totalDuration / 2) {
+                timerBar.style.backgroundColor = 'var(--state-error)';
+            } else {
+                timerBar.style.backgroundColor = 'var(--state-active)';
+            }
+        }
+
+        if (remaining <= 0) {
+            clearInterval(gameState.timer);
+            handleGameOver('TIME EXPIRED', 'timeout');
+        }
+    }, 50);
+}
+
+function handleAnswerSelect(isCorrect, buttonEl) {
+    clearInterval(gameState.timer);
+    
+    const currentQ = gameState.questions[gameState.currentQuestionIndex];
+
+    document.querySelectorAll('#options-grid .btn-option').forEach(btn => {
+        btn.onclick = null;
+        btn.onpointerdown = null;
+        if (typeof btn.blur === 'function') {
+            btn.blur();
+        }
+    });
+    
+    if (isCorrect) {
+        if (buttonEl) buttonEl.classList.add('selected-correct');
+        playElevatorDing();
+        triggerHaptic([35, 40, 35]);
+        
+        setTimeout(() => {
+            if (gameState.currentFloor >= gameState.maxFloors) {
+                playLiftRide(LIFT_VICTORY_MS, handleVictory, { victory: true });
+            } else {
+                playLiftRide(LIFT_RISE_MS, () => {
+                    gameState.currentFloor++;
+                    gameState.currentQuestionIndex++;
+                    if (gameState.currentFloor > gameState.stats.bestFloor) {
+                        gameState.stats.bestFloor = gameState.currentFloor;
+                    }
+                    updateFloorUI();
+                    loadNextQuestion();
+                });
+            }
+        }, 400);
     } else {
-        $('question-text').innerText = q.question;
-        qBox.classList.remove('masked');
-        if (selectedMode === 'gaffer') {
-            btnFact.style.display = 'block';
-            $('gaffer-fact-text').innerText = q.fact || q.explanation || 'No extra lore for this question.';
+        if (buttonEl) buttonEl.classList.add('selected-wrong');
+
+        triggerHaptic([80, 50, 120]);
+        
+        const activeBlock = document.querySelector(`.tower-floor[data-floor="${gameState.currentFloor}"]`);
+        if (activeBlock) activeBlock.classList.add('failed');
+
+        // v0.5: first wrong answer of the session, on any attempt. Timeouts never set this.
+        if (gameState.firstWrongFloor === null) {
+            gameState.firstWrongFloor = gameState.currentFloor;
+        }
+
+        setTimeout(() => {
+            handleGameOver('INCORRECT ANSWER', 'wrong');
+        }, 400);
+    }
+}
+
+function handleGameOver(reason, type) {
+    gameState.stats.played++;
+    gameState.stats.streak = 0;
+    recordFall(gameState.currentFloor, type); // v0.5
+    saveStats();
+    
+    safeSetText('game-over-title', 'ELEVATOR STOPPED');
+    safeSetText('game-over-message', reason);
+    
+    const finalEl = document.getElementById('final-floor-reached');
+    if (finalEl) {
+        finalEl.innerHTML = `Stopped at ${getFailedOrdinalFloorHTML(gameState.currentFloor)}`;
+    }
+    
+    openModal('modal-game-over');
+}
+
+function handleVictory(fromDebug) {
+    stopSessionTimer();
+    gameState.currentFloor = 11;
+    gameState.stats.played++;
+    gameState.stats.wins++;
+    
+    if (gameState.attemptsToday === 1) {
+        gameState.stats.streak++;
+    }
+    
+    gameState.stats.bestFloor = 11;
+
+    if (gameState.stats.bestTimeSeconds === null || gameState.timeElapsedSeconds < gameState.stats.bestTimeSeconds) {
+        gameState.stats.bestTimeSeconds = gameState.timeElapsedSeconds;
+    }
+
+    saveStats();
+    
+    triggerHaptic([50, 50, 50, 50, 100]);
+    
+    const dateDisplay = document.getElementById('receipt-date-display');
+    const victoryTimeDisplay = document.getElementById('victory-time-display');
+    const badgeDisplay = document.getElementById('receipt-badge-display');
+    const attemptsDisplay = document.getElementById('victory-attempts-display');
+    const runSummaryDisplay = document.getElementById('victory-run-summary-display');
+    
+    const gameScreen = document.getElementById('game-screen');
+    const victoryScreen = document.getElementById('victory-screen');
+    const footerText = document.getElementById('footer-text');
+
+    if (dateDisplay) {
+        dateDisplay.textContent = getFormattedDateString();
+    }
+
+    const formattedTime = formatTime(gameState.timeElapsedSeconds);
+    if (victoryTimeDisplay) victoryTimeDisplay.textContent = formattedTime;
+
+    if (attemptsDisplay) {
+        attemptsDisplay.textContent = gameState.attemptsToday;
+    }
+
+    // v0.5: attempt line reads "on 1st attempt", "on 2nd attempt", ...
+    if (badgeDisplay) {
+        badgeDisplay.textContent = `on ${ordinal(gameState.attemptsToday)} attempt`;
+    }
+
+    // v0.5: Accuracy. Green 10/10 = no wrong answer all session.
+    // Otherwise red = floor of the first wrong answer, green 10.
+    if (runSummaryDisplay) {
+        if (gameState.firstWrongFloor === null) {
+            runSummaryDisplay.innerHTML = `<span style="color: var(--genre-pitch);">10</span><span style="color: var(--text-muted);">/</span><span style="color: var(--genre-pitch);">10</span>`;
         } else {
-            btnFact.style.display = 'none';
+            runSummaryDisplay.innerHTML = `<span style="color: var(--state-error);">${gameState.firstWrongFloor}</span><span style="color: var(--text-muted);">/</span><span style="color: var(--genre-pitch);">10</span>`;
         }
     }
 
-    // Work out the correct answer by text, then (optionally) shuffle the options
-    const correctText = typeof q.answer === 'string'
-        ? q.answer
-        : q.options[[q.correct, q.correctIndex, q.answer].find(n => typeof n === 'number')];
-    const opts = SHUFFLE_OPTIONS ? shuffled(q.options) : q.options.slice();
-    const correctIndex = opts.findIndex(o => o.trim().toLowerCase() === String(correctText).trim().toLowerCase());
-
-    const grid = $('options-grid');
-    grid.innerHTML = '';
-    opts.forEach((opt, idx) => {
-        const btn = document.createElement('button');
-        btn.className = 'btn-option';
-        btn.innerText = opt;
-        btn.onclick = () => handleAnswer(idx, correctIndex, btn, opts, q);
-        grid.appendChild(btn);
-    });
-
-    saveProgress();
+    if (gameScreen) gameScreen.style.display = 'none';
+    if (footerText) footerText.style.display = 'none';
+    if (victoryScreen) victoryScreen.style.display = 'flex';
 }
-
-window.toggleGafferFact = function () {
-    const b = $('gaffer-fact-box');
-    b.style.display = b.style.display === 'block' ? 'none' : 'block';
-};
-
-function handleAnswer(selectedIndex, correctIndex, btn, opts, q) {
-    if (isAnswering) return;
-    isAnswering = true;
-
-    const right = selectedIndex === correctIndex;
-    btn.classList.add(right ? 'selected-correct' : 'selected-wrong');
-    if (right) correctCount++;
-
-    answerLog.push({ q: currentIndex + 1, picked: opts[selectedIndex], correct: opts[correctIndex], right, t: timeElapsedSeconds });
-
-    // Right or wrong, the lift takes them on. The last question gets the green ride to the receipt.
-    const isLast = currentIndex >= getQuestions().length - 1;
-    setTimeout(() => {
-        playLiftRide(isLast ? LIFT_VICTORY_MS : LIFT_RISE_MS, () => {
-            currentIndex++;
-            renderQuestion();           // past the last question this calls finishGame()
-        }, { victory: isLast });
-    }, LIFT_ANSWER_DELAY_MS);
-}
-
-function saveProgress() {
-    lsSet(progressKey(), JSON.stringify({ index: currentIndex, correct: correctCount, time: timeElapsedSeconds, mode: selectedMode, log: answerLog }));
-}
-
-// ---- Finish + receipts ------------------------------------------------------
-function finishGame() {
-    clearInterval(timerInterval);
-    lsDel(progressKey());
-
-    const attempt = (parseInt(lsGet(attemptsKey()), 10) || 0) + 1;   // first completion = attempt 1
-    lsSet(attemptsKey(), String(attempt));
-
-    const total = getQuestions().length;
-    const time = fmtTime(timeElapsedSeconds);
-
-    // Record the run for the future stats window
-    try {
-        const log = JSON.parse(lsGet(logKey()) || '[]');
-        log.push({ edition: EDITION, mode: selectedMode, attempt, score: correctCount, total, seconds: timeElapsedSeconds, answers: answerLog });
-        lsSet(logKey(), JSON.stringify(log.slice(-50)));
-    } catch (e) {}
-
-    $('gameplay-header').style.display = 'none';
-    $('floor-hud-container').style.display = 'none';
-    $('game-workspace').style.display = 'none';
-    $('victory-screen').style.display = 'flex';
-
-    $('receipt-edition').innerText = editionLabel();
-    $('victory-mode-badge').innerText = `${MODE_LABELS[selectedMode]} PLAYER`;
-
-    const score = `${correctCount}/${total}`;
-    const rows = [];
-
-    if (selectedMode === 'gaffer') {
-        // Host: run time is the hero
-        $('hero-label').innerText = 'HOST TIME';
-        $('hero-value').innerHTML = `${time}<small>s</small>`;
-        rows.push(['SCORE', score, 'success'], ['ATTEMPT', attempt, 'active']);
-    } else if (selectedMode === 'group') {
-        // Group: score is the hero, own time below
-        $('hero-label').innerText = 'YOUR SCORE';
-        $('hero-value').innerText = score;
-        rows.push(['TIME', `${time}s`, 'active'], ['ATTEMPT', attempt, 'active']);
-    } else {
-        // Solo: score is the hero, time breaks ties
-        $('hero-label').innerText = 'SCORE';
-        $('hero-value').innerText = score;
-        rows.push(['TIME', `${time}s`, 'active'], ['ATTEMPT', attempt, 'active']);
-    }
-
-    $('receipt-rows').innerHTML = rows.map(r =>
-        `<div class="receipt-row"><span class="row-label">${r[0]}</span><span class="row-val ${r[2]}">${r[1]}</span></div>`).join('');
-}
-
-async function shareReceipt() {
-    const card = $('victory-card'), toast = $('toast-msg');
-    toast.innerText = 'CAPTURING SCREENSHOT...';
-    toast.style.display = 'block';
-    if (!card || typeof html2canvas === 'undefined') { toast.style.display = 'none'; return; }
-    try {
-        const canvas = await html2canvas(card, { backgroundColor: '#111111', scale: 2 });
-        canvas.toBlob(async blob => {
-            toast.style.display = 'none';
-            if (!blob) return;
-            const file = new File([blob], 'tykball-545-victory.png', { type: 'image/png' });
-            if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                try { await navigator.share({ title: 'TYKB 5.45 Special Victory Receipt', files: [file] }); } catch (e) {}
-            } else {
-                const a = document.createElement('a');
-                a.href = URL.createObjectURL(file);
-                a.download = 'tykball-545-victory.png';
-                a.click();
-            }
-        }, 'image/png');
-    } catch (err) {
-        toast.style.display = 'none';
-        console.error('Screenshot failed:', err);
-    }
-}
-
-window.resetAndPlayAgain = function () { location.reload(); };
-// END OF FILE: 545-special.js
