@@ -42,6 +42,7 @@
             --color-cluegram-glow: rgba(204, 0, 126, 0.25);
             --color-parity: #ff9999;
             --color-parity-glow: rgba(255, 153, 153, 0.25);
+            --color-545: #22c55e; /* 5.45 Special green, matches the game itself */
         }
 
         * {
@@ -185,10 +186,24 @@
             margin-bottom: 10px;
         }
 
+        /* Extra space above the second section label */
+        .hub-section-label.spaced {
+            margin-top: 22px;
+        }
+
         /* 2-Column Menu Grid */
         .hub-menu-box {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+            max-width: 360px;
+        }
+
+        /* Weekly Games / Group Play: tiles stacked, each as wide as the two columns above */
+        .hub-wide-box {
+            display: flex;
+            flex-direction: column;
             gap: 10px;
             width: 100%;
             max-width: 360px;
@@ -219,6 +234,8 @@
         .btn-hub-option.wordclimb { border-color: rgba(59, 130, 246, 0.3); }
         .btn-hub-option.clusters { border-color: rgba(255, 117, 31, 0.3); }
         .btn-hub-option.parity { border-color: rgba(255, 153, 153, 0.3); }
+        .btn-hub-option.special545 { border-color: rgba(34, 197, 94, 0.3); }
+        .btn-hub-option.beast { border-color: rgba(212, 175, 55, 0.3); }
 
         .btn-hub-option:hover {
             background-color: #181818;
@@ -236,6 +253,8 @@
         .btn-hub-option.clusters:hover { border-color: var(--color-clusters); }
         .btn-hub-option.cluegram:hover { border-color: var(--color-cluegram); }
         .btn-hub-option.parity:hover { border-color: var(--color-parity); }
+        .btn-hub-option.special545:hover { border-color: var(--color-545); }
+        .btn-hub-option.beast:hover { border-color: var(--color-questions); }
 
         .hub-btn-header {
             display: flex;
@@ -252,6 +271,8 @@
         .hub-btn-num.clusters { color: var(--color-clusters); }
         .hub-btn-num.cluegram { color: var(--color-cluegram); }
         .hub-btn-num.parity { color: var(--color-parity); }
+        .hub-btn-num.special545 { color: var(--color-545); }
+        .hub-btn-num.beast { color: var(--color-questions); }
 
         .hub-btn-floor {
             color: #f0f0f0;
@@ -264,6 +285,15 @@
             letter-spacing: 0.8px;
             color: #f0f0f0;
             line-height: 1.2;
+        }
+
+        /* Small line under the game name on the Weekly Games tiles */
+        .hub-btn-note {
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
         }
 
         footer {
@@ -348,6 +378,28 @@
                 <span class="hub-btn-floor">Floor</span>
             </div>
             <div class="hub-btn-game">Parity</div>
+        </a>
+    </div>
+
+    <div class="hub-section-label spaced">WEEKLY GAMES / GROUP PLAY</div>
+
+    <div class="hub-wide-box">
+        <a href="545-special.html" class="btn-hub-option special545">
+            <div class="hub-btn-header">
+                <span class="hub-btn-num special545">5.45</span>
+                <span class="hub-btn-floor">Special</span>
+            </div>
+            <div class="hub-btn-game">Think You Know Ball?</div>
+            <div class="hub-btn-note">Saturdays 5.45pm UK &middot; Group play</div>
+        </a>
+
+        <a href="beast.html" class="btn-hub-option beast">
+            <div class="hub-btn-header">
+                <span class="hub-btn-num beast">11th</span>
+                <span class="hub-btn-floor">Floor</span>
+            </div>
+            <div class="hub-btn-game">The Beast</div>
+            <div class="hub-btn-note">Weekly &middot; Group play</div>
         </a>
     </div>
 
