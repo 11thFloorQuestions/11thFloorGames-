@@ -1,72 +1,144 @@
-// ==========================================================================
-// 11th Floor Cluegram — Daily Game Dataset (Set 57)
-// Standardised floor progression: 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 letters
-// Destination: 11th Floor
-// ==========================================================================
-
 {
-  "gameId": "cluegram-57",
-  "title": "set 57",
-  "floors": [
+  "setId": "31",
+  "title": "Think You Know Ball? - Set 31",
+  "questions": [
     {
       "floor": 1,
-      "scrambled": "AOCNE",
-      "target": "OCEAN",
-      "clue": "A vast expanse of salt water covering most of the earth surface."
+      "type": "multiple_choice",
+      "question": "Why did Manchester City block their manager from speaking to the radio after the Liverpool match?",
+      "options": [
+        "Worried about 114 financial charges being mentioned",
+        "Enzo Maresca would accidentally leak the tactical room's Wi-Fi password",
+        "Maresca was about to burst into song",
+        "The club offered no explanation, breaking Premier League administrative Rule K.207"
+      ],
+      "answer": "The club offered no explanation, breaking Premier League administrative Rule K.207",
+      "explanation": "Manchester City refused to let Enzo Maresca do post-match radio interviews following the Liverpool game and gave no explanation, breaching Premier League administrative rules.",
+      "anchorClues": "Manchester City Enzo Maresca radio interview Liverpool Rule K207"
     },
     {
       "floor": 2,
-      "scrambled": "MOTRS",
-      "target": "STORM",
-      "clue": "A violent disturbance of the atmosphere with strong winds and rain."
+      "type": "multiple_choice",
+      "question": "Which former Manchester United and Newcastle legend celebrates his birthday today?",
+      "options": [
+        "Andrew Cole",
+        "Steve Bruce"
+      ],
+      "answer": "Andrew Cole",
+      "explanation": "Andrew Cole was born on 15 October 1971 and played as a prolific striker for both Newcastle United and Manchester United.",
+      "anchorClues": "Andrew Cole Manchester United Newcastle birthday October 15"
     },
     {
       "floor": 3,
-      "scrambled": "DNASLI",
-      "target": "ISLAND",
-      "clue": "A piece of land completely surrounded by water."
+      "type": "multiple_choice",
+      "question": "Manchester City were beaten 2–4 last night (Wednesday) in the Champions League by whom?",
+      "options": [
+        "PSG",
+        "Real Madrid",
+        "Bayern Munich",
+        "Inter Milan"
+      ],
+      "answer": "PSG",
+      "explanation": "Paris Saint-Germain came out top in a 4–2 thriller against Manchester City in the Champions League.",
+      "anchorClues": "Manchester City Champions League loss PSG 4-2"
     },
     {
       "floor": 4,
-      "scrambled": "EATMSR",
-      "target": "STREAM",
-      "clue": "A continuous narrow body of running water flowing along a bed."
+      "type": "multiple_choice",
+      "question": "In the Champions League last night, Liverpool bagged 6 against Austrian team LASK. Who got a hat-trick?",
+      "options": [
+        "Bradley Barcola",
+        "Cody Gakpo",
+        "Darwin Núñez",
+        "Mohamed Salah"
+      ],
+      "answer": "Bradley Barcola",
+      "explanation": "Bradley Barcola led the charge, claiming a spectacular hat-trick in Liverpool's 6-goal performance against LASK.",
+      "anchorClues": "Liverpool LASK Champions League Barcola hat-trick"
     },
     {
       "floor": 5,
-      "scrambled": "ICGELRA",
-      "target": "GLACIER",
-      "clue": "A massive persistent body of dense ice moving slowly downhill."
+      "type": "multiple_choice",
+      "question": "Which other team (not Liverpool) also netted 6 last night in Europe?",
+      "options": [
+        "Aston Villa",
+        "Real Madrid",
+        "PSG",
+        "Barcelona"
+      ],
+      "answer": "Aston Villa",
+      "explanation": "Aston Villa matched Liverpool's scoring feats across Europe by putting 6 goals past their opponents.",
+      "anchorClues": "Aston Villa European match 6 goals scored"
     },
     {
       "floor": 6,
-      "scrambled": "SIUAMTN",
-      "target": "TSUNAMI",
-      "clue": "A long high sea wave caused by an earthquake or underwater disturbance."
+      "type": "multiple_choice",
+      "question": "Who are top of the Champions League today (Thursday)?",
+      "options": [
+        "PSG",
+        "Barcelona",
+        "Liverpool",
+        "Arsenal"
+      ],
+      "answer": "PSG",
+      "explanation": "Following their impressive victory, PSG sit right at the top of the Champions League group table.",
+      "anchorClues": "PSG top Champions League table"
     },
     {
       "floor": 7,
-      "scrambled": "RDAZIZBL",
-      "target": "BLIZZARD",
-      "clue": "A severe snowstorm with high winds and low visibility."
+      "type": "multiple_choice",
+      "question": "Which squad number was Nigel Clough given during 1993 the Premier League's inaugural year?",
+      "options": [
+        "7",
+        "6",
+        "8",
+        "11"
+      ],
+      "answer": "7",
+      "explanation": "Nigel Clough wore the famous number 7 shirt when official squad numbers were introduced in the Premier League era.",
+      "anchorClues": "Nigel Clough squad number 7 Premier League"
     },
     {
       "floor": 8,
-      "scrambled": "LNYCESCO",
-      "target": "CYCLONES",
-      "clue": "Violent rotating tropical storm systems with low atmospheric pressure centers."
+      "type": "multiple_choice",
+      "question": "Which team has the smallest capacity ground in the Premier League?",
+      "options": [
+        "Bournemouth",
+        "Coventry",
+        "Ipswich",
+        "Hull"
+      ],
+      "answer": "Bournemouth",
+      "explanation": "Bournemouth's Vitality Stadium (Dean Court) holds around 11,300 fans, making it the smallest stadium in the top flight.",
+      "anchorClues": "Bournemouth smallest stadium capacity Premier League Vitality"
     },
     {
       "floor": 9,
-      "scrambled": "EHCANALVA",
-      "target": "AVALANCHE",
-      "clue": "A rapid mass cascade of snow, ice, and rock falling down a mountainside."
+      "type": "multiple_choice",
+      "question": "Excluding goalkeepers, who is officially the tallest outfield player to play in the Premier League?",
+      "options": [
+        "Lacina Traoré",
+        "Peter Crouch",
+        "Dan Burn",
+        "Per Mertesacker"
+      ],
+      "answer": "Lacina Traoré",
+      "explanation": "Standing at 6ft 8in (2.03m), striker Lacina Traoré edges out Peter Crouch and Dan Burn as the tallest outfield player in Premier League history.",
+      "anchorClues": "Lacina Traore tallest outfield player Premier League height"
     },
     {
       "floor": 10,
-      "scrambled": "ROLLPWOIH",
-      "target": "WHIRLPOOL",
-      "clue": "A rapidly rotating mass of water producing a central vortex."
+      "type": "multiple_choice",
+      "question": "Who scored the fastest goal in Premier League history?",
+      "options": [
+        "Shane Long",
+        "Ledley King",
+        "Philip Billing",
+        "Alan Shearer"
+      ],
+      "answer": "Shane Long",
+      "explanation": "Shane Long scored for Southampton against Watford in just 7.69 seconds back in April 2019.",
+      "anchorClues": "Shane Long fastest goal Premier League history 7 seconds"
     }
   ]
 }
