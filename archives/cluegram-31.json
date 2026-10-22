@@ -41,27 +41,27 @@
   },
   {
     "floor": 6,
-    "length": 6,
+    "length": 7,
     "domain": "Technology & Computing",
-    "scrambled": "TOCINA",
-    "target": "ACTION",
-    "clue": "A process of doing something or performing a specific command in software."
+    "scrambled": "EKWNRTO",
+    "target": "NETWORK",
+    "clue": "A group of connected computers that share data and resources."
   },
   {
     "floor": 7,
-    "length": 7,
+    "length": 8,
     "domain": "Medicine & Health",
-    "scrambled": "CICEVAN",
-    "target": "VACCINE",
-    "clue": "A biological preparation that provides active acquired immunity to a specific disease."
+    "scrambled": "TDIOYBNA",
+    "target": "ANTIBODY",
+    "clue": "A protein made by the immune system to recognise and fight a specific germ."
   },
   {
     "floor": 8,
-    "length": 7,
+    "length": 8,
     "domain": "Botany & Nature",
-    "scrambled": "SRHDOIC",
-    "target": "ORCHIDS",
-    "clue": "Exotic flowering plants prized globally for their colorful and intricate blooms."
+    "scrambled": "ELGEIDSN",
+    "target": "SEEDLING",
+    "clue": "A very young plant that has grown from a seed."
   },
   {
     "floor": 9,
