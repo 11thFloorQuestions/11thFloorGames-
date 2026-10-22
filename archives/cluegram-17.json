@@ -40,15 +40,15 @@
     },
     {
       "floor": 7,
-      "scrambled": "EDNLOOANC",
-      "target": "COLONNADE",
-      "clue": "A row of evenly spaced columns supporting a roof or entablature."
-    },
-    {
-      "floor": 8,
       "scrambled": "YGEOLRAG",
       "target": "GARGOYLE",
       "clue": "A grotesquely carved human or animal face projecting from a roof gutter."
+    },
+    {
+      "floor": 8,
+      "scrambled": "TSSRBTEU",
+      "target": "BUTTRESS",
+      "clue": "A structure built against a wall to support or strengthen it."
     },
     {
       "floor": 9,
