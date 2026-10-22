@@ -6,7 +6,7 @@
 
 {
   "gameId": "cluegram-57",
-  "title": "Archive Puzzle 10",
+  "title": "set 57",
   "floors": [
     {
       "floor": 1,
