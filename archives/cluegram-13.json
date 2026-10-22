@@ -1,83 +1,65 @@
-
-[
-  {
-    "floor": 1,
-    "length": 5,
-    "domain": "Geology & Earth Sciences",
-    "scrambled": "AMGMA",
-    "target": "MAGMA",
-    "clue": "Molten rock beneath the Earth's surface that forms igneous rock upon cooling."
-  },
-  {
-    "floor": 2,
-    "length": 5,
-    "domain": "Acoustics & Sound",
-    "scrambled": "ROCHI",
-    "target": "CHOIR",
-    "clue": "An organised group of singers performing together in harmony."
-  },
-  {
-    "floor": 3,
-    "length": 6,
-    "domain": "Astronomy & Cosmology",
-    "scrambled": "TLAPNE",
-    "target": "PLANET",
-    "clue": "A celestial body orbiting a star that is massive enough to be rounded by its own gravity."
-  },
-  {
-    "floor": 4,
-    "length": 6,
-    "domain": "Culinary Arts & Cooking",
-    "scrambled": "ENIGRG",
-    "target": "GINGER",
-    "clue": "A pungent aromatic root widely used as a spice and in natural medicine."
-  },
-  {
-    "floor": 5,
-    "length": 7,
-    "domain": "Geography & Landforms",
-    "scrambled": "CLAIGER",
-    "target": "GLACIER",
-    "clue": "A persistent body of dense ice that moves constantly under its own weight."
-  },
-  {
-    "floor": 6,
-    "length": 7,
-    "domain": "Meteorology & Climate",
-    "scrambled": "NDUHTRE",
-    "target": "THUNDER",
-    "clue": "A loud rumbling or crashing noise caused by the expansion of air heated by lightning."
-  },
-  {
-    "floor": 7,
-    "length": 8,
-    "domain": "Music & Performance",
-    "scrambled": "STRUQAET",
-    "target": "QUARTETS",
-    "clue": "Groups of four musicians or singers performing together."
-  },
-  {
-    "floor": 8,
-    "length": 8,
-    "domain": "Household & Comfort",
-    "scrambled": "KLNBAETS",
-    "target": "BLANKETS",
-    "clue": "Large woven coverings used on beds for warmth."
-  },
-  {
-    "floor": 9,
-    "length": 9,
-    "domain": "Confectionery & Food",
-    "scrambled": "TACHOCOLE",
-    "target": "CHOCOLATE",
-    "clue": "A sweet food preparation made from roasted and ground cacao seeds."
-  },
-  {
-    "floor": 10,
-    "length": 9,
-    "domain": "Astronomy & Navigation",
-    "scrambled": "TELLATESI",
-    "target": "SATELLITE",
-    "clue": "An artificial body placed in orbit round the Earth or another planet."
-  }
-]
+{
+  "date": "Daily Set 04",
+  "floors": [
+    {
+      "floor": 1,
+      "scrambled": "LANGE",
+      "target": "ANGEL",
+      "clue": "A spiritual celestial creature typically depicted in white robes with wings."
+    },
+    {
+      "floor": 2,
+      "scrambled": "PELAM",
+      "target": "MAPLE",
+      "clue": "A hardwood tree famous for its distinctive lobed leaves and sweet syrup."
+    },
+    {
+      "floor": 3,
+      "scrambled": "TLANEM",
+      "target": "MANTLE",
+      "clue": "An ornamental structure surrounding a fireplace, or a cloak of authority."
+    },
+    {
+      "floor": 4,
+      "scrambled": "CANLOF",
+      "target": "FALCON",
+      "clue": "A predatory bird known for incredible diving speed while hunting prey."
+    },
+    {
+      "floor": 5,
+      "scrambled": "XINOEHP",
+      "target": "PHOENIX",
+      "clue": "A mythical bird that periodically combusts and regenerates from its own ashes."
+    },
+    {
+      "floor": 6,
+      "scrambled": "TREAHTE",
+      "target": "THEATRE",
+      "clue": "A venue designed for live dramatic performances, plays, or music."
+    },
+    {
+      "floor": 7,
+      "scrambled": "TARCCATA",
+      "target": "CATARACT",
+      "clue": "A large, powerful waterfall, or a clouding of the lens in the eye."
+    },
+    {
+      "floor": 8,
+      "scrambled": "DLASAPIE",
+      "target": "PALISADE",
+      "clue": "A defensive fence made from tall wooden stakes driven firmly into the ground."
+    },
+    {
+      "floor": 9,
+      "scrambled": "NNOACSIES",
+      "target": "ASCENSION",
+      "clue": "The act of rising to a higher position, rank, or spiritual realm."
+    },
+    {
+      "floor": 10,
+      "scrambled": "LAUCOGETA",
+      "target": "CATALOGUE",
+      "clue": "A systematically arranged publication detailing an entire collection or inventory."
+    }
+  ]
+}
