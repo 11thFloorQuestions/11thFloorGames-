@@ -16,19 +16,19 @@
     },
     {
       "floor": 3,
-      "scrambled": "DLEIHS",
+      "scrambled": "HDLISE",
       "target": "SHIELD",
       "clue": "A broad piece of armour carried on the arm to intercept strikes."
     },
     {
       "floor": 4,
-      "scrambled": "THGINK",
+      "scrambled": "NGIKTH",
       "target": "KNIGHT",
       "clue": "A mounted armoured warrior granted an honorary title by a monarch."
     },
     {
       "floor": 5,
-      "scrambled": "YRELLAG",
+      "scrambled": "ELYAGRL",
       "target": "GALLERY",
       "clue": "A room or building devoted to the exhibition of artwork."
     },
@@ -40,25 +40,25 @@
     },
     {
       "floor": 7,
-      "scrambled": "SIRRAGNO",
+      "scrambled": "OIAGRRSN",
       "target": "GARRISON",
       "clue": "A military force stationed to defend a town or fort."
     },
     {
       "floor": 8,
-      "scrambled": "STRAPMAR",
+      "scrambled": "PSRATARM",
       "target": "RAMPARTS",
       "clue": "A defensive wall or embankment surrounding a castle, featuring a walkway on top."
     },
     {
       "floor": 9,
-      "scrambled": "EDACIRRAB",
+      "scrambled": "RDCAERAIB",
       "target": "BARRICADE",
       "clue": "An improvised barrier erected across a street to block opposing advance."
     },
     {
       "floor": 10,
-      "scrambled": "TEHCUBERT",
+      "scrambled": "UHCTRTBEE",
       "target": "TREBUCHET",
       "clue": "A medieval siege engine using a heavy counterweight to launch large stones."
     }

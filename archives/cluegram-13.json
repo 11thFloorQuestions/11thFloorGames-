@@ -3,7 +3,7 @@
   "floors": [
     {
       "floor": 1,
-      "scrambled": "LANGE",
+      "scrambled": "GNELA",
       "target": "ANGEL",
       "clue": "A spiritual celestial creature typically depicted in white robes with wings."
     },
@@ -21,7 +21,7 @@
     },
     {
       "floor": 4,
-      "scrambled": "CANLOF",
+      "scrambled": "LOAFCN",
       "target": "FALCON",
       "clue": "A predatory bird known for incredible diving speed while hunting prey."
     },
@@ -33,13 +33,13 @@
     },
     {
       "floor": 6,
-      "scrambled": "TREAHTE",
+      "scrambled": "ETTHREA",
       "target": "THEATRE",
       "clue": "A venue designed for live dramatic performances, plays, or music."
     },
     {
       "floor": 7,
-      "scrambled": "TARCCATA",
+      "scrambled": "RTAACCTA",
       "target": "CATARACT",
       "clue": "A large, powerful waterfall, or a clouding of the lens in the eye."
     },

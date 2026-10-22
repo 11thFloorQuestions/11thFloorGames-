@@ -10,25 +10,25 @@
     },
     {
       "floor": 2,
-      "scrambled": "ETAGA",
+      "scrambled": "TGEAA",
       "target": "AGATE",
       "clue": "An ornamental stone consisting of a hard variety of chalcedony with striped bands."
     },
     {
       "floor": 3,
-      "scrambled": "TENRAG",
+      "scrambled": "NGTAER",
       "target": "GARNET",
       "clue": "A deep red transparent silicate mineral used as a gemstone."
     },
     {
       "floor": 4,
-      "scrambled": "REVLIS",
+      "scrambled": "ISRLEV",
       "target": "SILVER",
       "clue": "A precious ductile white metallic element prized for coinage and ornaments."
     },
     {
       "floor": 5,
-      "scrambled": "DNOMAID",
+      "scrambled": "NAIMDDO",
       "target": "DIAMOND",
       "clue": "A transparent precious stone formed of pure carbon, the hardest natural substance."
     },
@@ -40,19 +40,19 @@
     },
     {
       "floor": 7,
-      "scrambled": "EIRHPPAS",
+      "scrambled": "ESIARPHP",
       "target": "SAPPHIRE",
       "clue": "A precious transparent blue gem variety of corundum."
     },
     {
       "floor": 8,
-      "scrambled": "TSYHTEMA",
+      "scrambled": "HETYTMAS",
       "target": "AMETHYST",
       "clue": "A violet or purple variety of quartz often used in jewellery."
     },
     {
       "floor": 9,
-      "scrambled": "SENOTSMEG",
+      "scrambled": "TSOGESMNE",
       "target": "GEMSTONES",
       "clue": "Precious or semi-precious cut and polished mineral stones."
     },

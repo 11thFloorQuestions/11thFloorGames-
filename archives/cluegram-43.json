@@ -19,7 +19,7 @@
     "floor": 3,
     "length": 6,
     "domain": "Transport & Engineering",
-    "scrambled": "ACAMRT",
+    "scrambled": "MCARTA",
     "target": "TARMAC",
     "clue": "A road-surfacing material of crushed stone sealed with tar, named after its Scottish inventor."
   },
@@ -27,7 +27,7 @@
     "floor": 4,
     "length": 6,
     "domain": "Tools & Mixology",
-    "scrambled": "LIGTEM",
+    "scrambled": "MGLTIE",
     "target": "GIMLET",
     "clue": "A small T-shaped hand tool used for boring holes, or a classic cocktail of gin and lime juice."
   },
@@ -67,7 +67,7 @@
     "floor": 9,
     "length": 9,
     "domain": "Geology & History",
-    "scrambled": "ACTALSYMC",
+    "scrambled": "AMCTSCALY",
     "target": "CATACLYSM",
     "clue": "A violent social or political upheaval, or a devastating natural disaster that radically alters the landscape."
   },
@@ -75,9 +75,8 @@
     "floor": 10,
     "length": 9,
     "domain": "Classical Legend & Architecture",
-    "scrambled": "BALYRHITN",
+    "scrambled": "HIBTANLRY",
     "target": "LABYRINTH",
     "clue": "An intricate structure of interconnecting passages designed to confuse anyone attempting to navigate it."
   }
 ]
-

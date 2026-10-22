@@ -4,7 +4,7 @@
   "floors": [
     {
       "floor": 1,
-      "scrambled": "KRAPS",
+      "scrambled": "RSPKA",
       "target": "SPARK",
       "clue": "A small fiery particle thrown off from a fire, engine, or flint."
     },
@@ -22,7 +22,7 @@
     },
     {
       "floor": 4,
-      "scrambled": "TRIPIS",
+      "scrambled": "PTRIIS",
       "target": "SPIRIT",
       "clue": "The non-physical part of a human regarded as their true self, or an apparition."
     },
@@ -40,7 +40,7 @@
     },
     {
       "floor": 7,
-      "scrambled": "NOISULLI",
+      "scrambled": "NSLIOLIU",
       "target": "ILLUSION",
       "clue": "An instance of a wrong or misinterpretation of a visual perception."
     },

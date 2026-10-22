@@ -16,7 +16,7 @@
     },
     {
       "floor": 3,
-      "scrambled": "YROIRP",
+      "scrambled": "OIPRYR",
       "target": "PRIORY",
       "clue": "A monastery or convent governed by a prior or prioress."
     },
@@ -28,7 +28,7 @@
     },
     {
       "floor": 5,
-      "scrambled": "TRESNIM",
+      "scrambled": "ERTIMSN",
       "target": "MINSTER",
       "clue": "A large or important church, often originally attached to a monastery."
     },
@@ -40,25 +40,25 @@
     },
     {
       "floor": 7,
-      "scrambled": "ACILISAB",
+      "scrambled": "CBLSIAAI",
       "target": "BASILICA",
       "clue": "A large church built with a central nave and side aisles."
     },
     {
       "floor": 8,
-      "scrambled": "YTITCNAS",
+      "scrambled": "ISACYTNT",
       "target": "SANCTITY",
       "clue": "The condition of being holy, sacred, or inviolable."
     },
     {
       "floor": 9,
-      "scrambled": "YRAUTCNAS",
+      "scrambled": "NYTSRACAU",
       "target": "SANCTUARY",
       "clue": "A holy place offering refuge, safety, or divine protection."
     },
     {
       "floor": 10,
-      "scrambled": "YRETSANOM",
+      "scrambled": "YOASRENMT",
       "target": "MONASTERY",
       "clue": "A complex of buildings housing a community under religious vows."
     }

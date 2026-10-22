@@ -4,7 +4,7 @@
   "floors": [
     {
       "floor": 1,
-      "scrambled": "OTULP",
+      "scrambled": "UTPLO",
       "target": "PLUTO",
       "clue": "A distant icy dwarf planet located in the Kuiper belt."
     },
@@ -16,13 +16,13 @@
     },
     {
       "floor": 3,
-      "scrambled": "NRUTAS",
+      "scrambled": "USARTN",
       "target": "SATURN",
       "clue": "A gas giant famous for its extensive ring system."
     },
     {
       "floor": 4,
-      "scrambled": "RASLUP",
+      "scrambled": "PLRUSA",
       "target": "PULSAR",
       "clue": "A highly magnetized rotating neutron star emitting beams of electromagnetic radiation."
     },
@@ -34,31 +34,31 @@
     },
     {
       "floor": 6,
-      "scrambled": "RETIPUJ",
+      "scrambled": "TPJUERI",
       "target": "JUPITER",
       "clue": "The largest planet in the Solar System, a massive gas giant with a Great Red Spot."
     },
     {
       "floor": 7,
-      "scrambled": "TSUDTARS",
+      "scrambled": "DTTSSRAU",
       "target": "STARDUST",
       "clue": "Fine intergalactic or interplanetary dust scattered across outer space."
     },
     {
       "floor": 8,
-      "scrambled": "SEPSILCE",
+      "scrambled": "CEPLEISS",
       "target": "ECLIPSES",
       "clue": "Occurrences where light from one celestial body is temporarily blocked."
     },
     {
       "floor": 9,
-      "scrambled": "TUANOMSOC",
+      "scrambled": "NOTSACOMU",
       "target": "COSMONAUT",
       "clue": "A spacefarer trained by a space agency, specifically in the Soviet or Russian tradition."
     },
     {
       "floor": 10,
-      "scrambled": "TENALPOXE",
+      "scrambled": "PEAXONELT",
       "target": "EXOPLANET",
       "clue": "A planet located outside the solar system that orbits another star."
     }

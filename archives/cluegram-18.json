@@ -16,13 +16,13 @@
     },
     {
       "floor": 3,
-      "scrambled": "RACNOH",
+      "scrambled": "CANOHR",
       "target": "ANCHOR",
       "clue": "A heavy metal object dropped to seabed to moor a vessel in place."
     },
     {
       "floor": 4,
-      "scrambled": "YELLAG",
+      "scrambled": "ELALYG",
       "target": "GALLEY",
       "clue": "A low, flat built sea-going vessel propelled mainly by oars."
     },
@@ -40,7 +40,7 @@
     },
     {
       "floor": 7,
-      "scrambled": "RENOOHCS",
+      "scrambled": "OHOCSENR",
       "target": "SCHOONER",
       "clue": "A sailing ship with two or more masts, typically fore-and-aft rigged."
     },
@@ -52,13 +52,13 @@
     },
     {
       "floor": 9,
-      "scrambled": "ETAEVIRPR",
+      "scrambled": "AERRIPVTE",
       "target": "PRIVATEER",
       "clue": "An armed ship commissioned by a government for use in war against enemy shipping."
     },
     {
       "floor": 10,
-      "scrambled": "YTLARIMDA",
+      "scrambled": "ATLMAYDIR",
       "target": "ADMIRALTY",
       "clue": "The department or authority in charge of naval affairs and maritime governance."
     }

@@ -10,7 +10,7 @@
     },
     {
       "floor": 2,
-      "scrambled": "KROOB",
+      "scrambled": "KBORO",
       "target": "BROOK",
       "clue": "A small, natural stream of fresh water."
     },
@@ -22,7 +22,7 @@
     },
     {
       "floor": 4,
-      "scrambled": "MAERTS",
+      "scrambled": "MASRTE",
       "target": "STREAM",
       "clue": "A narrow river flowing along a natural bed."
     },
@@ -34,7 +34,7 @@
     },
     {
       "floor": 6,
-      "scrambled": "UAETALP",
+      "scrambled": "AEPUALT",
       "target": "PLATEAU",
       "clue": "An extensive area of elevated level land."
     },
@@ -46,19 +46,19 @@
     },
     {
       "floor": 8,
-      "scrambled": "TARCCATA",
+      "scrambled": "ACAATTRC",
       "target": "CATARACT",
       "clue": "A large, powerful waterfall plunging over a precipice."
     },
     {
       "floor": 9,
-      "scrambled": "EPACSDNAL",
+      "scrambled": "SECLPNAAD",
       "target": "LANDSCAPE",
       "clue": "All visible features of an area of countryside."
     },
     {
       "floor": 10,
-      "scrambled": "RIOVRESER",
+      "scrambled": "OSIRVRREE",
       "target": "RESERVOIR",
       "clue": "An artificial lake created to store water for human use."
     }

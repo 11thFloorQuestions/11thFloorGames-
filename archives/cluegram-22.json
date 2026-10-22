@@ -4,19 +4,19 @@
   "floors": [
     {
       "floor": 1,
-      "scrambled": "CENES",
+      "scrambled": "EESCN",
       "target": "SCENE",
       "clue": "A sequence of continuous action in a play, film, opera, or book."
     },
     {
       "floor": 2,
-      "scrambled": "ROTCA",
+      "scrambled": "OTRAC",
       "target": "ACTOR",
       "clue": "A person who portrays a character in a performance."
     },
     {
       "floor": 3,
-      "scrambled": "TCIRPS",
+      "scrambled": "ICPRTS",
       "target": "SCRIPT",
       "clue": "The written text of a play, film, or broadcast."
     },
@@ -28,37 +28,37 @@
     },
     {
       "floor": 5,
-      "scrambled": "EMUTSOC",
+      "scrambled": "CUTEMOS",
       "target": "COSTUME",
       "clue": "The distinctive style of dress worn by an actor for a specific role."
     },
     {
       "floor": 6,
-      "scrambled": "YDEGART",
+      "scrambled": "YTREAGD",
       "target": "TRAGEDY",
       "clue": "A genre of drama based on human suffering and terrible events."
     },
     {
       "floor": 7,
-      "scrambled": "ECNEIDUA",
+      "scrambled": "UDEICAEN",
       "target": "AUDIENCE",
       "clue": "The assembled group of listeners or spectators at a public event."
     },
     {
       "floor": 8,
-      "scrambled": "OIRANECS",
+      "scrambled": "SICAEONR",
       "target": "SCENARIO",
       "clue": "A written outline of a film, novel, or stage production."
     },
     {
       "floor": 9,
-      "scrambled": "LASRAEHER",
+      "scrambled": "ERRASHLAE",
       "target": "REHEARSAL",
       "clue": "A practice session of a play, piece of music, or performance."
     },
     {
       "floor": 10,
-      "scrambled": "CITAMENIC",
+      "scrambled": "MTIICNEAC",
       "target": "CINEMATIC",
       "clue": "Relating to motion pictures or having characteristics suitable for film."
     }

@@ -4,13 +4,13 @@
   "floors": [
     {
       "floor": 1,
-      "scrambled": "YROLG",
+      "scrambled": "ROYLG",
       "target": "GLORY",
       "clue": "High renown or honour won by notable achievements."
     },
     {
       "floor": 2,
-      "scrambled": "HTIAF",
+      "scrambled": "IHAFT",
       "target": "FAITH",
       "clue": "Complete trust or confidence in someone or something."
     },
@@ -22,13 +22,13 @@
     },
     {
       "floor": 4,
-      "scrambled": "URONOH",
+      "scrambled": "HNOROU",
       "target": "HONOUR",
       "clue": "High respect, esteem, or adherence to what is right."
     },
     {
       "floor": 5,
-      "scrambled": "RMIUPTH",
+      "scrambled": "RIHPTUM",
       "target": "TRIUMPH",
       "clue": "A great victory, achievement, or state of celebration."
     },
@@ -52,7 +52,7 @@
     },
     {
       "floor": 9,
-      "scrambled": "CVERENERE",
+      "scrambled": "ENECRREEV",
       "target": "REVERENCE",
       "clue": "Deep respect for someone or something, often held with awe."
     },

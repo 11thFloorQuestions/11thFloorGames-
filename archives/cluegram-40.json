@@ -10,7 +10,7 @@
     },
     {
       "floor": 2,
-      "scrambled": "KRATC",
+      "scrambled": "RCKAT",
       "target": "TRACK",
       "clue": "A rough path formed by the passage of people or animals."
     },
@@ -40,25 +40,25 @@
     },
     {
       "floor": 7,
-      "scrambled": "RAERFAES",
+      "scrambled": "EAARFERS",
       "target": "SEAFARER",
       "clue": "A person who travels regularly over open waters."
     },
     {
       "floor": 8,
-      "scrambled": "RERAFAYW",
+      "scrambled": "AAWRRYFE",
       "target": "WAYFARER",
       "clue": "A traveler who moves habitually on foot."
     },
     {
       "floor": 9,
-      "scrambled": "RSEROLPXE",
+      "scrambled": "ESXRRLPOE",
       "target": "EXPLORERS",
       "clue": "Pioneers who travel in search of geographical discovery."
     },
     {
       "floor": 10,
-      "scrambled": "YROTIRRET",
+      "scrambled": "ERYTTRIRO",
       "target": "TERRITORY",
       "clue": "An area of land under the jurisdiction of a ruler or state."
     }

@@ -34,31 +34,31 @@
     },
     {
       "floor": 6,
-      "scrambled": "GELLAVI",
+      "scrambled": "ILGEALV",
       "target": "VILLAGE",
       "clue": "A settlement smaller than a town, situated in a rural area."
     },
     {
       "floor": 7,
-      "scrambled": "TCUDEQUA",
+      "scrambled": "TAUDCQEU",
       "target": "AQUEDUCT",
       "clue": "An artificial channel constructed to convey water across long distances."
     },
     {
       "floor": 8,
-      "scrambled": "TNEMEVAP",
+      "scrambled": "ENATEPVM",
       "target": "PAVEMENT",
       "clue": "A paved path for pedestrians beside a street or road."
     },
     {
       "floor": 9,
-      "scrambled": "YMORTSONA",
+      "scrambled": "NMTOSRYOA",
       "target": "ASTRONOMY",
       "clue": "The scientific study of celestial bodies, space, and the physical universe."
     },
     {
       "floor": 10,
-      "scrambled": "RIOVRESER",
+      "scrambled": "EOESIRVRR",
       "target": "RESERVOIR",
       "clue": "A large natural or artificial lake used as a source of municipal water supply."
     }

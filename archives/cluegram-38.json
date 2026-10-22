@@ -6,7 +6,7 @@
       "floor": 1,
       "length": 5,
       "domain": "Maritime & Cartography",
-      "scrambled": "AOTLL",
+      "scrambled": "LLAOT",
       "target": "ATOLL",
       "clue": "A ring-shaped coral reef or ring of islets surrounding a central lagoon."
     },
@@ -14,7 +14,7 @@
       "floor": 2,
       "length": 5,
       "domain": "Botany & Culinary",
-      "scrambled": "ENISA",
+      "scrambled": "NAEIS",
       "target": "ANISE",
       "clue": "A Mediterranean plant of the parsley family, cultivated for its liquorice-flavoured seeds."
     },
@@ -84,4 +84,3 @@
     }
   ]
 }
-

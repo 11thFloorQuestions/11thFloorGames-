@@ -16,25 +16,25 @@
     },
     {
       "floor": 3,
-      "scrambled": "TENROC",
+      "scrambled": "ONERTC",
       "target": "CORNET",
       "clue": "A brass instrument resembling a trumpet, but shorter and wider."
     },
     {
       "floor": 4,
-      "scrambled": "TANOAS",
+      "scrambled": "AATSNO",
       "target": "SONATA",
       "clue": "A composition for one or two instruments, usually in three or four movements."
     },
     {
       "floor": 5,
-      "scrambled": "INAPMIT",
+      "scrambled": "APIMTIN",
       "target": "TIMPANI",
       "clue": "Kettledrums played in orchestral music to produce definite pitches."
     },
     {
       "floor": 6,
-      "scrambled": "TETNIUQ",
+      "scrambled": "TTIQEUN",
       "target": "QUINTET",
       "clue": "An ensemble of five musicians performing together."
     },
@@ -46,13 +46,13 @@
     },
     {
       "floor": 8,
-      "scrambled": "ERUTREVO",
+      "scrambled": "ERETORUV",
       "target": "OVERTURE",
       "clue": "An orchestral piece serving as an introduction to an opera or concert."
     },
     {
       "floor": 9,
-      "scrambled": "ODNECSERC",
+      "scrambled": "EERNSDCCO",
       "target": "CRESCENDO",
       "clue": "A gradual increase in loudness or intensity in a passage of music."
     },

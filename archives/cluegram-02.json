@@ -10,7 +10,7 @@
     },
     {
       "floor": 2,
-      "scrambled": "RALFE",
+      "scrambled": "FRELA",
       "target": "FLARE",
       "clue": "A sudden, brief burst of bright light or flame used as a signal."
     },
@@ -28,7 +28,7 @@
     },
     {
       "floor": 5,
-      "scrambled": "MEDLARE",
+      "scrambled": "RELDEAM",
       "target": "EMERALD",
       "clue": "A bright green precious gemstone consisting of a variety of beryl."
     },
@@ -58,7 +58,7 @@
     },
     {
       "floor": 10,
-      "scrambled": "LARDETACH",
+      "scrambled": "TRCAHALED",
       "target": "CATHEDRAL",
       "clue": "The principal, grand church of a diocese led by a bishop."
     }

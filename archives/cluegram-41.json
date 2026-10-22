@@ -10,25 +10,25 @@
     },
     {
       "floor": 2,
-      "scrambled": "ELACS",
+      "scrambled": "ELCSA",
       "target": "SCALE",
       "clue": "A graduated range of values used in measurement."
     },
     {
       "floor": 3,
-      "scrambled": "GTANEM",
+      "scrambled": "NEGMTA",
       "target": "MAGNET",
       "clue": "A piece of iron or ore that attracts magnetic materials."
     },
     {
       "floor": 4,
-      "scrambled": "SCOPTI",
+      "scrambled": "SICTOP",
       "target": "OPTICS",
       "clue": "The scientific study of sight and the behaviour of light."
     },
     {
       "floor": 5,
-      "scrambled": "TELMENE",
+      "scrambled": "EMNETEL",
       "target": "ELEMENT",
       "clue": "A substance that cannot be broken down chemically."
     },
@@ -52,13 +52,13 @@
     },
     {
       "floor": 9,
-      "scrambled": "MURTCEPSS",
+      "scrambled": "SURSEMPCT",
       "target": "SPECTRUMS",
       "clue": "Bands of light separated according to wavelength."
     },
     {
       "floor": 10,
-      "scrambled": "YRTSIHMEC",
+      "scrambled": "HMSITCREY",
       "target": "CHEMISTRY",
       "clue": "The branch of science dealing with substances and their reactions."
     }

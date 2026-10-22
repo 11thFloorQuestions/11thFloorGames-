@@ -16,7 +16,7 @@
     },
     {
       "floor": 3,
-      "scrambled": "EHRNOT",
+      "scrambled": "OHETRN",
       "target": "THRONE",
       "clue": "A ceremonial chair occupied by a sovereign on state occasions."
     },
@@ -52,13 +52,13 @@
     },
     {
       "floor": 9,
-      "scrambled": "IPRACIPNL",
+      "scrambled": "APPNLRCII",
       "target": "PRINCIPAL",
       "clue": "First in order of importance; a chief ruler or head authority."
     },
     {
       "floor": 10,
-      "scrambled": "UOTRCREIS",
+      "scrambled": "ICERRSTOU",
       "target": "COURTIERS",
       "clue": "Companions or advisers who attend the royal court of a monarch."
     }

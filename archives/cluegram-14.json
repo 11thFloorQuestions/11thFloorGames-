@@ -10,7 +10,7 @@
     },
     {
       "floor": 2,
-      "scrambled": "CERIL",
+      "scrambled": "ERLCI",
       "target": "RELIC",
       "clue": "An object surviving from an earlier time, especially one of historic interest."
     },
@@ -40,25 +40,25 @@
     },
     {
       "floor": 7,
-      "scrambled": "ACILISAB",
+      "scrambled": "CBALAISI",
       "target": "BASILICA",
       "clue": "A large medieval church built with a long central nave and side aisles."
     },
     {
       "floor": 8,
-      "scrambled": "YTITCNAS",
+      "scrambled": "TSIACTYN",
       "target": "SANCTITY",
       "clue": "The state or quality of being holy or sacred."
     },
     {
       "floor": 9,
-      "scrambled": "MSYLACATC",
+      "scrambled": "ACYALSMCT",
       "target": "CATACLYSM",
       "clue": "A violent large-scale event in the natural world or social order."
     },
     {
       "floor": 10,
-      "scrambled": "NONAEHTRP",
+      "scrambled": "HTNRNAPOE",
       "target": "PARTHENON",
       "clue": "A former temple on the Athenian Acropolis dedicated to the goddess Athena."
     }

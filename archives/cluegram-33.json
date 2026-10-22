@@ -4,25 +4,25 @@
   "floors": [
     {
       "floor": 1,
-      "scrambled": "CRIBH",
+      "scrambled": "CHBRI",
       "target": "BIRCH",
       "clue": "A slender tree with pale smooth bark and small leaves."
     },
     {
       "floor": 2,
-      "scrambled": "HEBCE",
+      "scrambled": "EBCHE",
       "target": "BEECH",
       "clue": "A large forest tree with smooth grey bark and glossy leaves."
     },
     {
       "floor": 3,
-      "scrambled": "CCAAIA",
+      "scrambled": "AAIACC",
       "target": "ACACIA",
       "clue": "A tree or shrub of warm climates with yellow or white flowers and pods."
     },
     {
       "floor": 4,
-      "scrambled": "ELARUL",
+      "scrambled": "REULLA",
       "target": "LAUREL",
       "clue": "An evergreen shrub with dark green leaves, used anciently to weave victory wreaths."
     },
@@ -34,7 +34,7 @@
     },
     {
       "floor": 6,
-      "scrambled": "RFEINOC",
+      "scrambled": "IRECOFN",
       "target": "CONIFER",
       "clue": "A tree that bears cones and needle-like or scale-like leaves."
     },

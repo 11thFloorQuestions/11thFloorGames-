@@ -40,13 +40,13 @@
     },
     {
       "floor": 7,
-      "scrambled": "TSEMENAB",
+      "scrambled": "SEEMBNTA",
       "target": "BASEMENT",
       "clue": "The lowest floor of a building, situated partly or entirely below ground."
     },
     {
       "floor": 8,
-      "scrambled": "SBEHSUMA",
+      "scrambled": "SAHEBMUS",
       "target": "AMBUSHES",
       "clue": "Surprise attacks launched from concealed positions."
     },
@@ -58,7 +58,7 @@
     },
     {
       "floor": 10,
-      "scrambled": "RNUSSAPED",
+      "scrambled": "SPDSENRUA",
       "target": "UNDERPASS",
       "clue": "A road or pedestrian walkway passing underneath another road or railway line."
     }

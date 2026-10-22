@@ -16,13 +16,13 @@
     },
     {
       "floor": 3,
-      "scrambled": "ARINAM",
+      "scrambled": "INMRAA",
       "target": "MARINA",
       "clue": "A specially designed harbour with moorings for small boats."
     },
     {
       "floor": 4,
-      "scrambled": "RACNOH",
+      "scrambled": "CHNOAR",
       "target": "ANCHOR",
       "clue": "A heavy metal device dropped to seabed to hold a boat fast."
     },
@@ -40,25 +40,25 @@
     },
     {
       "floor": 7,
-      "scrambled": "RENOOHCS",
+      "scrambled": "SONHERCO",
       "target": "SCHOONER",
       "clue": "A fast sailing ship equipped with two or more masts."
     },
     {
       "floor": 8,
-      "scrambled": "SLARIMDA",
+      "scrambled": "RAIDALMS",
       "target": "ADMIRALS",
       "clue": "High-ranking naval officers commanding fleets."
     },
     {
       "floor": 9,
-      "scrambled": "ETAEVIRPR",
+      "scrambled": "VEAERRITP",
       "target": "PRIVATEER",
       "clue": "An armed private vessel commissioned by war warrant."
     },
     {
       "floor": 10,
-      "scrambled": "YTLARIMDA",
+      "scrambled": "IATYDAMLR",
       "target": "ADMIRALTY",
       "clue": "The high authority presiding over naval and maritime forces."
     }

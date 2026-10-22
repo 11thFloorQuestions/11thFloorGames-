@@ -11,7 +11,7 @@
     "floor": 2,
     "length": 5,
     "domain": "Geology & Earth",
-    "scrambled": "AGMAM",
+    "scrambled": "GMMAA",
     "target": "MAGMA",
     "clue": "Extremely hot liquid and semi-liquid rock located under the Earth's surface."
   },
@@ -51,7 +51,7 @@
     "floor": 7,
     "length": 8,
     "domain": "Monuments & History",
-    "scrambled": "MYRPAIDS",
+    "scrambled": "SDRYIPAM",
     "target": "PYRAMIDS",
     "clue": "Ancient monumental stone structures with triangular sides converging to a point."
   },
@@ -80,4 +80,3 @@
     "clue": "Shaped like a round ball or three-dimensional globe."
   }
 ]
-

@@ -16,7 +16,7 @@
     },
     {
       "floor": 3,
-      "scrambled": "DLEIHS",
+      "scrambled": "HDELIS",
       "target": "SHIELD",
       "clue": "A piece of defensive armour bearing heraldic charges."
     },
@@ -34,7 +34,7 @@
     },
     {
       "floor": 6,
-      "scrambled": "RDLAREHY",
+      "scrambled": "DALEYRRH",
       "target": "HERALDRY",
       "clue": "The system of devising and blazoning coats of arms."
     },
@@ -52,7 +52,7 @@
     },
     {
       "floor": 9,
-      "scrambled": "YRTNAEGAP",
+      "scrambled": "GTAAEYRNP",
       "target": "PAGEANTRY",
       "clue": "Elaborate display, colourful ceremony, or splendour."
     },

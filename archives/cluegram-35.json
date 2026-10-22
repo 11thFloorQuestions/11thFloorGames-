@@ -4,7 +4,7 @@
   "floors": [
     {
       "floor": 1,
-      "scrambled": "ATROP",
+      "scrambled": "ATOPR",
       "target": "PORTA",
       "clue": "A ceremonial arch or grand doorway."
     },
@@ -22,7 +22,7 @@
     },
     {
       "floor": 4,
-      "scrambled": "ELCOVA",
+      "scrambled": "VALOEC",
       "target": "ALCOVE",
       "clue": "A recessed niche set back from a room or wall."
     },
@@ -34,25 +34,25 @@
     },
     {
       "floor": 6,
-      "scrambled": "YRELLAG",
+      "scrambled": "LGRYLEA",
       "target": "GALLERY",
       "clue": "A long narrow room or balcony used for display or assembly."
     },
     {
       "floor": 7,
-      "scrambled": "NOLIIVAP",
+      "scrambled": "NLAVOPII",
       "target": "PAVILION",
       "clue": "A decorative freestanding structure set in grounds or gardens."
     },
     {
       "floor": 8,
-      "scrambled": "SADNUTOR",
+      "scrambled": "UNRADTOS",
       "target": "ROTUNDAS",
       "clue": "Circular buildings or halls crowned by a vaulted ceiling."
     },
     {
       "floor": 9,
-      "scrambled": "EDANNOLOC",
+      "scrambled": "ANONECLOD",
       "target": "COLONNADE",
       "clue": "A long sequence of pillars supporting a continuous entablature."
     },

@@ -4,7 +4,7 @@
   "floors": [
     {
       "floor": 1,
-      "scrambled": "RMEEB",
+      "scrambled": "BEMRE",
       "target": "EMBER",
       "clue": "A small piece of glowing coal or wood in a dying fire."
     },
@@ -40,25 +40,25 @@
     },
     {
       "floor": 7,
-      "scrambled": "SCKARRAB",
+      "scrambled": "AKASCBRR",
       "target": "BARRACKS",
       "clue": "A large group of buildings used to house military personnel."
     },
     {
       "floor": 8,
-      "scrambled": "RENEDRAG",
+      "scrambled": "ANREDGRE",
       "target": "GARDENER",
       "clue": "A person who cultivates and maintains grounds, flowers, and estates."
     },
     {
       "floor": 9,
-      "scrambled": "CETHIRCAT",
+      "scrambled": "CTHERCTIA",
       "target": "ARCHITECT",
       "clue": "A master designer qualified to plan and supervise building construction."
     },
     {
       "floor": 10,
-      "scrambled": "YRETSANOM",
+      "scrambled": "RSEANMYOT",
       "target": "MONASTERY",
       "clue": "A secluded complex of buildings occupied by a community of religious vows."
     }

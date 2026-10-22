@@ -16,7 +16,7 @@
     },
     {
       "floor": 3,
-      "scrambled": "NEASAM",
+      "scrambled": "AAEMNS",
       "target": "SEAMAN",
       "clue": "A sailor, especially one below the rank of officer."
     },
@@ -46,19 +46,19 @@
     },
     {
       "floor": 8,
-      "scrambled": "RAERFAES",
+      "scrambled": "AFEERRSA",
       "target": "SEAFARER",
       "clue": "A person who travels or works regularly on the ocean."
     },
     {
       "floor": 9,
-      "scrambled": "HTRYOSEAW",
+      "scrambled": "EHRYTSWOA",
       "target": "SEAWORTHY",
       "clue": "Fit for a voyage across rough open waters."
     },
     {
       "floor": 10,
-      "scrambled": "AGIFERANS",
+      "scrambled": "GNAIFEASR",
       "target": "SEAFARING",
       "clue": "Travel or employment conducted upon the sea."
     }

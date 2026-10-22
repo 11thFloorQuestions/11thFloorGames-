@@ -22,13 +22,13 @@
     },
     {
       "floor": 4,
-      "scrambled": "ETATSU",
+      "scrambled": "TSEUAT",
       "target": "STATUE",
       "clue": "A carved or cast three-dimensional figure of a person or animal."
     },
     {
       "floor": 5,
-      "scrambled": "EFECNED",
+      "scrambled": "EDCNFEE",
       "target": "DEFENCE",
       "clue": "Resistance against attack, or protection of a military position."
     },
@@ -40,13 +40,13 @@
     },
     {
       "floor": 7,
-      "scrambled": "TNEMUNOM",
+      "scrambled": "OEMNTUNM",
       "target": "MONUMENT",
       "clue": "A statue or building erected to commemorate a notable person or event."
     },
     {
       "floor": 8,
-      "scrambled": "TNASHAEP",
+      "scrambled": "PETHANSA",
       "target": "PHEASANT",
       "clue": "A long-tailed game bird native to Asia and widely introduced elsewhere."
     },
@@ -58,7 +58,7 @@
     },
     {
       "floor": 10,
-      "scrambled": "SBMOCATAC",
+      "scrambled": "TOSCBAMAC",
       "target": "CATACOMBS",
       "clue": "An underground subterranean cemetery consisting of tunnels with recesses for tombs."
     }

@@ -16,13 +16,13 @@
     },
     {
       "floor": 3,
-      "scrambled": "RUTTER",
+      "scrambled": "RRTEUT",
       "target": "TURRET",
       "clue": "A small tower on top of a larger structure or at the corner of a wall."
     },
     {
       "floor": 4,
-      "scrambled": "LIRPAL",
+      "scrambled": "LRLPIA",
       "target": "PILLAR",
       "clue": "A tall vertical structure of stone or wood used as a support or monument."
     },
@@ -40,7 +40,7 @@
     },
     {
       "floor": 7,
-      "scrambled": "EDANNOLOC",
+      "scrambled": "EDNLOOANC",
       "target": "COLONNADE",
       "clue": "A row of evenly spaced columns supporting a roof or entablature."
     },
@@ -52,7 +52,7 @@
     },
     {
       "floor": 9,
-      "scrambled": "ERUTPLUCS",
+      "scrambled": "ESPRUCLTU",
       "target": "SCULPTURE",
       "clue": "The art of carving or modeling three-dimensional figures from stone, wood, or clay."
     },

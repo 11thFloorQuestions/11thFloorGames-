@@ -4,7 +4,7 @@
   "floors": [
     {
       "floor": 1,
-      "scrambled": "ROWTE",
+      "scrambled": "WRTEO",
       "target": "TOWER",
       "clue": "A tall, fortified defensive building."
     },
@@ -52,13 +52,13 @@
     },
     {
       "floor": 9,
-      "scrambled": "EDACIRRAB",
+      "scrambled": "ACEIRADRB",
       "target": "BARRICADE",
       "clue": "A wall or barrier thrown up across a passage to stop advance."
     },
     {
       "floor": 10,
-      "scrambled": "TEHCUBERT",
+      "scrambled": "UHBRTCETE",
       "target": "TREBUCHET",
       "clue": "A heavy siege engine powered by a counterweight to launch stones."
     }

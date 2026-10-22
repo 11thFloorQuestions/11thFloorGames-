@@ -27,7 +27,7 @@
     "floor": 4,
     "length": 6,
     "domain": "Architecture & Design",
-    "scrambled": "CUMOLN",
+    "scrambled": "UONMCL",
     "target": "COLUMN",
     "clue": "A tall vertical cylindrical pillar supporting a building structure or arch."
   },
@@ -35,7 +35,7 @@
     "floor": 5,
     "length": 7,
     "domain": "Literature & Theatre",
-    "scrambled": "DRAGETY",
+    "scrambled": "ATGDEYR",
     "target": "TRAGEDY",
     "clue": "A genre of drama featuring serious events and typically an unhappy ending."
   },
@@ -59,7 +59,7 @@
     "floor": 8,
     "length": 7,
     "domain": "Botany & Nature",
-    "scrambled": "DHCROIS",
+    "scrambled": "SRHDOIC",
     "target": "ORCHIDS",
     "clue": "Exotic flowering plants prized globally for their colorful and intricate blooms."
   },
@@ -67,7 +67,7 @@
     "floor": 9,
     "length": 9,
     "domain": "Geometry & Math",
-    "scrambled": "RETNAGLCE",
+    "scrambled": "LNGCETAER",
     "target": "RECTANGLE",
     "clue": "A four-sided plane figure with four right angles and opposite sides equal."
   },
@@ -80,4 +80,3 @@
     "clue": "The destroyed remains of a vessel sunken at sea or washed ashore."
   }
 ]
-

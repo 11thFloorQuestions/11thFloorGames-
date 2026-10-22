@@ -4,7 +4,7 @@
   "floors": [
     {
       "floor": 1,
-      "scrambled": "ATITN",
+      "scrambled": "INTTA",
       "target": "TITAN",
       "clue": "A person or entity of exceptional strength, size, or influence."
     },
@@ -16,25 +16,25 @@
     },
     {
       "floor": 3,
-      "scrambled": "ROETEM",
+      "scrambled": "EMORTE",
       "target": "METEOR",
       "clue": "A streak of light produced by a space rock burning up in atmosphere."
     },
     {
       "floor": 4,
-      "scrambled": "ALUBEN",
+      "scrambled": "LBEAUN",
       "target": "NEBULA",
       "clue": "An interstellar cloud of dust, hydrogen, helium, and ionized gases."
     },
     {
       "floor": 5,
-      "scrambled": "SRASAUQ",
+      "scrambled": "SQSURAA",
       "target": "QUASARS",
       "clue": "Extremely luminous galactic cores powered by supermassive black holes."
     },
     {
       "floor": 6,
-      "scrambled": "ESPILCE",
+      "scrambled": "LECSIPE",
       "target": "ECLIPSE",
       "clue": "An obscuring of light from one celestial body by the passage of another."
     },
@@ -52,13 +52,13 @@
     },
     {
       "floor": 9,
-      "scrambled": "ETILLETAS",
+      "scrambled": "LILTESAET",
       "target": "SATELLITE",
       "clue": "An artificial or natural body placed into orbit around a planet."
     },
     {
       "floor": 10,
-      "scrambled": "AVONREPUS",
+      "scrambled": "OEPAVRSNU",
       "target": "SUPERNOVA",
       "clue": "A colossal cosmic explosion resulting from the catastrophic death of a massive star."
     }

@@ -4,7 +4,7 @@
   "floors": [
     {
       "floor": 1,
-      "scrambled": "LESAE",
+      "scrambled": "LEAES",
       "target": "EASEL",
       "clue": "A self-supporting wooden frame used by an artist to hold a canvas."
     },
@@ -22,7 +22,7 @@
     },
     {
       "floor": 4,
-      "scrambled": "RSEFCO",
+      "scrambled": "OFCSRE",
       "target": "FRESCO",
       "clue": "A technique of mural painting executed upon freshly laid lime plaster."
     },
@@ -40,25 +40,25 @@
     },
     {
       "floor": 7,
-      "scrambled": "TIARTROP",
+      "scrambled": "TITRPRAO",
       "target": "PORTRAIT",
       "clue": "A painting, drawing, or photograph depicting a specific person."
     },
     {
       "floor": 8,
-      "scrambled": "YRAUTATS",
+      "scrambled": "TAYURTSA",
       "target": "STATUARY",
       "clue": "Statues considered collectively, or the art of making statues."
     },
     {
       "floor": 9,
-      "scrambled": "ERUTAINIM",
+      "scrambled": "IEINMUATR",
       "target": "MINIATURE",
       "clue": "A detailed artwork created on a very small scale."
     },
     {
       "floor": 10,
-      "scrambled": "LAYARTROP",
+      "scrambled": "LYAOPARRT",
       "target": "PORTRAYAL",
       "clue": "A depiction or representation of someone or something in an artistic work."
     }

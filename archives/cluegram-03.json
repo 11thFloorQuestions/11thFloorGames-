@@ -22,19 +22,19 @@
     },
     {
       "floor": 4,
-      "scrambled": "DLEIHS",
+      "scrambled": "HLDISE",
       "target": "SHIELD",
       "clue": "A broad piece of personal defensive armour carried on the arm."
     },
     {
       "floor": 5,
-      "scrambled": "MODGINK",
+      "scrambled": "GONKIMD",
       "target": "KINGDOM",
       "clue": "A state or realm ruled over by a king or queen."
     },
     {
       "floor": 6,
-      "scrambled": "LANRUOJ",
+      "scrambled": "ANLUJRO",
       "target": "JOURNAL",
       "clue": "A daily written record of news, events, and personal reflections."
     },
@@ -58,7 +58,7 @@
     },
     {
       "floor": 10,
-      "scrambled": "LLEYREWEJ",
+      "scrambled": "ELRLJWEYE",
       "target": "JEWELLERY",
       "clue": "Personal ornaments such as necklaces, rings, or bracelets."
     }

@@ -4,7 +4,7 @@
   "floors": [
     {
       "floor": 1,
-      "scrambled": "RALOS",
+      "scrambled": "RSAOL",
       "target": "SOLAR",
       "clue": "Pertaining to or derived from the Sun."
     },
@@ -22,43 +22,43 @@
     },
     {
       "floor": 4,
-      "scrambled": "ALUBEN",
+      "scrambled": "UBALNE",
       "target": "NEBULA",
       "clue": "A giant cloud of dust and gas in interstellar space."
     },
     {
       "floor": 5,
-      "scrambled": "SRASAUQ",
+      "scrambled": "SRUAQAS",
       "target": "QUASARS",
       "clue": "Extremely luminous active galactic nuclei powered by black holes."
     },
     {
       "floor": 6,
-      "scrambled": "SRASLUP",
+      "scrambled": "LASSRUP",
       "target": "PULSARS",
       "clue": "Highly magnetized rotating neutron stars emitting beams of radiation."
     },
     {
       "floor": 7,
-      "scrambled": "DIORTSAS",
+      "scrambled": "IEASOTDR",
       "target": "ASTEROID",
       "clue": "A small rocky body orbiting the Sun between Mars and Jupiter."
     },
     {
       "floor": 8,
-      "scrambled": "ESREVINO",
+      "scrambled": "RVENIEUS",
       "target": "UNIVERSE",
       "clue": "All existing matter, space, and energy considered as a whole."
     },
     {
       "floor": 9,
-      "scrambled": "ETILLETAS",
+      "scrambled": "TLSTAELIE",
       "target": "SATELLITE",
       "clue": "An object placed into orbit around a larger celestial body."
     },
     {
       "floor": 10,
-      "scrambled": "AVONREPUS",
+      "scrambled": "PSNOEUVRA",
       "target": "SUPERNOVA",
       "clue": "A colossal cosmic explosion marking the death of a star."
     }

@@ -4,13 +4,13 @@
   "floors": [
     {
       "floor": 1,
-      "scrambled": "MLAER",
+      "scrambled": "ALERM",
       "target": "REALM",
       "clue": "A kingdom, or a domain of interest or study."
     },
     {
       "floor": 2,
-      "scrambled": "NORAB",
+      "scrambled": "ONARB",
       "target": "BARON",
       "clue": "A member of the lowest order of the British nobility."
     },
@@ -22,37 +22,37 @@
     },
     {
       "floor": 4,
-      "scrambled": "ERIPME",
+      "scrambled": "EERPIM",
       "target": "EMPIRE",
       "clue": "An extensive group of states or countries under a single supreme authority."
     },
     {
       "floor": 5,
-      "scrambled": "SSEHCUD",
+      "scrambled": "ESUSCHD",
       "target": "DUCHESS",
       "clue": "The wife or widow of a duke, or a female holding high noble rank."
     },
     {
       "floor": 6,
-      "scrambled": "YTSANYD",
+      "scrambled": "YYANTSD",
       "target": "DYNASTY",
       "clue": "A line of hereditary rulers of a country or empire."
     },
     {
       "floor": 7,
-      "scrambled": "TNUOCSIV",
+      "scrambled": "TOSNIVCU",
       "target": "VISCOUNT",
       "clue": "A British nobleman ranking below an earl and above a baron."
     },
     {
       "floor": 8,
-      "scrambled": "SSECNIRP",
+      "scrambled": "ERSSPNIC",
       "target": "PRINCESS",
       "clue": "A daughter or granddaughter of a sovereign, or wife of a prince."
     },
     {
       "floor": 9,
-      "scrambled": "YCARCOTUA",
+      "scrambled": "AYCCAUROT",
       "target": "AUTOCRACY",
       "clue": "A system of government by one person with absolute power."
     },
