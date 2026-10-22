@@ -1,88 +1,88 @@
 {
-  "setId": "35",
-  "title": "Think You Know Ball? - Set 35",
+  "setId": "36",
+  "title": "Think You Know Ball? - Set 36",
   "questions": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Who is currently sitting fourth in the Premier League table today, Wednesday, 21st Oct 2026?",
+      "question": "Who is currently sitting third in the Premier League table today, Thursday, 22nd Oct 2026?",
       "options": [
+        "Brighton",
         "Chelsea",
-        "Tottenham Hotspur",
         "Arsenal",
         "Liverpool"
       ],
-      "answer": "Chelsea",
-      "explanation": "Chelsea plays their home matches at Stamford Bridge, which opened way back in 1877. Chelsea is the only London club to have ever won the UEFA Champions League."
+      "answer": "Brighton",
+      "explanation": "This south coast club is famously nicknamed the Seagulls. Their modern rise has been built on an exceptionally clever data-driven recruitment model that unearths hidden gems across the globe."
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which former Manchester United, Liverpool, and West Ham player and Premier League legend celebrates his birthday today?",
+      "question": "Which former Arsenal Manager and Premier League legend celebrates his birthday today?",
       "options": [
-        "Paul Ince",
-        "Paul Jewell",
-        "Paul Gascoigne",
-        "Paul Chuckle"
+        "Arsene Wenger",
+        "Unai Emery",
+        "George Graham"
       ],
-      "answer": "Paul Ince",
-      "explanation": "Paul Ince was nicknamed 'The Guv'nor' during his playing career. In 1993, he became the first Black player to captain the England national team."
+      "answer": "Arsene Wenger",
+      "explanation": "Before managing in England, this iconic tactician famously won a league title and cup double in Japan with Nagoya Grampus Eight. He holds a degree in electrical engineering, earning him the fitting nickname 'Le Professeur'."
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Who is the current manager of Leeds United?",
+      "question": "Who is the current manager of Nottingham Forest?",
       "options": [
-        "Daniel Farke",
-        "Marko Rose",
-        "Pierre Sage",
-        "Gary O’Neill"
+        "Oliver Glasner",
+        "Sean Dyche",
+        "Brian Clough",
+        "Frank Lampard"
       ],
-      "answer": "Daniel Farke",
-      "explanation": "Daniel Farke won the Sky Bet Championship title twice during his time managing Norwich City. Before coaching in England, Farke spent several years managing Borussia Dortmund II."
+      "answer": "Oliver Glasner",
+      "explanation": "This Austrian manager famously led Eintracht Frankfurt to a Europa League triumph before moving to the Premier League. As a player, he spent the vast majority of his career as a stalwart defender for SV Ried in Austria."
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Liverpool beat Villarreal last night (Tuesday) what was the final score?",
+      "question": "Manchester United were thrashed in the Champions League 4–1 last night (WED), which Italian team beat them?",
       "options": [
-        "4–3 win",
-        "3–1 win",
-        "4–1 win",
-        "5–1 win"
+        "Como",
+        "Roma",
+        "Inter Milan",
+        "AC Milan"
       ],
-      "answer": "4–3 win",
-      "explanation": "Liverpool famously plays 'You'll Never Walk Alone' before every home match at Anfield. Anfield's famous Spion Kop stand was named after a battle in the Second Boer War."
+      "answer": "Como",
+      "explanation": "This picturesque Lombardy club plays its home matches by one of the most famous and scenic lakes in Europe. They are famously managed by a Spanish midfield maestro who won nearly every major trophy in the game during his playing days."
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Manchester City were also winners last night (Tuesday) in the Champions League, beating AEK Athens 5–1; which City player bagged a hat-trick?",
+      "question": "Aston Villa were also in action last night (WED) in the Champions League, beating Norwegian side Viking; what was the final score?",
       "options": [
-        "Phil Foden",
-        "Erling Haaland",
-        "Elliot Anderson"
+        "3–1 win",
+        "2–1 win",
+        "1–0 win",
+        "4–0 win"
       ],
-      "answer": "Phil Foden",
-      "explanation": "Phil Foden scored his first senior Manchester City goal when he was just 17 years old. Foden won the Premier League Young Player of the Season award in back-to-back years (2021 and 2022)."
+      "answer": "3–1 win",
+      "explanation": "Viking FK hails from Stavanger, widely regarded as the oil capital of Norway. Aston Villa's home ground, Villa Park, has hosted more international football matches across three different centuries than any other stadium in England."
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "It's Paul Ince's birthday today, 21st Oct 2026; which Italian club did Ince sign for after leaving Manchester United?",
+      "question": "On this day in Premier League history, 22nd OCT 2017, Everton suffered a 5–2 home defeat that proved to be Ronald Koeman's final match in charge. Which club handed him that defeat?",
       "options": [
-        "Inter Milan",
-        "AC Milan",
-        "Sampdoria",
-        "Roma"
+        "Arsenal",
+        "Chelsea",
+        "Liverpool",
+        "Derby County"
       ],
-      "answer": "Inter Milan",
-      "explanation": "During his time in Italy, Ince helped Inter Milan reach the 1997 UEFA Cup Final. He earned a passionate song from the Inter Milan fans who nicknamed him 'The Ince-inator.'"
+      "answer": "Arsenal",
+      "explanation": "During this high-scoring afternoon at Goodison Park, Alexandre Lacazette and Mesut Özil both got on the scoresheet for the visitors. Ronald Koeman famously scored the extra-time winning goal for Barcelona in their 1992 European Cup final triumph at Wembley."
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Ashley Young was handed which squad number at Aston Villa from 2007–2011?",
+      "question": "Fans Favourite! Florian Wirtz has which squad number at Liverpool this season?",
       "options": [
         "7",
         "10",
@@ -90,46 +90,46 @@
         "11"
       ],
       "answer": "7",
-      "explanation": "Ashley Young started his professional career at Watford before moving to Aston Villa in 2007. He won the Premier League title later in his career during the 2012–13 season with Manchester United."
+      "explanation": "This legendary squad number at Anfield was previously worn by club icons such as Kenny Dalglish, Luis Suárez, and James Milner. Before moving to Merseyside, this gifted German playmaker dazzled in the Bundesliga with Bayer Leverkusen under Xabi Alonso."
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Out of the 20 football clubs currently in the Premier League, which club has the most expensive season tickets?",
+      "question": "Out of the 20 football clubs currently in the Premier League, which one plays its home matches on the widest pitch?",
       "options": [
-        "Fulham",
+        "Nottingham Forest",
         "Tottenham Hotspur",
-        "Arsenal",
-        "Manchester United"
+        "Fulham"
       ],
-      "answer": "Fulham",
-      "explanation": "Fulham's home ground, Craven Cottage, sits right beside the River Thames in London. Craven Cottage features a red-brick Victorian pavilion that was built in 1905 by Scottish architect Archibald Leitch."
+      "answer": "Nottingham Forest",
+      "explanation": "Their historic home ground, the City Ground, sits picturesquely directly on the banks of the River Trent. This club is one of only two British teams to have won more European Cups/Champions Leagues than their own domestic league titles."
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "How many Premier League titles has Jamie Carragher won?",
+      "question": "How many Premier League titles has Birthday boy Arsene Wenger won?",
       "options": [
-        "0",
-        "2",
         "3",
+        "2",
+        "4",
+        "0",
         "1"
       ],
-      "answer": "0",
-      "explanation": "Despite never winning the league, Jamie Carragher won the Champions League, FA Cup, and League Cup with Liverpool. Carragher made 737 total appearances for Liverpool, placing him second on the club's all-time appearance list."
+      "answer": "3",
+      "explanation": "1997/98 – His first league title with Arsenal. 2001/02 – Arsenal completed the league and FA Cup Double. 2003/04 – The legendary Invincibles season, finishing unbeaten. During his entire tenure, he managed Arsenal in over 800 Premier League matches."
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "How many Premier League appearances did Alan Shearer make?",
+      "question": "Which player holds the record for the most goals scored as a substitute in Premier League history?",
       "options": [
-        "441",
-        "281",
-        "341",
-        "391"
+        "Jermain Defoe",
+        "Ole Gunnar Solskjær",
+        "Olivier Giroud",
+        "Peter Crouch"
       ],
-      "answer": "441",
-      "explanation": "Alan Shearer is the all-time top goalscorer in Premier League history with 260 goals. He won his only Premier League title as a player with Blackburn Rovers in the 1994–95 season."
+      "answer": "Jermain Defoe",
+      "explanation": "This prolific English striker scored 24 of his 162 Premier League goals after coming off the bench. He is also famously a member of the elite Premier League 100 club, having scored five goals in a single match for Tottenham Hotspur against Wigan Athletic in 2009."
     }
   ]
 }
