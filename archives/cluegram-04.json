@@ -1,66 +1,82 @@
-{
-  "gameId": "cluegram-24",
-  "title": "Archive Puzzle 24",
-  "floors": [
-    {
-      "floor": 1,
-      "scrambled": "MLAER",
-      "target": "REALM",
-      "clue": "A kingdom, or a domain of interest or study."
-    },
-    {
-      "floor": 2,
-      "scrambled": "NORAB",
-      "target": "BARON",
-      "clue": "A member of the lowest order of the British nobility."
-    },
-    {
-      "floor": 3,
-      "scrambled": "YTUONC",
-      "target": "COUNTY",
-      "clue": "A territorial division of a country for local administrative purposes."
-    },
-    {
-      "floor": 4,
-      "scrambled": "ERIPME",
-      "target": "EMPIRE",
-      "clue": "An extensive group of states or countries under a single supreme authority."
-    },
-    {
-      "floor": 5,
-      "scrambled": "SSEHCUD",
-      "target": "DUCHESS",
-      "clue": "The wife or widow of a duke, or a female holding high noble rank."
-    },
-    {
-      "floor": 6,
-      "scrambled": "YTSANYD",
-      "target": "DYNASTY",
-      "clue": "A line of hereditary rulers of a country or empire."
-    },
-    {
-      "floor": 7,
-      "scrambled": "TNUOCSIV",
-      "target": "VISCOUNT",
-      "clue": "A British nobleman ranking below an earl and above a baron."
-    },
-    {
-      "floor": 8,
-      "scrambled": "SSECNIRP",
-      "target": "PRINCESS",
-      "clue": "A daughter or granddaughter of a sovereign, or wife of a prince."
-    },
-    {
-      "floor": 9,
-      "scrambled": "YCARCOTUA",
-      "target": "AUTOCRACY",
-      "clue": "A system of government by one person with absolute power."
-    },
-    {
-      "floor": 10,
-      "scrambled": "IGOALCRYH",
-      "target": "OLIGARCHY",
-      "clue": "A small group of people having control of a country, organization, or institution."
-    }
-  ]
-}
+[
+  {
+    "floor": 1,
+    "length": 5,
+    "domain": "Botany & Flora",
+    "scrambled": "LEAPT",
+    "target": "PETAL",
+    "clue": "A delicate floral appendage designed to catch the eye of passing pollinators."
+  },
+  {
+    "floor": 2,
+    "length": 5,
+    "domain": "Maritime Navigation",
+    "scrambled": "ORANS",
+    "target": "SONAR",
+    "clue": "An acoustic navigation system relying on the propagation of sound pulses beneath the waves."
+  },
+  {
+    "floor": 3,
+    "length": 6,
+    "domain": "Anatomy & Physiology",
+    "scrambled": "SLIPEV",
+    "target": "PELVIS",
+    "clue": "The basin-shaped skeletal structure connecting the spine to the lower extremities."
+  },
+  {
+    "floor": 4,
+    "length": 6,
+    "domain": "Textiles & Weaving",
+    "scrambled": "NIBBOB",
+    "target": "BOBBIN",
+    "clue": "A small spindle or cylinder used to hold thread in domestic sewing apparatus."
+  },
+  {
+    "floor": 5,
+    "length": 7,
+    "domain": "Astronomy & Astrophysics",
+    "scrambled": "SPICELE",
+    "target": "ECLIPSE",
+    "clue": "A transient astronomical alignment causing the obscuration of one celestial body by another."
+  },
+  {
+    "floor": 6,
+    "length": 7,
+    "domain": "Architecture & Design",
+    "scrambled": "CLAYBON",
+    "target": "BALCONY",
+    "clue": "An elevated architectural platform projecting from a building, typically enclosed by a balustrade."
+  },
+  {
+    "floor": 7,
+    "length": 8,
+    "domain": "Meteorology & Climate",
+    "scrambled": "CAVEROTS",
+    "target": "OVERCAST",
+    "clue": "A meteorological state characterised by heavy cloud cover obscuring the firmament."
+  },
+  {
+    "floor": 8,
+    "length": 8,
+    "domain": "Musical Instruments",
+    "scrambled": "TRENICAL",
+    "target": "CLARINET",
+    "clue": "A cylindrical woodwind instrument featuring a single-reed mouthpiece and a flared bell."
+  },
+  {
+    "floor": 9,
+    "length": 9,
+    "domain": "Geology & Mineralogy",
+    "scrambled": "MELTONIES",
+    "target": "LIMESTONE",
+    "clue": "A prevalent sedimentary rock composed primarily of skeletal fragments and calcium carbonate."
+  },
+  {
+    "floor": 10,
+    "length": 9,
+    "domain": "Automotive Engineering",
+    "scrambled": "REDLYNCIS",
+    "target": "CYLINDERS",
+    "clue": "The vital tubular chambers within a combustion engine where the pistons operate."
+  }
+]
