@@ -8,6 +8,8 @@
 //  - Receipt: "on Nth attempt", date, Accuracy (x/10)
 //  - "?" rules pop-up, landing screen only
 //  - Debug switch: questions.html?debug=win&attempt=3&fail=4&time=92
+// v0.6: dated queue + manifest (questions-manifest.json), game day changes at 03:00 London time,
+//  - Replay list reads the manifest instead of guessing file names (old way kept as a fallback)
 // ==========================================
 
 // ==========================================
@@ -459,6 +461,30 @@ async function populateVault() {
     
     vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
     
+    // v0.6: use the manifest's replay list when there is one
+    const replayManifest = await loadManifest();
+    if (replayManifest) {
+        const slots = getReplayList(replayManifest);
+        vaultList.innerHTML = '';
+        if (slots.length === 0) {
+            vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">No archives found.</div>';
+        } else {
+            slots.forEach(n => {
+                const id = pad2(n);
+                const btn = document.createElement('button');
+                btn.className = 'vault-item-btn';
+                btn.innerHTML = `<strong>Archive ${id}</strong>`;
+                btn.onclick = async () => {
+                    triggerHaptic(15);
+                    const setData = await fetchFileWithFallbacks(`sandbox.${id}.json`);
+                    if (setData) loadVaultSet(id, setData);
+                };
+                vaultList.appendChild(btn);
+            });
+        }
+        return;
+    }
+
     const BATCH_SIZE = 5;
     const MAX_ARCHIVES = 100;
     const buttons = [];
@@ -509,6 +535,76 @@ async function populateVault() {
 // ==========================================
 // 6. DATA LOADING & NORMALIZATION
 // ==========================================
+
+// ==========================================
+// v0.6: QUEUE + MANIFEST
+// questions-manifest.json holds the dated queue (which set plays on which day) and the
+// replay shelf. The game day changes at 03:00 London time, all year round.
+// If the manifest is missing, or has no entry for today, the game uses questions.json
+// and the old file-by-file archive list, exactly as before.
+// ==========================================
+let manifestData = null;
+
+function pad2(n) {
+    return String(n).padStart(2, '0');
+}
+
+// Game day as "YYYY-MM-DD". Before 03:00 London wall-clock time it is still yesterday.
+function getGameDayKey(now) {
+    now = now || new Date();
+    try {
+        const parts = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Europe/London', year: 'numeric', month: '2-digit',
+            day: '2-digit', hour: '2-digit', hourCycle: 'h23'
+        }).formatToParts(now);
+        const get = (t) => parseInt(parts.find(p => p.type === t).value, 10);
+        const day = new Date(Date.UTC(get('year'), get('month') - 1, get('day')));
+        if (get('hour') < 3) day.setUTCDate(day.getUTCDate() - 1);
+        return day.toISOString().slice(0, 10);
+    } catch (e) {
+        // Browser without time zone support: use the device clock, same 03:00 rule
+        const d = new Date(now.getTime() - 3 * 60 * 60 * 1000);
+        return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+    }
+}
+
+async function loadManifest() {
+    if (manifestData) return manifestData;
+    try {
+        const res = await fetch('./questions-manifest.json', { cache: 'no-cache' });
+        if (res.ok) {
+            const m = await res.json();
+            if (m && Array.isArray(m.queue) && m.queue.length > 0) manifestData = m;
+        }
+    } catch (e) {}
+    return manifestData;
+}
+
+// Which set plays today? Returns a set number, or null (keep questions.json).
+function pickQueuedSlot(m) {
+    const key = getGameDayKey();
+    const hit = m.queue.find(q => q.date === key);
+    if (hit) return hit.set;
+    const lastDate = m.queue.reduce((a, q) => (q.date > a ? q.date : a), '');
+    if (key > lastDate) {
+        // Queue has run dry: replay a set rather than show a blank page
+        const pool = [...(m.replay || []), ...m.queue.map(q => q.set)];
+        if (pool.length > 0) {
+            const dayNumber = Math.floor(Date.parse(key + 'T00:00:00Z') / 86400000);
+            return pool[dayNumber % pool.length];
+        }
+    }
+    return null; // before the queue starts
+}
+
+// Replay list: the shelf, then every queued set whose day has passed (oldest first)
+function getReplayList(m) {
+    const key = getGameDayKey();
+    const played = m.queue.filter(q => q.date < key)
+        .sort((a, b) => (a.date < b.date ? -1 : 1)).map(q => q.set);
+    const seen = {};
+    return [...(m.replay || []), ...played].filter(n => (seen[n] ? false : (seen[n] = true)));
+}
 
 function normalizeQuestions(data) {
     let rawList = [];
@@ -568,7 +664,14 @@ async function startDailyClimb() {
     const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
     gameState.batchIndex = dayOfYear % floorMessageBatches.length;
 
-    let data = await fetchFileWithFallbacks('questions.json');
+    let data = null;
+    // v0.6: today's queued set, if there is a manifest with an entry for today
+    const queueManifest = await loadManifest();
+    if (queueManifest) {
+        const slot = pickQueuedSlot(queueManifest);
+        if (slot !== null) data = await fetchFileWithFallbacks(`sandbox.${pad2(slot)}.json`);
+    }
+    if (!data) data = await fetchFileWithFallbacks('questions.json');
     if (!data) data = await fetchFileWithFallbacks('sandbox.01.json');
 
     if (data) {
