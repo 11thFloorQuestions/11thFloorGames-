@@ -1,144 +1,88 @@
-{
-  "setId": "31",
-  "title": "Think You Know Ball? - Set 31",
-  "questions": [
-    {
-      "floor": 1,
-      "type": "multiple_choice",
-      "question": "Why did Manchester City block their manager from speaking to the radio after the Liverpool match?",
-      "options": [
-        "Worried about 114 financial charges being mentioned",
-        "Enzo Maresca would accidentally leak the tactical room's Wi-Fi password",
-        "Maresca was about to burst into song",
-        "The club offered no explanation, breaking Premier League administrative Rule K.207"
-      ],
-      "answer": "The club offered no explanation, breaking Premier League administrative Rule K.207",
-      "explanation": "Manchester City refused to let Enzo Maresca do post-match radio interviews following the Liverpool game and gave no explanation, breaching Premier League administrative rules.",
-      "anchorClues": "Manchester City Enzo Maresca radio interview Liverpool Rule K207"
-    },
-    {
-      "floor": 2,
-      "type": "multiple_choice",
-      "question": "Which former Manchester United and Newcastle legend celebrates his birthday today?",
-      "options": [
-        "Andrew Cole",
-        "Steve Bruce"
-      ],
-      "answer": "Andrew Cole",
-      "explanation": "Andrew Cole was born on 15 October 1971 and played as a prolific striker for both Newcastle United and Manchester United.",
-      "anchorClues": "Andrew Cole Manchester United Newcastle birthday October 15"
-    },
-    {
-      "floor": 3,
-      "type": "multiple_choice",
-      "question": "Manchester City were beaten 2–4 last night (Wednesday) in the Champions League by whom?",
-      "options": [
-        "PSG",
-        "Real Madrid",
-        "Bayern Munich",
-        "Inter Milan"
-      ],
-      "answer": "PSG",
-      "explanation": "Paris Saint-Germain came out top in a 4–2 thriller against Manchester City in the Champions League.",
-      "anchorClues": "Manchester City Champions League loss PSG 4-2"
-    },
-    {
-      "floor": 4,
-      "type": "multiple_choice",
-      "question": "In the Champions League last night, Liverpool bagged 6 against Austrian team LASK. Who got a hat-trick?",
-      "options": [
-        "Bradley Barcola",
-        "Cody Gakpo",
-        "Darwin Núñez",
-        "Mohamed Salah"
-      ],
-      "answer": "Bradley Barcola",
-      "explanation": "Bradley Barcola led the charge, claiming a spectacular hat-trick in Liverpool's 6-goal performance against LASK.",
-      "anchorClues": "Liverpool LASK Champions League Barcola hat-trick"
-    },
-    {
-      "floor": 5,
-      "type": "multiple_choice",
-      "question": "Which other team (not Liverpool) also netted 6 last night in Europe?",
-      "options": [
-        "Aston Villa",
-        "Real Madrid",
-        "PSG",
-        "Barcelona"
-      ],
-      "answer": "Aston Villa",
-      "explanation": "Aston Villa matched Liverpool's scoring feats across Europe by putting 6 goals past their opponents.",
-      "anchorClues": "Aston Villa European match 6 goals scored"
-    },
-    {
-      "floor": 6,
-      "type": "multiple_choice",
-      "question": "Who are top of the Champions League today (Thursday)?",
-      "options": [
-        "PSG",
-        "Barcelona",
-        "Liverpool",
-        "Arsenal"
-      ],
-      "answer": "PSG",
-      "explanation": "Following their impressive victory, PSG sit right at the top of the Champions League group table.",
-      "anchorClues": "PSG top Champions League table"
-    },
-    {
-      "floor": 7,
-      "type": "multiple_choice",
-      "question": "Which squad number was Nigel Clough given during 1993 the Premier League's inaugural year?",
-      "options": [
-        "7",
-        "6",
-        "8",
-        "11"
-      ],
-      "answer": "7",
-      "explanation": "Nigel Clough wore the famous number 7 shirt when official squad numbers were introduced in the Premier League era.",
-      "anchorClues": "Nigel Clough squad number 7 Premier League"
-    },
-    {
-      "floor": 8,
-      "type": "multiple_choice",
-      "question": "Which team has the smallest capacity ground in the Premier League?",
-      "options": [
-        "Bournemouth",
-        "Coventry",
-        "Ipswich",
-        "Hull"
-      ],
-      "answer": "Bournemouth",
-      "explanation": "Bournemouth's Vitality Stadium (Dean Court) holds around 11,300 fans, making it the smallest stadium in the top flight.",
-      "anchorClues": "Bournemouth smallest stadium capacity Premier League Vitality"
-    },
-    {
-      "floor": 9,
-      "type": "multiple_choice",
-      "question": "Excluding goalkeepers, who is officially the tallest outfield player to play in the Premier League?",
-      "options": [
-        "Lacina Traoré",
-        "Peter Crouch",
-        "Dan Burn",
-        "Per Mertesacker"
-      ],
-      "answer": "Lacina Traoré",
-      "explanation": "Standing at 6ft 8in (2.03m), striker Lacina Traoré edges out Peter Crouch and Dan Burn as the tallest outfield player in Premier League history.",
-      "anchorClues": "Lacina Traore tallest outfield player Premier League height"
-    },
-    {
-      "floor": 10,
-      "type": "multiple_choice",
-      "question": "Who scored the fastest goal in Premier League history?",
-      "options": [
-        "Shane Long",
-        "Ledley King",
-        "Philip Billing",
-        "Alan Shearer"
-      ],
-      "answer": "Shane Long",
-      "explanation": "Shane Long scored for Southampton against Watford in just 7.69 seconds back in April 2019.",
-      "anchorClues": "Shane Long fastest goal Premier League history 7 seconds"
-    }
-  ]
-}
+// ==========================================================================
+// 11th Floor Cluegram — Daily Game Dataset (Set 57)
+// Standardised floor progression: 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 letters
+// Destination: 11th Floor
+// ==========================================================================
+
+window.CLUEGRAM_DAILY_SET = [
+  {
+    floor: 1,
+    length: 5,
+    domain: "Geology & Earth Sciences",
+    scrambled: "AMGMA",
+    target: "MAGMA",
+    clue: "Molten rock beneath the Earth's surface that forms igneous rock upon cooling."
+  },
+  {
+    floor: 2,
+    length: 5,
+    domain: "Acoustics & Sound",
+    scrambled: "ROCHI",
+    target: "CHOIR",
+    clue: "An organised group of singers performing together in harmony."
+  },
+  {
+    floor: 3,
+    length: 6,
+    domain: "Astronomy & Cosmology",
+    scrambled: "TLAPNE",
+    target: "PLANET",
+    clue: "A celestial body orbiting a star that is massive enough to be rounded by its own gravity."
+  },
+  {
+    floor: 4,
+    length: 6,
+    domain: "Culinary Arts & Cooking",
+    scrambled: "ENIGRG",
+    target: "GINGER",
+    clue: "A pungent aromatic root widely used as a spice and in natural medicine."
+  },
+  {
+    floor: 5,
+    length: 7,
+    domain: "Geography & Landforms",
+    scrambled: "CLAIGER",
+    target: "GLACIER",
+    clue: "A persistent body of dense ice that moves constantly under its own weight."
+  },
+  {
+    floor: 6,
+    length: 7,
+    domain: "Meteorology & Climate",
+    scrambled: "NDUHTRE",
+    target: "THUNDER",
+    clue: "A loud rumbling or crashing noise caused by the expansion of air heated by lightning."
+  },
+  {
+    floor: 7,
+    length: 8,
+    domain: "Music & Performance",
+    scrambled: "STRUQAET",
+    target: "QUARTETS",
+    clue: "Groups of four musicians or singers performing together."
+  },
+  {
+    floor: 8,
+    length: 8,
+    domain: "Household & Comfort",
+    scrambled: "KLNBAETS",
+    target: "BLANKETS",
+    clue: "Large woven coverings used on beds for warmth."
+  },
+  {
+    floor: 9,
+    length: 9,
+    domain: "Confectionery & Food",
+    scrambled: "TACHOCOLE",
+    target: "CHOCOLATE",
+    clue: "A sweet food preparation made from roasted and ground cacao seeds."
+  },
+  {
+    floor: 10,
+    length: 9,
+    domain: "Astronomy & Navigation",
+    scrambled: "TELLATESI",
+    target: "SATELLITE",
+    clue: "An artificial body placed in orbit round the Earth or another planet."
+  }
+];
