@@ -4,85 +4,69 @@
 // Destination: 11th Floor
 // ==========================================================================
 
-window.CLUEGRAM_DAILY_SET = [
-  {
-    floor: 1,
-    length: 5,
-    domain: "Geology & Earth Sciences",
-    scrambled: "AMGMA",
-    target: "MAGMA",
-    clue: "Molten rock beneath the Earth's surface that forms igneous rock upon cooling."
-  },
-  {
-    floor: 2,
-    length: 5,
-    domain: "Acoustics & Sound",
-    scrambled: "ROCHI",
-    target: "CHOIR",
-    clue: "An organised group of singers performing together in harmony."
-  },
-  {
-    floor: 3,
-    length: 6,
-    domain: "Astronomy & Cosmology",
-    scrambled: "TLAPNE",
-    target: "PLANET",
-    clue: "A celestial body orbiting a star that is massive enough to be rounded by its own gravity."
-  },
-  {
-    floor: 4,
-    length: 6,
-    domain: "Culinary Arts & Cooking",
-    scrambled: "ENIGRG",
-    target: "GINGER",
-    clue: "A pungent aromatic root widely used as a spice and in natural medicine."
-  },
-  {
-    floor: 5,
-    length: 7,
-    domain: "Geography & Landforms",
-    scrambled: "CLAIGER",
-    target: "GLACIER",
-    clue: "A persistent body of dense ice that moves constantly under its own weight."
-  },
-  {
-    floor: 6,
-    length: 7,
-    domain: "Meteorology & Climate",
-    scrambled: "NDUHTRE",
-    target: "THUNDER",
-    clue: "A loud rumbling or crashing noise caused by the expansion of air heated by lightning."
-  },
-  {
-    floor: 7,
-    length: 8,
-    domain: "Music & Performance",
-    scrambled: "STRUQAET",
-    target: "QUARTETS",
-    clue: "Groups of four musicians or singers performing together."
-  },
-  {
-    floor: 8,
-    length: 8,
-    domain: "Household & Comfort",
-    scrambled: "KLNBAETS",
-    target: "BLANKETS",
-    clue: "Large woven coverings used on beds for warmth."
-  },
-  {
-    floor: 9,
-    length: 9,
-    domain: "Confectionery & Food",
-    scrambled: "TACHOCOLE",
-    target: "CHOCOLATE",
-    clue: "A sweet food preparation made from roasted and ground cacao seeds."
-  },
-  {
-    floor: 10,
-    length: 9,
-    domain: "Astronomy & Navigation",
-    scrambled: "TELLATESI",
-    target: "SATELLITE",
-    clue: "An artificial body placed in orbit round the Earth or another planet."
-  }
-];
+{
+  "gameId": "cluegram-57",
+  "title": "Archive Puzzle 10",
+  "floors": [
+    {
+      "floor": 1,
+      "scrambled": "AOCNE",
+      "target": "OCEAN",
+      "clue": "A vast expanse of salt water covering most of the earth surface."
+    },
+    {
+      "floor": 2,
+      "scrambled": "MOTRS",
+      "target": "STORM",
+      "clue": "A violent disturbance of the atmosphere with strong winds and rain."
+    },
+    {
+      "floor": 3,
+      "scrambled": "DNASLI",
+      "target": "ISLAND",
+      "clue": "A piece of land completely surrounded by water."
+    },
+    {
+      "floor": 4,
+      "scrambled": "EATMSR",
+      "target": "STREAM",
+      "clue": "A continuous narrow body of running water flowing along a bed."
+    },
+    {
+      "floor": 5,
+      "scrambled": "ICGELRA",
+      "target": "GLACIER",
+      "clue": "A massive persistent body of dense ice moving slowly downhill."
+    },
+    {
+      "floor": 6,
+      "scrambled": "SIUAMTN",
+      "target": "TSUNAMI",
+      "clue": "A long high sea wave caused by an earthquake or underwater disturbance."
+    },
+    {
+      "floor": 7,
+      "scrambled": "RDAZIZBL",
+      "target": "BLIZZARD",
+      "clue": "A severe snowstorm with high winds and low visibility."
+    },
+    {
+      "floor": 8,
+      "scrambled": "LNYCESCO",
+      "target": "CYCLONES",
+      "clue": "Violent rotating tropical storm systems with low atmospheric pressure centers."
+    },
+    {
+      "floor": 9,
+      "scrambled": "EHCANALVA",
+      "target": "AVALANCHE",
+      "clue": "A rapid mass cascade of snow, ice, and rock falling down a mountainside."
+    },
+    {
+      "floor": 10,
+      "scrambled": "ROLLPWOIH",
+      "target": "WHIRLPOOL",
+      "clue": "A rapidly rotating mass of water producing a central vortex."
+    }
+  ]
+}
