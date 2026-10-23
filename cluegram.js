@@ -9,6 +9,8 @@
 //  - Archive list loads in batches of 5 instead of 100 requests at once
 //  - "?" rules pop-up, landing screen only
 //  - Debug switch: cluegram.html?debug=win&attempt=3&fail=4&time=92
+// v0.6.2: Start Climb and Submit now buzz the moment they are pressed (a short tap, like Clusters).
+//  - Submit still gives its own buzz afterwards for a correct answer or a fall.
 // v0.6.1: haptics added (same patterns as the other games: tap, correct, fall, victory)
 // v0.6: dated queue + manifest (cluegram-manifest.json), game day changes at 03:00 London time,
 //  - Replay list reads the manifest instead of guessing file names (old way kept as a fallback)
@@ -222,9 +224,11 @@ function playLiftRide(durationMs, onArrive, options) {
 
     function bindEvents() {
         if (startClimbBtn) startClimbBtn.addEventListener('click', startGame);
+        if (startClimbBtn) startClimbBtn.addEventListener('pointerdown', () => triggerHaptic(15)); // v0.6.2
         if (backspaceBtn) backspaceBtn.addEventListener('click', handleBackspace);
         if (shuffleBtn) shuffleBtn.addEventListener('click', handleShuffle);
         if (submitBtn) submitBtn.addEventListener('click', handleSubmit);
+        if (submitBtn) submitBtn.addEventListener('pointerdown', () => triggerHaptic(15)); // v0.6.2
 
         if (statsBtn) {
             statsBtn.addEventListener('click', () => {
