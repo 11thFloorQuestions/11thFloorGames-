@@ -16,6 +16,14 @@
  *  - Archive list loads in batches of 5 instead of 100 requests at once
  *  - "?" rules pop-up, landing screen only
  *  - Debug switches: ?debug=win, ?debug=ride, ?debug=floor&n=3 (see runDebugSwitch)
+ *
+ * v0.6: dated queue + manifest (clusters-manifest.json), same idea as Cluegram, Questions and Word Climb.
+ *  - Game day changes at 03:00 London time, all year round (before, the UTC date was used).
+ *  - Today's puzzle: the manifest's queue entry for that day. A day with no entry rotates through
+ *    the manifest's "rotation" list, so the daily never freezes on one puzzle.
+ *  - Before the manifest's startDate, or if the manifest is missing, the game uses clusters-data.js as before.
+ *  - The Archive (Replay) list reads the manifest (the old way looked for file names that do not exist).
+ *  - Start Climb now always starts today's puzzle (before, it could start the last archive played).
  * ============================================================================
  */
 
@@ -23,6 +31,11 @@
     'use strict';
 
     let puzzleData = null;
+    let hardcodedDaily = null;             // v0.6: the puzzle from clusters-data.js
+    let manifestData = null;               // v0.6: the manifest, once loaded
+    let queuedDaily = null;                // v0.6: today's puzzle from the queue or rotation
+    let dailyReady = Promise.resolve();    // v0.6: resolves when today's puzzle has been looked up
+    let startingDaily = false;             // v0.6: stops a double tap starting two climbs
     let currentFloor = 1;
     let gameState = 'intro';
     let selectedTiles = [];
@@ -283,7 +296,9 @@ function playLiftRide(durationMs, onArrive, options) {
             const todayStr = new Date().toISOString().split('T')[0];
             const activeDateKey = window.CLUSTERS_DATA[todayStr] ? todayStr : availableDates[availableDates.length - 1];
             puzzleData = window.CLUSTERS_DATA[activeDateKey];
+            hardcodedDaily = puzzleData; // v0.6
         }
+        dailyReady = resolveDailyFromQueue().catch(() => {}); // v0.6
 
         renderTowerStack(0);
         runDebugSwitch();
@@ -361,7 +376,7 @@ function playLiftRide(durationMs, onArrive, options) {
 
         if (btnStartClimb) {
             btnStartClimb.addEventListener('pointerdown', () => triggerHaptic(15));
-            btnStartClimb.addEventListener('click', startClimb);
+            btnStartClimb.addEventListener('click', startDaily); // v0.6: was startClimb
         }
 
         if (btnSound) {
@@ -715,6 +730,92 @@ function playLiftRide(durationMs, onArrive, options) {
         if (victoryScreen) victoryScreen.style.display = 'flex';
     }
 
+    // ==========================================
+    // v0.6: QUEUE + MANIFEST
+    // clusters-manifest.json holds: startDate (before it the game keeps using clusters-data.js),
+    // queue (a puzzle for a given date), rotation (puzzles used on any date with no queue entry),
+    // and replay (the shelf). The game day changes at 03:00 London time.
+    // ==========================================
+    function pad2(n) {
+        return String(n).padStart(2, '0');
+    }
+
+    // Game day as "YYYY-MM-DD". Before 03:00 London wall-clock time it is still yesterday.
+    function getGameDayKey(now) {
+        now = now || new Date();
+        try {
+            const parts = new Intl.DateTimeFormat('en-GB', {
+                timeZone: 'Europe/London', year: 'numeric', month: '2-digit',
+                day: '2-digit', hour: '2-digit', hourCycle: 'h23'
+            }).formatToParts(now);
+            const get = (t) => parseInt(parts.find(p => p.type === t).value, 10);
+            const day = new Date(Date.UTC(get('year'), get('month') - 1, get('day')));
+            if (get('hour') < 3) day.setUTCDate(day.getUTCDate() - 1);
+            return day.toISOString().slice(0, 10);
+        } catch (e) {
+            // Browser without time zone support: use the device clock, same 03:00 rule
+            const d = new Date(now.getTime() - 3 * 60 * 60 * 1000);
+            return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+        }
+    }
+
+    function fetchManifest() {
+        return fetch('./clusters-manifest.json', { cache: 'no-cache' })
+            .then(res => (res.ok ? res.json() : null))
+            .catch(() => null);
+    }
+
+    // Replay list: the shelf, then every queued puzzle whose day has passed (oldest first)
+    function getReplayList(m) {
+        const key = getGameDayKey();
+        const queue = Array.isArray(m.queue) ? m.queue : [];
+        const played = queue.filter(q => q.date < key)
+            .sort((a, b) => (a.date < b.date ? -1 : 1)).map(q => q.set);
+        const seen = {};
+        return [...(m.replay || []), ...played].filter(n => (seen[n] ? false : (seen[n] = true)));
+    }
+
+    async function resolveDailyFromQueue() {
+        const m = await fetchManifest();
+        if (!m) return;
+        manifestData = m;
+
+        const key = getGameDayKey();
+        if (m.startDate && key < m.startDate) return; // before the start: keep clusters-data.js
+
+        const queue = Array.isArray(m.queue) ? m.queue : [];
+        const rotation = Array.isArray(m.rotation) ? m.rotation : [];
+        let slot = null;
+        const hit = queue.find(q => q.date === key);
+        if (hit) {
+            slot = hit.set;
+        } else if (rotation.length > 0) {
+            // No puzzle queued for today: rotate through the stand-by list
+            const dayNumber = Math.floor(Date.parse(key + 'T00:00:00Z') / 86400000);
+            slot = rotation[dayNumber % rotation.length];
+        }
+        if (slot === null) return;
+
+        const data = await fetchFileWithFallbacks(`sandbox-clusters.${pad2(slot)}.json`);
+        if (data && data.floors && Object.keys(data.floors).length > 0) {
+            queuedDaily = data;
+        }
+    }
+
+    // Start Climb on the landing screen: always today's puzzle, never a leftover archive puzzle
+    async function startDaily() {
+        if (startingDaily) return;
+        startingDaily = true;
+        try {
+            await dailyReady;
+            if (queuedDaily) puzzleData = queuedDaily;
+            else if (hardcodedDaily) puzzleData = hardcodedDaily;
+            startClimb();
+        } finally {
+            startingDaily = false;
+        }
+    }
+
     function fetchFileWithFallbacks(filename) {
         const candidatePaths = [`./archives/${filename}`, `./${filename}`, `./data/${filename}`, filename];
         return new Promise(async (resolve) => {
@@ -732,6 +833,34 @@ function playLiftRide(durationMs, onArrive, options) {
     async function populateVault() {
         if (!vaultList) return;
         vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
+
+        // v0.6: use the manifest's replay list when there is one
+        await dailyReady;
+        if (manifestData) {
+            const slots = getReplayList(manifestData);
+            vaultList.innerHTML = '';
+            if (slots.length === 0) {
+                vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">No archives found.</div>';
+            } else {
+                slots.forEach(n => {
+                    const id = pad2(n);
+                    const btn = document.createElement('button');
+                    btn.className = 'vault-item-btn';
+                    btn.innerHTML = `<strong>Archive ${id}</strong>`;
+                    btn.onpointerdown = () => triggerHaptic(15);
+                    btn.onclick = async () => {
+                        const data = await fetchFileWithFallbacks(`sandbox-clusters.${id}.json`);
+                        if (data && data.floors) {
+                            loadVaultArchive(id, data);
+                        } else {
+                            alert(`Could not load Archive ${id}.`);
+                        }
+                    };
+                    vaultList.appendChild(btn);
+                });
+            }
+            return;
+        }
 
         const BATCH_SIZE = 5;
         const MAX_ARCHIVES = 100;
