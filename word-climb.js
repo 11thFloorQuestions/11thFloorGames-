@@ -17,6 +17,10 @@
 //  - Archive list loads in batches of 5 (was 100 files one at a time)
 //  - "?" rules pop-up (landing screen only), sound button now toggles its label
 //  - Debug switches: ?debug=win, ?debug=ride, ?debug=floor&n=3 (see runDebugSwitch)
+//
+// v0.6: wheel letters can be used as many times as you like again (the original rule).
+//  - One switch: ALLOW_LETTER_REUSE below. Set it to false to bring back one use per letter.
+//  - The same word still cannot be used twice in one climb.
 // ==========================================================================
 
 let currentFloor = 1;
@@ -35,6 +39,9 @@ let soundEnabled = true;
 
 // v0.5: seconds allowed on each floor. Index 0 is the 1st floor. Edit freely.
 const FLOOR_TIME_LIMITS = [20, 20, 20, 25, 25, 25, 30, 30, 35, 45];
+
+// v0.6: true = a wheel letter can be tapped as often as you like. false = once per letter (v0.5).
+const ALLOW_LETTER_REUSE = true;
 
 const CORRECT_FLASH_MS = 400; // v0.5: was 1000
 const FALL_PAUSE_MS = 1400;
@@ -657,7 +664,7 @@ function renderWheel(tiles) {
         const angle = (index / total) * (2 * Math.PI) - (Math.PI / 2);
         const x = centerX + radius * Math.cos(angle) - (btnSize / 2);
         const y = centerY + radius * Math.sin(angle) - (btnSize / 2);
-        const isUsed = guessIds.includes(tile.id);
+        const isUsed = !ALLOW_LETTER_REUSE && guessIds.includes(tile.id);
 
         const btn = document.createElement("button");
         btn.className = "wheel-letter-btn";
