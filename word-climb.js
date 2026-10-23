@@ -1,6 +1,6 @@
 // ==========================================================================
 // 11th Floor Word Climb - Main Daily Game Engine
-// Active Master Word: RETAINERS (Set 58)
+// Active Master Word: from the queue (v0.7). Before the queue starts: RETAINERS (Set 58)
 //
 // v0.5 changes (marked "v0.5"), same shape as the other games:
 //  - A time limit on every floor, with a timer bar (edit FLOOR_TIME_LIMITS below)
@@ -21,6 +21,12 @@
 // v0.6: wheel letters can be used as many times as you like again (the original rule).
 //  - One switch: ALLOW_LETTER_REUSE below. Set it to false to bring back one use per letter.
 //  - The same word still cannot be used twice in one climb.
+//
+// v0.7: dated queue + manifest (word-climb-manifest.json), same as Cluegram and Questions.
+//  - Game day changes at 03:00 London time, all year round.
+//  - Today's puzzle comes from the queue. Before the queue starts (or if the manifest is missing)
+//    the game uses the hardcoded RETAINERS set below, exactly as before.
+//  - The Archive list reads the manifest instead of guessing file names (old way kept as a fallback).
 // ==========================================================================
 
 let currentFloor = 1;
@@ -57,6 +63,11 @@ const INTERNAL_FALLBACK_WORDS = new Set([
 
 let validWordSet = new Set();
 
+// v0.7: queue + manifest state
+let manifestData = null;               // the manifest, once loaded
+let queuedDaily = null;                // { masterWord, wheelLetters } for today, from the queue
+let dailyReady = Promise.resolve();    // resolves when today's queued set (if any) has loaded
+
 // Floor timer (per floor) and session clock (whole climb)
 let floorTimer = null;
 let startTime = 0;
@@ -75,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     bindExtraEvents();
     attachControlHandlers();
     updateStatsDisplay();
+    dailyReady = resolveDailyFromQueue().catch(() => {}); // v0.7
 
     window.addEventListener("resize", () => {
         if (wheelLetters.length > 0) {
@@ -238,6 +250,79 @@ function playLiftRide(durationMs, onArrive, options) {
     }, 250);
 }
 
+// ---------- queue + manifest (v0.7) ----------
+// word-climb-manifest.json holds the dated queue (which set plays on which day), the replay shelf,
+// retired sets and a reserve (held back, not in the game). The game day changes at 03:00 London
+// time. If the manifest is missing, or has no entry for today, the game uses the hardcoded
+// RETAINERS set and the old file-by-file archive list, exactly as before.
+
+function pad2(n) {
+    return String(n).padStart(2, "0");
+}
+
+// Game day as "YYYY-MM-DD". Before 03:00 London wall-clock time it is still yesterday.
+function getGameDayKey(now) {
+    now = now || new Date();
+    try {
+        const parts = new Intl.DateTimeFormat("en-GB", {
+            timeZone: "Europe/London", year: "numeric", month: "2-digit",
+            day: "2-digit", hour: "2-digit", hourCycle: "h23"
+        }).formatToParts(now);
+        const get = (t) => parseInt(parts.find(p => p.type === t).value, 10);
+        const day = new Date(Date.UTC(get("year"), get("month") - 1, get("day")));
+        if (get("hour") < 3) day.setUTCDate(day.getUTCDate() - 1);
+        return day.toISOString().slice(0, 10);
+    } catch (e) {
+        // Browser without time zone support: use the device clock, same 03:00 rule
+        const d = new Date(now.getTime() - 3 * 60 * 60 * 1000);
+        return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+    }
+}
+
+function fetchManifest() {
+    return fetch("./word-climb-manifest.json", { cache: "no-cache" })
+        .then(res => (res.ok ? res.json() : null))
+        .catch(() => null);
+}
+
+// Archive list: the shelf, then every queued set whose day has passed (oldest first)
+function getReplayList(m) {
+    const key = getGameDayKey();
+    const played = m.queue.filter(q => q.date < key)
+        .sort((a, b) => (a.date < b.date ? -1 : 1)).map(q => q.set);
+    const seen = {};
+    return [...(m.replay || []), ...played].filter(n => (seen[n] ? false : (seen[n] = true)));
+}
+
+async function resolveDailyFromQueue() {
+    const m = await fetchManifest();
+    if (!m || !Array.isArray(m.queue) || m.queue.length === 0) return;
+    manifestData = m;
+
+    const key = getGameDayKey();
+    let slot = null;
+    const hit = m.queue.find(q => q.date === key);
+    if (hit) {
+        slot = hit.set;
+    } else {
+        const lastDate = m.queue.reduce((a, q) => (q.date > a ? q.date : a), "");
+        if (key > lastDate) {
+            // Queue has run dry: replay a set rather than show a blank page
+            const pool = [...(m.replay || []), ...m.queue.map(q => q.set)];
+            if (pool.length > 0) {
+                const dayNumber = Math.floor(Date.parse(key + "T00:00:00Z") / 86400000);
+                slot = pool[dayNumber % pool.length];
+            }
+        }
+    }
+    if (slot === null) return; // before the queue starts: keep the hardcoded set
+
+    const data = await fetchFileWithFallbacks(`sandbox-wc.${pad2(slot)}.json`);
+    if (data && data.masterWord && Array.isArray(data.wheelLetters) && data.wheelLetters.length > 0) {
+        queuedDaily = { masterWord: String(data.masterWord).toUpperCase(), wheelLetters: data.wheelLetters };
+    }
+}
+
 // ---------- data loading ----------
 
 async function fetchFileWithFallbacks(filename) {
@@ -307,6 +392,8 @@ function setupLandingScreen() {
         startBtn.disabled = true;
 
         const ok = await resolveDictionary();
+
+        await dailyReady; // v0.7: make sure today's queued set has loaded
 
         startBtn.textContent = "Start Climb";
         startBtn.style.opacity = "1";
@@ -384,6 +471,26 @@ async function populateVault() {
     if (!vaultList) return;
 
     vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
+
+    // v0.7: use the manifest's archive list when there is one
+    await dailyReady;
+    if (manifestData) {
+        const slots = getReplayList(manifestData);
+        vaultList.innerHTML = "";
+        if (slots.length === 0) {
+            vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">No archives found.</div>';
+        } else {
+            slots.forEach(n => {
+                const id = pad2(n);
+                const btn = document.createElement("button");
+                btn.className = "vault-item-btn";
+                btn.innerHTML = `<strong>Archive ${id}</strong>`;
+                btn.onclick = () => loadVaultArchive(id);
+                vaultList.appendChild(btn);
+            });
+        }
+        return;
+    }
 
     const BATCH_SIZE = 5;
     const MAX_ARCHIVES = 100;
@@ -531,8 +638,14 @@ function resetToStartScreen() {
     setRulesButtonVisible(true);
 }
 
-// DAILY PUZZLE INITIALIZATION - RETAINERS (Set 58)
+// DAILY PUZZLE INITIALIZATION
+// v0.7: today's set from the queue when there is one. Otherwise RETAINERS (Set 58), as before.
 function initDailyPuzzle() {
+    if (queuedDaily) {
+        masterNineLetterWord = queuedDaily.masterWord;
+        initialDailyWheel = shuffleAndVerifyWheel(makeWheelTiles(queuedDaily.wheelLetters), masterNineLetterWord);
+        return;
+    }
     masterNineLetterWord = "RETAINERS";
     const initialArr = ["R", "E", "T", "A", "I", "N", "E", "R", "S"];
     initialDailyWheel = shuffleAndVerifyWheel(makeWheelTiles(initialArr), masterNineLetterWord);
