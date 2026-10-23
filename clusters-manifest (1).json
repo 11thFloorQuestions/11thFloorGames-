@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "note": "Clusters manifest. startDate: before this game day the game keeps using clusters-data.js. queue: a puzzle for a given date (game day changes at 03:00 London time). rotation: puzzles used, in turn, on any date with no queue entry. replay: the shelf, plus every queued puzzle whose day has passed. To add a new puzzle: save it as sandbox-clusters.NN.json, add a queue line with its date, and add NN to replay once it should show there.",
+  "startDate": "2026-10-25",
+  "queue": [],
+  "rotation": [
+    2,
+    3,
+    4,
+    1
+  ],
+  "replay": [
+    1,
+    2,
+    3,
+    4
+  ]
+}
