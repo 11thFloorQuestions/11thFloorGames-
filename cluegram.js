@@ -9,6 +9,7 @@
 //  - Archive list loads in batches of 5 instead of 100 requests at once
 //  - "?" rules pop-up, landing screen only
 //  - Debug switch: cluegram.html?debug=win&attempt=3&fail=4&time=92
+// v0.6.1: haptics added (same patterns as the other games: tap, correct, fall, victory)
 // v0.6: dated queue + manifest (cluegram-manifest.json), game day changes at 03:00 London time,
 //  - Replay list reads the manifest instead of guessing file names (old way kept as a fallback)
 // ==========================================================================
@@ -79,6 +80,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const CORRECT_FLASH_MS = 400; // v0.5: was 800
 
     // v0.5: general ordinal helper (1st, 2nd, 3rd, 4th ... 11th, 21st)
+    // v0.6.1: haptics, same as the other games. Needs a phone that supports vibration.
+    function triggerHaptic(pattern) {
+        if ('vibrate' in navigator) {
+            try {
+                navigator.vibrate(pattern);
+            } catch (e) {}
+        }
+    }
+
     function ordinal(n) {
         const mod100 = n % 100;
         if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
@@ -345,6 +355,7 @@ function playLiftRide(durationMs, onArrive, options) {
         const slots = targetSlotsContainer ? targetSlotsContainer.querySelectorAll('.target-slot') : [];
         slots.forEach(slot => slot.classList.add('state-error'));
         showMessage('TIME EXPIRED — DROPPED TO GROUND FLOOR', false);
+        triggerHaptic([80, 50, 120]);
 
         const towerFloors = document.querySelectorAll('.tower-floor');
         const activeTowerFloor = Array.from(towerFloors).find(
@@ -669,6 +680,7 @@ function playLiftRide(durationMs, onArrive, options) {
         if (userGuess.length < currentFloor.target.length) {
             tile.used = true;
             userGuess.push(tile);
+            triggerHaptic(15);
             renderRack();
         }
     }
@@ -719,6 +731,7 @@ function playLiftRide(durationMs, onArrive, options) {
         if (submittedWord === currentFloor.target) {
             slots.forEach(slot => slot.classList.add('state-success'));
             showMessage('CORRECT ANAGRAM!', true);
+            triggerHaptic([35, 40, 35]);
 
             setTimeout(() => {
                 if (currentFloorIndex + 1 >= activeGameData.length) {
@@ -733,6 +746,7 @@ function playLiftRide(durationMs, onArrive, options) {
         } else {
             slots.forEach(slot => slot.classList.add('state-error'));
             showMessage('INCORRECT — DROPPED TO GROUND FLOOR', false);
+            triggerHaptic([80, 50, 120]);
 
             const towerFloors = document.querySelectorAll('.tower-floor');
             const activeTowerFloor = Array.from(towerFloors).find(
@@ -756,6 +770,7 @@ function playLiftRide(durationMs, onArrive, options) {
 
     function showVictoryReceipt() {
         stopTimer();
+        triggerHaptic([50, 50, 50, 50, 100]);
         recordGameResult(true, 11);
 
         const badgeDisplay = document.getElementById('receipt-badge-display');
