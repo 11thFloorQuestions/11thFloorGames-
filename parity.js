@@ -13,6 +13,8 @@
 //  - Archive list loads in batches of 5 instead of 50 requests at once
 //  - "?" rules pop-up, landing screen only
 //  - Debug switches: ?debug=win, ?debug=ride, ?debug=floor&n=3 (see runDebugSwitch)
+// v0.5.1: Archive buttons now start a set on a tap (finger lifted), not the instant a finger
+//  touches the screen, so the list can be scrolled without starting a set.
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -384,7 +386,7 @@ function playLiftRide(durationMs, onArrive, options) {
                     const btn = document.createElement('button');
                     btn.className = 'vault-item-btn';
                     btn.innerHTML = `<strong>Archive ${id}</strong>`;
-                    bindInteraction(btn, () => loadVaultSet(data));
+                    btn.addEventListener('click', () => { triggerHaptic(); loadVaultSet(data); }); // v0.5.1
                     buttons.push(btn);
                 } else {
                     missingFound = true;
