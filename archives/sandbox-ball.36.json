@@ -1,1 +1,136 @@
-
+{
+  "setId": "37",
+  "title": "Think You Know Ball? - Set 37",
+  "questions": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "Who is currently sitting 5th in the Premier League table today, Friday, 23rd Oct 2026?",
+      "options": [
+        "Liverpool",
+        "Chelsea",
+        "Arsenal",
+        "Fulham"
+      ],
+      "answer": "Liverpool",
+      "explanation": "This club wears famous red home shirts and plays its matches at Anfield. They are historically one of England's most decorated clubs with numerous European Cups."
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "Which former Premier League player, now turned YouTube golfer, celebrates his birthday today?",
+      "options": [
+        "Jimmy Bullard",
+        "Gareth Bale",
+        "Gareth Barry",
+        "Peter Crouch"
+      ],
+      "answer": "Jimmy Bullard",
+      "explanation": "He is well-known for his humorous personality and once recreated a manager's team-talk celebration after scoring. During his playing career, he featured for clubs including Wigan Athletic, Fulham, and Hull City."
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "Who is the current manager of Manchester United (Friday)?",
+      "options": [
+        "Michael Carrick",
+        "Eddie Howe",
+        "Erik ten Hag",
+        "Ronald McDonald"
+      ],
+      "answer": "Michael Carrick",
+      "explanation": "He is a former central midfielder who spent the majority of his distinguished playing career at Old Trafford. He has previously served in caretaker and coaching roles at the club before taking the top job."
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "Bournemouth beat AC Milan last night at the Vitality Stadium in the Europa League (Thursday); what was the final score?",
+      "options": [
+        "3-0 win",
+        "2-0 win",
+        "2-1 win",
+        "3-1 win"
+      ],
+      "answer": "3-0 win",
+      "explanation": "The winning side kept a clean sheet while securing a memorable European night on the south coast. The victorious team scored three goals without reply against the Italian giants."
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "Apart from Brighton, Bournemouth, and Crystal Palace, which was the other English team playing in Europe last night (Thursday)?",
+      "options": [
+        "Sunderland",
+        "Tottenham Hotspur",
+        "Newcastle",
+        "Brentford"
+      ],
+      "answer": "Sunderland",
+      "explanation": "This historic club is based in the Northeast of England and plays its home games at the Stadium of Light. Their traditional home kit features distinctive red and white vertical stripes."
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "On this day in Premier League history, October 23, 2011: Manchester United 1–6 Manchester City. Roberto Mancini's Manchester City handed Sir Alex Ferguson his heaviest-ever home defeat. Which player took the headlines with his undershirt message \"Why Always Me\"?",
+      "options": [
+        "Mario Balotelli",
+        "Yaya Toure",
+        "Sergio Aguero",
+        "Joe Hart"
+      ],
+      "answer": "Mario Balotelli",
+      "explanation": "This Italian striker was known just as much for his eccentric off-field antics as his clinical finishing on the pitch. He also scored the opening goal of the match before revealing the famous slogan on his inner garment."
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "Manchester United legendary bad boy George Best wore which squad number at Manchester United?",
+      "options": [
+        "7",
+        "10",
+        "9",
+        "11"
+      ],
+      "answer": "7",
+      "explanation": "This digit is traditionally associated with iconic wingers and talismanic goalscorers at Old Trafford. Other legendary figures to wear this specific shirt number for the club include David Beckham and Cristiano Ronaldo."
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "Out of the 20 football clubs currently in the Premier League, which one plays its home matches on the smallest pitch size?",
+      "options": [
+        "Fulham",
+        "Crystal Palace",
+        "Bournemouth"
+      ],
+      "answer": "Fulham",
+      "explanation": "This club's historic home ground sits directly alongside the River Thames in West London. Their stadium features the famous, traditional Johnny Haynes stand and a cottage built right inside the grounds."
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "How many Premier League titles has Mikel Arteta won as a player, assistant, and manager?",
+      "options": [
+        "3",
+        "2",
+        "4",
+        "0",
+        "1"
+      ],
+      "answer": "3",
+      "explanation": "He accumulated his assistant titles working under Pep Guardiola at Manchester City before taking charge at Arsenal. He won zero Premier League titles as a player during his time playing for Arsenal and Everton."
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "Who is the top scoring Scottish player in Premier League history with 68 goals?",
+      "options": [
+        "Duncan Ferguson",
+        "Kevin Gallacher",
+        "Gary McAllister",
+        "Steven Fletcher"
+      ],
+      "answer": "Duncan Ferguson",
+      "explanation": "He was a fearsome, aggressive centre-forward renowned for his towering headers and dominant physical presence. He is most famously associated with Everton, where he had two separate playing spells and also served as a caretaker manager."
+    }
+  ]
+}
