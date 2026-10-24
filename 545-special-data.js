@@ -5,78 +5,77 @@
  */
 
 const fullQuestions = [
-    // Floors 1–10: Modern Lore & Recent Highlights
+    // Floors 1–10: TEST TEN (TYKB Set 36, Saturday 24 Oct 2026). Replace with the final results-based ten before 5.45.
     {
         floor: 1,
-        question: "Which Arsenal player scored the opening goal with a header in their 2–0 Champions League win over Paris Saint-Germain at the Emirates?",
-        options: ["Kai Havertz", "Bukayo Saka", "Gabriel Martinelli", "Leandro Trossard"],
-        answer: "Kai Havertz",
-        explanation: "Kai Havertz headed home Leandro Trossard's cross in the 20th minute."
+        question: "Who is currently sitting bottom of the Premier League table today, Saturday 24th Oct 2026?",
+        options: ["Sunderland", "Nottingham Forest", "Fulham", "Coventry"],
+        answer: "Sunderland",
+        explanation: "Clue: This historic Northeast club plays its home fixtures at the Stadium of Light and traditionally wears red and white vertical stripes.\nFun Fact: The club's official nickname, the Black Cats, was chosen in a fan vote in 2000, drawing on local folklore and a battery of guns stationed nearby during the Napoleonic Wars."
     },
     {
         floor: 2,
-        question: "Cole Palmer became the first player in Premier League history to score four goals in the first half of a match against which club?",
-        options: ["Brighton & Hove Albion", "Everton", "Wolverhampton Wanderers", "Leicester City"],
-        answer: "Brighton & Hove Albion",
-        explanation: "Palmer scored all four goals within 20 first-half minutes at Stamford Bridge."
+        question: "Which former Manchester United and Premier League legend, now turned pundit, celebrates his birthday today?",
+        options: ["Wayne Rooney", "Mark Goldbridge", "Roy Keane", "Gary Neville"],
+        answer: "Wayne Rooney",
+        explanation: "Clue: Bursting onto the scene as a teenager at Everton, this iconic forward went on to become Manchester United's all-time leading goalscorer.\nFun Fact: He scored a sensational hat-trick on his Manchester United debut against Fenerbahçe in the Champions League at just 18 years old."
     },
     {
         floor: 3,
-        question: "Which striker joined Tottenham Hotspur from Bournemouth for a club-record fee of up to £65 million?",
-        options: ["Dominic Solanke", "Evanilson", "Richarlison", "Brennan Johnson"],
-        answer: "Dominic Solanke",
-        explanation: "Spurs secured Solanke following his 19-goal Premier League campaign for Bournemouth."
+        question: "Who is the current manager of Bournemouth?",
+        options: ["Marco Rose", "Marco Polo", "Marco van Basten", "Eddie Howe"],
+        answer: "Marco Rose",
+        explanation: "Clue: This German tactician built his reputation in Austria and the Bundesliga, previously managing Borussia Dortmund and RB Leipzig before taking charge on the south coast.\nFun Fact: During his playing career as a defender, he spent nearly a decade at Mainz 05, playing alongside future managerial legends Jurgen Klopp and Thomas Tuchel."
     },
     {
         floor: 4,
-        question: "Which manager steered Aston Villa to 4th place to secure Champions League football for the club for the first time in 41 years?",
-        options: ["Unai Emery", "Steven Gerrard", "Dean Smith", "Julen Lopetegui"],
-        answer: "Unai Emery",
-        explanation: "Unai Emery guided Villa back to Europe's elite competition after taking over in October 2022."
+        question: "Ipswich Town played Nottingham Forest last night (Friday); what was the final score?",
+        options: ["1-1 draw", "2-2 draw", "2-0 win", "2-1 win"],
+        answer: "1-1 draw",
+        explanation: "Clue: Neither side could find a winner under the Friday night lights, leaving both teams with a single point shared in a tight contest.\nFun Fact: Friday night fixtures in top-flight English football became regular television slot features in the Premier League beginning with the 2016–17 broadcast rights agreement."
     },
     {
         floor: 5,
-        question: "Which Aston Villa player scored a memorable late lob over Manuel Neuer to beat Bayern Munich 1–0 at Villa Park?",
-        options: ["Jhon Durán", "Ollie Watkins", "Leon Bailey", "Morgan Rogers"],
-        answer: "Jhon Durán",
-        explanation: "Jhon Durán came off the bench to loft the ball over Neuer in the 79th minute."
+        question: "And what is the name of the ground Ipswich Town play their home games at?",
+        options: ["Portman Road", "The Valley", "Carrow Road", "Massey Ferguson Fields"],
+        answer: "Portman Road",
+        explanation: "Clue: This historic venue in Suffolk has been the home of the Tractor Boys since 1884, complete with statues outside commemorating Sir Alf Ramsey and Sir Bobby Robson.\nFun Fact: In addition to football, the stadium hosted England senior international matches and a famous Ed Sheeran concert series in 2019."
     },
     {
         floor: 6,
-        question: "Ademola Lookman scored a hat-trick in the 2024 UEFA Europa League final to end Bayer Leverkusen's 51-game unbeaten run playing for which club?",
-        options: ["Atalanta", "Roma", "Benfica", "Sporting CP"],
-        answer: "Atalanta",
-        explanation: "Lookman scored all three goals in a clinical 3–0 victory in Dublin."
+        question: "On this day in Football History, October 24th, 1857 was the Birth of Football: Which Football Club was founded on this exact day and is officially recognized by FIFA as the world's oldest existing football club?",
+        options: ["Sheffield FC", "Milton Keynes FC", "Wrexham FC", "Everton FC"],
+        answer: "Sheffield FC",
+        explanation: "Clue: Formed by members of a local cricket club, this pioneer team codified the earliest formal rules of the game in Yorkshire.\nFun Fact: They were awarded the FIFA Order of Merit in 2004 to celebrate their contribution to football history—an honour shared with only one other club: Real Madrid."
     },
     {
         floor: 7,
-        question: "Which squad number does Declan Rice wear for Arsenal?",
-        options: ["41", "4", "8", "6"],
-        answer: "41",
-        explanation: "Declan Rice retained his familiar number 41 shirt following his transfer from West Ham."
+        question: "Tottenham Hotspur legendary forward Son Heung-min wore which squad number?",
+        options: ["7", "10", "9", "11"],
+        answer: "7",
+        explanation: "Clue: The South Korean superstar made this single digit iconic in North London, combining with Harry Kane to form the most prolific tandem in Premier League history.\nFun Fact: He became the first Asian player to win the Premier League Golden Boot when he shared the award in the 2021–22 season."
     },
     {
         floor: 8,
-        question: "Who scored Manchester United's opening goal in their 2–1 FA Cup final victory over Manchester City at Wembley?",
-        options: ["Alejandro Garnacho", "Kobbie Mainoo", "Bruno Fernandes", "Marcus Rashford"],
-        answer: "Alejandro Garnacho",
-        explanation: "Garnacho capitalised on a mix-up between Stefan Ortega and Joško Gvardiol to open the scoring."
+        question: "Out of the 20 football clubs currently in the Premier League, which one has the biggest seating capacity?",
+        options: ["Manchester United", "Liverpool", "Tottenham Hotspur", "Manchester City"],
+        answer: "Manchester United",
+        explanation: "Clue: Nicknamed 'The Theatre of Dreams', this famous ground holds over 74,000 spectators and remains the largest club stadium in English football.\nFun Fact: The stadium's iconic Stretford End stand was originally built in 1910 and was one of the last major terrace stands converted to all-seating in the 1990s."
     },
     {
         floor: 9,
-        question: "Which German coach became the youngest permanent manager in Premier League history at age 31 when appointed by Brighton?",
-        options: ["Fabian Hürzeler", "Kieran McKenna", "Russell Martin", "Danny Röhl"],
-        answer: "Fabian Hürzeler",
-        explanation: "Hürzeler took over at Brighton after guiding St Pauli to Bundesliga promotion."
+        question: "How many Premier League titles has birthday boy Wayne Rooney won during his playing career?",
+        options: ["5", "4", "3", "6"],
+        answer: "5",
+        explanation: "Clue: All of his top-flight winner's medals were secured during a single dominant era under Sir Alex Ferguson between 2006 and 2013.\nFun Fact: He is one of only two players in Premier League history to record over 200 goals and 100 assists in the competition."
     },
     {
         floor: 10,
-        question: "Who scored Manchester City's 98th-minute equaliser in a dramatic 2–2 draw with 10-man Arsenal at the Etihad?",
-        options: ["John Stones", "Erling Haaland", "Bernardo Silva", "Rúben Dias"],
-        answer: "John Stones",
-        explanation: "John Stones poked home from close range after Arsenal defended deep following Leandro Trossard's red card."
+        question: "Who is the top-scoring Welsh player in Premier League history with 109 goals?",
+        options: ["Ryan Giggs", "Craig Bellamy", "Gareth Bale", "Mark Hughes"],
+        answer: "Ryan Giggs",
+        explanation: "Clue: This high-flying winger turned central midfielder spent his entire professional career with one club, winning a record 13 Premier League titles.\nFun Fact: He holds the extraordinary record of scoring in 21 consecutive Premier League seasons between 1992–93 and 2012–13."
     },
-
     // Floors 11–20: Deeper PL Detail & Ground Lore
     {
         floor: 11,
