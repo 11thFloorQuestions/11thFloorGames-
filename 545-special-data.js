@@ -99,7 +99,7 @@ const fullQuestions = [
     {
         floor: 14,
         question: "Which veteran midfielder won the Premier League Player of the Month award for September 2026?",
-        options: ["Pascal Groß", "Kevin De Bruyne", "Bernardo Silva", "James Maddison"],
+        options: ["Pascal Groß", "Jordan Henderson", "Bernardo Silva", "James Maddison"],
         answer: "Pascal Groß",
         explanation: "Clue: A German midfielder wearing the Brighton shirt.\nFun Fact: At 35 years old, Groß became the first Brighton player to ever win the award."
     },
