@@ -113,7 +113,7 @@ const fullQuestions = [
     {
         floor: 16,
         question: "Who led the Premier League scoring charts through the opening three months of the 2026–27 campaign?",
-        options: ["Erling Haaland", "Alexander Isak", "Mohamed Salah", "Ollie Watkins"],
+        options: ["Erling Haaland", "Alexander Isak", "Peter Crouch", "Ollie Watkins"],
         answer: "Erling Haaland",
         explanation: "Clue: City's Norwegian striker.\nFun Fact: Haaland bagged 8 goals across Manchester City's first seven fixtures."
     },
