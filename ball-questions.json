@@ -1,89 +1,89 @@
 {
-  "setId": "37",
-  "title": "Think You Know Ball? - Set 37",
+  "setId": "36",
+  "title": "Think You Know Ball? - Set 36",
   "questions": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Who is currently sitting 5th in the Premier League table today, Friday, 23rd Oct 2026?",
+      "question": "Who is currently sitting bottom of the Premier League table today, Saturday 24th Oct 2026?",
       "options": [
-        "Liverpool",
-        "Chelsea",
-        "Arsenal",
-        "Fulham"
+        "Sunderland",
+        "Nottingham Forest",
+        "Fulham",
+        "Coventry"
       ],
-      "answer": "Liverpool",
-      "explanation": "This club wears famous red home shirts and plays its matches at Anfield. They are historically one of England's most decorated clubs with numerous European Cups."
+      "answer": "Sunderland",
+      "explanation": "Clue: This historic Northeast club plays its home fixtures at the Stadium of Light and traditionally wears red and white vertical stripes.\nFun Fact: The club's official nickname, the Black Cats, was chosen in a fan vote in 2000, drawing on local folklore and a battery of guns stationed nearby during the Napoleonic Wars."
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which former Premier League player, now turned YouTube golfer, celebrates his birthday today?",
+      "question": "Which former Manchester United and Premier League legend, now turned pundit, celebrates his birthday today?",
       "options": [
-        "Jimmy Bullard",
-        "Gareth Bale",
-        "Gareth Barry",
-        "Peter Crouch"
+        "Wayne Rooney",
+        "Mark Goldbridge",
+        "Roy Keane",
+        "Gary Neville"
       ],
-      "answer": "Jimmy Bullard",
-      "explanation": "He is well-known for his humorous personality and once recreated a manager's team-talk celebration after scoring. During his playing career, he featured for clubs including Wigan Athletic, Fulham, and Hull City."
+      "answer": "Wayne Rooney",
+      "explanation": "Clue: Bursting onto the scene as a teenager at Everton, this iconic forward went on to become Manchester United's all-time leading goalscorer.\nFun Fact: He scored a sensational hat-trick on his Manchester United debut against Fenerbahçe in the Champions League at just 18 years old."
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Who is the current manager of Manchester United (Friday)?",
+      "question": "Who is the current manager of Bournemouth?",
       "options": [
-        "Michael Carrick",
-        "Eddie Howe",
-        "Erik ten Hag",
-        "Ronald McDonald"
+        "Marco Rose",
+        "Marco Polo",
+        "Marco van Basten",
+        "Eddie Howe"
       ],
-      "answer": "Michael Carrick",
-      "explanation": "He is a former central midfielder who spent the majority of his distinguished playing career at Old Trafford. He has previously served in caretaker and coaching roles at the club before taking the top job."
+      "answer": "Marco Rose",
+      "explanation": "Clue: This German tactician built his reputation in Austria and the Bundesliga, previously managing Borussia Dortmund and RB Leipzig before taking charge on the south coast.\nFun Fact: During his playing career as a defender, he spent nearly a decade at Mainz 05, playing alongside future managerial legends Jurgen Klopp and Thomas Tuchel."
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Bournemouth beat AC Milan last night at the Vitality Stadium in the Europa League (Thursday); what was the final score?",
+      "question": "Ipswich Town played Nottingham Forest last night (Friday); what was the final score?",
       "options": [
-        "3-0 win",
+        "1-1 draw",
+        "2-2 draw",
         "2-0 win",
-        "2-1 win",
-        "3-1 win"
+        "2-1 win"
       ],
-      "answer": "3-0 win",
-      "explanation": "The winning side kept a clean sheet while securing a memorable European night on the south coast. The victorious team scored three goals without reply against the Italian giants."
+      "answer": "1-1 draw",
+      "explanation": "Clue: Neither side could find a winner under the Friday night lights, leaving both teams with a single point shared in a tight contest.\nFun Fact: Friday night fixtures in top-flight English football became regular television slot features in the Premier League beginning with the 2016–17 broadcast rights agreement."
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Apart from Brighton, Bournemouth, and Crystal Palace, which was the other English team playing in Europe last night (Thursday)?",
+      "question": "And what is the name of the ground Ipswich Town play their home games at?",
       "options": [
-        "Sunderland",
-        "Tottenham Hotspur",
-        "Newcastle",
-        "Brentford"
+        "Portman Road",
+        "The Valley",
+        "Carrow Road",
+        "Massey Ferguson Fields"
       ],
-      "answer": "Sunderland",
-      "explanation": "This historic club is based in the Northeast of England and plays its home games at the Stadium of Light. Their traditional home kit features distinctive red and white vertical stripes."
+      "answer": "Portman Road",
+      "explanation": "Clue: This historic venue in Suffolk has been the home of the Tractor Boys since 1884, complete with statues outside commemorating Sir Alf Ramsey and Sir Bobby Robson.\nFun Fact: In addition to football, the stadium hosted England senior international matches and a famous Ed Sheeran concert series in 2019."
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "On this day in Premier League history, October 23, 2011: Manchester United 1–6 Manchester City. Roberto Mancini's Manchester City handed Sir Alex Ferguson his heaviest-ever home defeat. Which player took the headlines with his undershirt message \"Why Always Me\"?",
+      "question": "On this day in Football History, October 24th, 1857 was the Birth of Football: Which Football Club was founded on this exact day and is officially recognized by FIFA as the world's oldest existing football club?",
       "options": [
-        "Mario Balotelli",
-        "Yaya Toure",
-        "Sergio Aguero",
-        "Joe Hart"
+        "Sheffield FC",
+        "Milton Keynes FC",
+        "Wrexham FC",
+        "Everton FC"
       ],
-      "answer": "Mario Balotelli",
-      "explanation": "This Italian striker was known just as much for his eccentric off-field antics as his clinical finishing on the pitch. He also scored the opening goal of the match before revealing the famous slogan on his inner garment."
+      "answer": "Sheffield FC",
+      "explanation": "Clue: Formed by members of a local cricket club, this pioneer team codified the earliest formal rules of the game in Yorkshire.\nFun Fact: They were awarded the FIFA Order of Merit in 2004 to celebrate their contribution to football history—an honour shared with only one other club: Real Madrid."
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Manchester United legendary bad boy George Best wore which squad number at Manchester United?",
+      "question": "Tottenham Hotspur legendary forward Son Heung-min wore which squad number?",
       "options": [
         "7",
         "10",
@@ -91,46 +91,47 @@
         "11"
       ],
       "answer": "7",
-      "explanation": "This digit is traditionally associated with iconic wingers and talismanic goalscorers at Old Trafford. Other legendary figures to wear this specific shirt number for the club include David Beckham and Cristiano Ronaldo."
+      "explanation": "Clue: The South Korean superstar made this single digit iconic in North London, combining with Harry Kane to form the most prolific tandem in Premier League history.\nFun Fact: He became the first Asian player to win the Premier League Golden Boot when he shared the award in the 2021–22 season."
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Out of the 20 football clubs currently in the Premier League, which one plays its home matches on the smallest pitch size?",
+      "question": "Out of the 20 football clubs currently in the Premier League, which one has the biggest seating capacity?",
       "options": [
-        "Fulham",
-        "Crystal Palace",
-        "Bournemouth"
+        "Manchester United",
+        "Liverpool",
+        "Tottenham Hotspur",
+        "Manchester City"
       ],
-      "answer": "Fulham",
-      "explanation": "This club's historic home ground sits directly alongside the River Thames in West London. Their stadium features the famous, traditional Johnny Haynes stand and a cottage built right inside the grounds."
+      "answer": "Manchester United",
+      "explanation": "Clue: Nicknamed 'The Theatre of Dreams', this famous ground holds over 74,000 spectators and remains the largest club stadium in English football.\nFun Fact: The stadium's iconic Stretford End stand was originally built in 1910 and was one of the last major terrace stands converted to all-seating in the 1990s."
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "How many Premier League titles has Mikel Arteta won as a player, assistant, and manager?",
+      "question": "How many Premier League titles has birthday boy Wayne Rooney won during his playing career?",
       "options": [
-        "3",
+        "5",
         "2",
         "4",
-        "0",
-        "1"
+        "3",
+        "6"
       ],
-      "answer": "3",
-      "explanation": "He accumulated his assistant titles working under Pep Guardiola at Manchester City before taking charge at Arsenal. He won zero Premier League titles as a player during his time playing for Arsenal and Everton."
+      "answer": "5",
+      "explanation": "Clue: All of his top-flight winner's medals were secured during a single dominant era under Sir Alex Ferguson between 2006 and 2013.\nFun Fact: He is one of only two players in Premier League history to record over 200 goals and 100 assists in the competition."
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Who is the top scoring Scottish player in Premier League history with 68 goals?",
+      "question": "Who is the top-scoring Welsh player in Premier League history with 109 goals?",
       "options": [
-        "Duncan Ferguson",
-        "Kevin Gallacher",
-        "Gary McAllister",
-        "Steven Fletcher"
+        "Ryan Giggs",
+        "Craig Bellamy",
+        "Gareth Bale",
+        "Mark Hughes"
       ],
-      "answer": "Duncan Ferguson",
-      "explanation": "He was a fearsome, aggressive centre-forward renowned for his towering headers and dominant physical presence. He is most famously associated with Everton, where he had two separate playing spells and also served as a caretaker manager."
+      "answer": "Ryan Giggs",
+      "explanation": "Clue: This high-flying winger turned central midfielder spent his entire professional career with one club, winning a record 13 Premier League titles.\nFun Fact: He holds the extraordinary record of scoring in 21 consecutive Premier League seasons between 1992–93 and 2012–13."
     }
   ]
 }
