@@ -5,327 +5,319 @@
  */
 
 const fullQuestions = [
-    // Floors 1–10: TEST TEN (TYKB Set 36, Saturday 24 Oct 2026). Replace with the final results-based ten before 5.45.
     {
         floor: 1,
         question: "Who is currently sitting bottom of the Premier League table today, Saturday 24th Oct 2026?",
         options: ["Sunderland", "Nottingham Forest", "Fulham", "Coventry"],
         answer: "Sunderland",
-        explanation: "Clue: This historic Northeast club plays its home fixtures at the Stadium of Light and traditionally wears red and white vertical stripes.\nFun Fact: The club's official nickname, the Black Cats, was chosen in a fan vote in 2000, drawing on local folklore and a battery of guns stationed nearby during the Napoleonic Wars."
+        explanation: "Clue: A historic North East club known as the Black Cats.\nFun Fact: They won back-to-back league titles in the 1890s before moving to their current home stadium in 1997."
     },
     {
         floor: 2,
-        question: "Which former Manchester United and Premier League legend, now turned pundit, celebrates his birthday today?",
-        options: ["Wayne Rooney", "Mark Goldbridge", "Roy Keane", "Gary Neville"],
-        answer: "Wayne Rooney",
-        explanation: "Clue: Bursting onto the scene as a teenager at Everton, this iconic forward went on to become Manchester United's all-time leading goalscorer.\nFun Fact: He scored a sensational hat-trick on his Manchester United debut against Fenerbahçe in the Champions League at just 18 years old."
+        question: "Who scored the opening goal in today's 12:30 PM Premier League kick-off between Aston Villa v Manchester City?",
+        options: ["Nicolas Jackson", "Erling Haaland"],
+        answer: "Nicolas Jackson",
+        explanation: "Clue: This striker switched from Stamford Bridge earlier in the summer.\nFun Fact: Jackson found the net in the 6th minute to put Villa ahead."
     },
     {
         floor: 3,
-        question: "Who is the current manager of Bournemouth?",
-        options: ["Marco Rose", "Marco Polo", "Marco van Basten", "Eddie Howe"],
-        answer: "Marco Rose",
-        explanation: "Clue: This German tactician built his reputation in Austria and the Bundesliga, previously managing Borussia Dortmund and RB Leipzig before taking charge on the south coast.\nFun Fact: During his playing career as a defender, he spent nearly a decade at Mainz 05, playing alongside future managerial legends Jurgen Klopp and Thomas Tuchel."
+        question: "What was the final score in that match Aston Villa v Manchester City?",
+        options: ["2-1", "3-1", "1-1", "1-2"],
+        answer: "2-1",
+        explanation: "Clue: The home side edged out the champions by a single-goal margin.\nFun Fact: Haaland equalised early in the second half, but Villa's second goal arrived on 60 minutes."
     },
     {
         floor: 4,
-        question: "Ipswich Town played Nottingham Forest last night (Friday); what was the final score?",
-        options: ["1-1 draw", "2-2 draw", "2-0 win", "2-1 win"],
-        answer: "1-1 draw",
-        explanation: "Clue: Neither side could find a winner under the Friday night lights, leaving both teams with a single point shared in a tight contest.\nFun Fact: Friday night fixtures in top-flight English football became regular television slot features in the Premier League beginning with the 2016–17 broadcast rights agreement."
+        question: "Coventry were beaten today at home 1 nil by whom ?",
+        options: ["Fulham", "Ipswich", "Chelsea"],
+        answer: "Fulham",
+        explanation: "Clue: This West London club plays their home matches at Craven Cottage.\nFun Fact: Oscar Bobb struck in the 80th minute to break the deadlock."
     },
     {
         floor: 5,
-        question: "And what is the name of the ground Ipswich Town play their home games at?",
-        options: ["Portman Road", "The Valley", "Carrow Road", "Massey Ferguson Fields"],
-        answer: "Portman Road",
-        explanation: "Clue: This historic venue in Suffolk has been the home of the Tractor Boys since 1884, complete with statues outside commemorating Sir Alf Ramsey and Sir Bobby Robson.\nFun Fact: In addition to football, the stadium hosted England senior international matches and a famous Ed Sheeran concert series in 2019."
+        question: "Who is Coventry City's Manager",
+        options: ["Frank Lampard", "Eddie Howe", "David Moyes", "Unai Emery"],
+        answer: "Frank Lampard",
+        explanation: "Clue: Chelsea's all-time top goalscorer who also previously managed Everton and Derby County.\nFun Fact: Frank Lampard made over 600 Premier League appearances as a player before embarking on his managerial career."
     },
     {
         floor: 6,
-        question: "On this day in Football History, October 24th, 1857 was the Birth of Football: Which Football Club was founded on this exact day and is officially recognized by FIFA as the world's oldest existing football club?",
-        options: ["Sheffield FC", "Milton Keynes FC", "Wrexham FC", "Everton FC"],
-        answer: "Sheffield FC",
-        explanation: "Clue: Formed by members of a local cricket club, this pioneer team codified the earliest formal rules of the game in Yorkshire.\nFun Fact: They were awarded the FIFA Order of Merit in 2004 to celebrate their contribution to football history—an honour shared with only one other club: Real Madrid."
+        question: "What is the seating capacity of the Emirates, Arsenal's home?",
+        options: ["60,704", "55,704", "50,704"],
+        answer: "60,704",
+        explanation: "Clue: It sits comfortably above the 60,000 mark.\nFun Fact: The Emirates Stadium was officially opened in July 2006, replacing Highbury as Arsenal's home ground."
     },
     {
         floor: 7,
-        question: "Tottenham Hotspur legendary forward Son Heung-min wore which squad number?",
-        options: ["7", "10", "9", "11"],
+        question: "What shirt number does John McGinn wear for Aston Villa",
+        options: ["10", "7", "28", "15"],
         answer: "7",
-        explanation: "Clue: The South Korean superstar made this single digit iconic in North London, combining with Harry Kane to form the most prolific tandem in Premier League history.\nFun Fact: He became the first Asian player to win the Premier League Golden Boot when he shared the award in the 2021–22 season."
+        explanation: "Clue: It matches the lucky number featured in the question prompt itself!\nFun Fact: John McGinn joined Aston Villa in 2018 and went on to become the club captain."
     },
     {
         floor: 8,
-        question: "Out of the 20 football clubs currently in the Premier League, which one has the biggest seating capacity?",
-        options: ["Manchester United", "Liverpool", "Tottenham Hotspur", "Manchester City"],
-        answer: "Manchester United",
-        explanation: "Clue: Nicknamed 'The Theatre of Dreams', this famous ground holds over 74,000 spectators and remains the largest club stadium in English football.\nFun Fact: The stadium's iconic Stretford End stand was originally built in 1910 and was one of the last major terrace stands converted to all-seating in the 1990s."
+        question: "Who scored Arsenal's opening goal today (Saturday)?",
+        options: ["Ezri Konsa", "Mikel Merino"],
+        answer: "Ezri Konsa",
+        explanation: "Clue: An international defender whose first name begins with the letter E.\nFun Fact: Konsa joined Aston Villa from Brentford in 2019."
     },
     {
         floor: 9,
-        question: "How many Premier League titles has birthday boy Wayne Rooney won during his playing career?",
-        options: ["5", "4", "3", "6"],
-        answer: "5",
-        explanation: "Clue: All of his top-flight winner's medals were secured during a single dominant era under Sir Alex Ferguson between 2006 and 2013.\nFun Fact: He is one of only two players in Premier League history to record over 200 goals and 100 assists in the competition."
+        question: "What was the final score in the Arsenal v Everton game today (Saturday)?",
+        options: ["2-0", "3-0", "4-0"],
+        answer: "2-0",
+        explanation: "Clue: The home side kept a clean sheet and scored twice.\nFun Fact: A 2-0 scoreline is often referred to in football as \"the most dangerous lead\" in the game."
     },
     {
         floor: 10,
-        question: "Who is the top-scoring Welsh player in Premier League history with 109 goals?",
-        options: ["Ryan Giggs", "Craig Bellamy", "Gareth Bale", "Mark Hughes"],
-        answer: "Ryan Giggs",
-        explanation: "Clue: This high-flying winger turned central midfielder spent his entire professional career with one club, winning a record 13 Premier League titles.\nFun Fact: He holds the extraordinary record of scoring in 21 consecutive Premier League seasons between 1992–93 and 2012–13."
+        question: "Who is the only player to have scored in the Merseyside Derby, El Clásico, a UEFA Champions League Final?",
+        options: ["Luis Suárez", "Steve McManaman", "Philippe Coutinho", "Xabi Alonso"],
+        answer: "Luis Suárez",
+        explanation: "Clue: A legendary South American striker known for wearing the number 9 shirt.\nFun Fact: Suárez scored 5 in Merseyside derbies, 11 in El Clásicos and 1 in the 2015 Champions League final."
     },
-    // Floors 11–20: Deeper PL Detail & Ground Lore
     {
         floor: 11,
-        question: "Shane Long scored the fastest goal in Premier League history in 7.69 seconds. Which Watford defender's clearance did he block straight from kick-off?",
-        options: ["Craig Cathcart", "Christian Kabasele", "Adrian Mariappa", "José Holebas"],
-        answer: "Craig Cathcart",
-        explanation: "Long charged down Cathcart's clearance right from the opening whistle at Vicarage Road."
+        question: "Which team recorded a dramatic 5–0 victory over Crystal Palace in October 2026 for the biggest home win of the season so far?",
+        options: ["Brighton & Hove Albion", "Brentford", "Aston Villa", "Newcastle United"],
+        answer: "Brighton & Hove Albion",
+        explanation: "Clue: A south-coast club playing in blue and white stripes.\nFun Fact: Brighton ran riot at Falmer Stadium to record their largest win of the campaign."
     },
     {
         floor: 12,
-        question: "Which opposition club visited Highbury for its final competitive match in May 2006, where Thierry Henry scored a hat-trick?",
-        options: ["Wigan Athletic", "West Ham United", "Charlton Athletic", "Tottenham Hotspur"],
-        answer: "Wigan Athletic",
-        explanation: "Arsenal beat Wigan 4–2 to secure 4th place before kissing the Highbury turf goodbye."
+        question: "Which player scored the first hat-trick of the Premier League season in a 5–2 home win over Ipswich Town?",
+        options: ["Bruno Fernandes", "Erling Haaland", "Alexander Isak", "Morgan Rogers"],
+        answer: "Bruno Fernandes",
+        explanation: "Clue: Manchester United's Portuguese midfielder.\nFun Fact: Fernandes netted three goals on the opening month's slate to claim the season's first match ball."
     },
     {
         floor: 13,
-        question: "Manchester United famously abandoned their grey kit at half-time at The Dell in 1996. Which strip did they change into for the second half?",
-        options: ["Blue and white striped away kit", "Solid white third kit", "Red home kit", "All-black third kit"],
-        answer: "Blue and white striped away kit",
-        explanation: "Sir Alex Ferguson ordered his players to swap into their blue and white striped kit at half-time."
+        question: "According to bookmakers, which manager is currently the odds-on favourite to be the next Premier League manager sacked?",
+        options: ["Michael Carrick", "Pierre Sage", "Álvaro Arbeloa", "Oliver Glasner"],
+        answer: "Michael Carrick",
+        explanation: "Clue: Former England midfielder managing in the Premier League.\nFun Fact: A winless streak pushed Carrick to the top of bookmaker lists for the next top-flight departure."
     },
     {
         floor: 14,
-        question: "Richard Dunne shares the all-time record for most Premier League red cards (8) with Patrick Vieira and which former Everton striker?",
-        options: ["Duncan Ferguson", "Roy Keane", "Vinnie Jones", "Lee Cattermole"],
-        answer: "Duncan Ferguson",
-        explanation: "Duncan Ferguson picked up 8 red cards during his fiery top-flight career."
+        question: "Which veteran midfielder won the Premier League Player of the Month award for September 2026?",
+        options: ["Pascal Groß", "Kevin De Bruyne", "Bernardo Silva", "James Maddison"],
+        answer: "Pascal Groß",
+        explanation: "Clue: A German midfielder wearing the Brighton shirt.\nFun Fact: At 35 years old, Groß became the first Brighton player to ever win the award."
     },
     {
         floor: 15,
-        question: "Which player provided four assists in a single match on the opening weekend of the 2021–22 season against Leeds United?",
-        options: ["Paul Pogba", "Bruno Fernandes", "Kevin De Bruyne", "Harry Kane"],
-        answer: "Paul Pogba",
-        explanation: "Paul Pogba set up four goals in Manchester United's 5–1 victory over Leeds at Old Trafford."
+        question: "Manchester City won the highest-scoring Premier League match of the season so far by what scoreline against Sunderland?",
+        options: ["5–3", "4–3", "6–2", "5–4"],
+        answer: "5–3",
+        explanation: "Clue: City scored five goals while conceding three.\nFun Fact: An eight-goal thriller that set the season record for total match goals."
     },
     {
         floor: 16,
-        question: "Which ground featured a famous pavilion cottage built into the corner of the stands between the Johnny Haynes Stand and the river end?",
-        options: ["Craven Cottage", "Selhurst Park", "Gtech Community Stadium", "Kenilworth Road"],
-        answer: "Craven Cottage",
-        explanation: "The historic cottage pavilion sits in the corner of Fulham's riverside ground."
+        question: "Who led the Premier League scoring charts through the opening three months of the 2026–27 campaign?",
+        options: ["Erling Haaland", "Alexander Isak", "Mohamed Salah", "Ollie Watkins"],
+        answer: "Erling Haaland",
+        explanation: "Clue: City's Norwegian striker.\nFun Fact: Haaland bagged 8 goals across Manchester City's first seven fixtures."
     },
     {
         floor: 17,
-        question: "Which shirt sponsor featured on Newcastle United's chest during their 1995–96 'Entertainers' title charge under Kevin Keegan?",
-        options: ["Newcastle Brown Ale", "McEwan's Lager", "Greenall's", "NTL"],
-        answer: "Newcastle Brown Ale",
-        explanation: "The iconic blue star logo of Newcastle Brown Ale adorned Newcastle's classic kits."
+        question: "Which team conceded the fewest goals across their opening seven matches of the season?",
+        options: ["Arsenal", "Manchester City", "Liverpool", "Chelsea"],
+        answer: "Arsenal",
+        explanation: "Clue: North London side playing at the Emirates Stadium.\nFun Fact: Mikel Arteta's side allowed just 5 goals through their first seven league games."
     },
     {
         floor: 18,
-        question: "Which manager led Chelsea to a then-record 95 points in his debut 2004–05 season, conceding just 15 league goals?",
-        options: ["José Mourinho", "Carlo Ancelotti", "Claudio Ranieri", "Guus Hiddink"],
-        answer: "José Mourinho",
-        explanation: "Mourinho's side lost only one match all season, setting an all-time defensive record."
+        question: "Which goalkeeper registered the most clean sheets across the opening seven matchdays of the season?",
+        options: ["David Raya", "Guglielmo Vicario", "Alisson Becker", "Nick Pope"],
+        answer: "David Raya",
+        explanation: "Clue: Arsenal's Spanish shot-stopper.\nFun Fact: Raya recorded 4 clean sheets in Arsenal's first seven outings to lead the Golden Glove race."
     },
     {
         floor: 19,
-        question: "Which opposition team did Tottenham Hotspur crush 9–1 at White Hart Lane in 2009, featuring five goals from Jermain Defoe?",
-        options: ["Wigan Athletic", "Derby County", "Ipswich Town", "Hull City"],
-        answer: "Wigan Athletic",
-        explanation: "Spurs scored eight goals in the second half to record their biggest top-flight victory."
+        question: "Which manager guided his side to 3 wins out of 3 in September 2026 to claim the Manager of the Month award?",
+        options: ["Fabian Hürzeler", "Mikel Arteta"],
+        answer: "Fabian Hürzeler",
+        explanation: "Clue: Brighton's young German head coach.\nFun Fact: Hürzeler led Brighton to a clean sweep alongside Pascal Groß's Player of the Month win."
     },
     {
         floor: 20,
-        question: "Which club played at 'The Nest' before moving to their current home at Selhurst Park in 1924?",
-        options: ["Crystal Palace", "Millwall", "Charlton Athletic", "Brentford"],
-        answer: "Crystal Palace",
-        explanation: "Crystal Palace played at a converted brickworks known as The Nest before constructing Selhurst Park."
+        question: "Which fixture drew the highest stadium attendance of the Premier League season so far, reaching over 74,000 spectators?",
+        options: ["Man U v Man C", "Arsenal vs Chelsea", "Liverpool vs Everton", "Tottenham vs West Ham"],
+        answer: "Man U v Man C",
+        explanation: "Clue: The Manchester derby at Old Trafford.\nFun Fact: 74,161 packed into Old Trafford for the Manchester Derby in September."
     },
-
-    // Floors 21–30: Classic European Nights & Cup Lore
     {
         floor: 21,
-        question: "Who scored Liverpool's stoppage-time 4–3 winner against Newcastle United in 1996, causing Kevin Keegan to slump over the advertising boards?",
-        options: ["Stan Collymore", "Robbie Fowler", "Ian Rush", "John Barnes"],
-        answer: "Stan Collymore",
-        explanation: "Collymore struck in the 92nd minute to settle one of the Premier League's greatest ever matches."
+        question: "Peter Crouch started or featured for how many different Premier League clubs during his career?",
+        options: ["5", "7", "6", "8"],
+        answer: "7",
+        explanation: "Clue: It is an odd single-digit number higher than 5.\nFun Fact: He represented Aston Villa, Southampton, Liverpool, Portsmouth, Tottenham Hotspur, Stoke City, and Burnley in the top flight."
     },
     {
         floor: 22,
-        question: "Who scored Manchester United's opening header against Chelsea in the 2008 UEFA Champions League final in Moscow?",
-        options: ["Cristiano Ronaldo", "Wayne Rooney", "Carlos Tevez", "Rio Ferdinand"],
-        answer: "Cristiano Ronaldo",
-        explanation: "Ronaldo met Wes Brown's cross in the 26th minute to open the scoring."
+        question: "On this day in Football History October 24th 1857 was The Birth of Football: Which Football Club was founded on this exact day. It is officially recognised by FIFA as the world's oldest existing football club",
+        options: ["Sheffield FC", "Milton Keynes FC", "Wrexham FC", "Everton FC"],
+        answer: "Sheffield FC",
+        explanation: "Clue: Formed by members of a Yorkshire cricket club.\nFun Fact: Awarded FIFA's Order of Merit in 2004, an honour shared with only Real Madrid."
     },
     {
         floor: 23,
-        question: "Which Spanish club did Liverpool beat 5–4 via an extra-time golden goal in the 2001 UEFA Cup final in Dortmund?",
-        options: ["Alavés", "Valencia", "Deportivo La Coruña", "Espanyol"],
-        answer: "Alavés",
-        explanation: "Delfí Geli scored an own goal in extra time to seal Liverpool's thrilling cup treble."
+        question: "Wayne Rooney celebrates his Birthday 24th Oct 2026 how old is he?",
+        options: ["41", "51", "52", "53"],
+        answer: "41",
+        explanation: "Clue: Shrek\nFun Fact: He has a giant Stereophonics tattoo."
     },
     {
         floor: 24,
-        question: "Which goalkeeper famously went up for a 94th-minute corner and scored the header that saved Carlisle United from Football League relegation in 1999?",
-        options: ["Jimmy Glass", "Neville Southall", "David Seaman", "Shaka Hislop"],
-        answer: "Jimmy Glass",
-        explanation: "On-loan goalkeeper Jimmy Glass volleyed home on the final day of the season to preserve Carlisle's league status."
+        question: "Which English team did Wayne Rooney last manage?",
+        options: ["Plymouth Argyle", "Peterborough United", "Preston North End"],
+        answer: "Plymouth Argyle",
+        explanation: "Clue: He took over the club in May 2024\nFun Fact: Couldn't think of a fun fact, Sorry Gaffer. lol"
     },
     {
         floor: 25,
-        question: "Who scored the 40-yard lobbed volley over Peter Schmeichel to cap off Newcastle's iconic 5–0 win over Manchester United in 1996?",
-        options: ["Philippe Albert", "David Ginola", "Les Ferdinand", "Rob Lee"],
-        answer: "Philippe Albert",
-        explanation: "Belgian centre-back Philippe Albert delicately chipped Schmeichel from 25 yards out."
+        question: "Which team did Wayne Rooney end his playing career with?",
+        options: ["Derby County", "DC United", "Manchester United"],
+        answer: "Derby County",
+        explanation: "Clue: His stats: 1 win, 3 draws, 7 losses across 11 games.\nFun Fact: He scored 7 goals."
     },
     {
         floor: 26,
-        question: "Olivier Giroud scored an iconic scorpion kick off the crossbar for Arsenal against Crystal Palace on New Year's Day 2017. Who provided the cross?",
-        options: ["Alexis Sánchez", "Mesut Özil", "Alexandre Lacazette", "Hector Bellerin"],
-        answer: "Alexis Sánchez",
-        explanation: "Alexis Sánchez crossed from the left wing after a lightning counter-attack."
+        question: "Which referee holds the all-time record for issuing the most red cards in Premier League history?",
+        options: ["Mike Dean", "Martin Atkinson", "Anthony Taylor", "Howard Webb"],
+        answer: "Mike Dean",
+        explanation: "Clue: An official famous for his flamboyant touchline style and flair.\nFun Fact: Dean showed 114 red cards before stepping down from on-field refereeing in 2022."
     },
     {
         floor: 27,
-        question: "Kevin Phillips won the European Golden Shoe in 2000 after scoring 30 Premier League goals. Who was his regular strike partner at Sunderland?",
-        options: ["Niall Quinn", "Don Hutchison", "Alex Rae", "Kevin Kilbane"],
-        answer: "Niall Quinn",
-        explanation: "Phillips formed a legendary 'little and large' strike partnership with Niall Quinn."
+        question: "What shirt number did Declan Rice wear throughout his academy and first-team career at West Ham United, which he kept following his move to Arsenal?",
+        options: ["4", "16", "23", "41"],
+        answer: "41",
+        explanation: "Clue: A prime number in the forties.\nFun Fact: Rice has worn #41 since his youth days and kept it when he moved to Arsenal."
     },
     {
         floor: 28,
-        question: "Which manager famously sprinted down the Old Trafford touchline after Costinha scored a late equaliser for Porto in 2004?",
-        options: ["José Mourinho", "Pep Guardiola", "Arsène Wenger", "Carlo Ancelotti"],
-        answer: "José Mourinho",
-        explanation: "Mourinho celebrated Costinha's 90th-minute strike that knocked Manchester United out of the Champions League."
+        question: "How many Premier League titles did Sir Alex Ferguson win during his reign as Manchester United manager?",
+        options: ["10", "11", "12", "13"],
+        answer: "13",
+        explanation: "Clue: A baker's dozen of top-flight titles.\nFun Fact: His first title came in 1992–93 and his last in 2012–13, before retiring."
     },
     {
         floor: 29,
-        question: "Who scored the first-ever Premier League goal broadcast live on Sky Sports in August 1992 for Sheffield United against Manchester United?",
-        options: ["Brian Deane", "Teddy Sheringham", "Alan Shearer", "Ian Wright"],
-        answer: "Brian Deane",
-        explanation: "Brian Deane scored after five minutes at Bramall Lane in a 2–1 victory over Alex Ferguson's side."
+        question: "Who served as Pep Guardiola's assistant manager at Manchester City before leaving in 2019 to take charge of Arsenal?",
+        options: ["Mikel Arteta", "Unai Emery"],
+        answer: "Mikel Arteta",
+        explanation: "Clue: A former Spanish midfielder who captained Arsenal during his playing days.\nFun Fact: Arteta joined Guardiola's coaching team in 2016 immediately after retiring from playing at Arsenal."
     },
     {
         floor: 30,
-        question: "Which club were nicknamed 'The Crazy Gang' when they beat Liverpool to win the 1988 FA Cup Final?",
-        options: ["Wimbledon", "Millwall", "Leeds United", "Queens Park Rangers"],
-        answer: "Wimbledon",
-        explanation: "Wimbledon earned the moniker due to their physical direct play, club culture, and dressing room pranks."
+        question: "Which popular fan-channel streamer famously threw his headset off and walked out of the studio mid-stream during Manchester United's 7–0 defeat to Liverpool?",
+        options: ["Mark Goldbridge", "Rory Jennings", "Expressions Oozing", "Thogden"],
+        answer: "Mark Goldbridge",
+        explanation: "Clue: Host of The United Stand, known for viral watchalongs.\nFun Fact: Goldbridge's live reaction on The United Stand went viral worldwide, racking up millions of views across social media."
     },
-
-    // Floors 31–40: Touchline Chaos, Cult Managers & Quirks
     {
         floor: 31,
-        question: "Which manager brought a folder of written notes to a press conference to read out a list of 'facts' about Sir Alex Ferguson in 2009?",
-        options: ["Rafa Benítez", "Kevin Keegan", "José Mourinho", "Arsène Wenger"],
-        answer: "Rafa Benítez",
-        explanation: "Rafa Benítez produced his sheet of notes during Liverpool's tense title race run-in."
+        question: "What team does Mark Goldbridge really support if the rumour mill is to be believed?",
+        options: ["Notts County", "Nottingham Forest", "Manchester City"],
+        answer: "Nottingham Forest",
+        explanation: "Clue: Brian Clough\nFun Fact: Its True!"
     },
     {
         floor: 32,
-        question: "Which referee mistakenly showed Croatian defender Josip Šimunić three yellow cards before sending him off at the 2006 World Cup?",
-        options: ["Graham Poll", "Mike Dean", "Howard Webb", "Mark Clattenburg"],
-        answer: "Graham Poll",
-        explanation: "English referee Graham Poll failed to send off Šimunić after his second caution against Australia."
+        question: "Who holds the record for the most clean sheets in Premier League history?",
+        options: ["Edwin van der Sar", "David Seaman", "Petr Čech", "Pepe Reina"],
+        answer: "Petr Čech",
+        explanation: "Clue: Famous for wearing a protective headguard during his career.\nFun Fact: Čech kept 202 Premier League clean sheets across his spells at Chelsea (162) and Arsenal (40)."
     },
     {
         floor: 33,
-        question: "Who scored the winning goal for Greece in the UEFA Euro 2004 final against hosts Portugal with a 57th-minute header?",
-        options: ["Angelos Charisteas", "Theodoros Zagorakis", "Giorgos Karagounis", "Dimitrios Papadopoulos"],
-        answer: "Angelos Charisteas",
-        explanation: "Charisteas headed home from a corner to complete one of international football's greatest ever shocks."
+        question: "Which team did Claudio Ranieri manage immediately prior to taking over at Leicester City in 2015?",
+        options: ["Chelsea", "Fulham", "Watford", "Greece National Team"],
+        answer: "Greece National Team",
+        explanation: "Clue: It was an international team, not an English domestic club.\nFun Fact: Greece sacked Ranieri after an embarrassing defeat to the Faroe Islands, just before Leicester."
     },
     {
         floor: 34,
-        question: "Which manager led Blackpool to the Premier League in 2010 and became famous for his colourful, rant-filled press conferences?",
-        options: ["Ian Holloway", "Neil Warnock", "Harry Redknapp", "Sam Allardyce"],
-        answer: "Ian Holloway",
-        explanation: "Ian Holloway entertained fans throughout Blackpool's top-flight campaign with classic quotes."
+        question: "At which club did legendary Premier League midfielder Steven Gerrard officially end his playing career?",
+        options: ["Liverpool", "LA Galaxy", "Rangers", "Celtic"],
+        answer: "LA Galaxy",
+        explanation: "Clue: Major League Soccer club based in California.\nFun Fact: Gerrard played 34 MLS games for LA Galaxy, scoring 5 goals before announcing his retirement in November 2016."
     },
     {
         floor: 35,
-        question: "Manchester City won the title in 2012 with Agüero's 93:20 winner against QPR. Who poked the ball through to assist Agüero's goal?",
-        options: ["Mario Balotelli", "David Silva", "Yaya Touré", "Edin Džeko"],
-        answer: "Mario Balotelli",
-        explanation: "Mario Balotelli slipped while sliding on the turf to poke the ball into Agüero's path."
+        question: "Which historic Premier League ground was nicknamed \"The Old Lady\" by its supporters before the club relocated to a brand new stadium?",
+        options: ["Goodison Park", "White Hart Lane", "Highbury", "Boleyn Ground"],
+        answer: "Goodison Park",
+        explanation: "Clue: Longtime home of Everton on Merseyside.\nFun Fact: Everton called Goodison Park home for over 130 years before completing their move to Bramley-Moore Dock."
     },
     {
         floor: 36,
-        question: "Which venue served as Manchester City's home stadium for 80 years before their relocation in 2003?",
-        options: ["Maine Road", "Ewood Park", "Ayresome Park", "Burnden Park"],
-        answer: "Maine Road",
-        explanation: "Manchester City played at Maine Road in Moss Side from 1923 until moving to the City of Manchester Stadium."
+        question: "Which iconic squad number was worn by Trent Alexander-Arnold throughout his entire senior career at Liverpool?",
+        options: ["2", "12", "66", "84"],
+        answer: "66",
+        explanation: "Clue: A double-digit number in the sixties.\nFun Fact: He got #66 as an academy graduate and kept it as his trademark."
     },
     {
         floor: 37,
-        question: "Which goalkeeper was caught holding the ball for over six seconds against Sheffield Wednesday, conceding a rare indirect free-kick goal?",
-        options: ["Mark Bosnich", "David Seaman", "Shaka Hislop", "Tim Flowers"],
-        answer: "Mark Bosnich",
-        explanation: "Bosnich held onto the ball too long inside his penalty area, resulting in an indirect free-kick goal."
+        question: "How many Premier League titles did Patrick Vieira win as captain and midfielder during his time at Arsenal?",
+        options: ["2", "3", "4", "5"],
+        answer: "3",
+        explanation: "Clue: Three top-flight titles under Arsène Wenger.\nFun Fact: Vieira won the league in 1997–98, 2001–02, and captained the unbeaten \"Invincibles\" in 2003–04."
     },
     {
         floor: 38,
-        question: "Which club famously wore a clean, sponsorless retro kit during their rise from Non-League to the Premier League?",
-        options: ["Luton Town", "Ipswich Town", "Sheffield United", "Coventry City"],
-        answer: "Luton Town",
-        explanation: "Luton Town won over shirt purists by wearing sponsorless kit designs during their climb up the divisions."
+        question: "Which team conceded the fewest goals in a single 38-game Premier League season?",
+        options: ["Manchester United (2007–08)", "Chelsea (2004–05)", "Arsenal (2003–04)", "Manchester City (2017–18)"],
+        answer: "Chelsea (2004–05)",
+        explanation: "Clue: Mourinho's famous first season in English football.\nFun Fact: José Mourinho's Chelsea conceded just 15 goals in 38 games during the 2004–05 Premier League campaign."
     },
     {
         floor: 39,
-        question: "Who scored a hat-trick of headers for Everton against West Ham in 2000, legendary for his physical aerial dominance?",
-        options: ["Duncan Ferguson", "Kevin Campbell", "Francis Jeffers", "Paul Rideout"],
-        answer: "Duncan Ferguson",
-        explanation: "Duncan Ferguson dominated the West Ham defence to score three headers at Goodison Park."
+        question: "Who is the youngest player to ever appear in a Premier League match?",
+        options: ["Harvey Elliott", "Ethan Nwaneri", "Aaron Lennon", "Wayne Rooney"],
+        answer: "Ethan Nwaneri",
+        explanation: "Clue: Arsenal academy starlet who came on as a late sub in 2022.\nFun Fact: Nwaneri was 15 years and 181 days old on his Arsenal debut against Brentford in September 2022."
     },
     {
         floor: 40,
-        question: "Which video game console brand had their Dreamcast logo emblazoned on Arsenal's home kit around the turn of the millennium?",
-        options: ["SEGA", "PlayStation", "Nintendo", "Xbox"],
-        answer: "SEGA",
-        explanation: "Arsenal wore SEGA on their away shirt and Dreamcast on their home shirt between 1999 and 2002."
+        question: "Who was the first former Premier League player to manage a team to a victory over Pep Guardiola's Manchester City?",
+        options: ["Mikel Arteta", "Frank Lampard", "Ole Gunnar Solskjær", "Scott Parker"],
+        answer: "Ole Gunnar Solskjær",
+        explanation: "Clue: Former Manchester United striker turned manager.\nFun Fact: Solskjær led Manchester United to a 2–1 derby win at the Etihad Stadium in December 2019."
     },
-
-    // Floors 41–45: Oooh Tricky Finishers
     {
         floor: 41,
-        question: "Which Spanish midfielder provided four assists in a single match during Arsenal's 7–3 demolition of Newcastle United in 2012?",
-        options: ["Santi Cazorla", "Mikel Arteta", "Cesc Fàbregas", "José Antonio Reyes"],
-        answer: "Santi Cazorla",
-        explanation: "Santi Cazorla ran the show at the Emirates, setting up four goals in a ten-goal thriller."
+        question: "Which English club was the first to win the European Cup (UEFA Champions League)?",
+        options: ["Liverpool", "Manchester United", "Nottingham Forest", "Aston Villa"],
+        answer: "Manchester United",
+        explanation: "Clue: Led by Sir Matt Busby.\nFun Fact: United beat Benfica 4–1 at Wembley in 1968, ten years after the Munich air disaster."
     },
     {
         floor: 42,
-        question: "Which goalkeeper saved a John Aldridge penalty in the 1988 FA Cup Final to become the first goalkeeper to captain an FA Cup-winning side?",
-        options: ["Dave Beasant", "Bruce Grobbelaar", "Neville Southall", "Ray Clemence"],
-        answer: "Dave Beasant",
-        explanation: "Dave Beasant captained Wimbledon and saved Aldridge's penalty to secure a famous 1–0 win."
+        question: "Which Premier League referee famously showed yellow cards to himself after dropping his notebook on the pitch during a match in 2018?",
+        options: ["Mike Dean", "Jon Moss", "Andre Marriner", "Martin Atkinson"],
+        answer: "Jon Moss",
+        explanation: "Clue: Experienced top-flight referee from Yorkshire who retired in 2022.\nFun Fact: Moss lightheartedly \"booked\" himself after a player handed his lost card back to him mid-game."
     },
     {
         floor: 43,
-        question: "Who scored the 90th-minute cross-shot for West Ham United in the 2006 FA Cup Final before Steven Gerrard's famous long-range equaliser?",
-        options: ["Paul Konchesky", "Dean Ashton", "Marlon Harewood", "Yossi Benayoun"],
-        answer: "Paul Konchesky",
-        explanation: "Paul Konchesky's looping cross floated over Pepe Reina into the far corner to make it 3–2 to West Ham."
+        question: "Nicolas Jackson scored two goals today. Which club did he join Villa from?",
+        options: ["Man C", "Chelsea", "Brighton"],
+        answer: "Chelsea",
+        explanation: "Clue: A Premier League club based at Stamford Bridge.\nFun Fact: He scored a Premier League hat-trick against Tottenham Hotspur during his tenure in West London."
     },
     {
         floor: 44,
-        question: "Which manager brought a London Underground travelcard to his opening press conference at White Hart Lane in 1997, calling it 'the ticket of his dreams'?",
-        options: ["Christian Gross", "Jacques Santini", "Juande Ramos", "Gerry Francis"],
-        answer: "Christian Gross",
-        explanation: "Swiss manager Christian Gross famously held up his tube ticket upon arriving at Tottenham."
+        question: "Which two teams are scheduled for Next Saturday's 12:30 PM early kick-off?",
+        options: ["Brentford v N Forest", "Hull v Ipswich", "Chelsea v Manchester United"],
+        answer: "Chelsea v Manchester United",
+        explanation: "Clue: Two Premier League heavyweights, one in blue and one in red.\nFun Fact: Both clubs have been in the Premier League since its first season."
     },
     {
         floor: 45,
-        question: "In 1999, Ole Gunnar Solskjær famously scored four goals as a substitute against Nottingham Forest. How many minutes was he on the pitch before completing his four-goal haul?",
-        options: ["12 minutes", "18 minutes", "24 minutes", "30 minutes"],
-        answer: "12 minutes",
-        explanation: "Solskjær came on in the 72nd minute and scored in the 80th, 88th, 91st, and 92nd minutes in United's 8–1 win."
+        question: "Which player holds the Premier League record for scoring in the highest number of consecutive matches, netting in 11 games in a row?",
+        options: ["Jamie Vardy", "Ruud van Nistelrooy", "Erling Haaland", "Daniel Sturridge"],
+        answer: "Jamie Vardy",
+        explanation: "Clue: Leicester City's lethal talisman.\nFun Fact: Vardy set it in Leicester's 2015–16 title-winning season, breaking van Nistelrooy's mark of 10."
     }
 ];
