@@ -1,137 +1,87 @@
 {
-  "setId": "36",
-  "title": "Think You Know Ball? - Set 36",
+  "setId": 38,
+  "date": "2026-10-25",
+  "title": "5.45 Special — Sunday Football Quiz",
   "questions": [
     {
-      "floor": 1,
-      "type": "multiple_choice",
-      "question": "Who is currently sitting bottom of the Premier League table today, Saturday 24th Oct 2026?",
-      "options": [
-        "Sunderland",
-        "Nottingham Forest",
-        "Fulham",
-        "Coventry"
-      ],
-      "answer": "Sunderland",
-      "explanation": "Clue: This historic Northeast club plays its home fixtures at the Stadium of Light and traditionally wears red and white vertical stripes.\nFun Fact: The club's official nickname, the Black Cats, was chosen in a fan vote in 2000, drawing on local folklore and a battery of guns stationed nearby during the Napoleonic Wars."
+      "id": 1,
+      "question": "Who is currently top of the Premier League table today, Sunday 25th Oct 2026?",
+      "options": ["Arsenal", "Spurs", "Manchester City"],
+      "answer": "Manchester City",
+      "clue": "The side currently occupying top spot plays their home fixtures at the Etihad Stadium.",
+      "funFact": "The leaders went into this weekend having scored more open-play goals than any other side in the division this season."
     },
     {
-      "floor": 2,
-      "type": "multiple_choice",
-      "question": "Which former Manchester United and Premier League legend, now turned pundit, celebrates his birthday today?",
-      "options": [
-        "Wayne Rooney",
-        "Mark Goldbridge",
-        "Roy Keane",
-        "Gary Neville"
-      ],
-      "answer": "Wayne Rooney",
-      "explanation": "Clue: Bursting onto the scene as a teenager at Everton, this iconic forward went on to become Manchester United's all-time leading goalscorer.\nFun Fact: He scored a sensational hat-trick on his Manchester United debut against Fenerbahçe in the Champions League at just 18 years old."
+      "id": 2,
+      "question": "Which Hungarian Liverpool midfielder celebrates his birthday today?",
+      "options": ["Ryan Gravenberch", "Bradley Barcola", "Dominik Szoboszlai"],
+      "answer": "Dominik Szoboszlai",
+      "clue": "He captained his country at Euro 2024 and scored a famous long-range rocket against Leicester City in his debut season in England.",
+      "funFact": "Born on October 25, 2000, he inherited Liverpool's iconic number 8 shirt previously worn by Steven Gerrard."
     },
     {
-      "floor": 3,
-      "type": "multiple_choice",
-      "question": "Who is the current manager of Bournemouth?",
-      "options": [
-        "Marco Rose",
-        "Marco Polo",
-        "Marco van Basten",
-        "Eddie Howe"
-      ],
-      "answer": "Marco Rose",
-      "explanation": "Clue: This German tactician built his reputation in Austria and the Bundesliga, previously managing Borussia Dortmund and RB Leipzig before taking charge on the south coast.\nFun Fact: During his playing career as a defender, he spent nearly a decade at Mainz 05, playing alongside future managerial legends Jurgen Klopp and Thomas Tuchel."
+      "id": 3,
+      "question": "Who is the current manager of Crystal Palace?",
+      "options": ["Marco Rose", "Unai Emery", "Steve Parish", "Pierre Sage"],
+      "answer": "Pierre Sage",
+      "clue": "He shares his first name with former Arsenal legend Pierre-Emerick Aubameyang.",
+      "funFact": "He built his managerial reputation in France by leading Olympique Lyonnais from the relegation zone to European qualification before moving to England."
     },
     {
-      "floor": 4,
-      "type": "multiple_choice",
-      "question": "Ipswich Town played Nottingham Forest last night (Friday); what was the final score?",
-      "options": [
-        "1-1 draw",
-        "2-2 draw",
-        "2-0 win",
-        "2-1 win"
-      ],
-      "answer": "1-1 draw",
-      "explanation": "Clue: Neither side could find a winner under the Friday night lights, leaving both teams with a single point shared in a tight contest.\nFun Fact: Friday night fixtures in top-flight English football became regular television slot features in the Premier League beginning with the 2016–17 broadcast rights agreement."
+      "id": 4,
+      "question": "Saturday’s late Premier League match was Chelsea v Tottenham; what was the final score?",
+      "options": ["1-2", "2-2", "2-1", "0-2"],
+      "answer": "0-2",
+      "clue": "The visiting side kept a clean sheet while scoring twice in the second half.",
+      "funFact": "Spurs secured all three points at Stamford Bridge despite the home side dominating possession throughout the match."
     },
     {
-      "floor": 5,
-      "type": "multiple_choice",
-      "question": "And what is the name of the ground Ipswich Town play their home games at?",
-      "options": [
-        "Portman Road",
-        "The Valley",
-        "Carrow Road",
-        "Massey Ferguson Fields"
-      ],
-      "answer": "Portman Road",
-      "explanation": "Clue: This historic venue in Suffolk has been the home of the Tractor Boys since 1884, complete with statues outside commemorating Sir Alf Ramsey and Sir Bobby Robson.\nFun Fact: In addition to football, the stadium hosted England senior international matches and a famous Ed Sheeran concert series in 2019."
+      "id": 5,
+      "question": "And in the same match which Chelsea player was sent off in the 80th minute for two bookable offences?",
+      "options": ["Cole Palmer", "Morgan Rogers", "Jordan Henderson"],
+      "answer": "Cole Palmer",
+      "clue": "This England international playmaker famous for his \"cold\" celebration received two yellow cards in quick succession late in the game.",
+      "funFact": "This marked the very first red card of his professional Premier League career."
     },
     {
-      "floor": 6,
-      "type": "multiple_choice",
-      "question": "On this day in Football History, October 24th, 1857 was the Birth of Football: Which Football Club was founded on this exact day and is officially recognized by FIFA as the world's oldest existing football club?",
-      "options": [
-        "Sheffield FC",
-        "Milton Keynes FC",
-        "Wrexham FC",
-        "Everton FC"
-      ],
-      "answer": "Sheffield FC",
-      "explanation": "Clue: Formed by members of a local cricket club, this pioneer team codified the earliest formal rules of the game in Yorkshire.\nFun Fact: They were awarded the FIFA Order of Merit in 2004 to celebrate their contribution to football history—an honour shared with only one other club: Real Madrid."
+      "id": 6,
+      "question": "Which team did Claudio Ranieri manage immediately prior to taking over at Leicester City in 2015?",
+      "options": ["Chelsea", "Fulham", "Watford", "Greece National Team"],
+      "answer": "Greece National Team",
+      "clue": "It was an international team, not an English domestic club.",
+      "funFact": "Ranieri was sacked by Greece following an embarrassing defeat to the Faroe Islands right before getting the Leicester job."
     },
     {
-      "floor": 7,
-      "type": "multiple_choice",
-      "question": "Tottenham Hotspur legendary forward Son Heung-min wore which squad number?",
-      "options": [
-        "7",
-        "10",
-        "9",
-        "11"
-      ],
+      "id": 7,
+      "question": "Manchester United legendary midfielder Eric Cantona wore which squad number?",
+      "options": ["10", "9", "7", "11"],
       "answer": "7",
-      "explanation": "Clue: The South Korean superstar made this single digit iconic in North London, combining with Harry Kane to form the most prolific tandem in Premier League history.\nFun Fact: He became the first Asian player to win the Premier League Golden Boot when he shared the award in the 2021–22 season."
+      "clue": "This famous squad number was also worn by Manchester United legends George Best, David Beckham, and Cristiano Ronaldo.",
+      "funFact": "He famously turned up his collar whenever he stepped onto the pitch wearing this iconic jersey."
     },
     {
-      "floor": 8,
-      "type": "multiple_choice",
-      "question": "Out of the 20 football clubs currently in the Premier League, which one has the biggest seating capacity?",
-      "options": [
-        "Manchester United",
-        "Liverpool",
-        "Tottenham Hotspur",
-        "Manchester City"
-      ],
-      "answer": "Manchester United",
-      "explanation": "Clue: Nicknamed 'The Theatre of Dreams', this famous ground holds over 74,000 spectators and remains the largest club stadium in English football.\nFun Fact: The stadium's iconic Stretford End stand was originally built in 1910 and was one of the last major terrace stands converted to all-seating in the 1990s."
+      "id": 8,
+      "question": "Out of all of the football clubs that have played in the Premier League, which one has the smallest seating capacity?",
+      "options": ["Swindon Town", "Hull City", "Stoke City", "Luton Town"],
+      "answer": "Luton Town",
+      "clue": "Their home ground, Kenilworth Road, has the smallest stadium capacity in Premier League history.",
+      "funFact": "Kenilworth Road holds just over 11,000 spectators, making its away entrance famously pass through a row of terraced houses!"
     },
     {
-      "floor": 9,
-      "type": "multiple_choice",
-      "question": "How many Premier League titles has birthday boy Wayne Rooney won during his playing career?",
-      "options": [
-        "5",
-        "2",
-        "4",
-        "3",
-        "6"
-      ],
-      "answer": "5",
-      "explanation": "Clue: All of his top-flight winner's medals were secured during a single dominant era under Sir Alex Ferguson between 2006 and 2013.\nFun Fact: He is one of only two players in Premier League history to record over 200 goals and 100 assists in the competition."
+      "id": 9,
+      "question": "How many Premier League titles has birthday boy Dominik Szoboszlai won during his Liverpool career?",
+      "options": ["0", "1", "2", "3"],
+      "answer": "1",
+      "clue": "The number of Premier League titles he has won so far is the lowest positive whole number.",
+      "funFact": "He helped Liverpool lift major domestic silverware during his debut campaign in English football."
     },
     {
-      "floor": 10,
-      "type": "multiple_choice",
-      "question": "Who is the top-scoring Welsh player in Premier League history with 109 goals?",
-      "options": [
-        "Ryan Giggs",
-        "Craig Bellamy",
-        "Gareth Bale",
-        "Mark Hughes"
-      ],
-      "answer": "Ryan Giggs",
-      "explanation": "Clue: This high-flying winger turned central midfielder spent his entire professional career with one club, winning a record 13 Premier League titles.\nFun Fact: He holds the extraordinary record of scoring in 21 consecutive Premier League seasons between 1992–93 and 2012–13."
+      "id": 10,
+      "question": "Peter Crouch started or featured for how many different Premier League clubs during his career?",
+      "options": ["5", "7", "6", "8"],
+      "answer": "7",
+      "clue": "It is an odd single-digit number higher than 5.",
+      "funFact": "He represented Aston Villa, Southampton, Liverpool, Portsmouth, Tottenham Hotspur, Stoke City, and Burnley in the top flight."
     }
   ]
 }
