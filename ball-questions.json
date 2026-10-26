@@ -1,87 +1,87 @@
 {
-  "setId": 38,
-  "date": "2026-10-25",
-  "title": "5.45 Special — Sunday Football Quiz",
+  "setId": 39,
+  "date": "2026-10-26",
+  "title": "5.45 Special — Monday Football Quiz",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently top of the Premier League table today, Sunday 25th Oct 2026?",
-      "options": ["Arsenal", "Spurs", "Manchester City"],
-      "answer": "Manchester City",
-      "clue": "The side currently occupying top spot plays their home fixtures at the Etihad Stadium.",
-      "funFact": "The leaders went into this weekend having scored more open-play goals than any other side in the division this season."
+      "question": "After 8 games so far this season, who is currently third in the Premier League table today, Monday 26th Oct 2026?",
+      "options": ["Arsenal", "Spurs", "Liverpool", "Brighton"],
+      "answer": "Brighton",
+      "clue": "This team is famously nicknamed \"The Seagulls\".",
+      "funFact": "This south-coast club plays their home games at the Amex Stadium and are nickname-inspired by sea birds."
     },
     {
       "id": 2,
-      "question": "Which Hungarian Liverpool midfielder celebrates his birthday today?",
-      "options": ["Ryan Gravenberch", "Bradley Barcola", "Dominik Szoboszlai"],
-      "answer": "Dominik Szoboszlai",
-      "clue": "He captained his country at Euro 2024 and scored a famous long-range rocket against Leicester City in his debut season in England.",
-      "funFact": "Born on October 25, 2000, he inherited Liverpool's iconic number 8 shirt previously worn by Steven Gerrard."
+      "question": "Newcastle United legend Steve Howey celebrates his birthday today, 26th October. What year was he born?",
+      "options": ["1969", "1970", "1971"],
+      "answer": "1971",
+      "clue": "He was born in the early 1970s, the same year Apollo 14 landed on the Moon.",
+      "funFact": "He was an integral part of Kevin Keegan's famous \"Entertainers\" side that challenged for the Premier League title in the 1990s."
     },
     {
       "id": 3,
-      "question": "Who is the current manager of Crystal Palace?",
-      "options": ["Marco Rose", "Unai Emery", "Steve Parish", "Pierre Sage"],
-      "answer": "Pierre Sage",
-      "clue": "He shares his first name with former Arsenal legend Pierre-Emerick Aubameyang.",
-      "funFact": "He built his managerial reputation in France by leading Olympique Lyonnais from the relegation zone to European qualification before moving to England."
+      "question": "Who is the current manager of Liverpool?",
+      "options": ["Mikel Arteta", "Unai Emery", "Jurgen Klopp", "Andoni Iraola"],
+      "answer": "Andoni Iraola",
+      "clue": "He is a Spanish tactician who previously spent time managing in Dorset.",
+      "funFact": "He made a name for himself managing Rayo Vallecano and Bournemouth before taking over at Anfield."
     },
     {
       "id": 4,
-      "question": "Saturday’s late Premier League match was Chelsea v Tottenham; what was the final score?",
-      "options": ["1-2", "2-2", "2-1", "0-2"],
-      "answer": "0-2",
-      "clue": "The visiting side kept a clean sheet while scoring twice in the second half.",
-      "funFact": "Spurs secured all three points at Stamford Bridge despite the home side dominating possession throughout the match."
+      "question": "Which Brighton player scored an own goal in their 2-nil defeat away to Liverpool yesterday (Sunday)?",
+      "options": ["Lewis Dunk", "Maxim De Cuyper", "Pascal Groß"],
+      "answer": "Pascal Groß",
+      "clue": "This German midfielder is known for his incredible set-piece delivery and versatility.",
+      "funFact": "He is one of Brighton's all-time top goal creators in Premier League history."
     },
     {
       "id": 5,
-      "question": "And in the same match which Chelsea player was sent off in the 80th minute for two bookable offences?",
-      "options": ["Cole Palmer", "Morgan Rogers", "Jordan Henderson"],
-      "answer": "Cole Palmer",
-      "clue": "This England international playmaker famous for his \"cold\" celebration received two yellow cards in quick succession late in the game.",
-      "funFact": "This marked the very first red card of his professional Premier League career."
+      "question": "And in the same match, which Liverpool player got the 2nd goal at Anfield yesterday?",
+      "options": ["Florian Wirtz", "Virgil van Dijk", "Alexander Isak"],
+      "answer": "Alexander Isak",
+      "clue": "This Swedish international striker moved to the Premier League in a marquee transfer.",
+      "funFact": "He broke Sweden's national team record as their youngest-ever goalscorer at age 17 before moving to England."
     },
     {
       "id": 6,
-      "question": "Which team did Claudio Ranieri manage immediately prior to taking over at Leicester City in 2015?",
-      "options": ["Chelsea", "Fulham", "Watford", "Greece National Team"],
-      "answer": "Greece National Team",
-      "clue": "It was an international team, not an English domestic club.",
-      "funFact": "Ranieri was sacked by Greece following an embarrassing defeat to the Faroe Islands right before getting the Leicester job."
+      "question": "Manchester United were beaten again yesterday (Sunday); who beat them?",
+      "options": ["Chelsea", "Arsenal", "Manchester City", "Bournemouth"],
+      "answer": "Bournemouth",
+      "clue": "This club is nicknamed \"The Cherries\" and plays at the Vitality Stadium.",
+      "funFact": "The Cherries achieved a historic victory against the Red Devils on their own home patch."
     },
     {
       "id": 7,
-      "question": "Manchester United legendary midfielder Eric Cantona wore which squad number?",
+      "question": "Raheem Sterling was given which shirt number for Manchester City when he joined in 2015?",
       "options": ["10", "9", "7", "11"],
       "answer": "7",
-      "clue": "This famous squad number was also worn by Manchester United legends George Best, David Beckham, and Cristiano Ronaldo.",
-      "funFact": "He famously turned up his collar whenever he stepped onto the pitch wearing this iconic jersey."
+      "clue": "It is a lucky single-digit number traditionally associated with legendary wingers.",
+      "funFact": "He scored 131 goals in 339 appearances for Manchester City across all competitions while wearing this shirt."
     },
     {
       "id": 8,
-      "question": "Out of all of the football clubs that have played in the Premier League, which one has the smallest seating capacity?",
-      "options": ["Swindon Town", "Hull City", "Stoke City", "Luton Town"],
-      "answer": "Luton Town",
-      "clue": "Their home ground, Kenilworth Road, has the smallest stadium capacity in Premier League history.",
-      "funFact": "Kenilworth Road holds just over 11,000 spectators, making its away entrance famously pass through a row of terraced houses!"
+      "question": "Which current premiership team has been in the top flight of English football for the longest continuous streak?",
+      "options": ["Everton", "Arsenal", "Manchester United", "Aston Villa"],
+      "answer": "Arsenal",
+      "clue": "This North London club hasn't been relegated from the top flight in over a century.",
+      "funFact": "They have maintained their top-flight status uninterrupted since 1919."
     },
     {
       "id": 9,
-      "question": "How many Premier League titles has birthday boy Dominik Szoboszlai won during his Liverpool career?",
-      "options": ["0", "1", "2", "3"],
-      "answer": "1",
-      "clue": "The number of Premier League titles he has won so far is the lowest positive whole number.",
-      "funFact": "He helped Liverpool lift major domestic silverware during his debut campaign in English football."
+      "question": "How many Premier League titles has John Terry won during his career?",
+      "options": ["4", "5", "2", "3"],
+      "answer": "5",
+      "clue": "The number of titles he won equals the number of fingers on a hand.",
+      "funFact": "He captained Chelsea to five Premier League titles, making him one of the most successful captains in league history."
     },
     {
       "id": 10,
-      "question": "Peter Crouch started or featured for how many different Premier League clubs during his career?",
-      "options": ["5", "7", "6", "8"],
-      "answer": "7",
-      "clue": "It is an odd single-digit number higher than 5.",
-      "funFact": "He represented Aston Villa, Southampton, Liverpool, Portsmouth, Tottenham Hotspur, Stoke City, and Burnley in the top flight."
+      "question": "How many Premier League Golden Boot awards did Michael Owen win during his career?",
+      "options": ["1", "2", "3", "4"],
+      "answer": "2",
+      "clue": "An even number representing his early career dominance.",
+      "funFact": "Owen shared or won the award back-to-back in 1997-98 and 1998-99, netting 18 goals in each campaign as a teenager."
     }
   ]
 }
