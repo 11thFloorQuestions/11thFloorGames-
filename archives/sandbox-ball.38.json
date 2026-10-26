@@ -1,0 +1,87 @@
+{
+  "setId": 38,
+  "date": "2026-10-25",
+  "title": "5.45 Special — Sunday Football Quiz",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently top of the Premier League table today, Sunday 25th Oct 2026?",
+      "options": ["Arsenal", "Spurs", "Manchester City"],
+      "answer": "Manchester City",
+      "clue": "The side currently occupying top spot plays their home fixtures at the Etihad Stadium.",
+      "funFact": "The leaders went into this weekend having scored more open-play goals than any other side in the division this season."
+    },
+    {
+      "id": 2,
+      "question": "Which Hungarian Liverpool midfielder celebrates his birthday today?",
+      "options": ["Ryan Gravenberch", "Bradley Barcola", "Dominik Szoboszlai"],
+      "answer": "Dominik Szoboszlai",
+      "clue": "He captained his country at Euro 2024 and scored a famous long-range rocket against Leicester City in his debut season in England.",
+      "funFact": "Born on October 25, 2000, he inherited Liverpool's iconic number 8 shirt previously worn by Steven Gerrard."
+    },
+    {
+      "id": 3,
+      "question": "Who is the current manager of Crystal Palace?",
+      "options": ["Marco Rose", "Unai Emery", "Steve Parish", "Pierre Sage"],
+      "answer": "Pierre Sage",
+      "clue": "He shares his first name with former Arsenal legend Pierre-Emerick Aubameyang.",
+      "funFact": "He built his managerial reputation in France by leading Olympique Lyonnais from the relegation zone to European qualification before moving to England."
+    },
+    {
+      "id": 4,
+      "question": "Saturday’s late Premier League match was Chelsea v Tottenham; what was the final score?",
+      "options": ["1-2", "2-2", "2-1", "0-2"],
+      "answer": "0-2",
+      "clue": "The visiting side kept a clean sheet while scoring twice in the second half.",
+      "funFact": "Spurs secured all three points at Stamford Bridge despite the home side dominating possession throughout the match."
+    },
+    {
+      "id": 5,
+      "question": "And in the same match which Chelsea player was sent off in the 80th minute for two bookable offences?",
+      "options": ["Cole Palmer", "Morgan Rogers", "Jordan Henderson"],
+      "answer": "Cole Palmer",
+      "clue": "This England international playmaker famous for his \"cold\" celebration received two yellow cards in quick succession late in the game.",
+      "funFact": "This marked the very first red card of his professional Premier League career."
+    },
+    {
+      "id": 6,
+      "question": "Which team did Claudio Ranieri manage immediately prior to taking over at Leicester City in 2015?",
+      "options": ["Chelsea", "Fulham", "Watford", "Greece National Team"],
+      "answer": "Greece National Team",
+      "clue": "It was an international team, not an English domestic club.",
+      "funFact": "Ranieri was sacked by Greece following an embarrassing defeat to the Faroe Islands right before getting the Leicester job."
+    },
+    {
+      "id": 7,
+      "question": "Manchester United legendary midfielder Eric Cantona wore which squad number?",
+      "options": ["10", "9", "7", "11"],
+      "answer": "7",
+      "clue": "This famous squad number was also worn by Manchester United legends George Best, David Beckham, and Cristiano Ronaldo.",
+      "funFact": "He famously turned up his collar whenever he stepped onto the pitch wearing this iconic jersey."
+    },
+    {
+      "id": 8,
+      "question": "Out of all of the football clubs that have played in the Premier League, which one has the smallest seating capacity?",
+      "options": ["Swindon Town", "Hull City", "Stoke City", "Luton Town"],
+      "answer": "Luton Town",
+      "clue": "Their home ground, Kenilworth Road, has the smallest stadium capacity in Premier League history.",
+      "funFact": "Kenilworth Road holds just over 11,000 spectators, making its away entrance famously pass through a row of terraced houses!"
+    },
+    {
+      "id": 9,
+      "question": "How many Premier League titles has birthday boy Dominik Szoboszlai won during his Liverpool career?",
+      "options": ["0", "1", "2", "3"],
+      "answer": "1",
+      "clue": "The number of Premier League titles he has won so far is the lowest positive whole number.",
+      "funFact": "He helped Liverpool lift major domestic silverware during his debut campaign in English football."
+    },
+    {
+      "id": 10,
+      "question": "Peter Crouch started or featured for how many different Premier League clubs during his career?",
+      "options": ["5", "7", "6", "8"],
+      "answer": "7",
+      "clue": "It is an odd single-digit number higher than 5.",
+      "funFact": "He represented Aston Villa, Southampton, Liverpool, Portsmouth, Tottenham Hotspur, Stoke City, and Burnley in the top flight."
+    }
+  ]
+}
