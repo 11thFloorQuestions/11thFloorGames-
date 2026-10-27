@@ -1,87 +1,134 @@
 {
-  "setId": 39,
-  "date": "2026-10-26",
-  "title": "5.45 Special — Monday Football Quiz",
+  "setId": "40",
+  "title": "Think You Know Ball? - Set 40",
   "questions": [
     {
-      "id": 1,
-      "question": "After 8 games so far this season, who is currently third in the Premier League table today, Monday 26th Oct 2026?",
-      "options": ["Arsenal", "Spurs", "Liverpool", "Brighton"],
-      "answer": "Brighton",
-      "clue": "This team is famously nicknamed \"The Seagulls\".",
-      "funFact": "This south-coast club plays their home games at the Amex Stadium and are nickname-inspired by sea birds."
-    },
-    {
-      "id": 2,
-      "question": "Newcastle United legend Steve Howey celebrates his birthday today, 26th October. What year was he born?",
-      "options": ["1969", "1970", "1971"],
-      "answer": "1971",
-      "clue": "He was born in the early 1970s, the same year Apollo 14 landed on the Moon.",
-      "funFact": "He was an integral part of Kevin Keegan's famous \"Entertainers\" side that challenged for the Premier League title in the 1990s."
-    },
-    {
-      "id": 3,
-      "question": "Who is the current manager of Liverpool?",
-      "options": ["Mikel Arteta", "Unai Emery", "Jurgen Klopp", "Andoni Iraola"],
-      "answer": "Andoni Iraola",
-      "clue": "He is a Spanish tactician who previously spent time managing in Dorset.",
-      "funFact": "He made a name for himself managing Rayo Vallecano and Bournemouth before taking over at Anfield."
-    },
-    {
-      "id": 4,
-      "question": "Which Brighton player scored an own goal in their 2-nil defeat away to Liverpool yesterday (Sunday)?",
-      "options": ["Lewis Dunk", "Maxim De Cuyper", "Pascal Groß"],
-      "answer": "Pascal Groß",
-      "clue": "This German midfielder is known for his incredible set-piece delivery and versatility.",
-      "funFact": "He is one of Brighton's all-time top goal creators in Premier League history."
-    },
-    {
-      "id": 5,
-      "question": "And in the same match, which Liverpool player got the 2nd goal at Anfield yesterday?",
-      "options": ["Florian Wirtz", "Virgil van Dijk", "Alexander Isak"],
-      "answer": "Alexander Isak",
-      "clue": "This Swedish international striker moved to the Premier League in a marquee transfer.",
-      "funFact": "He broke Sweden's national team record as their youngest-ever goalscorer at age 17 before moving to England."
-    },
-    {
-      "id": 6,
-      "question": "Manchester United were beaten again yesterday (Sunday); who beat them?",
-      "options": ["Chelsea", "Arsenal", "Manchester City", "Bournemouth"],
-      "answer": "Bournemouth",
-      "clue": "This club is nicknamed \"The Cherries\" and plays at the Vitality Stadium.",
-      "funFact": "The Cherries achieved a historic victory against the Red Devils on their own home patch."
-    },
-    {
-      "id": 7,
-      "question": "Raheem Sterling was given which shirt number for Manchester City when he joined in 2015?",
-      "options": ["10", "9", "7", "11"],
-      "answer": "7",
-      "clue": "It is a lucky single-digit number traditionally associated with legendary wingers.",
-      "funFact": "He scored 131 goals in 339 appearances for Manchester City across all competitions while wearing this shirt."
-    },
-    {
-      "id": 8,
-      "question": "Which current premiership team has been in the top flight of English football for the longest continuous streak?",
-      "options": ["Everton", "Arsenal", "Manchester United", "Aston Villa"],
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "After 8 games so far this season, who is currently second in the Premier League table today, Tuesday 27th Oct 2026?",
+      "options": [
+        "Arsenal",
+        "Brighton",
+        "Liverpool"
+      ],
       "answer": "Arsenal",
-      "clue": "This North London club hasn't been relegated from the top flight in over a century.",
-      "funFact": "They have maintained their top-flight status uninterrupted since 1919."
+      "explanation": "This North London club famously went an entire 38-game Premier League season unbeaten in 2003-04. This team plays their home matches at the Emirates Stadium."
     },
     {
-      "id": 9,
-      "question": "How many Premier League titles has John Terry won during his career?",
-      "options": ["4", "5", "2", "3"],
-      "answer": "5",
-      "clue": "The number of titles he won equals the number of fingers on a hand.",
-      "funFact": "He captained Chelsea to five Premier League titles, making him one of the most successful captains in league history."
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "Which Tottenham Hotspur and England legend celebrates his birthday today, 27th October?",
+      "options": [
+        "Glenn Hoddle",
+        "Paul Gascoigne",
+        "Sol Campbell"
+      ],
+      "answer": "Glenn Hoddle",
+      "explanation": "Renowned for his sublime vision and passing, he went on to manage England at the 1998 World Cup. This midfield maestro earned 53 caps for England and also played for Monaco and Chelsea."
     },
     {
-      "id": 10,
-      "question": "How many Premier League Golden Boot awards did Michael Owen win during his career?",
-      "options": ["1", "2", "3", "4"],
-      "answer": "2",
-      "clue": "An even number representing his early career dominance.",
-      "funFact": "Owen shared or won the award back-to-back in 1997-98 and 1998-99, netting 18 goals in each campaign as a teenager."
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "Who is the current manager of Brighton?",
+      "options": [
+        "Fabian Hürzeler",
+        "Keith Andrews",
+        "Marco Rose",
+        "Pierre Sage"
+      ],
+      "answer": "Fabian Hürzeler",
+      "explanation": "He became the youngest permanent manager in Premier League history when he took charge of the club at age 31. He guided St. Pauli to promotion in Germany before making his move to the Premier League."
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "Harry Kane was awarded the Ballon d'Or last night (Monday). How many years has it been since an English player won it?",
+      "options": [
+        "25",
+        "10",
+        "15",
+        "20"
+      ],
+      "answer": "25",
+      "explanation": "The quarter-century gap highlights just how rare the prestigious award has been for English footballers in the modern era. It represents a quarter of a century of waiting for an English winner."
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "Who was the last English player to win the Ballon d'Or?",
+      "options": [
+        "Michael Owen",
+        "David Beckham",
+        "Steven Gerrard",
+        "Wayne Rooney"
+      ],
+      "answer": "Michael Owen",
+      "explanation": "He claimed the award following an astonishing treble-winning cup season in 2001. This prolific teenage striker won the trophy while starring for Liverpool."
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "Manchester United were beaten again on Sunday; who beat them?",
+      "options": [
+        "Bournemouth",
+        "Chelsea",
+        "Arsenal",
+        "Manchester City"
+      ],
+      "answer": "Bournemouth",
+      "explanation": "The Cherries achieved a historic victory against the Red Devils on their home turf. This club plays at the Vitality Stadium and wears red and black stripes."
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "Birthday boy Glenn Hoddle played in what shirt number during his career at Spurs?",
+      "options": [
+        "10",
+        "9",
+        "7",
+        "11"
+      ],
+      "answer": "10",
+      "explanation": "This iconic playmaker jersey was later worn by club legends such as Teddy Sheringham and Harry Kane. It is the traditional number reserved for the team's primary playmaker."
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "Which Premier League team has the longest-serving manager?",
+      "options": [
+        "Arsenal",
+        "Everton",
+        "Aston Villa",
+        "Leeds"
+      ],
+      "answer": "Arsenal",
+      "explanation": "Mikel Arteta took charge of the Gunners in December 2019, making him the longest-tenured current boss in the division. This North London club is managed by a former midfielder who served as captain under Arsène Wenger."
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "How many Premier League titles has Frank Lampard won during his career?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "2"
+      ],
+      "answer": "3",
+      "explanation": "He won all three of his Premier League title medals as Chelsea's star midfielder in 2004–05, 2005–06, and 2009–10. The number of titles he won matches the number of stumps in a cricket wicket."
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "Who holds the record for the most clean sheets in Premier League history?",
+      "options": [
+        "Petr Čech",
+        "Edwin van der Sar",
+        "David Seaman",
+        "Pepe Reina"
+      ],
+      "answer": "Petr Čech",
+      "explanation": "Čech kept 202 Premier League clean sheets across his spells at Chelsea (162) and Arsenal (40). Famous for wearing a protective headguard during his career."
     }
   ]
 }
