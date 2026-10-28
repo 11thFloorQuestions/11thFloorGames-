@@ -1,134 +1,132 @@
 {
-  "setId": "40",
-  "title": "Think You Know Ball? - Set 40",
+  "setId": "41",
+  "title": "Think You Know Ball? - Set 41",
   "questions": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "After 8 games so far this season, who is currently second in the Premier League table today, Tuesday 27th Oct 2026?",
+      "question": "Who is currently sitting third in the Premier League table today, Thursday, 22nd Oct 2026?",
       "options": [
-        "Arsenal",
         "Brighton",
+        "Chelsea",
+        "Arsenal",
         "Liverpool"
       ],
-      "answer": "Arsenal",
-      "explanation": "This North London club famously went an entire 38-game Premier League season unbeaten in 2003-04. This team plays their home matches at the Emirates Stadium."
+      "answer": "Brighton",
+      "explanation": "This south coast club is famously nicknamed the Seagulls. Their modern rise has been built on an exceptionally clever data-driven recruitment model that unearths hidden gems across the globe."
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which Tottenham Hotspur and England legend celebrates his birthday today, 27th October?",
+      "question": "Which former Arsenal Manager and Premier League legend celebrates his birthday today?",
       "options": [
-        "Glenn Hoddle",
-        "Paul Gascoigne",
-        "Sol Campbell"
+        "Arsene Wenger",
+        "Unai Emery",
+        "George Graham"
       ],
-      "answer": "Glenn Hoddle",
-      "explanation": "Renowned for his sublime vision and passing, he went on to manage England at the 1998 World Cup. This midfield maestro earned 53 caps for England and also played for Monaco and Chelsea."
+      "answer": "Arsene Wenger",
+      "explanation": "Before managing in England, this iconic tactician famously won a league title and cup double in Japan with Nagoya Grampus Eight. He holds a degree in electrical engineering, earning him the fitting nickname 'Le Professeur'."
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Who is the current manager of Brighton?",
+      "question": "Who is the current manager of Nottingham Forest?",
       "options": [
-        "Fabian Hürzeler",
-        "Keith Andrews",
-        "Marco Rose",
-        "Pierre Sage"
+        "Oliver Glasner",
+        "Sean Dyche",
+        "Brian Clough",
+        "Frank Lampard"
       ],
-      "answer": "Fabian Hürzeler",
-      "explanation": "He became the youngest permanent manager in Premier League history when he took charge of the club at age 31. He guided St. Pauli to promotion in Germany before making his move to the Premier League."
+      "answer": "Oliver Glasner",
+      "explanation": "This Austrian manager famously led Eintracht Frankfurt to a Europa League triumph before moving to the Premier League. As a player, he spent the vast majority of his career as a stalwart defender for SV Ried in Austria."
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Harry Kane was awarded the Ballon d'Or last night (Monday). How many years has it been since an English player won it?",
+      "question": "Manchester United were thrashed in the Champions League 4 – 1 last night (WED) which Italian team beat them?",
       "options": [
-        "25",
-        "10",
-        "15",
-        "20"
+        "Como",
+        "Roma",
+        "Inter Milan",
+        "AC Milan"
       ],
-      "answer": "25",
-      "explanation": "The quarter-century gap highlights just how rare the prestigious award has been for English footballers in the modern era. It represents a quarter of a century of waiting for an English winner."
+      "answer": "Como",
+      "explanation": "This picturesque Lombardy club plays its home matches by one of the most famous and scenic lakes in Europe. They are famously managed by a Spanish midfield maestro who won nearly every major trophy in the game during his playing days."
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Who was the last English player to win the Ballon d'Or?",
+      "question": "Aston Villa were also in action last night (WED) in the Champions League, beating Norwegian side Viking what was the final score?",
       "options": [
-        "Michael Owen",
-        "David Beckham",
-        "Steven Gerrard",
-        "Wayne Rooney"
+        "3 – 1 win",
+        "2 – 1 win",
+        "1=0 win",
+        "4-0 win"
       ],
-      "answer": "Michael Owen",
-      "explanation": "He claimed the award following an astonishing treble-winning cup season in 2001. This prolific teenage striker won the trophy while starring for Liverpool."
+      "answer": "3 – 1 win",
+      "explanation": "Viking FK hails from Stavanger, widely regarded as the oil capital of Norway. Aston Villa's home ground, Villa Park, has hosted more international football matches across three different centuries than any other stadium in England."
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "Manchester United were beaten again on Sunday; who beat them?",
+      "question": "On this day in Premier League history 22nd OCT 2017, Everton suffered a 5–2 home defeat that proved to be Ronald Koeman's final match in charge. Which club handed him that defeat?",
       "options": [
-        "Bournemouth",
-        "Chelsea",
         "Arsenal",
-        "Manchester City"
+        "Chelsea",
+        "Liverpool",
+        "Derby County"
       ],
-      "answer": "Bournemouth",
-      "explanation": "The Cherries achieved a historic victory against the Red Devils on their home turf. This club plays at the Vitality Stadium and wears red and black stripes."
+      "answer": "Arsenal",
+      "explanation": "During this high-scoring afternoon at Goodison Park, Alexandre Lacazette and Mesut Özil both got on the scoresheet for the visitors. Ronald Koeman famously scored the extra-time winning goal for Barcelona in their 1992 European Cup final triumph at Wembley."
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Birthday boy Glenn Hoddle played in what shirt number during his career at Spurs?",
+      "question": "Fans Favourite! Florian Wirtz has which squad number at Liverpool this season?",
       "options": [
+        "7",
         "10",
         "9",
-        "7",
         "11"
       ],
-      "answer": "10",
-      "explanation": "This iconic playmaker jersey was later worn by club legends such as Teddy Sheringham and Harry Kane. It is the traditional number reserved for the team's primary playmaker."
+      "answer": "7",
+      "explanation": "This legendary squad number at Anfield was previously worn by club icons such as Kenny Dalglish, Luis Suárez, and James Milner. Before moving to Merseyside, this gifted German playmaker dazzled in the Bundesliga with Bayer Leverkusen under Xabi Alonso."
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Which Premier League team has the longest-serving manager?",
+      "question": "Out of the 20 football clubs currently in the Premier League which one plays its home matches on the widest pitch?",
       "options": [
-        "Arsenal",
-        "Everton",
-        "Aston Villa",
-        "Leeds"
+        "Nottingham Forest",
+        "Tottenham Hotspur",
+        "Fulham"
       ],
-      "answer": "Arsenal",
-      "explanation": "Mikel Arteta took charge of the Gunners in December 2019, making him the longest-tenured current boss in the division. This North London club is managed by a former midfielder who served as captain under Arsène Wenger."
+      "answer": "Nottingham Forest",
+      "explanation": "Their historic home ground, the City Ground, sits picturesquely directly on the banks of the River Trent. This club is one of only two British teams to have won more European Cups/Champions Leagues than their own domestic league titles."
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "How many Premier League titles has Frank Lampard won during his career?",
+      "question": "How many Premier League titles has Birthday boy Arsene Wenger won?",
       "options": [
         "3",
+        "2",
         "4",
-        "5",
-        "2"
+        "0",
+        "1"
       ],
       "answer": "3",
-      "explanation": "He won all three of his Premier League title medals as Chelsea's star midfielder in 2004–05, 2005–06, and 2009–10. The number of titles he won matches the number of stumps in a cricket wicket."
+      "explanation": "1997/98 – His first league title with Arsenal. 2001/02 – Arsenal completed the league and FA Cup Double. 2003/04 – The legendary Invincibles season, finishing unbeaten. During his entire tenure, he managed Arsenal in over 800 Premier League matches. His famous 2003/04 squad remains the only team in the history of the 38-game Premier League era to go an entire campaign without losing a single match."
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Who holds the record for the most clean sheets in Premier League history?",
+      "question": "Which player holds the record for the most goals scored as a substitute in Premier League history?",
       "options": [
-        "Petr Čech",
-        "Edwin van der Sar",
-        "David Seaman",
-        "Pepe Reina"
+        "Jermain Defoe",
+        "Ole Gunnar Solskjær",
+        "Oliver Giroud",
+        "Peter Crouch"
       ],
-      "answer": "Petr Čech",
-      "explanation": "Čech kept 202 Premier League clean sheets across his spells at Chelsea (162) and Arsenal (40). Famous for wearing a protective headguard during his career."
-    }
-  ]
-}
+      "answer": "Jermain Defoe",
+      "explanation": "This prolific English striker scored 24 of his 162 Premier League goals after coming off the bench. He is also famously a member of the elite Premier League 100 club, having scored five
