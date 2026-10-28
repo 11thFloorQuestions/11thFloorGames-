@@ -5,128 +5,127 @@
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Who is currently sitting third in the Premier League table today, Thursday, 22nd Oct 2026?",
+      "question": "Who is currently top of the Premier League table today, Wednesday 28th Oct 2026?",
       "options": [
-        "Brighton",
-        "Chelsea",
+        "Manchester City",
         "Arsenal",
+        "Brighton",
         "Liverpool"
       ],
-      "answer": "Brighton",
-      "explanation": "This south coast club is famously nicknamed the Seagulls. Their modern rise has been built on an exceptionally clever data-driven recruitment model that unearths hidden gems across the globe."
+      "answer": "Manchester City",
+      "explanation": "This team won four consecutive Premier League titles between 2021 and 2024. This club plays their home matches at the Etihad Stadium."
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which former Arsenal Manager and Premier League legend celebrates his birthday today?",
+      "question": "Which Newcastle, Inter Milan, and Nigerian legend celebrates his birthday today, 28th October?",
       "options": [
-        "Arsene Wenger",
-        "Unai Emery",
-        "George Graham"
+        "Obafemi Martins",
+        "Shola Ameobi",
+        "Celestine Babayaro"
       ],
-      "answer": "Arsene Wenger",
-      "explanation": "Before managing in England, this iconic tactician famously won a league title and cup double in Japan with Nagoya Grampus Eight. He holds a degree in electrical engineering, earning him the fitting nickname 'Le Professeur'."
+      "answer": "Obafemi Martins",
+      "explanation": "He was famously known for his explosive speed and somersault goal celebrations. This forward scored the dramatic late winning goal for Birmingham City in the 2011 League Cup final against Arsenal."
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Who is the current manager of Nottingham Forest?",
+      "question": "Who is the current manager of the Welsh National Team?",
       "options": [
-        "Oliver Glasner",
-        "Sean Dyche",
-        "Brian Clough",
-        "Frank Lampard"
+        "Craig Bellamy",
+        "Ellis James",
+        "Gareth Bale",
+        "Mark Hughes"
       ],
-      "answer": "Oliver Glasner",
-      "explanation": "This Austrian manager famously led Eintracht Frankfurt to a Europa League triumph before moving to the Premier League. As a player, he spent the vast majority of his career as a stalwart defender for SV Ried in Austria."
+      "answer": "Craig Bellamy",
+      "explanation": "As a player, he represented nine different clubs including Liverpool, Manchester City, and Newcastle United. This fiery former winger earned 78 caps for Wales during his playing career."
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Manchester United were thrashed in the Champions League 4 – 1 last night (WED) which Italian team beat them?",
+      "question": "Arsenal were beaten on penalties by Fleetwood Town last night (Tuesday) in the Carabao Cup. What was the name of the ground they played at?",
       "options": [
-        "Como",
-        "Roma",
-        "Inter Milan",
-        "AC Milan"
+        "Highbury Stadium",
+        "Emirates Stadium"
       ],
-      "answer": "Como",
-      "explanation": "This picturesque Lombardy club plays its home matches by one of the most famous and scenic lakes in Europe. They are famously managed by a Spanish midfield maestro who won nearly every major trophy in the game during his playing days."
+      "answer": "Highbury Stadium",
+      "explanation": "Fleetwood's home venue shares its name with Arsenal's iconic former stadium where they played until 2006. This venue in Lancashire shares its historic name with Arsenal's famous former home ground in London."
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "Aston Villa were also in action last night (WED) in the Champions League, beating Norwegian side Viking what was the final score?",
+      "question": "And in that same match, which Arsenal player was sent off in the 85th minute?",
       "options": [
-        "3 – 1 win",
-        "2 – 1 win",
-        "1=0 win",
-        "4-0 win"
+        "Max Dowman",
+        "Kai Havertz",
+        "Viktor Gyökeres"
       ],
-      "answer": "3 – 1 win",
-      "explanation": "Viking FK hails from Stavanger, widely regarded as the oil capital of Norway. Aston Villa's home ground, Villa Park, has hosted more international football matches across three different centuries than any other stadium in England."
+      "answer": "Max Dowman",
+      "explanation": "He made history as one of the youngest players ever to feature for Arsenal's senior side. This highly-rated teenage academy prospect received a late red card."
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "On this day in Premier League history 22nd OCT 2017, Everton suffered a 5–2 home defeat that proved to be Ronald Koeman's final match in charge. Which club handed him that defeat?",
+      "question": "Who is Leeds United's top scorer so far this season with 5 goals in all competitions?",
       "options": [
-        "Arsenal",
-        "Chelsea",
-        "Liverpool",
-        "Derby County"
+        "Dominic Calvert-Lewin",
+        "James Justin",
+        "Anton Stach"
       ],
-      "answer": "Arsenal",
-      "explanation": "During this high-scoring afternoon at Goodison Park, Alexandre Lacazette and Mesut Özil both got on the scoresheet for the visitors. Ronald Koeman famously scored the extra-time winning goal for Barcelona in their 1992 European Cup final triumph at Wembley."
+      "answer": "Dominic Calvert-Lewin",
+      "explanation": "He previously scored over 60 Premier League goals during an 8-year spell at Everton. This English striker scored the winning goal for England in the 2017 FIFA U-20 World Cup final."
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "Fans Favourite! Florian Wirtz has which squad number at Liverpool this season?",
+      "question": "And what is Dominic Calvert-Lewin’s shirt number at Leeds United?",
       "options": [
-        "7",
-        "10",
         "9",
+        "10",
+        "7",
         "11"
       ],
-      "answer": "7",
-      "explanation": "This legendary squad number at Anfield was previously worn by club icons such as Kenny Dalglish, Luis Suárez, and James Milner. Before moving to Merseyside, this gifted German playmaker dazzled in the Bundesliga with Bayer Leverkusen under Xabi Alonso."
+      "answer": "9",
+      "explanation": "This shirt number has been worn by legendary Leeds forwards like Alan Smith and Mark Viduka. It is the classic squad number traditionally assigned to a team's primary central striker."
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Out of the 20 football clubs currently in the Premier League which one plays its home matches on the widest pitch?",
+      "question": "Which premiership team has the shortest-serving manager this season since August 5th, 2026?",
       "options": [
-        "Nottingham Forest",
+        "Newcastle",
+        "Manchester United",
         "Tottenham Hotspur",
-        "Fulham"
+        "Nottingham Forest"
       ],
-      "answer": "Nottingham Forest",
-      "explanation": "Their historic home ground, the City Ground, sits picturesquely directly on the banks of the River Trent. This club is one of only two British teams to have won more European Cups/Champions Leagues than their own domestic league titles."
+      "answer": "Newcastle",
+      "explanation": "St. James' Park saw a sudden managerial shift just as the new top-flight campaign was getting underway. This Tyneside club is famously known as the Magpies."
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "How many Premier League titles has Birthday boy Arsene Wenger won?",
+      "question": "How many Premier League titles has David Beckham won during his career?",
       "options": [
-        "3",
-        "2",
+        "6",
         "4",
-        "0",
-        "1"
+        "5",
+        "3"
       ],
-      "answer": "3",
-      "explanation": "1997/98 – His first league title with Arsenal. 2001/02 – Arsenal completed the league and FA Cup Double. 2003/04 – The legendary Invincibles season, finishing unbeaten. During his entire tenure, he managed Arsenal in over 800 Premier League matches. His famous 2003/04 squad remains the only team in the history of the 38-game Premier League era to go an entire campaign without losing a single match."
+      "answer": "6",
+      "explanation": "He won all of his Premier League titles under Sir Alex Ferguson as part of the famous 'Class of '92'. The number of league titles he won is two more than the number of trophies in a domestic treble."
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "Which player holds the record for the most goals scored as a substitute in Premier League history?",
+      "question": "At which club did legendary Premier League midfielder Steven Gerrard officially end his playing career?",
       "options": [
-        "Jermain Defoe",
-        "Ole Gunnar Solskjær",
-        "Oliver Giroud",
-        "Peter Crouch"
+        "LA Galaxy",
+        "Liverpool",
+        "Rangers",
+        "Celtic"
       ],
-      "answer": "Jermain Defoe",
-      "explanation": "This prolific English striker scored 24 of his 162 Premier League goals after coming off the bench. He is also famously a member of the elite Premier League 100 club, having scored five
+      "answer": "LA Galaxy",
+      "explanation": "Gerrard played 34 MLS games for LA Galaxy, scoring 5 goals before announcing his retirement in November 2016. Major League Soccer club based in California."
+    }
+  ]
+}
