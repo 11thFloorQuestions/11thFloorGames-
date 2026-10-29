@@ -1,131 +1,133 @@
 {
-  "setId": "41",
-  "title": "Think You Know Ball? - Set 41",
+  "setId": "42",
+  "title": "Think You Know Ball? - Set 42",
   "questions": [
     {
       "floor": 1,
       "type": "multiple_choice",
-      "question": "Who is currently top of the Premier League table today, Wednesday 28th Oct 2026?",
+      "question": "Who is currently top of the Scottish Premiership table today, Thursday 29th Oct 2026?",
       "options": [
-        "Manchester City",
-        "Arsenal",
-        "Brighton",
-        "Liverpool"
+        "Celtic",
+        "Rangers",
+        "Hearts",
+        "Dundee"
       ],
-      "answer": "Manchester City",
-      "explanation": "This team won four consecutive Premier League titles between 2021 and 2024. This club plays their home matches at the Etihad Stadium."
+      "answer": "Celtic",
+      "explanation": "This Glasgow superpower plays their home fixtures at Celtic Park and wears famous green and white hoops. This club famously won the European Cup in 1967 as the 'Lisbon Lions'."
     },
     {
       "floor": 2,
       "type": "multiple_choice",
-      "question": "Which Newcastle, Inter Milan, and Nigerian legend celebrates his birthday today, 28th October?",
+      "question": "Today, 29th October, is Robert Pires' birthday. Apart from Arsenal, which other Premier League team did he play for?",
       "options": [
-        "Obafemi Martins",
-        "Shola Ameobi",
-        "Celestine Babayaro"
+        "Aston Villa",
+        "Chelsea",
+        "Everton",
+        "Leicester City"
       ],
-      "answer": "Obafemi Martins",
-      "explanation": "He was famously known for his explosive speed and somersault goal celebrations. This forward scored the dramatic late winning goal for Birmingham City in the 2011 League Cup final against Arsenal."
+      "answer": "Aston Villa",
+      "explanation": "Pires made a brief comeback to English football in 2010 to feature for this West Midlands club. This Birmingham-based club plays their home matches at Villa Park."
     },
     {
       "floor": 3,
       "type": "multiple_choice",
-      "question": "Who is the current manager of the Welsh National Team?",
+      "question": "Who did Liverpool beat in the Carabao Cup last night (Wednesday) on penalties?",
       "options": [
-        "Craig Bellamy",
-        "Ellis James",
-        "Gareth Bale",
-        "Mark Hughes"
+        "Chelsea",
+        "Arsenal",
+        "Aston Villa",
+        "Brentford"
       ],
-      "answer": "Craig Bellamy",
-      "explanation": "As a player, he represented nine different clubs including Liverpool, Manchester City, and Newcastle United. This fiery former winger earned 78 caps for Wales during his playing career."
+      "answer": "Chelsea",
+      "explanation": "Liverpool edged out the shootout 6-5 after a thrilling 1-1 draw at Anfield. This West London club plays their home games at Stamford Bridge."
     },
     {
       "floor": 4,
       "type": "multiple_choice",
-      "question": "Arsenal were beaten on penalties by Fleetwood Town last night (Tuesday) in the Carabao Cup. What was the name of the ground they played at?",
+      "question": "Aston Villa were beaten 3-0 last night (Wednesday) in the Carabao Cup; who beat them?",
       "options": [
-        "Highbury Stadium",
-        "Emirates Stadium"
+        "Bournemouth",
+        "Manchester City"
       ],
-      "answer": "Highbury Stadium",
-      "explanation": "Fleetwood's home venue shares its name with Arsenal's iconic former stadium where they played until 2006. This venue in Lancashire shares its historic name with Arsenal's famous former home ground in London."
+      "answer": "Bournemouth",
+      "explanation": "The victory sent the south-coast side through to the quarter-finals of the competition. This club is nicknamed 'The Cherries' and plays at the Vitality Stadium."
     },
     {
       "floor": 5,
       "type": "multiple_choice",
-      "question": "And in that same match, which Arsenal player was sent off in the 85th minute?",
+      "question": "Which Premiership team won the Carabao Cup last season?",
       "options": [
-        "Max Dowman",
-        "Kai Havertz",
-        "Viktor Gyökeres"
+        "Manchester City",
+        "Arsenal",
+        "Liverpool",
+        "Newcastle"
       ],
-      "answer": "Max Dowman",
-      "explanation": "He made history as one of the youngest players ever to feature for Arsenal's senior side. This highly-rated teenage academy prospect received a late red card."
+      "answer": "Manchester City",
+      "explanation": "They have lifted the League Cup trophy eight times in their history. This club plays in sky blue at the Etihad Stadium."
     },
     {
       "floor": 6,
       "type": "multiple_choice",
-      "question": "Who is Leeds United's top scorer so far this season with 5 goals in all competitions?",
+      "question": "Sunderland also won in the League Cup last night (Wednesday); who did they beat?",
       "options": [
-        "Dominic Calvert-Lewin",
-        "James Justin",
-        "Anton Stach"
+        "Brentford",
+        "Newcastle",
+        "Brighton"
       ],
-      "answer": "Dominic Calvert-Lewin",
-      "explanation": "He previously scored over 60 Premier League goals during an 8-year spell at Everton. This English striker scored the winning goal for England in the 2017 FIFA U-20 World Cup final."
+      "answer": "Brentford",
+      "explanation": "Sunderland secured a dramatic 3-2 victory at the Stadium of Light to reach the last eight. This West London club is famously nicknamed 'The Bees'."
     },
     {
       "floor": 7,
       "type": "multiple_choice",
-      "question": "And what is Dominic Calvert-Lewin’s shirt number at Leeds United?",
+      "question": "Birthday boy Robert Pires wore which shirt number during his career at Arsenal?",
       "options": [
-        "9",
-        "10",
         "7",
+        "10",
+        "9",
         "11"
       ],
-      "answer": "9",
-      "explanation": "This shirt number has been worn by legendary Leeds forwards like Alan Smith and Mark Viduka. It is the classic squad number traditionally assigned to a team's primary central striker."
+      "answer": "7",
+      "explanation": "He scored 84 goals for Arsenal while wearing this shirt, forming an iconic partnership on the left wing with Thierry Henry. It is a lucky single-digit squad number traditionally worn by elite wingers."
     },
     {
       "floor": 8,
       "type": "multiple_choice",
-      "question": "Which premiership team has the shortest-serving manager this season since August 5th, 2026?",
+      "question": "Who is the oldest Premier League manager this season (2026/27)?",
       "options": [
-        "Newcastle",
-        "Manchester United",
-        "Tottenham Hotspur",
-        "Nottingham Forest"
+        "David Moyes",
+        "Unai Emery",
+        "Oliver Glasner",
+        "Piers Morgan"
       ],
-      "answer": "Newcastle",
-      "explanation": "St. James' Park saw a sudden managerial shift just as the new top-flight campaign was getting underway. This Tyneside club is famously known as the Magpies."
+      "answer": "David Moyes",
+      "explanation": "He has managed over 650 Premier League matches across spells at Everton, Manchester United, Sunderland, and West Ham. This Scottish manager returned for a second spell in charge of Everton."
     },
     {
       "floor": 9,
       "type": "multiple_choice",
-      "question": "How many Premier League titles has David Beckham won during his career?",
+      "question": "How many Premier League titles has Gary Neville won during his career?",
       "options": [
-        "6",
-        "4",
+        "8",
+        "7",
         "5",
-        "3"
+        "6"
       ],
-      "answer": "6",
-      "explanation": "He won all of his Premier League titles under Sir Alex Ferguson as part of the famous 'Class of '92'. The number of league titles he won is two more than the number of trophies in a domestic treble."
+      "answer": "8",
+      "explanation": "He spent his entire 19-year senior playing career at Manchester United, captaining the side for five years. The number of titles he won is an even number one higher than seven."
     },
     {
       "floor": 10,
       "type": "multiple_choice",
-      "question": "At which club did legendary Premier League midfielder Steven Gerrard officially end his playing career?",
+      "question": "Which Bulgarian midfielder served as Aston Villa club captain and made over 180 Premier League appearances for the West Midlands club between 2006 and 2012?",
       "options": [
-        "LA Galaxy",
-        "Liverpool",
-        "Rangers",
-        "Celtic"
+        "Stiliyan Petrov",
+        "Dimitar Berbatov",
+        "Martin Petrov",
+        "Radostin Kishishev"
       ],
-      "answer": "LA Galaxy",
-      "explanation": "Gerrard played 34 MLS games for LA Galaxy, scoring 5 goals before announcing his retirement in November 2016. Major League Soccer club based in California."
+      "answer": "Stiliyan Petrov",
+      "explanation": "Stiliyan Petrov joined Aston Villa from Celtic in 2006 and became a beloved leader at Villa Park, captaining Martin O'Neill's side to top-six finishes. Affectionately known as 'Stan' by Villa supporters."
     }
   ]
 }
