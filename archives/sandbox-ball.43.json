@@ -1,0 +1,133 @@
+{
+  "setId": "42",
+  "title": "Think You Know Ball? - Set 42",
+  "questions": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "Who is currently top of the Scottish Premiership table today, Thursday 29th Oct 2026?",
+      "options": [
+        "Celtic",
+        "Rangers",
+        "Hearts",
+        "Dundee"
+      ],
+      "answer": "Celtic",
+      "explanation": "This Glasgow superpower plays their home fixtures at Celtic Park and wears famous green and white hoops. This club famously won the European Cup in 1967 as the 'Lisbon Lions'."
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "Today, 29th October, is Robert Pires' birthday. Apart from Arsenal, which other Premier League team did he play for?",
+      "options": [
+        "Aston Villa",
+        "Chelsea",
+        "Everton",
+        "Leicester City"
+      ],
+      "answer": "Aston Villa",
+      "explanation": "Pires made a brief comeback to English football in 2010 to feature for this West Midlands club. This Birmingham-based club plays their home matches at Villa Park."
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "Who did Liverpool beat in the Carabao Cup last night (Wednesday) on penalties?",
+      "options": [
+        "Chelsea",
+        "Arsenal",
+        "Aston Villa",
+        "Brentford"
+      ],
+      "answer": "Chelsea",
+      "explanation": "Liverpool edged out the shootout 6-5 after a thrilling 1-1 draw at Anfield. This West London club plays their home games at Stamford Bridge."
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "Aston Villa were beaten 3-0 last night (Wednesday) in the Carabao Cup; who beat them?",
+      "options": [
+        "Bournemouth",
+        "Manchester City"
+      ],
+      "answer": "Bournemouth",
+      "explanation": "The victory sent the south-coast side through to the quarter-finals of the competition. This club is nicknamed 'The Cherries' and plays at the Vitality Stadium."
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "Which Premiership team won the Carabao Cup last season?",
+      "options": [
+        "Manchester City",
+        "Arsenal",
+        "Liverpool",
+        "Newcastle"
+      ],
+      "answer": "Manchester City",
+      "explanation": "They have lifted the League Cup trophy eight times in their history. This club plays in sky blue at the Etihad Stadium."
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "Sunderland also won in the League Cup last night (Wednesday); who did they beat?",
+      "options": [
+        "Brentford",
+        "Newcastle",
+        "Brighton"
+      ],
+      "answer": "Brentford",
+      "explanation": "Sunderland secured a dramatic 3-2 victory at the Stadium of Light to reach the last eight. This West London club is famously nicknamed 'The Bees'."
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "Birthday boy Robert Pires wore which shirt number during his career at Arsenal?",
+      "options": [
+        "7",
+        "10",
+        "9",
+        "11"
+      ],
+      "answer": "7",
+      "explanation": "He scored 84 goals for Arsenal while wearing this shirt, forming an iconic partnership on the left wing with Thierry Henry. It is a lucky single-digit squad number traditionally worn by elite wingers."
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "Who is the oldest Premier League manager this season (2026/27)?",
+      "options": [
+        "David Moyes",
+        "Unai Emery",
+        "Oliver Glasner",
+        "Piers Morgan"
+      ],
+      "answer": "David Moyes",
+      "explanation": "He has managed over 650 Premier League matches across spells at Everton, Manchester United, Sunderland, and West Ham. This Scottish manager returned for a second spell in charge of Everton."
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "How many Premier League titles has Gary Neville won during his career?",
+      "options": [
+        "8",
+        "7",
+        "5",
+        "6"
+      ],
+      "answer": "8",
+      "explanation": "He spent his entire 19-year senior playing career at Manchester United, captaining the side for five years. The number of titles he won is an even number one higher than seven."
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "Which Bulgarian midfielder served as Aston Villa club captain and made over 180 Premier League appearances for the West Midlands club between 2006 and 2012?",
+      "options": [
+        "Stiliyan Petrov",
+        "Dimitar Berbatov",
+        "Martin Petrov",
+        "Radostin Kishishev"
+      ],
+      "answer": "Stiliyan Petrov",
+      "explanation": "Stiliyan Petrov joined Aston Villa from Celtic in 2006 and became a beloved leader at Villa Park, captaining Martin O'Neill's side to top-six finishes. Affectionately known as 'Stan' by Villa supporters."
+    }
+  ]
+}
