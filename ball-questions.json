@@ -1,87 +1,87 @@
 {
-  "setId": 43,
-  "date": "2026-10-30",
-  "title": "5.45 Special — Friday Football Quiz",
+  "setId": 44,
+  "date": "2026-10-31",
+  "title": "5.45 Special — Saturday Football Quiz",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently sitting 5th in the Premier League table today, Friday, 30th Oct 2026?",
-      "options": ["Brighton", "Arsenal", "Liverpool", "Chelsea"],
-      "answer": "Chelsea",
-      "clue": "This team plays their home fixtures at Stamford Bridge.",
-      "funFact": "This West London club won the UEFA Champions League title twice, in 2012 and 2021."
+      "question": "Who is currently sitting top in the Premier League table today pre kick off, Saturday, 31st Oct 2026?",
+      "options": ["Brighton", "Arsenal", "Liverpool", "Manchester City"],
+      "answer": "Manchester City",
+      "clue": "This side plays in sky blue and hosts their opponents at the Etihad Stadium.",
+      "funFact": "They hold the top spot thanks to an impressive goal difference, having scored more open-play goals than any other side in the division."
     },
     {
       "id": 2,
-      "question": "Argentina legend Diego Maradona was born on this day 30th Oct in which year?",
-      "options": ["1960", "1965", "1970"],
-      "answer": "1960",
-      "clue": "He was born at the very start of the 1960s.",
-      "funFact": "He famously captained Argentina to World Cup glory in 1986, scoring the iconic \"Goal of the Century\"."
+      "question": "Which Manchester United, Barcelona, and England winger celebrates his birthday today, 31st Oct?",
+      "options": ["Bryan Mbeumo", "Matheus Cunha", "Marcus Rashford"],
+      "answer": "Marcus Rashford",
+      "clue": "He famously celebrates his goals by pointing a finger to his temple.",
+      "funFact": "Off the pitch, he was awarded an MBE for his campaign against child food poverty in the UK."
     },
     {
       "id": 3,
-      "question": "Everton beat which team last night (Thursday) 3-1 in the Carabao Cup?",
-      "options": ["Ipswich Town", "Wolverhampton Wanderers", "Newcastle United"],
-      "answer": "Newcastle United",
-      "clue": "This opponent plays their home matches at St. James' Park in Tyneside.",
-      "funFact": "Everton produced a clinical performance to sweep past their top-flight rivals and book their spot in the next round."
+      "question": "Who is Arsenal's No. 1 goalkeeper this season?",
+      "options": ["Aaron Ramsdale", "Kepa Arrizabalaga", "David Raya"],
+      "answer": "David Raya",
+      "clue": "This Spanish shot-stopper originally joined Arsenal on loan from Brentford before making the move permanent.",
+      "funFact": "He won the Premier League Golden Glove award in his debut 2023–24 season with the Gunners."
     },
     {
       "id": 4,
-      "question": "At which ground do Everton play?",
-      "options": ["Dick Emery Stadium", "David Dickinson Stadium", "Goodison Park", "Hill Dickinson Stadium"],
-      "answer": "Hill Dickinson Stadium",
-      "clue": "Named via a major commercial partnership for Everton's new waterfront arena.",
-      "funFact": "This state-of-the-art venue at Bramley-Moore Dock officially took over as the club's iconic new home."
+      "question": "At which ground do Brighton & Hove Albion F.C. play?",
+      "options": ["Visa Stadium", "Deepdale", "Highfield Road", "Amex Stadium"],
+      "answer": "Amex Stadium",
+      "clue": "The stadium shares its name with a major global financial services and credit card company.",
+      "funFact": "The venue officially opened in 2011, replacing the club's long-standing former home, the Goldstone Ground."
     },
     {
       "id": 5,
-      "question": "Jack Grealish was left out of Everton’s Thursday EFL Cup win over Newcastle. Why?",
-      "options": ["Twisted Sock", "Burst Calf Muscle", "Cup Tied", "A breach of Club Discipline"],
-      "answer": "A breach of Club Discipline",
-      "clue": "An internal disciplinary decision taken by the club management.",
-      "funFact": "Managerial standards were strictly enforced, resulting in the star playmaker missing out on the matchday squad."
+      "question": "Who is the current manager of Scottish side Celtic?",
+      "options": ["Aaron Lennon", "Ange Postecoglou", "Brendan Rodgers", "Martin O'Neill"],
+      "answer": "Martin O'Neill",
+      "clue": "This legendary Northern Irish manager also famously led Aston Villa and Leicester City in the English Premier League.",
+      "funFact": "He previously guided Celtic to three Scottish Premier League titles and the 2003 UEFA Cup Final during his memorable first spell in charge."
     },
     {
       "id": 6,
-      "question": "On this day in football history, one of the greatest players ever, Diego Maradona, was born (October 30th). Which Italian club's supporters know Maradona as \"Dios\" (God)?",
-      "options": ["Sampdoria", "Roma", "Lazio", "Napoli"],
-      "answer": "Napoli",
-      "clue": "The club officially renamed their home stadium the Stadio Diego Armando Maradona in his honor.",
-      "funFact": "He led this Southern Italian club to their first-ever Serie A titles in 1987 and 1990."
+      "question": "Manchester United v Chelsea at Stamford Bridge is the early kick-off on Saturday. Who won the corresponding fixture last season (25/26)?",
+      "options": ["Chelsea", "Manchester United"],
+      "answer": "Manchester United",
+      "clue": "The visiting side from Old Trafford took all three points with a clean-sheet performance.",
+      "funFact": "Matheus Cunha scored the decisive goal in a tight 1-0 victory for the Red Devils at Stamford Bridge."
     },
     {
       "id": 7,
-      "question": "What shirt number did Maradona wear whilst playing in Italy?",
-      "options": ["10", "44", "18", "7"],
-      "answer": "10",
-      "clue": "The iconic number traditionally worn by football's greatest attacking playmakers.",
-      "funFact": "Napoli officially retired this jersey number in 2000 to honor his legendary legacy at the club."
+      "question": "What squad number does birthday boy Marcus Rashford have this season at United?",
+      "options": ["10", "9", "18", "11"],
+      "answer": "9",
+      "clue": "It is the traditional single-digit squad number reserved for a team's primary striker.",
+      "funFact": "He switched to this classic center-forward shirt number after it was vacated by Rasmus Højlund."
     },
     {
       "id": 8,
-      "question": "Out of the 20 football clubs currently in the Premier League, which one plays its home matches on the biggest pitch size (105m x 71m)?",
-      "options": ["Tottenham Hotspur", "Coventry City", "Nottingham Forest"],
-      "answer": "Nottingham Forest",
-      "clue": "This historic two-time European Cup-winning club plays at the City Ground.",
-      "funFact": "Their home ground, the City Ground, sits right on the banks of the River Trent."
+      "question": "Out of the 20 football clubs currently in the Premier League, which team is the most southerly?",
+      "options": ["Brighton & Hove Albion", "Ipswich Town", "AFC Bournemouth"],
+      "answer": "AFC Bournemouth",
+      "clue": "This Dorset club plays at the Vitality Stadium and is nicknamed \"The Cherries\".",
+      "funFact": "Situated right on the English Channel coast, their Vitality Stadium is geographically the furthest south of all top-flight grounds."
     },
     {
       "id": 9,
-      "question": "How many Premier League titles did Pep Guardiola manage to win in a row?",
-      "options": ["2", "4", "0", "1"],
+      "question": "How many Premier League titles did Didier Drogba win?",
+      "options": ["2", "4", "3", "1"],
       "answer": "4",
-      "clue": "An even number that represents an unprecedented four-peat in Premier League history.",
-      "funFact": "He became the first manager in English top-flight history to win four consecutive league titles (2021–2024)."
+      "clue": "An even number representing his four title triumphs in West London.",
+      "funFact": "He won all four of his Premier League titles during his legendary career with Chelsea."
     },
     {
       "id": 10,
-      "question": "Who is the top-scoring Spanish player in Premier League history with 85 goals?",
-      "options": ["Diego Costa", "Juan Mata", "David Silva", "Fernando Torres"],
-      "answer": "Fernando Torres",
-      "clue": "This World Cup-winning striker was famously nicknamed \"El Niño\".",
-      "funFact": "He scored 56 Premier League goals for Liverpool and 20 for Chelsea, earning the nickname \"El Niño\"."
+      "question": "Who is the top-scoring French player in Premier League history?",
+      "options": ["Nicolas Anelka", "Olivier Giroud", "Louis Saha", "Thierry Henry"],
+      "answer": "Thierry Henry",
+      "clue": "An iconic Gunners legend who was a key part of the 2003–04 \"Invincibles\" team.",
+      "funFact": "He netted 175 Premier League goals for Arsenal and won a record four Premier League Golden Boot awards."
     }
   ]
 }
