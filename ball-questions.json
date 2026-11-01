@@ -70,7 +70,7 @@
     {
       "id": 9,
       "question": "How many Premier League titles did Micah Richards win?",
-      "options": ["2", "4", "3", "1"],
+      "options": ["2", "0", "3", "1"],
       "answer": "1",
       "clue": "The lowest positive whole number.",
       "funFact": "He won his lone Premier League title in the dramatic 2011–12 season, assisting Sergio Agüero's iconic final-day goal setup against QPR."
