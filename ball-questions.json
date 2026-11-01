@@ -1,87 +1,87 @@
 {
-  "setId": 44,
-  "date": "2026-10-31",
-  "title": "5.45 Special — Saturday Football Quiz",
+  "setId": 45,
+  "date": "2026-11-01",
+  "title": "5.45 Special — Sunday Football Quiz",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently sitting top in the Premier League table today pre kick off, Saturday, 31st Oct 2026?",
-      "options": ["Brighton", "Arsenal", "Liverpool", "Manchester City"],
-      "answer": "Manchester City",
-      "clue": "This side plays in sky blue and hosts their opponents at the Etihad Stadium.",
-      "funFact": "They hold the top spot thanks to an impressive goal difference, having scored more open-play goals than any other side in the division."
+      "question": "Who is currently sitting 4th from bottom in the Premier League table today, Sunday, 1st Nov 2026?",
+      "options": ["Nottingham Forest", "Crystal Palace", "Manchester United"],
+      "answer": "Manchester United",
+      "clue": "This famous North West side plays their home fixtures at Old Trafford.",
+      "funFact": "They are 20-time champions of English football and play at the largest club stadium in the UK."
     },
     {
       "id": 2,
-      "question": "Which Manchester United, Barcelona, and England winger celebrates his birthday today, 31st Oct?",
-      "options": ["Bryan Mbeumo", "Matheus Cunha", "Marcus Rashford"],
-      "answer": "Marcus Rashford",
-      "clue": "He famously celebrates his goals by pointing a finger to his temple.",
-      "funFact": "Off the pitch, he was awarded an MBE for his campaign against child food poverty in the UK."
+      "question": "Which former Manchester United, Barcelona, and Chelsea striker celebrates his birthday today, 1st Nov?",
+      "options": ["Henrik Larsson", "Mark Hughes", "Diego Forlán"],
+      "answer": "Mark Hughes",
+      "clue": "This Welsh international forward scored both goals in Manchester United's 1991 European Cup Winners' Cup final victory over Barcelona.",
+      "funFact": "Affectionately nicknamed \"Sparky\", he scored over 160 goals for Manchester United before going on to manage the Welsh national team and several Premier League clubs."
     },
     {
       "id": 3,
-      "question": "Who is Arsenal's No. 1 goalkeeper this season?",
-      "options": ["Aaron Ramsdale", "Kepa Arrizabalaga", "David Raya"],
-      "answer": "David Raya",
-      "clue": "This Spanish shot-stopper originally joined Arsenal on loan from Brentford before making the move permanent.",
-      "funFact": "He won the Premier League Golden Glove award in his debut 2023–24 season with the Gunners."
+      "question": "Which team beat Manchester City one-nil at home yesterday (Saturday)?",
+      "options": ["Bournemouth", "Brentford", "Brighton"],
+      "answer": "Brighton",
+      "clue": "This club is famously nicknamed \"The Seagulls\".",
+      "funFact": "This south-coast side secured all three points with a late second-half winner at the Amex Stadium."
     },
     {
       "id": 4,
-      "question": "At which ground do Brighton & Hove Albion F.C. play?",
-      "options": ["Visa Stadium", "Deepdale", "Highfield Road", "Amex Stadium"],
-      "answer": "Amex Stadium",
-      "clue": "The stadium shares its name with a major global financial services and credit card company.",
-      "funFact": "The venue officially opened in 2011, replacing the club's long-standing former home, the Goldstone Ground."
+      "question": "Manchester United lost again on Saturday to Chelsea two-nil; who scored Chelsea’s first goal?",
+      "options": ["Cole Palmer", "Pedro Neto", "Morgan Rogers"],
+      "answer": "Morgan Rogers",
+      "clue": "An English attacking midfielder whose first name starts with the letter M.",
+      "funFact": "He scored in the opening half-hour of the match to put Chelsea in total control at Stamford Bridge."
     },
     {
       "id": 5,
-      "question": "Who is the current manager of Scottish side Celtic?",
-      "options": ["Aaron Lennon", "Ange Postecoglou", "Brendan Rodgers", "Martin O'Neill"],
-      "answer": "Martin O'Neill",
-      "clue": "This legendary Northern Irish manager also famously led Aston Villa and Leicester City in the English Premier League.",
-      "funFact": "He previously guided Celtic to three Scottish Premier League titles and the 2003 UEFA Cup Final during his memorable first spell in charge."
+      "question": "Which Manchester United player was sent off in the 63rd minute of the match?",
+      "options": ["Harry Maguire", "Matheus Cunha", "Bruno Fernandes", "Lisandro Martínez"],
+      "answer": "Lisandro Martínez",
+      "clue": "A World Cup-winning Argentine defender who plays in central defense for the Red Devils.",
+      "funFact": "Known for his aggressive tackling style, he earned the nickname \"The Butcher\" during his time at Ajax."
     },
     {
       "id": 6,
-      "question": "Manchester United v Chelsea at Stamford Bridge is the early kick-off on Saturday. Who won the corresponding fixture last season (25/26)?",
-      "options": ["Chelsea", "Manchester United"],
-      "answer": "Manchester United",
-      "clue": "The visiting side from Old Trafford took all three points with a clean-sheet performance.",
-      "funFact": "Matheus Cunha scored the decisive goal in a tight 1-0 victory for the Red Devils at Stamford Bridge."
+      "question": "Who is the manager of AFC Bournemouth?",
+      "options": ["Andoni Iraola", "Daniel Farke", "Marco Rose"],
+      "answer": "Marco Rose",
+      "clue": "A German manager who spent the majority of his coaching career in the Bundesliga.",
+      "funFact": "Before taking charge on the south coast, he established his coaching reputation at Red Bull Salzburg, Borussia Mönchengladbach, and RB Leipzig."
     },
     {
       "id": 7,
-      "question": "What squad number does birthday boy Marcus Rashford have this season at United?",
-      "options": ["10", "9", "18", "11"],
-      "answer": "9",
-      "clue": "It is the traditional single-digit squad number reserved for a team's primary striker.",
-      "funFact": "He switched to this classic center-forward shirt number after it was vacated by Rasmus Højlund."
+      "question": "What squad number did birthday boy Mark Hughes wear during his time at Manchester United?",
+      "options": ["10", "9", "5", "11"],
+      "answer": "10",
+      "clue": "The classic number worn by iconic second-strikers and playmakers.",
+      "funFact": "He wore this shirt while leading United to two Premier League titles and two FA Cups in the early 1990s."
     },
     {
       "id": 8,
-      "question": "Out of the 20 football clubs currently in the Premier League, which team is the most southerly?",
-      "options": ["Brighton & Hove Albion", "Ipswich Town", "AFC Bournemouth"],
-      "answer": "AFC Bournemouth",
-      "clue": "This Dorset club plays at the Vitality Stadium and is nicknamed \"The Cherries\".",
-      "funFact": "Situated right on the English Channel coast, their Vitality Stadium is geographically the furthest south of all top-flight grounds."
+      "question": "Out of the 20 football clubs currently in the Premier League, which team's squad is the smallest?",
+      "options": ["Hull City", "Coventry City", "Chelsea", "Everton"],
+      "answer": "Everton",
+      "clue": "This Merseyside club recently transitioned to their new home arena at Bramley-Moore Dock.",
+      "funFact": "The Toffees operate with one of the most streamlined first-team squads in top-flight football."
     },
     {
       "id": 9,
-      "question": "How many Premier League titles did Didier Drogba win?",
+      "question": "How many Premier League titles did Micah Richards win?",
       "options": ["2", "4", "3", "1"],
-      "answer": "4",
-      "clue": "An even number representing his four title triumphs in West London.",
-      "funFact": "He won all four of his Premier League titles during his legendary career with Chelsea."
+      "answer": "1",
+      "clue": "The lowest positive whole number.",
+      "funFact": "He won his lone Premier League title in the dramatic 2011–12 season, assisting Sergio Agüero's iconic final-day goal setup against QPR."
     },
     {
       "id": 10,
-      "question": "Who is the top-scoring French player in Premier League history?",
-      "options": ["Nicolas Anelka", "Olivier Giroud", "Louis Saha", "Thierry Henry"],
-      "answer": "Thierry Henry",
-      "clue": "An iconic Gunners legend who was a key part of the 2003–04 \"Invincibles\" team.",
-      "funFact": "He netted 175 Premier League goals for Arsenal and won a record four Premier League Golden Boot awards."
+      "question": "Who is the top-scoring American in Premier League history?",
+      "options": ["Christian Pulisic", "Danny McBride", "Clint Dempsey"],
+      "answer": "Clint Dempsey",
+      "clue": "This Texan forward celebrated his goals with a famous lip-snarl expression.",
+      "funFact": "He scored 57 Premier League goals during his career across spells with Fulham and Tottenham Hotspur."
     }
   ]
 }
