@@ -1,87 +1,87 @@
 {
-  "setId": 45,
-  "date": "2026-11-01",
-  "title": "5.45 Special — Sunday Football Quiz",
+  "setId": 46,
+  "date": "2026-11-02",
+  "title": "5.45 Special — Monday Football Quiz",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently sitting 4th from bottom in the Premier League table today, Sunday, 1st Nov 2026?",
-      "options": ["Nottingham Forest", "Crystal Palace", "Manchester United"],
-      "answer": "Manchester United",
-      "clue": "This famous North West side plays their home fixtures at Old Trafford.",
-      "funFact": "They are 20-time champions of English football and play at the largest club stadium in the UK."
+      "question": "Who is currently sitting top of the Premier League table today, Monday, 2nd Nov 2026?",
+      "options": ["Manchester City", "Brighton & Hove Albion", "Arsenal"],
+      "answer": "Arsenal",
+      "clue": "This North London side plays their home matches at the Emirates Stadium.",
+      "funFact": "They famously went an entire 38-game Premier League season unbeaten in 2003–04 to earn the nickname \"The Invincibles.\""
     },
     {
       "id": 2,
-      "question": "Which former Manchester United, Barcelona, and Chelsea striker celebrates his birthday today, 1st Nov?",
-      "options": ["Henrik Larsson", "Mark Hughes", "Diego Forlán"],
-      "answer": "Mark Hughes",
-      "clue": "This Welsh international forward scored both goals in Manchester United's 1991 European Cup Winners' Cup final victory over Barcelona.",
-      "funFact": "Affectionately nicknamed \"Sparky\", he scored over 160 goals for Manchester United before going on to manage the Welsh national team and several Premier League clubs."
+      "question": "Who is the top-scoring German in Premier League history (46)?",
+      "options": ["İlkay Gündoğan", "Pascal Groß", "Jürgen Klinsmann", "Kai Havertz"],
+      "answer": "Kai Havertz",
+      "clue": "This versatile attacker transferred from Stamford Bridge to the Gunners in 2023.",
+      "funFact": "He scored the winning goal in the 2021 UEFA Champions League Final against Manchester City while playing for Chelsea."
     },
     {
       "id": 3,
-      "question": "Which team beat Manchester City one-nil at home yesterday (Saturday)?",
-      "options": ["Bournemouth", "Brentford", "Brighton"],
-      "answer": "Brighton",
-      "clue": "This club is famously nicknamed \"The Seagulls\".",
-      "funFact": "This south-coast side secured all three points with a late second-half winner at the Amex Stadium."
+      "question": "Arsenal beat Liverpool at Anfield yesterday (Sunday); what was the final score?",
+      "options": ["0-2", "1-2", "0-3", "0-1"],
+      "answer": "0-1",
+      "clue": "The visiting side kept a clean sheet and won by a single goal.",
+      "funFact": "A 1-0 away win is traditionally celebrated by Arsenal supporters with the iconic chant \"One-nil to the Arsenal.\""
     },
     {
       "id": 4,
-      "question": "Manchester United lost again on Saturday to Chelsea two-nil; who scored Chelsea’s first goal?",
-      "options": ["Cole Palmer", "Pedro Neto", "Morgan Rogers"],
-      "answer": "Morgan Rogers",
-      "clue": "An English attacking midfielder whose first name starts with the letter M.",
-      "funFact": "He scored in the opening half-hour of the match to put Chelsea in total control at Stamford Bridge."
+      "question": "Who scored the winning goal for Arsenal?",
+      "options": ["Declan Rice", "Ezri Konsa", "Kai Havertz"],
+      "answer": "Kai Havertz",
+      "clue": "This German forward scored the match's only goal.",
+      "funFact": "He began his professional career in Germany with Bayer Leverkusen, becoming their youngest-ever debutant at the time."
     },
     {
       "id": 5,
-      "question": "Which Manchester United player was sent off in the 63rd minute of the match?",
-      "options": ["Harry Maguire", "Matheus Cunha", "Bruno Fernandes", "Lisandro Martínez"],
-      "answer": "Lisandro Martínez",
-      "clue": "A World Cup-winning Argentine defender who plays in central defense for the Red Devils.",
-      "funFact": "Known for his aggressive tackling style, he earned the nickname \"The Butcher\" during his time at Ajax."
+      "question": "Yesterday’s loss for Liverpool leaves them in 5th place in the Premier League with how many points?",
+      "options": ["14", "16", "17", "15"],
+      "answer": "15",
+      "clue": "The number of points equals three times five.",
+      "funFact": "Liverpool's famous home ground, Anfield, has featured the iconic \"This Is Anfield\" sign in the player tunnel since the 1960s."
     },
     {
       "id": 6,
-      "question": "Who is the manager of AFC Bournemouth?",
-      "options": ["Andoni Iraola", "Daniel Farke", "Marco Rose"],
-      "answer": "Marco Rose",
-      "clue": "A German manager who spent the majority of his coaching career in the Bundesliga.",
-      "funFact": "Before taking charge on the south coast, he established his coaching reputation at Red Bull Salzburg, Borussia Mönchengladbach, and RB Leipzig."
+      "question": "Which football team is currently top of the English Championship?",
+      "options": ["Swansea", "Millwall", "Wolverhampton Wanderers", "Middlesbrough"],
+      "answer": "Middlesbrough",
+      "clue": "This North East club plays their home games at the Riverside Stadium and is nicknamed \"Boro.\"",
+      "funFact": "They famously reached the UEFA Cup Final in 2006 under manager Steve McClaren."
     },
     {
       "id": 7,
-      "question": "What squad number did birthday boy Mark Hughes wear during his time at Manchester United?",
-      "options": ["10", "9", "5", "11"],
-      "answer": "10",
-      "clue": "The classic number worn by iconic second-strikers and playmakers.",
-      "funFact": "He wore this shirt while leading United to two Premier League titles and two FA Cups in the early 1990s."
+      "question": "What age was Peter Crouch when he announced his retirement from football?",
+      "options": ["35", "36", "37", "38"],
+      "answer": "38",
+      "clue": "He retired in 2019 after a professional career spanning two decades, hanging up his boots late in his 30s.",
+      "funFact": "Standing at 6ft 7in, he holds the Premier League record for the most headed goals (53)."
     },
     {
       "id": 8,
-      "question": "Out of the 20 football clubs currently in the Premier League, which team's squad is the smallest?",
-      "options": ["Hull City", "Coventry City", "Chelsea", "Everton"],
-      "answer": "Everton",
-      "clue": "This Merseyside club recently transitioned to their new home arena at Bramley-Moore Dock.",
-      "funFact": "The Toffees operate with one of the most streamlined first-team squads in top-flight football."
+      "question": "Out of the 20 football clubs currently in the Premier League, which team's squad is the biggest (38 players)?",
+      "options": ["Manchester City", "Manchester United", "Liverpool", "Chelsea"],
+      "answer": "Chelsea",
+      "clue": "This West London club plays their home matches at Stamford Bridge.",
+      "funFact": "They were the first London club to win the UEFA Champions League."
     },
     {
       "id": 9,
-      "question": "How many Premier League titles did Micah Richards win?",
-      "options": ["2", "0", "3", "1"],
-      "answer": "1",
-      "clue": "The lowest positive whole number.",
-      "funFact": "He won his lone Premier League title in the dramatic 2011–12 season, assisting Sergio Agüero's iconic final-day goal setup against QPR."
+      "question": "How many Premier League titles did Sergio Agüero win?",
+      "options": ["2", "4", "3", "1", "5"],
+      "answer": "5",
+      "clue": "An odd single-digit number equal to the number of fingers on one hand.",
+      "funFact": "He scored the legendary 93:20 winner against QPR on the final day of the 2011–12 season to secure Manchester City's first Premier League title."
     },
     {
       "id": 10,
-      "question": "Who is the top-scoring American in Premier League history?",
-      "options": ["Christian Pulisic", "Danny McBride", "Clint Dempsey"],
-      "answer": "Clint Dempsey",
-      "clue": "This Texan forward celebrated his goals with a famous lip-snarl expression.",
-      "funFact": "He scored 57 Premier League goals during his career across spells with Fulham and Tottenham Hotspur."
+      "question": "Sir Matt Busby made his professional football debut on 2nd November 1929. Which team did he line up for?",
+      "options": ["Manchester United", "Preston North End", "Stoke City", "Manchester City"],
+      "answer": "Manchester City",
+      "clue": "He debuted for the sky-blue side of Manchester long before building United's \"Busby Babes.\"",
+      "funFact": "Before becoming legendary manager of Manchester United, Busby played as a wing-half for both Manchester City and Liverpool."
     }
   ]
 }
