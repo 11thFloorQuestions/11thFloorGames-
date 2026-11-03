@@ -1,87 +1,87 @@
 {
-  "setId": 46,
-  "date": "2026-11-02",
-  "title": "5.45 Special — Monday Football Quiz",
+  "setId": 47,
+  "date": "2026-11-03",
+  "title": "5.45 Special — Tuesday Football Quiz",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently sitting top of the Premier League table today, Monday, 2nd Nov 2026?",
-      "options": ["Manchester City", "Brighton & Hove Albion", "Arsenal"],
-      "answer": "Arsenal",
-      "clue": "This North London side plays their home matches at the Emirates Stadium.",
-      "funFact": "They famously went an entire 38-game Premier League season unbeaten in 2003–04 to earn the nickname \"The Invincibles.\""
+      "question": "Who is currently bottom of the Premier League table today, Tuesday, 3rd Nov 2026?",
+      "options": ["Crystal Palace", "Nottingham Forest", "Manchester United", "Sunderland"],
+      "answer": "Sunderland",
+      "clue": "This Wearside club earned promotion back to the top flight after winning the Championship play-offs.",
+      "funFact": "Famously nicknamed \"The Black Cats\", they play their home matches at the Stadium of Light."
     },
     {
       "id": 2,
-      "question": "Who is the top-scoring German in Premier League history (46)?",
-      "options": ["İlkay Gündoğan", "Pascal Groß", "Jürgen Klinsmann", "Kai Havertz"],
-      "answer": "Kai Havertz",
-      "clue": "This versatile attacker transferred from Stamford Bridge to the Gunners in 2023.",
-      "funFact": "He scored the winning goal in the 2021 UEFA Champions League Final against Manchester City while playing for Chelsea."
+      "question": "Which Arsenal and England legend turned pundit celebrates his birthday today, 3rd Nov?",
+      "options": ["Ray Parlour", "David Seaman", "Ian Wright"],
+      "answer": "Ian Wright",
+      "clue": "Famous for wearing the famous \"179 - Just Done It\" shirt after breaking the club's goalscoring record.",
+      "funFact": "He broke Cliff Bastin's long-standing scoring record to become Arsenal's all-time leading goalscorer before Thierry Henry later surpassed him."
     },
     {
       "id": 3,
-      "question": "Arsenal beat Liverpool at Anfield yesterday (Sunday); what was the final score?",
-      "options": ["0-2", "1-2", "0-3", "0-1"],
-      "answer": "0-1",
-      "clue": "The visiting side kept a clean sheet and won by a single goal.",
-      "funFact": "A 1-0 away win is traditionally celebrated by Arsenal supporters with the iconic chant \"One-nil to the Arsenal.\""
+      "question": "Everton climbed to 7th in the table after winning away in the Premier League last night (Monday); who did they beat?",
+      "options": ["Sunderland", "Crystal Palace", "Ipswich Town", "Newcastle"],
+      "answer": "Newcastle",
+      "clue": "This opponent plays their home fixtures at St. James' Park in Tyneside.",
+      "funFact": "The victory marked Everton's second consecutive 1-0 win away from home against this North East opposition."
     },
     {
       "id": 4,
-      "question": "Who scored the winning goal for Arsenal?",
-      "options": ["Declan Rice", "Ezri Konsa", "Kai Havertz"],
-      "answer": "Kai Havertz",
-      "clue": "This German forward scored the match's only goal.",
-      "funFact": "He began his professional career in Germany with Bayer Leverkusen, becoming their youngest-ever debutant at the time."
+      "question": "Everton won 0-1; who scored the only goal?",
+      "options": ["Tyrique George", "Thierno Barry"],
+      "answer": "Thierno Barry",
+      "clue": "A French forward whose first name begins with the letter T.",
+      "funFact": "He joined Everton from Basel in the summer after netting 20 goals in Switzerland last season."
     },
     {
       "id": 5,
-      "question": "Yesterday’s loss for Liverpool leaves them in 5th place in the Premier League with how many points?",
-      "options": ["14", "16", "17", "15"],
-      "answer": "15",
-      "clue": "The number of points equals three times five.",
-      "funFact": "Liverpool's famous home ground, Anfield, has featured the iconic \"This Is Anfield\" sign in the player tunnel since the 1960s."
+      "question": "Newcastle United had a player sent off last night for 2 quick yellow cards. Which player was shown red?",
+      "options": ["Chris Ramsey", "Rosie Ramsey", "Jacob Ramsey"],
+      "answer": "Jacob Ramsey",
+      "clue": "A dynamic midfielder who joined Newcastle from Aston Villa.",
+      "funFact": "He represented England at youth levels and won the UEFA European Under-21 Championship in 2023."
     },
     {
       "id": 6,
-      "question": "Which football team is currently top of the English Championship?",
-      "options": ["Swansea", "Millwall", "Wolverhampton Wanderers", "Middlesbrough"],
-      "answer": "Middlesbrough",
-      "clue": "This North East club plays their home games at the Riverside Stadium and is nicknamed \"Boro.\"",
-      "funFact": "They famously reached the UEFA Cup Final in 2006 under manager Steve McClaren."
+      "question": "Who is the current manager at Newcastle United?",
+      "options": ["Eddie Howe", "Marco Rose", "Xabi Alonso", "Matthias Jaissle"],
+      "answer": "Matthias Jaissle",
+      "clue": "A German coach who made his name managing in Salzburg and Saudi Arabia.",
+      "funFact": "He became one of Europe's youngest high-profile managers after guiding Red Bull Salzburg to back-to-back Austrian Bundesliga titles."
     },
     {
       "id": 7,
-      "question": "What age was Peter Crouch when he announced his retirement from football?",
-      "options": ["35", "36", "37", "38"],
-      "answer": "38",
-      "clue": "He retired in 2019 after a professional career spanning two decades, hanging up his boots late in his 30s.",
-      "funFact": "Standing at 6ft 7in, he holds the Premier League record for the most headed goals (53)."
+      "question": "What shirt number did Ian Wright predominantly wear during his Arsenal career?",
+      "options": ["6", "11", "7", "8"],
+      "answer": "8",
+      "clue": "An even single-digit squad number one higher than 7.",
+      "funFact": "This iconic shirt number was later worn at Arsenal by Samir Nasri, Aaron Ramsey, and Martin Ødegaard."
     },
     {
       "id": 8,
-      "question": "Out of the 20 football clubs currently in the Premier League, which team's squad is the biggest (38 players)?",
-      "options": ["Manchester City", "Manchester United", "Liverpool", "Chelsea"],
-      "answer": "Chelsea",
-      "clue": "This West London club plays their home matches at Stamford Bridge.",
-      "funFact": "They were the first London club to win the UEFA Champions League."
+      "question": "Out of the 20 football clubs currently in the Premier League, which team has the newest stadium?",
+      "options": ["Manchester City", "Tottenham Hotspur", "Coventry City", "Everton"],
+      "answer": "Everton",
+      "clue": "Their waterfront stadium at Bramley-Moore Dock officially opened for top-flight football in 2025/26.",
+      "funFact": "The state-of-the-art arena features a 52,888 capacity with an uninterrupted view of the Mersey estuary."
     },
     {
       "id": 9,
-      "question": "How many Premier League titles did Sergio Agüero win?",
-      "options": ["2", "4", "3", "1", "5"],
-      "answer": "5",
-      "clue": "An odd single-digit number equal to the number of fingers on one hand.",
-      "funFact": "He scored the legendary 93:20 winner against QPR on the final day of the 2011–12 season to secure Manchester City's first Premier League title."
+      "question": "How many Premier League titles did birthday boy Ian Wright win?",
+      "options": ["2", "4", "3", "1"],
+      "answer": "1",
+      "clue": "The lowest positive whole number.",
+      "funFact": "He won his lone Premier League title medal in his final season with Arsenal in 1997–98 as part of a historic domestic Double."
     },
     {
       "id": 10,
-      "question": "Sir Matt Busby made his professional football debut on 2nd November 1929. Which team did he line up for?",
-      "options": ["Manchester United", "Preston North End", "Stoke City", "Manchester City"],
-      "answer": "Manchester City",
-      "clue": "He debuted for the sky-blue side of Manchester long before building United's \"Busby Babes.\"",
-      "funFact": "Before becoming legendary manager of Manchester United, Busby played as a wing-half for both Manchester City and Liverpool."
+      "question": "Which striker scored the very first goal in Premier League history, finding the net after five minutes for Sheffield United against Manchester United in August 1992?",
+      "options": ["Teddy Sheringham", "Alan Shearer", "Mark Hughes", "Brian Deane"],
+      "answer": "Brian Deane",
+      "clue": "A Sheffield United striker whose surname starts with D.",
+      "funFact": "Brian Deane wrote his name into top-flight history by heading past Peter Schmeichel at Bramall Lane in Sheffield United's 2–1 victory on 15 August 1992."
     }
   ]
 }
