@@ -3,42 +3,6 @@
   "note": "Word Climb queue. Each queue entry plays on its date (game day changes at 03:00 London time). Replay is the shelf plus every queued set whose day has passed. Retired sets are not used. Reserve sets are held back for a later top-up and are not in the game yet.",
   "queue": [
     {
-      "date": "2026-10-25",
-      "set": 20
-    },
-    {
-      "date": "2026-10-26",
-      "set": 32
-    },
-    {
-      "date": "2026-10-27",
-      "set": 21
-    },
-    {
-      "date": "2026-10-28",
-      "set": 34
-    },
-    {
-      "date": "2026-10-29",
-      "set": 46
-    },
-    {
-      "date": "2026-10-30",
-      "set": 38
-    },
-    {
-      "date": "2026-10-31",
-      "set": 26
-    },
-    {
-      "date": "2026-11-01",
-      "set": 45
-    },
-    {
-      "date": "2026-11-02",
-      "set": 33
-    },
-    {
       "date": "2026-11-03",
       "set": 25
     },
@@ -228,120 +192,44 @@
     },
     {
       "date": "2026-12-20",
-      "set": 25
+      "set": 48
     },
     {
       "date": "2026-12-21",
-      "set": 31
+      "set": 49
     },
     {
       "date": "2026-12-22",
-      "set": 37
+      "set": 50
     },
     {
       "date": "2026-12-23",
-      "set": 18
+      "set": 51
     },
     {
       "date": "2026-12-24",
-      "set": 28
+      "set": 53
     },
     {
       "date": "2026-12-25",
-      "set": 44
+      "set": 55
     },
     {
       "date": "2026-12-26",
-      "set": 42
+      "set": 56
     },
     {
       "date": "2026-12-27",
-      "set": 30
-    },
-    {
-      "date": "2026-12-28",
-      "set": 22
-    },
-    {
-      "date": "2026-12-29",
-      "set": 29
-    },
-    {
-      "date": "2026-12-30",
-      "set": 43
-    },
-    {
-      "date": "2026-12-31",
-      "set": 35
-    },
-    {
-      "date": "2027-01-01",
-      "set": 40
-    },
-    {
-      "date": "2027-01-02",
-      "set": 47
-    },
-    {
-      "date": "2027-01-03",
-      "set": 23
-    },
-    {
-      "date": "2027-01-04",
-      "set": 24
-    },
-    {
-      "date": "2027-01-05",
-      "set": 39
-    },
-    {
-      "date": "2027-01-06",
-      "set": 36
-    },
-    {
-      "date": "2027-01-07",
-      "set": 41
-    },
-    {
-      "date": "2027-01-08",
-      "set": 19
-    },
-    {
-      "date": "2027-01-09",
-      "set": 27
+      "set": 57
     }
   ],
   "replay": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17
+    45,
+    33
   ],
   "retired": [
     52,
     54
   ],
-  "reserve": [
-    48,
-    49,
-    50,
-    51,
-    53,
-    55,
-    56,
-    57
-  ]
+  "reserve": []
 }
