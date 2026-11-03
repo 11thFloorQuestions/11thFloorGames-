@@ -13,6 +13,10 @@
 //  - Archive list loads in batches of 5 instead of 50 requests at once
 //  - "?" rules pop-up, landing screen only
 //  - Debug switches: ?debug=win, ?debug=ride, ?debug=floor&n=3 (see runDebugSwitch)
+// v0.6: dated queue + manifest (parity-manifest.json), game day changes at 03:00 London time,
+//  same as Cluegram, Questions and Word Climb. Today's set comes from the queue; the archive list
+//  reads the manifest instead of guessing file names (old way kept as a fallback).
+//  If the manifest is missing, or has no entry for today, the game uses parity-data.js as before.
 // v0.5.1: Archive buttons now start a set on a tap (finger lifted), not the instant a finger
 //  touches the screen, so the list can be scrolled without starting a set.
 // ==========================================================================
@@ -24,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let isProcessing = false;
     let soundEnabled = true;
     let activeDataSet = null;
+    let manifestData = null; // v0.6
+    let dailyReady = Promise.resolve(); // v0.6: resolves when today's queued set (if any) has loaded
     let activeGameData = [];
     let timerInterval = null;
     let timeRemaining = 0;
@@ -201,6 +207,7 @@ function playLiftRide(durationMs, onArrive, options) {
         } catch (e) {
             activeGameData = FALLBACK_FLOORS;
         }
+        dailyReady = resolveDailyFromQueue().catch(() => {}); // v0.6
         bindEvents();
         updateStatsDisplay();
         runDebugSwitch();
@@ -336,6 +343,80 @@ function playLiftRide(durationMs, onArrive, options) {
         return `${m}:${s}`;
     }
 
+    // ==========================================
+    // v0.6: QUEUE + MANIFEST
+    // parity-manifest.json holds the dated queue (which set plays on which day) and the replay
+    // shelf. The game day changes at 03:00 London time, all year round.
+    // ==========================================
+    function pad2(n) {
+        return String(n).padStart(2, '0');
+    }
+
+    // Game day as "YYYY-MM-DD". Before 03:00 London wall-clock time it is still yesterday.
+    function getGameDayKey(now) {
+        now = now || new Date();
+        try {
+            const parts = new Intl.DateTimeFormat('en-GB', {
+                timeZone: 'Europe/London', year: 'numeric', month: '2-digit',
+                day: '2-digit', hour: '2-digit', hourCycle: 'h23'
+            }).formatToParts(now);
+            const get = (t) => parseInt(parts.find(p => p.type === t).value, 10);
+            const day = new Date(Date.UTC(get('year'), get('month') - 1, get('day')));
+            if (get('hour') < 3) day.setUTCDate(day.getUTCDate() - 1);
+            return day.toISOString().slice(0, 10);
+        } catch (e) {
+            // Browser without time zone support: use the device clock, same 03:00 rule
+            const d = new Date(now.getTime() - 3 * 60 * 60 * 1000);
+            return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+        }
+    }
+
+    function fetchManifest() {
+        return fetch('./parity-manifest.json', { cache: 'no-cache' })
+            .then(res => (res.ok ? res.json() : null))
+            .catch(() => null);
+    }
+
+    // Replay list: the shelf, then every queued set whose day has passed (oldest first)
+    function getReplayList(m) {
+        const key = getGameDayKey();
+        const played = m.queue.filter(q => q.date < key)
+            .sort((a, b) => (a.date < b.date ? -1 : 1)).map(q => q.set);
+        const seen = {};
+        return [...(m.replay || []), ...played].filter(n => (seen[n] ? false : (seen[n] = true)));
+    }
+
+    async function resolveDailyFromQueue() {
+        const fallbackData = activeGameData;
+        const m = await fetchManifest();
+        if (!m || !Array.isArray(m.queue) || m.queue.length === 0) return;
+        manifestData = m;
+
+        const key = getGameDayKey();
+        let slot = null;
+        const hit = m.queue.find(q => q.date === key);
+        if (hit) {
+            slot = hit.set;
+        } else {
+            const lastDate = m.queue.reduce((a, q) => (q.date > a ? q.date : a), '');
+            if (key > lastDate) {
+                // Queue has run dry: replay a set rather than show a blank page
+                const pool = [...(m.replay || []), ...m.queue.map(q => q.set)];
+                if (pool.length > 0) {
+                    const dayNumber = Math.floor(Date.parse(key + 'T00:00:00Z') / 86400000);
+                    slot = pool[dayNumber % pool.length];
+                }
+            }
+        }
+        if (slot === null) return; // before the queue starts: keep parity-data.js
+
+        const data = await fetchFileWithFallbacks(`sandbox-parity.${pad2(slot)}.json`);
+        if (data && Array.isArray(data.floors) && data.floors.length > 0 && activeGameData === fallbackData) {
+            activeDataSet = data;
+            activeGameData = data.floors;
+        }
+    }
+
     async function fetchFileWithFallbacks(filename) {
         const candidatePaths = [
             `./archives/${filename}`,
@@ -362,6 +443,30 @@ function playLiftRide(durationMs, onArrive, options) {
     async function populateVault() {
         if (!vaultList) return;
         vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
+
+        // v0.6: use the manifest's replay list when there is one
+        await dailyReady;
+        if (manifestData) {
+            const slots = getReplayList(manifestData);
+            vaultList.innerHTML = '';
+            if (slots.length === 0) {
+                vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">No archives found.</div>';
+            } else {
+                slots.forEach(n => {
+                    const id = pad2(n);
+                    const btn = document.createElement('button');
+                    btn.className = 'vault-item-btn';
+                    btn.innerHTML = `<strong>Archive ${id}</strong>`;
+                    btn.addEventListener('click', async () => {
+                        triggerHaptic();
+                        const data = await fetchFileWithFallbacks(`sandbox-parity.${id}.json`);
+                        loadVaultSet(data);
+                    });
+                    vaultList.appendChild(btn);
+                });
+            }
+            return;
+        }
 
         const BATCH_SIZE = 5;
         const MAX_ARCHIVES = 50;
@@ -415,7 +520,8 @@ function playLiftRide(durationMs, onArrive, options) {
     }
 
     // Fresh climb from the landing screen or an archive. Resets the session.
-    function startGame() {
+    async function startGame() {
+        await dailyReady; // v0.6: make sure today's queued set has loaded
         if (!activeGameData || activeGameData.length === 0) {
             activeDataSet = window.PARITY_DAILY_SET || null;
             activeGameData = (activeDataSet && activeDataSet.floors) ? activeDataSet.floors : FALLBACK_FLOORS;
