@@ -1,0 +1,87 @@
+{
+  "setId": 46,
+  "date": "2026-11-02",
+  "title": "5.45 Special — Monday Football Quiz",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently sitting top of the Premier League table today, Monday, 2nd Nov 2026?",
+      "options": ["Manchester City", "Brighton & Hove Albion", "Arsenal"],
+      "answer": "Arsenal",
+      "clue": "This North London side plays their home matches at the Emirates Stadium.",
+      "funFact": "They famously went an entire 38-game Premier League season unbeaten in 2003–04 to earn the nickname \"The Invincibles.\""
+    },
+    {
+      "id": 2,
+      "question": "Who is the top-scoring German in Premier League history (46)?",
+      "options": ["İlkay Gündoğan", "Pascal Groß", "Jürgen Klinsmann", "Kai Havertz"],
+      "answer": "Kai Havertz",
+      "clue": "This versatile attacker transferred from Stamford Bridge to the Gunners in 2023.",
+      "funFact": "He scored the winning goal in the 2021 UEFA Champions League Final against Manchester City while playing for Chelsea."
+    },
+    {
+      "id": 3,
+      "question": "Arsenal beat Liverpool at Anfield yesterday (Sunday); what was the final score?",
+      "options": ["0-2", "1-2", "0-3", "0-1"],
+      "answer": "0-1",
+      "clue": "The visiting side kept a clean sheet and won by a single goal.",
+      "funFact": "A 1-0 away win is traditionally celebrated by Arsenal supporters with the iconic chant \"One-nil to the Arsenal.\""
+    },
+    {
+      "id": 4,
+      "question": "Who scored the winning goal for Arsenal?",
+      "options": ["Declan Rice", "Ezri Konsa", "Kai Havertz"],
+      "answer": "Kai Havertz",
+      "clue": "This German forward scored the match's only goal.",
+      "funFact": "He began his professional career in Germany with Bayer Leverkusen, becoming their youngest-ever debutant at the time."
+    },
+    {
+      "id": 5,
+      "question": "Yesterday’s loss for Liverpool leaves them in 5th place in the Premier League with how many points?",
+      "options": ["14", "16", "17", "15"],
+      "answer": "15",
+      "clue": "The number of points equals three times five.",
+      "funFact": "Liverpool's famous home ground, Anfield, has featured the iconic \"This Is Anfield\" sign in the player tunnel since the 1960s."
+    },
+    {
+      "id": 6,
+      "question": "Which football team is currently top of the English Championship?",
+      "options": ["Swansea", "Millwall", "Wolverhampton Wanderers", "Middlesbrough"],
+      "answer": "Middlesbrough",
+      "clue": "This North East club plays their home games at the Riverside Stadium and is nicknamed \"Boro.\"",
+      "funFact": "They famously reached the UEFA Cup Final in 2006 under manager Steve McClaren."
+    },
+    {
+      "id": 7,
+      "question": "What age was Peter Crouch when he announced his retirement from football?",
+      "options": ["35", "36", "37", "38"],
+      "answer": "38",
+      "clue": "He retired in 2019 after a professional career spanning two decades, hanging up his boots late in his 30s.",
+      "funFact": "Standing at 6ft 7in, he holds the Premier League record for the most headed goals (53)."
+    },
+    {
+      "id": 8,
+      "question": "Out of the 20 football clubs currently in the Premier League, which team's squad is the biggest (38 players)?",
+      "options": ["Manchester City", "Manchester United", "Liverpool", "Chelsea"],
+      "answer": "Chelsea",
+      "clue": "This West London club plays their home matches at Stamford Bridge.",
+      "funFact": "They were the first London club to win the UEFA Champions League."
+    },
+    {
+      "id": 9,
+      "question": "How many Premier League titles did Sergio Agüero win?",
+      "options": ["2", "4", "3", "1", "5"],
+      "answer": "5",
+      "clue": "An odd single-digit number equal to the number of fingers on one hand.",
+      "funFact": "He scored the legendary 93:20 winner against QPR on the final day of the 2011–12 season to secure Manchester City's first Premier League title."
+    },
+    {
+      "id": 10,
+      "question": "Sir Matt Busby made his professional football debut on 2nd November 1929. Which team did he line up for?",
+      "options": ["Manchester United", "Preston North End", "Stoke City", "Manchester City"],
+      "answer": "Manchester City",
+      "clue": "He debuted for the sky-blue side of Manchester long before building United's \"Busby Babes.\"",
+      "funFact": "Before becoming legendary manager of Manchester United, Busby played as a wing-half for both Manchester City and Liverpool."
+    }
+  ]
+}
