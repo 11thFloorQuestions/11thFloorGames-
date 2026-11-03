@@ -479,11 +479,11 @@ function playLiftRide(durationMs, onArrive, options) {
             if (slots.length === 0) {
                 vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">No archives found.</div>';
             } else {
-                slots.forEach(n => {
+                slots.forEach((n, i) => {
                     const id = pad2(n);
                     const btn = document.createElement('button');
                     btn.className = 'vault-item-btn';
-                    btn.innerHTML = `<strong>Archive ${id}</strong>`;
+                    btn.innerHTML = `<strong>Archive ${pad2(i + 1)}</strong>`; // numbered by place in the list (Archive 01, 02, ...), not by set number
                     btn.onclick = () => loadVaultArchive(id);
                     vaultList.appendChild(btn);
                 });
