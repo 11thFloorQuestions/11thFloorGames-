@@ -7,11 +7,10 @@
     { "floor": 4, "pairs": 4, "timeLimit": 28, "icons": ["leaf", "flame", "droplet", "lightning"] },
     { "floor": 5, "pairs": 5, "timeLimit": 34, "icons": ["leaf", "flame", "droplet", "lightning", "cloud"] },
     { "floor": 6, "pairs": 6, "timeLimit": 40, "icons": ["leaf", "flame", "droplet", "lightning", "cloud", "mountain"] },
-    { "floor": 7, "pairs": 6, "timeLimit": 38, "icons": ["leaf", "flame", "droplet", "lightning", "cloud", "mountain"] },
-    { "floor": 8, "pairs": 7, "timeLimit": 46, "icons": ["leaf", "flame", "droplet", "lightning", "cloud", "mountain", "compass"] },
-    { "floor": 9, "pairs": 8, "timeLimit": 54, "icons": ["leaf", "flame", "droplet", "lightning", "cloud", "mountain", "compass", "key"] },
-    { "floor": 10, "pairs": 9, "timeLimit": 62, "icons": ["leaf", "flame", "droplet", "lightning", "cloud", "mountain", "compass", "key", "crown"] },
-    { "floor": 11, "pairs": 10, "timeLimit": 70, "icons": ["leaf", "flame", "droplet", "lightning", "cloud", "mountain", "compass", "key", "crown", "gem"] }
+    { "floor": 7, "pairs": 7, "timeLimit": 46, "icons": ["leaf", "flame", "droplet", "lightning", "cloud", "mountain", "compass"] },
+    { "floor": 8, "pairs": 8, "timeLimit": 54, "icons": ["leaf", "flame", "droplet", "lightning", "cloud", "mountain", "compass", "key"] },
+    { "floor": 9, "pairs": 9, "timeLimit": 62, "icons": ["leaf", "flame", "droplet", "lightning", "cloud", "mountain", "compass", "key", "crown"] },
+    { "floor": 10, "pairs": 10, "timeLimit": 70, "icons": ["leaf", "flame", "droplet", "lightning", "cloud", "mountain", "compass", "key", "crown", "gem"] }
   ],
   "svgMap": {
     "leaf": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M11 20A9 9 0 0 0 20 11 9 9 0 0 0 2 2a9 9 0 0 0 9 18z\"/><path d=\"M2 2l18 18\"/></svg>",
