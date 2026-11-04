@@ -1,87 +1,87 @@
 {
-  "setId": 47,
-  "date": "2026-11-03",
-  "title": "5.45 Special — Tuesday Football Quiz",
+  "setId": 48,
+  "date": "2026-11-04",
+  "title": "5.45 Special — Wednesday Football Quiz",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently bottom of the Premier League table today, Tuesday, 3rd Nov 2026?",
-      "options": ["Crystal Palace", "Nottingham Forest", "Manchester United", "Sunderland"],
-      "answer": "Sunderland",
-      "clue": "This Wearside club earned promotion back to the top flight after winning the Championship play-offs.",
-      "funFact": "Famously nicknamed \"The Black Cats\", they play their home matches at the Stadium of Light."
+      "question": "Who is currently top of the Premier League table today, Wednesday, 4th Nov 2026?",
+      "options": ["Manchester City", "Manchester United", "Arsenal"],
+      "answer": "Arsenal",
+      "clue": "This North London side plays their home matches at the Emirates Stadium.",
+      "funFact": "They famously went an entire 38-game Premier League season unbeaten in 2003–04 to earn the nickname \"The Invincibles.\""
     },
     {
       "id": 2,
-      "question": "Which Arsenal and England legend turned pundit celebrates his birthday today, 3rd Nov?",
-      "options": ["Ray Parlour", "David Seaman", "Ian Wright"],
-      "answer": "Ian Wright",
-      "clue": "Famous for wearing the famous \"179 - Just Done It\" shirt after breaking the club's goalscoring record.",
-      "funFact": "He broke Cliff Bastin's long-standing scoring record to become Arsenal's all-time leading goalscorer before Thierry Henry later surpassed him."
+      "question": "Which Portuguese legend who played for both Barcelona and Real Madrid celebrates his birthday today, 4th Nov?",
+      "options": ["Bruno Fernandes", "Cristiano Ronaldo", "Luis Figo"],
+      "answer": "Luis Figo",
+      "clue": "His controversial high-profile transfer directly between Barcelona and Real Madrid in 2000 shocked Spanish football.",
+      "funFact": "He won the prestigious Ballon d'Or in 2000 and the FIFA World Player of the Year award in 2001."
     },
     {
       "id": 3,
-      "question": "Everton climbed to 7th in the table after winning away in the Premier League last night (Monday); who did they beat?",
-      "options": ["Sunderland", "Crystal Palace", "Ipswich Town", "Newcastle"],
-      "answer": "Newcastle",
-      "clue": "This opponent plays their home fixtures at St. James' Park in Tyneside.",
-      "funFact": "The victory marked Everton's second consecutive 1-0 win away from home against this North East opposition."
+      "question": "Aston Villa were playing away at Barcelona last night (Tuesday) in the Champions League; what was the final score?",
+      "options": ["1-0", "2-0", "3-0"],
+      "answer": "3-0",
+      "clue": "A comprehensive three-goal margin victory for the hosts.",
+      "funFact": "Villa put up a fight, but the Catalan giants ultimately proved too strong at the Camp Nou."
     },
     {
       "id": 4,
-      "question": "Everton won 0-1; who scored the only goal?",
-      "options": ["Tyrique George", "Thierno Barry"],
-      "answer": "Thierno Barry",
-      "clue": "A French forward whose first name begins with the letter T.",
-      "funFact": "He joined Everton from Basel in the summer after netting 20 goals in Switzerland last season."
+      "question": "Which ex-Leeds player scored 2 of Barça’s goals last night (Tuesday)?",
+      "options": ["Anthony Gordon", "Raphinha"],
+      "answer": "Raphinha",
+      "clue": "A brilliant left-footed attacker who starred at Elland Road before making his move to La Liga.",
+      "funFact": "The Brazilian winger continued his exceptional goal-scoring form on the European stage."
     },
     {
       "id": 5,
-      "question": "Newcastle United had a player sent off last night for 2 quick yellow cards. Which player was shown red?",
-      "options": ["Chris Ramsey", "Rosie Ramsey", "Jacob Ramsey"],
-      "answer": "Jacob Ramsey",
-      "clue": "A dynamic midfielder who joined Newcastle from Aston Villa.",
-      "funFact": "He represented England at youth levels and won the UEFA European Under-21 Championship in 2023."
+      "question": "Manchester United managed a rare win last night in Europe (Tuesday). Which Italian side did they beat?",
+      "options": ["Lazio", "Inter Milan", "AC Milan", "Roma"],
+      "answer": "Roma",
+      "clue": "A famous capital club from Italy known as the Giallorossi.",
+      "funFact": "United pulled off a thrilling comeback victory at Old Trafford after falling behind early."
     },
     {
       "id": 6,
-      "question": "Who is the current manager at Newcastle United?",
-      "options": ["Eddie Howe", "Marco Rose", "Xabi Alonso", "Matthias Jaissle"],
-      "answer": "Matthias Jaissle",
-      "clue": "A German coach who made his name managing in Salzburg and Saudi Arabia.",
-      "funFact": "He became one of Europe's youngest high-profile managers after guiding Red Bull Salzburg to back-to-back Austrian Bundesliga titles."
+      "question": "Who is currently top of the Champions League table?",
+      "options": ["Barcelona", "Liverpool", "Bayern Munich", "Paris Saint-Germain"],
+      "answer": "Paris Saint-Germain",
+      "clue": "The French powerhouse based at the Parc des Princes.",
+      "funFact": "They sit at the summit of the league phase standings with a dominant goal difference."
     },
     {
       "id": 7,
-      "question": "What shirt number did Ian Wright predominantly wear during his Arsenal career?",
-      "options": ["6", "11", "7", "8"],
-      "answer": "8",
-      "clue": "An even single-digit squad number one higher than 7.",
-      "funFact": "This iconic shirt number was later worn at Arsenal by Samir Nasri, Aaron Ramsey, and Martin Ødegaard."
+      "question": "What shirt number did birthday boy Luis Figo wear during his 5 years at Real Madrid?",
+      "options": ["6", "11", "7", "8", "10"],
+      "answer": "10",
+      "clue": "The iconic single-digit number traditionally reserved for the team's central creative hub.",
+      "funFact": "He wore this classic playmaker jersey while helping Los Blancos claim the UEFA Champions League title in 2002."
     },
     {
       "id": 8,
-      "question": "Out of the 20 football clubs currently in the Premier League, which team has the newest stadium?",
-      "options": ["Manchester City", "Tottenham Hotspur", "Coventry City", "Everton"],
-      "answer": "Everton",
-      "clue": "Their waterfront stadium at Bramley-Moore Dock officially opened for top-flight football in 2025/26.",
-      "funFact": "The state-of-the-art arena features a 52,888 capacity with an uninterrupted view of the Mersey estuary."
+      "question": "What is the name of Brentford’s stadium?",
+      "options": ["Amex Stadium", "MKM Stadium", "Gtech Community Stadium"],
+      "answer": "Gtech Community Stadium",
+      "clue": "A modern West London arena featuring a major corporate naming-rights sponsor starting with 'G'.",
+      "funFact": "It has been the home of the Bees since they moved from Griffin Park in 2020."
     },
     {
       "id": 9,
-      "question": "How many Premier League titles did birthday boy Ian Wright win?",
-      "options": ["2", "4", "3", "1"],
-      "answer": "1",
-      "clue": "The lowest positive whole number.",
-      "funFact": "He won his lone Premier League title medal in his final season with Arsenal in 1997–98 as part of a historic domestic Double."
+      "question": "How many Premier League titles did happy-go-lucky TV pundit Roy Keane win?",
+      "options": ["5", "8", "6", "7"],
+      "answer": "7",
+      "clue": "An odd single-digit number representing his fierce era of dominance at Old Trafford.",
+      "funFact": "He captained Manchester United to the vast majority of these domestic triumphs under Sir Alex Ferguson."
     },
     {
       "id": 10,
-      "question": "Which striker scored the very first goal in Premier League history, finding the net after five minutes for Sheffield United against Manchester United in August 1992?",
-      "options": ["Teddy Sheringham", "Alan Shearer", "Mark Hughes", "Brian Deane"],
-      "answer": "Brian Deane",
-      "clue": "A Sheffield United striker whose surname starts with D.",
-      "funFact": "Brian Deane wrote his name into top-flight history by heading past Peter Schmeichel at Bramall Lane in Sheffield United's 2–1 victory on 15 August 1992."
+      "question": "Which manager guided Leicester City to their first-ever FA Cup triumph in May 2021, defeating Chelsea 1–0?",
+      "options": ["Claudio Ranieri", "Nigel Pearson", "Craig Shakespeare", "Brendan Rodgers"],
+      "answer": "Brendan Rodgers",
+      "clue": "A Northern Irish manager who previously took charge of Liverpool and Celtic.",
+      "funFact": "Youri Tielemans scored an unforgettable long-range screamer to seal the historic trophy at Wembley Stadium."
     }
   ]
 }
