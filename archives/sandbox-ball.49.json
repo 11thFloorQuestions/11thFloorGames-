@@ -1,0 +1,87 @@
+{
+  "setId": 48,
+  "date": "2026-11-04",
+  "title": "5.45 Special — Wednesday Football Quiz",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently top of the Premier League table today, Wednesday, 4th Nov 2026?",
+      "options": ["Manchester City", "Manchester United", "Arsenal"],
+      "answer": "Arsenal",
+      "clue": "This North London side plays their home matches at the Emirates Stadium.",
+      "funFact": "They famously went an entire 38-game Premier League season unbeaten in 2003–04 to earn the nickname \"The Invincibles.\""
+    },
+    {
+      "id": 2,
+      "question": "Which Portuguese legend who played for both Barcelona and Real Madrid celebrates his birthday today, 4th Nov?",
+      "options": ["Bruno Fernandes", "Cristiano Ronaldo", "Luis Figo"],
+      "answer": "Luis Figo",
+      "clue": "His controversial high-profile transfer directly between Barcelona and Real Madrid in 2000 shocked Spanish football.",
+      "funFact": "He won the prestigious Ballon d'Or in 2000 and the FIFA World Player of the Year award in 2001."
+    },
+    {
+      "id": 3,
+      "question": "Aston Villa were playing away at Barcelona last night (Tuesday) in the Champions League; what was the final score?",
+      "options": ["1-0", "2-0", "3-0"],
+      "answer": "3-0",
+      "clue": "A comprehensive three-goal margin victory for the hosts.",
+      "funFact": "Villa put up a fight, but the Catalan giants ultimately proved too strong at the Camp Nou."
+    },
+    {
+      "id": 4,
+      "question": "Which ex-Leeds player scored 2 of Barça’s goals last night (Tuesday)?",
+      "options": ["Anthony Gordon", "Raphinha"],
+      "answer": "Raphinha",
+      "clue": "A brilliant left-footed attacker who starred at Elland Road before making his move to La Liga.",
+      "funFact": "The Brazilian winger continued his exceptional goal-scoring form on the European stage."
+    },
+    {
+      "id": 5,
+      "question": "Manchester United managed a rare win last night in Europe (Tuesday). Which Italian side did they beat?",
+      "options": ["Lazio", "Inter Milan", "AC Milan", "Roma"],
+      "answer": "Roma",
+      "clue": "A famous capital club from Italy known as the Giallorossi.",
+      "funFact": "United pulled off a thrilling comeback victory at Old Trafford after falling behind early."
+    },
+    {
+      "id": 6,
+      "question": "Who is currently top of the Champions League table?",
+      "options": ["Barcelona", "Liverpool", "Bayern Munich", "Paris Saint-Germain"],
+      "answer": "Paris Saint-Germain",
+      "clue": "The French powerhouse based at the Parc des Princes.",
+      "funFact": "They sit at the summit of the league phase standings with a dominant goal difference."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number did birthday boy Luis Figo wear during his 5 years at Real Madrid?",
+      "options": ["6", "11", "7", "8", "10"],
+      "answer": "10",
+      "clue": "The iconic single-digit number traditionally reserved for the team's central creative hub.",
+      "funFact": "He wore this classic playmaker jersey while helping Los Blancos claim the UEFA Champions League title in 2002."
+    },
+    {
+      "id": 8,
+      "question": "What is the name of Brentford’s stadium?",
+      "options": ["Amex Stadium", "MKM Stadium", "Gtech Community Stadium"],
+      "answer": "Gtech Community Stadium",
+      "clue": "A modern West London arena featuring a major corporate naming-rights sponsor starting with 'G'.",
+      "funFact": "It has been the home of the Bees since they moved from Griffin Park in 2020."
+    },
+    {
+      "id": 9,
+      "question": "How many Premier League titles did happy-go-lucky TV pundit Roy Keane win?",
+      "options": ["5", "8", "6", "7"],
+      "answer": "7",
+      "clue": "An odd single-digit number representing his fierce era of dominance at Old Trafford.",
+      "funFact": "He captained Manchester United to the vast majority of these domestic triumphs under Sir Alex Ferguson."
+    },
+    {
+      "id": 10,
+      "question": "Which manager guided Leicester City to their first-ever FA Cup triumph in May 2021, defeating Chelsea 1–0?",
+      "options": ["Claudio Ranieri", "Nigel Pearson", "Craig Shakespeare", "Brendan Rodgers"],
+      "answer": "Brendan Rodgers",
+      "clue": "A Northern Irish manager who previously took charge of Liverpool and Celtic.",
+      "funFact": "Youri Tielemans scored an unforgettable long-range screamer to seal the historic trophy at Wembley Stadium."
+    }
+  ]
+}
