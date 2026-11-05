@@ -21,7 +21,7 @@
     },
     {
       "id": 3,
-      "question": "Liverpool lost in the Champions League earlier this week against Fenerbahçe. Which former Liverpool player manages them?",
+      "question": "Liverpool lost in the Champions League last night (Wednesday) Fenerbahçe. Which former Liverpool player manages them?",
       "options": ["Divock Origi", "John Arne Riise", "Robbie Fowler", "Dirk Kuyt"],
       "answer": "Dirk Kuyt",
       "clue": "A relentless Dutch forward who also spent three successful seasons playing in Istanbul.",
@@ -29,7 +29,7 @@
     },
     {
       "id": 4,
-      "question": "What was the final score in that match played in Istanbul last night?",
+      "question": "What was the final score in that match played in Istanbul last night (Wednesday)?",
       "options": ["2-1", "3-2"],
       "answer": "3-2",
       "clue": "A five-goal thriller where the Turkish hosts edged out a narrow one-goal victory.",
