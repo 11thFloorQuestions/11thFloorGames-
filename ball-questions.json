@@ -1,87 +1,87 @@
 {
-  "setId": 48,
-  "date": "2026-11-04",
-  "title": "5.45 Special — Wednesday Football Quiz",
+  "setId": 49,
+  "date": "2026-11-05",
+  "title": "5.45 Special — Thursday Football Quiz",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently top of the Premier League table today, Wednesday, 4th Nov 2026?",
-      "options": ["Manchester City", "Manchester United", "Arsenal"],
-      "answer": "Arsenal",
-      "clue": "This North London side plays their home matches at the Emirates Stadium.",
-      "funFact": "They famously went an entire 38-game Premier League season unbeaten in 2003–04 to earn the nickname \"The Invincibles.\""
+      "question": "Who is currently in 4th spot in the Premier League table today, Thursday, 5th Nov 2026?",
+      "options": ["Liverpool", "Brighton", "Brentford", "Chelsea"],
+      "answer": "Chelsea",
+      "clue": "This team plays their home fixtures at Stamford Bridge.",
+      "funFact": "This West London club secured back-to-back UEFA Champions League titles in 2012 and 2021."
     },
     {
       "id": 2,
-      "question": "Which Portuguese legend who played for both Barcelona and Real Madrid celebrates his birthday today, 4th Nov?",
-      "options": ["Bruno Fernandes", "Cristiano Ronaldo", "Luis Figo"],
-      "answer": "Luis Figo",
-      "clue": "His controversial high-profile transfer directly between Barcelona and Real Madrid in 2000 shocked Spanish football.",
-      "funFact": "He won the prestigious Ballon d'Or in 2000 and the FIFA World Player of the Year award in 2001."
+      "question": "Which former Leicester City, Manchester City, and Celtic goalkeeper celebrates his birthday today, 5th Nov?",
+      "options": ["Joe Hart", "Jordan Pickford", "Aaron Ramsdale", "Kasper Schmeichel"],
+      "answer": "Kasper Schmeichel",
+      "clue": "A veteran Danish international shot-stopper who wore the number one shirt for the Foxes for over a decade.",
+      "funFact": "He famously emulated his father Peter by winning the Premier League title during his miraculous fairy-tale campaign with Leicester City in 2016."
     },
     {
       "id": 3,
-      "question": "Aston Villa were playing away at Barcelona last night (Tuesday) in the Champions League; what was the final score?",
-      "options": ["1-0", "2-0", "3-0"],
-      "answer": "3-0",
-      "clue": "A comprehensive three-goal margin victory for the hosts.",
-      "funFact": "Villa put up a fight, but the Catalan giants ultimately proved too strong at the Camp Nou."
+      "question": "Liverpool lost in the Champions League earlier this week against Fenerbahçe. Which former Liverpool player manages them?",
+      "options": ["Divock Origi", "John Arne Riise", "Robbie Fowler", "Dirk Kuyt"],
+      "answer": "Dirk Kuyt",
+      "clue": "A relentless Dutch forward who also spent three successful seasons playing in Istanbul.",
+      "funFact": "He famously scored a hat-trick for Liverpool against arch-rivals Manchester United during his six-year spell at Anfield."
     },
     {
       "id": 4,
-      "question": "Which ex-Leeds player scored 2 of Barça’s goals last night (Tuesday)?",
-      "options": ["Anthony Gordon", "Raphinha"],
-      "answer": "Raphinha",
-      "clue": "A brilliant left-footed attacker who starred at Elland Road before making his move to La Liga.",
-      "funFact": "The Brazilian winger continued his exceptional goal-scoring form on the European stage."
+      "question": "What was the final score in that match played in Istanbul last night?",
+      "options": ["2-1", "3-2"],
+      "answer": "3-2",
+      "clue": "A five-goal thriller where the Turkish hosts edged out a narrow one-goal victory.",
+      "funFact": "Liverpool twice took the lead during the match, but a dramatic second-half comeback stunned the visitors."
     },
     {
       "id": 5,
-      "question": "Manchester United managed a rare win last night in Europe (Tuesday). Which Italian side did they beat?",
-      "options": ["Lazio", "Inter Milan", "AC Milan", "Roma"],
-      "answer": "Roma",
-      "clue": "A famous capital club from Italy known as the Giallorossi.",
-      "funFact": "United pulled off a thrilling comeback victory at Old Trafford after falling behind early."
+      "question": "Italian club Como continued their winning ways in Europe, beating Lens; what was the final score?",
+      "options": ["1-4", "1-6", "1-7", "1-9"],
+      "answer": "1-9",
+      "clue": "An enormous eight-goal margin victory featuring a record-breaking tally for the Italian side.",
+      "funFact": "A staggering display of attacking dominance away from home on the European stage."
     },
     {
       "id": 6,
-      "question": "Who is currently top of the Champions League table?",
-      "options": ["Barcelona", "Liverpool", "Bayern Munich", "Paris Saint-Germain"],
-      "answer": "Paris Saint-Germain",
-      "clue": "The French powerhouse based at the Parc des Princes.",
-      "funFact": "They sit at the summit of the league phase standings with a dominant goal difference."
+      "question": "Arsenal maintained winning ways, winning away 2-1; who were they playing?",
+      "options": ["Leipzig", "Porto", "AEK Athens", "Slavia Prague"],
+      "answer": "Slavia Prague",
+      "clue": "A famous Czech capital club that plays their home matches at Fortuna Arena.",
+      "funFact": "The Gunners secured another crucial European victory on the road to maintain momentum."
     },
     {
       "id": 7,
-      "question": "What shirt number did birthday boy Luis Figo wear during his 5 years at Real Madrid?",
-      "options": ["6", "11", "7", "8", "10"],
-      "answer": "10",
-      "clue": "The iconic single-digit number traditionally reserved for the team's central creative hub.",
-      "funFact": "He wore this classic playmaker jersey while helping Los Blancos claim the UEFA Champions League title in 2002."
+      "question": "What shirt number did Gary Neville wear during his career at Manchester United?",
+      "options": ["3", "4", "5", "2"],
+      "answer": "2",
+      "clue": "The traditional single-digit squad number assigned to the first-choice right-back.",
+      "funFact": "He wore this iconic right-back number for over a decade under Sir Alex Ferguson."
     },
     {
       "id": 8,
-      "question": "What is the name of Brentford’s stadium?",
-      "options": ["Amex Stadium", "MKM Stadium", "Gtech Community Stadium"],
-      "answer": "Gtech Community Stadium",
-      "clue": "A modern West London arena featuring a major corporate naming-rights sponsor starting with 'G'.",
-      "funFact": "It has been the home of the Bees since they moved from Griffin Park in 2020."
+      "question": "What is the name of Ipswich Town’s stadium?",
+      "options": ["Amex Stadium", "MKM Stadium", "Gtech Community Stadium", "Portman Road"],
+      "answer": "Portman Road",
+      "clue": "A historic Suffolk stadium featuring a stand named after managerial legend Sir Bobby Robson.",
+      "funFact": "It has served as the home ground for the Tractor Boys since 1884."
     },
     {
       "id": 9,
-      "question": "How many Premier League titles did happy-go-lucky TV pundit Roy Keane win?",
-      "options": ["5", "8", "6", "7"],
-      "answer": "7",
-      "clue": "An odd single-digit number representing his fierce era of dominance at Old Trafford.",
-      "funFact": "He captained Manchester United to the vast majority of these domestic triumphs under Sir Alex Ferguson."
+      "question": "How many Premier League titles did Gary Neville win?",
+      "options": ["5", "6", "7", "8"],
+      "answer": "8",
+      "clue": "An even single-digit number higher than 7.",
+      "funFact": "He spent his entire 19-year professional career at Old Trafford, collecting a remarkable collection of winner's medals."
     },
     {
       "id": 10,
-      "question": "Which manager guided Leicester City to their first-ever FA Cup triumph in May 2021, defeating Chelsea 1–0?",
-      "options": ["Claudio Ranieri", "Nigel Pearson", "Craig Shakespeare", "Brendan Rodgers"],
-      "answer": "Brendan Rodgers",
-      "clue": "A Northern Irish manager who previously took charge of Liverpool and Celtic.",
-      "funFact": "Youri Tielemans scored an unforgettable long-range screamer to seal the historic trophy at Wembley Stadium."
+      "question": "Which manager holds the Premier League record for reaching 100 victories in the fewest matches, achieving the milestone in just 134 games?",
+      "options": ["José Mourinho", "Jürgen Klopp", "Alex Ferguson", "Pep Guardiola"],
+      "answer": "Pep Guardiola",
+      "clue": "The mastermind manager behind Manchester City's unprecedented domestic era.",
+      "funFact": "He surpassed José Mourinho's previous benchmark of 142 games to set the record."
     }
   ]
 }
