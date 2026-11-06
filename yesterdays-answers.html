@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Eleventh Floor Games — Yesterday's Answers</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+    <link rel="apple-touch-icon" href="/favicon.svg?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -139,7 +141,7 @@
             background: var(--surface-card);
             border: 1px solid var(--surface-border);
             border-radius: 6px;
-            color: var(--text-muted);
+            color: var(--tab, var(--text-muted));
             font-family: 'Montserrat', sans-serif;
             font-size: 0.62rem;
             font-weight: 600;
@@ -154,7 +156,7 @@
 
         .tab-btn.active {
             color: #ffffff;
-            border-color: var(--current-accent);
+            border-color: var(--tab, var(--current-accent));
             background: #141414;
         }
 
@@ -753,10 +755,9 @@
                             <div class="floor-card-body">
                                 <div class="q-text" style="font-weight: 700; color: #ffffff; font-size: 0.85rem;">Nothing to see here! Never will be.</div>
                                 <div class="fact-box" style="border-left-color: var(--color-parity);">
-                                    <div class="fact-title" style="color: var(--color-parity);">Shameless Plug Ahead</div>
+                                    <div class="fact-title" style="color: var(--color-parity);">For website owners</div>
                                     <div class="fact-text" style="line-height: 1.45;">
-                                        Parity is a dynamic visual pair-matching climb, so yesterday's solutions don't really apply. But since you entered, we are shamelessly using this space to plug our upcoming game...<br><br>
-                                        <strong style="color: #ffffff;">COMING SOON: TYKB "The Skyscraper"</strong> — A 51-floor Mega Quiz for true football fanatics!
+                                        Parity is a pair-matching climb you play, so there are no answers to look up. A full climb takes over four minutes to complete, which makes it a simple way to keep visitors on your page.
                                     </div>
                                 </div>
                             </div>
@@ -768,6 +769,9 @@
                 container.innerHTML = `<div class="floor-card" style="padding:16px; color:#ef4444; font-size:0.75rem;">Error loading set answers. Please refresh.</div>`;
             }
         }
+
+        /* Each tab takes its game's colour */
+        document.querySelectorAll('.tab-btn').forEach(b => b.style.setProperty('--tab', b.getAttribute('data-color')));
 
         /* TAB SWITCHER & ACCENT TINTING */
         document.querySelectorAll('.tab-btn').forEach(btn => {
