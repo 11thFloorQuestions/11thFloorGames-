@@ -1,87 +1,86 @@
 {
-  "setId": 49,
-  "date": "2026-11-05",
-  "title": "5.45 Special — Thursday Football Quiz",
+  "setId": 50,
+  "date": "2026-11-06",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently in 4th spot in the Premier League table today, Thursday, 5th Nov 2026?",
-      "options": ["Liverpool", "Brighton", "Brentford", "Chelsea"],
-      "answer": "Chelsea",
-      "clue": "This team plays their home fixtures at Stamford Bridge.",
-      "funFact": "This West London club secured back-to-back UEFA Champions League titles in 2012 and 2021."
+      "question": "Who is currently 4th from bottom spot in the Premier League table today, Friday, 6th Nov 2026?",
+      "options": ["Crystal Palace", "Coventry City", "Fulham", "Manchester United"],
+      "answer": "Manchester United",
+      "clue": "This famous North West side plays their home fixtures at Old Trafford.",
+      "funFact": "They are 20-time champions of English football and play at the largest club stadium in the UK."
     },
     {
       "id": 2,
-      "question": "Which former Leicester City, Manchester City, and Celtic goalkeeper celebrates his birthday today, 5th Nov?",
-      "options": ["Joe Hart", "Jordan Pickford", "Aaron Ramsdale", "Kasper Schmeichel"],
-      "answer": "Kasper Schmeichel",
-      "clue": "A veteran Danish international shot-stopper who wore the number one shirt for the Foxes for over a decade.",
-      "funFact": "He famously emulated his father Peter by winning the Premier League title during his miraculous fairy-tale campaign with Leicester City in 2016."
+      "question": "Which England and Manchester City player celebrates his birthday today, 6th Nov?",
+      "options": ["Phil Foden", "Nico O’Reilly", "Marc Guéhi", "Elliot Anderson"],
+      "answer": "Elliot Anderson",
+      "clue": "A talented midfielder born in Whitley Bay who represents the England national team.",
+      "funFact": "He joined Manchester City following standout spells with Newcastle United and Nottingham Forest."
     },
     {
       "id": 3,
-      "question": "Liverpool lost in the Champions League last night (Wednesday) Fenerbahçe. Which former Liverpool player manages them?",
-      "options": ["Divock Origi", "John Arne Riise", "Robbie Fowler", "Dirk Kuyt"],
-      "answer": "Dirk Kuyt",
-      "clue": "A relentless Dutch forward who also spent three successful seasons playing in Istanbul.",
-      "funFact": "He famously scored a hat-trick for Liverpool against arch-rivals Manchester United during his six-year spell at Anfield."
+      "question": "Bournemouth continued their winning ways in Europe last night (Thursday), winning 1-3 away; who did they beat?",
+      "options": ["Benfica", "Lyon", "Celta Vigo", "Sparta Prague"],
+      "answer": "Sparta Prague",
+      "clue": "A famous Czech capital club that plays their home matches at epet ARENA.",
+      "funFact": "The Cherries produced a stellar away performance in the European competition to secure all three points."
     },
     {
       "id": 4,
-      "question": "What was the final score in that match played in Istanbul last night (Wednesday)?",
-      "options": ["2-1", "3-2"],
-      "answer": "3-2",
-      "clue": "A five-goal thriller where the Turkish hosts edged out a narrow one-goal victory.",
-      "funFact": "Liverpool twice took the lead during the match, but a dramatic second-half comeback stunned the visitors."
+      "question": "Dynamo Zagreb beat which English team last night 0-2?",
+      "options": ["Crystal Palace", "Chelsea", "Sunderland"],
+      "answer": "Sunderland",
+      "clue": "This Wearside club is famously nicknamed \"The Black Cats\".",
+      "funFact": "The Croatian side put on a disciplined defensive display away from home to claim a famous European victory."
     },
     {
       "id": 5,
-      "question": "Italian club Como continued their winning ways in Europe, beating Lens; what was the final score?",
-      "options": ["1-4", "1-6", "1-7", "1-9"],
-      "answer": "1-9",
-      "clue": "An enormous eight-goal margin victory featuring a record-breaking tally for the Italian side.",
-      "funFact": "A staggering display of attacking dominance away from home on the European stage."
+      "question": "Brighton also won last night 0-1 away in the UEFA Conference League; who did they beat?",
+      "options": ["Monaco", "Getafe"],
+      "answer": "Getafe",
+      "clue": "A La Liga club based just outside of Madrid.",
+      "funFact": "The Seagulls clinched a hard-fought clean-sheet victory on Spanish soil."
     },
     {
       "id": 6,
-      "question": "Arsenal maintained winning ways, winning away 2-1; who were they playing?",
-      "options": ["Leipzig", "Porto", "AEK Athens", "Slavia Prague"],
-      "answer": "Slavia Prague",
-      "clue": "A famous Czech capital club that plays their home matches at Fortuna Arena.",
-      "funFact": "The Gunners secured another crucial European victory on the road to maintain momentum."
+      "question": "Who is Brighton’s manager?",
+      "options": ["Leipzig", "Porto", "AEK Athens", "Fabian Hürzeler"],
+      "answer": "Fabian Hürzeler",
+      "clue": "A tactician who moved to the south coast of England after managing St. Pauli in Germany.",
+      "funFact": "He made headlines as one of the youngest permanent managers in Premier League history."
     },
     {
       "id": 7,
-      "question": "What shirt number did Gary Neville wear during his career at Manchester United?",
-      "options": ["3", "4", "5", "2"],
-      "answer": "2",
-      "clue": "The traditional single-digit squad number assigned to the first-choice right-back.",
-      "funFact": "He wore this iconic right-back number for over a decade under Sir Alex Ferguson."
+      "question": "What shirt number does birthday boy Elliot Anderson wear for Manchester City?",
+      "options": ["7", "4", "6", "5"],
+      "answer": "5",
+      "clue": "An odd single-digit number right in the middle of four and six.",
+      "funFact": "This single-digit number is traditionally associated with defensive midfielders or central defenders."
     },
     {
       "id": 8,
-      "question": "What is the name of Ipswich Town’s stadium?",
-      "options": ["Amex Stadium", "MKM Stadium", "Gtech Community Stadium", "Portman Road"],
-      "answer": "Portman Road",
-      "clue": "A historic Suffolk stadium featuring a stand named after managerial legend Sir Bobby Robson.",
-      "funFact": "It has served as the home ground for the Tractor Boys since 1884."
+      "question": "What is the name of Coventry City’s stadium?",
+      "options": ["Amex Stadium", "MKM Stadium", "Gtech Community Stadium", "CBS Arena"],
+      "answer": "CBS Arena",
+      "clue": "Formerly known as the Ricoh Arena before securing a corporate naming partnership.",
+      "funFact": "The multi-purpose venue has hosted major sporting events and major music concerts alike."
     },
     {
       "id": 9,
-      "question": "How many Premier League titles did Gary Neville win?",
-      "options": ["5", "6", "7", "8"],
-      "answer": "8",
-      "clue": "An even single-digit number higher than 7.",
-      "funFact": "He spent his entire 19-year professional career at Old Trafford, collecting a remarkable collection of winner's medals."
+      "question": "How many Premier League titles did Mikel Arteta win as a player?",
+      "options": ["1", "2", "3", "0"],
+      "answer": "0",
+      "clue": "The lowest possible whole number representing zero triumphs.",
+      "funFact": "Despite a stellar career representing clubs like Arsenal, Everton, and Real Sociedad, a Premier League winners' medal eluded him as a player."
     },
     {
       "id": 10,
-      "question": "Which manager holds the Premier League record for reaching 100 victories in the fewest matches, achieving the milestone in just 134 games?",
-      "options": ["José Mourinho", "Jürgen Klopp", "Alex Ferguson", "Pep Guardiola"],
-      "answer": "Pep Guardiola",
-      "clue": "The mastermind manager behind Manchester City's unprecedented domestic era.",
-      "funFact": "He surpassed José Mourinho's previous benchmark of 142 games to set the record."
+      "question": "Which Finnish defender made 318 Premier League appearances for Liverpool between 1999 and 2009, winning two FA Cups and the UEFA Champions League during his ten seasons at Anfield?",
+      "options": ["Stephane Henchoz", "Daniel Agger", "Martin Škrtel", "Sami Hyypiä"],
+      "answer": "Sami Hyypiä",
+      "clue": "A towering Finnish center-back who formed a legendary defensive partnership at Anfield.",
+      "funFact": "Sami Hyypiä spent ten seasons at Liverpool, making 318 Premier League appearances and captaining the side prior to Steven Gerrard."
     }
   ]
 }
