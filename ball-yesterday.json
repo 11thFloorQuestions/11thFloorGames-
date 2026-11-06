@@ -1,0 +1,87 @@
+{
+  "setId": 49,
+  "date": "2026-11-05",
+  "title": "5.45 Special — Thursday Football Quiz",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently in 4th spot in the Premier League table today, Thursday, 5th Nov 2026?",
+      "options": ["Liverpool", "Brighton", "Brentford", "Chelsea"],
+      "answer": "Chelsea",
+      "clue": "This team plays their home fixtures at Stamford Bridge.",
+      "funFact": "This West London club secured back-to-back UEFA Champions League titles in 2012 and 2021."
+    },
+    {
+      "id": 2,
+      "question": "Which former Leicester City, Manchester City, and Celtic goalkeeper celebrates his birthday today, 5th Nov?",
+      "options": ["Joe Hart", "Jordan Pickford", "Aaron Ramsdale", "Kasper Schmeichel"],
+      "answer": "Kasper Schmeichel",
+      "clue": "A veteran Danish international shot-stopper who wore the number one shirt for the Foxes for over a decade.",
+      "funFact": "He famously emulated his father Peter by winning the Premier League title during his miraculous fairy-tale campaign with Leicester City in 2016."
+    },
+    {
+      "id": 3,
+      "question": "Liverpool lost in the Champions League earlier this week against Fenerbahçe. Which former Liverpool player manages them?",
+      "options": ["Divock Origi", "John Arne Riise", "Robbie Fowler", "Dirk Kuyt"],
+      "answer": "Dirk Kuyt",
+      "clue": "A relentless Dutch forward who also spent three successful seasons playing in Istanbul.",
+      "funFact": "He famously scored a hat-trick for Liverpool against arch-rivals Manchester United during his six-year spell at Anfield."
+    },
+    {
+      "id": 4,
+      "question": "What was the final score in that match played in Istanbul last night?",
+      "options": ["2-1", "3-2"],
+      "answer": "3-2",
+      "clue": "A five-goal thriller where the Turkish hosts edged out a narrow one-goal victory.",
+      "funFact": "Liverpool twice took the lead during the match, but a dramatic second-half comeback stunned the visitors."
+    },
+    {
+      "id": 5,
+      "question": "Italian club Como continued their winning ways in Europe, beating Lens; what was the final score?",
+      "options": ["1-4", "1-6", "1-7", "1-9"],
+      "answer": "1-9",
+      "clue": "An enormous eight-goal margin victory featuring a record-breaking tally for the Italian side.",
+      "funFact": "A staggering display of attacking dominance away from home on the European stage."
+    },
+    {
+      "id": 6,
+      "question": "Arsenal maintained winning ways, winning away 2-1; who were they playing?",
+      "options": ["Leipzig", "Porto", "AEK Athens", "Slavia Prague"],
+      "answer": "Slavia Prague",
+      "clue": "A famous Czech capital club that plays their home matches at Fortuna Arena.",
+      "funFact": "The Gunners secured another crucial European victory on the road to maintain momentum."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number did Gary Neville wear during his career at Manchester United?",
+      "options": ["3", "4", "5", "2"],
+      "answer": "2",
+      "clue": "The traditional single-digit squad number assigned to the first-choice right-back.",
+      "funFact": "He wore this iconic right-back number for over a decade under Sir Alex Ferguson."
+    },
+    {
+      "id": 8,
+      "question": "What is the name of Ipswich Town’s stadium?",
+      "options": ["Amex Stadium", "MKM Stadium", "Gtech Community Stadium", "Portman Road"],
+      "answer": "Portman Road",
+      "clue": "A historic Suffolk stadium featuring a stand named after managerial legend Sir Bobby Robson.",
+      "funFact": "It has served as the home ground for the Tractor Boys since 1884."
+    },
+    {
+      "id": 9,
+      "question": "How many Premier League titles did Gary Neville win?",
+      "options": ["5", "6", "7", "8"],
+      "answer": "8",
+      "clue": "An even single-digit number higher than 7.",
+      "funFact": "He spent his entire 19-year professional career at Old Trafford, collecting a remarkable collection of winner's medals."
+    },
+    {
+      "id": 10,
+      "question": "Which manager holds the Premier League record for reaching 100 victories in the fewest matches, achieving the milestone in just 134 games?",
+      "options": ["José Mourinho", "Jürgen Klopp", "Alex Ferguson", "Pep Guardiola"],
+      "answer": "Pep Guardiola",
+      "clue": "The mastermind manager behind Manchester City's unprecedented domestic era.",
+      "funFact": "He surpassed José Mourinho's previous benchmark of 142 games to set the record."
+    }
+  ]
+}
