@@ -473,7 +473,6 @@
             <button class="tab-btn" data-game="cluegram" data-color="#cc007e" data-glow="rgba(204, 0, 126, 0.25)">Cluegram</button>
             <button class="tab-btn" data-game="questions" data-color="#D4AF37" data-glow="rgba(212, 175, 55, 0.25)">Questions</button>
             <button class="tab-btn" data-game="wordclimb" data-color="#3B82F6" data-glow="rgba(59, 130, 246, 0.25)">Word Climb</button>
-            <button class="tab-btn" data-game="clusters" data-color="#ff751f" data-glow="rgba(255, 117, 31, 0.25)">Clusters</button>
             <button class="tab-btn" data-game="parity" data-color="#ff9999" data-glow="rgba(255, 153, 153, 0.25)">Parity</button>
         </div>
 
@@ -515,8 +514,25 @@
             return new Date(iso + 'T12:00:00Z').toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
         }
 
+        // Yesterday = the day before the current game day (the game day changes at 03:00 London time).
+        function ukYesterday() {
+            const shifted = new Date(Date.now() - 3 * 3600 * 1000);
+            const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(shifted);
+            const g = t => Number(parts.find(p => p.type === t).value);
+            return new Date(Date.UTC(g('year'), g('month') - 1, g('day') - 1)).toISOString().slice(0, 10);
+        }
+        // Looks yesterday's date up in the game's manifest and loads that set's archive file.
+        async function yesterdaysSet(manifestFile, pathFor) {
+            const man = await fetchJSON(manifestFile);
+            const day = ukYesterday();
+            const entry = man && Array.isArray(man.queue) ? man.queue.find(e => e && e.date === day) : null;
+            return entry ? await fetchJSON(pathFor(entry.set)) : null;
+        }
+
         /* SAFE RENDER ENGINE FOR ALL 6 GAMES */
+        let renderToken = 0;
         async function renderGameAnswers(gameKey) {
+            const myToken = ++renderToken;
             const container = document.getElementById('answers-list');
             const metaTitle = document.getElementById('meta-set-title');
             if (!container || !metaTitle) return;
@@ -569,12 +585,9 @@
                     }
                 } 
                 else if (gameKey === 'questions') {
-                    // Yesterday's set = the archive file one number below the live set.
-                    const live = await fetchJSON('questions.json');
-                    const prev = live && live.setId != null ? Number(live.setId) - 1 : 0;
-                    const data = prev > 0 ? await fetchJSON(`archives/sandbox.${String(prev).padStart(2, '0')}.json`) : null;
+                    const data = await yesterdaysSet('questions-manifest.json', n => `archives/sandbox.${String(n).padStart(2, '0')}.json`);
                     if (data && (data.floors || data.questions)) {
-                        metaTitle.innerText = data.title || "11th Floor Questions";
+                        metaTitle.innerText = '11th Floor Questions — ' + prettyDate(ukYesterday());
                         const list = data.floors || data.questions;
                         list.forEach(q => {
                             const floorOrd = ordinals[(q.floor || 1) - 1] || `${q.floor}th`;
@@ -613,11 +626,10 @@
                     }
                 } 
                 else if (gameKey === 'cluegram') {
-                    metaTitle.innerText = "11th Floor Cluegram — Daily Solutions";
-                    const list = window.CLUEGRAM_DAILY_SET || [
-                        { floor: 1, length: 5, domain: "Oceanography & Marine", scrambled: "LOCRA", target: "CORAL", clue: "A hard stony substance secreted by marine polyps for support and structure." },
-                        { floor: 2, length: 5, domain: "Physics & Optics", scrambled: "SIMPR", target: "PRISM", clue: "A transparent glass body that refracts light to break it into a rainbow spectrum." }
-                    ];
+                    metaTitle.innerText = "11th Floor Cluegram — " + prettyDate(ukYesterday());
+                    const data = await yesterdaysSet('cluegram-manifest.json', n => `archives/cluegram-${String(n).padStart(2, '0')}.json`);
+                    const list = (data && (data.floors || data.questions)) || [];
+                    if (!list.length) showNotReady(container);
 
                     list.forEach(item => {
                         const floorOrd = ordinals[item.floor - 1] || `${item.floor}th`;
@@ -633,7 +645,7 @@
                                     <div class="fact-box">
                                         <div class="fact-title">Domain Definition & Clue</div>
                                         <div class="fact-text">
-                                            <strong>Domain: ${item.domain || 'General'}</strong><br>
+                                            ${item.domain ? `<strong>Domain: ${item.domain}</strong><br>` : ''}
                                             ${item.clue}
                                         </div>
                                     </div>
@@ -697,52 +709,52 @@
                     }
                 } 
                 else if (gameKey === 'wordclimb') {
-                    metaTitle.innerText = "11th Floor Word Climb — Master Board 'MAGNITUDE'";
-                    const masterWord = "MAGNITUDE";
-                    const wheelArr = ["M", "A", "G", "N", "I", "T", "U", "D", "E"];
-                    const wheelBubbles = wheelArr.map(l => `<div class="letter-bubble">${l}</div>`).join('');
-
-                    container.innerHTML += `
-                        <div class="cluster-group-box" style="border-color: var(--color-wordclimb); margin-bottom: 2px;">
-                            <div class="cluster-cat-title" style="color: var(--color-wordclimb); text-align: center;">DAILY MASTER WHEEL</div>
-                            <div class="wheel-letters-row">${wheelBubbles}</div>
-                            <div style="font-size: 0.65rem; color: #bbbbbb; text-align: center; margin-top: 4px;">Master 9-Letter Target: <strong style="color: #ffffff;">${masterWord}</strong></div>
-                        </div>
-
-                        <div class="blossom-stats-grid">
-                            <div><div class="blossom-stat-val">9</div><div class="blossom-stat-lbl">5-Letter</div></div>
-                            <div><div class="blossom-stat-val">6</div><div class="blossom-stat-lbl">6-Letter</div></div>
-                            <div><div class="blossom-stat-val">2</div><div class="blossom-stat-lbl">7-Letter</div></div>
-                            <div><div class="blossom-stat-val">1</div><div class="blossom-stat-lbl">8-Letter</div></div>
-                            <div><div class="blossom-stat-val">1</div><div class="blossom-stat-lbl">9-Letter</div></div>
-                        </div>
-                    `;
-
-                    const wordsByLen = {
-                        5: ["GIANT", "AGENT", "GUIDE", "IMAGE", "MEDIA", "AMEND", "UNITE", "MINED", "GAUNT"],
-                        6: ["UNITED", "DATING", "MAGNET", "GAINED", "TANDEM", "UNTIED"],
-                        7: ["UNTAMED", "GAUNTED"],
-                        8: ["UNTAMING"],
-                        9: ["MAGNITUDE"]
-                    };
-
-                    let accordionSections = '';
-                    [5, 6, 7, 8, 9].forEach(len => {
-                        const words = wordsByLen[len] || [];
-                        const wordChips = words.map(w => `<span class="opt-chip ${w === masterWord ? 'correct-chip' : ''}" style="padding: 4px 6px; font-size: 0.62rem;">${w}</span>`).join(' ');
-                        accordionSections += `
-                            <div class="cluster-group-box">
-                                <div class="cluster-cat-title">✓ ${len}-LETTER VALID WORDS (${words.length})</div>
-                                <div class="cluster-words-row">${wordChips}</div>
+                    const data = await yesterdaysSet('word-climb-manifest.json', n => `archives/sandbox-wc.${String(n).padStart(2, '0')}.json`);
+                    const master = data ? String(data.masterWord || '').toUpperCase() : '';
+                    const wheel = data && Array.isArray(data.wheelLetters) ? data.wheelLetters : null;
+                    metaTitle.innerText = '11th Floor Word Climb';
+                    if (!master || !wheel) {
+                        showNotReady(container);
+                    } else {
+                        metaTitle.innerText = "11th Floor Word Climb — Master Board '" + master + "'";
+                        const wheelBubbles = wheel.map(l => `<div class="letter-bubble">${escapeHTML(l)}</div>`).join('');
+                        container.innerHTML = `
+                            <div class="cluster-group-box" style="border-color: var(--color-wordclimb); margin-bottom: 2px;">
+                                <div class="cluster-cat-title" style="color: var(--color-wordclimb); text-align: center;">DAILY MASTER WHEEL</div>
+                                <div class="wheel-letters-row">${wheelBubbles}</div>
+                                <div style="font-size: 0.65rem; color: #bbbbbb; text-align: center; margin-top: 4px;">Master ${master.length}-letter word: <strong style="color: #ffffff;">${escapeHTML(master)}</strong></div>
                             </div>
+                            <div id="wc-words" style="font-size: 0.7rem; color: #888888; text-align: center; padding: 10px 0;">Loading every word the game accepts...</div>
                         `;
-                    });
-
-                    container.innerHTML += `
-                        <div class="word-accordion-container">
-                            ${accordionSections}
-                        </div>
-                    `;
+                        const ok = window.fetchDictionary ? await window.fetchDictionary() : false;
+                        if (myToken !== renderToken) return;
+                        const slot = document.getElementById('wc-words');
+                        if (!slot) return;
+                        if (!ok || !window.WORD_LIST || !window.WORD_LIST.size) {
+                            slot.textContent = "The word list couldn't load. Check your connection and refresh.";
+                        } else {
+                            const avail = {};
+                            wheel.forEach(l => { const k = String(l).toUpperCase(); avail[k] = (avail[k] || 0) + 1; });
+                            const byLen = { 5: [], 6: [], 7: [], 8: [], 9: [] };
+                            window.WORD_LIST.forEach(w => {
+                                const bucket = byLen[w.length];
+                                if (!bucket) return;
+                                const used = {};
+                                for (const ch of w) {
+                                    used[ch] = (used[ch] || 0) + 1;
+                                    if (used[ch] > (avail[ch] || 0)) return;
+                                }
+                                bucket.push(w);
+                            });
+                            slot.style.cssText = 'text-align: left; padding: 0;';
+                            slot.innerHTML = '<div style="font-size: 0.62rem; color: #888888; margin-bottom: 6px;">Every word the game accepts from these letters. It uses a large open word list, so a few are unusual.</div>' +
+                                [9, 8, 7, 6, 5].map(len => {
+                                    const words = byLen[len].sort();
+                                    const chips = words.map(w => `<span class="opt-chip ${w === master ? 'correct-chip' : ''}" style="padding: 4px 6px; font-size: 0.62rem;">${w}</span>`).join('');
+                                    return `<details class="cluster-group-box" ${len >= 7 ? 'open' : ''}><summary class="cluster-cat-title" style="cursor: pointer;">${len}-LETTER WORDS (${words.length})</summary><div style="display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px;">${chips}</div></details>`;
+                                }).join('');
+                        }
+                    }
                 } 
                 else if (gameKey === 'parity') {
                     metaTitle.innerText = "11th Floor Parity";
