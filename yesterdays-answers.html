@@ -493,20 +493,13 @@
 
         <!-- Set Metadata Box -->
         <div class="set-meta-card">
-            <div class="set-title-text" id="meta-set-title">Think You Know Ball? — Set 30</div>
+            <div class="set-title-text" id="meta-set-title">Yesterday's answers</div>
             <div class="set-date-badge">YESTERDAY'S RECAP</div>
         </div>
 
         <!-- Answers Display Zone -->
         <div class="answers-list" id="answers-list">
             <!-- Dynamic Content Rendered Here -->
-        </div>
-
-        <div class="promo-affiliate-card">
-            <div class="affiliate-badge">OFFICIAL MATCHDAY PARTNER</div>
-            <div class="affiliate-title">WANT UNLIMITED ARCHIVE ACCESS?</div>
-            <div class="affiliate-desc">Play every past 10-floor climb, unlock custom daily quizzes, and remove single-attempt streak limits.</div>
-            <button class="affiliate-btn">UNLOCK FULL ARCHIVE — £20/YEAR</button>
         </div>
     </div>
 
@@ -525,6 +518,17 @@
             return null;
         }
 
+        function escapeHTML(v) {
+            return String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+        function showNotReady(container) {
+            container.innerHTML = '<div class="floor-card" style="padding:16px; text-align:center; color:#888;">Yesterday\'s answers aren\'t ready yet. Check back soon.</div>';
+        }
+        function prettyDate(iso) {
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(String(iso || ''))) return '';
+            return new Date(iso + 'T12:00:00Z').toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
+        }
+
         /* SAFE RENDER ENGINE FOR ALL 6 GAMES */
         async function renderGameAnswers(gameKey) {
             const container = document.getElementById('answers-list');
@@ -535,46 +539,54 @@
 
             try {
                 if (gameKey === 'ball') {
-                    const data = await fetchJSON('ball-questions.json');
-                    if (data && (data.questions || data.floors)) {
-                        metaTitle.innerText = data.title || "Think You Know Ball?";
-                        const list = data.questions || data.floors;
-                        list.forEach(q => {
-                            const floorOrd = ordinals[(q.floor || 1) - 1] || `${q.floor}th`;
-                            let optionsHTML = '';
-                            if (q.options) {
-                                q.options.forEach(opt => {
-                                    const isCorrect = (opt === q.answer);
-                                    optionsHTML += `<div class="opt-chip ${isCorrect ? 'correct-chip' : ''}">${opt}</div>`;
-                                });
-                            }
+                    // Yesterday's set only: ball-yesterday.json is the outgoing set, copied there before the new set goes live.
+                    // It is shown only if it is older than the live set, so today's answers can never appear.
+                    const live = await fetchJSON('ball-questions.json');
+                    const data = await fetchJSON('ball-yesterday.json');
+                    const list = data && (data.questions || data.floors);
+                    let older = false;
+                    if (data && live) {
+                        if (data.date && live.date) older = String(data.date) < String(live.date);
+                        else if (data.setId != null && live.setId != null) older = Number(data.setId) < Number(live.setId);
+                    }
+                    metaTitle.innerText = 'Think You Know Ball?';
+                    if (!list || !list.length || !older) {
+                        showNotReady(container);
+                    } else {
+                        const when = prettyDate(data.date);
+                        metaTitle.innerText = 'Think You Know Ball?' + (when ? ' answers for ' + when : ' answers');
+                        list.forEach((q, i) => {
+                            const n = q.floor || (i + 1);
+                            const floorOrd = ordinals[n - 1] || `${n}th`;
+                            const optionsHTML = (q.options || []).map(opt =>
+                                `<div class="opt-chip ${opt === q.answer ? 'correct-chip' : ''}">${escapeHTML(opt)}</div>`).join('');
+                            const extra = q.funFact || q.explanation || '';
                             container.innerHTML += `
                                 <div class="floor-card">
                                     <div class="floor-card-header">
                                         <div class="floor-number-badge">${floorOrd} Floor</div>
-                                        <div class="floor-type-tag">${q.type === 'boolean' ? 'TRUE / FALSE' : 'MULTIPLE CHOICE'}</div>
+                                        <div class="floor-type-tag">MULTIPLE CHOICE</div>
                                     </div>
                                     <div class="floor-card-body">
-                                        <div class="q-text">${q.question}</div>
+                                        <div class="q-text">${escapeHTML(q.question)}</div>
                                         <div class="options-list">${optionsHTML}</div>
                                         <div class="fact-box">
                                             <div class="fact-title">Terrace Breakdown & Match Context</div>
                                             <div class="fact-text">
-                                                <strong>Key Answer: ${q.answer}</strong><br>
-                                                ${q.explanation || 'An essential fixture in top-flight football history.'}
+                                                <strong>Answer: ${escapeHTML(q.answer)}</strong>${extra ? '<br>' + escapeHTML(extra) : ''}
                                             </div>
-                                            ${q.anchorClues ? `<div class="anchor-tag">📌 Search Anchors: ${q.anchorClues}</div>` : ''}
                                         </div>
                                     </div>
                                 </div>
                             `;
                         });
-                    } else {
-                        container.innerHTML = `<div class="floor-card" style="padding:16px; text-align:center; color:#888;">Fetching ball-questions.json set...</div>`;
                     }
                 } 
                 else if (gameKey === 'questions') {
-                    const data = await fetchJSON('questions.json');
+                    // Yesterday's set = the archive file one number below the live set.
+                    const live = await fetchJSON('questions.json');
+                    const prev = live && live.setId != null ? Number(live.setId) - 1 : 0;
+                    const data = prev > 0 ? await fetchJSON(`archives/sandbox.${String(prev).padStart(2, '0')}.json`) : null;
                     if (data && (data.floors || data.questions)) {
                         metaTitle.innerText = data.title || "11th Floor Questions";
                         const list = data.floors || data.questions;
@@ -611,7 +623,7 @@
                             `;
                         });
                     } else {
-                        container.innerHTML = `<div class="floor-card" style="padding:16px; text-align:center; color:#888;">Fetching questions.json set...</div>`;
+                        showNotReady(container);
                     }
                 } 
                 else if (gameKey === 'cluegram') {
