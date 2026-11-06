@@ -105,9 +105,7 @@
             color: var(--accent-red);
             line-height: 0.85;
             letter-spacing: -1px;
-            text-shadow: 0 0 20px rgba(255, 31, 45, 0.3);
             margin-bottom: 4px;
-            animation: logoColorCycle 8s ease-in-out infinite;
         }
 
         .hub-logo-title {
@@ -128,28 +126,14 @@
             text-transform: uppercase;
         }
 
-        @keyframes logoColorCycle {
-            0%   { color: var(--accent-red); text-shadow: 0 0 20px rgba(255, 31, 45, 0.3); }
-            14%  { color: var(--color-terrace); text-shadow: 0 0 20px var(--color-terrace-glow); }
-            28%  { color: var(--color-cluegram); text-shadow: 0 0 20px var(--color-cluegram-glow); }
-            42%  { color: var(--color-questions); text-shadow: 0 0 20px var(--color-questions-glow); }
-            56%  { color: var(--color-wordclimb); text-shadow: 0 0 20px var(--color-wordclimb-glow); }
-            70%  { color: var(--color-clusters); text-shadow: 0 0 20px var(--color-clusters-glow); }
-            84%  { color: var(--color-parity); text-shadow: 0 0 20px var(--color-parity-glow); }
-            100% { color: var(--accent-red); text-shadow: 0 0 20px rgba(255, 31, 45, 0.3); }
-        }
-
         /* Game Switcher Tabs */
         .game-tabs-scroll {
             width: 100%;
-            overflow-x: auto;
             display: flex;
+            flex-wrap: wrap;
             gap: 6px;
             padding: 2px 0;
-            scrollbar-width: none;
         }
-
-        .game-tabs-scroll::-webkit-scrollbar { display: none; }
 
         .tab-btn {
             background: var(--surface-card);
@@ -159,8 +143,10 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.62rem;
             font-weight: 600;
-            padding: 7px 11px;
-            white-space: nowrap;
+            padding: 8px 6px;
+            flex: 1 1 30%;
+            text-align: center;
+            line-height: 1.25;
             cursor: pointer;
             transition: all 0.2s ease;
             text-transform: uppercase;
@@ -169,7 +155,6 @@
         .tab-btn.active {
             color: #ffffff;
             border-color: var(--current-accent);
-            box-shadow: 0 0 10px var(--current-glow);
             background: #141414;
         }
 
@@ -275,9 +260,9 @@
         }
 
         .opt-chip.correct-chip {
-            background: rgba(34, 197, 94, 0.12);
-            border-color: #22c55e;
-            color: #86EFAC;
+            background: #10170f;
+            border-color: #2f6b45;
+            color: #a9cdb6;
             font-weight: 700;
         }
 
@@ -412,7 +397,7 @@
 
         /* Commercial Upgrade Banner */
         .promo-affiliate-card {
-            background: linear-gradient(135deg, #121212 0%, #080808 100%);
+            background: #0e0e0e;
             border: 1px solid var(--current-accent);
             border-radius: 6px;
             padding: 12px;
@@ -420,7 +405,6 @@
             flex-direction: column;
             gap: 6px;
             text-align: center;
-            box-shadow: 0 0 12px var(--current-glow);
             margin-top: 6px;
         }
 
