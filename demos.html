@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Quiz Host Demos | Eleventh Floor Games</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+    <link rel="apple-touch-icon" href="/favicon.svg?v=2">
+
+    <!-- Vercel Web Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #0e0e0e;
+            --surface: #141414;
+            --surface-border: #262626;
+            --surface-border-light: #333333;
+            --accent-red: #a81c1c;
+            --accent-red-glow: rgba(168, 28, 28, 0.15);
+            --accent-green: #20a051;
+            --accent-green-glow: rgba(32, 160, 81, 0.2);
+            --text-primary: #f0f0f0;
+            --text-muted: #888888;
+
+            /* Specific Game Genre Colors & Glows */
+            --color-terrace: #84CC16;
+            --color-terrace-glow: rgba(132, 204, 22, 0.25);
+            --color-questions: #D4AF37;
+            --color-questions-glow: rgba(212, 175, 55, 0.25);
+            --color-wordclimb: #3B82F6;
+            --color-wordclimb-glow: rgba(59, 130, 246, 0.25);
+            --color-clusters: #ff751f;
+            --color-clusters-glow: rgba(255, 117, 31, 0.25);
+            --color-cluegram: #cc007e;
+            --color-cluegram-glow: rgba(204, 0, 126, 0.25);
+            --color-parity: #ff9999;
+            --color-parity-glow: rgba(255, 153, 153, 0.25);
+            --color-545: #22c55e; /* 5.45 Special green, matches the game itself */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 12px 16px;
+            overflow-x: hidden;
+            position: relative;
+            opacity: 0;
+            animation: fadeInBody 0.25s ease-in forwards;
+        }
+
+        @keyframes fadeInBody {
+            to { opacity: 1; }
+        }
+
+        /* Tighter Logo Box with Compact Real Estate */
+        .hub-logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .hub-logo-red {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.8rem; /* Scaled down from 4.2rem */
+            font-weight: 400;
+            color: var(--accent-red);
+            line-height: 0.85;
+            letter-spacing: -0.5px;
+            margin-bottom: 2px;
+            animation: logoColorCycle 2.6s ease-in-out forwards;
+        }
+
+        .hub-logo-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem; /* Scaled down from 1.2rem */
+            font-weight: 300;
+            color: #f0f0f0;
+            letter-spacing: 1.5px;
+            margin-bottom: 2px;
+        }
+
+        .hub-logo-sub {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.55rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Compact Building Shaft Graphic */
+        .hub-shaft-graphic {
+            display: flex;
+            flex-direction: column;
+            width: 44px;
+            height: 100px; /* Reduced vertical height */
+            border: 1px solid var(--surface-border);
+            border-radius: 6px;
+            padding: 4px;
+            gap: 2px;
+            background-color: var(--surface);
+            margin-bottom: 12px;
+        }
+
+        .shaft-box {
+            flex: 1;
+            background-color: #181818;
+            border: 1px solid var(--surface-border);
+            border-radius: 2px;
+            animation: sweepMiddle 1.2s ease-in-out forwards;
+        }
+
+        /* Sequential Upward Light Sweep */
+        .hub-shaft-graphic .shaft-box:nth-child(11) { animation: sweepBottomSettle 2.6s ease-in-out forwards; animation-delay: 0.05s; }
+        .hub-shaft-graphic .shaft-box:nth-child(10) { animation-delay: 0.15s; }
+        .hub-shaft-graphic .shaft-box:nth-child(9)  { animation-delay: 0.25s; }
+        .hub-shaft-graphic .shaft-box:nth-child(8)  { animation-delay: 0.35s; }
+        .hub-shaft-graphic .shaft-box:nth-child(7)  { animation-delay: 0.45s; }
+        .hub-shaft-graphic .shaft-box:nth-child(6)  { animation-delay: 0.55s; }
+        .hub-shaft-graphic .shaft-box:nth-child(5)  { animation-delay: 0.65s; }
+        .hub-shaft-graphic .shaft-box:nth-child(4)  { animation-delay: 0.75s; }
+        .hub-shaft-graphic .shaft-box:nth-child(3)  { animation-delay: 0.85s; }
+        .hub-shaft-graphic .shaft-box:nth-child(2)  { animation-delay: 0.95s; }
+        .hub-shaft-graphic .shaft-box:nth-child(1)  { animation: sweepTopGreen 1.6s ease-in-out forwards; animation-delay: 1.05s; }
+
+        @keyframes logoColorCycle {
+            0% { color: var(--accent-red); }
+            16% { color: var(--color-terrace); }
+            32% { color: var(--color-cluegram); }
+            48% { color: var(--color-questions); }
+            64% { color: var(--color-wordclimb); }
+            78% { color: var(--color-clusters); }
+            90% { color: var(--color-parity); }
+            100% { color: var(--accent-red); }
+        }
+
+        @keyframes sweepMiddle {
+            0% { background-color: #181818; border-color: var(--surface-border); }
+            30% { background-color: var(--accent-red); border-color: var(--accent-red); }
+            60%, 100% { background-color: #181818; border-color: var(--surface-border); }
+        }
+
+        @keyframes sweepTopGreen {
+            0% { background-color: #181818; border-color: var(--surface-border); }
+            20%, 70% { background-color: var(--accent-green); border-color: var(--accent-green); }
+            100% { background-color: #181818; border-color: var(--surface-border); }
+        }
+
+        @keyframes sweepBottomSettle {
+            0% { background-color: #181818; border-color: var(--surface-border); }
+            15% { background-color: var(--accent-red); border-color: var(--accent-red); }
+            30%, 80% { background-color: #181818; border-color: var(--surface-border); }
+            95%, 100% { background-color: var(--accent-red); border-color: var(--accent-red); }
+        }
+
+        /* Section Label */
+        .hub-section-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        /* Extra space above the second section label */
+        .hub-section-label.spaced {
+            margin-top: 22px;
+        }
+
+        /* 2-Column Menu Grid */
+        .hub-menu-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+            max-width: 360px;
+        }
+
+        /* Weekly Games / Group Play: tiles stacked, each as wide as the two columns above */
+        .hub-wide-box {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            max-width: 360px;
+        }
+
+        .btn-hub-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            background-color: var(--surface);
+            border: 1px solid var(--surface-border-light);
+            color: var(--text-primary);
+            padding: 14px 8px;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+
+        /* Persistent Soft Color Borders */
+        .btn-hub-option.terrace { border-color: rgba(132, 204, 22, 0.3); }
+        .btn-hub-option.cluegram { border-color: rgba(204, 0, 126, 0.3); }
+        .btn-hub-option.questions { border-color: rgba(212, 175, 55, 0.3); }
+        .btn-hub-option.wordclimb { border-color: rgba(59, 130, 246, 0.3); }
+        .btn-hub-option.clusters { border-color: rgba(255, 117, 31, 0.3); }
+        .btn-hub-option.parity { border-color: rgba(255, 153, 153, 0.3); }
+        .btn-hub-option.special545 { border-color: rgba(34, 197, 94, 0.3); }
+        .btn-hub-option.beast { border-color: rgba(212, 175, 55, 0.3); }
+
+        .btn-hub-option:hover {
+            background-color: #181818;
+            transform: translateY(-2px);
+        }
+
+        .btn-hub-option:active {
+            transform: translateY(0);
+        }
+
+        /* Game Hover Highlights */
+        .btn-hub-option.terrace:hover { border-color: var(--color-terrace); }
+        .btn-hub-option.questions:hover { border-color: var(--color-questions); }
+        .btn-hub-option.wordclimb:hover { border-color: var(--color-wordclimb); }
+        .btn-hub-option.clusters:hover { border-color: var(--color-clusters); }
+        .btn-hub-option.cluegram:hover { border-color: var(--color-cluegram); }
+        .btn-hub-option.parity:hover { border-color: var(--color-parity); }
+        .btn-hub-option.special545:hover { border-color: var(--color-545); }
+        .btn-hub-option.beast:hover { border-color: var(--color-questions); }
+
+        .hub-btn-header {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75rem;
+        }
+
+        .hub-btn-num { font-weight: 700; }
+
+        .hub-btn-num.terrace { color: var(--color-terrace); }
+        .hub-btn-num.questions { color: var(--color-questions); }
+        .hub-btn-num.wordclimb { color: var(--color-wordclimb); }
+        .hub-btn-num.clusters { color: var(--color-clusters); }
+        .hub-btn-num.cluegram { color: var(--color-cluegram); }
+        .hub-btn-num.parity { color: var(--color-parity); }
+        .hub-btn-num.special545 { color: var(--color-545); }
+        .hub-btn-num.beast { color: var(--color-questions); }
+
+        .btn-hub-option.demo:hover { border-color: var(--tile); }
+        .hub-btn-num.demo { color: var(--tile); }
+
+        .hub-btn-floor {
+            color: #f0f0f0;
+            font-weight: 600;
+        }
+
+        .hub-btn-game {
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 0.8px;
+            color: #f0f0f0;
+            line-height: 1.2;
+        }
+
+        /* Small line under the game name on the Weekly Games tiles */
+        .hub-btn-note {
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* "?" pill in the top corner (same pill style as the games) */
+        .about-pill {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: var(--surface);
+            border: 1px solid var(--surface-border-light);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .about-pill:hover {
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        /* About pop-up */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(14, 14, 14, 0.94);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            padding: 16px;
+        }
+
+        .modal-overlay.hidden { display: none !important; }
+
+        .modal-card {
+            background-color: var(--surface);
+            border: 1px solid var(--accent-red);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+            padding: 24px 20px;
+            border-radius: 14px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+
+        .modal-sub-header {
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--accent-red);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .modal-main-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.8rem;
+            color: #f0f0f0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+
+        .modal-body {
+            text-align: left;
+            font-size: 0.78rem;
+            font-weight: 600;
+            line-height: 1.5;
+            color: #d4d4d4;
+            margin-bottom: 14px;
+        }
+
+        .modal-body p { margin-bottom: 10px; }
+
+        .btn-cta {
+            width: 100%;
+            background-color: var(--accent-red);
+            border: 1px solid var(--accent-red);
+            color: #ffffff;
+            padding: 13px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 24px;
+            cursor: pointer;
+        }
+
+        .btn-modal {
+            width: 100%;
+            background-color: #181818;
+            border: 1px solid var(--surface-border-light);
+            color: var(--text-primary);
+            padding: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 24px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        footer {
+            margin-top: 16px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            text-transform: lowercase;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="about-pill" id="btn-about" aria-label="About Eleventh Floor Games">?</button>
+
+    <!-- About pop-up. DRAFT COPY: replace the text below with the real wording. -->
+    <div id="modal-about" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-sub-header">ELEVENTH FLOOR GAMES</div>
+            <div class="modal-main-title">WHO WE ARE</div>
+            <div class="modal-body">
+                <p>These are short example quizzes for streamers, quiz masters and venues. Pick one and try it solo, as the host, or as a group.</p>
+                <p>New demos are added from time to time, and your stats stay on your own device.</p>
+            </div>
+            <button class="btn-cta" id="btn-about-share">Share this page with a friend</button>
+            <button class="btn-modal" id="btn-about-close">Got it</button>
+        </div>
+    </div>
+
+    <div class="hub-logo-box">
+        <h1 class="hub-logo-red">11FL?</h1>
+        <p class="hub-logo-title">Eleventh Floor</p>
+        <p class="hub-logo-sub">QUIZ HOST DEMOS</p>
+    </div>
+
+    <!-- Animated Building Shaft Graphic -->
+    <div class="hub-shaft-graphic">
+        <div class="shaft-box"></div>
+        <div class="shaft-box"></div>
+        <div class="shaft-box"></div>
+        <div class="shaft-box"></div>
+        <div class="shaft-box"></div>
+        <div class="shaft-box"></div>
+        <div class="shaft-box"></div>
+        <div class="shaft-box"></div>
+        <div class="shaft-box"></div>
+        <div class="shaft-box"></div>
+        <div class="shaft-box"></div>
+    </div>
+
+    <div class="hub-section-label">TRY A DEMO</div>
+
+    <div class="hub-wide-box" id="demo-tiles"></div>
+    <script src="demos-list.js?v=demo.1"></script>
+    <script>
+        (function () {
+            var box = document.getElementById('demo-tiles'), list = window.demoList || [];
+            if (!list.length) { box.textContent = 'No demos yet.'; return; }
+            list.forEach(function (d) {
+                var a = document.createElement('a');
+                a.className = 'btn-hub-option demo';
+                a.href = 'demo.html?topic=' + encodeURIComponent(d.id);
+                var h = String(d.accent || '#888888').replace('#', '');
+                a.style.borderColor = 'rgba(' + [0, 2, 4].map(function (i) { return parseInt(h.substr(i, 2), 16); }).join(',') + ',0.3)';
+                a.style.setProperty('--tile', d.accent);
+                var hd = document.createElement('div'); hd.className = 'hub-btn-header';
+                var n = document.createElement('span'); n.className = 'hub-btn-num demo'; n.textContent = 'Demo';
+                var f = document.createElement('span'); f.className = 'hub-btn-floor'; f.textContent = d.mode;
+                hd.appendChild(n); hd.appendChild(f);
+                var g = document.createElement('div'); g.className = 'hub-btn-game'; g.textContent = d.title;
+                var t = document.createElement('div'); t.className = 'hub-btn-note'; t.textContent = d.blurb;
+                a.appendChild(hd); a.appendChild(g); a.appendChild(t); box.appendChild(a);
+            });
+        })();
+    </script>
+
+    <div class="hub-section-label spaced"><a href="index.html" style="color:inherit;text-decoration:none">&larr; Back to the lobby</a></div>
+
+    <footer>
+        powered by 11thfloor.games
+    </footer>
+
+    <script>
+        let lobbyAudioCtx = null;
+
+        function triggerLobbyHaptic(pattern) {
+            if ('vibrate' in navigator) {
+                try {
+                    navigator.vibrate(pattern);
+                } catch (e) {}
+            }
+        }
+
+        function getLobbyAudioContext() {
+            if (!lobbyAudioCtx) {
+                lobbyAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (lobbyAudioCtx.state === 'suspended') {
+                lobbyAudioCtx.resume();
+            }
+            return lobbyAudioCtx;
+        }
+
+        function playLobbyDing() {
+            try {
+                const ctx = getLobbyAudioContext();
+                const now = ctx.currentTime;
+
+                const bufferSize = ctx.sampleRate * 0.012;
+                const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+                const output = noiseBuffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    output[i] = Math.random() * 2 - 1;
+                }
+                const noise = ctx.createBufferSource();
+                noise.buffer = noiseBuffer;
+
+                const noiseFilter = ctx.createBiquadFilter();
+                noiseFilter.type = 'bandpass';
+                noiseFilter.frequency.setValueAtTime(2400, now);
+                noiseFilter.Q.setValueAtTime(4, now);
+
+                const noiseGain = ctx.createGain();
+                noiseGain.gain.setValueAtTime(0.2, now);
+                noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.012);
+
+                noise.connect(noiseFilter);
+                noiseFilter.connect(noiseGain);
+                noiseGain.connect(ctx.destination);
+                noise.start(now);
+
+                const baseFreq = 830;
+                const modes = [
+                    { freq: baseFreq * 1.0, gain: 0.35, decay: 1.6 },
+                    { freq: baseFreq * 1.58, gain: 0.18, decay: 1.1 },
+                    { freq: baseFreq * 2.24, gain: 0.10, decay: 0.7 },
+                    { freq: baseFreq * 2.91, gain: 0.05, decay: 0.4 }
+                ];
+
+                modes.forEach(mode => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(mode.freq, now);
+
+                    gain.gain.setValueAtTime(0, now);
+                    gain.gain.linearRampToValueAtTime(mode.gain, now + 0.003);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, now + mode.decay);
+
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+
+                    osc.start(now);
+                    osc.stop(now + mode.decay);
+                });
+            } catch (e) {
+                console.warn('Lobby audio error:', e);
+            }
+        }
+
+        document.querySelectorAll('.btn-hub-option').forEach(btn => {
+            btn.addEventListener('click', () => {
+                triggerLobbyHaptic(15);
+            });
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const unlock = () => {
+                getLobbyAudioContext();
+                document.removeEventListener('click', unlock);
+                document.removeEventListener('touchstart', unlock);
+            };
+            document.addEventListener('click', unlock);
+            document.addEventListener('touchstart', unlock);
+
+            setTimeout(() => {
+                playLobbyDing();
+            }, 1370);
+        });
+
+        // About pop-up
+        (function () {
+            const modal = document.getElementById('modal-about');
+            const openBtn = document.getElementById('btn-about');
+            const closeBtn = document.getElementById('btn-about-close');
+            const shareBtn = document.getElementById('btn-about-share');
+            if (!modal || !openBtn) return;
+
+            const open = () => { triggerLobbyHaptic(15); modal.classList.remove('hidden'); };
+            const close = () => { modal.classList.add('hidden'); };
+
+            openBtn.addEventListener('click', open);
+            if (closeBtn) closeBtn.addEventListener('click', close);
+            modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+
+            // Call to action: share the lobby link (the share sheet on phones, copy on desktop)
+            if (shareBtn) {
+                shareBtn.addEventListener('click', async () => {
+                    const url = window.location.origin + window.location.pathname;
+                    const data = { title: 'Eleventh Floor Games', text: 'Example quizzes you can run for your stream, pub or event.', url: url };
+                    const label = shareBtn.textContent;
+                    try {
+                        if (navigator.share) {
+                            await navigator.share(data);
+                        } else if (navigator.clipboard && navigator.clipboard.writeText) {
+                            await navigator.clipboard.writeText(url);
+                            shareBtn.textContent = 'Link copied';
+                            setTimeout(() => { shareBtn.textContent = label; }, 2000);
+                        }
+                    } catch (e) { /* share sheet dismissed */ }
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
