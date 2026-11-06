@@ -1,0 +1,86 @@
+{
+  "setId": 50,
+  "date": "2026-11-06",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently 4th from bottom spot in the Premier League table today, Friday, 6th Nov 2026?",
+      "options": ["Crystal Palace", "Coventry City", "Fulham", "Manchester United"],
+      "answer": "Manchester United",
+      "clue": "This famous North West side plays their home fixtures at Old Trafford.",
+      "funFact": "They are 20-time champions of English football and play at the largest club stadium in the UK."
+    },
+    {
+      "id": 2,
+      "question": "Which England and Manchester City player celebrates his birthday today, 6th Nov?",
+      "options": ["Phil Foden", "Nico O’Reilly", "Marc Guéhi", "Elliot Anderson"],
+      "answer": "Elliot Anderson",
+      "clue": "A talented midfielder born in Whitley Bay who represents the England national team.",
+      "funFact": "He joined Manchester City following standout spells with Newcastle United and Nottingham Forest."
+    },
+    {
+      "id": 3,
+      "question": "Bournemouth continued their winning ways in Europe last night (Thursday), winning 1-3 away; who did they beat?",
+      "options": ["Benfica", "Lyon", "Celta Vigo", "Sparta Prague"],
+      "answer": "Sparta Prague",
+      "clue": "A famous Czech capital club that plays their home matches at epet ARENA.",
+      "funFact": "The Cherries produced a stellar away performance in the European competition to secure all three points."
+    },
+    {
+      "id": 4,
+      "question": "Dynamo Zagreb beat which English team last night 0-2?",
+      "options": ["Crystal Palace", "Chelsea", "Sunderland"],
+      "answer": "Sunderland",
+      "clue": "This Wearside club is famously nicknamed \"The Black Cats\".",
+      "funFact": "The Croatian side put on a disciplined defensive display away from home to claim a famous European victory."
+    },
+    {
+      "id": 5,
+      "question": "Brighton also won last night 0-1 away in the UEFA Conference League; who did they beat?",
+      "options": ["Monaco", "Getafe"],
+      "answer": "Getafe",
+      "clue": "A La Liga club based just outside of Madrid.",
+      "funFact": "The Seagulls clinched a hard-fought clean-sheet victory on Spanish soil."
+    },
+    {
+      "id": 6,
+      "question": "Who is Brighton’s manager?",
+      "options": ["Leipzig", "Porto", "AEK Athens", "Fabian Hürzeler"],
+      "answer": "Fabian Hürzeler",
+      "clue": "A tactician who moved to the south coast of England after managing St. Pauli in Germany.",
+      "funFact": "He made headlines as one of the youngest permanent managers in Premier League history."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number does birthday boy Elliot Anderson wear for Manchester City?",
+      "options": ["7", "4", "6", "5"],
+      "answer": "5",
+      "clue": "An odd single-digit number right in the middle of four and six.",
+      "funFact": "This single-digit number is traditionally associated with defensive midfielders or central defenders."
+    },
+    {
+      "id": 8,
+      "question": "What is the name of Coventry City’s stadium?",
+      "options": ["Amex Stadium", "MKM Stadium", "Gtech Community Stadium", "CBS Arena"],
+      "answer": "CBS Arena",
+      "clue": "Formerly known as the Ricoh Arena before securing a corporate naming partnership.",
+      "funFact": "The multi-purpose venue has hosted major sporting events and major music concerts alike."
+    },
+    {
+      "id": 9,
+      "question": "How many Premier League titles did Mikel Arteta win as a player?",
+      "options": ["1", "2", "3", "0"],
+      "answer": "0",
+      "clue": "The lowest possible whole number representing zero triumphs.",
+      "funFact": "Despite a stellar career representing clubs like Arsenal, Everton, and Real Sociedad, a Premier League winners' medal eluded him as a player."
+    },
+    {
+      "id": 10,
+      "question": "Which Finnish defender made 318 Premier League appearances for Liverpool between 1999 and 2009, winning two FA Cups and the UEFA Champions League during his ten seasons at Anfield?",
+      "options": ["Stephane Henchoz", "Daniel Agger", "Martin Škrtel", "Sami Hyypiä"],
+      "answer": "Sami Hyypiä",
+      "clue": "A towering Finnish center-back who formed a legendary defensive partnership at Anfield.",
+      "funFact": "Sami Hyypiä spent ten seasons at Liverpool, making 318 Premier League appearances and captaining the side prior to Steven Gerrard."
+    }
+  ]
+}
