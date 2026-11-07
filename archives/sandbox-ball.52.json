@@ -1,0 +1,86 @@
+{
+  "setId": 51,
+  "date": "2026-11-07",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently bottom of the Premier League table today, Saturday, 7th Nov 2026?",
+      "options": ["Crystal Palace", "Coventry City", "Fulham", "Sunderland"],
+      "answer": "Sunderland",
+      "clue": "This Wearside club earned promotion back to the top flight after winning the Championship play-offs.",
+      "funFact": "Famously nicknamed \"The Black Cats\", they play their home matches at the Stadium of Light."
+    },
+    {
+      "id": 2,
+      "question": "Which ex-England, Leeds, and Manchester United player celebrates his birthday today, 7th Nov?",
+      "options": ["Franz Ferdinand", "Rio Ferdinand"],
+      "answer": "Rio Ferdinand",
+      "clue": "A stylish, ball-playing central defender who captained England and starred for West Ham before his blockbuster move to Manchester United.",
+      "funFact": "He won six Premier League titles and a Champions League trophy during a legendary career at Old Trafford."
+    },
+    {
+      "id": 3,
+      "question": "Everton beat Coventry last night (Friday) in the EPL. What was the score?",
+      "options": ["3-0", "3-2", "2-1", "3-1"],
+      "answer": "3-1",
+      "clue": "A comfortable two-goal margin victory where the home side netted three times.",
+      "funFact": "The Toffees put on a dominant display under the lights to secure all three points."
+    },
+    {
+      "id": 4,
+      "question": "And in that match, which Everton player scored twice?",
+      "options": ["Jake O'Brien", "Brennan Johnson", "Thierno Barry"],
+      "answer": "Thierno Barry",
+      "clue": "A towering French forward whose first name starts with the letter T.",
+      "funFact": "He has proven to be a prolific addition to Everton's attack since arriving on Merseyside."
+    },
+    {
+      "id": 5,
+      "question": "Who is Everton’s manager?",
+      "options": ["Carlo Ancelotti", "Rafa Benitez", "David Moyes"],
+      "answer": "David Moyes",
+      "clue": "A vastly experienced Scottish tactician who previously spent over a decade managing the Toffees.",
+      "funFact": "He returned to Goodison Park / the club for a high-profile second managerial spell following years of Premier League experience."
+    },
+    {
+      "id": 6,
+      "question": "Which manager led Blackburn Rovers to their historic Premier League title triumph in the 1994–95 season, ending Manchester United's early dominance?",
+      "options": ["Ray Harford", "Roy Hodgson", "Howard Kendall", "Kenny Dalglish"],
+      "answer": "Kenny Dalglish",
+      "clue": "A Liverpool legend affectionately known as \"King Kenny\" who masterminded Rovers' famous championship win.",
+      "funFact": "Kenny Dalglish managed Blackburn Rovers to the top-flight crown in 1994–95, becoming only the second manager to win the English top-flight title with two different clubs."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number did birthday boy Rio Ferdinand wear for Manchester United after his first year there?",
+      "options": ["3", "4", "5"],
+      "answer": "5",
+      "clue": "An odd single-digit number traditionally assigned to a first-choice central defender.",
+      "funFact": "He wore this iconic number for the vast majority of his glittering decade-long career at Old Trafford."
+    },
+    {
+      "id": 8,
+      "question": "What is the name of Sunderland’s stadium?",
+      "options": ["Amex Stadium", "MKM Stadium", "Gtech Community Stadium", "Stadium of Light"],
+      "answer": "Stadium of Light",
+      "clue": "A famous Wearside arena whose name literally translates to a glowing stadium title.",
+      "funFact": "Opened in 1997, it replaced Roker Park as the historic home of the Black Cats and boasts a massive capacity in the North East."
+    },
+    {
+      "id": 9,
+      "question": "How many Premier League titles did Rio Ferdinand win as a player?",
+      "options": ["4", "5", "3", "6"],
+      "answer": "6",
+      "clue": "An even single-digit number higher than 5.",
+      "funFact": "He formed one of the greatest central defensive partnerships in Premier League history alongside Nemanja Vidić under Sir Alex Ferguson."
+    },
+    {
+      "id": 10,
+      "question": "Which French manager took charge of Liverpool in 1998—initially as joint-manager alongside Roy Evans—and led the club to a historic cup treble in the 2000–01 season?",
+      "options": ["Alain Perrin", "Jean Tigana", "Jacques Santini", "Gérard Houllier"],
+      "answer": "Gérard Houllier",
+      "clue": "A respected French tactician who famously delivered the UEFA Cup, FA Cup, and League Cup in one unforgettable campaign.",
+      "funFact": "Gérard Houllier spent six seasons as Liverpool manager between 1998 and 2004, guiding the Reds to 2nd and 3rd-place Premier League finishes alongside five major trophies."
+    }
+  ]
+}
