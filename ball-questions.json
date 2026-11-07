@@ -48,4 +48,39 @@
       "options": ["Keith Andrews", "Pierre Sage", "Daniel Farke", "Oliver Glasner"],
       "answer": "Oliver Glasner",
       "clue": "An Austrian tactical manager who won the UEFA Europa League in 2022.",
-      "funFact": "He took over the reins at
+      "funFact": "He took over the reins at the City Ground after previously managing Crystal Palace and Eintracht Frankfurt."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number did birthday boy Joe Cole wear for the majority of his career at Chelsea?",
+      "options": ["7", "9", "8", "10"],
+      "answer": "10",
+      "clue": "The classic double-digit number traditionally reserved for creative attacking midfielders.",
+      "funFact": "He wore this iconic playmaker jersey during his most successful years under managers like José Mourinho and Carlo Ancelotti."
+    },
+    {
+      "id": 8,
+      "question": "Joe Cole played under two managers during his 7 years at Chelsea: José Mourinho and which other?",
+      "options": ["Avram Grant", "André Villas-Boas", "Carlo Ancelotti"],
+      "answer": "Carlo Ancelotti",
+      "clue": "A legendary Italian tactician famous for his calm demeanor and eyebrow raise.",
+      "funFact": "Under this Italian manager, Cole helped Chelsea secure a historic Premier League and FA Cup Double in 2009–10."
+    },
+    {
+      "id": 9,
+      "question": "How many Premier League titles did birthday boy Joe Cole win as a player?",
+      "options": ["1", "2", "4", "3"],
+      "answer": "3",
+      "clue": "An odd single-digit number equal to the number of points for a regulation match win.",
+      "funFact": "He won all three of his Premier League winner's medals during his standout spell in West London with Chelsea."
+    },
+    {
+      "id": 10,
+      "question": "Which player holds the Premier League record for scoring in the highest number of consecutive matches, netting in 11 games in a row?",
+      "options": ["Ruud van Nistelrooy", "Erling Haaland", "Daniel Sturridge", "Jamie Vardy"],
+      "answer": "Jamie Vardy",
+      "clue": "Leicester City's lethal talisman.",
+      "funFact": "Vardy set the milestone during Leicester City's miraculous 2015–16 title-winning season, breaking Ruud van Nistelrooy's previous mark of 10."
+    }
+  ]
+}
