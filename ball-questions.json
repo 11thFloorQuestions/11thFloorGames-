@@ -76,4 +76,11 @@
     },
     {
       "id": 10,
-      "question": "Who scored the very first Premier League hat
+      "question": "Who scored the very first Premier League hat-trick after the top flight rebranded in August 1992?",
+      "options": ["Teddy Sheringham", "Les Ferdinand", "Alan Shearer", "Eric Cantona"],
+      "answer": "Eric Cantona",
+      "clue": "A legendary French talisman who later became an icon at Manchester United.",
+      "funFact": "Eric Cantona scored the Premier League's first-ever hat-trick for Leeds United in a 5–0 win over Tottenham in August 1992."
+    }
+  ]
+}
