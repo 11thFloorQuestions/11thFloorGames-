@@ -1,86 +1,86 @@
 {
-  "setId": 51,
-  "date": "2026-11-07",
+  "setId": 52,
+  "date": "2026-11-08",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently bottom of the Premier League table today, Saturday, 7th Nov 2026?",
-      "options": ["Crystal Palace", "Coventry City", "Fulham", "Sunderland"],
-      "answer": "Sunderland",
-      "clue": "This Wearside club earned promotion back to the top flight after winning the Championship play-offs.",
-      "funFact": "Famously nicknamed \"The Black Cats\", they play their home matches at the Stadium of Light."
+      "question": "Who is currently top of the Premier League table today, Sunday, 8th Nov 2026?",
+      "options": ["Manchester City", "Brighton", "Chelsea", "Arsenal"],
+      "answer": "Arsenal",
+      "clue": "This North London club plays its home matches at the Emirates Stadium.",
+      "funFact": "They hold the summit of the table after a stellar start to the 2026–27 campaign."
     },
     {
       "id": 2,
-      "question": "Which ex-England, Leeds, and Manchester United player celebrates his birthday today, 7th Nov?",
-      "options": ["Franz Ferdinand", "Rio Ferdinand"],
-      "answer": "Rio Ferdinand",
-      "clue": "A stylish, ball-playing central defender who captained England and starred for West Ham before his blockbuster move to Manchester United.",
-      "funFact": "He won six Premier League titles and a Champions League trophy during a legendary career at Old Trafford."
+      "question": "Which ex-England, West Ham, Chelsea, and Liverpool player celebrates his birthday today, 8th Nov?",
+      "options": ["Rio Ferdinand", "Jamie Redknapp", "John Terry", "Joe Cole"],
+      "answer": "Joe Cole",
+      "clue": "A supremely skillful attacking midfielder renowned for his flair and trickery on the ball.",
+      "funFact": "He won three Premier League titles and earned 56 caps for the England national team during his illustrious career."
     },
     {
       "id": 3,
-      "question": "Everton beat Coventry last night (Friday) in the EPL. What was the score?",
-      "options": ["3-0", "3-2", "2-1", "3-1"],
-      "answer": "3-1",
-      "clue": "A comfortable two-goal margin victory where the home side netted three times.",
-      "funFact": "The Toffees put on a dominant display under the lights to secure all three points."
+      "question": "Manchester City lost 3-1 yesterday (Saturday); who to?",
+      "options": ["Ipswich Town", "Liverpool", "Leeds United", "Nottingham Forest"],
+      "answer": "Nottingham Forest",
+      "clue": "A historic two-time European Cup-winning club wearing red shirts.",
+      "funFact": "Nottingham Forest pulled off a massive shock victory at the City Ground to claim all three points."
     },
     {
       "id": 4,
-      "question": "And in that match, which Everton player scored twice?",
-      "options": ["Jake O'Brien", "Brennan Johnson", "Thierno Barry"],
-      "answer": "Thierno Barry",
-      "clue": "A towering French forward whose first name starts with the letter T.",
-      "funFact": "He has proven to be a prolific addition to Everton's attack since arriving on Merseyside."
+      "question": "Arsenal beat Hull City yesterday (Saturday); what was the score?",
+      "options": ["2-0", "3-0", "2-1", "1-0"],
+      "answer": "1-0",
+      "clue": "A narrow clean-sheet win by a single-goal margin.",
+      "funFact": "A tight, hard-fought contest at the Emirates where a single goal was enough to secure victory."
     },
     {
       "id": 5,
-      "question": "Who is Everton’s manager?",
-      "options": ["Carlo Ancelotti", "Rafa Benitez", "David Moyes"],
-      "answer": "David Moyes",
-      "clue": "A vastly experienced Scottish tactician who previously spent over a decade managing the Toffees.",
-      "funFact": "He returned to Goodison Park / the club for a high-profile second managerial spell following years of Premier League experience."
+      "question": "Who scored for Arsenal in that match?",
+      "options": ["Saka", "Calafiori", "Ødegaard"],
+      "answer": "Ødegaard",
+      "clue": "The Norwegian creative midfielder who wears the captain's armband for the Gunners.",
+      "funFact": "The inspirational club captain delivered a decisive moment to break down Hull City's stubborn defense."
     },
     {
       "id": 6,
-      "question": "Which manager led Blackburn Rovers to their historic Premier League title triumph in the 1994–95 season, ending Manchester United's early dominance?",
-      "options": ["Ray Harford", "Roy Hodgson", "Howard Kendall", "Kenny Dalglish"],
-      "answer": "Kenny Dalglish",
-      "clue": "A Liverpool legend affectionately known as \"King Kenny\" who masterminded Rovers' famous championship win.",
-      "funFact": "Kenny Dalglish managed Blackburn Rovers to the top-flight crown in 1994–95, becoming only the second manager to win the English top-flight title with two different clubs."
+      "question": "Who is Nottingham Forest’s manager?",
+      "options": ["Keith Andrews", "Pierre Sage", "Daniel Farke", "Oliver Glasner"],
+      "answer": "Oliver Glasner",
+      "clue": "An Austrian tactical manager who won the UEFA Europa League in 2022.",
+      "funFact": "He took over the reins at the City Ground after previously managing Crystal Palace and Eintracht Frankfurt."
     },
     {
       "id": 7,
-      "question": "What shirt number did birthday boy Rio Ferdinand wear for Manchester United after his first year there?",
-      "options": ["3", "4", "5"],
-      "answer": "5",
-      "clue": "An odd single-digit number traditionally assigned to a first-choice central defender.",
-      "funFact": "He wore this iconic number for the vast majority of his glittering decade-long career at Old Trafford."
+      "question": "What shirt number did birthday boy Joe Cole wear for the majority of his career at Chelsea?",
+      "options": ["7", "9", "8", "10"],
+      "answer": "10",
+      "clue": "The classic double-digit number traditionally reserved for creative attacking midfielders.",
+      "funFact": "He wore this iconic playmaker jersey during his most successful years under managers like José Mourinho and Carlo Ancelotti."
     },
     {
       "id": 8,
-      "question": "What is the name of Sunderland’s stadium?",
-      "options": ["Amex Stadium", "MKM Stadium", "Gtech Community Stadium", "Stadium of Light"],
-      "answer": "Stadium of Light",
-      "clue": "A famous Wearside arena whose name literally translates to a glowing stadium title.",
-      "funFact": "Opened in 1997, it replaced Roker Park as the historic home of the Black Cats and boasts a massive capacity in the North East."
+      "question": "Joe Cole played under two managers during his 7 years at Chelsea: José Mourinho and which other?",
+      "options": ["Avram Grant", "André Villas-Boas", "Carlo Ancelotti"],
+      "answer": "Carlo Ancelotti",
+      "clue": "A legendary Italian tactician famous for his calm demeanor and eyebrow raise.",
+      "funFact": "Under this Italian manager, Cole helped Chelsea secure a historic Premier League and FA Cup Double in 2009–10."
     },
     {
       "id": 9,
-      "question": "How many Premier League titles did Rio Ferdinand win as a player?",
-      "options": ["4", "5", "3", "6"],
-      "answer": "6",
-      "clue": "An even single-digit number higher than 5.",
-      "funFact": "He formed one of the greatest central defensive partnerships in Premier League history alongside Nemanja Vidić under Sir Alex Ferguson."
+      "question": "How many Premier League titles did birthday boy Joe Cole win as a player?",
+      "options": ["1", "2", "4", "3"],
+      "answer": "3",
+      "clue": "An odd single-digit number equal to the number of points for a regulation match win.",
+      "funFact": "He won all three of his Premier League winner's medals during his standout spell in West London with Chelsea."
     },
     {
       "id": 10,
-      "question": "Which French manager took charge of Liverpool in 1998—initially as joint-manager alongside Roy Evans—and led the club to a historic cup treble in the 2000–01 season?",
-      "options": ["Alain Perrin", "Jean Tigana", "Jacques Santini", "Gérard Houllier"],
-      "answer": "Gérard Houllier",
-      "clue": "A respected French tactician who famously delivered the UEFA Cup, FA Cup, and League Cup in one unforgettable campaign.",
-      "funFact": "Gérard Houllier spent six seasons as Liverpool manager between 1998 and 2004, guiding the Reds to 2nd and 3rd-place Premier League finishes alongside five major trophies."
+      "question": "Which player holds the Premier League record for scoring in the highest number of consecutive matches, netting in 11 games in a row?",
+      "options": ["Ruud van Nistelrooy", "Erling Haaland", "Daniel Sturridge", "Jamie Vardy"],
+      "answer": "Jamie Vardy",
+      "clue": "Leicester City's lethal talisman.",
+      "funFact": "Vardy set the milestone during Leicester City's miraculous 2015–16 title-winning season, breaking Ruud van Nistelrooy's previous mark of 10."
     }
   ]
 }
