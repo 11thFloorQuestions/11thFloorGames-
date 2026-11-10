@@ -1,86 +1,62 @@
 {
-  "setId": 53,
-  "date": "2026-11-09",
+  "setId": 54,
+  "date": "2026-11-10",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently top of the Premier League table today, Monday, 9th Nov 2026?",
-      "options": ["Manchester City", "Brighton", "Chelsea", "Arsenal"],
-      "answer": "Arsenal",
-      "clue": "This North London club plays its home matches at the Emirates Stadium.",
-      "funFact": "They hold the summit of the table after a stellar start to the 2026–27 campaign."
+      "question": "Who is currently bottom of the Premier League table today, Tuesday, 10th Nov 2026?",
+      "options": ["Sunderland", "Manchester United", "Crystal Palace"],
+      "answer": "Crystal Palace",
+      "clue": "Known as \"The Eagles,\" they are fighting to climb away from the relegation zone.",
+      "funFact": "This South London club plays its home matches at Selhurst Park."
     },
     {
       "id": 2,
-      "question": "Manchester United managed a draw yesterday (Sunday) against which Midlands club?",
-      "options": ["Coventry City", "Aston Villa"],
-      "answer": "Aston Villa",
-      "clue": "This club plays their home matches at Villa Park in Birmingham.",
-      "funFact": "The two sides played out an absolute thriller at Old Trafford that produced eight goals."
+      "question": "Arsenal is top of the Premier League table going into the international break; how many points do they have?",
+      "options": ["24", "25", "26", "27"],
+      "answer": "27",
+      "clue": "An even number in the high twenties representing nine wins from ten matches.",
+      "funFact": "They hold the summit of the table after a stellar start to the 2026–27 campaign."
     },
     {
       "id": 3,
-      "question": "What was the score in that match?",
-      "options": ["2-2", "3-3", "4-4"],
-      "answer": "4-4",
-      "clue": "An exceptionally high-scoring draw with four goals apiece.",
-      "funFact": "Joshua Zirkzee and Patrick Dorgu scored late in stoppage time to rescue a dramatic point for the hosts."
+      "question": "Ivorian winger Wilfried Zaha celebrates his birthday today; which team did he play for during the majority of his career?",
+      "options": ["Brentford", "Tottenham Hotspur", "Millwall", "Crystal Palace"],
+      "answer": "Crystal Palace",
+      "clue": "This South London club plays at Selhurst Park.",
+      "funFact": "He became a legendary talisman for the Eagles across two separate spells, making hundreds of appearances for the club."
     },
     {
       "id": 4,
-      "question": "Brighton beat Brentford yesterday (Sunday); what was the score?",
-      "options": ["2-0", "3-0", "2-1", "1-0"],
-      "answer": "2-0",
-      "clue": "A clean-sheet victory for the Seagulls by a two-goal margin.",
-      "funFact": "Diego Gómez and Pascal Groß both got on the scoresheet to secure a comfortable home win at the Amex Stadium."
+      "question": "What is the name of the football ground where Leeds United play?",
+      "options": ["Loftus Road", "Highfield Road", "Portman Road", "Elland Road"],
+      "answer": "Elland Road",
+      "clue": "A famous West Yorkshire stadium featuring stands named after club legends like John Charles and Don Revie.",
+      "funFact": "It has served as the historic home of Leeds United since 1919."
     },
     {
       "id": 5,
-      "question": "What league position are Brighton currently sitting in?",
-      "options": ["3rd", "4th", "5th", "2nd"],
-      "answer": "2nd",
-      "clue": "The position immediately behind the league leaders.",
-      "funFact": "They sit near the very top of the table after a brilliant run of form under Fabian Hürzeler."
+      "question": "What is Tottenham Hotspur's nickname?",
+      "options": ["The Cherries", "The Old Firm", "The Lilywhites"],
+      "answer": "The Lilywhites",
+      "clue": "A nickname reflecting the club's traditional primary kit color.",
+      "funFact": "The club wears a famous white shirt and navy blue shorts combination at home."
     },
     {
       "id": 6,
-      "question": "Liverpool won 1-3 away against which team yesterday (Sunday)?",
-      "options": ["Ipswich Town", "Chelsea", "Bournemouth", "Crystal Palace"],
-      "answer": "Crystal Palace",
-      "clue": "This South London club plays their home games at Selhurst Park.",
-      "funFact": "Alexis Mac Allister, Florian Wirtz, and Alexander Isak all found the net to secure the three points at Selhurst Park."
+      "question": "Manchester United have won 20 league titles in their history; which other team also has 20 wins?",
+      "options": ["Manchester City", "Arsenal", "Aston Villa", "Liverpool"],
+      "answer": "Liverpool",
+      "clue": "This Merseyside club plays their home matches at Anfield and wears famous red shirts.",
+      "funFact": "These two English football giants share one of the fiercest rivalries in the sport, contesting the famous North West Derby."
     },
     {
       "id": 7,
-      "question": "What shirt number did John Terry wear during his career at Chelsea?",
-      "options": ["2", "4", "22", "26"],
-      "answer": "26",
-      "clue": "A double-digit number that is the sum of 13 and 13.",
-      "funFact": "He made this squad number iconic as he captained the Blues to numerous Premier League and domestic trophies."
+      "question": "What shirt number did birthday boy Wilfried Zaha wear for the majority of his career at Crystal Palace?",
+      "options": ["8", "9", "10", "11"],
+      "answer": "11",
+      "clue": "A classic double-digit number representing a pair of matching parallel digits.",
+      "funFact": "He wore this squad number while terrorizing Premier League full-backs down the wing."
     },
     {
       "id": 8,
-      "question": "How many managers did John Terry play for during his senior career at Chelsea?",
-      "options": ["7", "8", "9", "13"],
-      "answer": "13",
-      "clue": "An unlucky double-digit number equal to one dozen plus one.",
-      "funFact": "Throughout his long tenure in West London, he experienced a wide array of managerial appointments from temporary bosses to club legends."
-    },
-    {
-      "id": 9,
-      "question": "Who is Aston Villa's top scorer so far this season?",
-      "options": ["John McGinn", "Ross Barkley", "Nicolas Jackson"],
-      "answer": "Nicolas Jackson",
-      "clue": "A dynamic forward whose first name starts with N and surname with J.",
-      "funFact": "He has provided a potent attacking threat for Unai Emery's side since arriving at Villa Park."
-    },
-    {
-      "id": 10,
-      "question": "Who scored the very first Premier League hat-trick after the top flight rebranded in August 1992?",
-      "options": ["Teddy Sheringham", "Les Ferdinand", "Alan Shearer", "Eric Cantona"],
-      "answer": "Eric Cantona",
-      "clue": "A legendary French talisman who later became an icon at Manchester United.",
-      "funFact": "Eric Cantona scored the Premier League's first-ever hat-trick for Leeds United in a 5–0 win over Tottenham in August 1992."
-    }
-  ]
-}
