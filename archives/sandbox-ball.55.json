@@ -1,0 +1,86 @@
+{
+  "setId": 54,
+  "date": "2026-11-10",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently bottom of the Premier League table today, Tuesday, 10th Nov 2026?",
+      "options": ["Sunderland", "Manchester United", "Crystal Palace"],
+      "answer": "Crystal Palace",
+      "clue": "Known as \"The Eagles,\" they are fighting to climb away from the relegation zone.",
+      "funFact": "This South London club plays its home matches at Selhurst Park."
+    },
+    {
+      "id": 2,
+      "question": "Arsenal is top of the Premier League table going into the international break; how many points do they have?",
+      "options": ["24", "25", "26", "27"],
+      "answer": "27",
+      "clue": "An even number in the high twenties representing nine wins from ten matches.",
+      "funFact": "They hold the summit of the table after a stellar start to the 2026–27 campaign."
+    },
+    {
+      "id": 3,
+      "question": "Ivorian winger Wilfried Zaha celebrates his birthday today; which team did he play for during the majority of his career?",
+      "options": ["Brentford", "Tottenham Hotspur", "Millwall", "Crystal Palace"],
+      "answer": "Crystal Palace",
+      "clue": "This South London club plays at Selhurst Park.",
+      "funFact": "He became a legendary talisman for the Eagles across two separate spells, making hundreds of appearances for the club."
+    },
+    {
+      "id": 4,
+      "question": "What is the name of the football ground where Leeds United play?",
+      "options": ["Loftus Road", "Highfield Road", "Portman Road", "Elland Road"],
+      "answer": "Elland Road",
+      "clue": "A famous West Yorkshire stadium featuring stands named after club legends like John Charles and Don Revie.",
+      "funFact": "It has served as the historic home of Leeds United since 1919."
+    },
+    {
+      "id": 5,
+      "question": "What is Tottenham Hotspur's nickname?",
+      "options": ["The Cherries", "The Old Firm", "The Lilywhites"],
+      "answer": "The Lilywhites",
+      "clue": "A nickname reflecting the club's traditional primary kit color.",
+      "funFact": "The club wears a famous white shirt and navy blue shorts combination at home."
+    },
+    {
+      "id": 6,
+      "question": "Manchester United have won 20 league titles in their history; which other team also has 20 wins?",
+      "options": ["Manchester City", "Arsenal", "Aston Villa", "Liverpool"],
+      "answer": "Liverpool",
+      "clue": "This Merseyside club plays their home matches at Anfield and wears famous red shirts.",
+      "funFact": "These two English football giants share one of the fiercest rivalries in the sport, contesting the famous North West Derby."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number did birthday boy Wilfried Zaha wear for the majority of his career at Crystal Palace?",
+      "options": ["8", "9", "10", "11"],
+      "answer": "11",
+      "clue": "A classic double-digit number representing a pair of matching parallel digits.",
+      "funFact": "He wore this squad number while terrorizing Premier League full-backs down the wing."
+    },
+    {
+      "id": 8,
+      "question": "Which Premier League team has had the most managers in the last 5 years (8)?",
+      "options": ["Manchester United", "Tottenham Hotspur", "Chelsea"],
+      "answer": "Chelsea",
+      "clue": "This Stamford Bridge club plays in royal blue.",
+      "funFact": "The West London club has seen a high turnover in the dugout under various ownership eras."
+    },
+    {
+      "id": 9,
+      "question": "Who is Liverpool's top scorer so far this season?",
+      "options": ["Alexis Mac Allister", "Dominik Szoboszlai", "Alexander Isak"],
+      "answer": "Alexander Isak",
+      "clue": "A talented Swedish striker whose name starts with A and I.",
+      "funFact": "He has provided a lethal finishing touch in the final third for Arne Slot's side."
+    },
+    {
+      "id": 10,
+      "question": "Who holds the record for the most clean sheets in Premier League history?",
+      "options": ["Edwin van der Sar", "David Seaman", "Pepe Reina", "Petr Čech"],
+      "answer": "Petr Čech",
+      "clue": "Famous for wearing a protective headguard during his career.",
+      "funFact": "Čech kept 202 Premier League clean sheets across his spells at Chelsea (162) and Arsenal (40)."
+    }
+  ]
+}
