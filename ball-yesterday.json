@@ -1,86 +1,86 @@
 {
-  "setId": 54,
-  "date": "2026-11-10",
+  "setId": 55,
+  "date": "2026-11-11",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently bottom of the Premier League table today, Tuesday, 10th Nov 2026?",
-      "options": ["Sunderland", "Manchester United", "Crystal Palace"],
-      "answer": "Crystal Palace",
-      "clue": "Known as \"The Eagles,\" they are fighting to climb away from the relegation zone.",
-      "funFact": "This South London club plays its home matches at Selhurst Park."
+      "question": "Who is currently 3rd from bottom of the Premier League table today, Wednesday, 11th Nov 2026?",
+      "options": ["Sunderland", "Crystal Palace", "Manchester United"],
+      "answer": "Manchester United",
+      "clue": "This famous North West side plays their home fixtures at Old Trafford.",
+      "funFact": "They are 20-time champions of English football and play at the largest club stadium in the UK."
     },
     {
       "id": 2,
-      "question": "Arsenal is top of the Premier League table going into the international break; how many points do they have?",
-      "options": ["24", "25", "26", "27"],
-      "answer": "27",
-      "clue": "An even number in the high twenties representing nine wins from ten matches.",
-      "funFact": "They hold the summit of the table after a stellar start to the 2026–27 campaign."
+      "question": "Crystal Palace are bottom of the league; how many points do they have?",
+      "options": ["6", "8", "9", "7"],
+      "answer": "7",
+      "clue": "A single-digit point tally equal to the lucky number often associated with 7-Eleven.",
+      "funFact": "The Eagles are fighting hard under their manager to put together a run of form and escape the relegation zone."
     },
     {
       "id": 3,
-      "question": "Ivorian winger Wilfried Zaha celebrates his birthday today; which team did he play for during the majority of his career?",
-      "options": ["Brentford", "Tottenham Hotspur", "Millwall", "Crystal Palace"],
-      "answer": "Crystal Palace",
-      "clue": "This South London club plays at Selhurst Park.",
-      "funFact": "He became a legendary talisman for the Eagles across two separate spells, making hundreds of appearances for the club."
+      "question": "Former Liverpool midfielder Georginio Wijnaldum celebrates his birthday today, 11th November; which other Premier League team did he play for?",
+      "options": ["Aston Villa", "Chelsea", "Arsenal", "Newcastle United"],
+      "answer": "Newcastle United",
+      "clue": "This North East club plays its home matches at St. James' Park.",
+      "funFact": "Before moving to Anfield and winning the Champions League and Premier League, he spent the 2015–16 season on Tyneside."
     },
     {
       "id": 4,
-      "question": "What is the name of the football ground where Leeds United play?",
-      "options": ["Loftus Road", "Highfield Road", "Portman Road", "Elland Road"],
-      "answer": "Elland Road",
-      "clue": "A famous West Yorkshire stadium featuring stands named after club legends like John Charles and Don Revie.",
-      "funFact": "It has served as the historic home of Leeds United since 1919."
+      "question": "What is the name of Newcastle United’s ground?",
+      "options": ["St. John’s Park", "Regent's Park", "Turf Moor", "St. James' Park"],
+      "answer": "St. James' Park",
+      "clue": "A famous Tyneside stadium named after a Christian saint.",
+      "funFact": "It has been the iconic home of Newcastle United since 1892 and boasts a massive capacity in the North East."
     },
     {
       "id": 5,
-      "question": "What is Tottenham Hotspur's nickname?",
-      "options": ["The Cherries", "The Old Firm", "The Lilywhites"],
-      "answer": "The Lilywhites",
-      "clue": "A nickname reflecting the club's traditional primary kit color.",
-      "funFact": "The club wears a famous white shirt and navy blue shorts combination at home."
+      "question": "What is Newcastle United’s nickname?",
+      "options": ["The Canaries", "The Eagles", "The Pigeons", "The Magpies"],
+      "answer": "The Magpies",
+      "clue": "A nickname derived from a common black-and-white bird species.",
+      "funFact": "The club's traditional black-and-white striped home kit mirrors the distinctive coloring of this bird."
     },
     {
       "id": 6,
-      "question": "Manchester United have won 20 league titles in their history; which other team also has 20 wins?",
-      "options": ["Manchester City", "Arsenal", "Aston Villa", "Liverpool"],
-      "answer": "Liverpool",
-      "clue": "This Merseyside club plays their home matches at Anfield and wears famous red shirts.",
-      "funFact": "These two English football giants share one of the fiercest rivalries in the sport, contesting the famous North West Derby."
+      "question": "Which football team did Peter Crouch end his professional football career at?",
+      "options": ["Liverpool", "Tottenham Hotspur", "Burnley"],
+      "answer": "Burnley",
+      "clue": "A Lancashire club that plays its home matches at Turf Moor.",
+      "funFact": "He finished his storied Premier League career with the Clarets before announcing his retirement in 2019."
     },
     {
       "id": 7,
-      "question": "What shirt number did birthday boy Wilfried Zaha wear for the majority of his career at Crystal Palace?",
-      "options": ["8", "9", "10", "11"],
-      "answer": "11",
-      "clue": "A classic double-digit number representing a pair of matching parallel digits.",
-      "funFact": "He wore this squad number while terrorizing Premier League full-backs down the wing."
+      "question": "What shirt number did birthday boy Georginio Wijnaldum wear for the majority of his career at Liverpool?",
+      "options": ["8", "6", "4", "5"],
+      "answer": "5",
+      "clue": "An odd single-digit number right in the middle of four and six.",
+      "funFact": "He wore this number as a vital engine-room presence in Jürgen Klopp's midfield masterclasses."
     },
     {
       "id": 8,
-      "question": "Which Premier League team has had the most managers in the last 5 years (8)?",
-      "options": ["Manchester United", "Tottenham Hotspur", "Chelsea"],
-      "answer": "Chelsea",
-      "clue": "This Stamford Bridge club plays in royal blue.",
-      "funFact": "The West London club has seen a high turnover in the dugout under various ownership eras."
+      "question": "Who is the longest-serving current team manager in the Premier League?",
+      "options": ["Unai Emery", "Daniel Farke", "Mikel Arteta"],
+      "answer": "Mikel Arteta",
+      "clue": "A former Spanish midfielder who captained Arsenal before returning as manager.",
+      "funFact": "He took charge of the Gunners in December 2019, steering the club back into regular title contenders."
     },
     {
       "id": 9,
-      "question": "Who is Liverpool's top scorer so far this season?",
-      "options": ["Alexis Mac Allister", "Dominik Szoboszlai", "Alexander Isak"],
-      "answer": "Alexander Isak",
-      "clue": "A talented Swedish striker whose name starts with A and I.",
-      "funFact": "He has provided a lethal finishing touch in the final third for Arne Slot's side."
+      "question": "Who is Manchester City’s top scorer so far this season?",
+      "options": ["Rayan Cherki", "Erling Haaland"],
+      "answer": "Erling Haaland",
+      "clue": "A towering Scandinavian striker who wears the number 9 shirt for City.",
+      "funFact": "The Norwegian goal machine continues to break scoring records at an unprecedented rate in English football."
     },
     {
       "id": 10,
-      "question": "Who holds the record for the most clean sheets in Premier League history?",
-      "options": ["Edwin van der Sar", "David Seaman", "Pepe Reina", "Petr Čech"],
-      "answer": "Petr Čech",
-      "clue": "Famous for wearing a protective headguard during his career.",
-      "funFact": "Čech kept 202 Premier League clean sheets across his spells at Chelsea (162) and Arsenal (40)."
+      "question": "What is the seating capacity of the Emirates, Arsenal's home?",
+      "options": ["55,704", "50,704", "60,704"],
+      "answer": "60,704",
+      "clue": "It sits comfortably above the 60,000 mark.",
+      "funFact": "The Emirates Stadium was officially opened in July 2006, replacing Highbury as Arsenal's home ground."
     }
   ]
 }
