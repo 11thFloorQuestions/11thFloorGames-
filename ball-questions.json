@@ -1,86 +1,86 @@
 {
-  "setId": 56,
-  "date": "2026-11-12",
+  "setId": 57,
+  "date": "2026-11-13",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently bottom of the Premier League table today, Thursday, 12th Nov 2026?",
-      "options": ["Sunderland", "Manchester United", "Crystal Palace"],
-      "answer": "Crystal Palace",
-      "clue": "Known as \"The Eagles,\" they are fighting to climb away from the relegation zone.",
-      "funFact": "This South London club plays its home matches at Selhurst Park."
+      "question": "Who is currently 4th from top of the Premier League table today, Friday, 13th Nov 2026?",
+      "options": ["Chelsea", "Liverpool", "Everton", "Manchester City"],
+      "answer": "Liverpool",
+      "clue": "This famous Merseyside club plays its home matches at Anfield.",
+      "funFact": "They sit in the Champions League places on 18 points from their opening 10 fixtures."
     },
     {
       "id": 2,
-      "question": "Who is Crystal Palace's manager?",
-      "options": ["Marco Rose", "Michael Carrick", "Frank Lampard", "Pierre Sage"],
+      "question": "Other than Michael Carrick, which Premier League manager was sacked this week?",
+      "options": ["Marco Rose", "David Moyes", "Pierre Sage"],
       "answer": "Pierre Sage",
-      "clue": "A French tactician who took over the managerial reins at Selhurst Park in 2026.",
-      "funFact": "He was appointed manager after enjoying a successful spell in French football with Lyon and Lens."
+      "clue": "A French tactician who was managing in South London.",
+      "funFact": "He departed his role at Selhurst Park after a tough opening run left Crystal Palace bottom of the Premier League table."
     },
     {
       "id": 3,
-      "question": "Which Newcastle and England defender celebrates his birthday today?",
-      "options": ["Mark Gillespie", "Dan Burn", "Lewis Hall", "Tino Livramento"],
-      "answer": "Tino Livramento",
-      "clue": "A dynamic full-back who moved to Tyneside after impressing at Southampton.",
-      "funFact": "Known for his exceptional recovery pace and overlapping runs, he represented England at various youth levels before breaking into the senior setup."
+      "question": "England beat which team to secure their quarter-final place in the Nations League?",
+      "options": ["Czech Republic", "Italy", "Germany", "Croatia"],
+      "answer": "Croatia",
+      "clue": "A European footballing nation famous for its red-and-white checkered kits.",
+      "funFact": "The Three Lions secured their spot in the knockout stages with a hard-fought victory at Wembley Stadium."
     },
     {
       "id": 4,
-      "question": "What nationality is Brighton manager Fabian Hürzeler?",
-      "options": ["Austrian", "Swiss", "Dutch", "German"],
-      "answer": "German",
-      "clue": "Born in Texas, USA, but holds citizenship and managerial prominence from this major European footballing nation.",
-      "funFact": "He made headlines as one of the youngest permanent managers in Premier League history."
+      "question": "England won 2-1 last night (Thursday); who got England’s first goal?",
+      "options": ["Harry Kane", "Jude Bellingham", "Morgan Rogers"],
+      "answer": "Morgan Rogers",
+      "clue": "An attacking midfielder who plays his club football in the Midlands for Aston Villa.",
+      "funFact": "He opened the scoring in the 24th minute to put England ahead before half-time."
     },
     {
       "id": 5,
-      "question": "What is Brighton & Hove Albion’s nickname?",
-      "options": ["The Hoops", "The Eagles", "The Robins", "The Seagulls"],
-      "answer": "The Seagulls",
-      "clue": "A coastal bird nickname fitting for a club based on the south coast of England.",
-      "funFact": "The moniker was famously adopted by supporters in the 1970s as a counter-chant to Crystal Palace's \"Eagles\" nickname."
+      "question": "Harry Kane celebrated a men's record 126th appearance for England; who did he overtake as England's most-capped player?",
+      "options": ["Wayne Rooney", "Gary Lineker", "Peter Shilton"],
+      "answer": "Peter Shilton",
+      "clue": "A legendary English goalkeeper who played in three FIFA World Cup tournaments.",
+      "funFact": "The previous record of 125 senior men's caps had stood untouched for over three decades since 1990."
     },
     {
       "id": 6,
-      "question": "Which football team did Roy Keane end his professional football career at?",
-      "options": ["Manchester United", "Nottingham Forest", "Celtic"],
-      "answer": "Celtic",
-      "clue": "A famous Scottish powerhouse that plays its home matches at Celtic Park in green and white hoops.",
-      "funFact": "He won a Scottish Premier League and Scottish League Cup double during his brief stint in Glasgow before hanging up his boots."
+      "question": "France were beaten 3-1 last night (Thursday); who beat them?",
+      "options": ["Italy", "Spain", "Germany"],
+      "answer": "Italy",
+      "clue": "Known as the Azzurri, they secured the victory on home soil in Milan.",
+      "funFact": "Despite falling behind to an early Michael Olise goal, the hosts roared back at the San Siro with goals from Davide Frattesi and a Pio Esposito brace."
     },
     {
       "id": 7,
-      "question": "What shirt number does birthday boy Tino Livramento wear for Newcastle United?",
-      "options": ["3", "4", "5", "2"],
-      "answer": "2",
-      "clue": "An even single-digit number right between one and three.",
-      "funFact": "This single-digit number is traditionally assigned to a team's primary starting right-back."
+      "question": "What shirt number does Harry Kane wear for England?",
+      "options": ["7", "8", "9", "10"],
+      "answer": "9",
+      "clue": "The classic single-digit number traditionally reserved for a team's main center-forward.",
+      "funFact": "He has worn this iconic number while becoming England's all-time leading goalscorer."
     },
     {
       "id": 8,
-      "question": "Who is Arsenal's longest-serving manager?",
-      "options": ["George Allison", "George Graham", "Arsène Wenger"],
-      "answer": "Arsène Wenger",
-      "clue": "The legendary French manager who revolutionized English football and oversaw the move to the Emirates Stadium.",
-      "funFact": "He managed the Gunners for nearly 22 years, winning three Premier League titles—including the historic 2003–04 \"Invincibles\" season."
+      "question": "Who is Liverpool’s longest-serving manager?",
+      "options": ["Rafael Benítez", "Gérard Houllier", "Jürgen Klopp"],
+      "answer": "Jürgen Klopp",
+      "clue": "A charismatic German coach famous for his \"heavy metal football\" and fist-pump celebrations in front of the Kop.",
+      "funFact": "He spent nearly nine years in charge at Anfield between 2015 and 2024, winning every major trophy available including the Premier League and UEFA Champions League."
     },
     {
       "id": 9,
-      "question": "Who is Brighton's top scorer so far this season?",
-      "options": ["Charalampos Kostoulas", "Pascal Groß"],
-      "answer": "Pascal Groß",
-      "clue": "An experienced German midfielder who has delivered countless assists and crucial goals on the south coast.",
-      "funFact": "Known for his elite creativity and dead-ball prowess, he continues to be a talismanic presence for the Seagulls."
+      "question": "Who is Bournemouth’s top scorer so far this season?",
+      "options": ["Marcus Tavernier", "Evanilson"],
+      "answer": "Evanilson",
+      "clue": "A clinical Brazilian striker signed from FC Porto.",
+      "funFact": "He has led the line superbly for the Cherries as they push into the top half of the Premier League table."
     },
     {
       "id": 10,
-      "question": "What is the seating capacity of Old Trafford, Manchester United’s home?",
-      "options": ["70,158", "64,158", "84,158", "74,158"],
-      "answer": "74,158",
-      "clue": "It sits comfortably above the 70,000 mark.",
-      "funFact": "Old Trafford is famously nicknamed \"The Theatre of Dreams\" and is the largest club football stadium in the United Kingdom."
+      "question": "Who is the oldest club in the Premier League? They were formed in 1865.",
+      "options": ["Leeds United", "Crystal Palace", "Everton", "Nottingham Forest"],
+      "answer": "Nottingham Forest",
+      "clue": "An East Midlands club that plays its home matches at the City Ground and wears Garibaldi red.",
+      "funFact": "Founded in 1865, they are famously two-time European Cup winners under legendary manager Brian Clough."
     }
   ]
 }
