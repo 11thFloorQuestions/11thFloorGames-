@@ -1,0 +1,86 @@
+{
+  "setId": 56,
+  "date": "2026-11-12",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently bottom of the Premier League table today, Thursday, 12th Nov 2026?",
+      "options": ["Sunderland", "Manchester United", "Crystal Palace"],
+      "answer": "Crystal Palace",
+      "clue": "Known as \"The Eagles,\" they are fighting to climb away from the relegation zone.",
+      "funFact": "This South London club plays its home matches at Selhurst Park."
+    },
+    {
+      "id": 2,
+      "question": "Who is Crystal Palace's manager?",
+      "options": ["Marco Rose", "Michael Carrick", "Frank Lampard", "Pierre Sage"],
+      "answer": "Pierre Sage",
+      "clue": "A French tactician who took over the managerial reins at Selhurst Park in 2026.",
+      "funFact": "He was appointed manager after enjoying a successful spell in French football with Lyon and Lens."
+    },
+    {
+      "id": 3,
+      "question": "Which Newcastle and England defender celebrates his birthday today?",
+      "options": ["Mark Gillespie", "Dan Burn", "Lewis Hall", "Tino Livramento"],
+      "answer": "Tino Livramento",
+      "clue": "A dynamic full-back who moved to Tyneside after impressing at Southampton.",
+      "funFact": "Known for his exceptional recovery pace and overlapping runs, he represented England at various youth levels before breaking into the senior setup."
+    },
+    {
+      "id": 4,
+      "question": "What nationality is Brighton manager Fabian Hürzeler?",
+      "options": ["Austrian", "Swiss", "Dutch", "German"],
+      "answer": "German",
+      "clue": "Born in Texas, USA, but holds citizenship and managerial prominence from this major European footballing nation.",
+      "funFact": "He made headlines as one of the youngest permanent managers in Premier League history."
+    },
+    {
+      "id": 5,
+      "question": "What is Brighton & Hove Albion’s nickname?",
+      "options": ["The Hoops", "The Eagles", "The Robins", "The Seagulls"],
+      "answer": "The Seagulls",
+      "clue": "A coastal bird nickname fitting for a club based on the south coast of England.",
+      "funFact": "The moniker was famously adopted by supporters in the 1970s as a counter-chant to Crystal Palace's \"Eagles\" nickname."
+    },
+    {
+      "id": 6,
+      "question": "Which football team did Roy Keane end his professional football career at?",
+      "options": ["Manchester United", "Nottingham Forest", "Celtic"],
+      "answer": "Celtic",
+      "clue": "A famous Scottish powerhouse that plays its home matches at Celtic Park in green and white hoops.",
+      "funFact": "He won a Scottish Premier League and Scottish League Cup double during his brief stint in Glasgow before hanging up his boots."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number does birthday boy Tino Livramento wear for Newcastle United?",
+      "options": ["3", "4", "5", "2"],
+      "answer": "2",
+      "clue": "An even single-digit number right between one and three.",
+      "funFact": "This single-digit number is traditionally assigned to a team's primary starting right-back."
+    },
+    {
+      "id": 8,
+      "question": "Who is Arsenal's longest-serving manager?",
+      "options": ["George Allison", "George Graham", "Arsène Wenger"],
+      "answer": "Arsène Wenger",
+      "clue": "The legendary French manager who revolutionized English football and oversaw the move to the Emirates Stadium.",
+      "funFact": "He managed the Gunners for nearly 22 years, winning three Premier League titles—including the historic 2003–04 \"Invincibles\" season."
+    },
+    {
+      "id": 9,
+      "question": "Who is Brighton's top scorer so far this season?",
+      "options": ["Charalampos Kostoulas", "Pascal Groß"],
+      "answer": "Pascal Groß",
+      "clue": "An experienced German midfielder who has delivered countless assists and crucial goals on the south coast.",
+      "funFact": "Known for his elite creativity and dead-ball prowess, he continues to be a talismanic presence for the Seagulls."
+    },
+    {
+      "id": 10,
+      "question": "What is the seating capacity of Old Trafford, Manchester United’s home?",
+      "options": ["70,158", "64,158", "84,158", "74,158"],
+      "answer": "74,158",
+      "clue": "It sits comfortably above the 70,000 mark.",
+      "funFact": "Old Trafford is famously nicknamed \"The Theatre of Dreams\" and is the largest club football stadium in the United Kingdom."
+    }
+  ]
+}
