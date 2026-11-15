@@ -1,86 +1,86 @@
 {
-  "setId": 57,
-  "date": "2026-11-13",
+  "setId": 58,
+  "date": "2026-11-14",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently 4th from top of the Premier League table today, Friday, 13th Nov 2026?",
-      "options": ["Chelsea", "Liverpool", "Everton", "Manchester City"],
-      "answer": "Liverpool",
-      "clue": "This famous Merseyside club plays its home matches at Anfield.",
-      "funFact": "They sit in the Champions League places on 18 points from their opening 10 fixtures."
+      "question": "Who is currently 2nd in the Premier League table today, Saturday, 14th Nov 2026?",
+      "options": ["Chelsea", "Liverpool", "Manchester City", "Brighton"],
+      "answer": "Brighton",
+      "clue": "Known as \"The Seagulls,\" they play their home matches at the Amex Stadium.",
+      "funFact": "The south coast side has enjoyed a tremendous opening to the 2026–27 campaign under manager Fabian Hürzeler."
     },
     {
       "id": 2,
-      "question": "Other than Michael Carrick, which Premier League manager was sacked this week?",
-      "options": ["Marco Rose", "David Moyes", "Pierre Sage"],
-      "answer": "Pierre Sage",
-      "clue": "A French tactician who was managing in South London.",
-      "funFact": "He departed his role at Selhurst Park after a tough opening run left Crystal Palace bottom of the Premier League table."
+      "question": "Mauricio Pochettino has agreed terms with Manchester United to become the next manager; what was the last Premier League team he managed?",
+      "options": ["Tottenham Hotspur", "Southampton", "Chelsea"],
+      "answer": "Chelsea",
+      "clue": "A West London club that plays in royal blue.",
+      "funFact": "He guided the Blues to a 6th-place finish and a League Cup final during his lone season in charge at Stamford Bridge in 2023–24."
     },
     {
       "id": 3,
-      "question": "England beat which team to secure their quarter-final place in the Nations League?",
-      "options": ["Czech Republic", "Italy", "Germany", "Croatia"],
-      "answer": "Croatia",
-      "clue": "A European footballing nation famous for its red-and-white checkered kits.",
-      "funFact": "The Three Lions secured their spot in the knockout stages with a hard-fought victory at Wembley Stadium."
+      "question": "Scotland beat North Macedonia last night (Friday) in the Nations League; what was the score?",
+      "options": ["1-0", "2-0", "2-1"],
+      "answer": "2-1",
+      "clue": "A narrow one-goal win where both teams found the back of the net.",
+      "funFact": "The Tartan Army celebrated an important victory to keep their Nations League campaign rolling."
     },
     {
       "id": 4,
-      "question": "England won 2-1 last night (Thursday); who got England’s first goal?",
-      "options": ["Harry Kane", "Jude Bellingham", "Morgan Rogers"],
-      "answer": "Morgan Rogers",
-      "clue": "An attacking midfielder who plays his club football in the Midlands for Aston Villa.",
-      "funFact": "He opened the scoring in the 24th minute to put England ahead before half-time."
+      "question": "The Netherlands scored 7 goals last night (Friday) against which country?",
+      "options": ["Serbia", "Moldova", "Greece"],
+      "answer": "Greece",
+      "clue": "The winners of Euro 2004, famously wearing blue and white.",
+      "funFact": "Oranje ran riot in an unforgettable attacking masterclass on the international stage."
     },
     {
       "id": 5,
-      "question": "Harry Kane celebrated a men's record 126th appearance for England; who did he overtake as England's most-capped player?",
-      "options": ["Wayne Rooney", "Gary Lineker", "Peter Shilton"],
-      "answer": "Peter Shilton",
-      "clue": "A legendary English goalkeeper who played in three FIFA World Cup tournaments.",
-      "funFact": "The previous record of 125 senior men's caps had stood untouched for over three decades since 1990."
+      "question": "On this day in football history, 14th Nov, Bobby Moore played his final game for England in a friendly against Italy; what was the year?",
+      "options": ["1970", "1976", "1973"],
+      "answer": "1973",
+      "clue": "The year right in the middle of the early 1970s, three years before 1976.",
+      "funFact": "Moore bowed out of international football at Wembley Stadium with a then-record 108 caps for England."
     },
     {
       "id": 6,
-      "question": "France were beaten 3-1 last night (Thursday); who beat them?",
-      "options": ["Italy", "Spain", "Germany"],
-      "answer": "Italy",
-      "clue": "Known as the Azzurri, they secured the victory on home soil in Milan.",
-      "funFact": "Despite falling behind to an early Michael Olise goal, the hosts roared back at the San Siro with goals from Davide Frattesi and a Pio Esposito brace."
+      "question": "Who is Manchester City’s number 1 goalkeeper this season?",
+      "options": ["Ederson", "Gerónimo Rulli", "Donnarumma"],
+      "answer": "Donnarumma",
+      "clue": "A towering Italian international goalkeeper who previously starred for AC Milan and Paris Saint-Germain.",
+      "funFact": "Standing at 6ft 5in, he won UEFA Euro 2020 Player of the Tournament after heroics in the penalty shootout against England."
     },
     {
       "id": 7,
-      "question": "What shirt number does Harry Kane wear for England?",
-      "options": ["7", "8", "9", "10"],
-      "answer": "9",
-      "clue": "The classic single-digit number traditionally reserved for a team's main center-forward.",
-      "funFact": "He has worn this iconic number while becoming England's all-time leading goalscorer."
+      "question": "What shirt number does Jude Bellingham wear for Real Madrid?",
+      "options": ["8", "9", "10", "5"],
+      "answer": "5",
+      "clue": "An odd single-digit number right between four and six.",
+      "funFact": "He chose the number upon joining Los Blancos in 2023 as a personal tribute to club legend Zinedine Zidane."
     },
     {
       "id": 8,
-      "question": "Who is Liverpool’s longest-serving manager?",
-      "options": ["Rafael Benítez", "Gérard Houllier", "Jürgen Klopp"],
-      "answer": "Jürgen Klopp",
-      "clue": "A charismatic German coach famous for his \"heavy metal football\" and fist-pump celebrations in front of the Kop.",
-      "funFact": "He spent nearly nine years in charge at Anfield between 2015 and 2024, winning every major trophy available including the Premier League and UEFA Champions League."
+      "question": "Who was the last Manchester United manager to last three seasons or more?",
+      "options": ["José Mourinho", "Ole Gunnar Solskjær", "Sir Alex Ferguson"],
+      "answer": "Sir Alex Ferguson",
+      "clue": "The legendary Scottish manager who stands outside Old Trafford in bronze.",
+      "funFact": "He managed the Red Devils for an astonishing 26 years between 1986 and 2013, winning 13 Premier League titles."
     },
     {
       "id": 9,
-      "question": "Who is Bournemouth’s top scorer so far this season?",
-      "options": ["Marcus Tavernier", "Evanilson"],
-      "answer": "Evanilson",
-      "clue": "A clinical Brazilian striker signed from FC Porto.",
-      "funFact": "He has led the line superbly for the Cherries as they push into the top half of the Premier League table."
+      "question": "Who is Newcastle's top scorer so far this season?",
+      "options": ["Joe Willock", "Yoane Wissa", "Harvey Barnes"],
+      "answer": "Harvey Barnes",
+      "clue": "An English winger who joined Newcastle after rising through the academy at Leicester City.",
+      "funFact": "Known for cutting inside onto his deadly right foot, he has been in clinical form for the Magpies this season."
     },
     {
       "id": 10,
-      "question": "Who is the oldest club in the Premier League? They were formed in 1865.",
-      "options": ["Leeds United", "Crystal Palace", "Everton", "Nottingham Forest"],
-      "answer": "Nottingham Forest",
-      "clue": "An East Midlands club that plays its home matches at the City Ground and wears Garibaldi red.",
-      "funFact": "Founded in 1865, they are famously two-time European Cup winners under legendary manager Brian Clough."
+      "question": "Who is the youngest club by player age in the Premier League this season? Average age 24.6.",
+      "options": ["Brighton & Hove Albion", "Ipswich Town", "Liverpool", "Chelsea"],
+      "answer": "Chelsea",
+      "clue": "This West London club plays its home matches at Stamford Bridge.",
+      "funFact": "Their squad-building strategy has heavily prioritized signing elite young talent on long-term contracts."
     }
   ]
 }
