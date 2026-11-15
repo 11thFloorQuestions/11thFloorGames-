@@ -1,86 +1,74 @@
 {
-  "setId": 58,
-  "date": "2026-11-14",
+  "setId": 59,
+  "date": "2026-11-15",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently 2nd in the Premier League table today, Saturday, 14th Nov 2026?",
-      "options": ["Chelsea", "Liverpool", "Manchester City", "Brighton"],
-      "answer": "Brighton",
-      "clue": "Known as \"The Seagulls,\" they play their home matches at the Amex Stadium.",
-      "funFact": "The south coast side has enjoyed a tremendous opening to the 2026–27 campaign under manager Fabian Hürzeler."
+      "question": "Who is currently top of the Premier League table today, Sunday, 15th Nov 2026?",
+      "options": ["Brighton", "Liverpool", "Manchester City", "Arsenal"],
+      "answer": "Arsenal",
+      "clue": "This North London club plays its home matches at the Emirates Stadium.",
+      "funFact": "They sit at the summit of the table going into the international break after a dominant start to the 2026–27 season."
     },
     {
       "id": 2,
-      "question": "Mauricio Pochettino has agreed terms with Manchester United to become the next manager; what was the last Premier League team he managed?",
-      "options": ["Tottenham Hotspur", "Southampton", "Chelsea"],
-      "answer": "Chelsea",
-      "clue": "A West London club that plays in royal blue.",
-      "funFact": "He guided the Blues to a 6th-place finish and a League Cup final during his lone season in charge at Stamford Bridge in 2023–24."
+      "question": "Wales lost to which Scandinavian team 3-1 last night (Saturday)?",
+      "options": ["Sweden", "Finland", "Denmark", "Norway"],
+      "answer": "Norway",
+      "clue": "A Nordic nation represented by superstar striker Erling Haaland.",
+      "funFact": "The Scandinavian side powered past Wales with a strong attacking display to claim all three points."
     },
     {
       "id": 3,
-      "question": "Scotland beat North Macedonia last night (Friday) in the Nations League; what was the score?",
-      "options": ["1-0", "2-0", "2-1"],
-      "answer": "2-1",
-      "clue": "A narrow one-goal win where both teams found the back of the net.",
-      "funFact": "The Tartan Army celebrated an important victory to keep their Nations League campaign rolling."
+      "question": "Northern Ireland won their Nations League match last night; who did they beat?",
+      "options": ["Georgia", "Ukraine"],
+      "answer": "Ukraine",
+      "clue": "A European footballing nation that wears blue and yellow kits.",
+      "funFact": "The Green and White Army put in a disciplined, spirited performance to earn a memorable victory."
     },
     {
       "id": 4,
-      "question": "The Netherlands scored 7 goals last night (Friday) against which country?",
-      "options": ["Serbia", "Moldova", "Greece"],
-      "answer": "Greece",
-      "clue": "The winners of Euro 2004, famously wearing blue and white.",
-      "funFact": "Oranje ran riot in an unforgettable attacking masterclass on the international stage."
+      "question": "Gustavo Poyet celebrates his birthday today, 15th November; which country is he from?",
+      "options": ["Portugal", "Argentina", "Spain", "Uruguay"],
+      "answer": "Uruguay",
+      "clue": "A two-time World Cup-winning South American nation whose flag features the Sun of May.",
+      "funFact": "Born in Montevideo, he earned 26 international caps for his country and helped them win the 1995 Copa América."
     },
     {
       "id": 5,
-      "question": "On this day in football history, 14th Nov, Bobby Moore played his final game for England in a friendly against Italy; what was the year?",
-      "options": ["1970", "1976", "1973"],
-      "answer": "1973",
-      "clue": "The year right in the middle of the early 1970s, three years before 1976.",
-      "funFact": "Moore bowed out of international football at Wembley Stadium with a then-record 108 caps for England."
+      "question": "Portugal lost their match last night 1-4; who beat them?",
+      "options": ["Scotland", "Hungary", "Austria", "Denmark"],
+      "answer": "Denmark",
+      "clue": "A Scandinavian footballing nation famously known as the Danish Dynamite.",
+      "funFact": "The Danish side produced a clinical counter-attacking display to hand Portugal a rare heavy defeat."
     },
     {
       "id": 6,
-      "question": "Who is Manchester City’s number 1 goalkeeper this season?",
-      "options": ["Ederson", "Gerónimo Rulli", "Donnarumma"],
-      "answer": "Donnarumma",
-      "clue": "A towering Italian international goalkeeper who previously starred for AC Milan and Paris Saint-Germain.",
-      "funFact": "Standing at 6ft 5in, he won UEFA Euro 2020 Player of the Tournament after heroics in the penalty shootout against England."
+      "question": "On this day in football history, 15th November, a 17-year-old Johan Cruyff made his football debut; what nationality was he?",
+      "options": ["Italian", "German", "Dutch"],
+      "answer": "Dutch",
+      "clue": "He famously pioneered \"Total Football\" and wore the iconic number 14 shirt for his country.",
+      "funFact": "He marked his senior debut for Ajax against GVAV in 1964 by scoring his team's only goal in a 3–1 defeat."
     },
     {
       "id": 7,
-      "question": "What shirt number does Jude Bellingham wear for Real Madrid?",
-      "options": ["8", "9", "10", "5"],
-      "answer": "5",
-      "clue": "An odd single-digit number right between four and six.",
-      "funFact": "He chose the number upon joining Los Blancos in 2023 as a personal tribute to club legend Zinedine Zidane."
+      "question": "What shirt number did Gustavo Poyet wear for Chelsea?",
+      "options": ["7", "9", "10", "8"],
+      "answer": "8",
+      "clue": "An even single-digit squad number traditionally associated with box-to-box midfielders.",
+      "funFact": "He wore this jersey across all four seasons at Stamford Bridge between 1997 and 2001, scoring 49 goals in all competitions."
     },
     {
       "id": 8,
-      "question": "Who was the last Manchester United manager to last three seasons or more?",
-      "options": ["José Mourinho", "Ole Gunnar Solskjær", "Sir Alex Ferguson"],
-      "answer": "Sir Alex Ferguson",
-      "clue": "The legendary Scottish manager who stands outside Old Trafford in bronze.",
-      "funFact": "He managed the Red Devils for an astonishing 26 years between 1986 and 2013, winning 13 Premier League titles."
+      "question": "England play which team today in the Nations League?",
+      "options": ["Croatia", "Czech Republic", "Spain"],
+      "answer": "Spain",
+      "clue": "The reigning UEFA European Champions, famously known as La Roja.",
+      "funFact": "A heavyweight clash between two of Europe's premier international sides."
     },
     {
       "id": 9,
-      "question": "Who is Newcastle's top scorer so far this season?",
-      "options": ["Joe Willock", "Yoane Wissa", "Harvey Barnes"],
-      "answer": "Harvey Barnes",
-      "clue": "An English winger who joined Newcastle after rising through the academy at Leicester City.",
-      "funFact": "Known for cutting inside onto his deadly right foot, he has been in clinical form for the Magpies this season."
-    },
-    {
-      "id": 10,
-      "question": "Who is the youngest club by player age in the Premier League this season? Average age 24.6.",
-      "options": ["Brighton & Hove Albion", "Ipswich Town", "Liverpool", "Chelsea"],
-      "answer": "Chelsea",
-      "clue": "This West London club plays its home matches at Stamford Bridge.",
-      "funFact": "Their squad-building strategy has heavily prioritized signing elite young talent on long-term contracts."
-    }
-  ]
-}
+      "question": "Who is Tottenham’s top scorer so far this season?",
+      "options": ["Dominic Solanke", "Jan Paul van Hecke"],
+      "answer": "Jan Paul van Hecke",
+      "clue": "A towering Dutch center-back
