@@ -71,4 +71,24 @@
       "question": "Who is Tottenham’s top scorer so far this season?",
       "options": ["Dominic Solanke", "Jan Paul van Hecke"],
       "answer": "Jan Paul van Hecke",
-      "clue": "A towering Dutch center-back
+      "clue": "A towering Dutch center-back who previously starred on the south coast for Brighton.",
+      "funFact": "Known primarily for his defensive solidity and aerial prowess, he has provided an unexpected source of goals in North London."
+    },
+    {
+      "id": 10,
+      "question": "Which English team did Wayne Rooney last manage?",
+      "options": ["Peterborough United", "Preston North End", "Plymouth Argyle"],
+      "answer": "Plymouth Argyle",
+      "clue": "A Devon-based club famously nicknamed \"The Pilgrims.\"",
+      "funFact": "Rooney took over at Home Park in May 2024 following a previous spell managing Birmingham City."
+    },
+    {
+      "id": 11,
+      "question": "Which team did Wayne Rooney end his playing career with?",
+      "options": ["D.C. United", "Manchester United", "Derby County"],
+      "answer": "Derby County",
+      "clue": "An East Midlands club famously nicknamed \"The Rams.\"",
+      "funFact": "He scored 7 goals in 35 appearances for the Rams before transitioning into full-time management at Pride Park."
+    }
+  ]
+}
