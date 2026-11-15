@@ -1,0 +1,86 @@
+{
+  "setId": 58,
+  "date": "2026-11-14",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently 2nd in the Premier League table today, Saturday, 14th Nov 2026?",
+      "options": ["Chelsea", "Liverpool", "Manchester City", "Brighton"],
+      "answer": "Brighton",
+      "clue": "Known as \"The Seagulls,\" they play their home matches at the Amex Stadium.",
+      "funFact": "The south coast side has enjoyed a tremendous opening to the 2026–27 campaign under manager Fabian Hürzeler."
+    },
+    {
+      "id": 2,
+      "question": "Mauricio Pochettino has agreed terms with Manchester United to become the next manager; what was the last Premier League team he managed?",
+      "options": ["Tottenham Hotspur", "Southampton", "Chelsea"],
+      "answer": "Chelsea",
+      "clue": "A West London club that plays in royal blue.",
+      "funFact": "He guided the Blues to a 6th-place finish and a League Cup final during his lone season in charge at Stamford Bridge in 2023–24."
+    },
+    {
+      "id": 3,
+      "question": "Scotland beat North Macedonia last night (Friday) in the Nations League; what was the score?",
+      "options": ["1-0", "2-0", "2-1"],
+      "answer": "2-1",
+      "clue": "A narrow one-goal win where both teams found the back of the net.",
+      "funFact": "The Tartan Army celebrated an important victory to keep their Nations League campaign rolling."
+    },
+    {
+      "id": 4,
+      "question": "The Netherlands scored 7 goals last night (Friday) against which country?",
+      "options": ["Serbia", "Moldova", "Greece"],
+      "answer": "Greece",
+      "clue": "The winners of Euro 2004, famously wearing blue and white.",
+      "funFact": "Oranje ran riot in an unforgettable attacking masterclass on the international stage."
+    },
+    {
+      "id": 5,
+      "question": "On this day in football history, 14th Nov, Bobby Moore played his final game for England in a friendly against Italy; what was the year?",
+      "options": ["1970", "1976", "1973"],
+      "answer": "1973",
+      "clue": "The year right in the middle of the early 1970s, three years before 1976.",
+      "funFact": "Moore bowed out of international football at Wembley Stadium with a then-record 108 caps for England."
+    },
+    {
+      "id": 6,
+      "question": "Who is Manchester City’s number 1 goalkeeper this season?",
+      "options": ["Ederson", "Gerónimo Rulli", "Donnarumma"],
+      "answer": "Donnarumma",
+      "clue": "A towering Italian international goalkeeper who previously starred for AC Milan and Paris Saint-Germain.",
+      "funFact": "Standing at 6ft 5in, he won UEFA Euro 2020 Player of the Tournament after heroics in the penalty shootout against England."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number does Jude Bellingham wear for Real Madrid?",
+      "options": ["8", "9", "10", "5"],
+      "answer": "5",
+      "clue": "An odd single-digit number right between four and six.",
+      "funFact": "He chose the number upon joining Los Blancos in 2023 as a personal tribute to club legend Zinedine Zidane."
+    },
+    {
+      "id": 8,
+      "question": "Who was the last Manchester United manager to last three seasons or more?",
+      "options": ["José Mourinho", "Ole Gunnar Solskjær", "Sir Alex Ferguson"],
+      "answer": "Sir Alex Ferguson",
+      "clue": "The legendary Scottish manager who stands outside Old Trafford in bronze.",
+      "funFact": "He managed the Red Devils for an astonishing 26 years between 1986 and 2013, winning 13 Premier League titles."
+    },
+    {
+      "id": 9,
+      "question": "Who is Newcastle's top scorer so far this season?",
+      "options": ["Joe Willock", "Yoane Wissa", "Harvey Barnes"],
+      "answer": "Harvey Barnes",
+      "clue": "An English winger who joined Newcastle after rising through the academy at Leicester City.",
+      "funFact": "Known for cutting inside onto his deadly right foot, he has been in clinical form for the Magpies this season."
+    },
+    {
+      "id": 10,
+      "question": "Who is the youngest club by player age in the Premier League this season? Average age 24.6.",
+      "options": ["Brighton & Hove Albion", "Ipswich Town", "Liverpool", "Chelsea"],
+      "answer": "Chelsea",
+      "clue": "This West London club plays its home matches at Stamford Bridge.",
+      "funFact": "Their squad-building strategy has heavily prioritized signing elite young talent on long-term contracts."
+    }
+  ]
+}
