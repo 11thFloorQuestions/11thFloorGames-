@@ -1,0 +1,94 @@
+{
+  "setId": 59,
+  "date": "2026-11-15",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently top of the Premier League table today, Sunday, 15th Nov 2026?",
+      "options": ["Brighton", "Liverpool", "Manchester City", "Arsenal"],
+      "answer": "Arsenal",
+      "clue": "This North London club plays its home matches at the Emirates Stadium.",
+      "funFact": "They sit at the summit of the table going into the international break after a dominant start to the 2026–27 season."
+    },
+    {
+      "id": 2,
+      "question": "Wales lost to which Scandinavian team 3-1 last night (Saturday)?",
+      "options": ["Sweden", "Finland", "Denmark", "Norway"],
+      "answer": "Norway",
+      "clue": "A Nordic nation represented by superstar striker Erling Haaland.",
+      "funFact": "The Scandinavian side powered past Wales with a strong attacking display to claim all three points."
+    },
+    {
+      "id": 3,
+      "question": "Northern Ireland won their Nations League match last night; who did they beat?",
+      "options": ["Georgia", "Ukraine"],
+      "answer": "Ukraine",
+      "clue": "A European footballing nation that wears blue and yellow kits.",
+      "funFact": "The Green and White Army put in a disciplined, spirited performance to earn a memorable victory."
+    },
+    {
+      "id": 4,
+      "question": "Gustavo Poyet celebrates his birthday today, 15th November; which country is he from?",
+      "options": ["Portugal", "Argentina", "Spain", "Uruguay"],
+      "answer": "Uruguay",
+      "clue": "A two-time World Cup-winning South American nation whose flag features the Sun of May.",
+      "funFact": "Born in Montevideo, he earned 26 international caps for his country and helped them win the 1995 Copa América."
+    },
+    {
+      "id": 5,
+      "question": "Portugal lost their match last night 1-4; who beat them?",
+      "options": ["Scotland", "Hungary", "Austria", "Denmark"],
+      "answer": "Denmark",
+      "clue": "A Scandinavian footballing nation famously known as the Danish Dynamite.",
+      "funFact": "The Danish side produced a clinical counter-attacking display to hand Portugal a rare heavy defeat."
+    },
+    {
+      "id": 6,
+      "question": "On this day in football history, 15th November, a 17-year-old Johan Cruyff made his football debut; what nationality was he?",
+      "options": ["Italian", "German", "Dutch"],
+      "answer": "Dutch",
+      "clue": "He famously pioneered \"Total Football\" and wore the iconic number 14 shirt for his country.",
+      "funFact": "He marked his senior debut for Ajax against GVAV in 1964 by scoring his team's only goal in a 3–1 defeat."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number did Gustavo Poyet wear for Chelsea?",
+      "options": ["7", "9", "10", "8"],
+      "answer": "8",
+      "clue": "An even single-digit squad number traditionally associated with box-to-box midfielders.",
+      "funFact": "He wore this jersey across all four seasons at Stamford Bridge between 1997 and 2001, scoring 49 goals in all competitions."
+    },
+    {
+      "id": 8,
+      "question": "England play which team today in the Nations League?",
+      "options": ["Croatia", "Czech Republic", "Spain"],
+      "answer": "Spain",
+      "clue": "The reigning UEFA European Champions, famously known as La Roja.",
+      "funFact": "A heavyweight clash between two of Europe's premier international sides."
+    },
+    {
+      "id": 9,
+      "question": "Who is Tottenham’s top scorer so far this season?",
+      "options": ["Dominic Solanke", "Jan Paul van Hecke"],
+      "answer": "Jan Paul van Hecke",
+      "clue": "A towering Dutch center-back who previously starred on the south coast for Brighton.",
+      "funFact": "Known primarily for his defensive solidity and aerial prowess, he has provided an unexpected source of goals in North London."
+    },
+    {
+      "id": 10,
+      "question": "Which English team did Wayne Rooney last manage?",
+      "options": ["Peterborough United", "Preston North End", "Plymouth Argyle"],
+      "answer": "Plymouth Argyle",
+      "clue": "A Devon-based club famously nicknamed \"The Pilgrims.\"",
+      "funFact": "Rooney took over at Home Park in May 2024 following a previous spell managing Birmingham City."
+    },
+    {
+      "id": 11,
+      "question": "Which team did Wayne Rooney end his playing career with?",
+      "options": ["D.C. United", "Manchester United", "Derby County"],
+      "answer": "Derby County",
+      "clue": "An East Midlands club famously nicknamed \"The Rams.\"",
+      "funFact": "He scored 7 goals in 35 appearances for the Rams before transitioning into full-time management at Pride Park."
+    }
+  ]
+}
