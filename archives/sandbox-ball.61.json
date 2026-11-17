@@ -1,0 +1,94 @@
+{
+  "setId": 60,
+  "date": "2026-11-16",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently top of the Premier League table today, Monday, 16th Nov 2026?",
+      "options": ["Brighton", "Liverpool", "Manchester City", "Arsenal"],
+      "answer": "Arsenal",
+      "clue": "This North London club plays its home matches at the Emirates Stadium.",
+      "funFact": "They sit at the summit of the table during the international break after a stellar start to the 2026–27 season."
+    },
+    {
+      "id": 2,
+      "question": "England beat Spain in the Nations League last night (Sunday); what was the score?",
+      "options": ["1-3", "3-4", "0-2", "2-3"],
+      "answer": "2-3",
+      "clue": "A narrow one-goal away win in which five goals were scored in total.",
+      "funFact": "The Three Lions claimed a thrilling five-goal away victory against the European champions."
+    },
+    {
+      "id": 3,
+      "question": "Who scored England’s first goal?",
+      "options": ["Jude Bellingham", "Harry Kane"],
+      "answer": "Harry Kane",
+      "clue": "The England captain and prolific center-forward who wears the number 9 shirt.",
+      "funFact": "He extended his own all-time England goalscoring record with another crucial international strike."
+    },
+    {
+      "id": 4,
+      "question": "From boos to cheers, which England defender scored the winner?",
+      "options": ["Ezri Konsa", "Lewis Hall", "Ben White"],
+      "answer": "Ben White",
+      "clue": "A versatile English defender who plays his club football in North London for Arsenal.",
+      "funFact": "He sealed a famous victory on the international stage with a decisive late contribution."
+    },
+    {
+      "id": 5,
+      "question": "Which England player was sent off?",
+      "options": ["Jarell Quansah", "Lewis Hall", "Harry Kane", "Elliot Anderson"],
+      "answer": "Elliot Anderson",
+      "clue": "A talented midfield dynamo who plays his club football for Manchester City.",
+      "funFact": "England were forced to hold on for the result after being reduced to ten men."
+    },
+    {
+      "id": 6,
+      "question": "Which Manchester United and England midfielder celebrates his birthday today?",
+      "options": ["David Beckham", "Paul Ince", "Paul Scholes"],
+      "answer": "Paul Scholes",
+      "clue": "A ginger-haired Class of '92 graduate renowned as one of the finest passers in Premier League history.",
+      "funFact": "Born on 16 November 1974 in Salford, he won 11 Premier League titles and two UEFA Champions League trophies during his storied one-club career at Old Trafford."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number did Paul Scholes wear for the majority of his Manchester United career?",
+      "options": ["11", "8", "6", "18"],
+      "answer": "18",
+      "clue": "A double-digit number that is double the number 9.",
+      "funFact": "He wore this squad number for the vast majority of his 718 appearances for the Red Devils, before briefly wearing number 22 upon coming out of retirement."
+    },
+    {
+      "id": 8,
+      "question": "What year did Paul Scholes retire for the 2nd time from Manchester United?",
+      "options": ["2011", "2009", "2017", "2013"],
+      "answer": "2013",
+      "clue": "The exact same year legendary manager Sir Alex Ferguson retired from Old Trafford.",
+      "funFact": "After initially retiring in 2011, he returned in January 2012 to help Sir Alex Ferguson's side before hanging up his boots for good following another Premier League title triumph."
+    },
+    {
+      "id": 9,
+      "question": "Who is Manchester United's top scorer so far this season?",
+      "options": ["Bryan Mbeumo", "Matheus Cunha", "Bruno Fernandes"],
+      "answer": "Bruno Fernandes",
+      "clue": "Manchester United's club captain who wears the number 8 shirt.",
+      "funFact": "The Portuguese playmaker continues to lead by example in the final third with vital goals and assists."
+    },
+    {
+      "id": 10,
+      "question": "Which football team did Roy Keane last manage?",
+      "options": ["Sunderland", "Aston Villa", "Ipswich Town"],
+      "answer": "Ipswich Town",
+      "clue": "A Suffolk-based club that plays its home matches at Portman Road.",
+      "funFact": "He managed the Tractor Boys between April 2009 and January 2011 across 81 matches, which remains his final senior club managerial post."
+    },
+    {
+      "id": 11,
+      "question": "Which team did Wayne Rooney end his playing career with?",
+      "options": ["D.C. United", "Manchester United", "Derby County"],
+      "answer": "Derby County",
+      "clue": "An East Midlands club famously nicknamed \"The Rams.\"",
+      "funFact": "He scored 7 goals in 35 appearances for the Rams before transitioning into full-time management at Pride Park."
+    }
+  ]
+}
