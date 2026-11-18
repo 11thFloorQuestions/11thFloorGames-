@@ -1,0 +1,86 @@
+{
+  "setId": 62,
+  "date": "2026-11-18",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently bottom of the Premier League table today, Wednesday, 18th Nov 2026?",
+      "options": ["Sunderland", "Ipswich Town", "Crystal Palace"],
+      "answer": "Crystal Palace",
+      "clue": "Known as \"The Eagles,\" they are fighting to climb out of the relegation zone.",
+      "funFact": "This South London club plays its home matches at Selhurst Park."
+    },
+    {
+      "id": 2,
+      "question": "Northern Ireland secured Nations League promotion last night (Tuesday) by drawing with which country?",
+      "options": ["Ukraine", "Italy", "Serbia", "Hungary"],
+      "answer": "Hungary",
+      "clue": "A Central European nation whose home matches are played in Budapest.",
+      "funFact": "Justin Devenny scored a crucial equalizer in the second half at the Puskás Aréna to seal a famous result."
+    },
+    {
+      "id": 3,
+      "question": "Wales lost to Portugal last night; what was the score?",
+      "options": ["0-3", "2-3"],
+      "answer": "2-3",
+      "clue": "A narrow one-goal margin defeat where the Dragons scored twice.",
+      "funFact": "A hard-fought, five-goal thriller on the international stage."
+    },
+    {
+      "id": 4,
+      "question": "Which ex-Manchester United goalkeeper celebrates his birthday today?",
+      "options": ["David de Gea", "Edwin van der Sar", "Peter Schmeichel"],
+      "answer": "Peter Schmeichel",
+      "clue": "The legendary Danish giant known for his iconic starfish-blocking technique.",
+      "funFact": "Widely regarded as one of the greatest goalkeepers in football history, he won five Premier League titles at Old Trafford."
+    },
+    {
+      "id": 5,
+      "question": "Peter Schmeichel played for two other Premier League clubs: Manchester City and which other?",
+      "options": ["Leeds United", "Chelsea", "Newcastle United", "Aston Villa"],
+      "answer": "Aston Villa",
+      "clue": "A historic Midlands club that plays its home matches at Villa Park.",
+      "funFact": "He even scored a Premier League goal for the Villans during his stint in the West Midlands."
+    },
+    {
+      "id": 6,
+      "question": "Republic of Ireland beat Kosovo 3-0 last night (Tuesday); who scored two of their goals?",
+      "options": ["Ryan Manning", "Troy Parrott"],
+      "answer": "Troy Parrott",
+      "clue": "A talented Irish international forward whose first name is Troy.",
+      "funFact": "The lethal striker put on a masterclass in clinical finishing to secure a dominant victory for the Boys in Green."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number did Frank Lampard wear for the majority of his Chelsea career?",
+      "options": ["6", "5", "11", "8"],
+      "answer": "8",
+      "clue": "An even single-digit number traditionally associated with central midfielders.",
+      "funFact": "He became Chelsea's all-time record goalscorer while starring in midfield wearing this iconic squad number."
+    },
+    {
+      "id": 8,
+      "question": "How many Premier League titles did birthday boy Peter Schmeichel win for Manchester United?",
+      "options": ["4", "2", "3", "5"],
+      "answer": "5",
+      "clue": "An odd single-digit number equal to the number of fingers on one hand.",
+      "funFact": "He capped off his glittering Old Trafford career by winning the famous Treble in 1999."
+    },
+    {
+      "id": 9,
+      "question": "Who is Arsenal’s top scorer so far this season?",
+      "options": ["Kai Havertz", "Bukayo Saka", "Eberechi Eze", "Martin Ødegaard"],
+      "answer": "Martin Ødegaard",
+      "clue": "The Norwegian playmaker who wears the armband for the Gunners.",
+      "funFact": "The inspirational club captain leads by example with his elite creative vision and goalscoring contributions from midfield."
+    },
+    {
+      "id": 10,
+      "question": "Which team conceded the fewest goals in a single 38-game Premier League season?",
+      "options": ["Manchester United (2007–08)", "Arsenal (2003–04)", "Manchester City (2017–18)", "Chelsea (2004–05)"],
+      "answer": "Chelsea (2004–05)",
+      "clue": "A historic defensive masterclass put together by Stamford Bridge's royal blue side in 2004–05.",
+      "funFact": "Under José Mourinho, the Blues conceded a scarcely believable 15 goals across the entire 38-game campaign, keeping 25 clean sheets."
+    }
+  ]
+}
