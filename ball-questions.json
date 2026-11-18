@@ -1,86 +1,86 @@
 {
-  "setId": 62,
-  "date": "2026-11-18",
+  "setId": 63,
+  "date": "2026-11-19",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently bottom of the Premier League table today, Wednesday, 18th Nov 2026?",
-      "options": ["Sunderland", "Ipswich Town", "Crystal Palace"],
-      "answer": "Crystal Palace",
-      "clue": "Known as \"The Eagles,\" they are fighting to climb out of the relegation zone.",
-      "funFact": "This South London club plays its home matches at Selhurst Park."
+      "question": "Who is currently 3rd from top of the Premier League table today, Thursday, 19th Nov 2026?",
+      "options": ["Brighton", "Liverpool", "Manchester City"],
+      "answer": "Manchester City",
+      "clue": "The reigning powerhouse club that plays its home matches at the Etihad Stadium.",
+      "funFact": "They sit on 21 points from their opening 10 fixtures, just one point behind second-placed Brighton."
     },
     {
       "id": 2,
-      "question": "Northern Ireland secured Nations League promotion last night (Tuesday) by drawing with which country?",
-      "options": ["Ukraine", "Italy", "Serbia", "Hungary"],
-      "answer": "Hungary",
-      "clue": "A Central European nation whose home matches are played in Budapest.",
-      "funFact": "Justin Devenny scored a crucial equalizer in the second half at the Puskás Aréna to seal a famous result."
+      "question": "Who is the new manager of Manchester United?",
+      "options": ["Mark Goldbridge", "Thomas Frank", "Bruno Fernandes", "Mauricio Pochettino"],
+      "answer": "Mauricio Pochettino",
+      "clue": "A former Paris Saint-Germain and Chelsea manager who took over the Old Trafford hot seat in November 2026.",
+      "funFact": "The experienced Argentine coach previously managed Tottenham Hotspur, Southampton, and Chelsea in the Premier League."
     },
     {
       "id": 3,
-      "question": "Wales lost to Portugal last night; what was the score?",
-      "options": ["0-3", "2-3"],
-      "answer": "2-3",
-      "clue": "A narrow one-goal margin defeat where the Dragons scored twice.",
-      "funFact": "A hard-fought, five-goal thriller on the international stage."
+      "question": "Who is the new manager of Crystal Palace?",
+      "options": ["Thomas Tuchel", "Thomas the Tank Engine", "Thomas Frank"],
+      "answer": "Thomas Frank",
+      "clue": "A charismatic Danish manager who stepped into the Selhurst Park dugout following Pierre Sage's departure.",
+      "funFact": "The Danish tactician earned widespread acclaim in English football during his successful spell transforming Brentford into an established Premier League club."
     },
     {
       "id": 4,
-      "question": "Which ex-Manchester United goalkeeper celebrates his birthday today?",
-      "options": ["David de Gea", "Edwin van der Sar", "Peter Schmeichel"],
-      "answer": "Peter Schmeichel",
-      "clue": "The legendary Danish giant known for his iconic starfish-blocking technique.",
-      "funFact": "Widely regarded as one of the greatest goalkeepers in football history, he won five Premier League titles at Old Trafford."
+      "question": "Which ex-Manchester United French defender celebrates his birthday today? (61)",
+      "options": ["Mikaël Silvestre", "Patrice Evra", "Raphaël Varane", "Laurent Blanc"],
+      "answer": "Laurent Blanc",
+      "clue": "A tall, elegant French World Cup-winning center-back who joined Manchester United in 2001.",
+      "funFact": "Nicknamed \"Le Président,\" he scored the first-ever Golden Goal in FIFA World Cup history for France in 1998."
     },
     {
       "id": 5,
-      "question": "Peter Schmeichel played for two other Premier League clubs: Manchester City and which other?",
-      "options": ["Leeds United", "Chelsea", "Newcastle United", "Aston Villa"],
-      "answer": "Aston Villa",
-      "clue": "A historic Midlands club that plays its home matches at Villa Park.",
-      "funFact": "He even scored a Premier League goal for the Villans during his stint in the West Midlands."
+      "question": "Two of the bottom three teams in the Premier League have new managers (Crystal Palace & Man U); which other team is in the relegation zone?",
+      "options": ["Leeds United", "Coventry", "Sunderland"],
+      "answer": "Sunderland",
+      "clue": "This Wearside club plays its home matches at the Stadium of Light and is nicknamed \"The Black Cats.\"",
+      "funFact": "They currently sit 19th in the table on 8 points after 10 matches played."
     },
     {
       "id": 6,
-      "question": "Republic of Ireland beat Kosovo 3-0 last night (Tuesday); who scored two of their goals?",
-      "options": ["Ryan Manning", "Troy Parrott"],
-      "answer": "Troy Parrott",
-      "clue": "A talented Irish international forward whose first name is Troy.",
-      "funFact": "The lethal striker put on a masterclass in clinical finishing to secure a dominant victory for the Boys in Green."
+      "question": "Who is Sunderland’s manager?",
+      "options": ["Michael Beale", "Régis Le Bris"],
+      "answer": "Régis Le Bris",
+      "clue": "A French tactician who previously managed Ligue 1 club FC Lorient.",
+      "funFact": "The French coach took charge in June 2024 and famously guided the club back to the Premier League and into European football."
     },
     {
       "id": 7,
-      "question": "What shirt number did Frank Lampard wear for the majority of his Chelsea career?",
-      "options": ["6", "5", "11", "8"],
-      "answer": "8",
-      "clue": "An even single-digit number traditionally associated with central midfielders.",
-      "funFact": "He became Chelsea's all-time record goalscorer while starring in midfield wearing this iconic squad number."
+      "question": "What shirt number did Thierry Henry wear for the majority of his Arsenal career?",
+      "options": ["15", "13", "10", "14"],
+      "answer": "14",
+      "clue": "An even double-digit number equal to seven multiplied by two.",
+      "funFact": "He made this squad number iconic at Highbury and the Emirates while becoming Arsenal's all-time leading goalscorer with 228 goals."
     },
     {
       "id": 8,
-      "question": "How many Premier League titles did birthday boy Peter Schmeichel win for Manchester United?",
-      "options": ["4", "2", "3", "5"],
-      "answer": "5",
-      "clue": "An odd single-digit number equal to the number of fingers on one hand.",
-      "funFact": "He capped off his glittering Old Trafford career by winning the famous Treble in 1999."
+      "question": "How many Premier League titles did birthday boy Laurent Blanc win for Manchester United?",
+      "options": ["0", "2", "1"],
+      "answer": "1",
+      "clue": "The single-digit number representing a solitary championship triumph.",
+      "funFact": "He lifted the trophy in the 2002–03 season before retiring from professional football."
     },
     {
       "id": 9,
-      "question": "Who is Arsenal’s top scorer so far this season?",
-      "options": ["Kai Havertz", "Bukayo Saka", "Eberechi Eze", "Martin Ødegaard"],
-      "answer": "Martin Ødegaard",
-      "clue": "The Norwegian playmaker who wears the armband for the Gunners.",
-      "funFact": "The inspirational club captain leads by example with his elite creative vision and goalscoring contributions from midfield."
+      "question": "Who is Tottenham’s top scorer so far this season?",
+      "options": ["Dominic Solanke", "Conor Gallagher", "Jan Paul van Hecke"],
+      "answer": "Jan Paul van Hecke",
+      "clue": "A towering Dutch center-back who moved to North London from Brighton.",
+      "funFact": "Despite playing in defense, his aerial dominance from set pieces has made him Tottenham's surprise leading marksman this term."
     },
     {
       "id": 10,
-      "question": "Which team conceded the fewest goals in a single 38-game Premier League season?",
-      "options": ["Manchester United (2007–08)", "Arsenal (2003–04)", "Manchester City (2017–18)", "Chelsea (2004–05)"],
-      "answer": "Chelsea (2004–05)",
-      "clue": "A historic defensive masterclass put together by Stamford Bridge's royal blue side in 2004–05.",
-      "funFact": "Under José Mourinho, the Blues conceded a scarcely believable 15 goals across the entire 38-game campaign, keeping 25 clean sheets."
+      "question": "Who is the youngest player to ever appear in a Premier League match?",
+      "options": ["Harvey Elliott", "Aaron Lennon", "Wayne Rooney", "Ethan Nwaneri"],
+      "answer": "Ethan Nwaneri",
+      "clue": "An exciting Hale End academy graduate who broke Harvey Elliott's previous record while still a schoolboy.",
+      "funFact": "He set the all-time record in September 2022 when he came on as a substitute for Arsenal against Brentford aged just 15 years and 181 days."
     }
   ]
 }
