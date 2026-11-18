@@ -1,10 +1,10 @@
 {
-  "setId": 61,
-  "date": "2026-11-17",
+  "setId": 62,
+  "date": "2026-11-18",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently bottom of the Premier League table today, Tuesday, 17th Nov 2026?",
+      "question": "Who is currently bottom of the Premier League table today, Wednesday, 18th Nov 2026?",
       "options": ["Sunderland", "Ipswich Town", "Crystal Palace"],
       "answer": "Crystal Palace",
       "clue": "Known as \"The Eagles,\" they are fighting to climb out of the relegation zone.",
@@ -12,75 +12,75 @@
     },
     {
       "id": 2,
-      "question": "Scotland lost 0-4 last night in the Nations League; who beat them?",
-      "options": ["France", "Italy", "Serbia", "Switzerland"],
-      "answer": "Switzerland",
-      "clue": "An Alpine European nation famous for its red-and-white flag.",
-      "funFact": "The visitors delivered a clinical attacking display to hand the Tartan Army a heavy defeat."
+      "question": "Northern Ireland secured Nations League promotion last night (Tuesday) by drawing with which country?",
+      "options": ["Ukraine", "Italy", "Serbia", "Hungary"],
+      "answer": "Hungary",
+      "clue": "A Central European nation whose home matches are played in Budapest.",
+      "funFact": "Justin Devenny scored a crucial equalizer in the second half at the Puskás Aréna to seal a famous result."
     },
     {
       "id": 3,
-      "question": "Germany thrashed the Netherlands last night; what was the score?",
-      "options": ["6-0", "5-0"],
-      "answer": "5-0",
-      "clue": "A five-goal clean-sheet victory for the hosts.",
-      "funFact": "Die Mannschaft ran riot against their historic European rivals in an unforgettable dominant performance."
+      "question": "Wales lost to Portugal last night; what was the score?",
+      "options": ["0-3", "2-3"],
+      "answer": "2-3",
+      "clue": "A narrow one-goal margin defeat where the Dragons scored twice.",
+      "funFact": "A hard-fought, five-goal thriller on the international stage."
     },
     {
       "id": 4,
-      "question": "Ex-Manchester United player Luís Carlos Almeida da Cunha celebrates his birthday today; how is he better known?",
-      "options": ["Fred", "Chicharito", "Anderson", "Nani"],
-      "answer": "Nani",
-      "clue": "A flashy Portuguese winger famous for his acrobatic backflip goal celebrations.",
-      "funFact": "He signed for Manchester United from Sporting CP in 2007 and went on to make 230 appearances for the club, winning the UEFA Champions League in 2008."
+      "question": "Which ex-Manchester United goalkeeper celebrates his birthday today?",
+      "options": ["David de Gea", "Edwin van der Sar", "Peter Schmeichel"],
+      "answer": "Peter Schmeichel",
+      "clue": "The legendary Danish giant known for his iconic starfish-blocking technique.",
+      "funFact": "Widely regarded as one of the greatest goalkeepers in football history, he won five Premier League titles at Old Trafford."
     },
     {
       "id": 5,
-      "question": "Which manager led Middlesbrough to victory in the 2004 League Cup final and guided them to the UEFA Cup final in 2006 before taking charge of the England national team?",
-      "options": ["Bryan Robson", "Gareth Southgate", "Terry Venables", "Steve McClaren"],
-      "answer": "Steve McClaren",
-      "clue": "A former Manchester United assistant manager under Sir Alex Ferguson who took charge of England in 2006.",
-      "funFact": "His 2004 League Cup triumph at the Millennium Stadium remains the only major trophy in Middlesbrough's history."
+      "question": "Peter Schmeichel played for two other Premier League clubs: Manchester City and which other?",
+      "options": ["Leeds United", "Chelsea", "Newcastle United", "Aston Villa"],
+      "answer": "Aston Villa",
+      "clue": "A historic Midlands club that plays its home matches at Villa Park.",
+      "funFact": "He even scored a Premier League goal for the Villans during his stint in the West Midlands."
     },
     {
       "id": 6,
-      "question": "Which Argentine striker shared the 2010–11 Premier League Golden Boot with Dimitar Berbatov after scoring 20 goals for Manchester City?",
-      "options": ["Sergio Agüero", "Gonzalo Higuaín", "Ezequiel Lavezzi", "Carlos Tevez"],
-      "answer": "Carlos Tevez",
-      "clue": "A tenacious Argentine forward famously nicknamed \"El Apache.\"",
-      "funFact": "He won Premier League titles with both Manchester clubs, lifting the trophy with Manchester United before crossing the city to help Manchester City win the league in 2011–12."
+      "question": "Republic of Ireland beat Kosovo 3-0 last night (Tuesday); who scored two of their goals?",
+      "options": ["Ryan Manning", "Troy Parrott"],
+      "answer": "Troy Parrott",
+      "clue": "A talented Irish international forward whose first name is Troy.",
+      "funFact": "The lethal striker put on a masterclass in clinical finishing to secure a dominant victory for the Boys in Green."
     },
     {
       "id": 7,
-      "question": "What shirt number did Nani wear for the majority of his Manchester United career?",
-      "options": ["19", "17"],
-      "answer": "17",
-      "clue": "A prime double-digit number sitting right between 16 and 18.",
-      "funFact": "He wore this exact squad number across all eight seasons of his tenure at Old Trafford between 2007 and 2015."
+      "question": "What shirt number did Frank Lampard wear for the majority of his Chelsea career?",
+      "options": ["6", "5", "11", "8"],
+      "answer": "8",
+      "clue": "An even single-digit number traditionally associated with central midfielders.",
+      "funFact": "He became Chelsea's all-time record goalscorer while starring in midfield wearing this iconic squad number."
     },
     {
       "id": 8,
-      "question": "How many Premier League titles did Nani win for Manchester United?",
-      "options": ["0", "1", "3", "4"],
-      "answer": "4",
-      "clue": "An even single-digit number equal to two plus two.",
-      "funFact": "He collected Premier League winner's medals in 2007–08, 2008–09, 2010–11, and 2012–13 under Sir Alex Ferguson."
+      "question": "How many Premier League titles did birthday boy Peter Schmeichel win for Manchester United?",
+      "options": ["4", "2", "3", "5"],
+      "answer": "5",
+      "clue": "An odd single-digit number equal to the number of fingers on one hand.",
+      "funFact": "He capped off his glittering Old Trafford career by winning the famous Treble in 1999."
     },
     {
       "id": 9,
-      "question": "Who is Nottingham Forest’s top scorer so far this season?",
-      "options": ["Dan Ndoye", "Morgan Gibbs-White", "Neco Williams", "Liam Delap"],
-      "answer": "Liam Delap",
-      "clue": "A powerful English striker who previously came through Manchester City's academy before shining at Ipswich Town.",
-      "funFact": "He has brought physicality and clinical finishing to Forest's frontline at the City Ground."
+      "question": "Who is Arsenal’s top scorer so far this season?",
+      "options": ["Kai Havertz", "Bukayo Saka", "Eberechi Eze", "Martin Ødegaard"],
+      "answer": "Martin Ødegaard",
+      "clue": "The Norwegian playmaker who wears the armband for the Gunners.",
+      "funFact": "The inspirational club captain leads by example with his elite creative vision and goalscoring contributions from midfield."
     },
     {
       "id": 10,
-      "question": "Which Nigerian striker scored Premier League hat-tricks for three different clubs, accomplishing the feat for Portsmouth, Everton, and Blackburn Rovers?",
-      "options": ["Nwankwo Kanu", "Efan Ekoku", "Shola Ameobi", "Yakubu"],
-      "answer": "Yakubu",
-      "clue": "Known affectionately by fans simply as \"The Yak.\"",
-      "funFact": "He scored 97 Premier League goals in 252 appearances overall, including four goals in a single match for Blackburn against Swansea in 2011."
+      "question": "Which team conceded the fewest goals in a single 38-game Premier League season?",
+      "options": ["Manchester United (2007–08)", "Arsenal (2003–04)", "Manchester City (2017–18)", "Chelsea (2004–05)"],
+      "answer": "Chelsea (2004–05)",
+      "clue": "A historic defensive masterclass put together by Stamford Bridge's royal blue side in 2004–05.",
+      "funFact": "Under José Mourinho, the Blues conceded a scarcely believable 15 goals across the entire 38-game campaign, keeping 25 clean sheets."
     }
   ]
 }
