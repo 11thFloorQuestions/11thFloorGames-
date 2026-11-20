@@ -1,0 +1,86 @@
+{
+  "setId": 64,
+  "date": "2026-11-20",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently 3rd from top of the Premier League table today, Friday, 20th Nov 2026?",
+      "options": ["Brighton", "Liverpool", "Chelsea", "Manchester City"],
+      "answer": "Manchester City",
+      "clue": "The serial title-winning club that plays its home matches at the Etihad Stadium.",
+      "funFact": "They sit on 21 points from their opening 10 matches, just one point behind second-placed Brighton."
+    },
+    {
+      "id": 2,
+      "question": "What is the commonly used name of Manchester United’s training ground?",
+      "options": ["Swinford", "Chase Park", "Carrington"],
+      "answer": "Carrington",
+      "clue": "Located in Greater Manchester, this famous training complex starts with the letter C.",
+      "funFact": "The Red Devils officially moved to this state-of-the-art training complex in 2000, replacing their historic former facility at The Cliff."
+    },
+    {
+      "id": 3,
+      "question": "Who is the manager of Coventry City?",
+      "options": ["Thomas Frank", "Frank Lampard"],
+      "answer": "Frank Lampard",
+      "clue": "Chelsea's all-time record goalscorer.",
+      "funFact": "The former England international midfielder previously managed Derby County, Everton, and two spells at Chelsea before taking charge of the Sky Blues."
+    },
+    {
+      "id": 4,
+      "question": "On this day in history, 20th November, legendary player Pelé scored his 1,000th competitive goal. What nationality was Pelé?",
+      "options": ["Argentinian", "Spanish", "French", "Brazilian"],
+      "answer": "Brazilian",
+      "clue": "A three-time FIFA World Cup winner who wore the iconic yellow number 10 jersey of the Seleção.",
+      "funFact": "He reached the historic milestone in 1969 at the Maracanã Stadium while playing for Santos against Vasco da Gama."
+    },
+    {
+      "id": 5,
+      "question": "Mauricio Pochettino has his first game in charge of Manchester United this weekend; who are they playing?",
+      "options": ["Tottenham Hotspur", "Chelsea", "Leeds United", "Liverpool"],
+      "answer": "Liverpool",
+      "clue": "Manchester United's fiercest historic rivals from Merseyside.",
+      "funFact": "He begins his tenure with a high-stakes North West Derby away at Anfield."
+    },
+    {
+      "id": 6,
+      "question": "Which Premier League club has the youngest squad this season?",
+      "options": ["Leeds United", "Bournemouth", "Brighton & Hove Albion", "Chelsea"],
+      "answer": "Chelsea",
+      "clue": "This West London club plays its home matches at Stamford Bridge.",
+      "funFact": "Their squad boasts an average age of 24.6 years after prioritizing elite young talent across recent transfer windows."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number did Harry Kane wear for the majority of his Tottenham career?",
+      "options": ["11", "9", "10"],
+      "answer": "10",
+      "clue": "A classic double-digit playmaker and forward shirt number right after nine.",
+      "funFact": "After initially wearing number 37 and number 18, he inherited this famous jersey in 2015 and went on to become Spurs' all-time record goalscorer."
+    },
+    {
+      "id": 8,
+      "question": "How many Premier League titles did Didier Drogba win?",
+      "options": ["3", "1", "2", "4"],
+      "answer": "4",
+      "clue": "An even single-digit number equal to two multiplied by two.",
+      "funFact": "He won all four of his Premier League winner's medals across two separate spells at Stamford Bridge (2004–05, 2005–06, 2009–10, and 2014–15)."
+    },
+    {
+      "id": 9,
+      "question": "Who is Chelsea’s top scorer so far this season?",
+      "options": ["João Pedro", "Cole Palmer", "Morgan Rogers"],
+      "answer": "Morgan Rogers",
+      "clue": "A dynamic English attacking midfielder who previously starred at Aston Villa.",
+      "funFact": "His versatility, ball-carrying power, and clinical finishing have made him Chelsea's standout attacking threat in the final third this campaign."
+    },
+    {
+      "id": 10,
+      "question": "Which manager holds the Premier League record for reaching 100 victories in the fewest matches, achieving the milestone in just 134 games?",
+      "options": ["José Mourinho", "Jürgen Klopp", "Alex Ferguson", "Pep Guardiola"],
+      "answer": "Pep Guardiola",
+      "clue": "The Spanish tactician who led Manchester City to four consecutive Premier League titles.",
+      "funFact": "He smashed José Mourinho's previous record of 142 matches when Manchester City defeated Sheffield United 2–0 in December 2019."
+    }
+  ]
+}
