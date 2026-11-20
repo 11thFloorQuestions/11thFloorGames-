@@ -72,4 +72,15 @@
       "options": ["Kiernan Dewsbury-Hall", "Thierno Barry"],
       "answer": "Thierno Barry",
       "clue": "A towering French forward who previously impressed in La Liga with Villarreal.",
-      "funFact": "Standing at 6ft 5in, his physical presence and
+      "funFact": "Standing at 6ft 5in, his physical presence and aerial threat have made him Everton's focal point in attack this campaign."
+    },
+    {
+      "id": 10,
+      "question": "Which Premier League team has won the fewest league games this season so far (1)?",
+      "options": ["Crystal Palace", "Sunderland", "Manchester United"],
+      "answer": "Manchester United",
+      "clue": "The 20-time English champions who recently appointed Mauricio Pochettino as their new manager.",
+      "funFact": "Despite sitting on just a single league win from their opening 10 matches, they have drawn five games to stay ahead of Sunderland and Crystal Palace."
+    }
+  ]
+}
