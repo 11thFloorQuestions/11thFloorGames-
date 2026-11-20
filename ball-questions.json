@@ -1,86 +1,75 @@
 {
-  "setId": 64,
-  "date": "2026-11-20",
+  "setId": 65,
+  "date": "2026-11-21",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently 3rd from top of the Premier League table today, Friday, 20th Nov 2026?",
-      "options": ["Brighton", "Liverpool", "Chelsea", "Manchester City"],
-      "answer": "Manchester City",
-      "clue": "The serial title-winning club that plays its home matches at the Etihad Stadium.",
-      "funFact": "They sit on 21 points from their opening 10 matches, just one point behind second-placed Brighton."
+      "question": "Who is currently top of the Premier League table today, Saturday, 21st Nov 2026?",
+      "options": ["Brighton", "Liverpool", "Manchester City", "Arsenal"],
+      "answer": "Arsenal",
+      "clue": "This North London club plays its home matches at the Emirates Stadium.",
+      "funFact": "They sit at the summit of the Premier League table on 27 points after a strong start to the 2026–27 season."
     },
     {
       "id": 2,
-      "question": "What is the commonly used name of Manchester United’s training ground?",
-      "options": ["Swinford", "Chase Park", "Carrington"],
-      "answer": "Carrington",
-      "clue": "Located in Greater Manchester, this famous training complex starts with the letter C.",
-      "funFact": "The Red Devils officially moved to this state-of-the-art training complex in 2000, replacing their historic former facility at The Cliff."
+      "question": "Which Brighton & Hove Albion centre-back and captain celebrates his birthday today (35)?",
+      "options": ["Lewis Hamilton", "Lewis Capaldi", "Lewis Monk", "Lewis Dunk"],
+      "answer": "Lewis Dunk",
+      "clue": "A commanding 6ft 4in English defender who wears the captain's armband at the Amex Stadium.",
+      "funFact": "Born in Brighton on 21 November 1991, he rose through his hometown club's youth academy to become a long-serving club legend and England international."
     },
     {
       "id": 3,
-      "question": "Who is the manager of Coventry City?",
-      "options": ["Thomas Frank", "Frank Lampard"],
-      "answer": "Frank Lampard",
-      "clue": "Chelsea's all-time record goalscorer.",
-      "funFact": "The former England international midfielder previously managed Derby County, Everton, and two spells at Chelsea before taking charge of the Sky Blues."
+      "question": "Who is the manager of Brighton & Hove Albion?",
+      "options": ["Thomas Frank", "Fabian Hürzeler", "Scott Parker"],
+      "answer": "Fabian Hürzeler",
+      "clue": "A German tactician who previously guided FC St. Pauli to promotion to the Bundesliga.",
+      "funFact": "When appointed in 2024 at age 31, he became the youngest permanent manager in Premier League history."
     },
     {
       "id": 4,
-      "question": "On this day in history, 20th November, legendary player Pelé scored his 1,000th competitive goal. What nationality was Pelé?",
-      "options": ["Argentinian", "Spanish", "French", "Brazilian"],
-      "answer": "Brazilian",
-      "clue": "A three-time FIFA World Cup winner who wore the iconic yellow number 10 jersey of the Seleção.",
-      "funFact": "He reached the historic milestone in 1969 at the Maracanã Stadium while playing for Santos against Vasco da Gama."
+      "question": "On this day in history, 21st November 1952, Adi Dassler registered the patent for screw-in studs for football boots; which company did he create?",
+      "options": ["Nike", "Puma", "Gola", "Adidas"],
+      "answer": "Adidas",
+      "clue": "A global sportswear giant named after its founder's nickname (\"Adi\") and surname (\"Dassler\"), famous for its three-stripe logo.",
+      "funFact": "The revolutionary screw-in studs famously gave West Germany superior traction in muddy conditions during their 1954 World Cup final triumph."
     },
     {
       "id": 5,
-      "question": "Mauricio Pochettino has his first game in charge of Manchester United this weekend; who are they playing?",
-      "options": ["Tottenham Hotspur", "Chelsea", "Leeds United", "Liverpool"],
-      "answer": "Liverpool",
-      "clue": "Manchester United's fiercest historic rivals from Merseyside.",
-      "funFact": "He begins his tenure with a high-stakes North West Derby away at Anfield."
+      "question": "Which NFL great and former Birmingham City stakeholder is reportedly looking to make an investment in Chelsea?",
+      "options": ["Travis Kelce", "Russell Wilson", "Tom Brady"],
+      "answer": "Tom Brady",
+      "clue": "Widely regarded as the greatest quarterback in American football history.",
+      "funFact": "He won an unprecedented seven Super Bowl titles across his legendary 23-season NFL career with the New England Patriots and Tampa Bay Buccaneers."
     },
     {
       "id": 6,
-      "question": "Which Premier League club has the youngest squad this season?",
-      "options": ["Leeds United", "Bournemouth", "Brighton & Hove Albion", "Chelsea"],
-      "answer": "Chelsea",
-      "clue": "This West London club plays its home matches at Stamford Bridge.",
-      "funFact": "Their squad boasts an average age of 24.6 years after prioritizing elite young talent across recent transfer windows."
+      "question": "What nationality is Mauricio Pochettino?",
+      "options": ["Spanish", "Argentinian"],
+      "answer": "Argentinian",
+      "clue": "He hails from the same South American footballing nation as Lionel Messi and Diego Maradona.",
+      "funFact": "Born in Murphy, Santa Fe, he earned 20 senior international caps as a tough-tackling centre-back and played at the 2002 FIFA World Cup."
     },
     {
       "id": 7,
-      "question": "What shirt number did Harry Kane wear for the majority of his Tottenham career?",
-      "options": ["11", "9", "10"],
-      "answer": "10",
-      "clue": "A classic double-digit playmaker and forward shirt number right after nine.",
-      "funFact": "After initially wearing number 37 and number 18, he inherited this famous jersey in 2015 and went on to become Spurs' all-time record goalscorer."
+      "question": "What shirt number does birthday boy Lewis Dunk wear for Brighton & Hove Albion?",
+      "options": ["21", "4", "3", "5"],
+      "answer": "5",
+      "clue": "An odd single-digit number sitting right between four and six.",
+      "funFact": "He has worn this classic central defender's jersey throughout Brighton's entire Premier League era."
     },
     {
       "id": 8,
-      "question": "How many Premier League titles did Didier Drogba win?",
-      "options": ["3", "1", "2", "4"],
-      "answer": "4",
-      "clue": "An even single-digit number equal to two multiplied by two.",
-      "funFact": "He won all four of his Premier League winner's medals across two separate spells at Stamford Bridge (2004–05, 2005–06, 2009–10, and 2014–15)."
+      "question": "How many Premier League titles did Fabien Barthez win?",
+      "options": ["3", "1", "2", "0"],
+      "answer": "2",
+      "clue": "An even single-digit number representing a pair of championship medals.",
+      "funFact": "The eccentric French World Cup-winning goalkeeper lifted the Premier League trophy with Manchester United in 2000–01 and 2002–03."
     },
     {
       "id": 9,
-      "question": "Who is Chelsea’s top scorer so far this season?",
-      "options": ["João Pedro", "Cole Palmer", "Morgan Rogers"],
-      "answer": "Morgan Rogers",
-      "clue": "A dynamic English attacking midfielder who previously starred at Aston Villa.",
-      "funFact": "His versatility, ball-carrying power, and clinical finishing have made him Chelsea's standout attacking threat in the final third this campaign."
-    },
-    {
-      "id": 10,
-      "question": "Which manager holds the Premier League record for reaching 100 victories in the fewest matches, achieving the milestone in just 134 games?",
-      "options": ["José Mourinho", "Jürgen Klopp", "Alex Ferguson", "Pep Guardiola"],
-      "answer": "Pep Guardiola",
-      "clue": "The Spanish tactician who led Manchester City to four consecutive Premier League titles.",
-      "funFact": "He smashed José Mourinho's previous record of 142 matches when Manchester City defeated Sheffield United 2–0 in December 2019."
-    }
-  ]
-}
+      "question": "Who is Everton’s top scorer so far this season?",
+      "options": ["Kiernan Dewsbury-Hall", "Thierno Barry"],
+      "answer": "Thierno Barry",
+      "clue": "A towering French forward who previously impressed in La Liga with Villarreal.",
+      "funFact": "Standing at 6ft 5in, his physical presence and
