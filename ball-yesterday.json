@@ -1,86 +1,86 @@
 {
-  "setId": 63,
-  "date": "2026-11-19",
+  "setId": 64,
+  "date": "2026-11-20",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently 3rd from top of the Premier League table today, Thursday, 19th Nov 2026?",
-      "options": ["Brighton", "Liverpool", "Manchester City"],
+      "question": "Who is currently 3rd from top of the Premier League table today, Friday, 20th Nov 2026?",
+      "options": ["Brighton", "Liverpool", "Chelsea", "Manchester City"],
       "answer": "Manchester City",
-      "clue": "The reigning powerhouse club that plays its home matches at the Etihad Stadium.",
-      "funFact": "They sit on 21 points from their opening 10 fixtures, just one point behind second-placed Brighton."
+      "clue": "The serial title-winning club that plays its home matches at the Etihad Stadium.",
+      "funFact": "They sit on 21 points from their opening 10 matches, just one point behind second-placed Brighton."
     },
     {
       "id": 2,
-      "question": "Who is the new manager of Manchester United?",
-      "options": ["Mark Goldbridge", "Thomas Frank", "Bruno Fernandes", "Mauricio Pochettino"],
-      "answer": "Mauricio Pochettino",
-      "clue": "A former Paris Saint-Germain and Chelsea manager who took over the Old Trafford hot seat in November 2026.",
-      "funFact": "The experienced Argentine coach previously managed Tottenham Hotspur, Southampton, and Chelsea in the Premier League."
+      "question": "What is the commonly used name of Manchester United’s training ground?",
+      "options": ["Swinford", "Chase Park", "Carrington"],
+      "answer": "Carrington",
+      "clue": "Located in Greater Manchester, this famous training complex starts with the letter C.",
+      "funFact": "The Red Devils officially moved to this state-of-the-art training complex in 2000, replacing their historic former facility at The Cliff."
     },
     {
       "id": 3,
-      "question": "Who is the new manager of Crystal Palace?",
-      "options": ["Thomas Tuchel", "Thomas the Tank Engine", "Thomas Frank"],
-      "answer": "Thomas Frank",
-      "clue": "A charismatic Danish manager who stepped into the Selhurst Park dugout following Pierre Sage's departure.",
-      "funFact": "The Danish tactician earned widespread acclaim in English football during his successful spell transforming Brentford into an established Premier League club."
+      "question": "Who is the manager of Coventry City?",
+      "options": ["Thomas Frank", "Frank Lampard"],
+      "answer": "Frank Lampard",
+      "clue": "Chelsea's all-time record goalscorer.",
+      "funFact": "The former England international midfielder previously managed Derby County, Everton, and two spells at Chelsea before taking charge of the Sky Blues."
     },
     {
       "id": 4,
-      "question": "Which ex-Manchester United French defender celebrates his birthday today? (61)",
-      "options": ["Mikaël Silvestre", "Patrice Evra", "Raphaël Varane", "Laurent Blanc"],
-      "answer": "Laurent Blanc",
-      "clue": "A tall, elegant French World Cup-winning center-back who joined Manchester United in 2001.",
-      "funFact": "Nicknamed \"Le Président,\" he scored the first-ever Golden Goal in FIFA World Cup history for France in 1998."
+      "question": "On this day in history, 20th November, legendary player Pelé scored his 1,000th competitive goal. What nationality was Pelé?",
+      "options": ["Argentinian", "Spanish", "French", "Brazilian"],
+      "answer": "Brazilian",
+      "clue": "A three-time FIFA World Cup winner who wore the iconic yellow number 10 jersey of the Seleção.",
+      "funFact": "He reached the historic milestone in 1969 at the Maracanã Stadium while playing for Santos against Vasco da Gama."
     },
     {
       "id": 5,
-      "question": "Two of the bottom three teams in the Premier League have new managers (Crystal Palace & Man U); which other team is in the relegation zone?",
-      "options": ["Leeds United", "Coventry", "Sunderland"],
-      "answer": "Sunderland",
-      "clue": "This Wearside club plays its home matches at the Stadium of Light and is nicknamed \"The Black Cats.\"",
-      "funFact": "They currently sit 19th in the table on 8 points after 10 matches played."
+      "question": "Mauricio Pochettino has his first game in charge of Manchester United this weekend; who are they playing?",
+      "options": ["Tottenham Hotspur", "Chelsea", "Leeds United", "Liverpool"],
+      "answer": "Liverpool",
+      "clue": "Manchester United's fiercest historic rivals from Merseyside.",
+      "funFact": "He begins his tenure with a high-stakes North West Derby away at Anfield."
     },
     {
       "id": 6,
-      "question": "Who is Sunderland’s manager?",
-      "options": ["Michael Beale", "Régis Le Bris"],
-      "answer": "Régis Le Bris",
-      "clue": "A French tactician who previously managed Ligue 1 club FC Lorient.",
-      "funFact": "The French coach took charge in June 2024 and famously guided the club back to the Premier League and into European football."
+      "question": "Which Premier League club has the youngest squad this season?",
+      "options": ["Leeds United", "Bournemouth", "Brighton & Hove Albion", "Chelsea"],
+      "answer": "Chelsea",
+      "clue": "This West London club plays its home matches at Stamford Bridge.",
+      "funFact": "Their squad boasts an average age of 24.6 years after prioritizing elite young talent across recent transfer windows."
     },
     {
       "id": 7,
-      "question": "What shirt number did Thierry Henry wear for the majority of his Arsenal career?",
-      "options": ["15", "13", "10", "14"],
-      "answer": "14",
-      "clue": "An even double-digit number equal to seven multiplied by two.",
-      "funFact": "He made this squad number iconic at Highbury and the Emirates while becoming Arsenal's all-time leading goalscorer with 228 goals."
+      "question": "What shirt number did Harry Kane wear for the majority of his Tottenham career?",
+      "options": ["11", "9", "10"],
+      "answer": "10",
+      "clue": "A classic double-digit playmaker and forward shirt number right after nine.",
+      "funFact": "After initially wearing number 37 and number 18, he inherited this famous jersey in 2015 and went on to become Spurs' all-time record goalscorer."
     },
     {
       "id": 8,
-      "question": "How many Premier League titles did birthday boy Laurent Blanc win for Manchester United?",
-      "options": ["0", "2", "1"],
-      "answer": "1",
-      "clue": "The single-digit number representing a solitary championship triumph.",
-      "funFact": "He lifted the trophy in the 2002–03 season before retiring from professional football."
+      "question": "How many Premier League titles did Didier Drogba win?",
+      "options": ["3", "1", "2", "4"],
+      "answer": "4",
+      "clue": "An even single-digit number equal to two multiplied by two.",
+      "funFact": "He won all four of his Premier League winner's medals across two separate spells at Stamford Bridge (2004–05, 2005–06, 2009–10, and 2014–15)."
     },
     {
       "id": 9,
-      "question": "Who is Tottenham’s top scorer so far this season?",
-      "options": ["Dominic Solanke", "Conor Gallagher", "Jan Paul van Hecke"],
-      "answer": "Jan Paul van Hecke",
-      "clue": "A towering Dutch center-back who moved to North London from Brighton.",
-      "funFact": "Despite playing in defense, his aerial dominance from set pieces has made him Tottenham's surprise leading marksman this term."
+      "question": "Who is Chelsea’s top scorer so far this season?",
+      "options": ["João Pedro", "Cole Palmer", "Morgan Rogers"],
+      "answer": "Morgan Rogers",
+      "clue": "A dynamic English attacking midfielder who previously starred at Aston Villa.",
+      "funFact": "His versatility, ball-carrying power, and clinical finishing have made him Chelsea's standout attacking threat in the final third this campaign."
     },
     {
       "id": 10,
-      "question": "Who is the youngest player to ever appear in a Premier League match?",
-      "options": ["Harvey Elliott", "Aaron Lennon", "Wayne Rooney", "Ethan Nwaneri"],
-      "answer": "Ethan Nwaneri",
-      "clue": "An exciting Hale End academy graduate who broke Harvey Elliott's previous record while still a schoolboy.",
-      "funFact": "He set the all-time record in September 2022 when he came on as a substitute for Arsenal against Brentford aged just 15 years and 181 days."
+      "question": "Which manager holds the Premier League record for reaching 100 victories in the fewest matches, achieving the milestone in just 134 games?",
+      "options": ["José Mourinho", "Jürgen Klopp", "Alex Ferguson", "Pep Guardiola"],
+      "answer": "Pep Guardiola",
+      "clue": "The Spanish tactician who led Manchester City to four consecutive Premier League titles.",
+      "funFact": "He smashed José Mourinho's previous record of 142 matches when Manchester City defeated Sheffield United 2–0 in December 2019."
     }
   ]
 }
