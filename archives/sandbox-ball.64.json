@@ -1,0 +1,86 @@
+{
+  "setId": 63,
+  "date": "2026-11-19",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently 3rd from top of the Premier League table today, Thursday, 19th Nov 2026?",
+      "options": ["Brighton", "Liverpool", "Manchester City"],
+      "answer": "Manchester City",
+      "clue": "The reigning powerhouse club that plays its home matches at the Etihad Stadium.",
+      "funFact": "They sit on 21 points from their opening 10 fixtures, just one point behind second-placed Brighton."
+    },
+    {
+      "id": 2,
+      "question": "Who is the new manager of Manchester United?",
+      "options": ["Mark Goldbridge", "Thomas Frank", "Bruno Fernandes", "Mauricio Pochettino"],
+      "answer": "Mauricio Pochettino",
+      "clue": "A former Paris Saint-Germain and Chelsea manager who took over the Old Trafford hot seat in November 2026.",
+      "funFact": "The experienced Argentine coach previously managed Tottenham Hotspur, Southampton, and Chelsea in the Premier League."
+    },
+    {
+      "id": 3,
+      "question": "Who is the new manager of Crystal Palace?",
+      "options": ["Thomas Tuchel", "Thomas the Tank Engine", "Thomas Frank"],
+      "answer": "Thomas Frank",
+      "clue": "A charismatic Danish manager who stepped into the Selhurst Park dugout following Pierre Sage's departure.",
+      "funFact": "The Danish tactician earned widespread acclaim in English football during his successful spell transforming Brentford into an established Premier League club."
+    },
+    {
+      "id": 4,
+      "question": "Which ex-Manchester United French defender celebrates his birthday today? (61)",
+      "options": ["Mikaël Silvestre", "Patrice Evra", "Raphaël Varane", "Laurent Blanc"],
+      "answer": "Laurent Blanc",
+      "clue": "A tall, elegant French World Cup-winning center-back who joined Manchester United in 2001.",
+      "funFact": "Nicknamed \"Le Président,\" he scored the first-ever Golden Goal in FIFA World Cup history for France in 1998."
+    },
+    {
+      "id": 5,
+      "question": "Two of the bottom three teams in the Premier League have new managers (Crystal Palace & Man U); which other team is in the relegation zone?",
+      "options": ["Leeds United", "Coventry", "Sunderland"],
+      "answer": "Sunderland",
+      "clue": "This Wearside club plays its home matches at the Stadium of Light and is nicknamed \"The Black Cats.\"",
+      "funFact": "They currently sit 19th in the table on 8 points after 10 matches played."
+    },
+    {
+      "id": 6,
+      "question": "Who is Sunderland’s manager?",
+      "options": ["Michael Beale", "Régis Le Bris"],
+      "answer": "Régis Le Bris",
+      "clue": "A French tactician who previously managed Ligue 1 club FC Lorient.",
+      "funFact": "The French coach took charge in June 2024 and famously guided the club back to the Premier League and into European football."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number did Thierry Henry wear for the majority of his Arsenal career?",
+      "options": ["15", "13", "10", "14"],
+      "answer": "14",
+      "clue": "An even double-digit number equal to seven multiplied by two.",
+      "funFact": "He made this squad number iconic at Highbury and the Emirates while becoming Arsenal's all-time leading goalscorer with 228 goals."
+    },
+    {
+      "id": 8,
+      "question": "How many Premier League titles did birthday boy Laurent Blanc win for Manchester United?",
+      "options": ["0", "2", "1"],
+      "answer": "1",
+      "clue": "The single-digit number representing a solitary championship triumph.",
+      "funFact": "He lifted the trophy in the 2002–03 season before retiring from professional football."
+    },
+    {
+      "id": 9,
+      "question": "Who is Tottenham’s top scorer so far this season?",
+      "options": ["Dominic Solanke", "Conor Gallagher", "Jan Paul van Hecke"],
+      "answer": "Jan Paul van Hecke",
+      "clue": "A towering Dutch center-back who moved to North London from Brighton.",
+      "funFact": "Despite playing in defense, his aerial dominance from set pieces has made him Tottenham's surprise leading marksman this term."
+    },
+    {
+      "id": 10,
+      "question": "Who is the youngest player to ever appear in a Premier League match?",
+      "options": ["Harvey Elliott", "Aaron Lennon", "Wayne Rooney", "Ethan Nwaneri"],
+      "answer": "Ethan Nwaneri",
+      "clue": "An exciting Hale End academy graduate who broke Harvey Elliott's previous record while still a schoolboy.",
+      "funFact": "He set the all-time record in September 2022 when he came on as a substitute for Arsenal against Brentford aged just 15 years and 181 days."
+    }
+  ]
+}
