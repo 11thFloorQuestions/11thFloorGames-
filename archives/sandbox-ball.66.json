@@ -1,0 +1,86 @@
+{
+  "setId": 65,
+  "date": "2026-11-21",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently top of the Premier League table today, Saturday, 21st Nov 2026?",
+      "options": ["Brighton", "Liverpool", "Manchester City", "Arsenal"],
+      "answer": "Arsenal",
+      "clue": "This North London club plays its home matches at the Emirates Stadium.",
+      "funFact": "They sit at the summit of the Premier League table on 27 points after a strong start to the 2026–27 season."
+    },
+    {
+      "id": 2,
+      "question": "Which Brighton & Hove Albion centre-back and captain celebrates his birthday today (35)?",
+      "options": ["Lewis Hamilton", "Lewis Capaldi", "Lewis Monk", "Lewis Dunk"],
+      "answer": "Lewis Dunk",
+      "clue": "A commanding 6ft 4in English defender who wears the captain's armband at the Amex Stadium.",
+      "funFact": "Born in Brighton on 21 November 1991, he rose through his hometown club's youth academy to become a long-serving club legend and England international."
+    },
+    {
+      "id": 3,
+      "question": "Who is the manager of Brighton & Hove Albion?",
+      "options": ["Thomas Frank", "Fabian Hürzeler", "Scott Parker"],
+      "answer": "Fabian Hürzeler",
+      "clue": "A German tactician who previously guided FC St. Pauli to promotion to the Bundesliga.",
+      "funFact": "When appointed in 2024 at age 31, he became the youngest permanent manager in Premier League history."
+    },
+    {
+      "id": 4,
+      "question": "On this day in history, 21st November 1952, Adi Dassler registered the patent for screw-in studs for football boots; which company did he create?",
+      "options": ["Nike", "Puma", "Gola", "Adidas"],
+      "answer": "Adidas",
+      "clue": "A global sportswear giant named after its founder's nickname (\"Adi\") and surname (\"Dassler\"), famous for its three-stripe logo.",
+      "funFact": "The revolutionary screw-in studs famously gave West Germany superior traction in muddy conditions during their 1954 World Cup final triumph."
+    },
+    {
+      "id": 5,
+      "question": "Which NFL great and former Birmingham City stakeholder is reportedly looking to make an investment in Chelsea?",
+      "options": ["Travis Kelce", "Russell Wilson", "Tom Brady"],
+      "answer": "Tom Brady",
+      "clue": "Widely regarded as the greatest quarterback in American football history.",
+      "funFact": "He won an unprecedented seven Super Bowl titles across his legendary 23-season NFL career with the New England Patriots and Tampa Bay Buccaneers."
+    },
+    {
+      "id": 6,
+      "question": "What nationality is Mauricio Pochettino?",
+      "options": ["Spanish", "Argentinian"],
+      "answer": "Argentinian",
+      "clue": "He hails from the same South American footballing nation as Lionel Messi and Diego Maradona.",
+      "funFact": "Born in Murphy, Santa Fe, he earned 20 senior international caps as a tough-tackling centre-back and played at the 2002 FIFA World Cup."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number does birthday boy Lewis Dunk wear for Brighton & Hove Albion?",
+      "options": ["21", "4", "3", "5"],
+      "answer": "5",
+      "clue": "An odd single-digit number sitting right between four and six.",
+      "funFact": "He has worn this classic central defender's jersey throughout Brighton's entire Premier League era."
+    },
+    {
+      "id": 8,
+      "question": "How many Premier League titles did Fabien Barthez win?",
+      "options": ["3", "1", "2", "0"],
+      "answer": "2",
+      "clue": "An even single-digit number representing a pair of championship medals.",
+      "funFact": "The eccentric French World Cup-winning goalkeeper lifted the Premier League trophy with Manchester United in 2000–01 and 2002–03."
+    },
+    {
+      "id": 9,
+      "question": "Who is Everton’s top scorer so far this season?",
+      "options": ["Kiernan Dewsbury-Hall", "Thierno Barry"],
+      "answer": "Thierno Barry",
+      "clue": "A towering French forward who previously impressed in La Liga with Villarreal.",
+      "funFact": "Standing at 6ft 5in, his physical presence and aerial threat have made him Everton's focal point in attack this campaign."
+    },
+    {
+      "id": 10,
+      "question": "Which Premier League team has won the fewest league games this season so far (1)?",
+      "options": ["Crystal Palace", "Sunderland", "Manchester United"],
+      "answer": "Manchester United",
+      "clue": "The 20-time English champions who recently appointed Mauricio Pochettino as their new manager.",
+      "funFact": "Despite sitting on just a single league win from their opening 10 matches, they have drawn five games to stay ahead of Sunderland and Crystal Palace."
+    }
+  ]
+}
