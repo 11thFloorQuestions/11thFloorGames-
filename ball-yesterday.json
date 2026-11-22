@@ -1,86 +1,86 @@
 {
-  "setId": 65,
-  "date": "2026-11-21",
+  "setId": 66,
+  "date": "2026-11-22",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently top of the Premier League table today, Saturday, 21st Nov 2026?",
+      "question": "Who is currently top of the Premier League table today, Sunday, 22nd Nov 2026?",
       "options": ["Brighton", "Liverpool", "Manchester City", "Arsenal"],
       "answer": "Arsenal",
       "clue": "This North London club plays its home matches at the Emirates Stadium.",
-      "funFact": "They sit at the summit of the Premier League table on 27 points after a strong start to the 2026–27 season."
+      "funFact": "They sit clear at the summit on 28 points after 11 matches played in the 2026–27 season."
     },
     {
       "id": 2,
-      "question": "Which Brighton & Hove Albion centre-back and captain celebrates his birthday today (35)?",
-      "options": ["Lewis Hamilton", "Lewis Capaldi", "Lewis Monk", "Lewis Dunk"],
-      "answer": "Lewis Dunk",
-      "clue": "A commanding 6ft 4in English defender who wears the captain's armband at the Amex Stadium.",
-      "funFact": "Born in Brighton on 21 November 1991, he rose through his hometown club's youth academy to become a long-serving club legend and England international."
+      "question": "Arsenal drew 2-2 in the late match yesterday (Saturday); who were they playing?",
+      "options": ["Brighton & Hove Albion", "Leeds United", "Coventry City", "Newcastle"],
+      "answer": "Newcastle",
+      "clue": "Known as \"The Magpies,\" they play their home fixtures at St. James' Park.",
+      "funFact": "Noni Madueke scored a late equalizer to rescue a point for the Gunners after the hosts mounted a spirited second-half comeback."
     },
     {
       "id": 3,
-      "question": "Who is the manager of Brighton & Hove Albion?",
-      "options": ["Thomas Frank", "Fabian Hürzeler", "Scott Parker"],
-      "answer": "Fabian Hürzeler",
-      "clue": "A German tactician who previously guided FC St. Pauli to promotion to the Bundesliga.",
-      "funFact": "When appointed in 2024 at age 31, he became the youngest permanent manager in Premier League history."
+      "question": "Manchester City also drew their match yesterday against Fulham; what was the score?",
+      "options": ["0-0", "2-2", "1-1"],
+      "answer": "1-1",
+      "clue": "A low-scoring stalemate where each team found the net exactly once.",
+      "funFact": "Both sides shared the spoils with a goal apiece in an evenly contested Premier League clash."
     },
     {
       "id": 4,
-      "question": "On this day in history, 21st November 1952, Adi Dassler registered the patent for screw-in studs for football boots; which company did he create?",
-      "options": ["Nike", "Puma", "Gola", "Adidas"],
-      "answer": "Adidas",
-      "clue": "A global sportswear giant named after its founder's nickname (\"Adi\") and surname (\"Dassler\"), famous for its three-stripe logo.",
-      "funFact": "The revolutionary screw-in studs famously gave West Germany superior traction in muddy conditions during their 1954 World Cup final triumph."
+      "question": "Which former Everton and Manchester United player celebrates his birthday today (39)?",
+      "options": ["Wayne Rooney", "Marouane Fellaini"],
+      "answer": "Marouane Fellaini",
+      "clue": "A towering midfield powerhouse famous for his dominant aerial ability and iconic afro hairstyle.",
+      "funFact": "Standing at 6ft 4in, he made over 250 Premier League appearances across his spells at Goodison Park and Old Trafford, winning the FA Cup, League Cup, and Europa League with United."
     },
     {
       "id": 5,
-      "question": "Which NFL great and former Birmingham City stakeholder is reportedly looking to make an investment in Chelsea?",
-      "options": ["Travis Kelce", "Russell Wilson", "Tom Brady"],
-      "answer": "Tom Brady",
-      "clue": "Widely regarded as the greatest quarterback in American football history.",
-      "funFact": "He won an unprecedented seven Super Bowl titles across his legendary 23-season NFL career with the New England Patriots and Tampa Bay Buccaneers."
+      "question": "Chelsea were soundly beaten yesterday (Saturday) by Leeds United 1-4 at Stamford Bridge; what year did that last happen?",
+      "options": ["2025", "2006", "1999"],
+      "answer": "1999",
+      "clue": "The final year of the 1990s.",
+      "funFact": "Noah Okafor scored a brace alongside goals from Dominic Calvert-Lewin and Brenden Aaronson to hand Leeds their first away win at Stamford Bridge this century."
     },
     {
       "id": 6,
-      "question": "What nationality is Mauricio Pochettino?",
-      "options": ["Spanish", "Argentinian"],
-      "answer": "Argentinian",
-      "clue": "He hails from the same South American footballing nation as Lionel Messi and Diego Maradona.",
-      "funFact": "Born in Murphy, Santa Fe, he earned 20 senior international caps as a tough-tackling centre-back and played at the 2002 FIFA World Cup."
+      "question": "What nationality is Marouane Fellaini?",
+      "options": ["Spanish", "French", "Italian", "Belgian"],
+      "answer": "Belgian",
+      "clue": "He hails from the same European footballing nation as Eden Hazard and Kevin De Bruyne.",
+      "funFact": "He earned 87 senior international caps and scored 18 goals for his country, helping them finish third at the 2018 FIFA World Cup."
     },
     {
       "id": 7,
-      "question": "What shirt number does birthday boy Lewis Dunk wear for Brighton & Hove Albion?",
-      "options": ["21", "4", "3", "5"],
-      "answer": "5",
-      "clue": "An odd single-digit number sitting right between four and six.",
-      "funFact": "He has worn this classic central defender's jersey throughout Brighton's entire Premier League era."
+      "question": "What shirt number did birthday boy Marouane Fellaini wear for the majority of his career at Manchester United?",
+      "options": ["21", "7", "8", "27"],
+      "answer": "27",
+      "clue": "An odd double-digit number equal to three cubed (3×3×3).",
+      "funFact": "After initially wearing number 31 during his debut campaign under David Moyes, he switched to this double-digit squad number for the remainder of his time at Old Trafford."
     },
     {
       "id": 8,
-      "question": "How many Premier League titles did Fabien Barthez win?",
+      "question": "How many Premier League titles did Marouane Fellaini win?",
       "options": ["3", "1", "2", "0"],
-      "answer": "2",
-      "clue": "An even single-digit number representing a pair of championship medals.",
-      "funFact": "The eccentric French World Cup-winning goalkeeper lifted the Premier League trophy with Manchester United in 2000–01 and 2002–03."
+      "answer": "0",
+      "clue": "The digit representing none at all.",
+      "funFact": "Despite lifting major domestic and European cup silverware during his career in England, a Premier League championship medal eluded him."
     },
     {
       "id": 9,
-      "question": "Who is Everton’s top scorer so far this season?",
-      "options": ["Kiernan Dewsbury-Hall", "Thierno Barry"],
-      "answer": "Thierno Barry",
-      "clue": "A towering French forward who previously impressed in La Liga with Villarreal.",
-      "funFact": "Standing at 6ft 5in, his physical presence and aerial threat have made him Everton's focal point in attack this campaign."
+      "question": "Who is Liverpool's top scorer so far this season?",
+      "options": ["Alexis Mac Allister", "Cody Gakpo", "Dominik Szoboszlai", "Alexander Isak"],
+      "answer": "Alexander Isak",
+      "clue": "A prolific Swedish striker whose name begins with A and I.",
+      "funFact": "His clinical finishing and movement in the final third have spearheaded Liverpool's attack throughout the opening months of the season."
     },
     {
       "id": 10,
-      "question": "Which Premier League team has won the fewest league games this season so far (1)?",
-      "options": ["Crystal Palace", "Sunderland", "Manchester United"],
-      "answer": "Manchester United",
-      "clue": "The 20-time English champions who recently appointed Mauricio Pochettino as their new manager.",
-      "funFact": "Despite sitting on just a single league win from their opening 10 matches, they have drawn five games to stay ahead of Sunderland and Crystal Palace."
+      "question": "What is the seating capacity of the Tottenham Hotspur Stadium?",
+      "options": ["72,850", "52,850", "62,850"],
+      "answer": "62,850",
+      "clue": "A number sitting right in the middle between 52,850 and 72,850.",
+      "funFact": "Opened in April 2019, it is the largest club stadium in London and features the world's first dividing, retractable pitch."
     }
   ]
 }
