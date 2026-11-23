@@ -1,86 +1,86 @@
 {
-  "setId": 66,
-  "date": "2026-11-22",
+  "setId": 67,
+  "date": "2026-11-23",
   "questions": [
     {
       "id": 1,
-      "question": "Who is currently top of the Premier League table today, Sunday, 22nd Nov 2026?",
-      "options": ["Brighton", "Liverpool", "Manchester City", "Arsenal"],
-      "answer": "Arsenal",
-      "clue": "This North London club plays its home matches at the Emirates Stadium.",
-      "funFact": "They sit clear at the summit on 28 points after 11 matches played in the 2026–27 season."
+      "question": "Who is currently bottom of the Premier League table today, Monday, 23rd Nov 2026?",
+      "options": ["Sunderland", "Manchester United", "Ipswich", "Crystal Palace"],
+      "answer": "Crystal Palace",
+      "clue": "Known as \"The Eagles,\" this South London club plays its home matches at Selhurst Park.",
+      "funFact": "They sit 20th in the table on 7 points from their opening 11 fixtures."
     },
     {
       "id": 2,
-      "question": "Arsenal drew 2-2 in the late match yesterday (Saturday); who were they playing?",
-      "options": ["Brighton & Hove Albion", "Leeds United", "Coventry City", "Newcastle"],
-      "answer": "Newcastle",
-      "clue": "Known as \"The Magpies,\" they play their home fixtures at St. James' Park.",
-      "funFact": "Noni Madueke scored a late equalizer to rescue a point for the Gunners after the hosts mounted a spirited second-half comeback."
+      "question": "Brighton lost 2-0 yesterday (Sunday); who beat them?",
+      "options": ["Everton", "Leeds United", "Coventry City", "Hull City"],
+      "answer": "Hull City",
+      "clue": "Nicknamed \"The Tigers,\" this East Yorkshire side wears distinctive black-and-amber stripes.",
+      "funFact": "The Yorkshire club claimed all three points against the second-placed Seagulls to climb to 11th in the Premier League table."
     },
     {
       "id": 3,
-      "question": "Manchester City also drew their match yesterday against Fulham; what was the score?",
-      "options": ["0-0", "2-2", "1-1"],
-      "answer": "1-1",
-      "clue": "A low-scoring stalemate where each team found the net exactly once.",
-      "funFact": "Both sides shared the spoils with a goal apiece in an evenly contested Premier League clash."
+      "question": "Manchester United were thrashed again yesterday (Sunday) by Liverpool; what was the score?",
+      "options": ["5-0", "5-1", "4-1", "4-0"],
+      "answer": "4-0",
+      "clue": "A four-goal clean-sheet victory for the hosts at Anfield.",
+      "funFact": "The heavy defeat spoiled Mauricio Pochettino's first match in charge of Manchester United and left the Red Devils 19th in the table."
     },
     {
       "id": 4,
-      "question": "Which former Everton and Manchester United player celebrates his birthday today (39)?",
-      "options": ["Wayne Rooney", "Marouane Fellaini"],
-      "answer": "Marouane Fellaini",
-      "clue": "A towering midfield powerhouse famous for his dominant aerial ability and iconic afro hairstyle.",
-      "funFact": "Standing at 6ft 4in, he made over 250 Premier League appearances across his spells at Goodison Park and Old Trafford, winning the FA Cup, League Cup, and Europa League with United."
+      "question": "Which Manchester United player was sent off after 8 minutes?",
+      "options": ["Bruno Fernandes", "Leny Yoro"],
+      "answer": "Leny Yoro",
+      "clue": "A young French centre-back signed by Manchester United from Lille.",
+      "funFact": "An early red card left Manchester United playing with ten men for over 80 minutes in their tough trip to Merseyside."
     },
     {
       "id": 5,
-      "question": "Chelsea were soundly beaten yesterday (Saturday) by Leeds United 1-4 at Stamford Bridge; what year did that last happen?",
-      "options": ["2025", "2006", "1999"],
-      "answer": "1999",
-      "clue": "The final year of the 1990s.",
-      "funFact": "Noah Okafor scored a brace alongside goals from Dominic Calvert-Lewin and Brenden Aaronson to hand Leeds their first away win at Stamford Bridge this century."
+      "question": "Which former Leicester and current Tottenham midfielder celebrates his birthday today?",
+      "options": ["Conor Gallagher", "Archie Gray", "James Maddison"],
+      "answer": "James Maddison",
+      "clue": "An English attacking midfielder famous for his dart-throwing goal celebration.",
+      "funFact": "Born in Coventry on 23 November 1996, he scored 55 goals and provided 46 assists in 202 appearances for Leicester City before joining Spurs in 2023."
     },
     {
       "id": 6,
-      "question": "What nationality is Marouane Fellaini?",
-      "options": ["Spanish", "French", "Italian", "Belgian"],
-      "answer": "Belgian",
-      "clue": "He hails from the same European footballing nation as Eden Hazard and Kevin De Bruyne.",
-      "funFact": "He earned 87 senior international caps and scored 18 goals for his country, helping them finish third at the 2018 FIFA World Cup."
+      "question": "What nationality is Richarlison?",
+      "options": ["Spanish", "French", "Italian", "Brazilian"],
+      "answer": "Brazilian",
+      "clue": "He hails from the five-time World Cup-winning South American nation known as the Seleção.",
+      "funFact": "He won an Olympic gold medal at Tokyo 2020 and famously scored a scissor-kick Goal of the Tournament against Serbia at the 2022 FIFA World Cup."
     },
     {
       "id": 7,
-      "question": "What shirt number did birthday boy Marouane Fellaini wear for the majority of his career at Manchester United?",
-      "options": ["21", "7", "8", "27"],
-      "answer": "27",
-      "clue": "An odd double-digit number equal to three cubed (3×3×3).",
-      "funFact": "After initially wearing number 31 during his debut campaign under David Moyes, he switched to this double-digit squad number for the remainder of his time at Old Trafford."
+      "question": "What shirt number does birthday boy James Maddison wear for Spurs?",
+      "options": ["6", "7", "8", "10"],
+      "answer": "10",
+      "clue": "A classic double-digit playmaker number sitting right after nine.",
+      "funFact": "He inherited the famous jersey upon arriving in North London in the summer of 2023 following Harry Kane's departure."
     },
     {
       "id": 8,
-      "question": "How many Premier League titles did Marouane Fellaini win?",
+      "question": "How many Premier League titles did Gianfranco Zola win?",
       "options": ["3", "1", "2", "0"],
       "answer": "0",
-      "clue": "The digit representing none at all.",
-      "funFact": "Despite lifting major domestic and European cup silverware during his career in England, a Premier League championship medal eluded him."
+      "clue": "The single-digit number representing none at all.",
+      "funFact": "Despite never lifting the Premier League trophy, the Italian magician won two FA Cups, a League Cup, and a UEFA Cup Winners' Cup during his beloved spell at Chelsea."
     },
     {
       "id": 9,
-      "question": "Who is Liverpool's top scorer so far this season?",
-      "options": ["Alexis Mac Allister", "Cody Gakpo", "Dominik Szoboszlai", "Alexander Isak"],
-      "answer": "Alexander Isak",
-      "clue": "A prolific Swedish striker whose name begins with A and I.",
-      "funFact": "His clinical finishing and movement in the final third have spearheaded Liverpool's attack throughout the opening months of the season."
+      "question": "Who is Brentford’s top scorer so far this season?",
+      "options": ["Igor Thiago", "Keane Lewis-Potter", "Kevin Schade"],
+      "answer": "Kevin Schade",
+      "clue": "A rapid German international forward signed by Brentford from SC Freiburg.",
+      "funFact": "His blistering pace and direct running in behind defenses have made him the Bees' leading marksman this campaign."
     },
     {
       "id": 10,
-      "question": "What is the seating capacity of the Tottenham Hotspur Stadium?",
-      "options": ["72,850", "52,850", "62,850"],
-      "answer": "62,850",
-      "clue": "A number sitting right in the middle between 52,850 and 72,850.",
-      "funFact": "Opened in April 2019, it is the largest club stadium in London and features the world's first dividing, retractable pitch."
+      "question": "What is the seating capacity of Hill Dickinson Stadium?",
+      "options": ["62,769", "42,769", "52,769"],
+      "answer": "52,769",
+      "clue": "A five-digit number sitting exactly 10,000 above 42,769 and 10,000 below 62,769.",
+      "funFact": "Located on Liverpool's Bramley-Moore Dock, the modern waterfront venue officially replaced Goodison Park as Everton's home ground."
     }
   ]
 }
