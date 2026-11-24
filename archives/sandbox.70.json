@@ -1,0 +1,126 @@
+{
+  "setId": "70",
+  "title": "11th Floor Questions - Set 70",
+  "floors": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "What star sign is a person born on Valentine’s Day?",
+      "options": [
+        "Aries",
+        "Pisces",
+        "Aquarius",
+        "Capricorn"
+      ],
+      "answer": "Aquarius"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "In which decade was the Berlin Wall erected?",
+      "options": [
+        "The 1950s",
+        "The 1960s",
+        "The 1970s",
+        "The 1940s"
+      ],
+      "answer": "The 1960s"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "What colour is the background of the Norwegian flag?",
+      "options": [
+        "Blue",
+        "Red",
+        "Yellow",
+        "White"
+      ],
+      "answer": "Red"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "Which song starts \"I work all night, I work all day, to pay the bills I have to pay\"?",
+      "options": [
+        "She Works Hard for the Money",
+        "Material Girl",
+        "9 to 5",
+        "Money, Money, Money"
+      ],
+      "answer": "Money, Money, Money"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "The skunk is a major carrier of which disease?",
+      "options": [
+        "Malaria",
+        "Lyme disease",
+        "Rabies",
+        "Tetanus"
+      ],
+      "answer": "Rabies"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "In which country is the musical Cabaret set?",
+      "options": [
+        "Germany",
+        "France",
+        "England",
+        "Austria"
+      ],
+      "answer": "Germany"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "Which cake requires one pound of sugar, one pound of butter and one pound of eggs?",
+      "options": [
+        "Angel Food Cake",
+        "Madeira Cake",
+        "Victoria Sponge",
+        "The Pound Cake"
+      ],
+      "answer": "The Pound Cake"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "Who wrote the book Chitty Chitty Bang Bang?",
+      "options": [
+        "Ian Fleming",
+        "E.B. White",
+        "A.A. Milne",
+        "Roald Dahl"
+      ],
+      "answer": "Ian Fleming"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "The nictitating membrane is known as the third what?",
+      "options": [
+        "Eyelid",
+        "Ventricle",
+        "Ear drum",
+        "Lung"
+      ],
+      "answer": "Eyelid"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "What type of bird features on the US Medal of Freedom?",
+      "options": [
+        "Falcon",
+        "Eagle",
+        "Dove",
+        "Owl"
+      ],
+      "answer": "Eagle"
+    }
+  ]
+}

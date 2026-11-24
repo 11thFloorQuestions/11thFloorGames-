@@ -1,0 +1,126 @@
+{
+  "setId": "66",
+  "title": "11th Floor Questions - Set 66",
+  "floors": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "In the Three Age System of history, what comes after the Stone Age?",
+      "options": [
+        "Copper Age",
+        "Iron Age",
+        "Bronze Age",
+        "Industrial Age"
+      ],
+      "answer": "Bronze Age"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "In which city would you currently find the tallest building in the world?",
+      "options": [
+        "Dubai",
+        "Shanghai",
+        "Kuala Lumpur",
+        "New York"
+      ],
+      "answer": "Dubai"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "Who was the second person to walk on the Moon?",
+      "options": [
+        "Alan Shepard",
+        "Buzz Aldrin",
+        "Pete Conrad",
+        "Michael Collins"
+      ],
+      "answer": "Buzz Aldrin"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "What word goes after Blue, Rasp and Straw to form new words?",
+      "options": [
+        "Berry",
+        "Bell",
+        "Cake",
+        "Wood"
+      ],
+      "answer": "Berry"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "Which part of a car has an Inertia Reel?",
+      "options": [
+        "The Airbag",
+        "The Seat belt",
+        "The Handbrake",
+        "The Steering column"
+      ],
+      "answer": "The Seat belt"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "What is the predominant flavour of a Battenberg Cake that it gets from its covering?",
+      "options": [
+        "Lemon",
+        "Vanilla",
+        "Hazelnut",
+        "Almond"
+      ],
+      "answer": "Almond"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "The Globetrotters basketball team is named after which district of New York City?",
+      "options": [
+        "Queens",
+        "The Bronx",
+        "Harlem",
+        "Brooklyn"
+      ],
+      "answer": "Harlem"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "What girl's name was in the Oasis song Don’t Look Back in Anger?",
+      "options": [
+        "Roxanne",
+        "Layla",
+        "Lucy",
+        "Sally"
+      ],
+      "answer": "Sally"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "Which is the only movie monster with a star on Hollywood’s Walk of Fame?",
+      "options": [
+        "Dracula",
+        "Godzilla",
+        "King Kong",
+        "Frankenstein's Monster"
+      ],
+      "answer": "Godzilla"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "The inventor of Bakelite was born in which European country?",
+      "options": [
+        "Belgium",
+        "France",
+        "The Netherlands",
+        "Germany"
+      ],
+      "answer": "Belgium"
+    }
+  ]
+}

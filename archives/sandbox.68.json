@@ -1,0 +1,124 @@
+{
+  "setId": "68",
+  "title": "11th Floor Questions - Set 68",
+  "floors": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "How many strings does a standard double bass have?",
+      "options": [
+        "Four",
+        "Five",
+        "Six",
+        "Three"
+      ],
+      "answer": "Four"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "What colour smoke is seen to announce a new Pope?",
+      "options": [
+        "White Smoke",
+        "Yellow Smoke",
+        "Grey Smoke",
+        "Black Smoke"
+      ],
+      "answer": "White Smoke"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "Does sound travel faster in air or in water?",
+      "options": [
+        "Air",
+        "Water"
+      ],
+      "answer": "Water"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "The song Blue Moon is sung by the fans of which football club?",
+      "options": [
+        "Manchester City",
+        "Arsenal",
+        "Chelsea",
+        "Liverpool"
+      ],
+      "answer": "Manchester City"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "Which famous three-word cartoon phrase is inscribed on Mel Blanc's gravestone?",
+      "options": [
+        "What's Up Doc",
+        "Beep Beep",
+        "That’s All Folks",
+        "Yabba Dabba Doo"
+      ],
+      "answer": "That’s All Folks"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "Who wrote the 1943 book The Gremlins?",
+      "options": [
+        "Enid Blyton",
+        "C.S. Lewis",
+        "J.R.R. Tolkien",
+        "Roald Dahl"
+      ],
+      "answer": "Roald Dahl"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "What is the longest river in Europe?",
+      "options": [
+        "The Seine",
+        "The Volga",
+        "The Danube",
+        "The Rhine"
+      ],
+      "answer": "The Volga"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "What name was given to the Operation to free Kuwait during the 1991 Gulf War?",
+      "options": [
+        "Iraqi Freedom",
+        "Desert Storm",
+        "Desert Fox",
+        "Overlord"
+      ],
+      "answer": "Desert Storm"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "The Plumbeous Kite is a grey bird named after which metal?",
+      "options": [
+        "Tin",
+        "Iron",
+        "Lead",
+        "Silver"
+      ],
+      "answer": "Lead"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "What pomegranate syrup is an ingredient of a Mary Pickford cocktail?",
+      "options": [
+        "Angostura",
+        "Campari",
+        "Cassis",
+        "Grenadine"
+      ],
+      "answer": "Grenadine"
+    }
+  ]
+}

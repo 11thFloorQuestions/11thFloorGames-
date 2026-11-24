@@ -1,0 +1,126 @@
+{
+  "setId": "63",
+  "title": "11th Floor Questions - Set 63",
+  "floors": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "In which US state is the Kennedy Space Centre, Cape Canaveral?",
+      "options": [
+        "California",
+        "Texas",
+        "Florida",
+        "Alabama"
+      ],
+      "answer": "Florida"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "Which bird shares its name with a famous nurse?",
+      "options": [
+        "Dove",
+        "Swallow",
+        "Nightingale",
+        "Robin"
+      ],
+      "answer": "Nightingale"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "The lead character in what Broadway musical gets locked up in Cook County Jail?",
+      "options": [
+        "Chicago",
+        "Cabaret",
+        "West Side Story",
+        "Hamilton"
+      ],
+      "answer": "Chicago"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "What is the chemical symbol for iodine?",
+      "options": [
+        "Id",
+        "I",
+        "In",
+        "Io"
+      ],
+      "answer": "I"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "What major museum was started as a private gallery in Florence in 1581?",
+      "options": [
+        "The Louvre",
+        "The Uffizi Gallery",
+        "The Prado",
+        "The Vatican Museums"
+      ],
+      "answer": "The Uffizi Gallery"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "Where would you find the sequence E A D G B E?",
+      "options": [
+        "Strings on a guitar",
+        "Notes in a C major scale",
+        "Keys on a piano",
+        "Valves on a trumpet"
+      ],
+      "answer": "Strings on a guitar"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "How many of the letters on the bottom row of the QWERTY keyboard are in the second half of the alphabet?",
+      "options": [
+        "5",
+        "3",
+        "2",
+        "4"
+      ],
+      "answer": "4"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "The name of which German drink translates to \"Master Hunter\"?",
+      "options": [
+        "Apfelwein",
+        "Jägermeister",
+        "Schnapps",
+        "Glühwein"
+      ],
+      "answer": "Jägermeister"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "A curricle is a horse-drawn carriage with how many wheels?",
+      "options": [
+        "Two",
+        "Three",
+        "Six",
+        "Four"
+      ],
+      "answer": "Two"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "In what country was the YMCA founded?",
+      "options": [
+        "Canada",
+        "Switzerland",
+        "United States",
+        "England"
+      ],
+      "answer": "England"
+    }
+  ]
+}

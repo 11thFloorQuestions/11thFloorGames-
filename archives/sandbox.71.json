@@ -1,0 +1,126 @@
+{
+  "setId": "71",
+  "title": "11th Floor Questions - Set 71",
+  "floors": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "The American coin known as a dime is worth how many cents?",
+      "options": [
+        "25 cents",
+        "10 cents",
+        "5 cents",
+        "1 cent"
+      ],
+      "answer": "10 cents"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "Traditional millstones were used to grind grain into what powder?",
+      "options": [
+        "Sugar",
+        "Starch",
+        "Flour",
+        "Yeast"
+      ],
+      "answer": "Flour"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "Which large ape lived on Skull Island?",
+      "options": [
+        "Mighty Joe Young",
+        "Caesar",
+        "Donkey Kong",
+        "King Kong"
+      ],
+      "answer": "King Kong"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "Which book opens with the line ‘Call me Ishmael’?",
+      "options": [
+        "Treasure Island",
+        "Moby Dick",
+        "Twenty Thousand Leagues Under the Seas",
+        "The Old Man and the Sea"
+      ],
+      "answer": "Moby Dick"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "What number is at three o'clock on a dartboard?",
+      "options": [
+        "Number 20",
+        "Number 13",
+        "Number 10",
+        "Number 6"
+      ],
+      "answer": "Number 6"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "Who was the youngest British monarch to be crowned in the Nineteenth century?",
+      "options": [
+        "Queen Victoria",
+        "King William IV",
+        "King George IV",
+        "King Edward VII"
+      ],
+      "answer": "Queen Victoria"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "Which vowel is a single dot in Morse Code?",
+      "options": [
+        "E",
+        "I",
+        "A",
+        "O"
+      ],
+      "answer": "E"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "What is the real name of the pirate Blackbeard?",
+      "options": [
+        "Edward Teach",
+        "Henry Morgan",
+        "William Kidd",
+        "Bartholomew Roberts"
+      ],
+      "answer": "Edward Teach"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "On the flag of Cyprus, what colour are the olive branches?",
+      "options": [
+        "Blue",
+        "Gold",
+        "Green",
+        "Black"
+      ],
+      "answer": "Green"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "What is known as the King of Chemicals?",
+      "options": [
+        "Nitric acid",
+        "Sulfuric acid",
+        "Sodium hydroxide",
+        "Hydrochloric acid"
+      ],
+      "answer": "Sulfuric acid"
+    }
+  ]
+}

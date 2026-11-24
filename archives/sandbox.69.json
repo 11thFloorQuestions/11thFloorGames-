@@ -1,0 +1,124 @@
+{
+  "setId": "69",
+  "title": "11th Floor Questions - Set 69",
+  "floors": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "What magazine uses as its title the French word for she?",
+      "options": [
+        "Madame",
+        "Elle",
+        "Femme",
+        "Vogue"
+      ],
+      "answer": "Elle"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "What animals were raced at the Circus Maximus in Rome?",
+      "options": [
+        "Ostriches",
+        "Dogs",
+        "Camels",
+        "Horses"
+      ],
+      "answer": "Horses"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "In a game of chess, does the black or white piece start the game?",
+      "options": [
+        "Black",
+        "White"
+      ],
+      "answer": "White"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "What name is given to the art of cutting hedges into shapes?",
+      "options": [
+        "Bonsai",
+        "Espalier",
+        "Topiary",
+        "Ikebana"
+      ],
+      "answer": "Topiary"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "What pickled buds are used to make Tartare Sauce?",
+      "options": [
+        "Shallots",
+        "Gherkins",
+        "Capers",
+        "Olives"
+      ],
+      "answer": "Capers"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "The bandicoot is a marsupial from which country?",
+      "options": [
+        "Australia",
+        "Brazil",
+        "Madagascar",
+        "New Zealand"
+      ],
+      "answer": "Australia"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "Which classic TV show revolved around an architect and his talking horse?",
+      "options": [
+        "Bewitched",
+        "Mr Ed",
+        "My Mother the Car",
+        "Francis the Talking Mule"
+      ],
+      "answer": "Mr Ed"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "On which animal would you normally use a curry comb?",
+      "options": [
+        "Horse",
+        "Cow",
+        "Sheep",
+        "Dog"
+      ],
+      "answer": "Horse"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "What \"P\" is the name of the dimple at the bottom of a wine bottle?",
+      "options": [
+        "Pith",
+        "Plinth",
+        "Pocket",
+        "Punt"
+      ],
+      "answer": "Punt"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "Which Tudor monarch lost a wrestling match to the King of France in 1520?",
+      "options": [
+        "Henry VIII",
+        "Mary I",
+        "Edward VI",
+        "Henry VII"
+      ],
+      "answer": "Henry VIII"
+    }
+  ]
+}

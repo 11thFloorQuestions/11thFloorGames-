@@ -1,0 +1,126 @@
+{
+  "setId": "67",
+  "title": "11th Floor Questions - Set 67",
+  "floors": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "Carrots are rich in which vitamin?",
+      "options": [
+        "Vitamin D",
+        "Vitamin A",
+        "Vitamin B12",
+        "Vitamin C"
+      ],
+      "answer": "Vitamin A"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "Which triangular-shaped Indian pastry contains meat or vegetables?",
+      "options": [
+        "Bhaji",
+        "Naan",
+        "Samosa",
+        "Pakora"
+      ],
+      "answer": "Samosa"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "In 79 AD, the town of Stabiae was destroyed by what volcanic eruption?",
+      "options": [
+        "Krakatoa",
+        "Vesuvius",
+        "Stromboli",
+        "Etna"
+      ],
+      "answer": "Vesuvius"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "Which country was the birthplace of singer Alanis Morissette?",
+      "options": [
+        "United States",
+        "Canada",
+        "Australia",
+        "Ireland"
+      ],
+      "answer": "Canada"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "Which creatures are used as croquet balls in Alice in Wonderland?",
+      "options": [
+        "Tortoises",
+        "Armadillos",
+        "Hedgehogs",
+        "Flamingos"
+      ],
+      "answer": "Hedgehogs"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "According to the Book of Revelation, which battle will be the end of the World?",
+      "options": [
+        "Armageddon",
+        "Jericho",
+        "Ragnarok",
+        "Waterloo"
+      ],
+      "answer": "Armageddon"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "Which Japanese company created the Final Fantasy series of video games?",
+      "options": [
+        "Square Enix",
+        "Bandai Namco",
+        "Capcom",
+        "Konami"
+      ],
+      "answer": "Square Enix"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "In which country in 2010 were 33 miners trapped 2,300 feet underground in a gold mine?",
+      "options": [
+        "Chile",
+        "Bolivia",
+        "Peru",
+        "Colombia"
+      ],
+      "answer": "Chile"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "Which Disney film made a 200 million dollar loss at the box office in 2012?",
+      "options": [
+        "Treasure Planet",
+        "The Lone Ranger",
+        "Tomorrowland",
+        "John Carter"
+      ],
+      "answer": "John Carter"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "In 1901, the Puffing Billy was an early version of which item?",
+      "options": [
+        "Washing Machine",
+        "Steam Locomotive",
+        "Lawn Mower",
+        "Vacuum Cleaner"
+      ],
+      "answer": "Vacuum Cleaner"
+    }
+  ]
+}

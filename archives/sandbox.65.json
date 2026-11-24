@@ -1,0 +1,126 @@
+{
+  "setId": "65",
+  "title": "11th Floor Questions - Set 65",
+  "floors": [
+    {
+      "floor": 1,
+      "type": "multiple_choice",
+      "question": "Which company developed the PlayStation game console?",
+      "options": [
+        "Sony",
+        "Microsoft",
+        "Sega",
+        "Nintendo"
+      ],
+      "answer": "Sony"
+    },
+    {
+      "floor": 2,
+      "type": "multiple_choice",
+      "question": "In what century did the Battle of Waterloo take place?",
+      "options": [
+        "The Eighteenth Century",
+        "The Twentieth Century",
+        "The Nineteenth Century",
+        "The Seventeenth Century"
+      ],
+      "answer": "The Nineteenth Century"
+    },
+    {
+      "floor": 3,
+      "type": "multiple_choice",
+      "question": "Which alcoholic spirit became known as Mother’s Ruin?",
+      "options": [
+        "Whiskey",
+        "Gin",
+        "Rum",
+        "Absinthe"
+      ],
+      "answer": "Gin"
+    },
+    {
+      "floor": 4,
+      "type": "multiple_choice",
+      "question": "In an episode called A Little Case of Revenge, which actor had a karate fight with the Fonz in the TV series Happy Days?",
+      "options": [
+        "Ron Howard",
+        "Robin Williams",
+        "Christopher Lloyd",
+        "Tom Hanks"
+      ],
+      "answer": "Tom Hanks"
+    },
+    {
+      "floor": 5,
+      "type": "multiple_choice",
+      "question": "Which country used the Guilder as its currency before the Euro?",
+      "options": [
+        "Belgium",
+        "The Netherlands",
+        "Austria",
+        "Germany"
+      ],
+      "answer": "The Netherlands"
+    },
+    {
+      "floor": 6,
+      "type": "multiple_choice",
+      "question": "You roll a four on a standard die. What is the total of the four side faces?",
+      "options": [
+        "Fourteen",
+        "Sixteen",
+        "Twelve",
+        "Fifteen"
+      ],
+      "answer": "Fourteen"
+    },
+    {
+      "floor": 7,
+      "type": "multiple_choice",
+      "question": "What are the Devil’s Picture Books?",
+      "options": [
+        "Tarot Cards",
+        "Ouija Boards",
+        "Comic Books",
+        "Playing Cards"
+      ],
+      "answer": "Playing Cards"
+    },
+    {
+      "floor": 8,
+      "type": "multiple_choice",
+      "question": "Who wrote Whitney Houston’s hit I Will Always Love You?",
+      "options": [
+        "Dolly Parton",
+        "Stevie Nicks",
+        "Carole King",
+        "Mariah Carey"
+      ],
+      "answer": "Dolly Parton"
+    },
+    {
+      "floor": 9,
+      "type": "multiple_choice",
+      "question": "The Nemeth Code is part of what tactile writing system for blind people?",
+      "options": [
+        "Moon Type",
+        "Braille",
+        "Sign Language",
+        "Morse Code"
+      ],
+      "answer": "Braille"
+    },
+    {
+      "floor": 10,
+      "type": "multiple_choice",
+      "question": "The Green Car Crash is a 1963 painting by which artist?",
+      "options": [
+        "Jackson Pollock",
+        "Keith Haring",
+        "Andy Warhol",
+        "Roy Lichtenstein"
+      ],
+      "answer": "Andy Warhol"
+    }
+  ]
+}
