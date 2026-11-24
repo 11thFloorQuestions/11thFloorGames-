@@ -439,7 +439,7 @@ async function populateVault() {
     vaultList.innerHTML = '<div style="grid-column: 1 / -1; color: var(--text-muted); font-size: 0.75rem; padding: 10px;">Loading Archives...</div>';
     
     const BATCH_SIZE = 5;
-    const MAX_ARCHIVES = 50;
+    const MAX_ARCHIVES = 100;
     const buttons = [];
     let currentId = 1;
 
