@@ -1,0 +1,86 @@
+{
+  "setId": 69,
+  "date": "2026-11-25",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently top of the Premier League table today, Wednesday, 25th Nov 2026?",
+      "options": ["Manchester City", "Brighton", "Arsenal"],
+      "answer": "Arsenal",
+      "clue": "This North London club plays its home matches at the Emirates Stadium.",
+      "funFact": "They sit clear at the summit on 28 points after 11 matches played in the 2026–27 season."
+    },
+    {
+      "id": 2,
+      "question": "Arsenal drew 1-1 in the Champions League last night (Tuesday); who were they playing?",
+      "options": ["Como", "Galatasaray", "Borussia Dortmund"],
+      "answer": "Borussia Dortmund",
+      "clue": "A German Bundesliga powerhouse famous for its iconic \"Yellow Wall\" stand at Signal Iduna Park.",
+      "funFact": "The two European heavyweights shared the spoils in an evenly contested league-phase clash."
+    },
+    {
+      "id": 3,
+      "question": "Manchester City drew 2-2 last night (Tuesday) against whom?",
+      "options": ["Como", "Inter Milan", "Roma", "Napoli"],
+      "answer": "Napoli",
+      "clue": "A famous southern Italian club that plays at the Stadio Diego Armando Maradona.",
+      "funFact": "Both sides found the net twice in an entertaining four-goal Champions League encounter."
+    },
+    {
+      "id": 4,
+      "question": "Which other Premier League team was in action last night (Tuesday)?",
+      "options": ["Chelsea", "Aston Villa"],
+      "answer": "Aston Villa",
+      "clue": "A West Midlands club that plays its home fixtures at Villa Park.",
+      "funFact": "The Villans continued their European campaign under the Tuesday night floodlights."
+    },
+    {
+      "id": 5,
+      "question": "Which current Premier League manager and former international midfielder celebrates his birthday today, 25th November?",
+      "options": ["Frank Lampard", "Mikel Arteta", "Xabi Alonso"],
+      "answer": "Xabi Alonso",
+      "clue": "A legendary Spanish deep-lying playmaker who starred for Liverpool, Real Madrid, and Bayern Munich before becoming a top-flight manager.",
+      "funFact": "Born on 25 November 1981 in Tolosa, Spain, he won the FIFA World Cup, two European Championships, and two UEFA Champions League trophies as a player."
+    },
+    {
+      "id": 6,
+      "question": "What nationality is Manchester City midfielder Alexis Mac Allister?",
+      "options": ["Scottish", "English", "Spanish", "Argentinian"],
+      "answer": "Argentinian",
+      "clue": "He represents the reigning World Cup-winning South American nation alongside Lionel Messi.",
+      "funFact": "Despite his Scottish-sounding surname, he was born in Santa Rosa, La Pampa, and played a starring role in winning the 2022 FIFA World Cup."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number did birthday boy Xabi Alonso wear for Liverpool?",
+      "options": ["7", "15", "16", "14"],
+      "answer": "14",
+      "clue": "An even double-digit number equal to seven multiplied by two.",
+      "funFact": "He wore this squad number across all five seasons at Anfield between 2004 and 2009, famously scoring from inside his own half twice for the Reds."
+    },
+    {
+      "id": 8,
+      "question": "How many Premier League titles has Xabi Alonso won?",
+      "options": ["3", "1", "2", "0"],
+      "answer": "0",
+      "clue": "The digit representing none at all.",
+      "funFact": "Although he won the 2005 Champions League and 2006 FA Cup at Anfield, a Premier League winner's medal eluded him before he departed for Real Madrid in 2009."
+    },
+    {
+      "id": 9,
+      "question": "Who is Manchester City’s top scorer (in all competitions) so far this season?",
+      "options": ["Rayan Cherki", "Erling Haaland"],
+      "answer": "Erling Haaland",
+      "clue": "A towering Scandinavian striker who wears the number 9 shirt at the Etihad Stadium.",
+      "funFact": "The Norwegian goal machine continues to spearhead City's attack across domestic and European fronts."
+    },
+    {
+      "id": 10,
+      "question": "What is the seating capacity of Stamford Bridge?",
+      "options": ["50,022", "60,022", "40,022"],
+      "answer": "40,022",
+      "clue": "A five-digit number sitting just above the 40,000 mark.",
+      "funFact": "Located in Fulham, West London, the historic stadium has been Chelsea's home ground since the club was founded in 1905."
+    }
+  ]
+}
