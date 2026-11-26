@@ -1,0 +1,86 @@
+{
+  "setId": 70,
+  "date": "2026-11-26",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently top of the Premier League table today, Thursday, 26th November 2026?",
+      "options": ["Manchester City", "Brighton", "Arsenal"],
+      "answer": "Arsenal",
+      "clue": "This North London club plays its home matches at the Emirates Stadium.",
+      "funFact": "They sit clear at the summit on 28 points after 11 matches played in the 2026–27 season."
+    },
+    {
+      "id": 2,
+      "question": "Liverpool won in the Champions League last night 0-3 (Wednesday); who were they playing?",
+      "options": ["Stuttgart", "Slavia Prague", "Viking", "Club Brugge"],
+      "answer": "Club Brugge",
+      "clue": "A prominent Belgian Pro League club based in Bruges.",
+      "funFact": "Alexander Isak scored a clinical brace at the Jan Breydel Stadium to help the Reds cruise into the Champions League top eight."
+    },
+    {
+      "id": 3,
+      "question": "Manchester United drew 2-2 last night (Wednesday) against whom?",
+      "options": ["Porto", "Atlético Madrid", "Sporting Lisbon"],
+      "answer": "Sporting Lisbon",
+      "clue": "The famous Portuguese club where Cristiano Ronaldo and Bruno Fernandes starred before moving to Old Trafford.",
+      "funFact": "Bruno Fernandes scored twice against his former club, while Luis Suárez netted a brace for the hosts in a thrilling encounter in Portugal."
+    },
+    {
+      "id": 4,
+      "question": "Which Manchester United player was sent off last night (Wednesday)?",
+      "options": ["Leny Yoro", "Lisandro Martínez", "Kobbie Mainoo", "Youri Tielemans"],
+      "answer": "Youri Tielemans",
+      "clue": "A Belgian international midfielder wearing the number 18 shirt for the Red Devils.",
+      "funFact": "He was dismissed in second-half stoppage time after picking up a second yellow card for a late tackle—United's fifth red card of the season."
+    },
+    {
+      "id": 5,
+      "question": "Which former Arsenal, Manchester United, Brighton, and Chelsea player celebrates his birthday today, 26th November?",
+      "options": ["Danny Dyer", "Dannii Minogue", "Danny Welbeck"],
+      "answer": "Danny Welbeck",
+      "clue": "A versatile English forward who came through Manchester United's youth academy before starring for Arsenal and Brighton.",
+      "funFact": "Born in Manchester on 26 November 1990, he scored over 100 senior club goals across his career and earned 42 caps for England."
+    },
+    {
+      "id": 6,
+      "question": "What nationality is Manchester United midfielder Youri Tielemans?",
+      "options": ["Russian", "Spanish", "Turkish", "Belgian"],
+      "answer": "Belgian",
+      "clue": "He represents the European national team nicknamed \"The Red Devils,\" alongside Kevin De Bruyne and Romelu Lukaku.",
+      "funFact": "He made his senior international debut at just 19 years old and became one of the youngest players in history to reach 50 caps for his country."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number did birthday boy Danny Welbeck wear for Arsenal?",
+      "options": ["21", "22", "10", "23"],
+      "answer": "23",
+      "clue": "A prime double-digit number famously worn in basketball by Michael Jordan.",
+      "funFact": "He wore this squad number throughout his five seasons at the Emirates Stadium between 2014 and 2019, famously scoring a stoppage-time winner against Leicester City in 2016."
+    },
+    {
+      "id": 8,
+      "question": "How many Premier League titles has Danny Welbeck won?",
+      "options": ["3", "1", "2", "0"],
+      "answer": "1",
+      "clue": "The single-digit number representing a solitary championship triumph.",
+      "funFact": "He won his lone Premier League winner's medal with Manchester United during Sir Alex Ferguson's final season in charge in 2012–13."
+    },
+    {
+      "id": 9,
+      "question": "Who is Liverpool's top scorer (in all competitions) so far this season?",
+      "options": ["Barcola", "Wirtz", "Szoboszlai", "Isak"],
+      "answer": "Isak",
+      "clue": "A lethal Swedish center-forward whose first name is Alexander.",
+      "funFact": "His brace in Belgium against Club Brugge added to his impressive tally across both Premier League and Champions League action."
+    },
+    {
+      "id": 10,
+      "question": "What is the seating capacity of Anfield?",
+      "options": ["51,276", "71,276", "61,276"],
+      "answer": "61,276",
+      "clue": "A five-digit number sitting exactly 10,000 above 51,276 and 10,000 below 71,276.",
+      "funFact": "Following the completion of the Anfield Road Stand expansion, the iconic venue became the fourth-largest club stadium in England."
+    }
+  ]
+}
