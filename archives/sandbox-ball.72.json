@@ -1,0 +1,86 @@
+{
+  "setId": 71,
+  "date": "2026-11-27",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is currently second from bottom of the Premier League table today, Friday, 27th November 2026?",
+      "options": ["Coventry City", "Sunderland", "Manchester United"],
+      "answer": "Manchester United",
+      "clue": "The 20-time English champions who play their home matches at Old Trafford.",
+      "funFact": "They sit 19th in the table on 8 points from their opening 11 fixtures, with just one league win so far this season."
+    },
+    {
+      "id": 2,
+      "question": "Bournemouth continued their European winning ways, winning 1-2 in Spain last night (Thursday); which team did they beat?",
+      "options": ["Real Sociedad", "Espanyol", "Celta Vigo"],
+      "answer": "Celta Vigo",
+      "clue": "A Galician La Liga club that plays its home matches at Estadio Balaídos.",
+      "funFact": "Álvaro Rodríguez and Rayan struck for the Cherries at Balaídos to turn the match around and preserve their unbeaten European run."
+    },
+    {
+      "id": 3,
+      "question": "Brighton & Hove Albion also won last night (Thursday) against Universitatea Craiova; of what country were they league champions?",
+      "options": ["Porto", "Bulgarian", "Croatian", "Romanian"],
+      "answer": "Romanian",
+      "clue": "The Eastern European nation based around Bucharest and the Carpathian Mountains.",
+      "funFact": "Ibrahim Osman netted twice alongside goals from Maxim De Cuyper and Charalampos Kostoulas in a dominant 4–0 win for Brighton."
+    },
+    {
+      "id": 4,
+      "question": "Which London club also won in Europe last night?",
+      "options": ["Millwall", "Chelsea", "Tottenham", "Crystal Palace"],
+      "answer": "Crystal Palace",
+      "clue": "A South London club famously nicknamed \"The Eagles.\"",
+      "funFact": "Under manager Thomas Frank, the Eagles fought back to beat Real Sociedad 2–1 at Selhurst Park after a late winner."
+    },
+    {
+      "id": 5,
+      "question": "Which former Manchester City and Italy manager celebrates his birthday today, 27th November (62)?",
+      "options": ["Fabio Capello", "Claudio Ranieri", "Roberto Mancini"],
+      "answer": "Roberto Mancini",
+      "clue": "The Italian coach who managed Manchester City from 2009 to 2013.",
+      "funFact": "Born on 27 November 1964, he famously guided Manchester City to their first Premier League title in 2012 before later winning UEFA Euro 2020 with Italy."
+    },
+    {
+      "id": 6,
+      "question": "What nationality is Chelsea midfielder Moisés Caicedo?",
+      "options": ["Uruguayan", "Argentinian", "Colombian", "Ecuadorian"],
+      "answer": "Ecuadorian",
+      "clue": "He hails from the South American country straddling the equator.",
+      "funFact": "Born in Santo Domingo, he represents La Tri on the international stage and has been a mainstay in Chelsea's midfield since arriving from Brighton."
+    },
+    {
+      "id": 7,
+      "question": "What shirt number does Moisés Caicedo wear for Chelsea?",
+      "options": ["21", "22", "8", "25"],
+      "answer": "25",
+      "clue": "An odd double-digit number equal to five squared (5×5).",
+      "funFact": "He took this squad number upon signing for Chelsea in August 2023."
+    },
+    {
+      "id": 8,
+      "question": "How many Premier League titles has birthday boy Roberto Mancini won?",
+      "options": ["3", "1", "2", "0"],
+      "answer": "1",
+      "clue": "The single-digit number representing one top-flight title triumph.",
+      "funFact": "His solitary Premier League crown came in dramatic final-day fashion in May 2012 with Manchester City."
+    },
+    {
+      "id": 9,
+      "question": "Who is Chelsea’s top scorer (in all competitions) so far this season?",
+      "options": ["João Pedro", "Cole Palmer", "Morgan Rogers"],
+      "answer": "Morgan Rogers",
+      "clue": "An attacking midfielder who wears the number 17 shirt for the Blues.",
+      "funFact": "He leads Chelsea's scoring charts across all competitions with 6 goals this season."
+    },
+    {
+      "id": 10,
+      "question": "What is the seating capacity of Brighton & Hove Albion’s stadium?",
+      "options": ["37,500", "42,500", "27,500", "32,500"],
+      "answer": "32,500",
+      "clue": "A five-digit number sitting halfway between 27,500 and 37,500.",
+      "funFact": "Opened in 2011 in Falmer, the Seagulls' home ground is commonly known as the Amex Stadium."
+    }
+  ]
+}
